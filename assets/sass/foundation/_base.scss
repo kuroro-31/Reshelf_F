@@ -1,0 +1,47 @@
+:root {
+  --transition-speed: 0.2s;
+}
+body {
+  @apply m-0 p-0 box-border antialiased;
+  font-family: proxima-nova, 'Proxima Nova', 'Noto Sans Japanese', -apple-system,
+    system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    MyYuGothicM, YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  word-spacing: 1px;
+  color: var(--color);
+  background-color: var(--fff);
+  background-attachment: fixed;
+}
+
+*,
+*::before,
+*::after {
+  @apply box-border m-0;
+}
+
+input {
+  @apply p-3 rounded;
+  border: 1px solid var(--ccc);
+  color: var(--color);
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  appearance: none;
+  -webkit-appearance: none;
+  &::placeholder {
+    color: #999;
+  }
+  /* IE */
+  &:-ms-input-placeholder {
+    color: #999;
+  }
+  /* Edge */
+  &::-ms-input-placeholder {
+    color: #999;
+  }
+  @media screen and (max-width: 767px) {
+    @apply text-lg;
+    font-size: initial !important;
+  }
+}
