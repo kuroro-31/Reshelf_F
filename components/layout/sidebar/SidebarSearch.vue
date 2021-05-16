@@ -16,7 +16,7 @@
       >
         <a
           href="#"
-          class="title font-bold text-xl hover:text-blue flex-shrink-0"
+          class="title font-semibold text-xl hover:text-blue flex-shrink-0"
         >
           {{ category.name }}
         </a>

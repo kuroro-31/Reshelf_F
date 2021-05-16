@@ -30,14 +30,24 @@
 
       <div class="nav-right">
         <re-button class="re-button">
-          <button class="re-button-primary-border">ログイン</button>
+          <button class="re-button-primary-border" @click="openModal">
+            ログイン
+          </button>
         </re-button>
 
-        <transition name="lightbox">
-          <div v-if="visible" class="lightbox" @click="hide">
-            <div class="content"></div>
+        <!-- コンポーネント ReModal -->
+        <ReModal v-if="modal" @close="closeModal">
+          <template slot="header">新規登録・ログイン</template>
+          <!-- default -->
+          <div class="w-full flex justify-center">
+            <button class="fb-btn">Facebookでログイン</button>
           </div>
-        </transition>
+          <!-- /default -->
+          <template slot="footer">
+            ※
+            Reshelfでは、多重アカウントを防止するためFacebookでのアカウント作成をお願いしています。
+          </template>
+        </ReModal>
       </div>
     </div>
   </nav>
@@ -45,21 +55,26 @@
 
 <script>
 import ReButton from '@/components/atoms/button/ReButton'
+import ReModal from '@/components/atoms/modal/ReModal'
+
 export default {
   components: {
     ReButton,
+    ReModal,
   },
   data() {
     return {
       visible: false,
+      modal: false,
+      message: '',
     }
   },
   methods: {
-    show() {
-      this.visible = true
+    openModal() {
+      this.modal = true
     },
-    hide() {
-      this.visible = false
+    closeModal() {
+      this.modal = false
     },
   },
 }
@@ -118,46 +133,13 @@ export default {
     @apply flex h-full items-center;
   }
 }
-
-.content {
-  @apply absolute flex flex-col items-center justify-center;
-  background: white;
-  min-height: 60vh;
-  max-height: calc(100% - 120px);
-  margin-left: auto;
-  margin-right: auto;
-  max-width: calc(100% - 120px);
-  width: 1040px;
-  z-index: 510;
+.fb-btn {
+  @apply py-3 px-4 text-white rounded-lg font-bold outline-none;
+  background: #1976f2;
+  &:hover {
+    @apply duration-300;
+    -webkit-box-shadow: 0 8px 25px -8px #1976f2;
+    box-shadow: 0 8px 25px -8px #1976f2;
+  }
 }
-.lightbox {
-  @apply fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center;
-  background: rgba(9, 30, 66, 0.54);
-  width: 100vw;
-  height: 100vh;
-  z-index: 99000;
-  opacity: 1;
-  transition: opacity 220ms ease 0s;
-}
-.lightbox-enter-active,
-.lightbox-leave-active {
-  transition: all 0.3s ease;
-}
-.lightbox-enter,
-.lightbox-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
-  -webkit-transform: translateY(10px);
-  -moz-transform: translateY(10px);
-  -ms-transform: translateY(10px);
-  -o-transform: translateY(10px);
-}
-
-// .re-button {
-//   @apply px-5 py-2.5 text-white font-bold rounded outline-none duration-200;
-//   background: var(--primary);
-//   &:hover {
-//     box-shadow: 0px 4px 20px 0px rgb(51 196 204 / 50%);
-//   }
-// }
 </style>
