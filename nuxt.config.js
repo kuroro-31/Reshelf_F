@@ -48,9 +48,7 @@ export default {
   css: ['ress', { src: '@/assets/sass/app.scss', lang: 'scss' }],
 
   // パッケージ関係
-  plugins: [
-    // '~/plugins/vuesax.js',
-  ],
+  plugins: ['~/plugins/plugin.js'],
 
   components: true,
 
