@@ -48,7 +48,7 @@ export default {
     max-width: 600px;
   }
   &-header {
-    @apply relative rounded-t text-lg py-3 pl-3 pr-8;
+    @apply relative rounded-t text-xl font-bold py-3 pl-3 pr-8;
     background: #f2f2f2;
     text-align: left;
     min-height: 30px;

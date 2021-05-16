@@ -106,7 +106,7 @@ export default {
   button,
   label,
   .re-button-inner {
-    @apply flex items-center justify-center w-full border-none rounded cursor-pointer duration-200 bg-transparent box-border px-5 py-2.5 font-bold outline-none;
+    @apply flex items-center justify-center w-full border-none rounded cursor-pointer duration-200 bg-transparent box-border px-5 py-2 font-bold outline-none;
     min-width: 100px; // 2文字などの短いボタンのケースで必要
     min-height: 44px;
     color: #fff;
@@ -134,21 +134,17 @@ export default {
     transform: translateY(0);
   }
   .ripple {
+    @apply block absolute top-0 left-0 opacity-0;
     z-index: 1000;
-    display: block;
     width: 200px;
     height: 200px;
     border-radius: 9999px;
-    position: absolute;
-    top: 0;
-    left: 0;
     pointer-events: none;
     background-color: rgba(lighten($primary, 10%), 0.5);
-    opacity: 0;
     transform: translate(-50%, -50%) scale(10);
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     &-enter {
-      opacity: 1;
+      @apply opacity-10;
       transform: translate(-50%, -50%) scale(0);
     }
   }

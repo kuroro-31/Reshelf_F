@@ -29,23 +29,30 @@
       <div class="nav-center flex items-center"></div>
 
       <div class="nav-right">
+        <!-- カート -->
+        <button class="cart">
+          <shopping-cart-icon
+            size="1.5x"
+            class="cart-icon"
+          ></shopping-cart-icon>
+        </button>
+
+        <!-- ログイン -->
         <re-button class="re-button">
           <button class="re-button-primary-border" @click="openModal">
             ログイン
           </button>
         </re-button>
-
-        <!-- コンポーネント ReModal -->
         <ReModal v-if="modal" @close="closeModal">
-          <template slot="header">新規登録・ログイン</template>
+          <template slot="header">Welcome To Reshelf！</template>
           <!-- default -->
           <div class="w-full flex justify-center">
-            <button class="fb-btn">Facebookでログイン</button>
+            <button class="fb-btn">Facebookで新規登録・ログイン</button>
           </div>
           <!-- /default -->
           <template slot="footer">
             ※
-            Reshelfでは、多重アカウントを防止するためFacebookでのアカウント作成をお願いしています。
+            Reshelfでは、多重アカウントを防止するため、Facebookでのアカウント作成をお願いしています。
           </template>
         </ReModal>
       </div>
@@ -56,11 +63,13 @@
 <script>
 import ReButton from '@/components/atoms/button/ReButton'
 import ReModal from '@/components/atoms/modal/ReModal'
+import { ShoppingCartIcon } from 'vue-feather-icons'
 
 export default {
   components: {
     ReButton,
     ReModal,
+    ShoppingCartIcon,
   },
   data() {
     return {
@@ -103,27 +112,6 @@ export default {
   }
   &-center {
     @apply mr-auto;
-    height: 45px;
-    &-form {
-      @apply flex items-center py-2 rounded;
-      &-input {
-        @apply flex items-center outline-none;
-        color: var(--adb);
-        font-weight: 500;
-      }
-      button {
-        @apply flex items-center outline-none border py-2 pr-4;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-        border-left: none;
-        transition: 0.1s ease;
-        color: var(--adb);
-        &:hover {
-          color: $primary;
-          transition: 0.1s ease;
-        }
-      }
-    }
   }
   &-right {
     @apply justify-end;
@@ -133,8 +121,17 @@ export default {
     @apply flex h-full items-center;
   }
 }
+.cart {
+  @apply mx-6 outline-none;
+  &:hover {
+    color: var(--primary);
+  }
+  &-icon {
+    @apply flex-shrink-0 inline-block;
+  }
+}
 .fb-btn {
-  @apply py-3 px-4 text-white rounded-lg font-bold outline-none;
+  @apply py-3 px-4 text-white rounded-lg text-lg font-bold outline-none;
   background: #1976f2;
   &:hover {
     @apply duration-300;
