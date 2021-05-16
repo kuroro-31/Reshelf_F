@@ -1,32 +1,38 @@
 <template>
   <nav class="nav">
-    <div class="w-full mx-auto flex items-center py-2">
+    <div
+      class="
+        w-full
+        container
+        mx-auto
+        flex flex-wrap
+        items-center
+        justify-between
+        mt-0
+        py-2.5
+      "
+    >
       <div class="nav-left">
         <NuxtLink to="/" class="title-link">
-          <h1 class="text-2xl font-bold">Laravel Nuxt</h1>
+          <h1>
+            <img
+              src="https://res.cloudinary.com/reshelf/image/upload/v1619871156/Logo_pfuaao.svg"
+              alt="Reshelf Logo"
+              width="150"
+              height="50"
+              class="h-6 responsive"
+            />
+          </h1>
         </NuxtLink>
       </div>
 
       <div class="nav-center flex items-center"></div>
 
       <div class="nav-right">
-        <nuxt-link to="/auth/login" class="mr-8">ログイン</nuxt-link>
-        <nuxt-link to="/auth/register" class="mr-8">新規登録</nuxt-link>
-        <!-- <div
-          class="mr-6 cursor-default rounded-full overflow-hidden border border-2 shadow"
-        >
-          <img
-            src="https://i.gyazo.com/f9cee2bd70be15e438cac7c23afa86f2.png"
-            alt=""
-            class="object-contain"
-            height="35px"
-            width="35px"
-          />
-        </div> -->
+        <re-button class="re-button">
+          <button class="re-button-primary-border">ログイン</button>
+        </re-button>
 
-        <vs-button color="primary" type="filled" @click.prevent="show">
-          <span class="font-bold px-4">新規追加</span>
-        </vs-button>
         <transition name="lightbox">
           <div v-if="visible" class="lightbox" @click="hide">
             <div class="content"></div>
@@ -38,8 +44,11 @@
 </template>
 
 <script>
+import ReButton from '@/components/atoms/button/ReButton'
 export default {
-  components: {},
+  components: {
+    ReButton,
+  },
   data() {
     return {
       visible: false,
@@ -143,4 +152,12 @@ export default {
   -ms-transform: translateY(10px);
   -o-transform: translateY(10px);
 }
+
+// .re-button {
+//   @apply px-5 py-2.5 text-white font-bold rounded outline-none duration-200;
+//   background: var(--primary);
+//   &:hover {
+//     box-shadow: 0px 4px 20px 0px rgb(51 196 204 / 50%);
+//   }
+// }
 </style>
