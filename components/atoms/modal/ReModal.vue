@@ -6,7 +6,9 @@
           <button class="close" @click="$emit('close')">
             <x-icon size="1x" class=""></x-icon>
           </button>
-          <slot name="header"></slot>
+          <div class="title">
+            <slot name="header"></slot>
+          </div>
         </header>
         <div class="modal-content">
           <slot />
@@ -55,6 +57,9 @@ export default {
     background: #f2f2f2;
     text-align: left;
     min-height: 30px;
+    .title {
+      animation: slide-in 0.4s;
+    }
   }
   &-content {
     @apply p-6;
@@ -120,6 +125,16 @@ export default {
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes slide-in {
+  0% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
   }
 }
 </style>
