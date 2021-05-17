@@ -46,6 +46,9 @@ export default {
     background: #fff;
     border-radius: 4px;
     max-width: 600px;
+    @media screen and (max-width: 767px) {
+      max-width: 90%;
+    }
   }
   &-header {
     @apply relative rounded-t text-xl font-bold py-3 pl-3 pr-8;
