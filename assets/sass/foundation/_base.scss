@@ -21,3 +21,12 @@ body {
 *::after {
   @apply box-border m-0;
 }
+
+.scroll-none {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+  list-style: none !important;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+}

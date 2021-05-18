@@ -30,16 +30,24 @@
 
       <div class="nav-right">
         <!-- カート -->
-        <button class="cart">
+        <button class="cart" @click="cart = !cart">
           <shopping-cart-icon
             size="1.5x"
             class="cart-icon"
           ></shopping-cart-icon>
+          <transition>
+            <div v-if="cart">
+              <div class="cart-contents">
+                <div class="p-8">カートの中身は空です</div>
+              </div>
+            </div>
+          </transition>
         </button>
+        <div v-if="cart" class="dropdown-bg" @click="cart = false"></div>
 
         <!-- ログイン -->
         <re-button class="re-button">
-          <button class="re-button-primary-border" @click="openModal">
+          <button class="re-button-primary-filled" @click="openModal">
             ログイン
           </button>
         </re-button>
@@ -47,7 +55,9 @@
           <template slot="header">Welcome To Reshelf！</template>
           <!-- default -->
           <div class="w-full flex justify-center">
-            <button class="fb-btn">Facebookで新規登録・ログイン</button>
+            <form @submit.prevent="submit">
+              <button class="fb-btn">Facebookで新規登録・ログイン</button>
+            </form>
           </div>
           <!-- /default -->
           <template slot="footer">
@@ -76,6 +86,7 @@ export default {
       visible: false,
       modal: false,
       message: '',
+      cart: false,
     }
   },
   methods: {
@@ -84,6 +95,20 @@ export default {
     },
     closeModal() {
       this.modal = false
+    },
+    async submit() {
+      await this.$axios
+        .post('/api/auth/facebook')
+        .then(() => {})
+        .catch((err) => {
+          console.log(err)
+        })
+      // await this.$auth.loginWith('local', {
+      //   data: this.form,
+      // })
+      // this.$router.push({
+      //   path: this.$route.query.redirect || '/',
+      // })
     },
   },
 }
@@ -122,12 +147,18 @@ export default {
   }
 }
 .cart {
-  @apply mx-6 outline-none;
+  @apply px-6 outline-none relative;
+  height: 45px;
   &:hover {
-    color: var(--primary);
   }
   &-icon {
     @apply flex-shrink-0 inline-block;
+  }
+  &-contents {
+    @apply absolute top-0 right-0 z-50 rounded shadow-lg cursor-default;
+    margin-top: 70px;
+    width: 300px;
+    background: #fff;
   }
 }
 .fb-btn {
@@ -138,5 +169,18 @@ export default {
     -webkit-box-shadow: 0 8px 25px -8px #1976f2;
     box-shadow: 0 8px 25px -8px #1976f2;
   }
+}
+.show {
+  @apply block;
+}
+.dropdown-bg {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 }
 </style>

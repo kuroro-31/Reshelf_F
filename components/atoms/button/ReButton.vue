@@ -97,18 +97,18 @@ export default {
 </script>
 <style lang="scss">
 .re-button {
-  @apply flex items-center justify-center relative overflow-hidden rounded w-full outline-none border-none font-bold;
+  @apply block relative overflow-hidden rounded w-full outline-none border-none font-bold;
   &:hover {
-    @apply duration-300;
-    -webkit-box-shadow: 0 8px 25px -8px var(--primary);
-    box-shadow: 0 8px 25px -8px var(--primary);
+    @apply duration-200;
+    -webkit-box-shadow: 0 8px 25px -8px $primary;
+    box-shadow: 0 8px 25px -8px $primary;
   }
   button,
   label,
   .re-button-inner {
-    @apply flex items-center justify-center w-full border-none rounded cursor-pointer duration-200 bg-transparent box-border px-5 py-2 font-bold outline-none;
+    @apply flex items-center justify-center w-full h-full border-none rounded cursor-pointer duration-200 bg-transparent box-border px-5 py-2 font-bold outline-none;
     min-width: 100px; // 2文字などの短いボタンのケースで必要
-    min-height: 44px;
+    min-height: 40px;
     color: #fff;
     font-family: proxima-nova, 'Proxima Nova', 'Noto Sans Japanese',
       -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,
@@ -128,7 +128,6 @@ export default {
   }
   .label {
     @apply block duration-200;
-    display: block;
     pointer-events: none;
     color: var(--fff);
     transform: translateY(0);
@@ -151,14 +150,15 @@ export default {
 
   &-primary {
     &-filled {
-      background: var(--primary) !important;
+      background: $primary !important;
       color: #fff !important;
     }
     &-border {
-      border: 1px solid var(--primary) !important;
-      color: var(--primary) !important;
+      border: 1px solid $primary !important;
+      color: $primary !important;
       &:hover {
-        @apply shadow-none;
+        background: rgba($primary, 0.1) !important;
+        box-shadow: none !important;
       }
     }
   }
@@ -171,9 +171,9 @@ export default {
     }
     &-border {
       border: 1px solid rgba(var(--vs-secondry), 1);
-      color: var(--primary);
+      color: $primary;
       &:hover {
-        background: var(--primary);
+        background: $primary;
         color: #fff;
       }
     }
@@ -186,21 +186,21 @@ export default {
     }
   }
   &-extra-large {
-    min-height: 60px !important;
+    @apply font-semibold;
+    height: 60px !important;
     font-size: 1.429rem !important;
-    font-weight: 600;
   }
   &-large {
-    // padding: 1rem 2.5rem;
-    min-height: 50px !important;
+    @apply font-semibold;
+    height: 50px !important;
     font-size: 1.286rem !important;
-    font-weight: 600;
   }
   &-small {
-    min-height: 38px !important;
+    height: 38px !important;
   }
   &-extra-small {
-    min-height: 30px !important;
+    @apply text-base;
+    height: 30px !important;
     padding: 0 5px !important;
     font-weight: normal !important;
   }

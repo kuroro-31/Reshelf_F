@@ -16,7 +16,7 @@
       >
         <a
           href="#"
-          class="title font-semibold text-xl hover:text-blue flex-shrink-0"
+          class="title font-bold text-lg hover:text-blue flex-shrink-0"
         >
           {{ category.name }}
         </a>
@@ -61,13 +61,18 @@ export default {
       checkBox: '',
       categories: [
         {
+          name: '教材タイプ',
+          subcategories: ['チュートリアル型', '講義型'],
+          toggleOn: true,
+        },
+        {
           name: '評価',
           subcategories: ['4.5以上', '4.0以上', '3.5以上'],
           toggleOn: true,
         },
         {
           name: '値段',
-          subcategories: ['2,500円', '5,000円', '7,500円', '10,000円'],
+          subcategories: ['無料', '2,500円', '5,000円', '7,500円', '10,000円'],
           toggleOn: true,
         },
         {
@@ -87,7 +92,7 @@ export default {
         },
         {
           name: 'レベル',
-          subcategories: ['初級', '中級', '上級', '特級', 'すべて'],
+          subcategories: ['初級', '中級', '上級', '特級'],
           toggleOn: true,
         },
         {
@@ -97,7 +102,12 @@ export default {
         },
         {
           name: '特徴',
-          subcategories: ['デモページ有り', 'サブスク対象教材'],
+          subcategories: [
+            'デモページ有り',
+            'サブスク対象教材',
+            'Mac',
+            'Windows',
+          ],
           toggleOn: true,
         },
       ],
