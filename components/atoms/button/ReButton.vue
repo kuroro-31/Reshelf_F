@@ -97,7 +97,7 @@ export default {
 </script>
 <style lang="scss">
 .re-button {
-  @apply block relative overflow-hidden rounded w-full outline-none border-none font-bold;
+  @apply block relative overflow-hidden rounded w-full outline-none border-none;
   &:hover {
     @apply duration-200;
     -webkit-box-shadow: 0 8px 25px -8px $primary;
@@ -106,7 +106,7 @@ export default {
   button,
   label,
   .re-button-inner {
-    @apply flex items-center justify-center w-full h-full border-none rounded cursor-pointer duration-200 bg-transparent box-border px-5 py-2 font-bold outline-none;
+    @apply flex items-center justify-center w-full h-full border-none rounded cursor-pointer duration-200 bg-transparent box-border px-5 py-2 outline-none;
     min-width: 100px; // 2文字などの短いボタンのケースで必要
     min-height: 40px;
     color: #fff;
@@ -152,10 +152,12 @@ export default {
     &-filled {
       background: $primary !important;
       color: #fff !important;
+      border: 1px solid $primary !important;
     }
     &-border {
       border: 1px solid $primary !important;
       color: $primary !important;
+      box-shadow: none !important;
       &:hover {
         background: rgba($primary, 0.1) !important;
         box-shadow: none !important;

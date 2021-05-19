@@ -9,10 +9,9 @@
         items-center
         justify-between
         mt-0
-        py-2.5
       "
     >
-      <div class="nav-left">
+      <div class="nav-left py-2.5">
         <NuxtLink to="/" class="title-link">
           <h1>
             <img
@@ -26,7 +25,7 @@
         </NuxtLink>
       </div>
 
-      <div class="nav-center flex items-center"></div>
+      <div class="nav-center flex items-center py-2.5"></div>
 
       <div class="nav-right">
         <!-- カート -->
@@ -45,26 +44,50 @@
         </button>
         <div v-if="cart" class="dropdown-bg" @click="cart = false"></div>
 
+        <button class="user" @click="user = !user">
+          <img
+            class="user-img"
+            width="40px"
+            height="40px"
+            src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
+          />
+          <transition>
+            <div v-if="user">
+              <div class="cart-contents">
+                <div class="p-8">カートの中身は空です</div>
+              </div>
+            </div>
+          </transition>
+        </button>
+        <div v-if="user" class="dropdown-bg" @click="user = false"></div>
+
         <!-- ログイン -->
-        <re-button class="re-button">
-          <button class="re-button-primary-filled" @click="openModal">
-            ログイン
-          </button>
-        </re-button>
-        <ReModal v-if="modal" @close="closeModal">
-          <template slot="header">Welcome To Reshelf！</template>
-          <!-- default -->
-          <div class="w-full flex justify-center">
-            <form @submit.prevent="submit">
-              <button class="fb-btn">Facebookで新規登録・ログイン</button>
-            </form>
-          </div>
-          <!-- /default -->
-          <template slot="footer">
-            ※
-            Reshelfでは、多重アカウントを防止するため、Facebookでのアカウント作成をお願いしています。
-          </template>
-        </ReModal>
+        <div class="py-2.5">
+          <re-button class="re-button">
+            <button
+              :class="
+                modal ? 're-button-primary-border' : 're-button-primary-filled'
+              "
+              @click="modal = !modal"
+            >
+              ログイン
+            </button>
+          </re-button>
+          <ReModal v-if="modal" @close="modal = !modal">
+            <template slot="header">Welcome To Reshelf！</template>
+            <!-- default -->
+            <div class="w-full flex justify-center">
+              <form @submit.prevent="submit">
+                <button class="fb-btn">Facebookで新規登録・ログイン</button>
+              </form>
+            </div>
+            <!-- /default -->
+            <template slot="footer">
+              ※
+              Reshelfでは、多重アカウントを防止するため、Facebookでのアカウント作成をお願いしています。
+            </template>
+          </ReModal>
+        </div>
       </div>
     </div>
   </nav>
@@ -87,15 +110,10 @@ export default {
       modal: false,
       message: '',
       cart: false,
+      user: false,
     }
   },
   methods: {
-    openModal() {
-      this.modal = true
-    },
-    closeModal() {
-      this.modal = false
-    },
     async submit() {
       await this.$axios
         .post('/api/auth/facebook')
@@ -147,12 +165,27 @@ export default {
   }
 }
 .cart {
-  @apply px-6 outline-none relative;
-  height: 45px;
+  @apply px-3 outline-none relative;
+  height: 60px;
   &:hover {
   }
   &-icon {
     @apply flex-shrink-0 inline-block;
+  }
+  &-contents {
+    @apply absolute top-0 right-0 z-50 rounded shadow-lg cursor-default;
+    margin-top: 70px;
+    width: 300px;
+    background: #fff;
+  }
+}
+.user {
+  @apply pl-3 outline-none relative;
+  height: 60px;
+  &-img {
+    @apply object-cover rounded-full shadow-lg;
+    width: 40px;
+    height: 40px;
   }
   &-contents {
     @apply absolute top-0 right-0 z-50 rounded shadow-lg cursor-default;

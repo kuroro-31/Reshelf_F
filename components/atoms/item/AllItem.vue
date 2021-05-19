@@ -40,8 +40,22 @@
         >
           <div class="flex w-full items-center">
             <div class="flex flex-col w-full">
-              <re-button class="re-button h-full re-button-large mb-2">
-                <button class="re-button-primary-filled">今すぐ買う</button>
+              <re-button
+                class="re-button h-full re-button-large mb-2"
+                :class="isDisabled ? 'no-shadow' : ''"
+              >
+                <button
+                  type="submit"
+                  :class="
+                    isDisabled
+                      ? 're-button-disabled no-shadow'
+                      : 're-button-primary-filled'
+                  "
+                  :disabled="isDisabled"
+                  @click="isDisabled = !isDisabled"
+                >
+                  今すぐ買う
+                </button>
               </re-button>
               <button class="cart-in">カートに入れる</button>
             </div>
@@ -78,6 +92,7 @@ export default {
     return {
       liked: false,
       visible: false,
+      isDisabled: false,
     }
   },
   methods: {
@@ -126,7 +141,7 @@ export default {
   min-width: 100px;
   &-sale {
     @apply text-lg font-bold;
-    color: var(--red);
+    // color: var(--red);
   }
   &-normal {
     @apply line-through;
