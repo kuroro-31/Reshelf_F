@@ -7,8 +7,8 @@
             :src="item.src"
             alt="text image"
             class="img"
-            @mouseover="mouseover"
-            @mouseleave="mouseleave"
+            @mouseover="visible = true"
+            @mouseleave="visible = false"
           />
 
           <div class="flex flex-col px-4">
@@ -35,13 +35,13 @@
         <div
           class="content"
           :class="{ visible: visible === true }"
-          @mouseover="mouseover"
-          @mouseleave="mouseleave"
+          @mouseover="visible = true"
+          @mouseleave="visible = false"
         >
           <div class="flex w-full items-center">
             <div class="flex flex-col w-full">
               <re-button
-                class="re-button h-full re-button-large mb-2"
+                class="re-button h-full re-button-large mb-4"
                 :class="isDisabled ? 'no-shadow' : ''"
               >
                 <button
@@ -54,7 +54,7 @@
                   :disabled="isDisabled"
                   @click="isDisabled = !isDisabled"
                 >
-                  今すぐ買う
+                  今すぐ購入する
                 </button>
               </re-button>
               <button class="cart-in">カートに入れる</button>
@@ -79,30 +79,23 @@ import { HeartIcon } from 'vue-feather-icons'
 export default {
   components: {
     ReButton,
-    HeartIcon,
+    HeartIcon
   },
   props: {
     items: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
   data() {
     return {
       liked: false,
       visible: false,
-      isDisabled: false,
+      isDisabled: false
     }
   },
-  methods: {
-    mouseover() {
-      this.visible = true
-    },
-    mouseleave() {
-      this.visible = false
-    },
-  },
+  methods: {}
 }
 </script>
 <style lang="scss" scoped>
@@ -124,7 +117,7 @@ export default {
 }
 
 .content {
-  @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded p-6;
+  @apply flex flex-col items-center justify-center absolute hidden shadow rounded p-6;
   background: var(--fff);
   top: 0px;
   left: 250px;

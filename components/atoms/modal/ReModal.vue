@@ -24,8 +24,8 @@
 import { XIcon } from 'vue-feather-icons'
 export default {
   components: {
-    XIcon,
-  },
+    XIcon
+  }
 }
 </script>
 <style lang="scss" scoped>

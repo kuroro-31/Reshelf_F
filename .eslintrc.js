@@ -1,19 +1,16 @@
-// =========================
-// ESlintの設定
-// =========================
 module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true,
+    node: true
   },
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: 'babel-eslint'
   },
   extends: [
     'eslint:recommended',
     'plugin:vue/recommended',
-    'plugin:prettier/recommended',
+    'plugin:prettier/recommended'
   ],
   // *.vue ファイルを lint にかけるために必要
   plugins: ['vue'],
@@ -28,9 +25,8 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        htmlWhitespaceSensitivity: 'ignore', //aタグの羅列などで変な風にならないように追記
-      },
-    ],
-    'space-before-function-paren': 0,
-  },
+        htmlWhitespaceSensitivity: 'ignore' //aタグの羅列などで変な風にならないように追記
+      }
+    ]
+  }
 }

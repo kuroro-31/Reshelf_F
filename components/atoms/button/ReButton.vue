@@ -74,7 +74,7 @@ export default {
     return {
       ripple: false,
       x: 0,
-      y: 0,
+      y: 0
     }
   },
 
@@ -91,13 +91,13 @@ export default {
     },
     afterRippleEnter() {
       this.ripple = false
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss">
 .re-button {
-  @apply block relative overflow-hidden rounded w-full outline-none border-none;
+  @apply block relative overflow-hidden rounded w-full h-full outline-none border-none font-bold;
   &:hover {
     @apply duration-200;
     -webkit-box-shadow: 0 8px 25px -8px $primary;
@@ -108,8 +108,8 @@ export default {
   .re-button-inner {
     @apply flex items-center justify-center w-full h-full border-none rounded cursor-pointer duration-200 bg-transparent box-border px-5 py-2 outline-none;
     min-width: 100px; // 2文字などの短いボタンのケースで必要
-    min-height: 40px;
     color: #fff;
+    min-height: 40px;
     font-family: proxima-nova, 'Proxima Nova', 'Noto Sans Japanese',
       -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,
       sans-serif, MyYuGothicM, YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo;

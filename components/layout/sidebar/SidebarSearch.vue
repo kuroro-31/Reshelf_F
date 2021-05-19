@@ -54,7 +54,7 @@ import { ChevronRightIcon } from 'vue-feather-icons'
 
 export default {
   components: {
-    ChevronRightIcon,
+    ChevronRightIcon
   },
   data() {
     return {
@@ -63,17 +63,17 @@ export default {
         {
           name: '教材タイプ',
           subcategories: ['チュートリアル型', '講義型'],
-          toggleOn: true,
+          toggleOn: true
         },
         {
           name: '評価',
           subcategories: ['4.5以上', '4.0以上', '3.5以上'],
-          toggleOn: true,
+          toggleOn: true
         },
         {
           name: '値段',
           subcategories: ['無料', '2,500円', '5,000円', '7,500円', '10,000円'],
-          toggleOn: true,
+          toggleOn: true
         },
         {
           name: 'トピック',
@@ -86,19 +86,19 @@ export default {
             'AWS',
             'Python',
             'HTML',
-            'CSS',
+            'CSS'
           ],
-          toggleOn: true,
+          toggleOn: true
         },
         {
           name: 'レベル',
           subcategories: ['初級', '中級', '上級', '特級'],
-          toggleOn: true,
+          toggleOn: true
         },
         {
           name: '言語',
           subcategories: ['英語', '日本語'],
-          toggleOn: true,
+          toggleOn: true
         },
         {
           name: '特徴',
@@ -106,13 +106,13 @@ export default {
             'デモページ有り',
             'サブスク対象教材',
             'Mac',
-            'Windows',
+            'Windows'
           ],
-          toggleOn: true,
-        },
-      ],
+          toggleOn: true
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 

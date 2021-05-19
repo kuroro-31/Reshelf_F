@@ -28,38 +28,73 @@
       <div class="nav-center flex items-center py-2.5"></div>
 
       <div class="nav-right">
+        <!-- お気に入り -->
+        <button
+          class="dropdown"
+          @mouseover="like = true"
+          @mouseleave="like = false"
+        >
+          <heart-icon size="1.5x" class="dropdown-icon"></heart-icon>
+          <transition>
+            <div v-if="like">
+              <div
+                class="dropdown-contents"
+                @mouseover="like = true"
+                @mouseleave="like = false"
+              >
+                <div class="p-8">お気に入りの中身は空です</div>
+              </div>
+            </div>
+          </transition>
+        </button>
+
         <!-- カート -->
-        <button class="cart" @click="cart = !cart">
+        <button
+          class="dropdown"
+          @mouseover="cart = true"
+          @mouseleave="cart = false"
+        >
           <shopping-cart-icon
             size="1.5x"
-            class="cart-icon"
+            class="dropdown-icon"
           ></shopping-cart-icon>
           <transition>
             <div v-if="cart">
-              <div class="cart-contents">
+              <div
+                class="dropdown-contents"
+                @mouseover="cart = true"
+                @mouseleave="cart = false"
+              >
                 <div class="p-8">カートの中身は空です</div>
               </div>
             </div>
           </transition>
         </button>
-        <div v-if="cart" class="dropdown-bg" @click="cart = false"></div>
 
-        <button class="user" @click="user = !user">
+        <!-- ユーザードロップダウン -->
+        <button
+          class="dropdown"
+          @mouseover="user = true"
+          @mouseleave="user = false"
+        >
           <img
-            class="user-img"
+            class="dropdown-img"
             width="40px"
             height="40px"
             src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
           />
           <transition>
             <div v-if="user">
-              <div class="cart-contents">
-                <div class="p-8">カートの中身は空です</div>
+              <div
+                class="dropdown-contents"
+                @mouseover="user = true"
+                @mouseleave="user = false"
+              >
+                <div class="p-8"></div>
               </div>
             </div>
           </transition>
         </button>
-        <div v-if="user" class="dropdown-bg" @click="user = false"></div>
 
         <!-- ログイン -->
         <div class="py-2.5">
@@ -78,7 +113,12 @@
             <!-- default -->
             <div class="w-full flex justify-center">
               <form @submit.prevent="submit">
-                <button class="fb-btn">Facebookで新規登録・ログイン</button>
+                <button
+                  :class="post ? 'fb-btn-posted' : 'fb-btn'"
+                  @click="post = !post"
+                >
+                  Facebookで新規登録・ログイン
+                </button>
               </form>
             </div>
             <!-- /default -->
@@ -96,13 +136,14 @@
 <script>
 import ReButton from '@/components/atoms/button/ReButton'
 import ReModal from '@/components/atoms/modal/ReModal'
-import { ShoppingCartIcon } from 'vue-feather-icons'
+import { ShoppingCartIcon, HeartIcon } from 'vue-feather-icons'
 
 export default {
   components: {
     ReButton,
     ReModal,
     ShoppingCartIcon,
+    HeartIcon
   },
   data() {
     return {
@@ -111,6 +152,8 @@ export default {
       message: '',
       cart: false,
       user: false,
+      post: false,
+      like: false
     }
   },
   methods: {
@@ -127,8 +170,8 @@ export default {
       // this.$router.push({
       //   path: this.$route.query.redirect || '/',
       // })
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -164,44 +207,38 @@ export default {
     @apply flex h-full items-center;
   }
 }
-.cart {
+.dropdown {
   @apply px-3 outline-none relative;
   height: 60px;
-  &:hover {
-  }
   &-icon {
-    @apply flex-shrink-0 inline-block;
+    @apply flex-shrink-0 inline-block cursor-pointer;
   }
-  &-contents {
-    @apply absolute top-0 right-0 z-50 rounded shadow-lg cursor-default;
-    margin-top: 70px;
-    width: 300px;
-    background: #fff;
-  }
-}
-.user {
-  @apply pl-3 outline-none relative;
-  height: 60px;
   &-img {
-    @apply object-cover rounded-full shadow-lg;
+    @apply object-cover rounded-full shadow-lg cursor-pointer;
     width: 40px;
     height: 40px;
   }
   &-contents {
-    @apply absolute top-0 right-0 z-50 rounded shadow-lg cursor-default;
-    margin-top: 70px;
+    @apply absolute top-0 right-0 z-50 rounded shadow-lg;
+    margin-top: 60px;
     width: 300px;
     background: #fff;
   }
 }
 .fb-btn {
-  @apply py-3 px-4 text-white rounded-lg text-lg font-bold outline-none;
+  @apply py-3 px-4 text-white rounded-lg text-lg font-bold outline-none duration-200;
   background: #1976f2;
+  border: 1px solid #1976f2;
+
   &:hover {
-    @apply duration-300;
     -webkit-box-shadow: 0 8px 25px -8px #1976f2;
     box-shadow: 0 8px 25px -8px #1976f2;
   }
+}
+.fb-btn-posted {
+  @apply py-3 px-4 text-white rounded-lg text-lg font-bold outline-none;
+  color: #1976f2;
+  border: 1px solid #1976f2;
 }
 .show {
   @apply block;

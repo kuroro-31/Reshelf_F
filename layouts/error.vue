@@ -19,17 +19,17 @@
 import HeaderNav from '@/components/layout/HeaderNav'
 export default {
   components: {
-    HeaderNav,
+    HeaderNav
   },
   props: {
     error: {
       type: Object,
-      default: null,
-    },
+      default: null
+    }
   },
   data() {
     return {}
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

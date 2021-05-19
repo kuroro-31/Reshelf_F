@@ -8,7 +8,7 @@ export default {
       'Reshelf【リシェルフ】| アップデートするオンライン学習マーケットプレイス',
     htmlAttrs: {
       lang: 'ja',
-      prefix: 'og: http://ogp.me/ns#',
+      prefix: 'og: http://ogp.me/ns#'
     },
     meta: [
       { charset: 'utf-8' },
@@ -17,7 +17,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Reshelfは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。',
+          'Reshelfは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。'
       },
       { hid: 'og:site_name', property: 'og:site_name', content: 'Reshelf' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
@@ -26,23 +26,23 @@ export default {
         hid: 'og:title',
         property: 'og:title',
         content:
-          'Reshelf【リシェルフ】| アップデートするオンライン学習マーケットプレイス',
+          'Reshelf【リシェルフ】| アップデートするオンライン学習マーケットプレイス'
       },
       {
         hid: 'og:description',
         property: 'og:description',
         content:
-          'Reshelfは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。',
+          'Reshelfは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。'
       },
       {
         hid: 'og:image',
         property: 'og:image',
         content:
-          'https://res.cloudinary.com/reshelf/image/upload/v1619870944/ogp_rzf3q1.png',
+          'https://res.cloudinary.com/reshelf/image/upload/v1619870944/ogp_rzf3q1.png'
       },
-      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:card', content: 'summary_large_image' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   css: ['ress', { src: '@/assets/sass/app.scss', lang: 'scss' }],
@@ -50,25 +50,22 @@ export default {
   // パッケージ関係
   plugins: [
     { src: '~/plugins/vuesax.js', ssr: false },
-    { src: '~/plugins/vuejs-paginate.js', ssr: false },
+    { src: '~/plugins/vuejs-paginate.js', ssr: false }
   ],
 
   components: true,
 
-  // ESlintとPrettierの設定
-  parser: 'vue-eslint-parser',
-  extends: [
-    'prettier',
-    'plugin:prettier/recommended',
-    'plugin:vue/recommended',
-    '@vue/prettier',
-  ],
+  loading: {
+    color: '#33C4CC',
+    height: '5px'
+  },
 
+  // ESlintとPrettierの設定
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/proxy',
-    '@nuxtjs/style-resources',
+    '@nuxtjs/style-resources'
   ],
 
   modules: ['@nuxtjs/axios'],
@@ -77,30 +74,34 @@ export default {
   styleResources: {
     scss: [
       '~/assets/sass/foundation/_variables.scss',
-      '~/assets/sass/foundation/_mixin.scss',
-    ],
+      '~/assets/sass/foundation/_mixin.scss'
+    ]
   },
 
   // Laravelとの接続
   proxy: {
-    '/api': 'http://localhost:80',
+    '/api': 'http://localhost:80'
   },
 
   // Laravelとの非同期処理のため
   axios: {
-    baseURL: 'http://localhost/api',
-    proxy: true,
+    baseURL: '/',
+    proxy: true
   },
 
   build: {
+    cache: true,
+    parallel: true,
+    hardSource: true,
+
     // Sassの変換
     loaders: {
       scss: {
         implementation: Sass,
         sassOptions: {
-          fiber: Fiber,
-        },
-      },
+          fiber: Fiber
+        }
+      }
     },
 
     // 保存時にESlintの実行
@@ -111,16 +112,16 @@ export default {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/,
+          exclude: /(node_modules)/
         })
       }
-    },
+    }
   },
 
   // nuxt.jsのホットリロード
   watchers: {
     webpack: {
-      poll: true,
-    },
-  },
+      poll: true
+    }
+  }
 }

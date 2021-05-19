@@ -7,6 +7,7 @@
           <SidebarSearch />
         </nav>
         <div class="main-body min-h-(screen-16) scroll-none">
+          <hero-item />
           <all-item :items="items" />
         </div>
       </div>
@@ -20,6 +21,7 @@ import HeaderNav from '@/components/layout/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
 import SidebarSearch from '@/components/layout/sidebar/SidebarSearch'
 // atoms
+import HeroItem from '@/components/atoms/item/HeroItem'
 import AllItem from '@/components/atoms/item/AllItem'
 
 export default {
@@ -27,7 +29,8 @@ export default {
     HeaderNav,
     FooterNav,
     SidebarSearch,
-    AllItem,
+    HeroItem,
+    AllItem
   },
   data() {
     return {
@@ -51,7 +54,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -73,7 +76,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -95,7 +98,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -117,7 +120,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -139,7 +142,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -160,7 +163,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -182,7 +185,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -204,7 +207,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -226,7 +229,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -248,11 +251,11 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
-        },
-      ],
+          edit_time: '2021/06/23'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -263,6 +266,6 @@ export default {
   }
 }
 .main-body {
-  @apply w-full lg:w-3/4 xl:w-4/5 pt-10 px-6 lg:pr-0;
+  @apply w-full lg:w-3/4 xl:w-4/5 pt-6 px-6 lg:pr-0;
 }
 </style>

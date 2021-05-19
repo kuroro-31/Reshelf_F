@@ -11,8 +11,8 @@ export default {
       dark: '#626262',
       success: '#28C76F',
       warning: '#F89A1E',
-      danger: '#EA5555',
+      danger: '#EA5555'
     })
-  },
+  }
 }
 </script>

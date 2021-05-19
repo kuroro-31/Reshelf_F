@@ -1,0 +1,80 @@
+{
+  "workbench.settings.openDefaultSettings": true,
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "files.autoSave": "onFocusChange",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.colorTheme": "Eva Dark Bold",
+  "workbench.iconTheme": "material-icon-theme",
+
+  "emmet.includeLanguages": {
+      "php": "html",
+      "vue": "html",
+      "vue": "css",
+      "javascript": "javascriptreact",
+  },
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true,
+    "source.fixAll": true
+  },
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue",
+    "typescript"
+  ],
+
+  "vetur.format.enable": false,
+  "vetur.validation.template": false,
+  "auto-close-tag.SublimeText3Mode": true,
+  "explorer.confirmDragAndDrop": false,
+  "git.enableSmartCommit": true,
+  "editor.unfoldOnClickAfterEndOfLine": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "git.autofetch": true,
+  "tabnine.experimentalAutoImports": true,
+  "git.confirmSync": false,
+  "kite.showWelcomeNotificationOnStartup": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "cSpell.userWords": [
+    "postgresql",
+    "reactts"
+  ],
+  "editor.fontSize": 14,
+  "[json]": {
+
+
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace",
+    "gitlens.codeLens.scopes": [
+      "document"
+    ]
+  },
+  "yaml.schemas": {
+    "file:///Users/s.t/.vscode/extensions/atlassian.atlascode-2.8.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "atlascode.jira.jqlList": [
+    {
+      "id": "687b0337-1dd0-4df5-921b-7c379959693f",
+      "enabled": true,
+      "name": "My reshelf Issues",
+      "query": "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
+      "siteId": "d807d394-14b5-40a9-82fb-cc0b33bbef70",
+      "monitor": true
+    }
+  ],
+  "vsicons.dontShowNewVersionMessage": true,
+  "editor.tokenColorCustomizations": null,
+
+}
