@@ -12,23 +12,53 @@
           />
 
           <div class="flex flex-col px-4">
-            <h3 class="text-lg font-bold mb-2">{{ item.title }}</h3>
-            <p class="mb-2">
-              {{ item.describe }}
-            </p>
-            <p class="name mb-2 text-xs">
-              {{ item.name }}
-            </p>
-            <div class="flex">
-              <span v-for="tag in item.tags" :key="tag" class="tag">
-                {{ tag }}
-              </span>
+            <h3 class="text-lg font-bold mb-2 cursor-pointer">
+              {{ item.title }}
+            </h3>
+            <p class="mb-2">{{ item.describe }}</p>
+            <p class="name mb-2 text-xs">{{ item.name }}</p>
+            <p class="name mb-2 text-xs">最終更新日：{{ item.edit_time }}</p>
+            <div class="flex items-center">
+              <p
+                class="rate"
+                :class="{
+                  rate_one: item.rate >= 0,
+                  rate_two: item.rate >= 3.0,
+                  rate_three: item.rate >= 4.0,
+                  rate_four: item.rate >= 4.6
+                }"
+              >
+                {{ item.rate | comma }}
+              </p>
+              <p class="name ml-1 text-xs">
+                （総合評価：{{ item.all_rate | comma }}）
+              </p>
             </div>
           </div>
 
-          <div class="price">
-            <span class="price-sale">¥{{ item.sale_price }}</span>
-            <span class="price-normal">¥{{ item.normal_price }}</span>
+          <div class="right-box">
+            <!-- セール価格 -->
+            <span class="right-box-sale">
+              {{ item.sale_price | moneyFormat }}
+            </span>
+
+            <!-- 定価 -->
+            <span class="right-box-normal">
+              {{ item.normal_price | moneyFormat }}
+            </span>
+
+            <!-- 教材レベル -->
+            <span
+              class="level"
+              :class="{
+                level_one: item.level === '初級',
+                level_two: item.level === '中級',
+                level_three: item.level === '上級',
+                level_four: item.level === '特級'
+              }"
+            >
+              {{ item.level }}
+            </span>
           </div>
         </div>
 
@@ -81,6 +111,22 @@ export default {
     ReButton,
     HeartIcon
   },
+  filters: {
+    numberFormat: function (num) {
+      return num.toLocaleString()
+    },
+    moneyFormat(num) {
+      return (
+        '¥' +
+        (num || 0)
+          .toString()
+          .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
+      )
+    },
+    comma: function (num) {
+      return num.toFixed(1)
+    }
+  },
   props: {
     items: {
       type: Array,
@@ -129,7 +175,7 @@ export default {
   @apply px-2 py-1 mr-2;
   border: 1px solid var(--ccc);
 }
-.price {
+.right-box {
   @apply flex items-end flex-col pl-4;
   min-width: 100px;
   &-sale {
@@ -165,6 +211,41 @@ export default {
       -webkit-box-shadow: 0 8px 25px -8px var(--red);
       box-shadow: 0 8px 25px -8px var(--red);
     }
+  }
+}
+.level {
+  @apply flex justify-end inline-block mt-2 px-2 py-1 mr-2 font-bold rounded;
+  margin-right: 0 !important;
+  &_one {
+    border: 2px solid $green;
+    color: $green;
+  }
+  &_two {
+    border: 2px solid $yellow;
+    color: $yellow;
+  }
+  &_three {
+    border: 2px solid $red;
+    color: $red;
+  }
+  &_four {
+    border: 2px solid $purple;
+    color: $purple;
+  }
+}
+.rate {
+  @apply text-xl font-bold;
+  &_one {
+    color: $green;
+  }
+  &_two {
+    color: $yellow;
+  }
+  &_three {
+    color: $red;
+  }
+  &_four {
+    color: $purple;
   }
 }
 </style>

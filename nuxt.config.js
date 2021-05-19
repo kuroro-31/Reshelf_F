@@ -48,10 +48,7 @@ export default {
   css: ['ress', { src: '@/assets/sass/app.scss', lang: 'scss' }],
 
   // パッケージ関係
-  plugins: [
-    { src: '~/plugins/vuesax.js', ssr: false },
-    { src: '~/plugins/vuejs-paginate.js', ssr: false }
-  ],
+  plugins: [{ src: '~/plugins/vuesax.js', ssr: false }],
 
   components: true,
 

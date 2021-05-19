@@ -12,3 +12,5 @@ lint:
 	npm run lintfix
 package:
 	npm install --save-exact @nuxtjs/auth-next
+cache:
+	rm -rf node_modules/.cache/hard-source/
