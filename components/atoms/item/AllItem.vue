@@ -19,17 +19,35 @@
             <p class="name mb-2 text-xs">{{ item.name }}</p>
             <p class="name mb-2 text-xs">最終更新日：{{ item.edit_time }}</p>
             <div class="flex items-center">
-              <p
-                class="rate"
-                :class="{
-                  rate_one: item.rate >= 0,
-                  rate_two: item.rate >= 3.0,
-                  rate_three: item.rate >= 4.0,
-                  rate_four: item.rate >= 4.6
-                }"
-              >
-                {{ item.rate | comma }}
-              </p>
+              <div class="flex items-center">
+                <p
+                  class="rate"
+                  :class="{
+                    rate_one: item.rate >= 0,
+                    rate_two: item.rate >= 3.0,
+                    rate_three: item.rate >= 4.0,
+                    rate_four: item.rate >= 4.6
+                  }"
+                >
+                  {{ item.rate | comma }}
+                </p>
+                <div
+                  class="rate_img"
+                  :class="{
+                    rate_img_zero: item.rate >= 0.0,
+                    rate_img_one: item.rate >= 1.0,
+                    rate_img_one_five: item.rate >= 1.5,
+                    rate_img_two: item.rate >= 2.0,
+                    rate_img_two_five: item.rate >= 2.5,
+                    rate_img_three: item.rate >= 3.0,
+                    rate_img_three_five: item.rate >= 3.5,
+                    rate_img_four: item.rate >= 4.0,
+                    rate_img_four_five: item.rate >= 4.5,
+                    rate_img_four_seven: item.rate >= 4.7,
+                    rate_img_five: item.rate >= 5.0
+                  }"
+                ></div>
+              </div>
               <p class="name ml-1 text-xs">
                 （総合評価：{{ item.all_rate | comma }}）
               </p>
@@ -246,6 +264,64 @@ export default {
   }
   &_four {
     color: $purple;
+  }
+}
+.rate_img {
+  @apply flex items-center ml-2;
+  &_zero {
+    height: 17px;
+    width: 100px;
+    background-image: url('~@/assets/images/rate/zero.svg');
+  }
+  &_one {
+    height: 17px;
+    width: 100px;
+    background-image: url('~@/assets/images/rate/one.svg');
+  }
+  &_one_five {
+    height: 17px;
+    width: 100px;
+    background-image: url('~@/assets/images/rate/one-five.svg');
+  }
+  &_two {
+    height: 17px;
+    width: 100px;
+    background-image: url('~@/assets/images/rate/two.svg');
+  }
+  &_two_five {
+    height: 17px;
+    width: 100px;
+    background-image: url('~@/assets/images/rate/two-five.svg');
+  }
+  &_three {
+    height: 17px;
+    width: 100px;
+    background-image: url('~@/assets/images/rate/three.svg');
+  }
+  &_three_five {
+    height: 17px;
+    width: 100px;
+    background-image: url('~@/assets/images/rate/three-five.svg');
+  }
+  &_four {
+    height: 17px;
+    width: 100px;
+    background-image: url('~@/assets/images/rate/four.svg');
+  }
+  &_four_five {
+    height: 17px;
+    width: 100px;
+    background-image: url('~@/assets/images/rate/four-five.svg');
+  }
+  &_four_seven {
+    height: 17px;
+    width: 100px;
+    background-image: url('~@/assets/images/rate/four-seven.svg');
+  }
+  &_five {
+    height: 17px;
+    width: 100px;
+    background-image: url('~@/assets/images/rate/five.svg');
   }
 }
 </style>
