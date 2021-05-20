@@ -231,28 +231,50 @@ export default {
     }
   }
 }
+// 教材レベル
 .level {
-  @apply flex justify-end inline-block mt-2 px-2 py-1 mr-2 font-bold rounded;
+  @apply flex justify-end inline-block mt-2 px-2 py-1 mr-2 font-bold rounded cursor-pointer;
   margin-right: 0 !important;
   &_one {
     border: 2px solid $green;
     color: $green;
+    &:hover {
+      @apply duration-300;
+      -webkit-box-shadow: 0 8px 25px -8px $green;
+      box-shadow: 0 8px 25px -8px $green;
+    }
   }
   &_two {
     border: 2px solid $yellow;
     color: $yellow;
+    &:hover {
+      @apply duration-300;
+      -webkit-box-shadow: 0 8px 25px -8px $yellow;
+      box-shadow: 0 8px 25px -8px $yellow;
+    }
   }
   &_three {
     border: 2px solid $red;
     color: $red;
+    &:hover {
+      @apply duration-300;
+      -webkit-box-shadow: 0 8px 25px -8px $red;
+      box-shadow: 0 8px 25px -8px $red;
+    }
   }
   &_four {
     border: 2px solid $purple;
     color: $purple;
+    &:hover {
+      @apply duration-300;
+      -webkit-box-shadow: 0 8px 25px -8px $purple;
+      box-shadow: 0 8px 25px -8px $purple;
+    }
   }
 }
+// 教材評価
 .rate {
-  @apply text-xl font-bold;
+  @apply text-xl font-bold cursor-default;
   &_one {
     color: $green;
   }

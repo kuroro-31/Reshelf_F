@@ -105,7 +105,7 @@
               "
               @click="modal = !modal"
             >
-              ログイン
+              Log in
             </button>
           </re-button>
           <ReModal v-if="modal" @close="modal = !modal">
