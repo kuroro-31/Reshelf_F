@@ -98,10 +98,10 @@
 
         <!-- ログイン -->
         <div class="py-2.5">
-          <re-button class="re-button">
+          <re-button class="re-button no-shadow">
             <button
               :class="
-                modal ? 're-button-primary-border' : 're-button-primary-filled'
+                modal ? 're-button-primary-filled' : 're-button-primary-border'
               "
               @click="modal = !modal"
             >

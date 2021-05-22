@@ -51,8 +51,8 @@
       </ul>
     </div>
 
-    <re-button class="re-button re-button-large">
-      <button class="re-button-primary-filled">Reボタン</button>
+    <re-button class="re-button">
+      <button class="re-button-primary-filled">検索する</button>
     </re-button>
   </div>
 </template>
