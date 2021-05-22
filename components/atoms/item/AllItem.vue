@@ -122,7 +122,7 @@
   </div>
 </template>
 <script>
-import ReButton from '@/components/atoms/button/ReButton'
+import ReButton from '@/components/atoms/ReButton'
 import { HeartIcon } from 'vue-feather-icons'
 export default {
   components: {

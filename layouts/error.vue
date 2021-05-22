@@ -22,7 +22,7 @@
 </template>
 <script>
 import HeaderNav from '@/components/layout/HeaderNav'
-import ReButton from '@/components/atoms/button/ReButton'
+import ReButton from '@/components/atoms/ReButton'
 
 export default {
   components: {

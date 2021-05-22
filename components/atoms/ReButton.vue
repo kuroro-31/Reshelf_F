@@ -13,7 +13,7 @@
 </re-button>
 
 ②
-import ReButton from '@/views/components/atoms/buttons/ReButton';
+import ReButton from '@/views/components/atomss/ReButton';
 import { HomeIcon } from 'vue-feather-icons';
 
 ③
