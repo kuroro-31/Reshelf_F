@@ -37,3 +37,136 @@ body {
     box-shadow: none !important;
   }
 }
+
+.text-danger {
+  color: $red;
+}
+
+
+.re-button {
+  @apply block relative overflow-hidden w-full;
+  border-radius: 6px; // リップルの角丸のため必要
+  &:hover {
+    @apply duration-200;
+    -webkit-box-shadow: 0 8px 25px -8px var(--primary);
+    box-shadow: 0 8px 25px -8px var(--primary);
+  }
+  button,
+  label,
+  .re-button-inner {
+    @apply flex items-center justify-center w-full border-none cursor-pointer box-border bg-transparent duration-200;
+    min-width: 100px; // 2文字などの短いボタンのケースで必要
+    // height: 100%; // 高さが崩れるので一時コメントアウト
+    padding: 0.5rem 1rem;
+    min-height: 44px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.2;
+    // white-space: nowrap; //見切れる部分が出てきたのでカット
+    // text-align: center; // justify-content: center;しているのでカット
+  }
+  &:disabled {
+    .label {
+      @apply opacity-50;
+      transform: translateY(1px);
+    }
+  }
+  &:hover {
+    .label {
+      transform: translateY(1px);
+    }
+  }
+  .label {
+    @apply block duration-200;
+    pointer-events: none;
+    color: white;
+    transform: translateY(0);
+  }
+  .ripple {
+    z-index: 1000;
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 9999px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-color: rgba(lighten($primary, 10%), 0.5);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(10);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    &-enter {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(0);
+    }
+  }
+
+  &-primary {
+    &-filled {
+      background: var(--primary) !important;
+      color: #fff !important;
+    }
+    &-border {
+      border: 1px solid var(--primary) !important;
+      color: var(--primary) !important;
+      &:hover {
+        background: rgba(var(--primary), 0.1);
+        box-shadow: none !important;
+      }
+    }
+  }
+  &-secondry {
+    &-filled {
+      background: rgba(var(--vs-secondry), 1);
+      &:hover {
+        box-shadow: 0 8px 25px -8px rgba(var(--vs-secondry), 1);
+      }
+    }
+    &-border {
+      border: 1px solid rgba(var(--vs-secondry), 1);
+      color: var(--primary);
+      &:hover {
+        background: rgba(var(--primary), 0.1);
+        color: #fff;
+      }
+    }
+  }
+  &-close {
+    color: #626262 !important;
+    height: 100%; //rippleがはみ出してしまう
+    &:hover {
+      background: rgba(var(--vs-dark), 0.08) !important;
+    }
+  }
+  &-extra-large {
+    min-height: 60px !important;
+    font-size: 1.429rem !important;
+    font-weight: 600;
+  }
+  &-large {
+    // padding: 1rem 2.5rem;
+    min-height: 50px !important;
+    font-size: 1.286rem !important;
+    font-weight: 600;
+  }
+  &-small {
+    min-height: 38px !important;
+  }
+  &-extra-small {
+    min-height: 30px !important;
+    padding: 0 5px !important;
+    font-weight: normal !important;
+  }
+  &-disabled {
+    background: #ccc !important;
+    opacity: 0.5;
+    cursor: not-allowed !important;
+  }
+  &-border-disabled {
+    border: 1px solid #ccc !important;
+    color: #ccc !important;
+    cursor: not-allowed !important;
+  }
+}

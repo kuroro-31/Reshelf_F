@@ -77,3 +77,8 @@ Thumbs.db
 .nuxt/vetur/tags.json
 .nuxt/views/app.template.html
 .nuxt/views/error.html
+.nuxt/auth.js
+.nuxt/workbox.js
+.nuxt/pwa/meta.json
+.nuxt/pwa/meta.plugin.js
+.nuxt/pwa/meta.utils.js

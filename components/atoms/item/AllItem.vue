@@ -16,7 +16,7 @@
               {{ item.title }}
             </h3>
             <p class="mb-2">{{ item.describe }}</p>
-            <p class="name mb-2 text-xs">{{ item.name }}</p>
+            <p class="name mb-2 text-xs cursor-pointer">{{ item.name }}</p>
             <p class="name mb-2 text-xs">最終更新日：{{ item.edit_time }}</p>
             <div class="flex items-center">
               <div class="flex items-center">

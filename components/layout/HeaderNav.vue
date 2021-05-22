@@ -74,8 +74,8 @@
         <!-- ユーザードロップダウン -->
         <button
           class="dropdown"
-          @mouseover="user = true"
-          @mouseleave="user = false"
+          @mouseover="dropdown = true"
+          @mouseleave="dropdown = false"
         >
           <img
             class="dropdown-img"
@@ -84,11 +84,11 @@
             src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
           />
           <transition>
-            <div v-if="user">
+            <div v-if="dropdown">
               <div
                 class="dropdown-contents"
-                @mouseover="user = true"
-                @mouseleave="user = false"
+                @mouseover="dropdown = true"
+                @mouseleave="dropdown = false"
               >
                 <div class="p-8"></div>
               </div>
@@ -134,8 +134,8 @@
 </template>
 
 <script>
-import ReButton from '@/components/atoms/button/ReButton'
-import ReModal from '@/components/atoms/modal/ReModal'
+import ReButton from '@/components/atoms/ReButton'
+import ReModal from '@/components/atoms/ReModal'
 import { ShoppingCartIcon, HeartIcon } from 'vue-feather-icons'
 
 export default {
@@ -151,7 +151,7 @@ export default {
       modal: false,
       message: '',
       cart: false,
-      user: false,
+      dropdown: false,
       post: false,
       like: false
     }
@@ -164,7 +164,7 @@ export default {
         .catch((err) => {
           console.log(err)
         })
-      // await this.$auth.loginWith('local', {
+      // await this.$authentication.loginWith('local', {
       //   data: this.form,
       // })
       // this.$router.push({

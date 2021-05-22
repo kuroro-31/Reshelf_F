@@ -48,7 +48,10 @@ export default {
   css: ['ress', { src: '@/assets/sass/app.scss', lang: 'scss' }],
 
   // パッケージ関係
-  plugins: [{ src: '~/plugins/vuesax.js', ssr: false }],
+  plugins: [
+    // '~/plugins/axios',
+    '~/plugins/vee-validate'
+  ],
 
   components: true,
 
@@ -64,8 +67,11 @@ export default {
     '@nuxtjs/proxy',
     '@nuxtjs/style-resources'
   ],
+  tailwindcss: {
+    jit: true
+  },
 
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/pwa'],
 
   // Sassの変数など
   styleResources: {
@@ -82,7 +88,7 @@ export default {
 
   // Laravelとの非同期処理のため
   axios: {
-    baseURL: '/',
+    baseURL: 'http://localhost/api',
     proxy: true
   },
 
@@ -90,6 +96,8 @@ export default {
     cache: true,
     parallel: true,
     hardSource: true,
+    standalone: true,
+    // analyze: true,
 
     // Sassの変換
     loaders: {
@@ -100,6 +108,8 @@ export default {
         }
       }
     },
+
+    transpile: ['vee-validate/dist/rules'],
 
     // 保存時にESlintの実行
     extend(config, ctx) {

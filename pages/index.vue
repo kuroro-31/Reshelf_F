@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full h-full mx-auto flex flex-col">
+  <div class="w-full h-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
-    <main class="w-full flex max-w-screen-xl mx-auto container">
+    <main class="w-full flex max-w-screen-xl mx-auto container scroll-none">
       <div class="lg:flex w-full">
         <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
           <SidebarSearch />
@@ -12,13 +12,13 @@
         </div>
       </div>
     </main>
-    <FooterNav />
+    <!-- <FooterNav /> -->
   </div>
 </template>
 <script>
 // layout
 import HeaderNav from '@/components/layout/HeaderNav'
-import FooterNav from '@/components/layout/FooterNav'
+// import FooterNav from '@/components/layout/FooterNav'
 import SidebarSearch from '@/components/layout/sidebar/SidebarSearch'
 // atoms
 import HeroItem from '@/components/atoms/item/HeroItem'
@@ -27,7 +27,7 @@ import AllItem from '@/components/atoms/item/AllItem'
 export default {
   components: {
     HeaderNav,
-    FooterNav,
+    // FooterNav,
     SidebarSearch,
     HeroItem,
     AllItem
@@ -303,8 +303,16 @@ export default {
   @screen lg {
     // border-right: 1px var(--thin-gray) solid;
   }
+  @screen lg {
+    @apply overflow-y-auto;
+    height: calc(100vh - 62px);
+  }
 }
 .main-body {
   @apply w-full lg:w-3/4 xl:w-4/5 pt-6 px-6 lg:pr-0;
+  @screen lg {
+    @apply overflow-y-auto;
+    height: calc(100vh - 62px);
+  }
 }
 </style>

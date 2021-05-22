@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sidebar-search">
     <div v-for="(category, index) in categories" :key="index">
       <!-- 親カテゴリー -->
       <div
@@ -39,26 +39,40 @@
         class="cate-items"
       >
         <li>
-          <vs-checkbox v-model="checkBox" class="checkbox">
-            {{ subcategory }}
-          </vs-checkbox>
+          <re-checkbox>
+            <template #input>
+              <input v-model="checkbox" type="checkbox" />
+            </template>
+            <template #label>
+              {{ subcategory }}
+            </template>
+          </re-checkbox>
         </li>
       </ul>
     </div>
+
+    <re-button class="re-button re-button-large">
+      <button class="re-button-primary-filled">Reボタン</button>
+    </re-button>
   </div>
 </template>
 
 <script>
 //Icons
 import { ChevronRightIcon } from 'vue-feather-icons'
+// atoms
+import ReCheckbox from '@/components/atoms/ReCheckbox'
+import ReButton from '@/components/atoms/ReButton'
 
 export default {
   components: {
-    ChevronRightIcon
+    ChevronRightIcon,
+    ReCheckbox,
+    ReButton
   },
   data() {
     return {
-      checkBox: '',
+      checkbox: '',
       categories: [
         {
           name: '教材タイプ',
@@ -117,6 +131,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.sidebar-search {
+}
 .cate-ttl {
   padding: 8px;
   margin-bottom: 3.5px;
@@ -144,16 +160,13 @@ export default {
   }
 }
 .cate-items {
-  max-height: 0;
-  opacity: 0;
-  transition: all 0.2s ease;
+  @apply duration-200 opacity-0 max-h-0;
   &.show {
     opacity: 1;
     max-height: 100vh;
   }
   > li {
-    padding: 10px;
-    transition: all 0.2s ease;
+    @apply duration-200;
     &:hover {
       @apply cursor-pointer;
       transform: translateX(5px);
@@ -167,9 +180,5 @@ export default {
 }
 .title {
   color: var(--color);
-}
-.checkbox {
-  @apply w-full flex;
-  justify-content: flex-start;
 }
 </style>
