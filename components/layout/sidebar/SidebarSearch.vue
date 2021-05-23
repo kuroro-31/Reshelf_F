@@ -1,59 +1,67 @@
 <template>
-  <div class="sidebar-search">
-    <div v-for="(category, index) in categories" :key="index">
-      <!-- 親カテゴリー -->
+  <div class="flex flex-col">
+    <div class="sidebar-search scroll-none">
       <div
-        :class="{ 'toggle-on': category.toggleOn }"
-        class="
-          cate-ttl
-          w-full
-          relative
-          inline-flex
-          justify-between
-          items-center
-        "
-        @click="category.toggleOn = !category.toggleOn"
+        v-for="(category, index) in categories"
+        :key="index"
+        class="sidebar-search-list"
       >
-        <a
-          href="#"
-          class="title font-bold text-lg hover:text-blue flex-shrink-0"
-        >
-          {{ category.name }}
-        </a>
+        <!-- 親カテゴリー -->
         <div
-          v-if="category.subcategories.length != 0"
-          class="w-full relative flex justify-end"
+          :class="{ 'toggle-on': category.toggleOn }"
+          class="
+            cate-ttl
+            w-full
+            relative
+            inline-flex
+            justify-between
+            items-center
+          "
+          @click="category.toggleOn = !category.toggleOn"
         >
-          <chevron-right-icon
-            size="1x"
-            class="arrow flex-shrink-0"
-          ></chevron-right-icon>
+          <a
+            href="#"
+            class="title font-bold text-lg hover:text-blue flex-shrink-0"
+          >
+            {{ category.name }}
+          </a>
+          <div
+            v-if="category.subcategories.length != 0"
+            class="w-full relative flex justify-end"
+          >
+            <chevron-right-icon
+              size="1x"
+              class="arrow flex-shrink-0"
+            ></chevron-right-icon>
+          </div>
         </div>
-      </div>
 
-      <!-- 子カテゴリー -->
-      <ul
-        v-for="subcategory in category.subcategories"
-        :key="subcategory"
-        :class="{ show: category.toggleOn }"
-        class="cate-items"
-      >
-        <li>
-          <re-checkbox>
-            <template #input>
-              <input v-model="checkbox" type="checkbox" />
-            </template>
-            <template #label>
-              {{ subcategory }}
-            </template>
-          </re-checkbox>
-        </li>
-      </ul>
+        <!-- 子カテゴリー -->
+        <ul
+          v-for="subcategory in category.subcategories"
+          :key="subcategory"
+          :class="{ show: category.toggleOn }"
+          class="cate-items"
+        >
+          <li>
+            <re-checkbox>
+              <template #input>
+                <input v-model="checkbox" type="checkbox" />
+              </template>
+              <template #label>
+                {{ subcategory }}
+              </template>
+            </re-checkbox>
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <re-button class="re-button">
-      <button class="re-button-primary-filled">検索する</button>
-    </re-button>
+    <div class="sidebar-search-btn">
+      <re-button class="re-button">
+        <button class="re-button-primary-filled">検索する</button>
+      </re-button>
+    </div>
   </div>
 </template>
 
@@ -132,6 +140,17 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar-search {
+  @apply relative overflow-y-auto;
+
+  @screen lg {
+    max-height: calc(100vh - 166px);
+  }
+  &-list {
+    // @apply ;
+  }
+  &-btn {
+    @apply sticky bottom-0 mt-4;
+  }
 }
 .cate-ttl {
   padding: 8px;
