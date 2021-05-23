@@ -143,7 +143,7 @@ export default {
   @apply relative overflow-y-auto;
 
   @screen lg {
-    max-height: calc(100vh - 166px);
+    max-height: calc(100vh - 168px);
   }
   &-list {
     // @apply ;

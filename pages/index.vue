@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full mx-auto flex flex-col scroll-none">
+  <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
     <main class="w-full flex max-w-screen-xl mx-auto container scroll-none">
       <div class="lg:flex w-full">
@@ -305,14 +305,14 @@ export default {
   }
   @screen lg {
     @apply overflow-y-auto;
-    height: calc(100vh - 62px);
+    height: calc(100vh - 64px);
   }
 }
 .main-body {
   @apply w-full lg:w-3/4 xl:w-4/5 pt-6 px-6 lg:pr-0;
   @screen lg {
     @apply overflow-y-auto;
-    height: calc(100vh - 62px);
+    height: calc(100vh - 64px);
   }
 }
 </style>
