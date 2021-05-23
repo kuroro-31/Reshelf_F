@@ -192,13 +192,13 @@ export default {
     }
   }
   &-extra-large {
-    @apply font-semibold;
+    @apply h-full font-semibold;
     min-height: 60px !important;
     height: 60px !important;
     font-size: 1.429rem !important;
   }
   &-large {
-    @apply font-semibold;
+    @apply h-full font-semibold;
     min-height: 50px !important;
     height: 50px !important;
     font-size: 1.286rem !important;
@@ -215,11 +215,11 @@ export default {
     padding: 0 5px !important;
   }
   &-disabled {
-    @apply cursor-not-allowed opacity-50;
+    @apply h-full cursor-not-allowed opacity-50;
     background: #ccc !important;
   }
   &-border-disabled {
-    @apply cursor-not-allowed;
+    @apply h-full cursor-not-allowed;
     border: 1px solid #ccc !important;
     color: #ccc !important;
     cursor: not-allowed !important;

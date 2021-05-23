@@ -216,16 +216,15 @@ export default {
   color: var(--primary);
 }
 .like {
-  @apply p-2.5 ml-4 rounded-full cursor-pointer outline-none duration-200;
+  @apply p-2.5 ml-4 rounded-full cursor-pointer outline-none;
   color: var(--aaa);
   border: 2px solid var(--ccc);
   &-yes {
-    @apply duration-100;
     color: var(--fff);
     background: var(--red);
     border: 2px solid var(--red);
     &:hover {
-      @apply duration-300;
+      @apply duration-200;
       -webkit-box-shadow: 0 8px 25px -8px var(--red);
       box-shadow: 0 8px 25px -8px var(--red);
     }
