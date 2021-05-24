@@ -1,15 +1,7 @@
 <template>
   <nav class="nav">
     <div
-      class="
-        w-full
-        container
-        mx-auto
-        flex flex-wrap
-        items-center
-        justify-between
-        mt-0
-      "
+      class="w-full mx-auto flex flex-wrap items-center justify-between mt-0"
     >
       <div class="nav-left py-2.5">
         <NuxtLink to="/" class="title-link">
@@ -84,13 +76,55 @@
             src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
           />
           <transition>
-            <div v-if="dropdown">
-              <div
-                class="dropdown-contents"
-                @mouseover="dropdown = true"
-                @mouseleave="dropdown = false"
-              >
-                <div class="p-8"></div>
+            <div
+              v-if="dropdown"
+              class="dropdown-contents scroll-none"
+              @mouseover="dropdown = true"
+              @mouseleave="dropdown = false"
+            >
+              <div class="menu">
+                <div class="menu-name">
+                  <img
+                    width="50px"
+                    height="50px"
+                    src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
+                  />
+                  <span class="menu-name-person">aaaaaaaaaaaaaaaaaa</span>
+                </div>
+                <div class="menu-me">
+                  <span class="menu-me-title">受講生</span>
+                  <nuxt-link class="menu-me-link" to="/student/top">
+                    受講中の教材
+                  </nuxt-link>
+                  <nuxt-link class="menu-me-link" to="/student/top">
+                    マイカート
+                  </nuxt-link>
+                  <nuxt-link class="menu-me-link" to="/student/top">
+                    お気に入り
+                  </nuxt-link>
+                  <nuxt-link class="menu-me-link" to="/student/top">
+                    設定
+                  </nuxt-link>
+                </div>
+                <div class="menu-me">
+                  <span class="menu-me-title">講師</span>
+                  <nuxt-link class="menu-me-link" to="/teacher/dashboard">
+                    ダッシュボード
+                  </nuxt-link>
+                </div>
+                <div class="menu-me">
+                  <nuxt-link class="menu-me-link" to="/student/top">
+                    通知・お知らせ
+                  </nuxt-link>
+                  <nuxt-link class="menu-me-link" to="/student/top">
+                    メッセージ
+                  </nuxt-link>
+                </div>
+                <div class="menu-me">
+                  <nuxt-link class="menu-me-link" to="/student/top">
+                    ログアウト
+                  </nuxt-link>
+                </div>
               </div>
             </div>
           </transition>
@@ -143,7 +177,7 @@ export default {
     ReButton,
     ReModal,
     ShoppingCartIcon,
-    HeartIcon
+    HeartIcon,
   },
   data() {
     return {
@@ -153,7 +187,7 @@ export default {
       cart: false,
       dropdown: false,
       post: false,
-      like: false
+      like: false,
     }
   },
   methods: {
@@ -170,8 +204,11 @@ export default {
       // this.$router.push({
       //   path: this.$route.query.redirect || '/',
       // })
-    }
-  }
+    },
+    logout() {
+      this.$auth.logout()
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -219,10 +256,13 @@ export default {
     height: 40px;
   }
   &-contents {
-    @apply absolute top-0 right-0 z-50 rounded shadow-lg;
-    margin-top: 60px;
-    width: 300px;
+    @apply absolute top-0 right-0 z-50 rounded shadow-lg overflow-y-auto cursor-default;
     background: #fff;
+    @screen lg {
+      margin-top: 60px;
+      width: 250px;
+      max-height: calc(100vh - 120px);
+    }
   }
 }
 .fb-btn {
@@ -252,5 +292,41 @@ export default {
   left: 0;
   right: 0;
   z-index: 2;
+}
+.menu {
+  animation: slide-in 0.3s;
+  &-name {
+    @apply flex items-center p-4;
+    border-bottom: 1px solid #ccc;
+    &-person {
+      @apply ml-2;
+      max-width: 140px;
+    }
+  }
+  &-me {
+    @apply flex flex-col items-start p-3;
+    border-bottom: 1px solid #ccc;
+    &-title {
+      @apply text-xs font-bold pt-2;
+    }
+    &-link {
+      @apply py-3 w-full rounded text-left px-4;
+      &:hover {
+        // @apply duration-200;
+        background: rgba($primary, 0.2);
+      }
+    }
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }
 </style>

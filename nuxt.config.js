@@ -1,14 +1,13 @@
-import Fiber from 'fibers' // Sass-loderの処理速度を速くするために必要らしい
+// Sass-loderの処理速度を速くするために必要らしい
+import Fiber from 'fibers'
 import Sass from 'sass'
 export default {
-  ssr: true,
-
   head: {
     title:
       'Reshelf【リシェルフ】| アップデートするオンライン学習マーケットプレイス',
     htmlAttrs: {
       lang: 'ja',
-      prefix: 'og: http://ogp.me/ns#'
+      prefix: 'og: http://ogp.me/ns#',
     },
     meta: [
       { charset: 'utf-8' },
@@ -17,7 +16,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Reshelfは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。'
+          'Reshelfは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。',
       },
       { hid: 'og:site_name', property: 'og:site_name', content: 'Reshelf' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
@@ -26,70 +25,80 @@ export default {
         hid: 'og:title',
         property: 'og:title',
         content:
-          'Reshelf【リシェルフ】| アップデートするオンライン学習マーケットプレイス'
+          'Reshelf【リシェルフ】| アップデートするオンライン学習マーケットプレイス',
       },
       {
         hid: 'og:description',
         property: 'og:description',
         content:
-          'Reshelfは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。'
+          'Reshelfは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。',
       },
       {
         hid: 'og:image',
         property: 'og:image',
         content:
-          'https://res.cloudinary.com/reshelf/image/upload/v1619870944/ogp_rzf3q1.png'
+          'https://res.cloudinary.com/reshelf/image/upload/v1619870944/ogp_rzf3q1.png',
       },
-      { name: 'twitter:card', content: 'summary_large_image' }
+      { name: 'twitter:card', content: 'summary_large_image' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
-  css: ['ress', { src: '@/assets/sass/app.scss', lang: 'scss' }],
-
-  // パッケージ関係
-  plugins: [
-    // '~/plugins/axios',
-    '~/plugins/vee-validate'
-  ],
-
+  ssr: true,
   components: true,
-
-  loading: {
-    color: '#33C4CC',
-    height: '5px'
-  },
-
-  // ESlintとPrettierの設定
-  buildModules: [
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/proxy',
-    '@nuxtjs/style-resources'
-  ],
-  tailwindcss: {
-    jit: true
-  },
-
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/pwa'],
-
-  // Sassの変数など
+  css: ['ress', { src: '@/assets/sass/app.scss', lang: 'scss' }],
   styleResources: {
     scss: [
       '~/assets/sass/foundation/_variables.scss',
-      '~/assets/sass/foundation/_mixin.scss'
-    ]
+      '~/assets/sass/foundation/_mixin.scss',
+    ],
+  },
+  tailwindcss: {
+    jit: true,
+  },
+  loading: {
+    color: '#33C4CC',
+    height: '5px',
   },
 
-  // Laravelとの接続
-  proxy: {
-    '/api': 'http://localhost:80'
-  },
+  plugins: [
+    // '~/plugins/axios',
+    '~/plugins/mixins/user',
+  ],
 
-  // Laravelとの非同期処理のため
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
+    '@nuxtjs/auth-next',
+    '@nuxtjs/pwa',
+  ],
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/style-resources',
+  ],
+
   axios: {
     baseURL: 'http://localhost/api',
-    proxy: true
+    proxy: true,
+  },
+  proxy: {
+    '/api': 'http://localhost:80',
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: 'auth/login',
+            method: 'post',
+            propertyName: 'meta.token',
+          },
+          user: { url: 'auth/user', method: 'get', propertyName: 'data' },
+          logout: { url: 'auth/logout', method: 'post' },
+        },
+      },
+    },
   },
 
   build: {
@@ -99,17 +108,15 @@ export default {
     standalone: true,
     // analyze: true,
 
-    // Sassの変換
+    // Sass変換
     loaders: {
       scss: {
         implementation: Sass,
         sassOptions: {
-          fiber: Fiber
-        }
-      }
+          fiber: Fiber,
+        },
+      },
     },
-
-    transpile: ['vee-validate/dist/rules'],
 
     // 保存時にESlintの実行
     extend(config, ctx) {
@@ -119,16 +126,15 @@ export default {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
         })
       }
-    }
+    },
   },
 
-  // nuxt.jsのホットリロード
   watchers: {
     webpack: {
-      poll: true
-    }
-  }
+      poll: true,
+    },
+  },
 }
