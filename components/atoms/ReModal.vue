@@ -24,8 +24,8 @@
 import { XIcon } from 'vue-feather-icons'
 export default {
   components: {
-    XIcon
-  }
+    XIcon,
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -72,7 +72,7 @@ export default {
 }
 
 .close {
-  @apply absolute p-2 rounded duration-300 outline-none shadow-lg;
+  @apply absolute p-2 rounded duration-300  shadow-lg;
   color: var(--color);
   background: var(--fff);
   top: -10px;

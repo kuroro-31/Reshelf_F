@@ -13,9 +13,9 @@
 export default {
   data: function () {
     return {
-      display: true
+      display: true,
     }
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>

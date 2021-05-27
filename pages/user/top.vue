@@ -1,36 +1,94 @@
 <template>
-  <div class="w-full h-screen mx-auto flex flex-col scroll-none">
+  <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
-    <main class="w-full flex max-w-screen-xl mx-auto container scroll-none">
+    <main class="w-full flex max-w-screen-lg mx-auto container scroll-none">
       <div class="lg:flex w-full">
-        <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
-          <SidebarSearch />
-        </nav>
         <div class="main-body min-h-(screen-16) scroll-none">
-          <!-- <hero-item /> -->
-          <all-item :items="items" />
+          <div class="profile-about">
+            <div class="profile-about-name">
+              <div class="flex items-center">
+                <span class="text-grey font-bold mr-2">Instructor</span>
+                <span class="grade">Grade7</span>
+              </div>
+              <h2>Elizabeth Skinn</h2>
+              <h3>Udemyプレゼン講師・複業家・ビジネススキルコーチ</h3>
+            </div>
+            <div class="flex mt-8">
+              <div class="flex flex-col">
+                <span class="text-grey font-bold">受講者数</span>
+                <span class="text-3xl font-bold">17108</span>
+              </div>
+              <div class="flex flex-col ml-12">
+                <span class="text-grey font-bold">教材総合評価</span>
+                <span class="text-3xl font-bold">4.5</span>
+              </div>
+            </div>
+
+            <!-- プロフィール詳細 -->
+            <div class="profile-about-detail">
+              <h3 class="font-bold text-xl">プロフィール</h3>
+              <div class="profile-about-detail-body scroll-none">
+                京都大学大学院を卒業後、働き方改革企業サイボウズに入社。
+                <br />
+                週4日勤務で3つの複業をこなすなど新しい働き方に取り組む。
+                <br />
+                <br />
+                大学院で複雑な研究内容をコンパクトに伝えることに苦戦した経験から、
+                <br />
+                プレゼン改善に関する研究を開始。
+                <br />
+                大学院の最終発表で最高評価を獲得し、
+                <br />
+                サイボウズ入社2年目で当時最小年次で
+                <br />
+                幕張メッセでの登壇に抜擢され、以後多数の登壇経験を持つ。
+                <br />
+                <br />
+                その経験を元に、「できる」をやる をモットーにかかげ
+                <br />
+                最小の時間・労力で最大の印象を残すプレゼン術について伝えている。
+                <br />
+                その活動はAERAに掲載されるなど会社員としては異色の経歴を持つ。
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <h3 class="font-bold text-xl mb-4">公開中のコース</h3>
+            <all-item :items="items" />
+          </div>
         </div>
+        <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
+          <div class="profile-person">
+            <p class="grade">Grade 7</p>
+            <img
+              class="profile-person-img responsive"
+              src="https://i.gyazo.com/8ce2054d8a950d6ea86cf962315a194b.png"
+              alt="personal icon"
+            />
+            <div class="profile-person-link">
+              <a href="" class="profile-person-link-website">Website</a>
+              <a href="" class="profile-person-link-facebook">Facebook</a>
+              <a href="" class="profile-person-link-twitter">Twitter</a>
+              <a href="" class="profile-person-link-github">Github</a>
+            </div>
+          </div>
+        </nav>
       </div>
     </main>
-    <!-- <FooterNav /> -->
+    <FooterNav />
   </div>
 </template>
 <script>
 // layout
 import HeaderNav from '@/components/layout/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
-import SidebarSearch from '@/components/layout/sidebar/SidebarSearch'
+import FooterNav from '@/components/layout/FooterNav'
 // atoms
-// import HeroItem from '@/components/atoms/item/HeroItem'
 import AllItem from '@/components/atoms/item/AllItem'
 
 export default {
-  auth: false,
   components: {
     HeaderNav,
-    // FooterNav,
-    SidebarSearch,
-    // HeroItem,
+    FooterNav,
     AllItem,
   },
   data() {
@@ -300,20 +358,81 @@ export default {
 </script>
 <style lang="scss" scoped>
 .side-nav {
-  @apply hidden w-full lg:block lg:w-1/4 xl:w-1/5 p-6 z-10 lg:sticky overflow-y-auto;
-  @screen lg {
-    // border-right: 1px var(--thin-gray) solid;
-  }
-  @screen lg {
-    @apply overflow-y-auto;
-    height: calc(100vh - 64px);
-  }
+  @apply hidden w-full lg:block lg:w-1/4 p-6 lg:px-0 lg:pt-12 z-10;
 }
 .main-body {
-  @apply w-full lg:w-3/4 xl:w-3/5 pt-10 px-6 lg:px-12;
-  @screen lg {
-    @apply overflow-y-auto;
-    height: calc(100vh - 64px);
+  @apply w-full lg:w-3/4 p-6 lg:pl-0 lg:pt-12 lg:pr-16;
+}
+.profile {
+  &-about {
+    @apply flex flex-col pb-4 mb-4;
+    border-bottom: 1px var(--thin-gray) solid;
+    &-name {
+      h2 {
+        @apply font-bold text-5xl mt-2;
+      }
+      h3 {
+        @apply font-bold text-xl;
+      }
+    }
+    &-detail {
+      @apply mt-12 mb-4;
+      &-body {
+        @apply text-lg mt-4;
+        // max-height: 200px;
+      }
+    }
   }
+  &-person {
+    @apply flex flex-col relative;
+    &-img {
+      @apply object-cover rounded-full shadow-lg;
+      height: 250px;
+      width: 250px;
+    }
+    &-link {
+      @apply mt-8;
+      &-website {
+        @apply w-full rounded text-xl px-4 py-2 flex justify-center items-center;
+        border: 1px solid var(--color);
+        &:hover {
+          color: var(--primary);
+          border: 1px solid var(--primary);
+        }
+      }
+      &-facebook {
+        @apply w-full mt-2 rounded text-xl px-4 py-2 flex justify-center items-center;
+        border: 1px solid var(--color);
+        &:hover {
+          color: #1976f2;
+          border: 1px solid #1976f2;
+        }
+      }
+      &-twitter {
+        @apply w-full mt-2 rounded text-xl px-4 py-2 flex justify-center items-center;
+        border: 1px solid var(--color);
+        &:hover {
+          color: #1ea2f1;
+          border: 1px solid #1ea2f1;
+        }
+      }
+      &-github {
+        @apply w-full mt-2 rounded text-xl px-4 py-2 flex justify-center items-center;
+        border: 1px solid var(--color);
+        &:hover {
+          color: #242a2f;
+          border: 1px solid #242a2f;
+        }
+      }
+    }
+  }
+}
+.grade {
+  @apply absolute rounded-full top-0 right-0 inline-flex px-4 py-2 font-bold items-center justify-center shadow-lg;
+  // color: $purple;
+  color: var(--fff);
+  // background: var(--fff);
+  background: $purple;
+  // top: 250px;
 }
 </style>

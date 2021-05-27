@@ -1,7 +1,16 @@
 <template>
   <nav class="nav">
     <div
-      class="w-full mx-auto flex flex-wrap items-center justify-between mt-0"
+      class="
+        w-full
+        mx-auto
+        flex
+        container
+        flex-wrap
+        items-center
+        justify-between
+        mt-0
+      "
     >
       <div class="nav-left py-2.5">
         <NuxtLink to="/" class="title-link">
@@ -20,8 +29,11 @@
       <div class="nav-center flex items-center py-2.5"></div>
 
       <div class="nav-right">
+        <span class="mr-2">{{ $auth.loggedIn }}</span>
+
         <!-- お気に入り -->
         <button
+          v-if="isAuthenticated"
           class="dropdown"
           @mouseover="like = true"
           @mouseleave="like = false"
@@ -42,6 +54,7 @@
 
         <!-- カート -->
         <button
+          v-if="isAuthenticated"
           class="dropdown"
           @mouseover="cart = true"
           @mouseleave="cart = false"
@@ -57,7 +70,153 @@
                 @mouseover="cart = true"
                 @mouseleave="cart = false"
               >
-                <div class="p-8">カートの中身は空です</div>
+                <div class="cart-content">
+                  <p class="cart-content-name">My Cart</p>
+                  <p class="divider"></p>
+
+                  <div class="cart-content-products scroll-none">
+                    <!-- 商品１ -->
+                    <div class="w-full flex py-4">
+                      <img
+                        class="cart-content-img"
+                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
+                        alt=""
+                      />
+                      <div class="cart-content-box">
+                        <div class="w-full flex flex-col items-start">
+                          <p class="cart-content-title">
+                            ゼロからはじめる
+                            Dockerによるアプリケーション実行環境構築
+                          </p>
+                          <p class="cart-content-author">
+                            クラピカクラピカクラピカ
+                          </p>
+                        </div>
+                        <div class="cart-content-price">¥ 3,500</div>
+                      </div>
+                    </div>
+                    <p class="divider"></p>
+                    <!-- 商品２ -->
+                    <div class="w-full flex py-4">
+                      <img
+                        class="cart-content-img"
+                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
+                        alt=""
+                      />
+                      <div class="cart-content-box">
+                        <div class="w-full flex flex-col items-start">
+                          <p class="cart-content-title">
+                            ゼロからはじめる
+                            Dockerによるアプリケーション実行環境構築
+                          </p>
+                          <p class="cart-content-author">
+                            クラピカクラピカクラピカ
+                          </p>
+                        </div>
+                        <div class="cart-content-price">¥ 3,500</div>
+                      </div>
+                    </div>
+                    <p class="divider"></p>
+                    <!-- 商品１ -->
+                    <div class="w-full flex py-4">
+                      <img
+                        class="cart-content-img"
+                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
+                        alt=""
+                      />
+                      <div class="cart-content-box">
+                        <div class="w-full flex flex-col items-start">
+                          <p class="cart-content-title">
+                            ゼロからはじめる
+                            Dockerによるアプリケーション実行環境構築
+                          </p>
+                          <p class="cart-content-author">
+                            クラピカクラピカクラピカ
+                          </p>
+                        </div>
+                        <div class="cart-content-price">¥ 3,500</div>
+                      </div>
+                    </div>
+                    <p class="divider"></p>
+                    <!-- 商品２ -->
+                    <div class="w-full flex py-4">
+                      <img
+                        class="cart-content-img"
+                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
+                        alt=""
+                      />
+                      <div class="cart-content-box">
+                        <div class="w-full flex flex-col items-start">
+                          <p class="cart-content-title">
+                            ゼロからはじめる
+                            Dockerによるアプリケーション実行環境構築
+                          </p>
+                          <p class="cart-content-author">
+                            クラピカクラピカクラピカ
+                          </p>
+                        </div>
+                        <div class="cart-content-price">¥ 3,500</div>
+                      </div>
+                    </div>
+                    <p class="divider"></p>
+                    <!-- 商品１ -->
+                    <div class="w-full flex py-4">
+                      <img
+                        class="cart-content-img"
+                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
+                        alt=""
+                      />
+                      <div class="cart-content-box">
+                        <div class="w-full flex flex-col items-start">
+                          <p class="cart-content-title">
+                            ゼロからはじめる
+                            Dockerによるアプリケーション実行環境構築
+                          </p>
+                          <p class="cart-content-author">
+                            クラピカクラピカクラピカ
+                          </p>
+                        </div>
+                        <div class="cart-content-price">¥ 3,500</div>
+                      </div>
+                    </div>
+                    <p class="divider"></p>
+                    <!-- 商品２ -->
+                    <div class="w-full flex py-4">
+                      <img
+                        class="cart-content-img"
+                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
+                        alt=""
+                      />
+                      <div class="cart-content-box">
+                        <div class="w-full flex flex-col items-start">
+                          <p class="cart-content-title">
+                            ゼロからはじめる
+                            Dockerによるアプリケーション実行環境構築
+                          </p>
+                          <p class="cart-content-author">
+                            クラピカクラピカクラピカ
+                          </p>
+                        </div>
+                        <div class="cart-content-price">¥ 3,500</div>
+                      </div>
+                    </div>
+                    <p class="divider"></p>
+                  </div>
+
+                  <p class="cart-content-name mt-2">Total</p>
+                  <re-button class="re-button re-button-small no-shadow">
+                    <button
+                      :class="
+                        modal
+                          ? 're-button-primary-border'
+                          : 're-button-primary-filled'
+                      "
+                      @click="modal = !modal"
+                    >
+                      Checkout
+                    </button>
+                  </re-button>
+                </div>
               </div>
             </div>
           </transition>
@@ -89,21 +248,17 @@
                     height="50px"
                     src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
                   />
-                  <span class="menu-name-person">aaaaaaaaaaaaaaaaaa</span>
+                  <span v-if="isAuthenticated" class="menu-name-person">
+                    {{ loggedInUser.name }}
+                  </span>
                 </div>
                 <div class="menu-me">
                   <span class="menu-me-title">受講生</span>
-                  <nuxt-link class="menu-me-link" to="/student/top">
+                  <nuxt-link class="menu-me-link" to="/user/top">
                     受講中の教材
                   </nuxt-link>
-                  <nuxt-link class="menu-me-link" to="/student/top">
-                    マイカート
-                  </nuxt-link>
-                  <nuxt-link class="menu-me-link" to="/student/top">
-                    お気に入り
-                  </nuxt-link>
-                  <nuxt-link class="menu-me-link" to="/student/top">
-                    設定
+                  <nuxt-link class="menu-me-link" to="/user/top">
+                    アカウント設定
                   </nuxt-link>
                 </div>
                 <div class="menu-me">
@@ -113,17 +268,17 @@
                   </nuxt-link>
                 </div>
                 <div class="menu-me">
-                  <nuxt-link class="menu-me-link" to="/student/top">
+                  <nuxt-link class="menu-me-link" to="/user/top">
                     通知・お知らせ
                   </nuxt-link>
-                  <nuxt-link class="menu-me-link" to="/student/top">
+                  <nuxt-link class="menu-me-link" to="/user/top">
                     メッセージ
                   </nuxt-link>
                 </div>
                 <div class="menu-me">
-                  <nuxt-link class="menu-me-link" to="/student/top">
+                  <button class="menu-me-link" to="/user/top" @click="logout">
                     ログアウト
-                  </nuxt-link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -131,7 +286,10 @@
         </button>
 
         <!-- ログイン -->
-        <div class="py-2.5">
+        <nuxt-link v-if="!isAuthenticated" flat to="/auth/login">
+          ログイン
+        </nuxt-link>
+        <div v-if="!isAuthenticated" class="py-2.5">
           <re-button class="re-button no-shadow">
             <button
               :class="
@@ -190,6 +348,14 @@ export default {
       like: false,
     }
   },
+  computed: {
+    isAuthenticated() {
+      return this.$auth.loggedIn
+    },
+    loggedInUser() {
+      return this.$auth.user
+    },
+  },
   methods: {
     async submit() {
       await this.$axios
@@ -205,8 +371,8 @@ export default {
       //   path: this.$route.query.redirect || '/',
       // })
     },
-    logout() {
-      this.$auth.logout()
+    async logout() {
+      await this.$auth.logout()
     },
   },
 }
@@ -245,7 +411,7 @@ export default {
   }
 }
 .dropdown {
-  @apply px-3 outline-none relative;
+  @apply px-3  relative;
   height: 60px;
   &-icon {
     @apply flex-shrink-0 inline-block cursor-pointer;
@@ -260,13 +426,41 @@ export default {
     background: #fff;
     @screen lg {
       margin-top: 60px;
-      width: 250px;
+      width: 300px;
       max-height: calc(100vh - 120px);
     }
   }
 }
+.cart-content {
+  @apply overflow-auto flex flex-col p-4 items-start;
+  &-name {
+    @apply pb-2 text-lg font-bold;
+  }
+  &-img {
+    @apply object-cover shadow-lg cursor-pointer;
+    height: 50px;
+    width: 40px;
+  }
+  &-box {
+    @apply w-full flex items-start pl-4;
+    width: 228px;
+  }
+  &-products {
+    @apply overflow-y-auto;
+    max-height: 300px;
+  }
+  &-title {
+    @apply w-full font-bold break-words text-left;
+  }
+  &-author {
+    @apply w-full truncate text-sm text-grey text-left pt-2;
+  }
+  &-price {
+    @apply pl-2 whitespace-nowrap;
+  }
+}
 .fb-btn {
-  @apply py-3 px-4 text-white rounded-lg text-lg font-bold outline-none duration-200;
+  @apply py-3 px-4 text-white rounded-lg text-xl font-bold  duration-200;
   background: #1976f2;
   border: 1px solid #1976f2;
 
@@ -276,7 +470,7 @@ export default {
   }
 }
 .fb-btn-posted {
-  @apply py-3 px-4 text-white rounded-lg text-lg font-bold outline-none;
+  @apply py-3 px-4 text-white rounded-lg text-xl font-bold;
   color: #1976f2;
   border: 1px solid #1976f2;
 }
@@ -294,7 +488,6 @@ export default {
   z-index: 2;
 }
 .menu {
-  animation: slide-in 0.3s;
   &-name {
     @apply flex items-center p-4;
     border-bottom: 1px solid #ccc;
@@ -307,7 +500,7 @@ export default {
     @apply flex flex-col items-start p-3;
     border-bottom: 1px solid #ccc;
     &-title {
-      @apply text-xs font-bold pt-2;
+      @apply text-sm font-bold pt-2;
     }
     &-link {
       @apply py-3 w-full rounded text-left px-4;
@@ -321,12 +514,17 @@ export default {
 
 @keyframes slide-in {
   0% {
-    transform: translateX(-30px);
-    opacity: 0;
+    transform: translateX(-15px);
+    opacitx: 0;
   }
   100% {
     transform: translateX(0px);
     opacity: 1;
   }
+}
+.divider {
+  @apply w-full z-50;
+  border-bottom: 1px var(--thin-gray) solid;
+  padding: 0 -9999px;
 }
 </style>

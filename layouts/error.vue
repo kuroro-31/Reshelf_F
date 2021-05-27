@@ -27,13 +27,13 @@ import ReButton from '@/components/atoms/ReButton'
 export default {
   components: {
     HeaderNav,
-    ReButton
+    ReButton,
   },
   props: {
     error: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {}
@@ -45,11 +45,11 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.error.message
-        }
-      ]
+          content: this.error.message,
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>

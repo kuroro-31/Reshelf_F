@@ -11,26 +11,30 @@
             @mouseleave="visible = false"
           />
 
-          <div class="flex flex-col px-4">
-            <h3 class="text-lg font-bold mb-2 cursor-pointer">
+          <div class="flex flex-col pl-8">
+            <h3 class="text-xl font-bold mb-2 cursor-pointer">
               {{ item.title }}
             </h3>
             <p class="mb-2">{{ item.describe }}</p>
-            <p class="name mb-2 text-xs cursor-pointer">{{ item.name }}</p>
-            <p class="name mb-2 text-xs">最終更新日：{{ item.edit_time }}</p>
+            <nuxt-link to="/user/top" class="name mb-2 text-sm cursor-pointer">
+              {{ item.name }}
+            </nuxt-link>
+            <p class="name mb-2 text-sm">最終更新日：{{ item.edit_time }}</p>
             <div class="flex items-center">
               <div class="flex items-center">
+                <!-- レート -->
                 <p
                   class="rate"
                   :class="{
                     rate_one: item.rate >= 0,
                     rate_two: item.rate >= 3.0,
                     rate_three: item.rate >= 4.0,
-                    rate_four: item.rate >= 4.6
+                    rate_four: item.rate >= 4.6,
                   }"
                 >
                   {{ item.rate | comma }}
                 </p>
+                <!-- レート画像 -->
                 <div
                   class="rate_img"
                   :class="{
@@ -44,16 +48,17 @@
                     rate_img_four: item.rate >= 4.0,
                     rate_img_four_five: item.rate >= 4.5,
                     rate_img_four_seven: item.rate >= 4.7,
-                    rate_img_five: item.rate >= 5.0
+                    rate_img_five: item.rate >= 5.0,
                   }"
                 ></div>
               </div>
-              <p class="name ml-1 text-xs">
+              <p class="name ml-1 text-sm">
                 （総合評価：{{ item.all_rate | comma }}）
               </p>
             </div>
           </div>
 
+          <!-- 右サイド -->
           <div class="right-box">
             <!-- セール価格 -->
             <span class="right-box-sale">
@@ -72,7 +77,7 @@
                 level_one: item.level === '初級',
                 level_two: item.level === '中級',
                 level_three: item.level === '上級',
-                level_four: item.level === '特級'
+                level_four: item.level === '特級',
               }"
             >
               {{ item.level }}
@@ -127,7 +132,7 @@ import { HeartIcon } from 'vue-feather-icons'
 export default {
   components: {
     ReButton,
-    HeartIcon
+    HeartIcon,
   },
   filters: {
     numberFormat: function (num) {
@@ -143,23 +148,23 @@ export default {
     },
     comma: function (num) {
       return num.toFixed(1)
-    }
+    },
   },
   props: {
     items: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
 
   data() {
     return {
       liked: false,
       visible: false,
-      isDisabled: false
+      isDisabled: false,
     }
   },
-  methods: {}
+  methods: {},
 }
 </script>
 <style lang="scss" scoped>
@@ -167,17 +172,18 @@ export default {
   @apply flex relative flex-col w-full justify-center;
 }
 .item {
-  @apply flex pb-4 mb-4 relative;
+  @apply flex pb-8 mb-8 relative;
   border-bottom: 1px var(--ccc) solid;
 }
+// 商品画像
 .img {
-  @apply object-cover cursor-pointer rounded;
-  width: 260px;
-  min-width: 260px;
-  max-width: 260px;
-  height: 140px;
-  min-height: 140px;
-  max-height: 140px;
+  @apply object-cover cursor-pointer shadow-lg;
+  height: 200px;
+  min-height: 200px;
+  max-height: 200px;
+  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
 }
 
 .content {
@@ -194,10 +200,10 @@ export default {
   border: 1px solid var(--ccc);
 }
 .right-box {
-  @apply flex items-end flex-col pl-4;
+  @apply flex items-end flex-col;
   min-width: 100px;
   &-sale {
-    @apply text-lg font-bold;
+    @apply text-xl font-bold;
     // color: var(--red);
   }
   &-normal {
@@ -212,11 +218,12 @@ export default {
   color: var(--sub-color);
 }
 .cart-in {
-  @apply px-4 py-1 outline-none text-xs font-bold;
+  @apply px-4 py-1  text-sm font-bold;
   color: var(--primary);
 }
+// いいね
 .like {
-  @apply p-2.5 ml-4 rounded-full cursor-pointer outline-none;
+  @apply p-2.5 ml-4 rounded-full cursor-pointer;
   color: var(--aaa);
   border: 2px solid var(--ccc);
   &-yes {
@@ -287,6 +294,7 @@ export default {
     color: $purple;
   }
 }
+// 教材評価画像
 .rate_img {
   @apply flex items-center ml-2;
   &_zero {

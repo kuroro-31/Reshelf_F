@@ -21,7 +21,7 @@
         >
           <a
             href="#"
-            class="title font-bold text-lg hover:text-blue flex-shrink-0"
+            class="title font-bold text-xl hover:text-blue flex-shrink-0"
           >
             {{ category.name }}
           </a>
@@ -96,7 +96,7 @@ export default {
       categories: [
         {
           name: '教材タイプ',
-          subcategories: ['チュートリアル型', '講義型'],
+          subcategories: ['チュートリアル型', '講義型', 'その他'],
           toggleOn: true,
         },
         {
@@ -153,7 +153,6 @@ export default {
 <style lang="scss" scoped>
 .sidebar-search {
   @apply relative overflow-y-auto;
-
   @screen lg {
     max-height: calc(100vh - 168px);
   }

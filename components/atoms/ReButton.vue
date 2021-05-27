@@ -74,7 +74,7 @@ export default {
     return {
       ripple: false,
       x: 0,
-      y: 0
+      y: 0,
     }
   },
 
@@ -91,16 +91,16 @@ export default {
     },
     afterRippleEnter() {
       this.ripple = false
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss">
 .re-button {
-  @apply block relative overflow-hidden w-full;
+  @apply block relative overflow-hidden w-full font-bold;
   border-radius: 6px; // リップルの角丸のため必要
+  transition: all 0.2s ease;
   &:hover {
-    @apply duration-200;
     -webkit-box-shadow: 0 8px 25px -8px var(--primary);
     box-shadow: 0 8px 25px -8px var(--primary);
   }
@@ -153,12 +153,12 @@ export default {
 
   &-primary {
     &-filled {
-      @apply h-full outline-none;
+      @apply h-full;
       background: var(--primary) !important;
       color: #fff !important;
     }
     &-border {
-      @apply h-full outline-none;
+      @apply h-full;
       border: 1px solid var(--primary) !important;
       color: var(--primary) !important;
       &:hover {
@@ -168,16 +168,16 @@ export default {
   }
   &-secondry {
     &-filled {
-      @apply h-full outline-none;
-      background: rgba(var(--vs-secondry), 1);
+      @apply h-full;
+      background: rgba(#18202b, 1);
       &:hover {
-        box-shadow: 0 8px 25px -8px rgba(var(--vs-secondry), 1);
+        box-shadow: 0 8px 25px -8px rgba(#18202b, 1);
       }
     }
     &-border {
-      @apply h-full outline-none;
-      border: 1px solid rgba(var(--vs-secondry), 1);
-      color: var(--primary);
+      @apply h-full;
+      border: 1px solid var(--fff) !important;
+      color: var(--fff) !important;
       &:hover {
         background: rgba(var(--primary), 0.1);
         color: #fff;
@@ -185,7 +185,7 @@ export default {
     }
   }
   &-close {
-    @apply h-full outline-none;
+    @apply h-full;
     color: #626262 !important;
     &:hover {
       background: rgba(var(--vs-dark), 0.08) !important;
@@ -200,28 +200,26 @@ export default {
   &-large {
     @apply h-full font-semibold;
     min-height: 50px !important;
-    height: 50px !important;
     font-size: 1.286rem !important;
     font-weight: 600;
   }
   &-small {
     min-height: 38px !important;
-    height: 38px !important;
   }
   &-extra-small {
     @apply font-normal;
     min-height: 30px !important;
-    height: 30px !important;
     padding: 0 5px !important;
   }
   &-disabled {
-    @apply h-full cursor-not-allowed opacity-50;
-    background: #ccc !important;
+    @apply h-full opacity-50;
+    background: var(--ccc) !important;
+    cursor: not-allowed !important;
   }
   &-border-disabled {
-    @apply h-full cursor-not-allowed;
-    border: 1px solid #ccc !important;
-    color: #ccc !important;
+    @apply h-full;
+    border: 1px solid var(--ccc) !important;
+    color: var(--ccc) !important;
     cursor: not-allowed !important;
   }
 }

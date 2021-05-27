@@ -15,13 +15,13 @@
 import { CheckIcon } from 'vue-feather-icons'
 export default {
   components: {
-    CheckIcon
+    CheckIcon,
   },
   data() {
     return {
-      isChecked: false
+      isChecked: false,
     }
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>
