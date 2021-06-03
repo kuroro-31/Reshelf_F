@@ -21,7 +21,7 @@
         >
           <a
             href="#"
-            class="title font-bold text-xl hover:text-blue flex-shrink-0"
+            class="title font-bold text-lg hover:text-blue flex-shrink-0"
           >
             {{ category.name }}
           </a>
@@ -58,7 +58,10 @@
     </div>
 
     <div class="sidebar-search-btn">
-      <re-button class="re-button" :class="isDisabled ? 'no-shadow' : ''">
+      <re-button
+        class="re-button re-button-small"
+        :class="isDisabled ? 'no-shadow' : ''"
+      >
         <button
           type="submit"
           :class="

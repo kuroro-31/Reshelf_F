@@ -29,7 +29,7 @@
       <div class="nav-center flex items-center py-2.5"></div>
 
       <div class="nav-right">
-        <span class="mr-2">{{ $auth.loggedIn }}</span>
+        <!-- <span class="mr-2">{{ $auth.loggedIn }}</span> -->
 
         <!-- お気に入り -->
         <button
@@ -203,8 +203,7 @@
                     <p class="divider"></p>
                   </div>
 
-                  <p class="cart-content-name mt-2">Total</p>
-                  <re-button class="re-button re-button-small no-shadow">
+                  <re-button class="pt-4 re-button re-button-small">
                     <button
                       :class="
                         modal
@@ -254,28 +253,32 @@
                 </div>
                 <div class="menu-me">
                   <span class="menu-me-title">受講生</span>
-                  <nuxt-link class="menu-me-link" to="/user/top">
+                  <nuxt-link class="menu-me-link" to="/user/learning">
                     受講中の教材
                   </nuxt-link>
-                  <nuxt-link class="menu-me-link" to="/user/top">
-                    アカウント設定
+                  <nuxt-link class="menu-me-link" to="/user/like">
+                    お気に入り
                   </nuxt-link>
                 </div>
                 <div class="menu-me">
                   <span class="menu-me-title">講師</span>
-                  <nuxt-link class="menu-me-link" to="/teacher/dashboard">
+                  <nuxt-link class="menu-me-link" to="/teacher/course">
                     ダッシュボード
                   </nuxt-link>
                 </div>
-                <div class="menu-me">
+                <!-- <div class="menu-me">
                   <nuxt-link class="menu-me-link" to="/user/top">
                     通知・お知らせ
                   </nuxt-link>
                   <nuxt-link class="menu-me-link" to="/user/top">
                     メッセージ
                   </nuxt-link>
-                </div>
+                </div> -->
                 <div class="menu-me">
+                  <span class="menu-me-title">共通</span>
+                  <nuxt-link class="menu-me-link" to="/user/setting">
+                    アカウント設定
+                  </nuxt-link>
                   <button class="menu-me-link" to="/user/top" @click="logout">
                     ログアウト
                   </button>
@@ -411,7 +414,7 @@ export default {
   }
 }
 .dropdown {
-  @apply px-3  relative;
+  @apply px-3 relative;
   height: 60px;
   &-icon {
     @apply flex-shrink-0 inline-block cursor-pointer;
@@ -501,12 +504,15 @@ export default {
     border-bottom: 1px solid #ccc;
     &-title {
       @apply text-sm font-bold pt-2;
+      color: var(--sub-color);
     }
     &-link {
-      @apply py-3 w-full rounded text-left px-4;
+      @apply py-3 w-full rounded text-left px-4 duration-200;
       &:hover {
-        // @apply duration-200;
-        background: rgba($primary, 0.2);
+        @apply cursor-pointer;
+        transform: translateX(5px);
+        background-color: rgba($primary, 0.08);
+        border-radius: 6px;
       }
     }
   }
@@ -522,9 +528,9 @@ export default {
     opacity: 1;
   }
 }
-.divider {
-  @apply w-full z-50;
-  border-bottom: 1px var(--thin-gray) solid;
-  padding: 0 -9999px;
-}
+// .divider {
+//   @apply w-full z-50;
+//   border-bottom: 1px var(--thin-gray) solid;
+//   padding: 0 -9999px;
+// }
 </style>
