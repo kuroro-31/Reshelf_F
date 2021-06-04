@@ -12,14 +12,14 @@
           />
 
           <div class="flex flex-col pl-8">
-            <h3 class="text-xl font-bold mb-2 cursor-pointer">
+            <h3 class="text-lg font-bold cursor-pointer">
               {{ item.title }}
             </h3>
-            <p class="mb-2">{{ item.describe }}</p>
-            <nuxt-link to="/user/top" class="name mb-2 text-sm cursor-pointer">
+            <p class="">{{ item.describe }}</p>
+            <nuxt-link to="/user/top" class="name text-sm cursor-pointer">
               {{ item.name }}
             </nuxt-link>
-            <p class="name mb-2 text-sm">最終更新日：{{ item.edit_time }}</p>
+            <p class="name text-sm">最終更新日：{{ item.edit_time }}</p>
             <div class="flex items-center">
               <div class="flex items-center">
                 <!-- レート -->
@@ -172,18 +172,19 @@ export default {
   @apply flex relative flex-col w-full justify-center;
 }
 .item {
-  @apply flex pb-8 mb-8 relative;
-  border-bottom: 1px var(--ccc) solid;
+  // @apply flex pb-8 mb-8 relative;
+  @apply flex pb-4 mb-4 relative;
+  border-bottom: 1px var(--thin-gray) solid;
 }
 // 商品画像
 .img {
-  @apply object-cover cursor-pointer shadow-lg;
-  height: 200px;
-  min-height: 200px;
-  max-height: 200px;
-  width: 160px;
-  min-width: 160px;
-  max-width: 160px;
+  @apply object-cover cursor-pointer;
+  height: 140px;
+  min-height: 140px;
+  max-height: 140px;
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
 }
 
 .content {
@@ -203,7 +204,7 @@ export default {
   @apply flex items-end flex-col;
   min-width: 100px;
   &-sale {
-    @apply text-xl font-bold;
+    @apply text-lg font-bold;
     // color: var(--red);
   }
   &-normal {

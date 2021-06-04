@@ -47,3 +47,9 @@ button {
 .text-danger {
   color: $red;
 }
+
+.divider {
+  @apply w-full z-50 mb-4 pb-4;
+  border-bottom: 1px var(--thin-gray) solid;
+  padding: 0 -9999px;
+}
