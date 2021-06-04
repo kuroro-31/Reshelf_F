@@ -46,11 +46,11 @@
               {{ item.title }}
             </h3>
             <!-- 作者 -->
-            <nuxt-link to="/user/top" class="name text-sm cursor-pointer mt-2">
+            <nuxt-link to="/user/top" class="name text-sm cursor-pointer">
               By {{ item.name }}
             </nuxt-link>
 
-            <div class="flex items-center mt-2">
+            <div class="flex items-center mt-1">
               <div class="flex items-center">
                 <!-- レート -->
                 <p
@@ -88,7 +88,7 @@
             </div>
 
             <!-- 説明 -->
-            <div class="flex w-full items-center mt-2">
+            <div class="flex w-full items-center mt-1">
               {{ item.describe }}
             </div>
           </div>
@@ -263,11 +263,11 @@ export default {
 .like {
   @apply p-2.5 ml-4 rounded-full cursor-pointer;
   color: var(--aaa);
-  border: 2px solid var(--ccc);
+  border: 1px solid var(--ccc);
   &-yes {
     color: var(--fff);
     background: var(--red);
-    border: 2px solid var(--red);
+    border: 1px solid var(--red);
     &:hover {
       @apply duration-200;
       -webkit-box-shadow: 0 8px 25px -8px var(--red);
@@ -280,40 +280,20 @@ export default {
   @apply flex justify-end mt-2 px-2 py-1 mr-2 font-bold rounded cursor-pointer;
   max-width: 50px;
   &_one {
-    border: 2px solid $green;
+    border: 1px solid $green;
     color: $green;
-    &:hover {
-      @apply duration-300;
-      -webkit-box-shadow: 0 8px 25px -8px $green;
-      box-shadow: 0 8px 25px -8px $green;
-    }
   }
   &_two {
-    border: 2px solid $yellow;
+    border: 1px solid $yellow;
     color: $yellow;
-    &:hover {
-      @apply duration-300;
-      -webkit-box-shadow: 0 8px 25px -8px $yellow;
-      box-shadow: 0 8px 25px -8px $yellow;
-    }
   }
   &_three {
-    border: 2px solid $red;
+    border: 1px solid $red;
     color: $red;
-    &:hover {
-      @apply duration-300;
-      -webkit-box-shadow: 0 8px 25px -8px $red;
-      box-shadow: 0 8px 25px -8px $red;
-    }
   }
   &_four {
-    border: 2px solid $purple;
+    border: 1px solid $purple;
     color: $purple;
-    &:hover {
-      @apply duration-300;
-      -webkit-box-shadow: 0 8px 25px -8px $purple;
-      box-shadow: 0 8px 25px -8px $purple;
-    }
   }
 }
 // 教材評価
@@ -392,14 +372,9 @@ export default {
   }
 }
 .demo {
-  @apply inline-flex justify-center items-center mt-2 px-4 py-1 font-bold rounded cursor-pointer;
+  @apply inline-flex justify-center items-center mt-2 px-4 py-1 rounded cursor-pointer;
   max-width: 50px;
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  &:hover {
-    @apply duration-300;
-    -webkit-box-shadow: 0 8px 25px -8px var(--primary);
-    box-shadow: 0 8px 25px -8px var(--primary);
-  }
+  border: 1px solid var(--sub-color);
+  color: var(--sub-color);
 }
 </style>

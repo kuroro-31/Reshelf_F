@@ -62,13 +62,13 @@ export default {
 
   plugins: [
     // '~/plugins/axios',
-    '~/plugins/mixins/user',
+    // '~/plugins/mixins/user',
   ],
 
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
-    '@nuxtjs/auth-next',
+    '@nuxtjs/auth',
     '@nuxtjs/pwa',
   ],
   buildModules: [

@@ -254,7 +254,7 @@
                 <div class="menu-me">
                   <span class="menu-me-title">受講生</span>
                   <nuxt-link class="menu-me-link" to="/user/learning">
-                    受講中の教材
+                    受講中のコース
                   </nuxt-link>
                   <nuxt-link class="menu-me-link" to="/user/like">
                     お気に入り

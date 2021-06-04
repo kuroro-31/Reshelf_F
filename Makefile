@@ -15,7 +15,7 @@ reset:
 lint:
 	npm run lintfix
 package:
-	npm install --save-exact @nuxtjs/auth-next
+	npm install --save-exact @nuxtjs/auth
 eslint:
 	npm i eslint babel-eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue eslint-loader prettier -D && npm audit fix --force
 cache:
