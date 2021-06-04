@@ -65,12 +65,7 @@ export default {
     // '~/plugins/mixins/user',
   ],
 
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy',
-    '@nuxtjs/auth',
-    '@nuxtjs/pwa',
-  ],
+  modules: ['@nuxtjs/axios', '@nuxtjs/proxy', '@nuxtjs/auth', '@nuxtjs/pwa'],
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
