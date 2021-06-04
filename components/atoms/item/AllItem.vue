@@ -3,24 +3,54 @@
     <div class="w-full">
       <div class="items">
         <div v-for="item in items" :key="item.id" class="item">
-          <img
-            :src="item.src"
-            alt="text image"
-            class="img"
-            @mouseover="visible = true"
-            @mouseleave="visible = false"
-          />
+          <!-- 左サイド -->
+          <div class="relative flex flex-col items-start">
+            <img
+              :src="item.src"
+              alt="text image"
+              class="img"
+              @mouseover="visible = true"
+              @mouseleave="visible = false"
+            />
 
-          <div class="flex flex-col pl-8">
+            <div class="flex items-center">
+              <!-- 教材レベル -->
+              <span
+                class="level"
+                :class="{
+                  level_one: item.level === '初級',
+                  level_two: item.level === '中級',
+                  level_three: item.level === '上級',
+                  level_four: item.level === '特級',
+                }"
+              >
+                {{ item.level }}
+              </span>
+              <!-- デモ -->
+              <a :href="item.demo" class="demo" target="_blank">DEMO</a>
+            </div>
+            <div
+              class="content"
+              :class="{ visible: visible === true }"
+              @mouseover="visible = true"
+              @mouseleave="visible = false"
+            >
+              <!-- 最終更新 -->
+              <p class="name text-sm">最終更新日：{{ item.edit_time }}</p>
+            </div>
+          </div>
+
+          <!-- センター -->
+          <div class="center">
             <h3 class="text-lg font-bold cursor-pointer">
               {{ item.title }}
             </h3>
-            <p class="">{{ item.describe }}</p>
-            <nuxt-link to="/user/top" class="name text-sm cursor-pointer">
-              {{ item.name }}
+            <!-- 作者 -->
+            <nuxt-link to="/user/top" class="name text-sm cursor-pointer mt-2">
+              By {{ item.name }}
             </nuxt-link>
-            <p class="name text-sm">最終更新日：{{ item.edit_time }}</p>
-            <div class="flex items-center">
+
+            <div class="flex items-center mt-2">
               <div class="flex items-center">
                 <!-- レート -->
                 <p
@@ -56,45 +86,31 @@
                 （総合評価：{{ item.all_rate | comma }}）
               </p>
             </div>
+
+            <!-- 説明 -->
+            <div class="flex w-full items-center mt-2">
+              {{ item.describe }}
+            </div>
           </div>
 
           <!-- 右サイド -->
           <div class="right-box">
-            <!-- セール価格 -->
-            <span class="right-box-sale">
-              {{ item.sale_price | moneyFormat }}
-            </span>
+            <div class="flex items-center mb-4">
+              <!-- セール価格 -->
+              <span class="right-box-sale">
+                {{ item.sale_price | moneyFormat }}
+              </span>
 
-            <!-- 定価 -->
-            <span class="right-box-normal">
-              {{ item.normal_price | moneyFormat }}
-            </span>
+              <!-- 定価 -->
+              <span class="right-box-normal">
+                {{ item.normal_price | moneyFormat }}
+              </span>
+            </div>
 
-            <!-- 教材レベル -->
-            <span
-              class="level"
-              :class="{
-                level_one: item.level === '初級',
-                level_two: item.level === '中級',
-                level_three: item.level === '上級',
-                level_four: item.level === '特級',
-              }"
-            >
-              {{ item.level }}
-            </span>
-          </div>
-        </div>
-
-        <div
-          class="content"
-          :class="{ visible: visible === true }"
-          @mouseover="visible = true"
-          @mouseleave="visible = false"
-        >
-          <div class="flex w-full items-center">
+            <!-- ボタン -->
             <div class="flex flex-col w-full">
               <re-button
-                class="re-button h-full re-button-large mb-4"
+                class="re-button h-full mb-2"
                 :class="isDisabled ? 'no-shadow' : ''"
               >
                 <button
@@ -107,19 +123,28 @@
                   :disabled="isDisabled"
                   @click="isDisabled = !isDisabled"
                 >
-                  今すぐ購入する
+                  Add to Cart
                 </button>
               </re-button>
-              <button class="cart-in">カートに入れる</button>
+              <re-button
+                class="re-button h-full no-shadow"
+                :class="isDisabled ? 'no-shadow' : ''"
+              >
+                <button
+                  type="submit"
+                  :class="
+                    isDisabled
+                      ? 're-button-disabled no-shadow'
+                      : 're-button-primary-border'
+                  "
+                  :disabled="isDisabled"
+                  @click="isDisabled = !isDisabled"
+                >
+                  <heart-icon size="1x" class="mr-2"></heart-icon>
+                  Wishlist
+                </button>
+              </re-button>
             </div>
-
-            <button
-              class="like"
-              :class="{ 'like-yes': liked == true }"
-              @click="liked = !liked"
-            >
-              <heart-icon size="1.5x"></heart-icon>
-            </button>
           </div>
         </div>
       </div>
@@ -176,6 +201,12 @@ export default {
   @apply flex pb-4 mb-4 relative;
   border-bottom: 1px var(--thin-gray) solid;
 }
+.center {
+  @apply flex flex-col px-6;
+  @screen lg {
+    width: 576px;
+  }
+}
 // 商品画像
 .img {
   @apply object-cover cursor-pointer;
@@ -185,13 +216,19 @@ export default {
   width: 260px;
   min-width: 260px;
   max-width: 260px;
+  // height: 200px;
+  // min-height: 200px;
+  // max-height: 200px;
+  // width: 150px;
+  // min-width: 150px;
+  // max-width: 150px;
 }
 
 .content {
-  @apply flex flex-col items-center justify-center absolute hidden shadow rounded p-6;
+  @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded p-6;
   background: var(--fff);
   top: 0px;
-  left: 250px;
+  left: 125px;
   max-height: 300px;
   width: 400px;
   z-index: 510;
@@ -201,14 +238,18 @@ export default {
   border: 1px solid var(--ccc);
 }
 .right-box {
-  @apply flex items-end flex-col;
-  min-width: 100px;
+  @apply flex items-center justify-center flex-col p-6 lg:pr-0;
+  // min-width: 100px;
+  min-width: 250px;
+  width: 250px;
+  border-left: 1px var(--thin-gray) solid;
   &-sale {
-    @apply text-lg font-bold;
+    @apply text-3xl;
     // color: var(--red);
   }
   &-normal {
-    @apply line-through;
+    @apply line-through ml-2;
+    color: var(--sub-color);
   }
 }
 .visible {
@@ -217,10 +258,6 @@ export default {
 
 .name {
   color: var(--sub-color);
-}
-.cart-in {
-  @apply px-4 py-1  text-sm font-bold;
-  color: var(--primary);
 }
 // いいね
 .like {
@@ -240,8 +277,8 @@ export default {
 }
 // 教材レベル
 .level {
-  @apply flex justify-end inline-block mt-2 px-2 py-1 mr-2 font-bold rounded cursor-pointer;
-  margin-right: 0 !important;
+  @apply flex justify-end mt-2 px-2 py-1 mr-2 font-bold rounded cursor-pointer;
+  max-width: 50px;
   &_one {
     border: 2px solid $green;
     color: $green;
@@ -281,7 +318,7 @@ export default {
 }
 // 教材評価
 .rate {
-  @apply text-xl font-bold cursor-default;
+  @apply text-2xl font-bold cursor-default;
   &_one {
     color: $green;
   }
@@ -352,6 +389,17 @@ export default {
     height: 17px;
     width: 100px;
     background-image: url('~@/assets/images/rate/five.svg');
+  }
+}
+.demo {
+  @apply inline-flex justify-center items-center mt-2 px-4 py-1 font-bold rounded cursor-pointer;
+  max-width: 50px;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  &:hover {
+    @apply duration-300;
+    -webkit-box-shadow: 0 8px 25px -8px var(--primary);
+    box-shadow: 0 8px 25px -8px var(--primary);
   }
 }
 </style>

@@ -107,7 +107,7 @@ export default {
   button,
   label,
   .re-button-inner {
-    @apply flex items-center justify-center w-full border-none cursor-pointer box-border bg-transparent duration-200 text-base;
+    @apply flex items-center justify-center w-full border-none cursor-pointer box-border bg-transparent duration-200 text-lg;
     min-width: 100px; // 2文字などの短いボタンのケースで必要
     // height: 100%; // 高さが崩れるので一時コメントアウト
     padding: 0.5rem 1rem;
@@ -115,7 +115,6 @@ export default {
     border-radius: 6px;
     color: var(--fff);
     line-height: 1.2;
-    // white-space: nowrap; //見切れる部分が出てきたのでカット
     // text-align: center; // justify-content: center;しているのでカット
   }
   &:disabled {

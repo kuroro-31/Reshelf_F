@@ -19,10 +19,7 @@
           "
           @click="category.toggleOn = !category.toggleOn"
         >
-          <a
-            href="#"
-            class="title font-bold text-lg hover:text-blue flex-shrink-0"
-          >
+          <a href="#" class="title font-bold text-lg flex-shrink-0">
             {{ category.name }}
           </a>
           <div
@@ -59,7 +56,7 @@
 
     <div class="sidebar-search-btn">
       <re-button
-        class="re-button re-button-small"
+        class="re-button re-button-small no-shadow"
         :class="isDisabled ? 'no-shadow' : ''"
       >
         <button
@@ -67,12 +64,12 @@
           :class="
             isDisabled
               ? 're-button-disabled no-shadow'
-              : 're-button-primary-filled'
+              : 're-button-primary-border'
           "
           :disabled="isDisabled"
           @click="isDisabled = !isDisabled"
         >
-          検索する
+          Search
         </button>
       </re-button>
     </div>
@@ -98,22 +95,22 @@ export default {
       isDisabled: false,
       categories: [
         {
-          name: '教材タイプ',
+          name: 'Types',
           subcategories: ['チュートリアル型', '講義型', 'その他'],
           toggleOn: true,
         },
         {
-          name: '評価',
+          name: 'Ratings',
           subcategories: ['4.5以上', '4.0以上', '3.5以上'],
           toggleOn: true,
         },
         {
-          name: '値段',
+          name: 'Price Range',
           subcategories: ['無料', '2,500円', '5,000円', '7,500円', '10,000円'],
           toggleOn: true,
         },
         {
-          name: 'トピック',
+          name: 'Topics',
           subcategories: [
             'Javascript',
             'React',
@@ -128,17 +125,17 @@ export default {
           toggleOn: true,
         },
         {
-          name: 'レベル',
+          name: 'Levels',
           subcategories: ['初級', '中級', '上級', '特級'],
           toggleOn: true,
         },
         {
-          name: '言語',
+          name: 'Languages',
           subcategories: ['英語', '日本語'],
           toggleOn: true,
         },
         {
-          name: '特徴',
+          name: 'Features',
           subcategories: [
             'デモページ有り',
             'サブスク対象教材',

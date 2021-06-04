@@ -61,6 +61,8 @@ export default {
           // 日付
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
+          // でもページ
+          demo: '#',
         },
         {
           // キー
@@ -87,6 +89,8 @@ export default {
           // 日付
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
+          // でもページ
+          demo: '#',
         },
         {
           // キー
@@ -113,6 +117,8 @@ export default {
           // 日付
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
+          // でもページ
+          demo: '#',
         },
         {
           // キー
@@ -139,6 +145,8 @@ export default {
           // 日付
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
+          // でもページ
+          demo: '#',
         },
         {
           // キー
@@ -165,6 +173,8 @@ export default {
           // 日付
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
+          // でもページ
+          demo: '#',
         },
         {
           // キー
@@ -190,6 +200,8 @@ export default {
           // 日付
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
+          // でもページ
+          demo: '#',
         },
         {
           // キー
@@ -216,6 +228,8 @@ export default {
           // 日付
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
+          // でもページ
+          demo: '#',
         },
         {
           // キー
@@ -242,6 +256,8 @@ export default {
           // 日付
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
+          // でもページ
+          demo: '#',
         },
         {
           // キー
@@ -268,6 +284,8 @@ export default {
           // 日付
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
+          // でもページ
+          demo: '#',
         },
         {
           // キー
@@ -293,6 +311,8 @@ export default {
           // 日付
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
+          // でもページ
+          demo: '#',
         },
       ],
     }
@@ -312,6 +332,7 @@ export default {
 }
 .main-body {
   // @apply w-full lg:w-3/4 xl:w-3/5 pt-10 px-6 lg:px-12;
+  // @apply w-full lg:w-3/4 xl:w-3/5 p-6;
   @apply w-full lg:w-3/4 xl:w-4/5 pt-10 px-6 lg:pl-12 lg:pr-0;
   @screen lg {
     @apply overflow-y-auto;
