@@ -101,13 +101,12 @@ export default {
   border-radius: 6px; // リップルの角丸のため必要
   transition: all 0.2s ease;
   &:hover {
-    -webkit-box-shadow: 0 8px 25px -8px var(--primary);
-    box-shadow: 0 8px 25px -8px var(--primary);
+    transform: translateY(-3px);
   }
   button,
   label,
   .re-button-inner {
-    @apply flex items-center justify-center w-full border-none cursor-pointer box-border bg-transparent duration-200 text-lg;
+    @apply flex items-center justify-center w-full border-none cursor-pointer box-border bg-transparent duration-200;
     min-width: 100px; // 2文字などの短いボタンのケースで必要
     // height: 100%; // 高さが崩れるので一時コメントアウト
     padding: 0.5rem 1rem;
@@ -153,15 +152,20 @@ export default {
   &-primary {
     &-filled {
       @apply h-full;
-      background: var(--primary) !important;
-      color: #fff !important;
+      background: rgba($primary, 0.15) !important;
+      color: var(--primary) !important;
+      &:hover {
+        background: rgba($primary, 0.2) !important;
+      }
     }
     &-border {
       @apply h-full;
-      border: 1px solid var(--primary) !important;
-      color: var(--primary) !important;
+      background: #f0f2f6 !important;
+      color: var(--color) !important;
+      // border: 1px solid var(--primary) !important;
+      // color: var(--primary) !important;
       &:hover {
-        background: rgba(var(--primary), 0.1);
+        background: #e4e6e9 !important;
       }
     }
   }
@@ -192,14 +196,13 @@ export default {
   }
   &-extra-large {
     @apply h-full font-semibold;
-    min-height: 60px !important;
+    height: 60px !important;
     height: 60px !important;
     font-size: 1.429rem !important;
   }
   &-large {
-    @apply h-full font-semibold;
-    min-height: 50px !important;
-    font-size: 1.286rem !important;
+    @apply h-full font-semibold text-xl;
+    height: 50px !important;
     font-weight: 600;
   }
   &-small {
@@ -207,7 +210,7 @@ export default {
   }
   &-extra-small {
     @apply font-normal;
-    min-height: 30px !important;
+    height: 30px !important;
     padding: 0 5px !important;
   }
   &-disabled {
