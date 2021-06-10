@@ -5,14 +5,9 @@
         <div v-for="item in items" :key="item.id" class="item">
           <!-- 左サイド -->
           <div class="relative flex flex-col items-start">
-            <img
-              :src="item.src"
-              alt="text image"
-              class="img"
-              @mouseover="visible = true"
-              @mouseleave="visible = false"
-            />
-
+            <a href="/teacher/item/detail" target="_blank">
+              <img :src="item.src" alt="text image" class="img" />
+            </a>
             <div class="flex items-center">
               <!-- 教材レベル -->
               <span
@@ -29,22 +24,17 @@
               <!-- デモ -->
               <a :href="item.demo" class="demo" target="_blank">DEMO</a>
             </div>
-            <div
-              class="content"
-              :class="{ visible: visible === true }"
-              @mouseover="visible = true"
-              @mouseleave="visible = false"
-            >
-              <!-- 最終更新 -->
-              <p class="name text-sm">最終更新日：{{ item.edit_time }}</p>
-            </div>
           </div>
 
           <!-- センター -->
           <div class="center">
-            <h3 class="text-lg font-bold cursor-pointer">
+            <a
+              class="text-lg font-bold cursor-pointer"
+              href="/teacher/item/detail"
+              target="_blank"
+            >
               {{ item.title }}
-            </h3>
+            </a>
             <!-- 作者 -->
             <nuxt-link to="/user/top" class="name text-sm cursor-pointer">
               By {{ item.name }}
@@ -91,6 +81,11 @@
             <div class="flex w-full items-center mt-1">
               {{ item.describe }}
             </div>
+
+            <!-- 最終更新 -->
+            <p class="name text-sm text-right mt-1">
+              最終更新：{{ item.edit_time }}
+            </p>
           </div>
 
           <!-- 右サイド -->
@@ -123,7 +118,11 @@
                   :disabled="isDisabled"
                   @click="isDisabled = !isDisabled"
                 >
-                  Add to Cart
+                  <shopping-cart-icon
+                    size="1x"
+                    class="mr-2"
+                  ></shopping-cart-icon>
+                  カートに入れる
                 </button>
               </re-button>
               <re-button
@@ -141,7 +140,7 @@
                   @click="isDisabled = !isDisabled"
                 >
                   <heart-icon size="1x" class="mr-2"></heart-icon>
-                  Wishlist
+                  お気に入りに追加
                 </button>
               </re-button>
             </div>
@@ -153,11 +152,12 @@
 </template>
 <script>
 import ReButton from '@/components/atoms/ReButton'
-import { HeartIcon } from 'vue-feather-icons'
+import { HeartIcon, ShoppingCartIcon } from 'vue-feather-icons'
 export default {
   components: {
     ReButton,
     HeartIcon,
+    ShoppingCartIcon,
   },
   filters: {
     numberFormat: function (num) {
@@ -185,7 +185,6 @@ export default {
   data() {
     return {
       liked: false,
-      visible: false,
       isDisabled: false,
     }
   },
@@ -198,7 +197,7 @@ export default {
 }
 .item {
   // @apply flex pb-8 mb-8 relative;
-  @apply flex pb-4 mb-4 relative;
+  @apply flex pb-6 mb-6 relative;
   border-bottom: 1px var(--thin-gray) solid;
 }
 .center {
@@ -224,15 +223,15 @@ export default {
   // max-width: 150px;
 }
 
-.content {
-  @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded p-6;
-  background: var(--fff);
-  top: 0px;
-  left: 125px;
-  max-height: 300px;
-  width: 400px;
-  z-index: 510;
-}
+// .content {
+//   @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded p-6;
+//   background: var(--fff);
+//   top: 0px;
+//   left: 125px;
+//   max-height: 300px;
+//   width: 400px;
+//   z-index: 510;
+// }
 .tag {
   @apply px-2 py-1 mr-2;
   border: 1px solid var(--ccc);
@@ -240,8 +239,8 @@ export default {
 .right-box {
   @apply flex items-center justify-center flex-col p-6 lg:pr-0;
   // min-width: 100px;
-  min-width: 250px;
-  width: 250px;
+  min-width: 300px;
+  width: 300px;
   border-left: 1px var(--thin-gray) solid;
   &-sale {
     @apply text-3xl;

@@ -97,21 +97,21 @@ export default {
 </script>
 <style lang="scss">
 .re-button {
-  @apply block relative overflow-hidden w-full font-bold;
-  border-radius: 6px; // リップルの角丸のため必要
+  @apply block relative overflow-hidden w-full;
+  // border-radius: 6px; // リップルの角丸のため必要
   transition: all 0.2s ease;
-  &:hover {
-    transform: translateY(-3px);
-  }
+  // &:hover {
+  //   transform: translateY(-3px);
+  // }
   button,
   label,
   .re-button-inner {
     @apply flex items-center justify-center w-full border-none cursor-pointer box-border bg-transparent duration-200;
     min-width: 100px; // 2文字などの短いボタンのケースで必要
     // height: 100%; // 高さが崩れるので一時コメントアウト
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     min-height: 44px;
-    border-radius: 6px;
+    // border-radius: 6px;
     color: var(--fff);
     line-height: 1.2;
     // text-align: center; // justify-content: center;しているのでカット
@@ -152,10 +152,13 @@ export default {
   &-primary {
     &-filled {
       @apply h-full;
-      background: rgba($primary, 0.15) !important;
-      color: var(--primary) !important;
+      background: var(--color) !important;
+      color: var(--fff) !important;
+      // background: rgba($primary, 0.15) !important;
+      // color: var(--primary) !important;
       &:hover {
-        background: rgba($primary, 0.2) !important;
+        // background: rgba($primary, 0.2) !important;
+        background: #475269 !important;
       }
     }
     &-border {
@@ -195,15 +198,15 @@ export default {
     }
   }
   &-extra-large {
-    @apply h-full font-semibold;
+    @apply h-full;
     height: 60px !important;
     height: 60px !important;
-    font-size: 1.429rem !important;
+    // font-size: 1.429rem !important;
   }
   &-large {
-    @apply h-full font-semibold text-xl;
+    @apply h-full;
     height: 50px !important;
-    font-weight: 600;
+    // font-weight: 600;
   }
   &-small {
     min-height: 38px !important;

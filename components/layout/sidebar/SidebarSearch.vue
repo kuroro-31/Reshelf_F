@@ -19,7 +19,7 @@
           "
           @click="category.toggleOn = !category.toggleOn"
         >
-          <a href="#" class="title font-bold text-lg flex-shrink-0">
+          <a href="#" class="title">
             {{ category.name }}
           </a>
           <div
@@ -69,7 +69,8 @@
           :disabled="isDisabled"
           @click="isDisabled = !isDisabled"
         >
-          Search
+          <!-- Search -->
+          検索
         </button>
       </re-button>
     </div>
@@ -95,17 +96,17 @@ export default {
       isDisabled: false,
       categories: [
         {
-          name: 'Types',
+          name: '教材タイプ',
           subcategories: ['チュートリアル型', '講義型', 'その他'],
           toggleOn: true,
         },
         {
-          name: 'Ratings',
+          name: '評価',
           subcategories: ['4.5以上', '4.0以上', '3.5以上'],
           toggleOn: true,
         },
         {
-          name: 'Price Range',
+          name: '値段',
           subcategories: ['無料', '2,500円', '5,000円', '7,500円', '10,000円'],
           toggleOn: true,
         },
@@ -125,17 +126,17 @@ export default {
           toggleOn: true,
         },
         {
-          name: 'Levels',
+          name: '難易度',
           subcategories: ['初級', '中級', '上級', '特級'],
           toggleOn: true,
         },
         {
-          name: 'Languages',
+          name: '言語',
           subcategories: ['英語', '日本語'],
           toggleOn: true,
         },
         {
-          name: 'Features',
+          name: '特徴',
           subcategories: [
             'デモページ有り',
             'サブスク対象教材',
@@ -179,7 +180,7 @@ export default {
   &:hover {
     @apply cursor-pointer;
     transform: translateX(5px);
-    background-color: rgba($primary, 0.08);
+    background: #f0f2f6;
     border-radius: 6px;
   }
   &.toggle-on {
@@ -200,7 +201,7 @@ export default {
     &:hover {
       @apply cursor-pointer;
       transform: translateX(5px);
-      background-color: rgba($primary, 0.08);
+      background: #f0f2f6;
       border-radius: 6px;
     }
     .feather.feather-circle {
@@ -209,6 +210,7 @@ export default {
   }
 }
 .title {
-  color: var(--color);
+  @apply font-bold text-base flex-shrink-0;
+  // color: var(--aaa);
 }
 </style>
