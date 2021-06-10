@@ -70,7 +70,7 @@
           @click="isDisabled = !isDisabled"
         >
           <!-- Search -->
-          検索
+          検索する
         </button>
       </re-button>
     </div>

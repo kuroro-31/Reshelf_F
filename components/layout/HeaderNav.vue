@@ -511,7 +511,7 @@ export default {
       &:hover {
         @apply cursor-pointer;
         transform: translateX(5px);
-        background-color: rgba($primary, 0.08);
+        background: #f0f2f6;
         border-radius: 6px;
       }
     }

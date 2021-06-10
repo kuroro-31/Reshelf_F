@@ -82,3 +82,9 @@ Thumbs.db
 .nuxt/pwa/meta.json
 .nuxt/pwa/meta.plugin.js
 .nuxt/pwa/meta.utils.js
+.nuxt/auth/auth.js
+.nuxt/auth/middleware.js
+.nuxt/auth/plugin.js
+.nuxt/auth/storage.js
+.nuxt/auth/utilities.js
+.nuxt/auth/schemes/local.js

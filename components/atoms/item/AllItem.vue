@@ -5,39 +5,43 @@
         <div v-for="item in items" :key="item.id" class="item">
           <!-- 左サイド -->
           <div class="relative flex flex-col items-start">
-            <a href="/teacher/item/detail" target="_blank">
+            <nuxt-link
+              to="/teacher/item/detail"
+              target="_blank"
+              @mouseover="visible = true"
+              @mouseleave="visible = false"
+            >
               <img :src="item.src" alt="text image" class="img" />
-            </a>
-            <div class="flex items-center">
-              <!-- 教材レベル -->
-              <span
-                class="level"
-                :class="{
-                  level_one: item.level === '初級',
-                  level_two: item.level === '中級',
-                  level_three: item.level === '上級',
-                  level_four: item.level === '特級',
-                }"
-              >
-                {{ item.level }}
-              </span>
-              <!-- デモ -->
-              <a :href="item.demo" class="demo" target="_blank">DEMO</a>
+            </nuxt-link>
+
+            <div
+              class="content"
+              :class="{ visible: visible === true }"
+              @mouseover="visible = true"
+              @mouseleave="visible = false"
+            >
+              <!-- 説明 -->
+              <div class="flex w-full items-center mt-1">
+                {{ item.describe }}
+              </div>
+              <!-- 最終更新
+              <p class="name text-sm">最終更新日：{{ item.edit_time }}</p> -->
             </div>
           </div>
 
           <!-- センター -->
           <div class="center">
-            <a
+            <nuxt-link
               class="text-lg font-bold cursor-pointer"
-              href="/teacher/item/detail"
+              to="/teacher/item/detail"
               target="_blank"
             >
               {{ item.title }}
-            </a>
+            </nuxt-link>
+
             <!-- 作者 -->
             <nuxt-link to="/user/top" class="name text-sm cursor-pointer">
-              By {{ item.name }}
+              {{ item.name }}
             </nuxt-link>
 
             <div class="flex items-center mt-1">
@@ -77,15 +81,26 @@
               </p>
             </div>
 
-            <!-- 説明 -->
-            <div class="flex w-full items-center mt-1">
-              {{ item.describe }}
-            </div>
-
-            <!-- 最終更新 -->
+            <!-- 最終更新
             <p class="name text-sm text-right mt-1">
-              最終更新：{{ item.edit_time }}
-            </p>
+              更新：{{ item.edit_time }}
+            </p> -->
+            <div class="flex items-center">
+              <!-- 教材レベル -->
+              <span
+                class="level"
+                :class="{
+                  level_one: item.level === '初級',
+                  level_two: item.level === '中級',
+                  level_three: item.level === '上級',
+                  level_four: item.level === '特級',
+                }"
+              >
+                {{ item.level }}
+              </span>
+              <!-- デモ -->
+              <a :href="item.demo" class="demo" target="_blank">DEMO</a>
+            </div>
           </div>
 
           <!-- 右サイド -->
@@ -184,6 +199,7 @@ export default {
 
   data() {
     return {
+      visible: false,
       liked: false,
       isDisabled: false,
     }
@@ -197,7 +213,7 @@ export default {
 }
 .item {
   // @apply flex pb-8 mb-8 relative;
-  @apply flex pb-6 mb-6 relative;
+  @apply flex pb-4 mb-4 relative;
   border-bottom: 1px var(--thin-gray) solid;
 }
 .center {
@@ -223,15 +239,15 @@ export default {
   // max-width: 150px;
 }
 
-// .content {
-//   @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded p-6;
-//   background: var(--fff);
-//   top: 0px;
-//   left: 125px;
-//   max-height: 300px;
-//   width: 400px;
-//   z-index: 510;
-// }
+.content {
+  @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded p-6;
+  background: var(--fff);
+  top: 0px;
+  left: 125px;
+  max-height: 300px;
+  width: 400px;
+  z-index: 510;
+}
 .tag {
   @apply px-2 py-1 mr-2;
   border: 1px solid var(--ccc);
@@ -276,7 +292,7 @@ export default {
 }
 // 教材レベル
 .level {
-  @apply flex justify-end mt-2 px-2 py-1 mr-2 font-bold rounded cursor-pointer;
+  @apply flex justify-end mt-2 px-2 py-1 mr-2 font-bold text-sm cursor-pointer;
   max-width: 50px;
   &_one {
     border: 1px solid $green;
@@ -371,7 +387,7 @@ export default {
   }
 }
 .demo {
-  @apply inline-flex justify-center items-center mt-2 px-4 py-1 rounded cursor-pointer;
+  @apply inline-flex justify-center items-center mt-2 px-4 py-1 text-sm cursor-pointer;
   max-width: 50px;
   border: 1px solid var(--sub-color);
   color: var(--sub-color);

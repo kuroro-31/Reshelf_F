@@ -49,14 +49,14 @@ export default {
   width: 256px;
   // @screen lg {
   //   @apply overflow-y-auto;
-  //   height: calc(100vh - 64px);
+  //   height: calc(100vh - 68px);
   // }
 }
 .main-body {
   @apply w-full lg:w-3/4 px-6 lg:px-12;
   margin-left: 208px;
   @screen lg {
-    min-height: calc(100vh - 64px);
+    min-height: calc(100vh - 68px);
   }
   &-content {
     @apply pt-10 h-full;
