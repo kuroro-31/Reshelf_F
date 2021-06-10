@@ -49,7 +49,7 @@ export default {
   width: 256px;
   // @screen lg {
   //   @apply overflow-y-auto;
-  //   height: calc(100vh - 64px);
+  //   height: calc(100vh - 68px);
   // }
 }
 .main-body {
@@ -57,7 +57,7 @@ export default {
   margin-left: 208px;
   // @screen lg {
   //   @apply overflow-y-auto;
-  //   height: calc(100vh - 64px);
+  //   height: calc(100vh - 68px);
   // }
   &-content {
     @apply pt-10 h-full;

@@ -7,7 +7,6 @@
           <div class="relative flex flex-col items-start">
             <nuxt-link
               to="/teacher/item/detail"
-              target="_blank"
               @mouseover="visible = true"
               @mouseleave="visible = false"
             >
@@ -212,8 +211,8 @@ export default {
   @apply flex relative flex-col w-full justify-center;
 }
 .item {
-  // @apply flex pb-8 mb-8 relative;
-  @apply flex pb-4 mb-4 relative;
+  @apply flex pb-8 mb-8 relative;
+  // @apply flex pb-6 mb-6 relative;
   border-bottom: 1px var(--thin-gray) solid;
 }
 .center {
@@ -253,10 +252,10 @@ export default {
   border: 1px solid var(--ccc);
 }
 .right-box {
-  @apply flex items-center justify-center flex-col p-6 lg:pr-0;
+  @apply flex items-center justify-center flex-col px-8 lg:pr-0;
   // min-width: 100px;
-  min-width: 300px;
-  width: 300px;
+  min-width: 275px;
+  width: 275px;
   border-left: 1px var(--thin-gray) solid;
   &-sale {
     @apply text-3xl;

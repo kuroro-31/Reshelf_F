@@ -1,27 +1,15 @@
 <template>
   <div>
     <transition appear>
-      <div
-        class="hero"
-        :class="!display ? 'hidden' : 'block'"
-        @click="display = false"
-      ></div>
+      <div class="hero min-w-screen max-w-screen"></div>
     </transition>
   </div>
 </template>
-<script>
-export default {
-  data: function () {
-    return {
-      display: true,
-    }
-  },
-}
-</script>
 <style lang="scss" scoped>
 .hero {
-  @apply w-full duration-200 mb-8 rounded;
-  height: 300px;
-  background: #000;
+  @apply w-full;
+  height: 420px;
+  background: #f0f2f6;
+  // border-bottom: 1px solid #ddd;
 }
 </style>

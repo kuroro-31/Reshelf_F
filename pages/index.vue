@@ -333,7 +333,7 @@ export default {
 .main-body {
   // @apply w-full lg:w-3/4 xl:w-3/5 pt-10 px-6 lg:px-12;
   // @apply w-full lg:w-3/4 xl:w-3/5 p-6;
-  @apply w-full lg:w-3/4 xl:w-4/5 pt-10 px-6 lg:pr-0;
+  @apply w-full lg:w-3/4 xl:w-4/5 pt-10 px-10 lg:pr-0;
   @screen lg {
     @apply overflow-y-auto;
     height: calc(100vh - 68px);
