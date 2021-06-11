@@ -382,22 +382,22 @@ export default {
 </script>
 <style lang="scss" scoped>
 .nav {
-  @apply sticky z-50 flex w-full px-8 items-center justify-between top-0 left-0 right-0 transition-colors duration-300 ease-linear bg-white;
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    height: 4px;
-    background: linear-gradient(
-      180deg,
-      rgba(9, 30, 66, 0.13) 0,
-      rgba(9, 30, 66, 0.13) 1px,
-      rgba(9, 30, 66, 0.08) 1px,
-      rgba(9, 30, 66, 0) 4px
-    );
-  }
+  @apply sticky top-0 z-20 flex items-center h-16 bg-white border-t-4 border-b;
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   top: 100%;
+  //   height: 4px;
+  //   background: linear-gradient(
+  //     180deg,
+  //     rgba(9, 30, 66, 0.13) 0,
+  //     rgba(9, 30, 66, 0.13) 1px,
+  //     rgba(9, 30, 66, 0.08) 1px,
+  //     rgba(9, 30, 66, 0) 4px
+  //   );
+  // }
   &-left {
     height: 45px;
     width: 240px;
