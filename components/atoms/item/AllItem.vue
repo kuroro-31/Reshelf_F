@@ -6,7 +6,7 @@
           <!-- 左サイド -->
           <div class="relative flex flex-col items-start">
             <nuxt-link
-              to="/teacher/item/detail"
+              to="/item/detail"
               @mouseover="visible = true"
               @mouseleave="visible = false"
             >
@@ -32,7 +32,7 @@
           <div class="center">
             <nuxt-link
               class="text-lg font-bold cursor-pointer"
-              to="/teacher/item/detail"
+              to="/item/detail"
               target="_blank"
             >
               {{ item.title }}
@@ -119,42 +119,39 @@
             <!-- ボタン -->
             <div class="flex flex-col w-full">
               <re-button
-                class="re-button h-full mb-2"
+                class="re-button h-full no-shadow"
+                :class="isLiked ? 'no-shadow' : ''"
+              >
+                <button
+                  type="submit"
+                  class="re-button-primary-border"
+                  @click="isLiked = !isLiked"
+                >
+                  <heart-icon
+                    size="1x"
+                    class="mr-2"
+                    :class="isLiked ? 'text-red' : ''"
+                  ></heart-icon>
+                  <span :class="!isLiked ? 'block' : 'hidden'">
+                    お気に入りに追加
+                  </span>
+                  <span :class="isLiked ? 'block' : 'hidden'">お気に入り</span>
+                </button>
+              </re-button>
+              <re-button
+                class="re-button h-full mt-2"
                 :class="isDisabled ? 'no-shadow' : ''"
               >
                 <button
                   type="submit"
-                  :class="
-                    isDisabled
-                      ? 're-button-disabled no-shadow'
-                      : 're-button-primary-filled'
-                  "
-                  :disabled="isDisabled"
-                  @click="isDisabled = !isDisabled"
+                  class="re-button-primary-filled"
+                  @click="$router.push('/item/cart')"
                 >
                   <shopping-cart-icon
                     size="1x"
                     class="mr-2"
                   ></shopping-cart-icon>
                   カートに入れる
-                </button>
-              </re-button>
-              <re-button
-                class="re-button h-full no-shadow"
-                :class="isDisabled ? 'no-shadow' : ''"
-              >
-                <button
-                  type="submit"
-                  :class="
-                    isDisabled
-                      ? 're-button-disabled no-shadow'
-                      : 're-button-primary-border'
-                  "
-                  :disabled="isDisabled"
-                  @click="isDisabled = !isDisabled"
-                >
-                  <heart-icon size="1x" class="mr-2"></heart-icon>
-                  お気に入りに追加
                 </button>
               </re-button>
             </div>
@@ -199,7 +196,7 @@ export default {
   data() {
     return {
       visible: false,
-      liked: false,
+      isLiked: false,
       isDisabled: false,
     }
   },
@@ -211,14 +208,14 @@ export default {
   @apply flex relative flex-col w-full justify-center;
 }
 .item {
-  @apply flex pb-8 mb-8 relative;
+  @apply flex pb-8 mb-8 relative justify-between;
   // @apply flex pb-6 mb-6 relative;
   border-bottom: 1px var(--thin-gray) solid;
 }
 .center {
-  @apply flex flex-col px-6;
+  @apply flex flex-col px-6 items-start w-full;
   @screen lg {
-    width: 576px;
+    // min-width: 576px;
   }
 }
 // 商品画像
