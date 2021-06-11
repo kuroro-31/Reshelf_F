@@ -1,12 +1,12 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
-    <main class="w-full flex max-w-screen-xl mx-auto container scroll-none">
+    <main class="w-full flex max-w-screen-xl mx-auto container">
       <div class="lg:flex w-full">
-        <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
+        <nav class="side-nav lg:max-h-(screen-22) pin-22">
           <SidebarSearch />
         </nav>
-        <div class="main-body min-h-(screen-16) scroll-none">
+        <div class="main-body min-h-(screen-16)">
           <!-- <hero-item /> -->
           <all-item :items="items" />
           <!-- <FooterNav /> -->
@@ -321,7 +321,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .side-nav {
-  @apply hidden w-full lg:block lg:w-1/4 xl:w-1/5 pr-6 py-6 z-10 lg:sticky overflow-y-auto;
+  @apply hidden w-full lg:block lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
   @screen lg {
     border-right: 1px var(--thin-gray) solid;
   }

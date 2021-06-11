@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <div class="sidebar-search scroll-none">
+    <div class="sidebar-search">
       <div
         v-for="(category, index) in categories"
         :key="index"
@@ -153,7 +153,7 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar-search {
-  @apply relative overflow-y-auto;
+  @apply relative overflow-y-auto pt-6 px-6;
   @screen lg {
     max-height: calc(100vh - 168px);
   }
@@ -161,7 +161,7 @@ export default {
     // @apply ;
   }
   &-btn {
-    @apply sticky bottom-0 mt-4;
+    @apply sticky bottom-0 mt-6 px-6;
   }
 }
 .cate-ttl {
