@@ -86,7 +86,7 @@
             </p> -->
             <div class="flex items-center">
               <!-- 教材レベル -->
-              <span
+              <!-- <span
                 class="level"
                 :class="{
                   level_one: item.level === '初級',
@@ -94,7 +94,8 @@
                   level_three: item.level === '上級',
                   level_four: item.level === '特級',
                 }"
-              >
+              > -->
+              <span class="level">
                 {{ item.level }}
               </span>
               <!-- デモ -->
@@ -288,8 +289,10 @@ export default {
 }
 // 教材レベル
 .level {
-  @apply flex justify-end mt-2 px-2 py-1 mr-2 font-bold text-sm cursor-pointer;
+  @apply flex justify-end mt-2 px-2 py-1 mr-2 text-sm cursor-pointer;
   max-width: 50px;
+  border: 1px solid var(--sub-color);
+  color: var(--sub-color);
   &_one {
     border: 1px solid $green;
     color: $green;
