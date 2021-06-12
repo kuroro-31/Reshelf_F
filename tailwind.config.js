@@ -22,8 +22,8 @@ module.exports = {
         red: '#ff4f81',
       },
       fontSize: {
-        xs: '10px',
-        sm: '12px',
+        xs: '12px',
+        sm: '13px',
         base: '14px',
         lg: '16px',
         xl: '18px',

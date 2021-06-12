@@ -33,7 +33,6 @@
             <nuxt-link
               class="text-lg font-bold cursor-pointer"
               to="/item/detail"
-              target="_blank"
             >
               {{ item.title }}
             </nuxt-link>
