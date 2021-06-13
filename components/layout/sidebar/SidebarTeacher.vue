@@ -34,7 +34,7 @@ export default {
 .item {
   @apply duration-200 flex flex-col;
   &-title {
-    @apply text-sm font-bold pt-2;
+    @apply text-xs font-bold pt-2;
     color: var(--sub-color);
   }
   &-link {

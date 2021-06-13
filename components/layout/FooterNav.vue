@@ -5,7 +5,7 @@
         <div class="flex w-full lg:w-1/2">
           <div class="px-8">
             <h3 class="font-bold text-gray-900">About</h3>
-            <p class="py-4 text-gray-600 text-sm">
+            <p class="py-4 text-gray-600 text-xs">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
               vel mi ut felis tempus commodo nec id erat. Suspendisse
               consectetur dapibus velit ut lacinia.
@@ -15,7 +15,7 @@
         <div class="flex w-full lg:w-1/2 lg:justify-end lg:text-right">
           <div class="px-8">
             <h3 class="font-bold text-gray-900">Social</h3>
-            <ul class="list-reset items-center text-sm pt-3">
+            <ul class="list-reset items-center text-xs pt-3">
               <li>
                 <a
                   class="

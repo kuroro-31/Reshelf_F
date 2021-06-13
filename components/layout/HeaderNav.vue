@@ -18,9 +18,9 @@
             <img
               src="https://res.cloudinary.com/reshelf/image/upload/v1619871156/Logo_pfuaao.svg"
               alt="Reshelf Logo"
-              width="150"
-              height="50"
-              class="h-6 responsive"
+              width="112"
+              height="24"
+              class="responsive"
             />
           </h1>
         </NuxtLink>

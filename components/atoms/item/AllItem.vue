@@ -24,7 +24,7 @@
                 {{ item.describe }}
               </div>
               <!-- 最終更新
-              <p class="name text-sm">最終更新日：{{ item.edit_time }}</p> -->
+              <p class="name text-xs">最終更新日：{{ item.edit_time }}</p> -->
             </div>
           </div>
 
@@ -38,7 +38,7 @@
             </nuxt-link>
 
             <!-- 作者 -->
-            <nuxt-link to="/user/top" class="name text-sm cursor-pointer">
+            <nuxt-link to="/user/top" class="name text-xs cursor-pointer">
               {{ item.name }}
             </nuxt-link>
 
@@ -74,13 +74,13 @@
                   }"
                 ></div>
               </div>
-              <p class="name ml-1 text-sm">
+              <p class="name ml-1 text-xs">
                 （総合評価：{{ item.all_rate | comma }}）
               </p>
             </div>
 
             <!-- 最終更新
-            <p class="name text-sm text-right mt-1">
+            <p class="name text-xs text-right mt-1">
               更新：{{ item.edit_time }}
             </p> -->
             <div class="flex items-center">
@@ -288,7 +288,7 @@ export default {
 }
 // 教材レベル
 .level {
-  @apply flex justify-end mt-2 px-2 py-1 mr-2 text-sm cursor-pointer;
+  @apply flex justify-end mt-2 px-2 py-1 mr-2 text-xs cursor-pointer;
   max-width: 50px;
   border: 1px solid var(--sub-color);
   color: var(--sub-color);
@@ -385,7 +385,7 @@ export default {
   }
 }
 .demo {
-  @apply inline-flex justify-center items-center mt-2 px-4 py-1 text-sm cursor-pointer;
+  @apply inline-flex justify-center items-center mt-2 px-4 py-1 text-xs cursor-pointer;
   max-width: 50px;
   border: 1px solid var(--sub-color);
   color: var(--sub-color);

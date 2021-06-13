@@ -5,7 +5,7 @@
       <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
         <form class="px-5 py-7" @submit.prevent="submit">
           <!-- メールアドレス -->
-          <label class="font-semibold text-sm text-gray-600 pb-1 block">
+          <label class="font-semibold text-xs text-gray-600 pb-1 block">
             E-mail
           </label>
           <input
@@ -13,21 +13,21 @@
             type="email"
             placeholder="Enter email"
             autofocus
-            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-xs w-full"
           />
           <small v-if="errors.email" class="form-text text-danger">
             {{ errors.email[0] }}
           </small>
 
           <!-- パスワード -->
-          <label class="font-semibold text-sm text-gray-600 pb-1 block">
+          <label class="font-semibold text-xs text-gray-600 pb-1 block">
             Password
           </label>
           <input
             v-model.trim="form.password"
             type="password"
             placeholder="Password"
-            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-xs w-full"
           />
           <small v-if="errors.password" class="form-text text-danger">
             {{ errors.password[0] }}
@@ -48,7 +48,7 @@
               w-full
               py-2
               rounded-lg
-              text-sm
+              text-xs
               shadow-sm
               hover:shadow-md
               font-semibold
@@ -86,7 +86,7 @@
                   py-4
                   cursor-pointer
                   font-normal
-                  text-sm
+                  text-xs
                   rounded-lg
                   text-gray-500
                   hover:bg-gray-100
@@ -123,7 +123,7 @@
                   py-4
                   cursor-pointer
                   font-normal
-                  text-sm
+                  text-xs
                   rounded-lg
                   text-gray-500
                   hover:bg-gray-100
@@ -165,7 +165,7 @@
                 py-4
                 cursor-pointer
                 font-normal
-                text-sm
+                text-xs
                 rounded-lg
                 text-gray-500
                 hover:bg-gray-200

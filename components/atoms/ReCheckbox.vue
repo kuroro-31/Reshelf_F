@@ -26,9 +26,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .re-checkbox {
-  @apply inline-flex relative w-full h-full items-center duration-200;
+  @apply inline-flex relative w-full h-full items-center duration-200 text-sm;
   line-height: 20px;
-  padding: 10px;
+  padding: 7px 10px;
   > input[type='checkbox'] {
     @apply absolute w-full h-full opacity-0 cursor-pointer;
     & + .re-checkbox--check {

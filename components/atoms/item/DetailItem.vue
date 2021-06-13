@@ -26,7 +26,7 @@
       </nuxt-link>
 
       <!-- 最終更新 -->
-      <p class="name text-sm text-right mt-1">最終更新：{{ item.edit_time }}</p>
+      <p class="name text-xs text-right mt-1">最終更新：{{ item.edit_time }}</p>
 
       <!-- 評価 -->
       <div class="flex items-center mt-1">
@@ -61,7 +61,7 @@
             }"
           ></div>
         </div>
-        <p class="name ml-1 text-sm">
+        <p class="name ml-1 text-xs">
           （総合評価：{{ item.all_rate | comma }}）
         </p>
       </div>
@@ -114,7 +114,7 @@ export default {
   @apply flex flex-col relative justify-between items-start;
 }
 .genre {
-  @apply flex items-center text-sm;
+  @apply flex items-center text-xs;
   &-title {
     @apply font-bold cursor-pointer;
     &:hover {
@@ -159,7 +159,7 @@ export default {
 }
 
 .name {
-  @apply text-sm cursor-pointer mt-2;
+  @apply text-xs cursor-pointer mt-2;
 }
 // いいね
 .like {

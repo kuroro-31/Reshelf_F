@@ -1,24 +1,19 @@
 <template>
   <div class="flex flex-col">
-    <div class="sidebar-search scroll-none"></div>
+    <div class="sidebar-search scroll-none">
+      <span class="text-xs">合計</span>
+      <span class="text-4xl font-bold mb-4 text-black">¥7,000</span>
+    </div>
 
     <div class="sidebar-search-btn">
-      <re-button
-        class="re-button re-button-small no-shadow"
-        :class="isDisabled ? 'no-shadow' : ''"
-      >
+      <re-button class="re-button re-button-extra-large no-shadow">
         <button
           type="submit"
-          :class="
-            isDisabled
-              ? 're-button-disabled no-shadow'
-              : 're-button-primary-border'
-          "
-          :disabled="isDisabled"
-          @click="isDisabled = !isDisabled"
+          class="re-button-primary-filled"
+          @click="$router.push('/user/learning')"
         >
           <!-- Search -->
-          検索する
+          ご注文を確定する
         </button>
       </re-button>
     </div>
@@ -50,4 +45,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.sidebar-search {
+  @apply flex flex-col;
+  color: var(--sub-color);
+}
+</style>
