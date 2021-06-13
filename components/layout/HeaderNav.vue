@@ -289,20 +289,11 @@
         </button>
 
         <!-- ログイン -->
-        <nuxt-link v-if="!isAuthenticated" flat to="/auth/login">
+        <!-- <nuxt-link v-if="!isAuthenticated" flat to="/auth/login">
           ログイン
-        </nuxt-link>
+        </nuxt-link> -->
         <div v-if="!isAuthenticated" class="py-2.5">
-          <re-button class="re-button no-shadow">
-            <button
-              :class="
-                modal ? 're-button-primary-filled' : 're-button-primary-border'
-              "
-              @click="modal = !modal"
-            >
-              Log in
-            </button>
-          </re-button>
+          <span @click="modal = !modal" class="cursor-pointer">Log in</span>
           <ReModal v-if="modal" @close="modal = !modal">
             <template slot="header">Welcome To Reshelf！</template>
             <!-- default -->
