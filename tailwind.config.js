@@ -34,6 +34,9 @@ module.exports = {
         '6xl': '56px',
         '7xl': '70px',
       },
+      fontWeight: {
+        bold: '600',
+      },
     },
   },
   variants: {
