@@ -1,6 +1,7 @@
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
+      <div class="">aaaaaa</div>
       <div class="items">
         <div v-for="item in items" :key="item.id" class="item">
           <!-- 左サイド -->

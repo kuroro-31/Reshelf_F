@@ -12,7 +12,7 @@ body {
   line-height: 1.5;
   word-spacing: 1px;
   color: var(--color);
-  background-color: var(--fff);
+  background-color: var(--f8);
   background-attachment: fixed;
 }
 
@@ -52,4 +52,11 @@ button {
   @apply w-full z-50 mb-4 pb-4;
   border-bottom: 1px var(--thin-gray) solid;
   padding: 0 -9999px;
+}
+
+.card {
+  @apply rounded-lg p-6;
+  background: var(--fff);
+  -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
 }

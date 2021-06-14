@@ -74,7 +74,7 @@ main {
   margin-top: -420px;
 }
 .side-nav {
-  @apply hidden w-full lg:block lg:w-1/4 pl-6 z-10 lg:sticky overflow-y-auto;
+  @apply hidden w-full lg:block lg:w-1/4 z-10 lg:sticky overflow-y-auto;
   // @screen lg {
   //   border-right: 1px var(--thin-gray) solid;
   // }
@@ -86,7 +86,7 @@ main {
 .main-body {
   // @apply w-full lg:w-3/4 xl:w-3/5 pt-10 px-6 lg:px-12;
   // @apply w-full lg:w-3/4 xl:w-3/5 p-6;
-  @apply w-full lg:w-3/4 px-6 lg:pl-0;
+  @apply w-full lg:w-3/4 pr-8;
   @screen lg {
     @apply overflow-y-auto;
     height: calc(100vh - 68px);

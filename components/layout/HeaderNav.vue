@@ -2,17 +2,21 @@
   <nav class="nav">
     <div
       class="
+        container
         w-full
         mx-auto
-        flex
-        container
-        flex-wrap
+        flex flex-wrap
         items-center
         justify-between
         mt-0
       "
     >
       <div class="nav-left py-2.5">
+        <!-- <input id="side" type="checkbox" name="" value="" /> -->
+        <!-- <label for="side" class="toggle">
+          <menu-icon size="1.5x"></menu-icon>
+        </label> -->
+
         <NuxtLink to="/" class="title-link">
           <h1>
             <img
@@ -293,7 +297,7 @@
           ログイン
         </nuxt-link> -->
         <div v-if="!isAuthenticated" class="py-2.5">
-          <span @click="modal = !modal" class="cursor-pointer">Log in</span>
+          <span class="cursor-pointer" @click="modal = !modal">Log in</span>
           <ReModal v-if="modal" @close="modal = !modal">
             <template slot="header">Welcome To Reshelf！</template>
             <!-- default -->
@@ -322,12 +326,17 @@
 <script>
 import ReButton from '@/components/atoms/ReButton'
 import ReModal from '@/components/atoms/ReModal'
-import { ShoppingCartIcon, HeartIcon } from 'vue-feather-icons'
+import {
+  // MenuIcon,
+  ShoppingCartIcon,
+  HeartIcon,
+} from 'vue-feather-icons'
 
 export default {
   components: {
     ReButton,
     ReModal,
+    // MenuIcon,
     ShoppingCartIcon,
     HeartIcon,
   },
@@ -372,8 +381,18 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.toggle {
+  @apply mr-4 cursor-pointer p-2 flex-shrink-0;
+  height: 40px;
+  width: 40px;
+  &:hover {
+    @apply rounded-lg;
+    background: var(--eee);
+  }
+}
 .nav {
-  @apply sticky top-0 z-20 flex items-center h-16 bg-white border-t-4 border-b;
+  @apply sticky top-0 z-20 flex items-center h-16;
+  background: var(--f8);
   // &::after {
   //   content: '';
   //   position: absolute;
@@ -390,6 +409,7 @@ export default {
   //   );
   // }
   &-left {
+    @apply flex items-center;
     height: 45px;
     width: 240px;
   }

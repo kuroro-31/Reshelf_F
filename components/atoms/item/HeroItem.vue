@@ -9,7 +9,8 @@
 .hero {
   @apply w-full;
   height: 420px;
-  background: #f0f2f6;
+  // background: #f0f2f6;
+  background: var(--fff);
   // border-bottom: 1px solid #ddd;
 }
 </style>

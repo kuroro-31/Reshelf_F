@@ -1,6 +1,7 @@
 <template>
-  <div class="flex flex-col">
+  <div class="card sidebar">
     <div class="sidebar-search">
+      <!-- <h2 class="sidebar-search-title">探す</h2> -->
       <div
         v-for="(category, index) in categories"
         :key="index"
@@ -152,16 +153,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.sidebar {
+  @apply flex flex-col;
+}
 .sidebar-search {
-  @apply relative overflow-y-auto pt-6 px-6;
-  @screen lg {
-    max-height: calc(100vh - 168px);
-  }
-  &-list {
-    // @apply ;
-  }
+  @apply relative overflow-y-auto;
+  // @screen lg {
+  //   max-height: calc(100vh - 168px);
+  // }
+  // &-title {
+  //   @apply text-xl font-bold;
+  //   color: #aaa;
+  // }
   &-btn {
-    @apply sticky bottom-0 mt-6 px-6;
+    @apply sticky bottom-0 mt-6;
   }
 }
 .cate-ttl {
