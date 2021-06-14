@@ -146,7 +146,7 @@ export default {
 
 // .content {
 //   @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded p-6;
-//   background: var(--fff);
+//   background-color: var(--bg);
 //   top: 0px;
 //   left: 125px;
 //   max-height: 300px;

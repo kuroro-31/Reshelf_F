@@ -86,7 +86,7 @@ export default {
   @apply flex items-center justify-center flex-col w-full h-full;
   // min-width: 100px;
   // border-left: 1px var(--thin-gray) solid;
-  // background: var(--fff);
+  // background-color: var(--bg);
   &-sale {
     @apply text-3xl;
     // color: var(--red);

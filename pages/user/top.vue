@@ -431,7 +431,7 @@ export default {
   @apply absolute rounded-full top-0 right-0 inline-flex px-4 py-2 font-bold items-center justify-center shadow-lg;
   // color: $purple;
   color: var(--fff);
-  // background: var(--fff);
+  // background-color: var(--bg);
   background: $purple;
   // top: 250px;
 }

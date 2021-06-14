@@ -70,6 +70,7 @@ export default {
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
+    '@nuxtjs/color-mode'
   ],
 
   axios: {

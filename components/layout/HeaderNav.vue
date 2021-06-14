@@ -279,6 +279,14 @@
                   </nuxt-link>
                 </div> -->
                 <div class="menu-me">
+                  <div class="">
+                    <select v-model="$colorMode.preference">
+                      <option value="system">System</option>
+                      <option value="light">Light</option>
+                      <option value="dark">Dark</option>
+                      <option value="sepia">Sepia</option>
+                    </select>
+                  </div>
                   <span class="menu-me-title">共通</span>
                   <nuxt-link class="menu-me-link" to="/user/setting">
                     アカウント設定
@@ -392,7 +400,7 @@ export default {
 }
 .nav {
   @apply sticky top-0 z-20 flex items-center h-16;
-  background: var(--f8);
+  background-color: var(--bg);
   // &::after {
   //   content: '';
   //   position: absolute;
@@ -437,7 +445,7 @@ export default {
   }
   &-contents {
     @apply absolute top-0 right-0 z-50 rounded shadow-lg overflow-y-auto cursor-default;
-    background: #fff;
+    background-color: var(--bg);
     @screen lg {
       margin-top: 60px;
       width: 300px;

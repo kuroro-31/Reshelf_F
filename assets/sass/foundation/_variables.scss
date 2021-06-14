@@ -2,6 +2,8 @@
   --primary: #33C4CC;
   --color: #354458;
   --sub-color: #86868b;
+  --bg: #f8f8f8;
+  --bg-secondary: #fff;
   --red: #FE4164;
   // --gold2: #b76e79;
   --color-secondary: #233a43;
@@ -24,6 +26,24 @@
   --gray02: #7c7c7e;
   --293: #293c64;
   --thin-gray: #ddd;
+}
+
+.dark-mode {
+  --primary: #33C4CC;
+  --color: #ebf4f1;
+  --color-primary: #41b38a;
+  --color-secondary: #fdf9f3;
+  --bg: #22262B;
+  --bg-secondary: #292D34;
+  --border-color: #0d2538;
+}
+.sepia-mode {
+  --primary: #33C4CC;
+  --color: #433422;
+  --color-secondary: #504231;
+  --bg: #f1e7d0;
+  --bg-secondary: #eae0c9;
+  --border-color: #ded0bf;
 }
 
 $primary: #33C4CC;

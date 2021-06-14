@@ -10,7 +10,7 @@
   @apply w-full;
   height: 420px;
   // background: #f0f2f6;
-  background: var(--fff);
+  background-color: var(--bg);
   // border-bottom: 1px solid #ddd;
 }
 </style>

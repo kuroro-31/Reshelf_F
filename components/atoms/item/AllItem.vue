@@ -1,9 +1,20 @@
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
-      <div class="">aaaaaa</div>
+      <div class="flex items-center justify-between">
+        <div class="">
+          <span>27 results found</span>
+        </div>
+        <div class="">
+          <div class=""></div>
+          <div class="">
+            <grid-icon size="1.5x" class="custom-class"></grid-icon>
+            <list-icon size="1.5x" class="custom-class"></list-icon>
+          </div>
+        </div>
+      </div>
       <div class="items">
-        <div v-for="item in items" :key="item.id" class="item">
+        <div v-for="item in items" :key="item.id" class="card item">
           <!-- 左サイド -->
           <div class="relative flex flex-col items-start">
             <nuxt-link
@@ -164,12 +175,19 @@
 </template>
 <script>
 import ReButton from '@/components/atoms/ReButton'
-import { HeartIcon, ShoppingCartIcon } from 'vue-feather-icons'
+import {
+  HeartIcon,
+  ShoppingCartIcon,
+  GridIcon,
+  ListIcon,
+} from 'vue-feather-icons'
 export default {
   components: {
     ReButton,
     HeartIcon,
     ShoppingCartIcon,
+    GridIcon,
+    ListIcon,
   },
   filters: {
     numberFormat: function (num) {
@@ -209,9 +227,10 @@ export default {
   @apply flex relative flex-col w-full justify-center;
 }
 .item {
-  @apply flex pb-8 mb-8 relative justify-between;
+  // @apply flex pb-8 mb-8 relative justify-between;
   // @apply flex pb-6 mb-6 relative;
-  border-bottom: 1px var(--thin-gray) solid;
+  // border-bottom: 1px var(--thin-gray) solid;
+  @apply flex mb-6 relative;
 }
 .center {
   @apply flex flex-col px-6 items-start w-full;
@@ -238,7 +257,7 @@ export default {
 
 .content {
   @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded p-6;
-  background: var(--fff);
+  background-color: var(--bg);
   top: 0px;
   left: 125px;
   max-height: 300px;

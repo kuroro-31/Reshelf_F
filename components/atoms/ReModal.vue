@@ -45,7 +45,7 @@ export default {
 
   &-window {
     @apply rounded;
-    background: #fff;
+    background-color: var(--bg);
     border-radius: 4px;
     max-width: 600px;
     @media screen and (max-width: 767px) {
@@ -67,14 +67,14 @@ export default {
 
   &-footer {
     @apply rounded-b py-4 px-6;
-    background: #fff;
+    background-color: var(--bg);
   }
 }
 
 .close {
   @apply absolute p-2 rounded duration-300  shadow-lg;
   color: var(--color);
-  background: var(--fff);
+  background-color: var(--bg);
   top: -10px;
   right: -10px;
   &:hover {

@@ -17,7 +17,7 @@ body {
   line-height: 1.5;
   word-spacing: 1px;
   color: var(--color);
-  background-color: var(--f8);
+  background-color: var(--bg);
   background-attachment: fixed;
 }
 
@@ -60,8 +60,8 @@ button {
 }
 
 .card {
-  @apply rounded-lg p-6;
-  background: var(--fff);
-  -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
-  box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  @apply p-6;
+  background-color: var(--bg-secondary);
+  // -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  // // box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
 }
