@@ -184,7 +184,6 @@ export default {
 
   &:hover {
     @apply cursor-pointer;
-    transform: translateX(5px);
     background: #f0f2f6;
     border-radius: 6px;
   }
