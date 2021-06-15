@@ -399,7 +399,7 @@ export default {
   }
 }
 .nav {
-  @apply sticky top-0 z-20 flex items-center h-16;
+  @apply sticky top-0 z-20 flex items-center justify-center h-16;
   background-color: var(--bg-secondary);
   // &::after {
   //   content: '';
