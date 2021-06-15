@@ -3,7 +3,7 @@
     <HeaderNav />
     <main class="w-full flex max-w-screen-lg mx-auto container scroll-none">
       <div class="lg:flex w-full">
-        <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
+        <nav class="card side-nav lg:max-h-(screen-22) pin-22 scroll-none">
           <SidebarSetting class="divider" />
           <SidebarStudent class="divider" />
           <SidebarTeacher />
