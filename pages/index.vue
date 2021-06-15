@@ -321,7 +321,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .side-nav {
-  @apply hidden w-full lg:block lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
+  @apply hidden w-full lg:block mt-6 lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
   // @screen lg {
   //   border-right: 1px #ddd solid;
   // }

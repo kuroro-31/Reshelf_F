@@ -400,7 +400,7 @@ export default {
 }
 .nav {
   @apply sticky top-0 z-20 flex items-center h-16;
-  background-color: var(--bg);
+  background-color: var(--bg-secondary);
   // &::after {
   //   content: '';
   //   position: absolute;
@@ -444,8 +444,8 @@ export default {
     height: 40px;
   }
   &-contents {
-    @apply absolute top-0 right-0 z-50 rounded shadow-lg overflow-y-auto cursor-default;
-    background-color: var(--bg);
+    @apply absolute top-0 right-0 z-50 rounded-lg shadow-lg overflow-y-auto cursor-default;
+    background-color: var(--bg-secondary);
     @screen lg {
       margin-top: 60px;
       width: 300px;

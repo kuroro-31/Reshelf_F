@@ -70,10 +70,7 @@
 
           <!-- センター -->
           <div class="center">
-            <nuxt-link
-              class="text-lg font-bold cursor-pointer"
-              to="/item/detail"
-            >
+            <nuxt-link class="title" to="/item/detail">
               {{ item.title }}
             </nuxt-link>
 
@@ -267,11 +264,11 @@ export default {
     height: 40px;
   }
   &-contents {
-    @apply absolute top-0 right-0 z-50 rounded shadow-lg overflow-y-auto cursor-default;
-    background-color: var(--bg);
+    @apply absolute top-0 right-0 z-50 rounded-lg shadow-lg overflow-y-auto cursor-default;
+    background-color: var(--bg-secondary);
     @screen lg {
       margin-top: 40px;
-      width: 100px;
+      width: 150px;
     }
   }
 }
@@ -343,6 +340,10 @@ export default {
     // min-width: 576px;
   }
 }
+.title {
+  @apply text-lg font-bold cursor-pointer;
+  color: var(--color);
+}
 // 商品画像
 .img {
   @apply object-cover cursor-pointer;
@@ -362,7 +363,7 @@ export default {
 
 .content {
   @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded p-6;
-  background-color: var(--bg);
+  background-color: var(--bg-secondary);
   top: 0px;
   left: 125px;
   max-height: 300px;
