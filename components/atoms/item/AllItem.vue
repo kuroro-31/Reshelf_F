@@ -1,15 +1,43 @@
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
-      <div class="flex items-center justify-between">
-        <div class="">
-          <span>27 results found</span>
-        </div>
-        <div class="">
-          <div class=""></div>
-          <div class="">
-            <grid-icon size="1.5x" class="custom-class"></grid-icon>
-            <list-icon size="1.5x" class="custom-class"></list-icon>
+      <div class="flex items-center justify-between mb-4">
+        <span>27 results found</span>
+        <div class="filter">
+          <!-- ユーザードロップダウン -->
+          <button
+            class="dropdown"
+            @mouseover="dropdown = true"
+            @mouseleave="dropdown = false"
+          >
+            <span>Featured</span>
+            <chevron-down-icon
+              size="1x"
+              class="inline-block"
+            ></chevron-down-icon>
+            <transition>
+              <div
+                v-if="dropdown"
+                class="dropdown-contents scroll-none"
+                @mouseover="dropdown = true"
+                @mouseleave="dropdown = false"
+              >
+                <div class="menu">
+                  <div class="menu-me">
+                    <nuxt-link class="menu-me-link" to="/user/learning">
+                      Lowest
+                    </nuxt-link>
+                    <nuxt-link class="menu-me-link" to="/user/like">
+                      Highest
+                    </nuxt-link>
+                  </div>
+                </div>
+              </div>
+            </transition>
+          </button>
+          <div class="filter-icons">
+            <grid-icon size="1.5x" class="filter-icons-grid"></grid-icon>
+            <list-icon size="1.5x" class="filter-icons-list"></list-icon>
           </div>
         </div>
       </div>
@@ -180,6 +208,7 @@ import {
   ShoppingCartIcon,
   GridIcon,
   ListIcon,
+  ChevronDownIcon,
 } from 'vue-feather-icons'
 export default {
   components: {
@@ -188,6 +217,7 @@ export default {
     ShoppingCartIcon,
     GridIcon,
     ListIcon,
+    ChevronDownIcon,
   },
   filters: {
     numberFormat: function (num) {
@@ -217,12 +247,87 @@ export default {
       visible: false,
       isLiked: false,
       isDisabled: false,
+      dropdown: false,
     }
   },
   methods: {},
 }
 </script>
 <style lang="scss" scoped>
+.dropdown {
+  @apply py-2 px-3 relative rounded mr-4;
+
+  border: 1px solid var(--color);
+  &-icon {
+    @apply flex-shrink-0 inline-block cursor-pointer;
+  }
+  &-img {
+    @apply object-cover rounded-full shadow-lg cursor-pointer;
+    width: 40px;
+    height: 40px;
+  }
+  &-contents {
+    @apply absolute top-0 right-0 z-50 rounded shadow-lg overflow-y-auto cursor-default;
+    background-color: var(--bg);
+    @screen lg {
+      margin-top: 40px;
+      width: 100px;
+    }
+  }
+}
+.menu {
+  &-name {
+    @apply flex items-center p-4;
+    border-bottom: 1px solid #ccc;
+    &-person {
+      @apply ml-2;
+      max-width: 140px;
+    }
+  }
+  &-me {
+    @apply flex flex-col items-start;
+    border-bottom: 1px solid #ccc;
+    &-title {
+      @apply text-sm font-bold pt-2;
+      color: var(--sub-color);
+    }
+    &-link {
+      @apply py-3 w-full rounded text-left px-4 duration-200;
+      &:hover {
+        @apply cursor-pointer;
+        background: #f0f2f6;
+        border-radius: 6px;
+      }
+    }
+  }
+}
+.filter {
+  @apply flex items-center;
+  &-icons {
+    @apply flex items-center flex-shrink-0;
+    &-grid {
+      @apply cursor-pointer block flex-shrink-0 py-2 rounded-l;
+      height: 38px;
+      width: 50px;
+      border: solid 1px var(--color);
+      border-right: none;
+      &:hover {
+        // @apply;
+        background: var(--eee);
+      }
+    }
+    &-list {
+      @apply cursor-pointer block flex-shrink-0 py-2 rounded-r;
+      height: 38px;
+      width: 50px;
+      border: solid 1px var(--color);
+      &:hover {
+        // @apply;
+        background: var(--eee);
+      }
+    }
+  }
+}
 .items {
   @apply flex relative flex-col w-full justify-center;
 }
