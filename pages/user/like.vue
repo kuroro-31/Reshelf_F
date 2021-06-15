@@ -10,7 +10,7 @@
         </nav>
         <div class="main-body scroll-none">
           <div class="main-body-content">
-            <h2 class="text-3xl font-bold mb-8">お気に入り</h2>
+            <h2 class="text-3xl font-bold mb-4">お気に入り</h2>
             <!-- <all-item :items="items" /> -->
           </div>
         </div>
