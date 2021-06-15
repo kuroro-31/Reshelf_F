@@ -13,7 +13,7 @@
             <span>Featured</span>
             <chevron-down-icon
               size="1x"
-              class="inline-block"
+              class="inline-block ml-2"
             ></chevron-down-icon>
             <transition>
               <div
@@ -252,7 +252,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .dropdown {
-  @apply py-2 px-3 relative rounded mr-4;
+  @apply py-2 px-4 relative rounded mr-4;
   // background: var(--bg-secondary);
   border: 1px solid var(--gray);
   &-icon {
