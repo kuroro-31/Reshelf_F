@@ -25,39 +25,7 @@
               {{ item.name }}
             </nuxt-link>
 
-            <div class="flex items-center mt-1">
-              <div class="flex items-center">
-                <!-- レート -->
-                <p
-                  class="rate"
-                  :class="{
-                    rate_one: item.rate >= 0,
-                    rate_two: item.rate >= 3.0,
-                    rate_three: item.rate >= 4.0,
-                    rate_four: item.rate >= 4.6,
-                  }"
-                >
-                  {{ item.rate | comma }}
-                </p>
-                <!-- レート画像 -->
-                <div
-                  class="rate_img"
-                  :class="{
-                    rate_img_zero: item.rate >= 0.0,
-                    rate_img_one: item.rate >= 1.0,
-                    rate_img_one_five: item.rate >= 1.5,
-                    rate_img_two: item.rate >= 2.0,
-                    rate_img_two_five: item.rate >= 2.5,
-                    rate_img_three: item.rate >= 3.0,
-                    rate_img_three_five: item.rate >= 3.5,
-                    rate_img_four: item.rate >= 4.0,
-                    rate_img_four_five: item.rate >= 4.5,
-                    rate_img_four_seven: item.rate >= 4.7,
-                    rate_img_five: item.rate >= 5.0,
-                  }"
-                ></div>
-              </div>
-            </div>
+            <span class="text-right w-full text-xs">評価する</span>
           </div>
         </div>
       </div>
@@ -184,22 +152,26 @@ export default {
   }
 }
 .items {
-  @apply flex relative flex-col w-full justify-center;
+  @apply flex relative flex-wrap;
 }
 .item {
   // @apply flex pb-8 mb-8 relative justify-between;
   // @apply flex pb-6 mb-6 relative;
   // border-bottom: 1px var(--thin-gray) solid;
-  @apply flex mb-6 relative;
+  @apply flex flex-col mb-6 relative;
+  @screen lg {
+    @apply mr-auto;
+    width: 31%;
+  }
 }
 .center {
-  @apply flex flex-col px-6 items-start w-full;
+  @apply flex flex-col pt-4 items-start w-full;
   @screen lg {
     // min-width: 576px;
   }
 }
 .title {
-  @apply text-lg font-bold cursor-pointer;
+  @apply text-lg w-full truncate font-bold cursor-pointer;
   color: var(--color);
 }
 // 商品画像
