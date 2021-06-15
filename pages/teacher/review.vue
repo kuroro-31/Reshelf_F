@@ -45,23 +45,22 @@ export default {
 </script>
 <style lang="scss" scoped>
 .side-nav {
-  @apply fixed w-full lg:block lg:w-1/4 pt-10 px-6 z-10 overflow-y-auto;
-  width: 256px;
+  @apply hidden w-full lg:block mt-6 lg:w-1/4 z-10 lg:sticky overflow-y-auto;
+  // @screen lg {
+  //   border-right: 1px #ddd solid;
+  // }
   // @screen lg {
   //   @apply overflow-y-auto;
   //   height: calc(100vh - 68px);
   // }
 }
 .main-body {
-  @apply w-full lg:w-3/4 px-6 lg:px-12;
-  margin-left: 208px;
-  @screen lg {
-    min-height: calc(100vh - 68px);
-  }
-  &-content {
-    @apply pt-10 h-full;
-    padding-left: 48px;
-    border-left: 1px var(--thin-gray) solid;
-  }
+  // @apply w-full lg:w-3/4 xl:w-3/5 pt-10 px-6 lg:px-12;
+  // @apply w-full lg:w-3/4 xl:w-3/5 p-6;
+  @apply w-full lg:w-3/4 p-6 lg:pl-10;
+  // @screen lg {
+  //   @apply overflow-y-auto;
+  //   height: calc(100vh - 68px);
+  // }
 }
 </style>

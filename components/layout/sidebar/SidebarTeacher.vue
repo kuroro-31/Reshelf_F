@@ -7,7 +7,7 @@
       コースへのレビュー
     </nuxt-link>
     <nuxt-link class="item-link" to="/teacher/sales">コース売上</nuxt-link>
-    <nuxt-link to="teacher/new" class="my-4">
+    <nuxt-link to="teacher/new" class="mt-4">
       <re-button class="re-button re-button-small">
         <button type="button" class="re-button-primary-filled">
           コースを作成
