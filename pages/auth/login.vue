@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
     <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
       <h1 class="font-bold text-center text-2xl mb-5">LOGIN</h1>
-      <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
+      <div class="bg-white shadow w-full rounded divide-y divide-gray-200">
         <form class="px-5 py-7" @submit.prevent="submit">
           <!-- メールアドレス -->
           <label class="font-semibold text-xs text-gray-600 pb-1 block">
@@ -13,7 +13,7 @@
             type="email"
             placeholder="Enter email"
             autofocus
-            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-xs w-full"
+            class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
           />
           <small v-if="errors.email" class="form-text text-danger">
             {{ errors.email[0] }}
@@ -27,7 +27,7 @@
             v-model.trim="form.password"
             type="password"
             placeholder="Password"
-            class="border rounded-lg px-3 py-2 mt-1 mb-5 text-xs w-full"
+            class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
           />
           <small v-if="errors.password" class="form-text text-danger">
             {{ errors.password[0] }}
@@ -47,7 +47,7 @@
               text-white
               w-full
               py-2
-              rounded-lg
+              rounded
               text-xs
               shadow-sm
               hover:shadow-md
@@ -87,7 +87,7 @@
                   cursor-pointer
                   font-normal
                   text-xs
-                  rounded-lg
+                  rounded
                   text-gray-500
                   hover:bg-gray-100
                   focus:outline-none
@@ -124,7 +124,7 @@
                   cursor-pointer
                   font-normal
                   text-xs
-                  rounded-lg
+                  rounded
                   text-gray-500
                   hover:bg-gray-100
                   focus:outline-none
@@ -166,7 +166,7 @@
                 cursor-pointer
                 font-normal
                 text-xs
-                rounded-lg
+                rounded
                 text-gray-500
                 hover:bg-gray-200
                 focus:outline-none

@@ -30,7 +30,7 @@ components: {
 </re-button>
 
 # extra-large
-<re-button class="w-full lg:w-1/2 h-full re-button re-button-primary re-button-filled re-button-extra-large rounded-lg">
+<re-button class="w-full lg:w-1/2 h-full re-button re-button-primary re-button-filled re-button-extra-large rounded">
   <button class="text-xl lg:text-2xl">
     <send-icon size="20" class="mr-4"></send-icon>
     手動見積もり依頼
@@ -40,7 +40,7 @@ components: {
 # ダイアログ
 ・アップロード
 <div class="vx-col w-full lg:w-2/5">
-  <form ref="uploadForm1" class="w-2/3 mx-auto re-button re-button-primary re-button-border rounded-lg">
+  <form ref="uploadForm1" class="w-2/3 mx-auto re-button re-button-primary re-button-border rounded">
     <label class="text-center text-primary">
     <input
       type="file"
@@ -97,7 +97,7 @@ export default {
 </script>
 <style lang="scss">
 .re-button {
-  @apply block relative overflow-hidden w-full rounded-lg;
+  @apply block relative overflow-hidden w-full rounded;
   // border-radius: 6px; // リップルの角丸のため必要
   transition: all 0.2s ease;
   // &:hover {

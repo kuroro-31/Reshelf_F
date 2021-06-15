@@ -2,6 +2,7 @@
   <nav class="nav">
     <div
       class="
+        max-w-screen-xl
         container
         w-full
         mx-auto
@@ -34,6 +35,9 @@
 
       <div class="nav-right">
         <!-- <span class="mr-2">{{ $auth.loggedIn }}</span> -->
+
+        <!-- 検索 -->
+        <input type="text" class="search" placeholder="Search..." />
 
         <!-- お気に入り -->
         <button
@@ -394,7 +398,7 @@ export default {
   height: 40px;
   width: 40px;
   &:hover {
-    @apply rounded-lg;
+    @apply rounded;
     background: var(--eee);
   }
 }
@@ -417,7 +421,7 @@ export default {
   //   );
   // }
   &-left {
-    @apply flex items-center;
+    @apply flex items-center lg:w-1/4 xl:w-1/5 mr-12;
     height: 45px;
     width: 240px;
   }
@@ -444,7 +448,7 @@ export default {
     height: 40px;
   }
   &-contents {
-    @apply absolute top-0 right-0 z-50 rounded-lg shadow-lg overflow-y-auto cursor-default;
+    @apply absolute top-0 right-0 z-50 rounded shadow-lg overflow-y-auto cursor-default;
     background-color: var(--bg-secondary);
     @screen lg {
       margin-top: 60px;
@@ -482,7 +486,7 @@ export default {
   }
 }
 .fb-btn {
-  @apply py-3 px-4 text-white rounded-lg text-xl font-bold  duration-200;
+  @apply py-3 px-4 text-white rounded text-xl font-bold  duration-200;
   background: #1976f2;
   border: 1px solid #1976f2;
 
@@ -492,7 +496,7 @@ export default {
   }
 }
 .fb-btn-posted {
-  @apply py-3 px-4 text-white rounded-lg text-xl font-bold;
+  @apply py-3 px-4 text-white rounded text-xl font-bold;
   color: #1976f2;
   border: 1px solid #1976f2;
 }
@@ -552,4 +556,11 @@ export default {
 //   border-bottom: 1px var(--thin-gray) solid;
 //   padding: 0 -9999px;
 // }
+
+.search {
+  @apply px-4 py-2 rounded;
+  background-color: var(--bg-secondary);
+  background-clip: padding-box;
+  border: 1px solid var(--gray);
+}
 </style>

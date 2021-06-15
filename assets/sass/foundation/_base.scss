@@ -27,7 +27,7 @@ body {
   @apply box-border m-0;
 }
 
-button {
+button, input, select, textarea {
   @apply focus:outline-none outline-none;
 }
 .scroll-none {
@@ -60,7 +60,7 @@ button {
 }
 
 .card {
-  @apply p-6 rounded-lg;
+  @apply p-6 rounded;
   background-color: var(--bg-secondary);
   // -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
   // // box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);

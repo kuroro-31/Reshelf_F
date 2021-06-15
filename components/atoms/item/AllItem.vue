@@ -253,8 +253,8 @@ export default {
 <style lang="scss" scoped>
 .dropdown {
   @apply py-2 px-3 relative rounded mr-4;
-
-  border: 1px solid var(--color);
+  // background: var(--bg-secondary);
+  border: 1px solid var(--gray);
   &-icon {
     @apply flex-shrink-0 inline-block cursor-pointer;
   }
@@ -264,7 +264,7 @@ export default {
     height: 40px;
   }
   &-contents {
-    @apply absolute top-0 right-0 z-50 rounded-lg shadow-lg overflow-y-auto cursor-default;
+    @apply absolute top-0 right-0 z-50 rounded shadow-lg overflow-y-auto cursor-default;
     background-color: var(--bg-secondary);
     @screen lg {
       margin-top: 40px;
@@ -306,21 +306,26 @@ export default {
       @apply cursor-pointer block flex-shrink-0 py-2 rounded-l;
       height: 38px;
       width: 50px;
-      border: solid 1px var(--color);
+      border-right: solid 1px var(--gray);
+      border: solid 1px var(--gray);
+      // background: var(--bg-secondary);
       border-right: none;
       &:hover {
         // @apply;
-        background: var(--eee);
+        color: var(--primary);
+        background: var(--bg-secondary);
       }
     }
     &-list {
       @apply cursor-pointer block flex-shrink-0 py-2 rounded-r;
       height: 38px;
       width: 50px;
-      border: solid 1px var(--color);
+      border: solid 1px var(--gray);
+      // background: var(--bg-secondary);
       &:hover {
         // @apply;
-        background: var(--eee);
+        color: var(--primary);
+        background: var(--bg-secondary);
       }
     }
   }
