@@ -12,7 +12,7 @@
         mt-0
       "
     >
-      <div class="nav-left py-2.5">
+      <div class="nav-left">
         <!-- <input id="side" type="checkbox" name="" value="" /> -->
         <!-- <label for="side" class="toggle">
           <menu-icon size="1.5x"></menu-icon>
@@ -24,211 +24,19 @@
               src="https://res.cloudinary.com/reshelf/image/upload/v1619871156/Logo_pfuaao.svg"
               alt="Reshelf Logo"
               width="112"
-              height="24"
+              height="15"
               class="responsive"
             />
           </h1>
         </NuxtLink>
       </div>
 
-      <div class="nav-center flex items-center py-2.5"></div>
+      <div class="nav-center">
+        <span class="text-lg">Terraformで構築するAWS</span>
+        <chevron-down-icon size="1x" class="ml-4"></chevron-down-icon>
+      </div>
 
       <div class="nav-right">
-        <!-- <span class="mr-2">{{ $auth.loggedIn }}</span> -->
-
-        <!-- 検索 -->
-        <input type="text" class="search" placeholder="Search..." />
-
-        <!-- お気に入り -->
-        <button
-          v-if="isAuthenticated"
-          class="dropdown"
-          @mouseover="like = true"
-          @mouseleave="like = false"
-        >
-          <heart-icon size="1.5x" class="dropdown-icon"></heart-icon>
-          <transition>
-            <div v-if="like">
-              <div
-                class="dropdown-contents"
-                @mouseover="like = true"
-                @mouseleave="like = false"
-              >
-                <div class="p-8">お気に入りの中身は空です</div>
-              </div>
-            </div>
-          </transition>
-        </button>
-
-        <!-- カート -->
-        <button
-          v-if="isAuthenticated"
-          class="dropdown"
-          @mouseover="cart = true"
-          @mouseleave="cart = false"
-        >
-          <shopping-cart-icon
-            size="1.5x"
-            class="dropdown-icon"
-          ></shopping-cart-icon>
-          <transition>
-            <div v-if="cart">
-              <div
-                class="dropdown-contents"
-                @mouseover="cart = true"
-                @mouseleave="cart = false"
-              >
-                <div class="cart-content">
-                  <p class="cart-content-name">My Cart</p>
-                  <p class="divider"></p>
-
-                  <div class="cart-content-products scroll-none">
-                    <!-- 商品１ -->
-                    <div class="w-full flex py-4">
-                      <img
-                        class="cart-content-img"
-                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                        alt=""
-                      />
-                      <div class="cart-content-box">
-                        <div class="w-full flex flex-col items-start">
-                          <p class="cart-content-title">
-                            ゼロからはじめる
-                            Dockerによるアプリケーション実行環境構築
-                          </p>
-                          <p class="cart-content-author">
-                            クラピカクラピカクラピカ
-                          </p>
-                        </div>
-                        <div class="cart-content-price">¥ 3,500</div>
-                      </div>
-                    </div>
-                    <p class="divider"></p>
-                    <!-- 商品２ -->
-                    <div class="w-full flex py-4">
-                      <img
-                        class="cart-content-img"
-                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                        alt=""
-                      />
-                      <div class="cart-content-box">
-                        <div class="w-full flex flex-col items-start">
-                          <p class="cart-content-title">
-                            ゼロからはじめる
-                            Dockerによるアプリケーション実行環境構築
-                          </p>
-                          <p class="cart-content-author">
-                            クラピカクラピカクラピカ
-                          </p>
-                        </div>
-                        <div class="cart-content-price">¥ 3,500</div>
-                      </div>
-                    </div>
-                    <p class="divider"></p>
-                    <!-- 商品１ -->
-                    <div class="w-full flex py-4">
-                      <img
-                        class="cart-content-img"
-                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                        alt=""
-                      />
-                      <div class="cart-content-box">
-                        <div class="w-full flex flex-col items-start">
-                          <p class="cart-content-title">
-                            ゼロからはじめる
-                            Dockerによるアプリケーション実行環境構築
-                          </p>
-                          <p class="cart-content-author">
-                            クラピカクラピカクラピカ
-                          </p>
-                        </div>
-                        <div class="cart-content-price">¥ 3,500</div>
-                      </div>
-                    </div>
-                    <p class="divider"></p>
-                    <!-- 商品２ -->
-                    <div class="w-full flex py-4">
-                      <img
-                        class="cart-content-img"
-                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                        alt=""
-                      />
-                      <div class="cart-content-box">
-                        <div class="w-full flex flex-col items-start">
-                          <p class="cart-content-title">
-                            ゼロからはじめる
-                            Dockerによるアプリケーション実行環境構築
-                          </p>
-                          <p class="cart-content-author">
-                            クラピカクラピカクラピカ
-                          </p>
-                        </div>
-                        <div class="cart-content-price">¥ 3,500</div>
-                      </div>
-                    </div>
-                    <p class="divider"></p>
-                    <!-- 商品１ -->
-                    <div class="w-full flex py-4">
-                      <img
-                        class="cart-content-img"
-                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                        alt=""
-                      />
-                      <div class="cart-content-box">
-                        <div class="w-full flex flex-col items-start">
-                          <p class="cart-content-title">
-                            ゼロからはじめる
-                            Dockerによるアプリケーション実行環境構築
-                          </p>
-                          <p class="cart-content-author">
-                            クラピカクラピカクラピカ
-                          </p>
-                        </div>
-                        <div class="cart-content-price">¥ 3,500</div>
-                      </div>
-                    </div>
-                    <p class="divider"></p>
-                    <!-- 商品２ -->
-                    <div class="w-full flex py-4">
-                      <img
-                        class="cart-content-img"
-                        src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                        alt=""
-                      />
-                      <div class="cart-content-box">
-                        <div class="w-full flex flex-col items-start">
-                          <p class="cart-content-title">
-                            ゼロからはじめる
-                            Dockerによるアプリケーション実行環境構築
-                          </p>
-                          <p class="cart-content-author">
-                            クラピカクラピカクラピカ
-                          </p>
-                        </div>
-                        <div class="cart-content-price">¥ 3,500</div>
-                      </div>
-                    </div>
-                    <p class="divider"></p>
-                  </div>
-
-                  <re-button class="pt-4 re-button re-button-small">
-                    <button
-                      :class="
-                        modal
-                          ? 're-button-primary-border'
-                          : 're-button-primary-filled'
-                      "
-                      @click="modal = !modal"
-                    >
-                      Checkout
-                    </button>
-                  </re-button>
-                </div>
-              </div>
-            </div>
-          </transition>
-        </button>
-
         <!-- ユーザードロップダウン -->
         <button
           class="dropdown"
@@ -336,21 +144,12 @@
 </template>
 
 <script>
-import ReButton from '@/components/atoms/ReButton'
 import ReModal from '@/components/atoms/ReModal'
-import {
-  // MenuIcon,
-  ShoppingCartIcon,
-  HeartIcon,
-} from 'vue-feather-icons'
-
+import { ChevronDownIcon } from 'vue-feather-icons'
 export default {
   components: {
-    ReButton,
     ReModal,
-    // MenuIcon,
-    ShoppingCartIcon,
-    HeartIcon,
+    ChevronDownIcon,
   },
   data() {
     return {
@@ -424,12 +223,11 @@ export default {
   //   );
   // }
   &-left {
-    @apply flex items-center lg:w-1/4 xl:w-1/5 mr-12;
-    height: 45px;
-    width: 240px;
+    @apply flex items-center pr-6 mr-6;
+    border-right: solid 1px var(--gray);
   }
   &-center {
-    @apply mr-auto;
+    @apply mr-auto flex items-center cursor-pointer;
   }
   &-right {
     @apply justify-end;

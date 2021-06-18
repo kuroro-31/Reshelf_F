@@ -6,7 +6,7 @@
           <!-- 左サイド -->
           <div class="relative flex flex-col items-start">
             <nuxt-link
-              to="/item/detail"
+              to="/item/learning"
               @mouseover="visible = true"
               @mouseleave="visible = false"
             >
