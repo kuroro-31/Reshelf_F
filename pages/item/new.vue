@@ -15,7 +15,7 @@
         </NuxtLink>
 
         <div class="w-full ml-auto mt-8">
-          <SidebarTac />
+          <SidebarNew />
         </div>
       </nav>
       <div class="card-lg main-body scroll-none">
@@ -80,17 +80,13 @@
           </a>
         </div>
       </div>
-      <div class="right-side">
-        <SidebarQa />
-      </div>
     </div>
     <!-- <FooterNav /> -->
   </div>
 </template>
 <script>
 // import FooterNav from '@/components/layout/FooterNav'
-import SidebarTac from '@/components/layout/sidebar/item/SidebarTac'
-import SidebarQa from '@/components/layout/sidebar/item/SidebarQa'
+import SidebarNew from '@/components/layout/sidebar/item/SidebarNew'
 // atoms
 import {
   ChevronLeftIcon,
@@ -100,8 +96,7 @@ import {
 export default {
   components: {
     // FooterNav,
-    SidebarTac,
-    SidebarQa,
+    SidebarNew,
     ChevronLeftIcon,
     ChevronRightIcon,
     ChevronDownIcon,

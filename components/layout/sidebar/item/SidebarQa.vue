@@ -67,10 +67,10 @@ export default {
     content: '';
     height: 1px;
     order: -1;
-    border-bottom: 1px solid var(--gray);
   }
   &-label {
-    @apply cursor-pointer;
+    @apply cursor-pointer mb-2;
+    border-bottom: 1px solid var(--gray);
     /* タブ */
     margin-right: 3px;
     padding: 3px 12px;
@@ -101,7 +101,6 @@ export default {
     @apply w-full overflow-hidden opacity-0;
     height: 0;
     background: var(--bg-secondary);
-
     &-textarea {
       @apply w-full p-2 rounded;
       border: 1px solid var(--gray);

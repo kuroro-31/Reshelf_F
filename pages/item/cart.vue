@@ -2,7 +2,7 @@
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
 
-    <main class="scroll-none mt-10">
+    <div class="main scroll-none">
       <span class="title">ショッピングカート</span>
 
       <div class="lg:flex w-full">
@@ -14,7 +14,7 @@
           <SidebarCart :items="items" />
         </nav>
       </div>
-    </main>
+    </div>
     <!-- <FooterNav /> -->
   </div>
 </template>
@@ -97,8 +97,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-main {
-  @apply w-full flex flex-col max-w-screen-lg mx-auto container;
+.main {
+  @apply w-full flex flex-col max-w-screen-lg mx-auto container mt-10;
 }
 .title {
   @apply font-bold cursor-pointer text-3xl mb-4 pb-2;

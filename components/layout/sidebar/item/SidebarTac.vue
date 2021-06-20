@@ -5,7 +5,7 @@
     <div class="flex flex-col">
       <span class="item-title">目次</span>
       <nuxt-link class="item-link" to="/user/setting">
-        はじめてのTerraformがこんなものでどうするんだ、このままで良いのか？
+        はじめてのTerraform
       </nuxt-link>
       <nuxt-link class="item-link" to="/user/profile">Terraformとは</nuxt-link>
       <nuxt-link class="item-link" to="/user/profile">環境を準備する</nuxt-link>
@@ -33,6 +33,9 @@ export default {
   &-title {
     @apply font-bold pb-2 text-right cursor-default;
     color: var(--sub-color);
+    // @screen lg {
+    //   margin-top: 50px;
+    // }
   }
   &-link {
     @apply py-1 text-right;

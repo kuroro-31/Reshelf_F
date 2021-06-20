@@ -1,71 +1,17 @@
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
-      <div class="flex items-center justify-between mb-4">
-        <span>27 results found</span>
-        <div class="filter">
-          <!-- ユーザードロップダウン -->
-          <button
-            class="dropdown"
-            @mouseover="dropdown = true"
-            @mouseleave="dropdown = false"
-          >
-            <span>Featured</span>
-            <chevron-down-icon
-              size="1x"
-              class="inline-block ml-2"
-            ></chevron-down-icon>
-            <transition>
-              <div
-                v-if="dropdown"
-                class="dropdown-contents scroll-none"
-                @mouseover="dropdown = true"
-                @mouseleave="dropdown = false"
-              >
-                <div class="menu">
-                  <div class="menu-me">
-                    <nuxt-link class="menu-me-link" to="/user/learning">
-                      Lowest
-                    </nuxt-link>
-                    <nuxt-link class="menu-me-link" to="/user/like">
-                      Highest
-                    </nuxt-link>
-                  </div>
-                </div>
-              </div>
-            </transition>
-          </button>
-          <div class="filter-icons">
-            <grid-icon size="1.5x" class="filter-icons-grid"></grid-icon>
-            <list-icon size="1.5x" class="filter-icons-list"></list-icon>
-          </div>
-        </div>
-      </div>
       <div class="items">
         <div v-for="item in items" :key="item.id" class="card item">
           <!-- 左サイド -->
           <div class="relative flex flex-col items-start">
             <nuxt-link
-              to="/item/detail"
+              to="/item/learning"
               @mouseover="visible = true"
               @mouseleave="visible = false"
             >
               <img :src="item.src" alt="text image" class="img" />
             </nuxt-link>
-
-            <div
-              class="content"
-              :class="{ visible: visible === true }"
-              @mouseover="visible = true"
-              @mouseleave="visible = false"
-            >
-              <!-- 説明 -->
-              <div class="flex w-full items-center mt-1">
-                {{ item.describe }}
-              </div>
-              <!-- 最終更新
-              <p class="name text-xs">最終更新日：{{ item.edit_time }}</p> -->
-            </div>
           </div>
 
           <!-- センター -->
@@ -79,119 +25,7 @@
               {{ item.name }}
             </nuxt-link>
 
-            <div class="flex items-center mt-1">
-              <div class="flex items-center">
-                <!-- レート -->
-                <p
-                  class="rate"
-                  :class="{
-                    rate_one: item.rate >= 0,
-                    rate_two: item.rate >= 3.0,
-                    rate_three: item.rate >= 4.0,
-                    rate_four: item.rate >= 4.6,
-                  }"
-                >
-                  {{ item.rate | comma }}
-                </p>
-                <!-- レート画像 -->
-                <div
-                  class="rate_img"
-                  :class="{
-                    rate_img_zero: item.rate >= 0.0,
-                    rate_img_one: item.rate >= 1.0,
-                    rate_img_one_five: item.rate >= 1.5,
-                    rate_img_two: item.rate >= 2.0,
-                    rate_img_two_five: item.rate >= 2.5,
-                    rate_img_three: item.rate >= 3.0,
-                    rate_img_three_five: item.rate >= 3.5,
-                    rate_img_four: item.rate >= 4.0,
-                    rate_img_four_five: item.rate >= 4.5,
-                    rate_img_four_seven: item.rate >= 4.7,
-                    rate_img_five: item.rate >= 5.0,
-                  }"
-                ></div>
-              </div>
-              <p class="name ml-1 text-xs">
-                （総合評価：{{ item.all_rate | comma }}）
-              </p>
-            </div>
-
-            <!-- 最終更新
-            <p class="name text-xs text-right mt-1">
-              更新：{{ item.edit_time }}
-            </p> -->
-            <div class="flex items-center">
-              <!-- 教材レベル -->
-              <!-- <span
-                class="level"
-                :class="{
-                  level_one: item.level === '初級',
-                  level_two: item.level === '中級',
-                  level_three: item.level === '上級',
-                  level_four: item.level === '特級',
-                }"
-              > -->
-              <span class="level">
-                {{ item.level }}
-              </span>
-              <!-- デモ -->
-              <a :href="item.demo" class="demo" target="_blank">DEMO</a>
-            </div>
-          </div>
-
-          <!-- 右サイド -->
-          <div class="right-box">
-            <div class="flex items-center mb-4">
-              <!-- セール価格 -->
-              <span class="right-box-sale">
-                {{ item.sale_price | moneyFormat }}
-              </span>
-
-              <!-- 定価 -->
-              <span class="right-box-normal">
-                {{ item.normal_price | moneyFormat }}
-              </span>
-            </div>
-
-            <!-- ボタン -->
-            <div class="flex flex-col w-full">
-              <re-button
-                class="re-button h-full no-shadow"
-                :class="isLiked ? 'no-shadow' : ''"
-              >
-                <button
-                  type="submit"
-                  class="re-button-primary-border"
-                  @click="isLiked = !isLiked"
-                >
-                  <heart-icon
-                    size="1x"
-                    class="mr-2"
-                    :class="isLiked ? 'text-red' : ''"
-                  ></heart-icon>
-                  <span :class="!isLiked ? 'block' : 'hidden'">
-                    お気に入りに追加
-                  </span>
-                  <span :class="isLiked ? 'block' : 'hidden'">お気に入り</span>
-                </button>
-              </re-button>
-              <re-button
-                class="re-button h-full mt-2"
-                :class="isDisabled ? 'no-shadow' : ''"
-              >
-                <button
-                  type="submit"
-                  class="re-button-primary-filled"
-                  @click="$router.push('/item/cart')"
-                >
-                  <shopping-cart-icon
-                    size="1x"
-                    class="mr-2"
-                  ></shopping-cart-icon>
-                  カートに入れる
-                </button>
-              </re-button>
-            </div>
+            <span class="text-right w-full text-xs">評価する</span>
           </div>
         </div>
       </div>
@@ -199,23 +33,10 @@
   </div>
 </template>
 <script>
-import ReButton from '@/components/atoms/ReButton'
-import {
-  HeartIcon,
-  ShoppingCartIcon,
-  GridIcon,
-  ListIcon,
-  ChevronDownIcon,
-} from 'vue-feather-icons'
+// import ReButton from '@/components/atoms/ReButton'
+// import { HeartIcon, ShoppingCartIcon } from 'vue-feather-icons'
 export default {
-  components: {
-    ReButton,
-    HeartIcon,
-    ShoppingCartIcon,
-    GridIcon,
-    ListIcon,
-    ChevronDownIcon,
-  },
+  components: {},
   filters: {
     numberFormat: function (num) {
       return num.toLocaleString()
@@ -313,6 +134,7 @@ export default {
       &:hover {
         // @apply;
         color: var(--primary);
+        background: var(--bg-secondary);
       }
     }
     &-list {
@@ -324,27 +146,32 @@ export default {
       &:hover {
         // @apply;
         color: var(--primary);
+        background: var(--bg-secondary);
       }
     }
   }
 }
 .items {
-  @apply flex relative flex-col w-full justify-center;
+  @apply flex relative flex-wrap;
 }
 .item {
   // @apply flex pb-8 mb-8 relative justify-between;
   // @apply flex pb-6 mb-6 relative;
   // border-bottom: 1px var(--thin-gray) solid;
-  @apply flex mb-6 relative;
+  @apply flex flex-col mb-6 relative;
+  @screen lg {
+    @apply mr-auto;
+    width: 31%;
+  }
 }
 .center {
-  @apply flex flex-col px-6 items-start w-full;
+  @apply flex flex-col pt-4 items-start w-full;
   @screen lg {
     // min-width: 576px;
   }
 }
 .title {
-  @apply text-lg font-bold cursor-pointer;
+  @apply text-lg w-full truncate font-bold cursor-pointer;
   color: var(--color);
 }
 // 商品画像

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
-    <main class="w-full flex max-w-screen-xl mx-auto container scroll-none">
+    <div class="w-full flex max-w-screen-xl mx-auto container scroll-none">
       <div class="lg:flex w-full">
         <nav class="card side-nav">
           <SidebarSetting class="divider" />
@@ -15,7 +15,7 @@
           </div>
         </div>
       </div>
-    </main>
+    </div>
     <!-- <FooterNav /> -->
   </div>
 </template>
@@ -325,13 +325,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 .side-nav {
-  @apply hidden w-full lg:block mt-6 lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
+  @apply w-full my-6 lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
   // @screen lg {
   //   border-right: 1px #ddd solid;
   // }
   // @screen lg {
   //   @apply overflow-y-auto;
-  //   height: calc(100vh - 68px);
+  //   max-height: calc(100vh - 68px - 48px);
   // }
 }
 .main-body {

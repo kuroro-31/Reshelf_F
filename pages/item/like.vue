@@ -2,7 +2,7 @@
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
     <hero-item />
-    <main class="w-full flex max-w-screen-xl mx-auto container scroll-none">
+    <div class="main scroll-none">
       <div class="lg:flex w-full">
         <div class="main-body min-h-(screen-16) scroll-none">
           <DetailItem :items="items" />
@@ -12,7 +12,7 @@
           <SidebarDetail :items="items" />
         </nav>
       </div>
-    </main>
+    </div>
     <!-- <FooterNav /> -->
   </div>
 </template>
@@ -70,7 +70,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-main {
+.main {
+  @apply w-full flex max-w-screen-xl mx-auto container;
   margin-top: -420px;
 }
 .side-nav {

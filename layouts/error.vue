@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full mx-auto flex flex-col">
     <HeaderNav />
-    <main class="w-full flex items-center justify-center mx-auto">
+    <div class="main">
       <ul class="flex flex-col">
         <li
           v-for="(value, key, index) in error"
@@ -17,7 +17,7 @@
           </re-button>
         </nuxt-link>
       </ul>
-    </main>
+    </div>
   </div>
 </template>
 <script>
@@ -53,7 +53,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-main {
+.main {
+  @apply w-full flex items-center justify-center mx-auto;
   height: calc(100vh - 61px);
   overflow-y: hidden;
 }

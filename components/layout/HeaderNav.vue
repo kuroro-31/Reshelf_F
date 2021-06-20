@@ -255,8 +255,9 @@
                     height="50px"
                     src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
                   />
-                  <span v-if="isAuthenticated" class="menu-name-person">
-                    {{ loggedInUser.name }}
+                  <span class="menu-name-person">
+                    <!-- {{ loggedInUser.name }} -->
+                    Elizabeth Swan
                   </span>
                 </div>
                 <div class="menu-me">
@@ -405,9 +406,9 @@ export default {
 .nav {
   @apply sticky top-0 z-20 flex items-center justify-center h-16;
   background-color: var(--bg-secondary);
-  border-bottom-width: 1px;
-  border-style: solid;
-  border-color: #e5e7eb;
+  // border-bottom-width: 1px;
+  // border-style: solid;
+  // border-color: #e5e7eb;
   // &::after {
   //   content: '';
   //   position: absolute;
