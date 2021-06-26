@@ -3,7 +3,7 @@
     <HeaderNav />
     <div class="w-full flex max-w-screen-xl mx-auto container scroll-none">
       <div class="lg:flex w-full">
-        <nav class="card side-nav">
+        <nav class="card side-nav mb-auto">
           <SidebarSetting class="divider" />
           <SidebarStudent class="divider" />
           <SidebarTeacher />

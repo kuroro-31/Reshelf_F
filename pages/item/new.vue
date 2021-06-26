@@ -1,5 +1,6 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
+    <!-- <HeaderNav /> -->
     <div class="body">
       <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
         <NuxtLink to="/" class="title-link">
@@ -85,6 +86,7 @@
   </div>
 </template>
 <script>
+// import HeaderNav from '@/components/layout/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
 import SidebarNew from '@/components/layout/sidebar/item/SidebarNew'
 // atoms
@@ -96,6 +98,7 @@ import {
 export default {
   components: {
     // FooterNav,
+    // HeaderNav,
     SidebarNew,
     ChevronLeftIcon,
     ChevronRightIcon,
