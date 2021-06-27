@@ -80,7 +80,7 @@
 </template>
 <script>
 // layout
-import HeaderNav from '@/components/layout/HeaderNav'
+import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
 // atoms
 import AllItem from '@/components/atoms/item/AllItem'
@@ -393,7 +393,7 @@ export default {
     &-link {
       @apply mt-8;
       &-website {
-        @apply w-full rounded text-xl px-4 py-2 flex justify-center items-center;
+        @apply w-full rounded-lg text-xl px-4 py-2 flex justify-center items-center;
         border: 1px solid var(--color);
         &:hover {
           color: var(--primary);
@@ -401,7 +401,7 @@ export default {
         }
       }
       &-facebook {
-        @apply w-full mt-2 rounded text-xl px-4 py-2 flex justify-center items-center;
+        @apply w-full mt-2 rounded-lg text-xl px-4 py-2 flex justify-center items-center;
         border: 1px solid var(--color);
         &:hover {
           color: #1976f2;
@@ -409,7 +409,7 @@ export default {
         }
       }
       &-twitter {
-        @apply w-full mt-2 rounded text-xl px-4 py-2 flex justify-center items-center;
+        @apply w-full mt-2 rounded-lg text-xl px-4 py-2 flex justify-center items-center;
         border: 1px solid var(--color);
         &:hover {
           color: #1ea2f1;
@@ -417,7 +417,7 @@ export default {
         }
       }
       &-github {
-        @apply w-full mt-2 rounded text-xl px-4 py-2 flex justify-center items-center;
+        @apply w-full mt-2 rounded-lg text-xl px-4 py-2 flex justify-center items-center;
         border: 1px solid var(--color);
         &:hover {
           color: #242a2f;

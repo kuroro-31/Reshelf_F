@@ -97,7 +97,7 @@ export default {
 </script>
 <style lang="scss">
 .re-button {
-  @apply block relative overflow-hidden w-full rounded;
+  @apply block relative overflow-hidden w-full rounded-lg;
   // border-radius: 6px; // リップルの角丸のため必要
   transition: all 0.2s ease;
   // &:hover {

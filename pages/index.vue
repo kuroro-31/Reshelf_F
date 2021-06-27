@@ -18,7 +18,7 @@
 </template>
 <script>
 // layout
-import HeaderNav from '@/components/layout/HeaderNav'
+import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
 import SidebarSearch from '@/components/layout/sidebar/SidebarSearch'
 // atoms

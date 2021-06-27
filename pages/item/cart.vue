@@ -20,7 +20,7 @@
 </template>
 <script>
 // layout
-import HeaderNav from '@/components/layout/HeaderNav'
+import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
 import SidebarCart from '@/components/layout/sidebar/item/SidebarCart'
 // atoms

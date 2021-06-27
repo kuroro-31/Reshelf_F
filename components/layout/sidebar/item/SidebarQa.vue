@@ -89,7 +89,7 @@ export default {
       border-bottom: 2px solid var(--color);
       // background: var(--fff);
       & + .content {
-        @apply p-6 rounded;
+        @apply p-6 rounded-lg;
         height: auto;
         overflow: auto;
         opacity: 1;
@@ -102,7 +102,7 @@ export default {
     height: 0;
     background: var(--bg-secondary);
     &-textarea {
-      @apply w-full p-2 rounded;
+      @apply w-full p-2 rounded-lg;
       border: 1px solid var(--gray);
     }
     &-btns {

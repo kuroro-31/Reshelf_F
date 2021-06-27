@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import HeaderNav from '@/components/layout/HeaderNav'
+import HeaderNav from '@/components/layout/header/HeaderNav'
 import ReButton from '@/components/atoms/ReButton'
 
 export default {

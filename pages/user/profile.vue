@@ -23,7 +23,7 @@
 </template>
 <script>
 // layout
-import HeaderNav from '@/components/layout/HeaderNav'
+import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
 import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
 import SidebarTeacher from '@/components/layout/sidebar/SidebarTeacher'
