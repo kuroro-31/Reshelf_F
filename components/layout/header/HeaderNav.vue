@@ -327,7 +327,7 @@
                       <option value="system">System</option>
                       <option value="light">Light</option>
                       <option value="dark">Dark</option>
-                      <option value="sepia">Sepia</option>
+                      <option value="blue">Blue</option>
                       <option value="purple">purple</option>
                       <option value="gold">gold</option>
                     </select>
