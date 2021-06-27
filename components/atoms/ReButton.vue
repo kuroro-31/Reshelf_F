@@ -97,7 +97,7 @@ export default {
 </script>
 <style lang="scss">
 .re-button {
-  @apply block relative overflow-hidden w-full rounded-lg;
+  @apply block relative overflow-hidden w-full rounded font-bold;
   // border-radius: 6px; // リップルの角丸のため必要
   transition: all 0.2s ease;
   // &:hover {
@@ -109,11 +109,13 @@ export default {
     @apply flex items-center justify-center w-full border-none cursor-pointer box-border bg-transparent duration-200;
     min-width: 100px; // 2文字などの短いボタンのケースで必要
     // height: 100%; // 高さが崩れるので一時コメントアウト
-    padding: 1rem;
+    // padding: 1rem;
     min-height: 44px;
     // border-radius: 6px;
     color: var(--fff);
     line-height: 1.2;
+    padding: 13px 25px;
+    // border-radius: 17px;
     // text-align: center; // justify-content: center;しているのでカット
   }
   &:disabled {
@@ -152,18 +154,18 @@ export default {
   &-primary {
     &-filled {
       @apply h-full;
-      background: var(--color) !important;
+      // background: var(--color) !important;
+      // color: var(--fff) !important;
+      background: var(--primary) !important;
       color: var(--fff) !important;
-      // background: rgba($primary, 0.15) !important;
-      // color: var(--primary) !important;
       &:hover {
-        // background: rgba($primary, 0.2) !important;
-        background: #475269 !important;
+        // background: rgba($primary, 0.8) !important;
+        // background: #475269 !important;
       }
     }
     &-border {
       @apply h-full;
-      background: #f0f2f6 !important;
+      background: #f1f1f1 !important;
       color: var(--color) !important;
       // border: 1px solid var(--primary) !important;
       // color: var(--primary) !important;

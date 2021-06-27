@@ -74,3 +74,11 @@ button, input, select, textarea {
 .mb-auto {
   margin-bottom: auto !important;
 }
+
+// ロゴのsvg
+.path {
+  stroke: var(--primary) !important;
+  fill: var(--primary) !important;
+  stroke-width: 1.138 !important;
+  stroke-miterlimit: 2 !important;
+}
