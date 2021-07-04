@@ -35,54 +35,32 @@
               </div>
             </transition>
           </button>
-          <div class="filter-icons">
-            <grid-icon size="1.5x" class="filter-icons-grid"></grid-icon>
-            <list-icon size="1.5x" class="filter-icons-list"></list-icon>
-          </div>
         </div>
       </div>
       <div class="items">
         <div v-for="item in items" :key="item.id" class="card item">
           <!-- 左サイド -->
           <div class="relative flex flex-col items-start">
-            <nuxt-link
-              to="/item/detail"
-              @mouseover="visible = true"
-              @mouseleave="visible = false"
-            >
-              <img :src="item.src" alt="text image" class="img" />
-            </nuxt-link>
-
-            <div
-              class="content"
-              :class="{ visible: visible === true }"
-              @mouseover="visible = true"
-              @mouseleave="visible = false"
-            >
-              <!-- 説明 -->
-              <div class="flex w-full items-center mt-1">
-                {{ item.describe }}
-              </div>
-              <!-- 最終更新
-              <p class="name text-xs">最終更新日：{{ item.edit_time }}</p> -->
-            </div>
-          </div>
-
-          <!-- センター -->
-          <div class="center">
-            <nuxt-link class="title" to="/item/detail">
-              {{ item.title }}
-            </nuxt-link>
-
-            <!-- 作者 -->
-            <nuxt-link to="/user/top" class="name text-xs cursor-pointer">
-              {{ item.name }}
-            </nuxt-link>
-
-            <div class="flex items-center mt-1">
+            <button class="relative">
+              <img
+                :src="item.src"
+                alt="text image"
+                class="img"
+                @mouseover="showItem = true"
+                @mouseleave="showItem = false"
+                @click="$router.push('/item/detail')"
+              />
+              <nuxt-link class="title" to="/item/detail">
+                {{ item.title }}
+              </nuxt-link>
+              <!-- 作者 -->
+              <nuxt-link to="/user/top" class="name">
+                {{ item.name }}
+              </nuxt-link>
               <div class="flex items-center">
                 <!-- レート -->
-                <p
+                <p class="rate rate_two">
+                  <!-- <p
                   class="rate"
                   :class="{
                     rate_one: item.rate >= 0,
@@ -90,7 +68,7 @@
                     rate_three: item.rate >= 4.0,
                     rate_four: item.rate >= 4.6,
                   }"
-                >
+                > -->
                   {{ item.rate | comma }}
                 </p>
                 <!-- レート画像 -->
@@ -111,87 +89,77 @@
                   }"
                 ></div>
               </div>
-              <p class="name ml-1 text-xs">
-                （総合評価：{{ item.all_rate | comma }}）
-              </p>
-            </div>
-
-            <!-- 最終更新
-            <p class="name text-xs text-right mt-1">
-              更新：{{ item.edit_time }}
-            </p> -->
-            <div class="flex items-center">
-              <!-- 教材レベル -->
-              <!-- <span
-                class="level"
-                :class="{
-                  level_one: item.level === '初級',
-                  level_two: item.level === '中級',
-                  level_three: item.level === '上級',
-                  level_four: item.level === '特級',
-                }"
-              > -->
-              <span class="level">
-                {{ item.level }}
-              </span>
-              <!-- デモ -->
-              <a :href="item.demo" class="demo" target="_blank">DEMO</a>
-            </div>
-          </div>
-
-          <!-- 右サイド -->
-          <div class="right-box">
-            <div class="flex items-center mb-4">
               <!-- セール価格 -->
-              <span class="right-box-sale">
+              <div class="right-box-sale">
                 {{ item.sale_price | moneyFormat }}
-              </span>
+              </div>
+              <div class="flex mt-2">
+                <span class="level">
+                  {{ item.level }}
+                </span>
+                <!-- デモ -->
+                <a :href="item.demo" class="demo" target="_blank">DEMO</a>
+              </div>
 
-              <!-- 定価 -->
-              <span class="right-box-normal">
-                {{ item.normal_price | moneyFormat }}
-              </span>
-            </div>
-
-            <!-- ボタン -->
-            <div class="flex flex-col w-full">
-              <re-button
-                class="re-button h-full no-shadow"
-                :class="isLiked ? 'no-shadow' : ''"
-              >
-                <button
-                  type="submit"
-                  class="re-button-primary-border"
-                  @click="isLiked = !isLiked"
-                >
-                  <heart-icon
-                    size="1x"
-                    class="mr-2"
-                    :class="isLiked ? 'text-red' : ''"
-                  ></heart-icon>
-                  <span :class="!isLiked ? 'block' : 'hidden'">
-                    お気に入りに追加
-                  </span>
-                  <span :class="isLiked ? 'block' : 'hidden'">お気に入り</span>
-                </button>
-              </re-button>
-              <re-button
-                class="re-button h-full mt-2"
-                :class="isDisabled ? 'no-shadow' : ''"
-              >
-                <button
-                  type="submit"
-                  class="re-button-primary-filled"
-                  @click="$router.push('/item/cart')"
-                >
-                  <shopping-cart-icon
-                    size="1x"
-                    class="mr-2"
-                  ></shopping-cart-icon>
-                  カートに入れる
-                </button>
-              </re-button>
-            </div>
+              <transition>
+                <div v-if="showItem">
+                  <div
+                    @mouseover="showItem = true"
+                    @mouseleave="showItem = false"
+                  >
+                    <div class="content">
+                      <!-- 説明 -->
+                      <div class="w-full text-sm text-left">
+                        {{ item.describe }}
+                      </div>
+                      <!-- ボタン -->
+                      <div class="flex flex-col w-full mt-4">
+                        <re-button
+                          class="re-button h-full no-shadow"
+                          :class="isLiked ? 'no-shadow' : ''"
+                        >
+                          <button
+                            type="submit"
+                            class="re-button-primary-border"
+                            @click="isLiked = !isLiked"
+                          >
+                            <heart-icon
+                              size="1x"
+                              class="mr-2"
+                              :class="isLiked ? 'text-red' : ''"
+                            ></heart-icon>
+                            <span :class="!isLiked ? 'block' : 'hidden'">
+                              お気に入りに追加
+                            </span>
+                            <span :class="isLiked ? 'block' : 'hidden'">
+                              お気に入り
+                            </span>
+                          </button>
+                        </re-button>
+                        <re-button
+                          class="re-button h-full mt-2"
+                          :class="isDisabled ? 'no-shadow' : ''"
+                        >
+                          <button
+                            type="submit"
+                            class="re-button-primary-filled"
+                            @click="$router.push('/item/cart')"
+                          >
+                            <shopping-cart-icon
+                              size="1x"
+                              class="mr-2"
+                            ></shopping-cart-icon>
+                            カートに入れる
+                          </button>
+                        </re-button>
+                      </div>
+                      <!-- 最終更新
+              <p class="name text-xs">最終更新日：{{ item.edit_time }}</p> -->
+                    </div>
+                  </div>
+                </div>
+              </transition>
+            </button>
           </div>
         </div>
       </div>
@@ -200,20 +168,12 @@
 </template>
 <script>
 import ReButton from '@/components/atoms/ReButton'
-import {
-  HeartIcon,
-  ShoppingCartIcon,
-  GridIcon,
-  ListIcon,
-  ChevronDownIcon,
-} from 'vue-feather-icons'
+import { HeartIcon, ShoppingCartIcon, ChevronDownIcon } from 'vue-feather-icons'
 export default {
   components: {
     ReButton,
     HeartIcon,
     ShoppingCartIcon,
-    GridIcon,
-    ListIcon,
     ChevronDownIcon,
   },
   filters: {
@@ -241,7 +201,7 @@ export default {
 
   data() {
     return {
-      visible: false,
+      showItem: false,
       isLiked: false,
       isDisabled: false,
       dropdown: false,
@@ -252,7 +212,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .dropdown {
-  @apply py-2 px-4 relative rounded-lg mr-4;
+  @apply py-2 px-4 relative rounded mr-4;
   // background: var(--bg-secondary);
   border: 1px solid var(--gray);
   &-icon {
@@ -264,7 +224,7 @@ export default {
     height: 40px;
   }
   &-contents {
-    @apply absolute top-0 right-0 z-50 rounded-lg shadow-lg overflow-y-auto cursor-default;
+    @apply absolute top-0 right-0 z-50 rounded shadow-lg overflow-y-auto cursor-default;
     background-color: var(--bg-secondary);
     @screen lg {
       margin-top: 40px;
@@ -289,7 +249,7 @@ export default {
       color: var(--sub-color);
     }
     &-link {
-      @apply py-3 w-full rounded-lg text-left px-4 duration-200;
+      @apply py-3 w-full rounded text-left px-4 duration-200;
       &:hover {
         @apply cursor-pointer;
         background: #f0f2f6;
@@ -329,13 +289,16 @@ export default {
   }
 }
 .items {
-  @apply flex relative flex-col w-full justify-center;
+  @apply flex relative flex-wrap;
 }
 .item {
   // @apply flex pb-8 mb-8 relative justify-between;
   // @apply flex pb-6 mb-6 relative;
   // border-bottom: 1px var(--thin-gray) solid;
-  @apply flex mb-6 relative;
+  @apply flex mb-6 relative mr-auto;
+  &:nth-child(3) {
+    @apply mr-0;
+  }
 }
 .center {
   @apply flex flex-col px-6 items-start w-full;
@@ -344,8 +307,9 @@ export default {
   }
 }
 .title {
-  @apply text-lg font-bold cursor-pointer;
+  @apply block w-full truncate font-bold cursor-pointer mt-2 block;
   color: var(--color);
+  max-width: 260px;
 }
 // 商品画像
 .img {
@@ -365,13 +329,15 @@ export default {
 }
 
 .content {
-  @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded-lg p-6;
+  @apply flex flex-col items-center justify-center absolute shadow-lg rounded-lg p-6;
   background-color: var(--bg-secondary);
   top: 0px;
-  left: 125px;
-  max-height: 300px;
+  right: -400px;
   width: 400px;
   z-index: 510;
+  &:nth-child(3) {
+    left: -400px;
+  }
 }
 .tag {
   @apply px-2 py-1 mr-2;
@@ -384,19 +350,15 @@ export default {
   width: 275px;
   border-left: 1px var(--thin-gray) solid;
   &-sale {
-    @apply text-3xl;
+    @apply block w-full text-left font-bold text-lg mt-1;
     // color: var(--red);
   }
-  &-normal {
-    @apply line-through ml-2;
-    color: var(--sub-color);
-  }
 }
-.visible {
-  display: flex;
+.display {
+  display: flex !important;
 }
-
 .name {
+  @apply inline-block text-xs cursor-pointer text-left w-full;
   color: var(--sub-color);
 }
 // いいね
@@ -417,7 +379,7 @@ export default {
 }
 // 教材レベル
 .level {
-  @apply flex justify-end mt-2 px-2 py-1 mr-2 text-xs cursor-pointer;
+  @apply flex justify-end px-2 py-1 mr-2 text-xs cursor-pointer;
   max-width: 50px;
   border: 1px solid var(--sub-color);
   color: var(--sub-color);
@@ -440,12 +402,12 @@ export default {
 }
 // 教材評価
 .rate {
-  @apply text-2xl font-bold cursor-default;
+  @apply text-base leading-4 font-bold cursor-default;
   &_one {
     color: $green;
   }
   &_two {
-    color: $yellow;
+    color: $gold;
   }
   &_three {
     color: $red;
@@ -453,70 +415,84 @@ export default {
   &_four {
     color: $purple;
   }
+  &_img {
+    @apply flex items-center ml-2;
+    &_zero {
+      @apply bg-contain;
+      height: 14px;
+      width: 100px;
+      background-image: url('~@/assets/images/rate/zero.svg');
+    }
+    &_one {
+      @apply bg-contain;
+      height: 14px;
+      width: 100px;
+      background-image: url('~@/assets/images/rate/one.svg');
+    }
+    &_one_five {
+      @apply bg-contain;
+      height: 14px;
+      width: 100px;
+      background-image: url('~@/assets/images/rate/one-five.svg');
+    }
+    &_two {
+      @apply bg-contain;
+      height: 14px;
+      width: 100px;
+      background-image: url('~@/assets/images/rate/two.svg');
+    }
+    &_two_five {
+      @apply bg-contain;
+      height: 14px;
+      width: 100px;
+      background-image: url('~@/assets/images/rate/two-five.svg');
+    }
+    &_three {
+      @apply bg-contain;
+      height: 14px;
+      width: 100px;
+      background-image: url('~@/assets/images/rate/three.svg');
+    }
+    &_three_five {
+      @apply bg-contain;
+      height: 14px;
+      width: 100px;
+      background-image: url('~@/assets/images/rate/three-five.svg');
+    }
+    &_four {
+      @apply bg-contain;
+      height: 14px;
+      width: 100px;
+      background-image: url('~@/assets/images/rate/four.svg');
+    }
+    &_four_five {
+      @apply bg-contain;
+      height: 14px;
+      width: 100px;
+      background-image: url('~@/assets/images/rate/four-five.svg');
+    }
+    &_four_seven {
+      @apply bg-contain;
+      height: 14px;
+      width: 100px;
+      background-image: url('~@/assets/images/rate/four-seven.svg');
+    }
+    &_five {
+      @apply bg-contain;
+      height: 14px;
+      width: 100px;
+      background-image: url('~@/assets/images/rate/five.svg');
+    }
+  }
 }
 // 教材評価画像
-.rate_img {
-  @apply flex items-center ml-2;
-  &_zero {
-    height: 17px;
-    width: 100px;
-    background-image: url('~@/assets/images/rate/zero.svg');
-  }
-  &_one {
-    height: 17px;
-    width: 100px;
-    background-image: url('~@/assets/images/rate/one.svg');
-  }
-  &_one_five {
-    height: 17px;
-    width: 100px;
-    background-image: url('~@/assets/images/rate/one-five.svg');
-  }
-  &_two {
-    height: 17px;
-    width: 100px;
-    background-image: url('~@/assets/images/rate/two.svg');
-  }
-  &_two_five {
-    height: 17px;
-    width: 100px;
-    background-image: url('~@/assets/images/rate/two-five.svg');
-  }
-  &_three {
-    height: 17px;
-    width: 100px;
-    background-image: url('~@/assets/images/rate/three.svg');
-  }
-  &_three_five {
-    height: 17px;
-    width: 100px;
-    background-image: url('~@/assets/images/rate/three-five.svg');
-  }
-  &_four {
-    height: 17px;
-    width: 100px;
-    background-image: url('~@/assets/images/rate/four.svg');
-  }
-  &_four_five {
-    height: 17px;
-    width: 100px;
-    background-image: url('~@/assets/images/rate/four-five.svg');
-  }
-  &_four_seven {
-    height: 17px;
-    width: 100px;
-    background-image: url('~@/assets/images/rate/four-seven.svg');
-  }
-  &_five {
-    height: 17px;
-    width: 100px;
-    background-image: url('~@/assets/images/rate/five.svg');
-  }
-}
 .demo {
-  @apply inline-flex justify-center items-center mt-2 px-4 py-1 text-xs cursor-pointer;
+  @apply inline-flex justify-center items-center px-4 py-1 text-xs cursor-pointer;
   max-width: 50px;
   border: 1px solid var(--sub-color);
   color: var(--sub-color);
+}
+.cart-content {
+  @apply overflow-auto flex flex-col p-4 items-start;
 }
 </style>
