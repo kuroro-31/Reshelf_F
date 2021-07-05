@@ -43,7 +43,7 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-  ssr: true,
+  ssr: false, // SPA
   components: true,
   css: ['ress', { src: '@/assets/sass/app.scss', lang: 'scss' }],
   styleResources: {
