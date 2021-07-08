@@ -6,7 +6,7 @@
         <li
           v-for="(value, key, index) in error"
           :key="index"
-          class="text-6xl font-bold flex message"
+          class="text-xl font-bold flex message"
         >
           {{ key }}
           {{ value }}
@@ -54,9 +54,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .main {
-  @apply w-full flex items-center justify-center mx-auto;
-  height: calc(100vh - 61px);
-  overflow-y: hidden;
+  @apply flex items-center justify-center mx-auto container;
+  height: calc(100vh - 70px);
 }
 .message {
   color: var(--sub-color);

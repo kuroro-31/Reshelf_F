@@ -52,11 +52,8 @@ export default {
       '~/assets/sass/foundation/_mixin.scss',
     ],
   },
-  tailwindcss: {
-    jit: true,
-  },
   loading: {
-    color: '#33C4CC',
+    color: '#0080ff',
     height: '5px',
   },
 
@@ -71,30 +68,52 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
     '@nuxtjs/color-mode',
+    '@nuxt/typescript-build',
   ],
 
   axios: {
-    baseURL: 'http://localhost/api',
+    // baseURL: 'http://localhost',
     proxy: true,
+    // credentials: true,
   },
+
   proxy: {
-    '/api': 'http://localhost:80',
+    '/api': {
+      target: 'http://localhost',
+      changeOrigin: true,
+    },
+    '/sanctum': {
+      target: 'http://localhost',
+      changeOrigin: true,
+    },
   },
 
   auth: {
+    redirect: {
+      login: '/auth/login',
+      logout: '/',
+      callback: false,
+      home: '/',
+    },
     strategies: {
       local: {
         endpoints: {
           login: {
-            url: 'auth/login',
+            url: '/api/auth/login',
             method: 'post',
-            propertyName: 'meta.token',
+            propertyName: false,
           },
-          user: { url: 'auth/user', method: 'get', propertyName: 'data' },
-          logout: { url: 'auth/logout', method: 'post' },
+          user: { url: '/api/user', method: 'get', propertyName: false },
+          logout: false,
         },
+        tokenRequired: false,
+        tokenType: false,
       },
     },
+    localStorage: false,
+  },
+  router: {
+    middleware: ['auth'],
   },
 
   build: {
@@ -126,11 +145,5 @@ export default {
         })
       }
     },
-  },
-
-  watchers: {
-    webpack: {
-      poll: true,
-    },
-  },
+  }
 }
