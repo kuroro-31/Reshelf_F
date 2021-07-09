@@ -20,13 +20,14 @@
     </div>
   </transition>
 </template>
-<script>
-import { XIcon } from 'vue-feather-icons'
-export default {
+<script lang="ts">
+import Vue from 'vue'
+import { XIcon } from '@zhuowenli/vue-feather-icons'
+export default Vue.extend({
   components: {
     XIcon,
   },
-}
+})
 </script>
 <style lang="scss" scoped>
 .modal {

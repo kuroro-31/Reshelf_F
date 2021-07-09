@@ -1,7 +1,12 @@
 // Sass-loderの処理速度を速くするために必要らしい
 import Fiber from 'fibers'
 import Sass from 'sass'
+
 export default {
+  ssr: false, // SPA
+
+  components: true,
+
   head: {
     title:
       'Reshelf【リシェルフ】| アップデートするオンライン学習マーケットプレイス',
@@ -43,18 +48,13 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-  ssr: false, // SPA
-  components: true,
+
   css: ['ress', { src: '@/assets/sass/app.scss', lang: 'scss' }],
   styleResources: {
     scss: [
       '~/assets/sass/foundation/_variables.scss',
       '~/assets/sass/foundation/_mixin.scss',
     ],
-  },
-  loading: {
-    color: '#0080ff',
-    height: '5px',
   },
 
   plugins: [
@@ -63,18 +63,18 @@ export default {
   ],
 
   modules: ['@nuxtjs/axios', '@nuxtjs/proxy', '@nuxtjs/auth', '@nuxtjs/pwa'],
+
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
     '@nuxtjs/color-mode',
     '@nuxt/typescript-build',
+    'nuxt-typed-vuex',
   ],
 
   axios: {
-    // baseURL: 'http://localhost',
     proxy: true,
-    // credentials: true,
   },
 
   proxy: {
@@ -86,34 +86,6 @@ export default {
       target: 'http://localhost',
       changeOrigin: true,
     },
-  },
-
-  auth: {
-    redirect: {
-      login: '/auth/login',
-      logout: '/',
-      callback: false,
-      home: '/',
-    },
-    strategies: {
-      local: {
-        endpoints: {
-          login: {
-            url: '/api/auth/login',
-            method: 'post',
-            propertyName: false,
-          },
-          user: { url: '/api/user', method: 'get', propertyName: false },
-          logout: false,
-        },
-        tokenRequired: false,
-        tokenType: false,
-      },
-    },
-    localStorage: false,
-  },
-  router: {
-    middleware: ['auth'],
   },
 
   build: {
@@ -133,6 +105,8 @@ export default {
       },
     },
 
+    transpile: [/typed-vuex/],
+
     // 保存時にESlintの実行
     extend(config, ctx) {
       // Run ESLint on save
@@ -145,5 +119,10 @@ export default {
         })
       }
     },
+  },
+
+  loading: {
+    color: '#0080ff',
+    height: '5px',
   }
 }

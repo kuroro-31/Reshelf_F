@@ -9,7 +9,7 @@
             E-mail
           </label>
           <input
-            v-model.trim="form.email"
+            v-model.trim="email"
             type="email"
             placeholder="Enter email"
             autofocus
@@ -24,7 +24,7 @@
             Password
           </label>
           <input
-            v-model.trim="form.password"
+            v-model.trim="password"
             type="password"
             placeholder="Password"
             class="border rounded-lg px-3 py-2 mt-1 mb-5 text-xs w-full"
@@ -43,7 +43,9 @@
               hover:bg-blue-600
               focus:bg-blue-700
               focus:shadow-sm
-              focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50
+              focus:ring-4
+              focus:ring-blue-500
+              focus:ring-opacity-50
               text-white
               w-full
               py-2
@@ -92,7 +94,9 @@
                   hover:bg-gray-100
                   focus:outline-none
                   focus:bg-gray-200
-                  focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50
+                  focus:ring-2
+                  focus:ring-gray-400
+                  focus:ring-opacity-50
                   ring-inset
                 "
               >
@@ -129,7 +133,9 @@
                   hover:bg-gray-100
                   focus:outline-none
                   focus:bg-gray-200
-                  focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50
+                  focus:ring-2
+                  focus:ring-gray-400
+                  focus:ring-opacity-50
                   ring-inset
                 "
               >
@@ -171,7 +177,9 @@
                 hover:bg-gray-200
                 focus:outline-none
                 focus:bg-gray-300
-                focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50
+                focus:ring-2
+                focus:ring-gray-400
+                focus:ring-opacity-50
                 ring-inset
               "
             >
@@ -197,35 +205,43 @@
     </div>
   </div>
 </template>
-<script>
-export default {
+<script lang="ts">
+// import Vue, { PropOptions } from 'vue'
+import Vue from 'vue'
+import apiClient from 'axios'
+export default Vue.extend({
   // middleware: 'guest',
   data: () => ({
-    form: {
-      email: '',
-      password: '',
-    },
+    email: '',
+    password: '',
     remember: false,
     errors: {},
   }),
   methods: {
     async submit() {
-      await this.$axios
-        .post('/api/auth/login', this.form)
-        .then((data) => {
-          console.log(data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-      // await this.$auth.loginWith('local', {
-      //   data: this.form,
-      // })
-      // this.$router.push({
-      //   path: this.$route.query.redirect || '/',
-      // })
+      const params = {
+        email: this.email,
+        password: this.password,
+      }
+
+      apiClient.defaults.withCredentials = true
+
+      this.$nuxt.$loading.start()
+      await apiClient.get('/sanctum/csrf-cookie').then(async () => {
+        await apiClient
+          .post('/api/auth/login', params)
+          .then((response) => {
+            if (response.status === 200) {
+              this.$nuxt.$router.push({ path: '/' })
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      })
+      this.$nuxt.$loading.finish()
     },
   },
-}
+})
 </script>
 <style lang="scss" scoped></style>

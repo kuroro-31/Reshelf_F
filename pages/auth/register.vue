@@ -58,32 +58,31 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
   // middleware: 'guest', //ログイン状態であればリダイレクトする
   data() {
     return {
-      form: {
-        name: '',
-        email: '',
-        password: '',
-      },
+      name: '',
+      email: '',
+      password: '',
       errors: {},
     }
   },
-  methods: {
-    async register() {
-      this.form.password_confirmation = this.form.password
-      await this.$axios
-        .post('/api/auth/register', this.form)
-        .then((data) => {
-          this.$auth.login({ data: this.form })
-          this.$router.push({ name: 'index' })
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    },
-  },
-}
+  // methods: {
+  //   async register() {
+  //     this.form.password_confirmation = this.form.password
+  //     await this.$axios
+  //       .post('/api/auth/register', this.form)
+  //       .then((data) => {
+  //         this.$auth.login({ data: this.form })
+  //         this.$router.push({ name: 'index' })
+  //       })
+  //       .catch((err) => {
+  //         console.log(err)
+  //       })
+  //   },
+  // },
+})
 </script>

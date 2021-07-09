@@ -18,16 +18,16 @@
     <!-- <FooterNav /> -->
   </div>
 </template>
-<script>
+<script lang="ts">
+import Vue from 'vue'
 // layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
-import SidebarCart from '@/components/layout/sidebar/item/SidebarCart'
+import HeaderNav from '@/components/layout/header/HeaderNav.vue'
+// import FooterNav from '@/components/layout/FooterNav.vue'
+import SidebarCart from '@/components/layout/sidebar/item/SidebarCart.vue'
 // atoms
-import CartItem from '@/components/atoms/item/CartItem'
+import CartItem from '@/components/atoms/item/CartItem.vue'
 
-export default {
-  auth: false,
+export default Vue.extend({
   components: {
     HeaderNav,
     // FooterNav,
@@ -94,7 +94,7 @@ export default {
       ],
     }
   },
-}
+})
 </script>
 <style lang="scss" scoped>
 .main {

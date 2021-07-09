@@ -143,10 +143,11 @@
   </nav>
 </template>
 
-<script>
-import ReModal from '@/components/atoms/ReModal'
-import { ChevronDownIcon } from 'vue-feather-icons'
-export default {
+<script lang="ts">
+import Vue from 'vue'
+import ReModal from '@/components/atoms/ReModal.vue'
+import { ChevronDownIcon } from '@zhuowenli/vue-feather-icons'
+export default Vue.extend({
   components: {
     ReModal,
     ChevronDownIcon,
@@ -162,34 +163,7 @@ export default {
       like: false,
     }
   },
-  computed: {
-    isAuthenticated() {
-      return this.$auth.loggedIn
-    },
-    loggedInUser() {
-      return this.$auth.user
-    },
-  },
-  methods: {
-    async submit() {
-      await this.$axios
-        .post('/api/auth/facebook')
-        .then(() => {})
-        .catch((err) => {
-          console.log(err)
-        })
-      // await this.$authentication.loginWith('local', {
-      //   data: this.form,
-      // })
-      // this.$router.push({
-      //   path: this.$route.query.redirect || '/',
-      // })
-    },
-    async logout() {
-      await this.$auth.logout()
-    },
-  },
-}
+})
 </script>
 <style lang="scss" scoped>
 .toggle {

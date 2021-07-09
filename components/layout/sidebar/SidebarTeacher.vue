@@ -17,17 +17,18 @@
   </div>
 </template>
 
-<script>
-import ReButton from '@/components/atoms/ReButton'
+<script lang="ts">
+import Vue from 'vue'
+import ReButton from '@/components/atoms/ReButton.vue'
 
-export default {
+export default Vue.extend({
   components: {
     ReButton,
   },
   data() {
     return {}
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

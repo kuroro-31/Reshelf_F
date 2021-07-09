@@ -7,9 +7,6 @@
     </div>
   </label>
 </template>
-
-<script></script>
-
 <style lang="scss" scoped>
 .re-radio {
   display: inline-flex;

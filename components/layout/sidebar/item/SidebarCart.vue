@@ -20,13 +20,14 @@
   </div>
 </template>
 
-<script>
-//Icons
-// import { ChevronRightIcon } from 'vue-feather-icons'
+<script lang="ts">
+import Vue from 'vue'
+// Icons
+// import { ChevronRightIcon } from '@zhuowenli/vue-feather-icons'
 // atoms
-import ReButton from '@/components/atoms/ReButton'
+import ReButton from '@/components/atoms/ReButton.vue'
 
-export default {
+export default Vue.extend({
   components: {
     // ChevronRightIcon,
     ReButton,
@@ -42,7 +43,7 @@ export default {
       isDisabled: false,
     }
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

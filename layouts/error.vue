@@ -20,11 +20,12 @@
     </div>
   </div>
 </template>
-<script>
-import HeaderNav from '@/components/layout/header/HeaderNav'
-import ReButton from '@/components/atoms/ReButton'
+<script lang="ts">
+import Vue from 'vue'
+import HeaderNav from '@/components/layout/header/HeaderNav.vue'
+import ReButton from '@/components/atoms/ReButton.vue'
 
-export default {
+export default Vue.extend({
   components: {
     HeaderNav,
     ReButton,
@@ -50,7 +51,7 @@ export default {
       ],
     }
   },
-}
+})
 </script>
 <style lang="scss" scoped>
 .main {

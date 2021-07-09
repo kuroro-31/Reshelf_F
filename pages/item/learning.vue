@@ -87,17 +87,18 @@
     <!-- <FooterNav /> -->
   </div>
 </template>
-<script>
-// import FooterNav from '@/components/layout/FooterNav'
-import SidebarTac from '@/components/layout/sidebar/item/SidebarTac'
-import SidebarQa from '@/components/layout/sidebar/item/SidebarQa'
+<script lang="ts">
+import Vue from 'vue'
+// import FooterNav from '@/components/layout/FooterNav.vue'
+import SidebarTac from '@/components/layout/sidebar/item/SidebarTac.vue'
+import SidebarQa from '@/components/layout/sidebar/item/SidebarQa.vue'
 // atoms
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronDownIcon,
-} from 'vue-feather-icons'
-export default {
+} from '@zhuowenli/vue-feather-icons'
+export default Vue.extend({
   components: {
     // FooterNav,
     SidebarTac,
@@ -111,7 +112,7 @@ export default {
       chapter: false,
     }
   },
-}
+})
 </script>
 <style lang="scss" scoped>
 .body {

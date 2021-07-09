@@ -166,31 +166,20 @@
     </div>
   </div>
 </template>
-<script>
-import ReButton from '@/components/atoms/ReButton'
-import { HeartIcon, ShoppingCartIcon, ChevronDownIcon } from 'vue-feather-icons'
-export default {
+<script lang="ts">
+import Vue from 'vue'
+import ReButton from '@/components/atoms/ReButton.vue'
+import {
+  HeartIcon,
+  ShoppingCartIcon,
+  ChevronDownIcon,
+} from '@zhuowenli/vue-feather-icons'
+export default Vue.extend({
   components: {
     ReButton,
     HeartIcon,
     ShoppingCartIcon,
     ChevronDownIcon,
-  },
-  filters: {
-    numberFormat: function (num) {
-      return num.toLocaleString()
-    },
-    moneyFormat(num) {
-      return (
-        '¥' +
-        (num || 0)
-          .toString()
-          .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
-      )
-    },
-    comma: function (num) {
-      return num.toFixed(1)
-    },
   },
   props: {
     items: {
@@ -208,7 +197,7 @@ export default {
     }
   },
   methods: {},
-}
+})
 </script>
 <style lang="scss" scoped>
 .dropdown {

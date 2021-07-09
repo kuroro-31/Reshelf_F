@@ -33,12 +33,13 @@
   </div>
 </template>
 <script>
+import Vue from 'vue'
 // import ReButton from '@/components/atoms/ReButton'
-// import { HeartIcon, ShoppingCartIcon } from 'vue-feather-icons'
-export default {
+// import { HeartIcon, ShoppingCartIcon } from '@zhuowenli/vue-feather-icons'
+export default Vue.extend({
   components: {},
   filters: {
-    numberFormat: function (num) {
+    numberFormat(num) {
       return num.toLocaleString()
     },
     moneyFormat(num) {
@@ -49,7 +50,7 @@ export default {
           .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
       )
     },
-    comma: function (num) {
+    comma(num) {
       return num.toFixed(1)
     },
   },
@@ -69,7 +70,7 @@ export default {
     }
   },
   methods: {},
-}
+})
 </script>
 <style lang="scss" scoped>
 .dropdown {

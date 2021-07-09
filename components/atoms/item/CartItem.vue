@@ -52,13 +52,14 @@
   </div>
 </template>
 <script>
-import { ChevronLeftIcon } from 'vue-feather-icons'
-export default {
+import Vue from 'vue'
+import { ChevronLeftIcon } from '@zhuowenli/vue-feather-icons'
+export default Vue.extend({
   components: {
     ChevronLeftIcon,
   },
   filters: {
-    numberFormat: function (num) {
+    numberFormat(num) {
       return num.toLocaleString()
     },
     moneyFormat(num) {
@@ -69,7 +70,7 @@ export default {
           .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
       )
     },
-    comma: function (num) {
+    comma(num) {
       return num.toFixed(1)
     },
   },
@@ -88,7 +89,7 @@ export default {
     }
   },
   methods: {},
-}
+})
 </script>
 <style lang="scss" scoped>
 .items {

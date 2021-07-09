@@ -78,14 +78,15 @@
     <FooterNav />
   </div>
 </template>
-<script>
+<script lang="ts">
+import Vue from 'vue'
 // layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-import FooterNav from '@/components/layout/FooterNav'
+import HeaderNav from '@/components/layout/header/HeaderNav.vue'
+import FooterNav from '@/components/layout/FooterNav.vue'
 // atoms
-import AllItem from '@/components/atoms/item/AllItem'
+import AllItem from '@/components/atoms/item/AllItem.vue'
 
-export default {
+export default Vue.extend({
   components: {
     HeaderNav,
     FooterNav,
@@ -354,7 +355,7 @@ export default {
       ],
     }
   },
-}
+})
 </script>
 <style lang="scss" scoped>
 .side-nav {

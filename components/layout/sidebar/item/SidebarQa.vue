@@ -28,16 +28,17 @@
   </div>
 </template>
 
-<script>
-import { TwitchIcon } from 'vue-feather-icons'
-export default {
+<script lang="ts">
+import Vue from 'vue'
+import { TwitchIcon } from '@zhuowenli/vue-feather-icons'
+export default Vue.extend({
   components: {
     TwitchIcon,
   },
   data() {
     return {}
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

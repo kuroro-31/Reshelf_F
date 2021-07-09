@@ -471,16 +471,17 @@
   </nav>
 </template>
 
-<script>
-import ReButton from '@/components/atoms/ReButton'
-import ReModal from '@/components/atoms/ReModal'
+<script lang="ts">
+import Vue from 'vue'
+import ReButton from '@/components/atoms/ReButton.vue'
+import ReModal from '@/components/atoms/ReModal.vue'
 import {
   // MenuIcon,
   ShoppingCartIcon,
   HeartIcon,
-} from 'vue-feather-icons'
+} from '@zhuowenli/vue-feather-icons'
 
-export default {
+export default Vue.extend({
   components: {
     ReButton,
     ReModal,
@@ -499,34 +500,7 @@ export default {
       like: false,
     }
   },
-  computed: {
-    isAuthenticated() {
-      return this.$auth.loggedIn
-    },
-    loggedInUser() {
-      return this.$auth.user
-    },
-  },
-  methods: {
-    async submit() {
-      await this.$axios
-        .post('/api/auth/facebook')
-        .then(() => {})
-        .catch((err) => {
-          console.log(err)
-        })
-      // await this.$authentication.loginWith('local', {
-      //   data: this.form,
-      // })
-      // this.$router.push({
-      //   path: this.$route.query.redirect || '/',
-      // })
-    },
-    async logout() {
-      await this.$auth.logout()
-    },
-  },
-}
+})
 </script>
 <style lang="scss" scoped>
 .toggle {

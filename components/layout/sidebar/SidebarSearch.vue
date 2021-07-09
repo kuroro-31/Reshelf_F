@@ -78,14 +78,15 @@
   </div>
 </template>
 
-<script>
-//Icons
-import { ChevronRightIcon } from 'vue-feather-icons'
+<script lang="ts">
+import Vue from 'vue'
+// Icons
+import { ChevronRightIcon } from '@zhuowenli/vue-feather-icons'
 // atoms
-import ReCheckbox from '@/components/atoms/ReCheckbox'
-import ReButton from '@/components/atoms/ReButton'
+import ReCheckbox from '@/components/atoms/ReCheckbox.vue'
+import ReButton from '@/components/atoms/ReButton.vue'
 
-export default {
+export default Vue.extend({
   components: {
     ChevronRightIcon,
     ReCheckbox,
@@ -149,7 +150,7 @@ export default {
       ],
     }
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

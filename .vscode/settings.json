@@ -27,12 +27,21 @@
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    "vue",
-    "typescript"
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    {
+      "language": "vue-html",
+      "autoFix": true
+    }
   ],
 
   "vetur.format.enable": false,
-  "vetur.validation.template": false,
   "auto-close-tag.SublimeText3Mode": true,
   "explorer.confirmDragAndDrop": false,
   "git.enableSmartCommit": true,
@@ -62,8 +71,8 @@
   "yaml.schemas": {
     "file:///Users/s.t/.vscode/extensions/atlassian.atlascode-2.8.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
-  "vetur.format.defaultFormatter.js": "vscode-typescript",
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
   "atlascode.jira.jqlList": [
     {
       "id": "687b0337-1dd0-4df5-921b-7c379959693f",
@@ -75,4 +84,16 @@
     }
   ],
   "editor.tokenColorCustomizations": null,
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.run": "onType",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.less": "prettier",
+  "vetur.format.defaultFormatter.postcss": "prettier",
+  "vetur.format.defaultFormatter.scss": "prettier",
+  "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "vetur.validation.style": true,
+  "vetur.validation.template": true
 }

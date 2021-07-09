@@ -11,9 +11,10 @@
   </label>
 </template>
 
-<script>
-import { CheckIcon } from 'vue-feather-icons'
-export default {
+<script lang="ts">
+import Vue from 'vue'
+import { CheckIcon } from '@zhuowenli/vue-feather-icons'
+export default Vue.extend({
   components: {
     CheckIcon,
   },
@@ -22,7 +23,7 @@ export default {
       isChecked: false,
     }
   },
-}
+})
 </script>
 <style lang="scss" scoped>
 .re-checkbox {

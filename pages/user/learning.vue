@@ -19,17 +19,18 @@
     <!-- <FooterNav /> -->
   </div>
 </template>
-<script>
+<script lang="ts">
+import Vue from 'vue'
 // layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
-import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
-import SidebarTeacher from '@/components/layout/sidebar/SidebarTeacher'
-import SidebarStudent from '@/components/layout/sidebar/SidebarStudent'
+import HeaderNav from '@/components/layout/header/HeaderNav.vue'
+// import FooterNav from '@/components/layout/FooterNav.vue'
+import SidebarSetting from '@/components/layout/sidebar/SidebarSetting.vue'
+import SidebarTeacher from '@/components/layout/sidebar/SidebarTeacher.vue'
+import SidebarStudent from '@/components/layout/sidebar/SidebarStudent.vue'
 // atoms
-import LearningItem from '@/components/atoms/item/LearningItem'
+import LearningItem from '@/components/atoms/item/LearningItem.vue'
 
-export default {
+export default Vue.extend({
   components: {
     HeaderNav,
     // FooterNav,
@@ -321,7 +322,7 @@ export default {
       ],
     }
   },
-}
+})
 </script>
 <style lang="scss" scoped>
 .side-nav {

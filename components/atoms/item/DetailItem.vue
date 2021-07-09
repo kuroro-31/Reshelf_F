@@ -71,9 +71,10 @@
   </div>
 </template>
 <script>
-export default {
+import Vue from 'vue'
+export default Vue.extend({
   filters: {
-    numberFormat: function (num) {
+    numberFormat(num) {
       return num.toLocaleString()
     },
     moneyFormat(num) {
@@ -84,7 +85,7 @@ export default {
           .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
       )
     },
-    comma: function (num) {
+    comma(num) {
       return num.toFixed(1)
     },
   },
@@ -101,7 +102,7 @@ export default {
     }
   },
   methods: {},
-}
+})
 </script>
 <style lang="scss" scoped>
 .items {
