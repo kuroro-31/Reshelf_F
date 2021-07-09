@@ -22,10 +22,10 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { XIcon } from '@zhuowenli/vue-feather-icons'
+// import { XIcon } from 'vue-feather-icons'
 export default Vue.extend({
   components: {
-    XIcon,
+    // XIcon,
   },
 })
 </script>

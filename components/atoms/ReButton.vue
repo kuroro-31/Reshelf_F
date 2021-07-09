@@ -14,7 +14,7 @@
 
 ②
 import ReButton from '@/views/components/atomss/ReButton';
-import { HomeIcon } from '@zhuowenli/vue-feather-icons';
+import { HomeIcon } from 'vue-feather-icons';
 
 ③
 components: {

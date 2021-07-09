@@ -23,7 +23,7 @@
 <script lang="ts">
 import Vue from 'vue'
 // Icons
-// import { ChevronRightIcon } from '@zhuowenli/vue-feather-icons'
+// import { ChevronRightIcon } from 'vue-feather-icons'
 // atoms
 import ReButton from '@/components/atoms/ReButton.vue'
 

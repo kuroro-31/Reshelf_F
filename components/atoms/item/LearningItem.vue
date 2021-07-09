@@ -35,7 +35,7 @@
 <script>
 import Vue from 'vue'
 // import ReButton from '@/components/atoms/ReButton'
-// import { HeartIcon, ShoppingCartIcon } from '@zhuowenli/vue-feather-icons'
+// import { HeartIcon, ShoppingCartIcon } from 'vue-feather-icons'
 export default Vue.extend({
   components: {},
   filters: {

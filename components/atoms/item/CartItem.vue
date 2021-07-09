@@ -53,10 +53,10 @@
 </template>
 <script>
 import Vue from 'vue'
-import { ChevronLeftIcon } from '@zhuowenli/vue-feather-icons'
+// import { ChevronLeftIcon } from 'vue-feather-icons'
 export default Vue.extend({
   components: {
-    ChevronLeftIcon,
+    // ChevronLeftIcon,
   },
   filters: {
     numberFormat(num) {

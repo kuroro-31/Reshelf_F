@@ -93,19 +93,19 @@ import Vue from 'vue'
 import SidebarTac from '@/components/layout/sidebar/item/SidebarTac.vue'
 import SidebarQa from '@/components/layout/sidebar/item/SidebarQa.vue'
 // atoms
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronDownIcon,
-} from '@zhuowenli/vue-feather-icons'
+// import {
+//   ChevronLeftIcon,
+//   ChevronRightIcon,
+//   ChevronDownIcon,
+// } from 'vue-feather-icons'
 export default Vue.extend({
   components: {
     // FooterNav,
     SidebarTac,
     SidebarQa,
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    ChevronDownIcon,
+    // ChevronLeftIcon,
+    // ChevronRightIcon,
+    // ChevronDownIcon,
   },
   data() {
     return {

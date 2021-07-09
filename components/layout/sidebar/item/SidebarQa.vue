@@ -30,10 +30,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { TwitchIcon } from '@zhuowenli/vue-feather-icons'
+// import { TwitchIcon } from 'vue-feather-icons'
 export default Vue.extend({
   components: {
-    TwitchIcon,
+    // TwitchIcon,
   },
   data() {
     return {}

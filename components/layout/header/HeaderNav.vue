@@ -475,19 +475,19 @@
 import Vue from 'vue'
 import ReButton from '@/components/atoms/ReButton.vue'
 import ReModal from '@/components/atoms/ReModal.vue'
-import {
-  // MenuIcon,
-  ShoppingCartIcon,
-  HeartIcon,
-} from '@zhuowenli/vue-feather-icons'
+// import {
+//   // MenuIcon,
+//   ShoppingCartIcon,
+//   HeartIcon,
+// } from 'vue-feather-icons'
 
 export default Vue.extend({
   components: {
     ReButton,
     ReModal,
     // MenuIcon,
-    ShoppingCartIcon,
-    HeartIcon,
+    // ShoppingCartIcon,
+    // HeartIcon,
   },
   data() {
     return {

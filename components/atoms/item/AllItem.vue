@@ -91,7 +91,7 @@
               </div>
               <!-- セール価格 -->
               <div class="right-box-sale">
-                {{ item.sale_price | moneyFormat }}
+                {{ item.sale_price }}
               </div>
               <div class="flex mt-2">
                 <span class="level">
@@ -169,17 +169,17 @@
 <script lang="ts">
 import Vue from 'vue'
 import ReButton from '@/components/atoms/ReButton.vue'
-import {
-  HeartIcon,
-  ShoppingCartIcon,
-  ChevronDownIcon,
-} from '@zhuowenli/vue-feather-icons'
+// import {
+//   HeartIcon,
+//   ShoppingCartIcon,
+//   ChevronDownIcon,
+// } from 'vue-feather-icons'
 export default Vue.extend({
   components: {
     ReButton,
-    HeartIcon,
-    ShoppingCartIcon,
-    ChevronDownIcon,
+    // HeartIcon,
+    // ShoppingCartIcon,
+    // ChevronDownIcon,
   },
   props: {
     items: {

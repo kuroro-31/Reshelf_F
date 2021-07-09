@@ -146,11 +146,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import ReModal from '@/components/atoms/ReModal.vue'
-import { ChevronDownIcon } from '@zhuowenli/vue-feather-icons'
+// import { ChevronDownIcon } from 'vue-feather-icons'
 export default Vue.extend({
   components: {
     ReModal,
-    ChevronDownIcon,
+    // ChevronDownIcon,
   },
   data() {
     return {

@@ -13,10 +13,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { CheckIcon } from '@zhuowenli/vue-feather-icons'
+// import { CheckIcon } from 'vue-feather-icons'
 export default Vue.extend({
   components: {
-    CheckIcon,
+    // CheckIcon,
   },
   data() {
     return {
