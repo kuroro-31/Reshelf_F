@@ -1,6 +1,7 @@
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
+    {{ user.name }}
     <div class="w-full flex max-w-screen-xl mx-auto container">
       <div class="lg:flex w-full">
         <nav class="side-nav lg:max-h-(screen-22) pin-22">
@@ -17,6 +18,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
@@ -36,6 +38,7 @@ export default {
   },
   data() {
     return {
+      user: this.$store.state.authenticate.user,
       items: [
         {
           // キー

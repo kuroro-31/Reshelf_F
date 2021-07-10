@@ -23,7 +23,7 @@ export default {
     },
   },
   actions: {
-    login({ commit }) {
+    async login({ commit }) {
       return axios
         .get('/api/user')
         .then(({ data }) => {

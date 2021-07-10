@@ -215,7 +215,6 @@ export default {
       email: '',
       password: '',
     },
-    processing: false,
     errors: {},
   }),
   methods: {
@@ -223,36 +222,44 @@ export default {
       signIn: 'authenticate/login',
     }),
     async login() {
-      this.$nuxt.$loading.start()
       axios.defaults.withCredentials = true
 
-      this.processing = true
+      this.$nuxt.$loading.start()
       await axios.get('/sanctum/csrf-cookie').then(async () => {
         await axios
           .post('/api/auth/login', this.auth)
           .then(({ data }) => {
             this.signIn()
+            this.$nuxt.$router.push({ path: '/' })
           })
           .catch(({ response: { data } }) => {
             alert(data.message)
           })
-          .finally(() => {
-            this.processing = false
-          })
       })
-
       this.$nuxt.$loading.finish()
     },
-    // async submit() {
-    //   await this.$axios
-    //     .post('/api/auth/login', this.form)
-    //     .then((data) => {
-    //       console.log(data)
-    //     })
-    //     .catch((err) => {
-    //       console.log(err)
-    //     })
-    // },
+    async submit() {
+      const params = {
+        email: this.email,
+        password: this.password,
+      }
+
+      axios.defaults.withCredentials = true
+
+      this.$nuxt.$loading.start()
+      await axios.get('/sanctum/csrf-cookie').then(async () => {
+        await axios.post('/api/auth/login', params)
+        // .then((response) => {
+        //   if (response.status === 200) {
+        //     this.$nuxt.$router.push({ path: '/' })
+        //   }
+        // })
+        // .catch((error) => {
+        //   console.log(error)
+        // })
+      })
+      this.$nuxt.$loading.finish()
+    },
   },
 }
 </script>
