@@ -22,8 +22,7 @@
                     inline-block
                     text-gray-600
                     no-underline
-                    hover:text-gray-900
-                    hover:underline
+                    hover:text-gray-900 hover:underline
                     py-1
                   "
                   href="#"

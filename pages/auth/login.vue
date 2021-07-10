@@ -3,13 +3,13 @@
     <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
       <h1 class="font-bold text-center text-2xl mb-5">LOGIN</h1>
       <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
-        <form class="px-5 py-7" @submit.prevent="submit">
+        <form class="px-5 py-7" @submit.prevent="login">
           <!-- メールアドレス -->
           <label class="font-semibold text-xs text-gray-600 pb-1 block">
             E-mail
           </label>
           <input
-            v-model.trim="form.email"
+            v-model.trim="auth.email"
             type="email"
             placeholder="Enter email"
             autofocus
@@ -24,7 +24,7 @@
             Password
           </label>
           <input
-            v-model.trim="form.password"
+            v-model.trim="auth.password"
             type="password"
             placeholder="Password"
             class="border rounded-lg px-3 py-2 mt-1 mb-5 text-xs w-full"
@@ -43,7 +43,9 @@
               hover:bg-blue-600
               focus:bg-blue-700
               focus:shadow-sm
-              focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50
+              focus:ring-4
+              focus:ring-blue-500
+              focus:ring-opacity-50
               text-white
               w-full
               py-2
@@ -92,7 +94,9 @@
                   hover:bg-gray-100
                   focus:outline-none
                   focus:bg-gray-200
-                  focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50
+                  focus:ring-2
+                  focus:ring-gray-400
+                  focus:ring-opacity-50
                   ring-inset
                 "
               >
@@ -129,7 +133,9 @@
                   hover:bg-gray-100
                   focus:outline-none
                   focus:bg-gray-200
-                  focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50
+                  focus:ring-2
+                  focus:ring-gray-400
+                  focus:ring-opacity-50
                   ring-inset
                 "
               >
@@ -171,7 +177,9 @@
                 hover:bg-gray-200
                 focus:outline-none
                 focus:bg-gray-300
-                focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50
+                focus:ring-2
+                focus:ring-gray-400
+                focus:ring-opacity-50
                 ring-inset
               "
             >
@@ -198,33 +206,53 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
+import axios from 'axios'
 export default {
   // middleware: 'guest',
   data: () => ({
-    form: {
+    auth: {
       email: '',
       password: '',
     },
-    remember: false,
+    processing: false,
     errors: {},
   }),
   methods: {
-    async submit() {
-      await this.$axios
-        .post('/api/auth/login', this.form)
-        .then((data) => {
-          console.log(data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-      // await this.$auth.loginWith('local', {
-      //   data: this.form,
-      // })
-      // this.$router.push({
-      //   path: this.$route.query.redirect || '/',
-      // })
+    ...mapActions({
+      signIn: 'authenticate/login',
+    }),
+    async login() {
+      this.$nuxt.$loading.start()
+      axios.defaults.withCredentials = true
+
+      this.processing = true
+      await axios.get('/sanctum/csrf-cookie').then(async () => {
+        await axios
+          .post('/api/auth/login', this.auth)
+          .then(({ data }) => {
+            this.signIn()
+          })
+          .catch(({ response: { data } }) => {
+            alert(data.message)
+          })
+          .finally(() => {
+            this.processing = false
+          })
+      })
+
+      this.$nuxt.$loading.finish()
     },
+    // async submit() {
+    //   await this.$axios
+    //     .post('/api/auth/login', this.form)
+    //     .then((data) => {
+    //       console.log(data)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+    // },
   },
 }
 </script>

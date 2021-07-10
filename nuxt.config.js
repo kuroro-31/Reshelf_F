@@ -68,7 +68,6 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
     '@nuxtjs/color-mode',
-    '@nuxt/typescript-build',
   ],
 
   axios: {
@@ -145,5 +144,5 @@ export default {
         })
       }
     },
-  }
+  },
 }
