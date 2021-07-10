@@ -22,3 +22,5 @@ cache:
 	rm -rf node_modules/.cache/hard-source/
 ana:
 	npx nuxt build --a
+gomi:
+	git checkout . && git clean -df
