@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: '@typescript-eslint/parser',
   },
   extends: [
     '@nuxtjs',
@@ -16,9 +16,13 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   // *.vue ファイルを lint にかけるために必要
-  plugins: ['vue'],
+  plugins: [
+    'vue',
+    'prettier'
+  ],
   // ここにカスタムルールを追加します。
   rules: {
+    'nuxt/no-cjs-in-config': 'off',
     semi: [2, 'never'],
     'vue/html-indent': ['error', 2],
     'no-console': 'off', // console.log();OK
