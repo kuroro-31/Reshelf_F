@@ -174,12 +174,11 @@
 
         <!-- お気に入り -->
         <button
-          v-if="isAuthenticated"
           class="dropdown"
           @mouseover="like = true"
           @mouseleave="like = false"
         >
-          <heart-icon size="1.5x" class="dropdown-icon"></heart-icon>
+          <!-- <heart-icon size="1.5x" class="dropdown-icon"></heart-icon> -->
           <transition>
             <div v-if="like">
               <div
@@ -195,15 +194,14 @@
 
         <!-- カート -->
         <button
-          v-if="isAuthenticated"
           class="dropdown"
           @mouseover="cart = true"
           @mouseleave="cart = false"
         >
-          <shopping-cart-icon
+          <!-- <shopping-cart-icon
             size="1.5x"
             class="dropdown-icon"
-          ></shopping-cart-icon>
+          ></shopping-cart-icon> -->
           <transition>
             <div v-if="cart">
               <div
@@ -441,10 +439,10 @@
         </button>
 
         <!-- ログイン -->
-        <!-- <nuxt-link v-if="!isAuthenticated" flat to="/auth/login">
+        <!-- <nuxt-link flat to="/auth/login">
           ログイン
         </nuxt-link> -->
-        <div v-if="!isAuthenticated" class="py-2.5">
+        <div class="py-2.5">
           <span class="cursor-pointer" @click="modal = !modal">Log in</span>
           <ReModal v-if="modal" @close="modal = !modal">
             <template slot="header">Welcome To Reshelf！</template>

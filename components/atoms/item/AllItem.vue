@@ -11,10 +11,10 @@
             @mouseleave="dropdown = false"
           >
             <span>Featured</span>
-            <chevron-down-icon
+            <!-- <chevron-down-icon
               size="1x"
               class="inline-block ml-2"
-            ></chevron-down-icon>
+            ></chevron-down-icon> -->
             <transition>
               <div
                 v-if="dropdown"
@@ -69,7 +69,7 @@
                     rate_four: item.rate >= 4.6,
                   }"
                 > -->
-                  {{ item.rate | comma }}
+                  {{ item.rate }}
                 </p>
                 <!-- レート画像 -->
                 <div

@@ -27,10 +27,10 @@
             v-if="category.subcategories.length != 0"
             class="w-full relative flex justify-end"
           >
-            <chevron-right-icon
+            <!-- <chevron-right-icon
               size="1x"
               class="arrow flex-shrink-0"
-            ></chevron-right-icon>
+            ></chevron-right-icon> -->
           </div>
         </div>
 

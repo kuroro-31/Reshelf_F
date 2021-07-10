@@ -28,10 +28,10 @@
         >
           <div class="chapter-title">
             Chapter
-            <chevron-down-icon
+            <!-- <chevron-down-icon
               size="1x"
               class="chapter-icon"
-            ></chevron-down-icon>
+            ></chevron-down-icon> -->
           </div>
           <transition>
             <div v-if="chapter">
@@ -74,10 +74,10 @@
                 次になんとかするゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾ
               </span>
             </div>
-            <chevron-right-icon
+            <!-- <chevron-right-icon
               size="1.5x"
               class="chapter-next-icon"
-            ></chevron-right-icon>
+            ></chevron-right-icon> -->
           </a>
         </div>
       </div>

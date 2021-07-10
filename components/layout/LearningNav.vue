@@ -33,7 +33,7 @@
 
       <div class="nav-center">
         <span class="text-lg">Terraformで構築するAWS</span>
-        <chevron-down-icon size="1x" class="ml-4"></chevron-down-icon>
+        <!-- <chevron-down-icon size="1x" class="ml-4"></chevron-down-icon> -->
       </div>
 
       <div class="nav-right">
@@ -63,9 +63,9 @@
                     height="50px"
                     src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
                   />
-                  <span v-if="isAuthenticated" class="menu-name-person">
+                  <!-- <span class="menu-name-person">
                     {{ loggedInUser.name }}
-                  </span>
+                  </span> -->
                 </div>
                 <div class="menu-me">
                   <span class="menu-me-title">受講生</span>
@@ -113,10 +113,10 @@
         </button>
 
         <!-- ログイン -->
-        <!-- <nuxt-link v-if="!isAuthenticated" flat to="/auth/login">
+        <!-- <nuxt-link flat to="/auth/login">
           ログイン
         </nuxt-link> -->
-        <div v-if="!isAuthenticated" class="py-2.5">
+        <div class="py-2.5">
           <span class="cursor-pointer" @click="modal = !modal">Log in</span>
           <ReModal v-if="modal" @close="modal = !modal">
             <template slot="header">Welcome To Reshelf！</template>
