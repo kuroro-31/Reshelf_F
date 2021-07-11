@@ -124,5 +124,5 @@ export default {
   loading: {
     color: '#0080ff',
     height: '5px',
-  }
+  },
 }

@@ -3,7 +3,7 @@
     <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
       <h1 class="font-bold text-center text-2xl mb-5">LOGIN</h1>
       <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
-        <form class="px-5 py-7" @submit.prevent="submit">
+        <form class="px-5 py-7" @submit.prevent="signIn">
           <!-- メールアドレス -->
           <label class="font-semibold text-xs text-gray-600 pb-1 block">
             E-mail
@@ -208,7 +208,9 @@
 <script lang="ts">
 // import Vue, { PropOptions } from 'vue'
 import Vue from 'vue'
-import apiClient from 'axios'
+// import axios from 'axios'
+import { UserSignIn } from '@/apis'
+import { SignInRequest } from '@/types'
 export default Vue.extend({
   // middleware: 'guest',
   data: () => ({
@@ -218,28 +220,43 @@ export default Vue.extend({
     errors: {},
   }),
   methods: {
-    async submit() {
-      const params = {
+    // async submit() {
+    //   const params = {
+    //     email: this.email,
+    //     password: this.password,
+    //   }
+
+    //   axios.defaults.withCredentials = true
+
+    //   this.$nuxt.$loading.start()
+    //   await axios.get('/sanctum/csrf-cookie').then(async () => {
+    //     await axios
+    //       .post('/api/auth/login', params)
+    //       .then((response) => {
+    //         if (response.status === 200) {
+    //           this.$nuxt.$router.push({ path: '/' })
+    //         }
+    //       })
+    //       .catch((error) => {
+    //         console.log(error)
+    //       })
+    //   })
+    //   this.$nuxt.$loading.finish()
+    // },
+    async signIn() {
+      const params: SignInRequest = {
         email: this.email,
         password: this.password,
       }
 
-      apiClient.defaults.withCredentials = true
-
       this.$nuxt.$loading.start()
-      await apiClient.get('/sanctum/csrf-cookie').then(async () => {
-        await apiClient
-          .post('/api/auth/login', params)
-          .then((response) => {
-            if (response.status === 200) {
-              this.$nuxt.$router.push({ path: '/' })
-            }
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      })
+      const signedIn = await UserSignIn(params)
       this.$nuxt.$loading.finish()
+
+      if (signedIn) {
+        this.$nuxt.$emit('signedIn')
+        this.$router.push({ path: '/' })
+      }
     },
   },
 })

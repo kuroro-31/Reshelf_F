@@ -1,4 +1,3 @@
-import apiClient from 'axios'
 import {
   Board,
   BoardCreateRequest,
@@ -6,16 +5,17 @@ import {
   BoardFetchResponse,
   BoardFindResponse,
 } from '@/types'
+import axios from 'axios'
 
 export const BoardCreate = async (params: BoardCreateRequest) => {
-  apiClient.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
 
   let created: boolean = false
-  await apiClient.get('/sanctum/csrf-cookie').then(async (response) => {
-    await apiClient
+  await axios.get('/sanctum/csrf-cookie').then(async (response) => {
+    await axios
       .post('/api/board/create', params)
       .then((response: BoardCreateResponse) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           created = true
         }
       })
@@ -28,13 +28,13 @@ export const BoardCreate = async (params: BoardCreateRequest) => {
 }
 
 export const BoardFetch = async () => {
-  apiClient.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
 
   let boards: Array<Board> | null = null
-  await apiClient
+  await axios
     .get('/api/board/fetch')
     .then((response: BoardFetchResponse) => {
-      if (response.status == 200) {
+      if (response.status === 200) {
         boards = response.data.message.boards
       }
     })
@@ -46,13 +46,13 @@ export const BoardFetch = async () => {
 }
 
 export const BoardFind = async (boardId: number) => {
-  apiClient.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
 
   let board: Board | null = null
-  await apiClient
+  await axios
     .get('/api/board/find', { params: { id: boardId } })
     .then((response: BoardFindResponse) => {
-      if (response.status == 200) {
+      if (response.status === 200) {
         board = response.data.message.board
       }
     })

@@ -17,7 +17,7 @@ export type MessageCreateResponse = {
   status: number
   data: {
     message: string
-  } 
+  }
 }
 
 export type MessageFetchResponse = {
@@ -27,5 +27,5 @@ export type MessageFetchResponse = {
       text: string
       messages: Array<Message>
     }
-  } 
+  }
 }

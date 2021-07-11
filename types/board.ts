@@ -17,7 +17,7 @@ export type BoardCreateResponse = {
   status: number
   data: {
     message: string
-  } 
+  }
 }
 
 export type BoardFetchResponse = {
@@ -27,7 +27,7 @@ export type BoardFetchResponse = {
       text: string
       boards: Array<Board>
     }
-  } 
+  }
 }
 
 export type BoardFindResponse = {
@@ -36,5 +36,5 @@ export type BoardFindResponse = {
     message: {
       board: Board
     }
-  } 
+  }
 }

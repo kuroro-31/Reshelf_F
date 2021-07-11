@@ -11,7 +11,7 @@
             <div class="form-group">
               <label>Name</label>
               <input
-                v-model="form.name"
+                v-model="name"
                 type="test"
                 :class="{ 'is-invalid': errors.name }"
                 placeholder="Name"
@@ -23,7 +23,7 @@
             <div class="form-group">
               <label>Email</label>
               <input
-                v-model="form.email"
+                v-model="email"
                 type="email"
                 :class="{ 'is-invalid': errors.email }"
                 placeholder="Email"
@@ -35,7 +35,7 @@
             <div class="form-group">
               <label>Password</label>
               <input
-                v-model="form.password"
+                v-model="password"
                 type="password"
                 :class="{ 'is-invalid': errors.password }"
                 placeholder="Password"
@@ -60,6 +60,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { UserCreate } from '@/apis'
+import { UserCreateRequest } from '@/types'
 export default Vue.extend({
   // middleware: 'guest', //ログイン状態であればリダイレクトする
   data() {
@@ -67,22 +69,28 @@ export default Vue.extend({
       name: '',
       email: '',
       password: '',
+      password_confirm: '',
       errors: {},
     }
   },
-  // methods: {
-  //   async register() {
-  //     this.form.password_confirmation = this.form.password
-  //     await this.$axios
-  //       .post('/api/auth/register', this.form)
-  //       .then((data) => {
-  //         this.$auth.login({ data: this.form })
-  //         this.$router.push({ name: 'index' })
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //       })
-  //   },
-  // },
+  methods: {
+    async register() {
+      const params: UserCreateRequest = {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+        password_confirm: this.password,
+      }
+
+      this.$nuxt.$loading.start()
+      const created: boolean = await UserCreate(params)
+      this.$nuxt.$loading.finish()
+
+      if (created) {
+        this.$nuxt.$emit('signedIn')
+        this.$router.push({ path: '/' })
+      }
+    },
+  },
 })
 </script>

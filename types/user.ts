@@ -17,5 +17,5 @@ export type UserCreateResponse = {
   status: number
   data: {
     message: string
-  } 
+  }
 }

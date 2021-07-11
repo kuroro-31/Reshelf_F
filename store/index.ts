@@ -1,5 +1,7 @@
 import { getAccessorType } from 'typed-vuex'
 
+import * as user from '@/store/user'
+
 export const state = () => ({})
 export const getters = {}
 export const mutations = {}
@@ -11,12 +13,6 @@ export const accessorType = getAccessorType({
   mutations,
   actions,
   modules: {
-    // ディレクトリ名
-    // ００: {
-    modules: {
-      // 追加したいモジュール
-      // hoge,
-    },
-    // },
+    user,
   },
 })

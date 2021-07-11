@@ -3,7 +3,7 @@
     <slot name="input"></slot>
     <div
       class="re-checkbox--check"
-      :class="isChecked == true ? 're-checkbox--checked' : ''"
+      :class="isChecked === true ? 're-checkbox--checked' : ''"
     >
       <!-- <check-icon size="14" class="re-checkbox--icon text-white"></check-icon> -->
     </div>

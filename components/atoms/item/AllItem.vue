@@ -145,10 +145,10 @@
                             class="re-button-primary-filled"
                             @click="$router.push('/item/cart')"
                           >
-                            <shopping-cart-icon
+                            <!-- <shopping-cart-icon
                               size="1x"
                               class="mr-2"
-                            ></shopping-cart-icon>
+                            ></shopping-cart-icon> -->
                             カートに入れる
                           </button>
                         </re-button>

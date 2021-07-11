@@ -1,15 +1,15 @@
-import apiClient from 'axios'
 import { User, UserCreateRequest, UserCreateResponse } from '@/types'
+import axios from 'axios'
 
 export const UserCreate = async (params: UserCreateRequest) => {
-  apiClient.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
 
   let created = false
-  await apiClient.get('/sanctum/csrf-cookie').then(async (response) => {
-    await apiClient
-      .post('/api/register', params)
+  await axios.get('/sanctum/csrf-cookie').then(async (response) => {
+    await axios
+      .post('/api/auth/register', params)
       .then((response: UserCreateResponse) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           created = true
         }
       })
@@ -22,11 +22,11 @@ export const UserCreate = async (params: UserCreateRequest) => {
 }
 
 export const UserFind = async () => {
-  apiClient.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
 
   let user: User | null = null
 
-  await apiClient
+  await axios
     .get('/api/user')
     .then(async (response) => {
       if (response.status === 200) {

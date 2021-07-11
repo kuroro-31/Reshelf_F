@@ -1,15 +1,15 @@
-import apiClient from 'axios'
 import { SignInRequest } from '@/types'
+import axios from 'axios'
 
 export const UserSignIn = async (params: SignInRequest) => {
-  apiClient.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
 
   let signedIn = false
-  await apiClient.get('/sanctum/csrf-cookie').then(async () => {
-    await apiClient
-      .post('/api/login', params)
+  await axios.get('/sanctum/csrf-cookie').then(async () => {
+    await axios
+      .post('/api/auth/login', params)
       .then((response: any) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           signedIn = true
         }
       })
@@ -21,14 +21,14 @@ export const UserSignIn = async (params: SignInRequest) => {
 }
 
 export const UserSignOut = async () => {
-  apiClient.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
 
   let signedOut = false
-  await apiClient.get('/sanctum/csrf-cookie').then(async () => {
-    await apiClient
+  await axios.get('/sanctum/csrf-cookie').then(async () => {
+    await axios
       .post('/api/logout')
       .then((response: any) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           signedOut = true
         }
       })

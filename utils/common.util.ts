@@ -1,9 +1,11 @@
-import { User } from '@/types'
 import { UserFind } from '@/apis'
+import { User } from '@/types'
 
 export const isUserSignIn = async () => {
   try {
     const user: User | null = await UserFind()
+    console.log(user)
+
     if (user === null) {
       return false
     } else {

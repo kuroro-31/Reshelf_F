@@ -1,20 +1,20 @@
-import apiClient from 'axios'
 import {
   Message,
   MessageCreateRequest,
   MessageCreateResponse,
   MessageFetchResponse,
 } from '@/types'
+import axios from 'axios'
 
 export const MessageCreate = async (params: MessageCreateRequest) => {
-  apiClient.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
 
   let created: boolean = false
-  await apiClient.get('/sanctum/csrf-cookie').then(async (response) => {
-    await apiClient
+  await axios.get('/sanctum/csrf-cookie').then(async (response) => {
+    await axios
       .post('/api/message/create', params)
       .then((response: MessageCreateResponse) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           created = true
         }
       })
@@ -27,13 +27,13 @@ export const MessageCreate = async (params: MessageCreateRequest) => {
 }
 
 export const MessageFetchByBoardId = async (boardId: number) => {
-  apiClient.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
 
   let messages: Array<Message> | null = null
-  await apiClient
+  await axios
     .get('/api/message/fetch_by_board_id', { params: { board_id: boardId } })
     .then((response: MessageFetchResponse) => {
-      if (response.status == 200) {
+      if (response.status === 200) {
         messages = response.data.message.messages
       }
     })
