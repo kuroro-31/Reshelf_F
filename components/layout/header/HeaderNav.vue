@@ -473,6 +473,7 @@
 import Vue from 'vue'
 import ReButton from '@/components/atoms/ReButton.vue'
 import ReModal from '@/components/atoms/ReModal.vue'
+import { UserSignOut } from '@/apis'
 // import {
 //   // MenuIcon,
 //   ShoppingCartIcon,
@@ -497,6 +498,21 @@ export default Vue.extend({
       post: false,
       like: false,
     }
+  },
+  methods: {
+    async logout() {
+      let signOut = false
+
+      await this.$nextTick(async function () {
+        this.$nuxt.$loading.start()
+        signOut = await UserSignOut()
+        this.$nuxt.$loading.finish()
+      })
+
+      if (signOut) {
+        this.$router.push({ path: '/' })
+      }
+    },
   },
 })
 </script>
