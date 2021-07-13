@@ -11,6 +11,7 @@ export const UserSignIn = async (params: SignInRequest) => {
       .then((response: any) => {
         if (response.status === 200) {
           signedIn = true
+          console.log(signedIn)
         }
       })
       .catch((error: any) => {

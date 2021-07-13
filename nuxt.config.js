@@ -75,6 +75,7 @@ export default {
 
   axios: {
     proxy: true,
+    credentials: true, // リクエストに Cookie を添えて送信する
   },
 
   proxy: {
@@ -88,6 +89,30 @@ export default {
     },
   },
 
+  // typescriptだとここ設定しても意味ない？
+  // auth: {
+  //   redirect: {
+  //     login: '/auth/login',   // 未ログイン時に認証ルートへアクセスした際のリダイレクトURL
+  //     logout: '/auth/login',  // ログアウト時のリダイレクトURL
+  //     callback: false,   // Oauth認証等で必要となる コールバックルート
+  //     home: '/',       // ログイン後のリダイレクトURL
+  //   },
+  //   strategies: {
+  //       'laravelSanctum': {
+  //           provider: 'laravel/sanctum',
+  //           url: 'https://localhost',
+  //           endpoints: {
+  //               login: {
+  //                   url: '/api/auth/login',
+  //               },
+  //           },
+  //       }
+  //   }
+  // },
+  // router: {
+  //   middleware: 'auth'
+  // },
+
   build: {
     cache: true,
     parallel: true,
@@ -95,8 +120,7 @@ export default {
     standalone: true,
     // analyze: true,
 
-    // Sass変換
-    loaders: {
+    loaders: { // Sass → css変換
       scss: {
         implementation: Sass,
         sassOptions: {
@@ -105,11 +129,9 @@ export default {
       },
     },
 
-    transpile: [/typed-vuex/],
+    transpile: [/typed-vuex/], // typescriptのvuex
 
-    // 保存時にESlintの実行
-    extend(config, ctx) {
-      // Run ESLint on save
+    extend(config, ctx) { // 保存時にESlintの実行
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -121,7 +143,7 @@ export default {
     },
   },
 
-  loading: {
+  loading: { // ローディング
     color: '#0080ff',
     height: '5px',
   },

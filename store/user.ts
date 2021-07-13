@@ -5,14 +5,12 @@ export type UserState = {
   id: string
   name: string
   token: string
-  pic: string
 }
 
 export const state = () => ({
   id: '',
   name: '',
   token: '',
-  pic: '',
   timestamp: 0,
 })
 
@@ -21,10 +19,9 @@ export const mutations = mutationTree(state, {
     state.id = user.id
     state.name = user.name
     state.token = user.token
-    state.pic = user.pic
   },
   drop(state) {
-    state.id = state.token = state.name = state.pic = ''
+    state.id = state.token = state.name = ''
   },
   reflesh(state, token: string) {
     state.token = token

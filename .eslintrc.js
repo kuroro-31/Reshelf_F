@@ -22,6 +22,7 @@ module.exports = {
     semi: [2, 'never'],
     'no-console': 'off', // console.log();OK
     'no-unused-vars': 'off', // 使っていない変数あってもOK
+    eqeqeq: 'warn',
     'prettier/prettier': [
       'error',
       {

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="$auth.loggedIn">
-      {{ $auth.user.name }}
+    <div v-if="user">
+      {{ user.name }}
     </div>
     <Nuxt />
   </div>
@@ -16,6 +16,12 @@ export default Vue.extend({
       const signedIn = await isUserSignIn()
       console.log('signedIn?')
       console.log(signedIn)
+      if (!signedIn) {
+        // this.onSignedOut();
+        this.$router.push({ path: '/auth/login' })
+      } else {
+        // this.onSignedIn();
+      }
     })
   },
 

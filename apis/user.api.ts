@@ -5,9 +5,9 @@ export const UserCreate = async (params: UserCreateRequest) => {
   axios.defaults.withCredentials = true
 
   let created = false
-  await axios.get('/sanctum/csrf-cookie').then(async (response) => {
+  await axios.get('/sanctum/csrf-cookie').then(async () => {
     await axios
-      .post('/api/auth/register', params)
+      .post('/api/register', params)
       .then((response: UserCreateResponse) => {
         if (response.status === 200) {
           created = true
@@ -21,19 +21,20 @@ export const UserCreate = async (params: UserCreateRequest) => {
   return created
 }
 
-export const UserFind = async () => {
+export const UserFind = () => {
   axios.defaults.withCredentials = true
 
   let user: User | null = null
 
-  await axios
+  axios
     .get('/api/user')
-    .then(async (response) => {
+    .then((response) => {
       if (response.status === 200) {
         user = response.data
       }
     })
     .catch((error: any) => {
+      console.log(error)
       return null
     })
 
