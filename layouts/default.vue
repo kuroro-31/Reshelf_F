@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="user">
+    <div v-if="signedIn">
       {{ user.name }}
     </div>
     <Nuxt />
