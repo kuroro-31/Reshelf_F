@@ -1,3 +1,5 @@
+init:
+	npm cache clear --force && npm cache clean --force && npm i
 i:
 	npm install
 update:

@@ -389,8 +389,7 @@
                     src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
                   />
                   <span class="menu-name-person">
-                    <!-- {{ loggedInUser.name }} -->
-                    Elizabeth Swan
+                    {{ user.name }}
                   </span>
                 </div>
                 <div class="menu-me">
@@ -418,20 +417,20 @@
                 </div> -->
                 <div class="menu-me">
                   <div class="">
-                    <select v-model="$colorMode.preference">
+                    <!-- <select v-model="$colorMode.preference">
                       <option value="system">System</option>
                       <option value="light">Light</option>
                       <option value="dark">Dark</option>
                       <option value="blue">Blue</option>
                       <option value="purple">purple</option>
                       <option value="gold">gold</option>
-                    </select>
+                    </select> -->
                   </div>
                   <span class="menu-me-title">共通</span>
                   <nuxt-link class="menu-me-link" to="/user/setting">
                     アカウント設定
                   </nuxt-link>
-                  <button class="menu-me-link" to="/user/top" @click="logout">
+                  <button class="menu-me-link" @click="logout">
                     ログアウト
                   </button>
                 </div>
@@ -490,6 +489,7 @@ export default {
   },
   data() {
     return {
+      user: this.$store.state.authenticate.user,
       visible: false,
       modal: false,
       message: '',
@@ -522,8 +522,8 @@ export default {
       //   path: this.$route.query.redirect || '/',
       // })
     },
-    async logout() {
-      await this.$auth.logout()
+    logout() {
+      this.$auth.logout()
     },
   },
 }

@@ -67,7 +67,7 @@ export default {
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
-    '@nuxtjs/color-mode',
+    // '@nuxtjs/color-mode',
   ],
 
   axios: {
@@ -111,9 +111,6 @@ export default {
     },
     localStorage: false,
   },
-  router: {
-    middleware: ['auth'],
-  },
 
   build: {
     cache: true,
@@ -143,6 +140,10 @@ export default {
           exclude: /(node_modules)/,
         })
       }
+    },
+
+    router: {
+      middleware: 'authenticated',
     },
   },
 }
