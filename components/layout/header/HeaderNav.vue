@@ -471,6 +471,9 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { mapActions } from 'vuex'
+
 import ReButton from '@/components/atoms/ReButton'
 import ReModal from '@/components/atoms/ReModal'
 import {
@@ -508,22 +511,14 @@ export default {
     },
   },
   methods: {
-    async submit() {
-      await this.$axios
-        .post('/api/auth/facebook')
-        .then(() => {})
-        .catch((err) => {
-          console.log(err)
-        })
-      // await this.$authentication.loginWith('local', {
-      //   data: this.form,
-      // })
-      // this.$router.push({
-      //   path: this.$route.query.redirect || '/',
-      // })
-    },
-    logout() {
-      this.$auth.logout()
+    ...mapActions({
+      signOut: 'authenticate/logout',
+    }),
+    async logout() {
+      this.$nuxt.$loading.start()
+      this.signOut()
+      this.$nuxt.$router.back()
+      this.$nuxt.$loading.finish()
     },
   },
 }

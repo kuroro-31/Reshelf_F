@@ -219,7 +219,7 @@ export default {
   }),
   methods: {
     ...mapActions({
-      signIn: 'user/login',
+      signIn: 'authenticate/login',
     }),
     async login() {
       axios.defaults.withCredentials = true
@@ -230,33 +230,11 @@ export default {
           .post('/api/auth/login', this.auth)
           .then(({ data }) => {
             this.signIn()
-            this.$nuxt.$router.push({ path: '/' })
+            this.$nuxt.$router.back()
           })
           .catch(({ response: { data } }) => {
             alert(data.message)
           })
-      })
-      this.$nuxt.$loading.finish()
-    },
-    async submit() {
-      const params = {
-        email: this.email,
-        password: this.password,
-      }
-
-      axios.defaults.withCredentials = true
-
-      this.$nuxt.$loading.start()
-      await axios.get('/sanctum/csrf-cookie').then(async () => {
-        await axios.post('/api/auth/login', params)
-        // .then((response) => {
-        //   if (response.status === 200) {
-        //     this.$nuxt.$router.push({ path: '/' })
-        //   }
-        // })
-        // .catch((error) => {
-        //   console.log(error)
-        // })
       })
       this.$nuxt.$loading.finish()
     },

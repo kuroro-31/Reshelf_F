@@ -2,14 +2,10 @@
   <div class="w-full h-full mx-auto flex flex-col">
     <HeaderNav />
     <div class="main">
-      <ul class="flex flex-col">
-        <li
-          v-for="(value, key, index) in error"
-          :key="index"
-          class="text-xl font-bold flex message"
-        >
-          {{ key }}
-          {{ value }}
+      <ul class="w-full flex flex-col">
+        <li v-for="(value, key, index) in error" :key="index" class="message">
+          <p class="container text-2xl font-bold">{{ key }}</p>
+          <p class="container">{{ value }}</p>
         </li>
         <nuxt-link to="/">
           <re-button class="re-button w-32 mt-8">
@@ -55,9 +51,8 @@ export default {
 <style lang="scss" scoped>
 .main {
   @apply flex items-center justify-center mx-auto container;
-  height: calc(100vh - 70px);
 }
 .message {
-  color: var(--sub-color);
+  @apply font-bold flex flex-col container mb-4;
 }
 </style>

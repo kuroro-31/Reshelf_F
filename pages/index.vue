@@ -17,7 +17,6 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
@@ -27,7 +26,6 @@ import SidebarSearch from '@/components/layout/sidebar/SidebarSearch'
 import AllItem from '@/components/atoms/item/AllItem'
 
 export default {
-  auth: false,
   components: {
     HeaderNav,
     FooterNav,
