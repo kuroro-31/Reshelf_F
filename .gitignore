@@ -52,3 +52,4 @@ Thumbs.db
 .nuxt/*
 .eslintcache
 package.json
+static/sw.js

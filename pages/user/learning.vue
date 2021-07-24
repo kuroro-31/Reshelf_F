@@ -38,6 +38,7 @@ export default {
     SidebarStudent,
     LearningItem,
   },
+  middleware: 'authenticated',
   data() {
     return {
       items: [

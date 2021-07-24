@@ -140,14 +140,14 @@ export default {
         })
       }
     },
-
-    router: {
-      middleware: ['authenticated', 'i18n'],
-    },
-
-    generate: {
-      // i18n
-      routes: ['/', '/ja'],
-    },
   },
+
+  // router: {
+  //   middleware: 'authenticated'
+  // },
+
+  // generate: {
+  //   // i18n
+  //   routes: ['/', '/ja'],
+  // }
 }
