@@ -143,14 +143,14 @@ export default {
   @apply flex items-center justify-between text-xs mb-4;
   color: var(--sub-color);
   &-title {
-    @apply flex items-center font-bold cursor-pointer rounded-lg py-2 px-4;
+    @apply flex items-center font-bold cursor-pointer rounded py-2 px-4;
     border: 2px solid var(--eee);
   }
   &-icon {
     @apply flex-shrink-0 inline-block cursor-pointer ml-4;
   }
   &-contents {
-    @apply absolute top-0 left-0 ml-10 z-50 rounded-lg shadow-lg overflow-y-auto cursor-default;
+    @apply absolute top-0 left-0 ml-10 z-50 rounded shadow-lg overflow-y-auto cursor-default;
     background-color: var(--bg-secondary);
     @screen lg {
       margin-top: 70px;
@@ -159,7 +159,7 @@ export default {
     }
   }
   &-prev {
-    @apply inline-flex justify-start items-center rounded-lg p-4 cursor-pointer;
+    @apply inline-flex justify-start items-center rounded p-4 cursor-pointer;
     width: 300px;
     height: 100px;
     border: 2px solid var(--gray);
@@ -182,7 +182,7 @@ export default {
     }
   }
   &-next {
-    @apply inline-flex justify-end items-center rounded-lg p-4 cursor-pointer;
+    @apply inline-flex justify-end items-center rounded p-4 cursor-pointer;
     width: 300px;
     height: 100px;
     border: 2px solid var(--gray);

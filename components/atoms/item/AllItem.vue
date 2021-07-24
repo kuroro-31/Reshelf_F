@@ -329,7 +329,7 @@ export default {
 }
 
 .content {
-  @apply flex flex-col items-center justify-center absolute shadow-lg rounded-lg p-6;
+  @apply flex flex-col items-center justify-center absolute shadow-lg rounded p-6;
   background-color: var(--bg-secondary);
   top: 0px;
   right: -400px;

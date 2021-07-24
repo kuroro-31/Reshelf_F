@@ -145,7 +145,7 @@ export default {
 }
 
 // .content {
-//   @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded-lg p-6;
+//   @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded p-6;
 //   background-color: var(--bg);
 //   top: 0px;
 //   left: 125px;
@@ -178,7 +178,7 @@ export default {
 }
 // 教材レベル
 .level {
-  @apply flex justify-end mt-2 px-2 py-1 mr-2 font-bold rounded-lg cursor-pointer;
+  @apply flex justify-end mt-2 px-2 py-1 mr-2 font-bold rounded cursor-pointer;
   max-width: 50px;
   &_one {
     border: 1px solid $green;
@@ -273,7 +273,7 @@ export default {
   }
 }
 .demo {
-  @apply inline-flex justify-center items-center mt-2 px-4 py-1 rounded-lg cursor-pointer;
+  @apply inline-flex justify-center items-center mt-2 px-4 py-1 rounded cursor-pointer;
   max-width: 50px;
   border: 1px solid var(--sub-color);
 }

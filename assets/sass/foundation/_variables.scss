@@ -1,6 +1,6 @@
 :root {
-  --primary: #0080ff;
-  --logo: #0080ff;
+  --primary: #33C4CC;
+  --logo: #33C4CC;
   // --primary: #4070E9;
   --color: #354458;
   --sub-color: #86868b;
@@ -43,8 +43,8 @@
   --border-color: #0d2538;
 }
 .blue-mode {
-  --primary: #33C4CC;
-  --logo: #33C4CC;
+  --primary: #0080ff;
+  --logo: #0080ff;
   --color: #2D3E4F;
 }
 .purple-mode {
@@ -54,6 +54,10 @@
 .gold-mode {
   --primary: #AB9048;
   --logo: #AB9048;
+}
+.pink-mode {
+  --primary: #DE73B7;
+  --logo: #DE73B7;
 }
 
 $primary: #0080ff;

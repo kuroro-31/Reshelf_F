@@ -57,9 +57,10 @@ export default {
     height: '5px',
   },
 
-  plugins: [
-    // '~/plugins/axios',
-    // '~/plugins/mixins/user',
+  plugins: ['~/plugins/i18n.js'],
+  vendor: [
+    // i18n
+    'vue-i18n',
   ],
 
   modules: ['@nuxtjs/axios', '@nuxtjs/proxy', '@nuxtjs/auth', '@nuxtjs/pwa'],
@@ -67,13 +68,11 @@ export default {
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
-    // '@nuxtjs/color-mode',
+    '@nuxtjs/color-mode',
   ],
 
   axios: {
-    // baseURL: 'http://localhost',
     proxy: true,
-    // credentials: true,
   },
 
   proxy: {
@@ -143,7 +142,12 @@ export default {
     },
 
     router: {
-      middleware: 'authenticated',
+      middleware: ['authenticated', 'i18n'],
+    },
+
+    generate: {
+      // i18n
+      routes: ['/', '/ja'],
     },
   },
 }

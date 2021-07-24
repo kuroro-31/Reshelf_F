@@ -44,7 +44,7 @@ export default {
   }
 
   &-window {
-    @apply rounded-lg;
+    @apply rounded;
     background-color: var(--bg);
     border-radius: 4px;
     max-width: 600px;
@@ -72,7 +72,7 @@ export default {
 }
 
 .close {
-  @apply absolute p-2 rounded-lg duration-300  shadow-lg;
+  @apply absolute p-2 rounded duration-300  shadow-lg;
   color: var(--color);
   background-color: var(--bg);
   top: -10px;

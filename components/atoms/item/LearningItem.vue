@@ -73,7 +73,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .dropdown {
-  @apply py-2 px-4 relative rounded-lg mr-4;
+  @apply py-2 px-4 relative rounded mr-4;
   // background: var(--bg-secondary);
   border: 1px solid var(--gray);
   &-icon {
@@ -85,7 +85,7 @@ export default {
     height: 40px;
   }
   &-contents {
-    @apply absolute top-0 right-0 z-50 rounded-lg shadow-lg overflow-y-auto cursor-default;
+    @apply absolute top-0 right-0 z-50 rounded shadow-lg overflow-y-auto cursor-default;
     background-color: var(--bg-secondary);
     @screen lg {
       margin-top: 40px;
@@ -110,7 +110,7 @@ export default {
       color: var(--sub-color);
     }
     &-link {
-      @apply py-3 w-full rounded-lg text-left px-4 duration-200;
+      @apply py-3 w-full rounded text-left px-4 duration-200;
       &:hover {
         @apply cursor-pointer;
         background: #f0f2f6;
@@ -192,7 +192,7 @@ export default {
 }
 
 .content {
-  @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded-lg p-6;
+  @apply flex flex-col items-center justify-center absolute hidden shadow-lg rounded p-6;
   background-color: var(--bg-secondary);
   top: 0px;
   left: 125px;

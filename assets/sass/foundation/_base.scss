@@ -60,13 +60,13 @@ button, input, select, textarea {
 }
 
 .card {
-  @apply p-6 rounded-lg;
+  @apply p-6 rounded;
   background-color: var(--bg-secondary);
   // margin-bottom: auto !important;
   // -webkit-box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
   // // box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
   &-lg {
-    @apply p-10 rounded-lg;
+    @apply p-10 rounded;
     background-color: var(--bg-secondary);
   }
 }
