@@ -51,6 +51,5 @@ Thumbs.db
 .history/*
 .nuxt/*
 .eslintcache
-package.json
 static/sw.js
 package-lock.json
