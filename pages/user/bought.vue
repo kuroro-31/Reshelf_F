@@ -40,6 +40,7 @@ export default {
     SidebarStudent,
     // AllItem,
   },
+  middleware: 'authenticated',
   data() {
     return {}
   },

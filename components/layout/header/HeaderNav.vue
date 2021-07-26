@@ -174,7 +174,7 @@
 
         <!-- お気に入り -->
         <button
-          v-if="isAuthenticated"
+          v-if="$store.state.authenticate.authenticated"
           class="dropdown"
           @mouseover="like = true"
           @mouseleave="like = false"
@@ -195,7 +195,7 @@
 
         <!-- カート -->
         <button
-          v-if="isAuthenticated"
+          v-if="$store.state.authenticate.authenticated"
           class="dropdown"
           @mouseover="cart = true"
           @mouseleave="cart = false"
@@ -364,6 +364,7 @@
 
         <!-- ユーザードロップダウン -->
         <button
+          v-if="$store.state.authenticate.authenticated"
           class="dropdown"
           @mouseover="dropdown = true"
           @mouseleave="dropdown = false"
@@ -440,10 +441,14 @@
         </button>
 
         <!-- ログイン -->
-        <!-- <nuxt-link v-if="!isAuthenticated" flat to="/auth/login">
+        <nuxt-link
+          v-if="!$store.state.authenticate.authenticated"
+          flat
+          to="/auth/login"
+        >
           ログイン
-        </nuxt-link> -->
-        <div v-if="!isAuthenticated" class="py-2.5">
+        </nuxt-link>
+        <div v-if="!$store.state.authenticate.authenticated" class="py-2.5">
           <span class="cursor-pointer" @click="modal = !modal">Log in</span>
           <ReModal v-if="modal" @close="modal = !modal">
             <template slot="header">Welcome To Reshelf！</template>
@@ -471,8 +476,7 @@
 </template>
 
 <script>
-import axios from 'axios'
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 import ReButton from '@/components/atoms/ReButton'
 import ReModal from '@/components/atoms/ReModal'
@@ -502,22 +506,17 @@ export default {
       like: false,
     }
   },
-  computed: {
-    isAuthenticated() {
-      return this.$auth.loggedIn
-    },
-    loggedInUser() {
-      return this.$auth.user
-    },
-  },
   methods: {
+    ...mapGetters({
+      authenticated: 'authenticate/authenticated',
+    }),
     ...mapActions({
       signOut: 'authenticate/logout',
     }),
     async logout() {
       this.$nuxt.$loading.start()
       this.signOut()
-      this.$nuxt.$router.back()
+      this.$nuxt.$router.push({ path: '/' })
       this.$nuxt.$loading.finish()
     },
   },
@@ -539,21 +538,21 @@ export default {
   // border-bottom-width: 1px;
   // border-style: solid;
   // border-color: #e5e7eb;
-  // &::after {
-  //   content: '';
-  //   position: absolute;
-  //   left: 0;
-  //   right: 0;
-  //   top: 100%;
-  //   height: 4px;
-  //   background: linear-gradient(
-  //     180deg,
-  //     rgba(9, 30, 66, 0.13) 0,
-  //     rgba(9, 30, 66, 0.13) 1px,
-  //     rgba(9, 30, 66, 0.08) 1px,
-  //     rgba(9, 30, 66, 0) 4px
-  //   );
-  // }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 4px;
+    background: linear-gradient(
+      180deg,
+      rgba(9, 30, 66, 0.13) 0,
+      rgba(9, 30, 66, 0.13) 1px,
+      rgba(9, 30, 66, 0.08) 1px,
+      rgba(9, 30, 66, 0) 4px
+    );
+  }
   &-left {
     @apply flex items-center lg:w-1/4 xl:w-1/5 mr-12;
     height: 45px;

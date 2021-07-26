@@ -230,7 +230,8 @@ export default {
           .post('/api/auth/login', this.auth)
           .then(({ data }) => {
             this.signIn()
-            this.$nuxt.$router.push({ path: '/' })
+            this.$nuxt.$router.back()
+            // this.$nuxt.$router.push({ path: '/' })
           })
           .catch(({ response: { data } }) => {
             alert(data.message)

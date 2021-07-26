@@ -131,6 +131,7 @@ export default {
     ChevronRightIcon,
     ChevronDownIcon,
   },
+  middleware: 'authenticated',
   data() {
     return {
       chapter: false,

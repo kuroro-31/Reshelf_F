@@ -34,6 +34,7 @@ export default {
     SidebarCart,
     CartItem,
   },
+  middleware: 'authenticated',
   data() {
     return {
       items: [

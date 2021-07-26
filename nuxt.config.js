@@ -142,10 +142,6 @@ export default {
     },
   },
 
-  // router: {
-  //   middleware: 'authenticated'
-  // },
-
   // generate: {
   //   // i18n
   //   routes: ['/', '/ja'],
