@@ -51,6 +51,8 @@
             Laravel(+Vue.js)でSNS風Webサービスを作ろう
           </h2>
           <!-- <all-item :items="items" /> -->
+
+          <div id="editorjs" />
         </div>
 
         <div class="chapter">
@@ -73,6 +75,10 @@
                 次になんとかするゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾ
               </span>
             </div>
+            <chevron-right-icon
+              size="1.5x"
+              class="chapter-next-icon"
+            ></chevron-right-icon>
           </a>
         </div>
       </div>
@@ -84,23 +90,145 @@ import SidebarNew from '@/components/layout/sidebar/item/SidebarNew'
 // atoms
 import {
   ChevronLeftIcon,
-  // ChevronRightIcon,
+  ChevronRightIcon,
   ChevronDownIcon,
 } from 'vue-feather-icons'
+let EditorJS = null
+let CodeTool = null
+let Header = null
+let LinkTool = null
+let ImageTool = null
+let CheckList = null
+let List = null
+let Embed = null
+let Quote = null
+let Delimiter = null
+let Marker = null
+
+if (process.client) {
+  EditorJS = require('@editorjs/editorjs')
+  CodeTool = require('@editorjs/code')
+  Header = require('@editorjs/header')
+  LinkTool = require('@editorjs/link')
+  ImageTool = require('@editorjs/image')
+  CheckList = require('@editorjs/checklist')
+  List = require('@editorjs/list')
+  Embed = require('@editorjs/embed')
+  Quote = require('@editorjs/quote')
+  Delimiter = require('@editorjs/delimiter')
+  Marker = require('@editorjs/Marker')
+}
 export default {
   components: {
     SidebarNew,
     ChevronLeftIcon,
-    // ChevronRightIcon,
+    ChevronRightIcon,
     ChevronDownIcon,
   },
   middleware: 'authenticated',
   data() {
     return {
       chapter: false,
+      editor: {},
+      article: {},
     }
   },
-  methods: {},
+  mounted() {
+    let me = this
+    this.editor = new EditorJS({
+      holder: 'editorjs',
+      tools: {
+        code: CodeTool,
+        header: {
+          class: Header,
+          shortcut: 'CMD+SHIFT+H',
+          config: {
+            placeholder: 'ヘッダー',
+            levels: [1, 2, 3, 4],
+            defaultLevel: 3,
+          },
+        },
+        linkTool: {
+          class: LinkTool,
+          config: {
+            endpoint: 'http://localhost:3000/api/blog/fetch_url',
+          },
+        },
+        image: {
+          class: ImageTool,
+          config: {
+            uploader: {
+              uploadByFile(file) {
+                let formData = new FormData()
+                formData.append('image', file)
+                let config = {
+                  headers: { 'content-type': 'multipart/form-data' },
+                }
+                return me.$axios
+                  .post('api/blog/upload_file', formData, config)
+                  .then((res) => {
+                    return res.data
+                  })
+              },
+              //only work when url has extensions like .jpg
+              uploadByUrl(url) {
+                return me.$axios
+                  .post('api/blog/fetch_file', { url: url })
+                  .then((res) => {
+                    return res.data
+                  })
+              },
+            },
+          },
+        },
+        checklist: {
+          class: CheckList,
+          inlineToolbar: true,
+        },
+        list: {
+          class: List,
+          inlineToolbar: true,
+        },
+        embed: {
+          class: Embed,
+          config: {
+            services: {
+              youtube: true,
+              twitter: true,
+              instagram: true,
+            },
+          },
+        },
+        quote: {
+          class: Quote,
+          inlineToolbar: true,
+          shortcut: 'CMD+SHIFT+O',
+          config: {
+            quotePlaceholder: 'Enter a quote',
+            captionPlaceholder: "Quote's author",
+          },
+        },
+        delimiter: Delimiter,
+        marker: {
+          class: Marker,
+          inlineToolbar: true,
+          shortcut: 'CMD+SHIFT+M',
+        },
+      },
+    })
+  },
+  methods: {
+    save() {
+      this.editor
+        .save()
+        .then((data) => {
+          this.article = data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
