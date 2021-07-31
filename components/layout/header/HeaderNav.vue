@@ -27,7 +27,7 @@
               height="24"
               class="responsive"
             /> -->
-            <svg
+            <!-- <svg
               class="responsive"
               xmlns="http://www.w3.org/2000/svg"
               width="112"
@@ -64,102 +64,79 @@
                   d="M913,477.153a9.189,9.189,0,0,1,6.694-2.459,14.765,14.765,0,0,1,7.924,2.6l7.1-15.028a37.409,37.409,0,0,0-18.444-4.782c-15.847,0-26.094,9.7-26.094,24.728v7.924h-9.563v13.935h9.563v55.877h20.493V504.081h15.984V490.146H910.677v-6.421a9.38,9.38,0,0,1,2.6-6.831Z"
                 />
               </g>
-            </svg>
+            </svg> -->
             <!-- <svg
               xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="140"
-              height="43"
-              viewBox="0 0 1159.433 280"
+              width="112"
+              height="24"
+              viewBox="0 0 511.992 119.677"
             >
-              <defs>
-                <radialGradient
-                  id="radial-gradient"
-                  cx="0.5"
-                  cy="0.5"
-                  r="0.505"
-                  gradientTransform="translate(0.01) scale(0.979 1)"
-                  gradientUnits="objectBoundingBox"
-                >
-                  <stop offset="0.01" stop-color="#2cbfbf" />
-                  <stop offset="1" stop-color="#2cd5bf" />
-                </radialGradient>
-                <linearGradient
-                  id="linear-gradient"
-                  x1="0.17"
-                  y1="-0.075"
-                  x2="0.742"
-                  y2="0.838"
-                  gradientUnits="objectBoundingBox"
-                >
-                  <stop offset="0.21" stop-color="#2cd5bf" />
-                  <stop offset="1" stop-color="#2cbfbf" />
-                </linearGradient>
-                <radialGradient
-                  id="radial-gradient-2"
-                  cx="0.5"
-                  cy="0.5"
-                  r="0.485"
-                  gradientTransform="translate(-0.033) scale(1.066 1)"
-                  xlink:href="#radial-gradient"
+              <g id="logo-group" transform="translate(-566.378 -556.95)">
+                <path
+                  id="path65034"
+                  d="M566.378,675.006V556.95h25.033v97.384h47.884v20.672Z"
+                  fill="#fff"
                 />
-              </defs>
-              <g
-                id="グループ_75"
-                data-name="グループ 75"
-                transform="translate(-1230.567 2086)"
-              >
-                <g id="logo" transform="translate(1230.599 -2070.98)">
-                  <path
-                    id="パス_519"
-                    data-name="パス 519"
-                    d="M721.972,324.4a8.119,8.119,0,0,0-.048-.833,15.7,15.7,0,0,0-1.151-4.927c-2.194-6.755-6.533-15.452-5.395-20.014,4.2-16.783-.33-33.626-11.095-47.322A108.309,108.309,0,0,0,584.1,215.736c-64.32-22.075-92.815,27.925-91.706,30.743,1.2,3,5.394,2.4,16.183,3,8.074.45,17.154,5.263,21.212,7.654A107.686,107.686,0,0,0,510.97,318.1c0,1.127,0,2.248.054,3.363l-.054-.066A113.286,113.286,0,0,0,624.254,434.686s9.374.767,31.468-1.5c23.376-2.4,24.833-7.492,35.064-7.492,10.789,0,16.183,3.6,17.982,1.2s-5.994-16.783-6.593-26.373.6-26.373-1.2-25.774-12.587,12.587-19.78,18.581-11.988,7.792-12.587,9.59,0,5.394-1.8,6.593-12.587,5.994-26.373,5.994a58.141,58.141,0,0,1-46.219-93.391c.276,1.145.51,2.308.683,3.482,1.8,11.988,1.8,21.986,2.1,23.28s2.1.7,3.3-.5,18.581-10.19,22.777-24.575c2.631-8.991,4.316-15.44,5.059-23.262A58.2,58.2,0,0,1,690.5,327.773a15.724,15.724,0,0,0,1.612,4.447h0a15.872,15.872,0,0,0,29.855-7.522Z"
-                    transform="translate(-492.39 -209.923)"
-                    fill="url(#radial-gradient)"
-                  />
-                  <path
-                    id="パス_520"
-                    data-name="パス 520"
-                    d="M523.44,396.42"
-                    transform="translate(-504.842 -284.642)"
-                    fill="none"
-                    stroke="#000"
-                    stroke-miterlimit="10"
-                    stroke-width="1"
-                  />
-                  <path
-                    id="パス_521"
-                    data-name="パス 521"
-                    d="M678.907,334.92a64.434,64.434,0,0,0-4.513,128.706,58.141,58.141,0,1,1,65.051-85.772,15.723,15.723,0,0,0,1.612,4.447,64.464,64.464,0,0,0-62.15-47.382Z"
-                    transform="translate(-541.331 -260.004)"
-                    fill="#2baaaa"
-                  />
-                  <path
-                    id="パス_522"
-                    data-name="パス 522"
-                    d="M584.1,215.88c-64.32-22.075-92.815,27.925-91.706,30.743,1.2,3,5.394,2.4,16.183,3,8.074.45,17.154,5.263,21.212,7.654A108.435,108.435,0,0,1,584.1,215.88Z"
-                    transform="translate(-492.39 -210.068)"
-                    fill="url(#linear-gradient)"
-                  />
-                  <path
-                    id="パス_523"
-                    data-name="パス 523"
-                    d="M734.424,324.4a8.136,8.136,0,0,0-.048-.833,15.7,15.7,0,0,0-1.151-4.927c-2.194-6.755-6.533-15.452-5.394-20.014,4.2-16.783-.33-33.626-11.095-47.322a108.189,108.189,0,0,0-193.3,66.8c0,1.127,0,2.248.054,3.363l-.054-.066A113.286,113.286,0,0,0,636.724,434.682s9.374.767,31.468-1.5c23.376-2.4,24.833-7.492,35.064-7.492,10.789,0,16.183,3.6,17.982,1.2s-5.994-16.783-6.593-26.373.6-26.373-1.2-25.774-12.587,12.587-19.78,18.581-11.988,7.792-12.587,9.59,0,5.394-1.8,6.593-12.587,5.994-26.373,5.994a58.143,58.143,0,0,1-14.985-1.96A64.434,64.434,0,0,1,597.98,302.655s7.594,10.981,9.392,22.969,1.8,21.986,2.1,23.28,2.1.7,3.3-.5,18.581-10.19,22.777-24.575c4.142-14.211,5.946-22,5.395-38.96h1.48a64.462,64.462,0,0,1,62.149,47.364,15.872,15.872,0,0,0,29.857-7.517v-.3Z"
-                    transform="translate(-504.842 -209.92)"
-                    fill="url(#radial-gradient-2)"
-                  />
-                </g>
-                <text
-                  id="Reshelf"
-                  transform="translate(1524 -1873)"
-                  fill="#334663"
-                  font-size="239"
-                  font-family="TeluguMN, Telugu MN"
-                >
-                  <tspan x="0" y="0">Reshelf</tspan>
-                </text>
+                <path
+                  id="path65036"
+                  d="M711.258,600.558q-7.833,0-12.274,5.007-4.441,4.926-5.087,14.05h34.561q-.161-9.125-4.764-14.05Q719.09,600.558,711.258,600.558Zm3.472,76.066q-21.8,0-34.076-12.032T668.38,630.518q0-22.691,11.3-35.046,11.386-12.435,31.411-12.435,19.138,0,29.8,10.9t10.659,30.12v11.951h-58.22q.4,10.5,6.218,16.393T715.86,658.3a67.717,67.717,0,0,0,15.423-1.7,77.183,77.183,0,0,0,15.181-5.41v19.058a56.6,56.6,0,0,1-13.808,4.764,84.952,84.952,0,0,1-17.927,1.615Z"
+                  fill="#fff"
+                />
+                <path
+                  id="path65038"
+                  d="M845.15,675.006l-4.764-12.274h-.646q-6.218,7.833-12.839,10.9-6.541,2.988-17.119,2.988-13,0-20.51-7.429-7.429-7.429-7.429-21.157,0-14.373,10.013-21.157,10.094-6.864,30.362-7.59l15.665-.484v-3.957q0-13.727-14.05-13.727-10.82,0-25.436,6.541l-8.156-16.634A73.392,73.392,0,0,1,824.8,582.87q18.169,0,27.858,7.913t9.69,24.062V675Zm-7.267-41.829-9.528.323q-10.74.323-15.988,3.876t-5.249,10.82q0,10.417,11.951,10.417,8.56,0,13.647-4.926,5.168-4.926,5.168-13.081Z"
+                  fill="#fff"
+                />
+                <path
+                  id="path65040"
+                  d="M954.083,583.034a39.714,39.714,0,0,1,8.317.727l-1.857,23.094a28.214,28.214,0,0,0-7.267-.807q-11.789,0-18.41,6.056-6.541,6.056-6.541,16.957v45.947H903.7V584.729h18.653l3.634,15.181h1.211a33.724,33.724,0,0,1,11.3-12.193,27.994,27.994,0,0,1,15.585-4.684Z"
+                  fill="#fff"
+                />
+                <path
+                  id="path65042"
+                  d="M1078.371,675.006h-24.639V622.274q0-9.771-3.472-14.616-3.472-4.926-11.063-4.926-10.336,0-14.939,6.944-4.6,6.864-4.6,22.851V675H995.027V584.725h18.815l3.311,11.547h1.373a25.812,25.812,0,0,1,11.3-9.851,38.509,38.509,0,0,1,16.473-3.392q15.746,0,23.9,8.559,8.156,8.479,8.156,24.548Z"
+                  fill="#fff"
+                />
               </g>
             </svg> -->
+            <svg
+              id="logo-group"
+              xmlns="http://www.w3.org/2000/svg"
+              width="105"
+              height="20"
+              viewBox="0 0 376.567 91.323"
+            >
+              <path
+                id="path81398"
+                d="M549.745,538.925h-13.13V620.63h37.746V609.142H549.743Z"
+                transform="translate(-536.615 -534.113)"
+                fill="#fff"
+              />
+              <path
+                id="path81400"
+                d="M662.782,538.925H616.244V620.63h46.538V609.142H629.373V581.711h30.479V570.223H629.373v-12.9l-9.5-6.916h42.9Z"
+                transform="translate(-557.681 -534.113)"
+                fill="#fff"
+              />
+              <path
+                id="path81402"
+                d="M751.327,546.1l-6.565-13.715L738.2,546.1l-34.933,72.8h13.13l6.916-14.419-7.385-5.392h47.711l9.5,19.811h13.13Zm-19.928,41.5,13.363-27.783,13.363,27.783Z"
+                transform="translate(-580.703 -532.382)"
+                fill="#fff"
+              />
+              <path
+                id="path81404"
+                d="M873.144,586.515c10.081-2.11,19.224-7.854,19.224-23.328,0-22.272-18.991-24.266-32.589-24.266H843.837v81.705h13.13V587.569h1.524l24.618,33.175h15.474Zm-16.176-30.01-8.557-6.1h14.653c6.916,0,16.177,1.055,16.177,12.778,0,11.84-9.261,12.9-16.177,12.9h-6.1Z"
+                transform="translate(-617.891 -534.112)"
+                fill="#fff"
+              />
+              <path
+                id="path81406"
+                d="M1008.986,594.169l-47.476-48.3-8.557-8.675-4.572-4.806V618.9h13.13V561.929l47.476,48.3,8.557,8.675,4.572,4.806V537.2h-13.13Z"
+                transform="translate(-645.549 -532.385)"
+                fill="#fff"
+              />
+            </svg>
           </h1>
         </NuxtLink>
       </div>
@@ -418,14 +395,14 @@
                 </div> -->
                 <div class="menu-me">
                   <div class="">
-                    <!-- <select v-model="$colorMode.preference">
+                    <select v-model="$colorMode.preference">
                       <option value="system">System</option>
                       <option value="light">Light</option>
                       <option value="dark">Dark</option>
                       <option value="blue">Blue</option>
                       <option value="purple">purple</option>
                       <option value="gold">gold</option>
-                    </select> -->
+                    </select>
                   </div>
                   <span class="menu-me-title">共通</span>
                   <nuxt-link class="menu-me-link" to="/user/setting">
@@ -445,11 +422,14 @@
           v-if="!$store.state.authenticate.authenticated"
           flat
           to="/auth/login"
+          class="text-white"
         >
           ログイン
         </nuxt-link>
         <div v-if="!$store.state.authenticate.authenticated" class="py-2.5">
-          <span class="cursor-pointer" @click="modal = !modal">Log in</span>
+          <span class="cursor-pointer text-white" @click="modal = !modal">
+            Log in
+          </span>
           <ReModal v-if="modal" @close="modal = !modal">
             <template slot="header">Welcome To Reshelf！</template>
             <!-- default -->
@@ -534,25 +514,26 @@ export default {
 }
 .nav {
   @apply sticky top-0 z-20 flex items-center justify-center h-16;
-  background-color: var(--bg-secondary);
+  // background-color: var(--bg-secondary);
+  background-color: var(--primary);
   // border-bottom-width: 1px;
   // border-style: solid;
   // border-color: #e5e7eb;
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    height: 4px;
-    background: linear-gradient(
-      180deg,
-      rgba(9, 30, 66, 0.13) 0,
-      rgba(9, 30, 66, 0.13) 1px,
-      rgba(9, 30, 66, 0.08) 1px,
-      rgba(9, 30, 66, 0) 4px
-    );
-  }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   top: 100%;
+  //   height: 4px;
+  //   background: linear-gradient(
+  //     180deg,
+  //     rgba(9, 30, 66, 0.13) 0,
+  //     rgba(9, 30, 66, 0.13) 1px,
+  //     rgba(9, 30, 66, 0.08) 1px,
+  //     rgba(9, 30, 66, 0) 4px
+  //   );
+  // }
   &-left {
     @apply flex items-center lg:w-1/4 xl:w-1/5 mr-12;
     height: 45px;
@@ -573,7 +554,7 @@ export default {
   @apply px-3 relative;
   height: 60px;
   &-icon {
-    @apply flex-shrink-0 inline-block cursor-pointer;
+    @apply flex-shrink-0 inline-block cursor-pointer text-white;
   }
   &-img {
     @apply object-cover rounded-full shadow-lg cursor-pointer;

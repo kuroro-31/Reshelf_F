@@ -1,6 +1,5 @@
 <template>
-  <div class="w-full mx-auto flex flex-col scroll-none">
-    <HeaderNav />
+  <div>
     <div class="w-full flex max-w-screen-xl mx-auto container">
       <div class="lg:flex w-full">
         <nav class="side-nav lg:max-h-(screen-22) pin-22">
@@ -18,7 +17,6 @@
 </template>
 <script>
 // layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
 import SidebarSearch from '@/components/layout/sidebar/SidebarSearch'
 // atoms
@@ -27,7 +25,6 @@ import AllItem from '@/components/atoms/item/AllItem'
 
 export default {
   components: {
-    HeaderNav,
     FooterNav,
     SidebarSearch,
     // HeroItem,
