@@ -1,5 +1,6 @@
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">
+    <HeaderNav />
     <div class="w-full flex max-w-screen-lg mx-auto container scroll-none">
       <div class="lg:flex w-full">
         <div class="main-body min-h-(screen-16) scroll-none">
@@ -79,12 +80,14 @@
 </template>
 <script>
 // layout
+import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
 // atoms
 import AllItem from '@/components/atoms/item/AllItem'
 
 export default {
   components: {
+    HeaderNav,
     FooterNav,
     AllItem,
   },

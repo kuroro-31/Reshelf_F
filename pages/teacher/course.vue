@@ -1,5 +1,6 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
+    <HeaderNav />
     <div class="w-full flex max-w-screen-xl mx-auto container scroll-none">
       <div class="lg:flex w-full">
         <nav
@@ -22,6 +23,7 @@
 </template>
 <script>
 // layout
+import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
 import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
 import SidebarTeacher from '@/components/layout/sidebar/SidebarTeacher'
@@ -31,6 +33,7 @@ import SidebarStudent from '@/components/layout/sidebar/SidebarStudent'
 
 export default {
   components: {
+    HeaderNav,
     // FooterNav,
     SidebarSetting,
     SidebarTeacher,
