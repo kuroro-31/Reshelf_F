@@ -45,6 +45,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.9.0",
     "fibers": "^5.0.0",
+    "nuxt-svg-loader": "^1.2.0",
     "postcss": "^8.3.0",
     "prettier": "^2.3.0",
     "ress": "^3.0.0",

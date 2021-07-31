@@ -3,8 +3,7 @@ import Fiber from 'fibers'
 import Sass from 'sass'
 export default {
   head: {
-    title:
-      'Reshelf【リシェルフ】| アップデートするオンライン学習マーケットプレイス',
+    title: 'Study| アップデートするオンライン学習マーケットプレイス',
     htmlAttrs: {
       lang: 'ja',
       prefix: 'og: http://ogp.me/ns#',

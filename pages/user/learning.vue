@@ -1,5 +1,6 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
+    <HeaderNav />
     <div class="w-full flex max-w-screen-xl mx-auto container scroll-none">
       <div class="lg:flex w-full">
         <nav class="card side-nav mb-auto">
@@ -20,7 +21,7 @@
 </template>
 <script>
 // layout
-// import FooterNav from '@/components/layout/FooterNav'
+import HeaderNav from '@/components/layout/header/HeaderNav'
 import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
 import SidebarTeacher from '@/components/layout/sidebar/SidebarTeacher'
 import SidebarStudent from '@/components/layout/sidebar/SidebarStudent'
@@ -29,7 +30,7 @@ import LearningItem from '@/components/atoms/item/LearningItem'
 
 export default {
   components: {
-    // FooterNav,
+    HeaderNav,
     SidebarSetting,
     SidebarTeacher,
     SidebarStudent,

@@ -1,5 +1,6 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
+    <HeaderNav />
     <hero-item />
     <div class="main scroll-none">
       <div class="lg:flex w-full">
@@ -17,6 +18,7 @@
 </template>
 <script>
 // layout
+import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
 import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
 // atoms
@@ -26,6 +28,7 @@ import DetailItem from '@/components/atoms/item/DetailItem'
 export default {
   auth: false,
   components: {
+    HeaderNav,
     // FooterNav,
     HeroItem,
     SidebarDetail,
