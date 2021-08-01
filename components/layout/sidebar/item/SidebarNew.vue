@@ -4,6 +4,11 @@
     <nuxt-link class="item-link" to="/user/learning">受講中のコース</nuxt-link>
     <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
     <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
+
+    <span class="item-title">受講生</span>
+    <nuxt-link class="item-link" to="/user/learning">受講中のコース</nuxt-link>
+    <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
+    <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
   </div>
 </template>
 
@@ -19,7 +24,7 @@ export default {
 .item {
   @apply duration-200 flex flex-col;
   &-title {
-    @apply text-xs font-bold pt-2;
+    @apply text-xs font-bold pt-4;
     color: var(--sub-color);
   }
   &-link {

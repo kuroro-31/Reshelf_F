@@ -216,7 +216,7 @@
           <div class="py-5 bg-white">
             <div class="grid grid-cols-2 gap-1">
               <div class="text-center sm:text-left whitespace-nowrap">
-                <button
+                <nuxt-link
                   class="
                     transition
                     duration-200
@@ -236,6 +236,7 @@
                     focus:ring-opacity-50
                     ring-inset
                   "
+                  to="/"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -252,7 +253,7 @@
                     />
                   </svg>
                   <span class="inline-block ml-1">Back to your-app.com</span>
-                </button>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -280,12 +281,12 @@ export default {
       'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627713005/arno-smit-sKJ7zSylUao-unsplash_nowss7.jpg'
     url[1] =
       'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627712720/101_xzckh4.png'
-    // url[2] =
-    //   'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627711973/c-d-x-PDX_a_82obo-unsplash_vpgofh.jpg'
-    // url[3] =
-    //   'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627711077/fakurian-design-ODyVPvfwtx4-unsplash_f7exim.jpg'
-    // url[4] =
-    //   'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627711099/fakurian-design-jyYAQaUDjzI-unsplash_zynbrf.jpg'
+    url[2] =
+      'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627712720/100_bczc5x.png'
+    url[3] =
+      'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627718012/krystina-rogers-5aXEo-hGwU0-unsplash_hggyrk.jpg'
+    url[4] =
+      'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627718455/gradienta-Ebln5Lj2P-c-unsplash_ee1alo.jpg'
     let n = Math.floor(Math.random() * url.length)
     let elm = document.getElementById('login')
     elm.style.background = 'url(' + url[n] + ')'

@@ -1,80 +1,84 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
-    <!-- <HeaderNav /> -->
-    <div class="body">
-      <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
-        <NuxtLink to="/" class="title-link">
-          <h1>
-            <img
-              src="https://res.cloudinary.com/reshelf/image/upload/v1619871156/Logo_pfuaao.svg"
-              alt="Reshelf Logo"
-              width="112"
-              height="24"
-              class="responsive"
-            />
-          </h1>
-        </NuxtLink>
-
-        <div class="w-full ml-auto mt-8">
-          <SidebarNew />
-        </div>
-      </nav>
-      <div class="card-lg main-body scroll-none">
-        <!-- ジャンル -->
-        <div
-          class="chapter"
-          @mouseover="chapter = true"
-          @mouseleave="chapter = false"
+    <HeaderNav />
+    <div class="w-full flex max-w-screen-xl mx-auto container scroll-none">
+      <div class="lg:flex w-full mt-4">
+        <nav
+          class="card side-nav lg:max-h-(screen-22) pin-22 scroll-none mb-auto"
         >
-          <div class="chapter-title">
-            Chapter
-            <chevron-down-icon
-              size="1x"
-              class="chapter-icon"
-            ></chevron-down-icon>
-          </div>
-          <transition>
-            <div v-if="chapter">
-              <div
-                class="chapter-contents"
-                @mouseover="chapter = true"
-                @mouseleave="chapter = false"
+          <SidebarNew />
+        </nav>
+        <div class="main-body scroll-none">
+          <div class="main-body-content">
+            <h2 class="text-xl font-bold mb-4">あなたのコース</h2>
+            <!-- <all-item :items="items" /> -->
+            <form @submit.prevent="save">
+              <!-- タイトル -->
+              <label class="font-semibold text-xs text-gray-600 pb-1 block">
+                タイトル
+              </label>
+              <input
+                v-model.trim="post.title"
+                type="text"
+                placeholder="タイトル"
+                autofocus
+                class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+              />
+
+              <!-- body -->
+              <label class="font-semibold text-xs text-gray-600 pb-1 block">
+                本文
+              </label>
+              <textarea
+                v-model.trim="post.body"
+                type="text"
+                placeholder="本文"
+                class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+              />
+
+              <!-- ログインボタン -->
+              <button
+                type="submit"
+                class="
+                  transition
+                  duration-200
+                  bg-blue-500
+                  hover:bg-blue-600
+                  focus:bg-blue-700
+                  focus:shadow-sm
+                  focus:ring-4
+                  focus:ring-blue-500
+                  focus:ring-opacity-50
+                  text-white
+                  w-full
+                  py-2
+                  rounded
+                  text-xs
+                  shadow-sm
+                  hover:shadow-md
+                  font-semibold
+                  text-center
+                  inline-block
+                "
               >
-                <div class="p-8">チャプター一覧</div>
-              </div>
-            </div>
-          </transition>
-        </div>
-
-        <div class="main-body-content">
-          <!-- <span class="text-xl text-gray inline-block mb-2">Tutorial</span> -->
-          <h2 class="text-3xl font-bold mb-4 flex items-center">
-            Laravel(+Vue.js)でSNS風Webサービスを作ろう
-          </h2>
-          <!-- <all-item :items="items" /> -->
-        </div>
-
-        <div class="chapter">
-          <a class="chapter-prev">
-            <chevron-left-icon
-              size="1.5x"
-              class="chapter-prev-icon"
-            ></chevron-left-icon>
-            <div class="chapter-prev-body">
-              <span class="chapter-prev-title">PREV</span>
-              <span class="chapter-next-content">
-                はじめに。。。。。。。。。。。。。
-              </span>
-            </div>
-          </a>
-          <a class="chapter-next">
-            <div class="chapter-next-body">
-              <span class="chapter-next-title">NEXT</span>
-              <span class="chapter-next-content">
-                次になんとかするゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾ
-              </span>
-            </div>
-          </a>
+                <span class="inline-block mr-2 text-white">保存</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  class="w-4 h-4 inline-block"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -82,123 +86,66 @@
   </div>
 </template>
 <script>
-// import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
+import axios from 'axios'
+// layout
+import HeaderNav from '@/components/layout/header/HeaderNav'
 import SidebarNew from '@/components/layout/sidebar/item/SidebarNew'
 // atoms
-import {
-  ChevronLeftIcon,
-  // ChevronRightIcon,
-  ChevronDownIcon,
-} from 'vue-feather-icons'
+// import AllItem from '@/components/atoms/item/AllItem'
+
 export default {
   components: {
-    // FooterNav,
-    // HeaderNav,
+    HeaderNav,
     SidebarNew,
-    ChevronLeftIcon,
-    // ChevronRightIcon,
-    ChevronDownIcon,
+    // AllItem,
   },
   middleware: 'authenticated',
   data() {
     return {
-      chapter: false,
+      post: {
+        title: '',
+        body: '',
+      },
+      errors: {},
     }
   },
-  methods: {},
+  methods: {
+    async save() {
+      axios.defaults.withCredentials = true
+
+      await axios.get('/sanctum/csrf-cookie').then(async () => {
+        await axios
+          .post('/api/posts', this.post)
+          .then(({ data }) => {
+            // this.$nuxt.$router.back()
+            this.$nuxt.$router.push({ path: '/' })
+          })
+          .catch(({ response: { data } }) => {
+            alert(data.message)
+          })
+      })
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
-.body {
-  @apply lg:flex w-full relative justify-between;
-}
 .side-nav {
-  @apply hidden overflow-y-auto p-10;
-  @screen lg {
-    @apply fixed block left-0 top-0 bottom-0;
-    width: 20%;
-  }
+  @apply hidden w-full lg:block mt-6 lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
+  // @screen lg {
+  //   border-right: 1px #ddd solid;
+  // }
+  // @screen lg {
+  //   @apply overflow-y-auto;
+  //   height: calc(100vh - 68px);
+  // }
 }
 .main-body {
-  @apply relative;
-  @screen lg {
-    margin-left: 20%;
-    width: 50%;
-  }
-  height: 2000px;
-}
-.right-side {
-  @apply hidden overflow-y-auto p-10;
-  @screen lg {
-    @apply fixed block right-0 top-0 bottom-0;
-    width: 30%;
-  }
-}
-.chapter {
-  @apply flex items-center justify-between text-xs mb-4;
-  color: var(--sub-color);
-  &-title {
-    @apply flex items-center font-bold cursor-pointer rounded py-2 px-4;
-    border: 2px solid var(--eee);
-  }
-  &-icon {
-    @apply flex-shrink-0 inline-block cursor-pointer ml-4;
-  }
-  &-contents {
-    @apply absolute top-0 left-0 ml-10 z-50 rounded shadow-lg overflow-y-auto cursor-default;
-    background-color: var(--bg-secondary);
-    @screen lg {
-      margin-top: 70px;
-      width: 400px;
-      max-height: 500px;
-    }
-  }
-  &-prev {
-    @apply inline-flex justify-start items-center rounded p-4 cursor-pointer;
-    width: 300px;
-    height: 100px;
-    border: 2px solid var(--gray);
-    &:hover {
-      border: 2px solid var(--primary);
-    }
-    &-icon {
-      @apply text-primary inline-block;
-    }
-    &-body {
-      @apply flex flex-col w-full ml-8;
-      max-width: 212px;
-    }
-    &-title {
-      @apply w-full h-1/2 pb-2 font-bold text-left;
-      color: var(--sub-color);
-    }
-    &-content {
-      @apply h-1/2 text-left truncate;
-    }
-  }
-  &-next {
-    @apply inline-flex justify-end items-center rounded p-4 cursor-pointer;
-    width: 300px;
-    height: 100px;
-    border: 2px solid var(--gray);
-    &:hover {
-      border: 2px solid var(--primary);
-    }
-    &-icon {
-      @apply text-primary inline-block;
-    }
-    &-body {
-      @apply flex flex-col w-full mr-8;
-      max-width: 212px;
-    }
-    &-title {
-      @apply w-full h-1/2 pb-2 font-bold text-right;
-      color: var(--sub-color);
-    }
-    &-content {
-      @apply h-1/2 text-left truncate;
-    }
-  }
+  // @apply w-full lg:w-3/4 xl:w-3/5 pt-10 px-6 lg:px-12;
+  // @apply w-full lg:w-3/4 xl:w-3/5 p-6;
+  @apply w-full lg:w-3/4 xl:w-4/5 p-6 lg:pl-10;
+  // @screen lg {
+  //   @apply overflow-y-auto;
+  //   height: calc(100vh - 68px);
+  // }
 }
 </style>
