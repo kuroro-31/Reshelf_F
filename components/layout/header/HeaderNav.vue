@@ -22,49 +22,78 @@
           <h1>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="112"
-              height="24"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="125"
+              height="35"
               viewBox="0 0 459.458 97.981"
             >
-              <g transform="translate(-580.567 1559.479)">
-                <g transform="translate(580.567 -1559.479)">
+              <defs>
+                <linearGradient
+                  id="linear-gradient"
+                  x1="0.5"
+                  x2="0.596"
+                  y2="1.608"
+                  gradientUnits="objectBoundingBox"
+                >
+                  <stop offset="0" stop-color="#33c3d6" />
+                  <stop offset="1" stop-color="#3367d6" />
+                </linearGradient>
+              </defs>
+              <g
+                id="グループ_78"
+                data-name="グループ 78"
+                transform="translate(-580.567 1559.479)"
+              >
+                <g id="logo" transform="translate(580.567 -1559.479)">
                   <path
+                    id="パス_522"
+                    data-name="パス 522"
                     d="M532.324,212.714c-28.021-9.617-40.435,12.166-39.952,13.393.522,1.306,2.35,1.044,7.05,1.306,3.517.2,7.473,2.293,9.241,3.335a47.24,47.24,0,0,1,23.66-18.033Z"
                     transform="translate(-492.358 -210.173)"
-                    fill="#fff"
+                    fill="url(#linear-gradient)"
                   />
                   <path
+                    id="パス_523"
+                    data-name="パス 523"
                     d="M615.356,259.78a3.518,3.518,0,0,0-.021-.363,6.839,6.839,0,0,0-.5-2.146c-.956-2.943-2.846-6.732-2.35-8.719,1.828-7.311-.144-14.649-4.833-20.616a47.133,47.133,0,0,0-84.21,29.1c0,.491,0,.979.023,1.465l-.023-.029a49.353,49.353,0,0,0,49.352,49.352s4.084.334,13.709-.653c10.184-1.044,10.818-3.264,15.276-3.264,4.7,0,7.05,1.567,7.834.522s-2.611-7.311-2.872-11.489.261-11.489-.522-11.228-5.484,5.484-8.617,8.095-5.222,3.395-5.484,4.178,0,2.35-.783,2.872a26.144,26.144,0,0,1-18.018,1.757,28.071,28.071,0,0,1-17.4-48.308,27.483,27.483,0,0,1,4.092,10.006c.783,5.222.783,9.578.914,10.142s.914.3,1.436-.219,8.095-4.439,9.923-10.706c1.8-6.191,2.59-9.583,2.35-16.973h.645a28.083,28.083,0,0,1,27.075,20.634,6.915,6.915,0,0,0,13.007-3.275v-.131Z"
                     transform="translate(-515.324 -209.9)"
-                    fill="#fff"
+                    fill="url(#linear-gradient)"
                   />
                 </g>
-                <g transform="translate(733.152 -1543.776)">
-                  <g transform="translate(0)">
+                <g
+                  id="brandmark-design"
+                  transform="translate(733.152 -1543.776)"
+                >
+                  <g id="logo-group" transform="translate(0)">
                     <path
+                      id="path81398"
                       d="M547.315,538.925h-10.7v66.583h30.76v-9.362H547.314Z"
                       transform="translate(-536.615 -535.004)"
-                      fill="#fff"
+                      fill="#334663"
                     />
                     <path
+                      id="path81400"
                       d="M654.169,538.925H616.244v66.583h37.925v-9.362H626.943V573.792h24.838V564.43H626.943V553.922l-7.738-5.636h34.964Z"
                       transform="translate(-568.52 -535.004)"
-                      fill="#fff"
+                      fill="#334663"
                     />
                     <path
+                      id="path81402"
                       d="M742.432,543.559l-5.35-11.177-5.35,11.177-28.467,59.323h10.7l5.636-11.75-6.018-4.394h38.88l7.738,16.144h10.7Zm-16.24,33.817,10.89-22.641,10.89,22.641Z"
                       transform="translate(-603.387 -532.382)"
-                      fill="#fff"
+                      fill="#334663"
                     />
                     <path
+                      id="path81404"
                       d="M867.72,577.706c8.215-1.719,15.666-6.4,15.666-19.01,0-18.15-15.476-19.775-26.557-19.775H843.837v66.583h10.7V578.566h1.242L875.84,605.6h12.61Zm-13.182-24.455-6.974-4.967H859.5c5.636,0,13.183.86,13.183,10.413,0,9.648-7.547,10.508-13.183,10.508h-4.967Z"
                       transform="translate(-659.709 -535.002)"
-                      fill="#fff"
+                      fill="#334663"
                     />
                     <path
+                      id="path81406"
                       d="M997.769,582.735,959.08,543.377l-6.974-7.069-3.725-3.917v70.5h10.7V556.462l38.689,39.358,6.974,7.069,3.726,3.917v-70.5h-10.7Z"
                       transform="translate(-701.597 -532.386)"
-                      fill="#fff"
+                      fill="#334663"
                     />
                   </g>
                 </g>
@@ -355,14 +384,11 @@
           v-if="!$store.state.authenticate.authenticated"
           flat
           to="/auth/login"
-          class="text-white"
         >
           ログイン
         </nuxt-link>
         <div v-if="!$store.state.authenticate.authenticated" class="py-2.5">
-          <span class="cursor-pointer text-white" @click="modal = !modal">
-            Log in
-          </span>
+          <span class="cursor-pointer" @click="modal = !modal">Log in</span>
           <ReModal v-if="modal" @close="modal = !modal">
             <template slot="header">Welcome To Reshelf！</template>
             <!-- default -->
@@ -447,26 +473,26 @@ export default {
 }
 .nav {
   @apply sticky top-0 z-20 flex items-center justify-center h-16;
-  // background-color: var(--bg-secondary);
-  background-color: var(--primary);
+  background-color: var(--bg-secondary);
+  // background-color: var(--primary);
   // border-bottom-width: 1px;
   // border-style: solid;
   // border-color: #e5e7eb;
-  // &::after {
-  //   content: '';
-  //   position: absolute;
-  //   left: 0;
-  //   right: 0;
-  //   top: 100%;
-  //   height: 4px;
-  //   background: linear-gradient(
-  //     180deg,
-  //     rgba(9, 30, 66, 0.13) 0,
-  //     rgba(9, 30, 66, 0.13) 1px,
-  //     rgba(9, 30, 66, 0.08) 1px,
-  //     rgba(9, 30, 66, 0) 4px
-  //   );
-  // }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 4px;
+    background: linear-gradient(
+      180deg,
+      rgba(9, 30, 66, 0.13) 0,
+      rgba(9, 30, 66, 0.13) 1px,
+      rgba(9, 30, 66, 0.08) 1px,
+      rgba(9, 30, 66, 0) 4px
+    );
+  }
   &-left {
     @apply flex items-center lg:w-1/4 xl:w-1/5 mr-12;
     height: 45px;
@@ -487,7 +513,7 @@ export default {
   @apply px-3 relative;
   height: 60px;
   &-icon {
-    @apply flex-shrink-0 inline-block cursor-pointer text-white;
+    @apply flex-shrink-0 inline-block cursor-pointer;
   }
   &-img {
     @apply object-cover rounded-full shadow-lg cursor-pointer;

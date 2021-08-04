@@ -87,6 +87,8 @@
 </template>
 <script>
 import axios from 'axios'
+import { mapGetters, mapActions } from 'vuex'
+
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import SidebarNew from '@/components/layout/sidebar/item/SidebarNew'
@@ -110,20 +112,29 @@ export default {
     }
   },
   methods: {
+    ...mapGetters({
+      authenticated: 'authenticate/authenticated',
+    }),
     async save() {
       axios.defaults.withCredentials = true
 
-      await axios.get('/sanctum/csrf-cookie').then(async () => {
-        await axios
-          .post('/api/posts', this.post)
-          .then(({ data }) => {
-            // this.$nuxt.$router.back()
-            this.$nuxt.$router.push({ path: '/' })
-          })
-          .catch(({ response: { data } }) => {
-            alert(data.message)
-          })
-      })
+      if (!this.authenticated) {
+        this.$nuxt.$router.push({ path: '/auth/login' })
+      } else {
+        this.$nuxt.$loading.start()
+        await axios.get('/sanctum/csrf-cookie').then(async () => {
+          await axios
+            .post('/api/posts', this.post)
+            .then(({ data }) => {
+              // this.$nuxt.$router.back()
+              this.$nuxt.$router.push({ path: '/' })
+            })
+            .catch(({ response: { data } }) => {
+              alert(data.message)
+            })
+        })
+        this.$nuxt.$loading.finish()
+      }
     },
   },
 }
@@ -131,21 +142,8 @@ export default {
 <style lang="scss" scoped>
 .side-nav {
   @apply hidden w-full lg:block mt-6 lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
-  // @screen lg {
-  //   border-right: 1px #ddd solid;
-  // }
-  // @screen lg {
-  //   @apply overflow-y-auto;
-  //   height: calc(100vh - 68px);
-  // }
 }
 .main-body {
-  // @apply w-full lg:w-3/4 xl:w-3/5 pt-10 px-6 lg:px-12;
-  // @apply w-full lg:w-3/4 xl:w-3/5 p-6;
   @apply w-full lg:w-3/4 xl:w-4/5 p-6 lg:pl-10;
-  // @screen lg {
-  //   @apply overflow-y-auto;
-  //   height: calc(100vh - 68px);
-  // }
 }
 </style>
