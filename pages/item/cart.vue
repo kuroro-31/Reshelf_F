@@ -1,5 +1,6 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
+    <HeaderNav />
     <div class="main scroll-none">
       <span class="title">ショッピングカート</span>
 
@@ -18,6 +19,7 @@
 </template>
 <script>
 // layout
+import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
 import SidebarCart from '@/components/layout/sidebar/item/SidebarCart'
 // atoms
@@ -29,6 +31,7 @@ export default {
     // FooterNav,
     SidebarCart,
     CartItem,
+    HeaderNav,
   },
   middleware: 'authenticated',
   data() {

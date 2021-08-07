@@ -9,6 +9,7 @@
         <div class="main-body min-h-(screen-16)">
           <!-- <hero-item /> -->
           <all-item :items="items" />
+          <all-item :apitems="apitems" />
           <!-- <FooterNav /> -->
         </div>
       </div>
@@ -17,6 +18,8 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
+
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
@@ -314,7 +317,32 @@ export default {
           demo: '#',
         },
       ],
+      apitems: [],
     }
+  },
+  mounted() {
+    this.getApi()
+  },
+  methods: {
+    async getApi() {
+      axios.defaults.withCredentials = true
+      // await axios.get('/sanctum/csrf-cookie').then(async () => {
+
+      // })
+      // this.$nuxt.$loading.start()
+
+      return axios
+        .get('/api/posts')
+        .then((response) => {
+          this.apitems = response.data.data
+          // this.apiPopularTags = response.data.tags;
+        })
+        .catch((err) => {
+          alert(err)
+        })
+
+      // this.$nuxt.$loading.finish()
+    },
   },
 }
 </script>

@@ -165,10 +165,10 @@ export default {
     }
     &-border {
       @apply h-full;
-      background: #f1f1f1 !important;
-      color: var(--color) !important;
-      // border: 1px solid var(--primary) !important;
-      // color: var(--primary) !important;
+      // background: #f1f1f1 !important;
+      // color: var(--color) !important;
+      border: 1px solid var(--primary) !important;
+      color: var(--primary) !important;
       &:hover {
         background: #e4e6e9 !important;
       }

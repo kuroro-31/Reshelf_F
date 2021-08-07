@@ -39,7 +39,6 @@
       </div>
       <div class="items">
         <div v-for="item in items" :key="item.id" class="card item">
-          <!-- 左サイド -->
           <div class="relative flex flex-col items-start">
             <button class="relative">
               <img
@@ -162,6 +161,10 @@
             </button>
           </div>
         </div>
+        <div v-for="apitem in apitems" :key="apitem.id" class="card item">
+          {{ apitem.title }}
+          {{ apitem.body }}
+        </div>
       </div>
     </div>
   </div>
@@ -193,6 +196,10 @@ export default {
     },
   },
   props: {
+    apitems: {
+      type: Array,
+      default: () => [],
+    },
     items: {
       type: Array,
       default: () => [],
