@@ -162,8 +162,11 @@
           </div>
         </div>
         <div v-for="apitem in apitems" :key="apitem.id" class="card item">
-          {{ apitem.title }}
+          <nuxt-link to="`/item/show/${apitem.id}`">
+            {{ apitem.title }}
+          </nuxt-link>
           {{ apitem.body }}
+          {{ apitem.user_id }}
         </div>
       </div>
     </div>

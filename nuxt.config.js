@@ -56,7 +56,7 @@ export default {
     height: '5px',
   },
 
-  plugins: ['~/plugins/i18n.js'],
+  plugins: ['~/plugins/i18n.js', '~/plugins/lodash.js'],
   vendor: [
     // i18n
     'vue-i18n',

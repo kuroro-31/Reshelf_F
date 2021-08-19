@@ -130,7 +130,11 @@ export default {
               this.$nuxt.$router.push({ path: '/' })
             })
             .catch(({ response: { data } }) => {
-              alert(data.message)
+              // alert(data.message)
+              console.log(data.message)
+
+              alert('再度ログインをしてください')
+              this.$nuxt.$router.push({ path: '/auth/login' })
             })
         })
         this.$nuxt.$loading.finish()
