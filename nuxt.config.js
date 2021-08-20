@@ -56,10 +56,12 @@ export default {
     height: '5px',
   },
 
-  plugins: ['~/plugins/i18n.js', '~/plugins/lodash.js'],
+  plugins: [
+    '~/plugins/i18n.js',
+    // '~/plugins/lodash.js'
+  ],
   vendor: [
-    // i18n
-    'vue-i18n',
+    'vue-i18n', // i18n
   ],
 
   modules: ['@nuxtjs/axios', '@nuxtjs/proxy', '@nuxtjs/auth', '@nuxtjs/pwa'],

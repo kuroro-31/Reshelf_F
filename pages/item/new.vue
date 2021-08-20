@@ -11,8 +11,9 @@
         <div class="main-body scroll-none">
           <div class="main-body-content">
             <h2 class="text-xl font-bold mb-4">あなたのコース</h2>
+            <p class="mb-4">{{ alert }}</p>
             <!-- <all-item :items="items" /> -->
-            <form @submit.prevent="save">
+            <form @submit.prevent="update">
               <!-- タイトル -->
               <label class="font-semibold text-xs text-gray-600 pb-1 block">
                 タイトル
@@ -86,7 +87,7 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
+import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 
 // layout
@@ -109,25 +110,37 @@ export default {
         body: '',
       },
       errors: {},
+      alert: '',
     }
+  },
+  watch: {
+    post: {
+      handler: _.debounce(function () {
+        this.update()
+      }, 2000), // memosのデータの更新が終わった2秒後に実行される
+      deep: true,
+    },
   },
   methods: {
     ...mapGetters({
       authenticated: 'authenticate/authenticated',
     }),
-    async save() {
-      axios.defaults.withCredentials = true
+    async update() {
+      this.$axios.defaults.withCredentials = true
 
       if (!this.authenticated) {
         this.$nuxt.$router.push({ path: '/auth/login' })
       } else {
-        this.$nuxt.$loading.start()
-        await axios.get('/sanctum/csrf-cookie').then(async () => {
-          await axios
+        // this.$nuxt.$loading.start()
+        this.alert = '保存中です...'
+
+        await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
+          await this.$axios
             .post('/api/posts', this.post)
             .then(({ data }) => {
               // this.$nuxt.$router.back()
-              this.$nuxt.$router.push({ path: '/' })
+              // this.$nuxt.$router.push({ path: '/' })
+              this.alert = '保存しました。'
             })
             .catch(({ response: { data } }) => {
               // alert(data.message)
@@ -137,7 +150,7 @@ export default {
               this.$nuxt.$router.push({ path: '/auth/login' })
             })
         })
-        this.$nuxt.$loading.finish()
+        // this.$nuxt.$loading.finish()
       }
     },
   },
