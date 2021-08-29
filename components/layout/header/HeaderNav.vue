@@ -122,13 +122,13 @@
       </div>
 
       <div class="nav-right">
-        <nuxt-link class="mr-2" to="/item/new">
+        <form @submit.prevent="create">
           <re-button class="re-button re-button-small no-shadow">
             <button type="submit" class="re-button-primary-border">
               コースの作成
             </button>
           </re-button>
-        </nuxt-link>
+        </form>
 
         <!-- お気に入り -->
         <button
@@ -472,6 +472,24 @@ export default {
     ...mapActions({
       signOut: 'authenticate/logout',
     }),
+    async create() {
+      this.$axios.defaults.withCredentials = true
+
+      if (!this.authenticated) {
+        this.$nuxt.$router.push({ path: '/auth/login' })
+      } else {
+        await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
+          await this.$axios
+            .post('/api/posts', this.post)
+            .catch(({ response: { data } }) => {
+              console.log(data.message)
+              alert('再度ログインをしてください')
+              this.$nuxt.$router.push({ path: '/auth/login' })
+            })
+        })
+        // this.$nuxt.$loading.finish()
+      }
+    },
     async logout() {
       this.$nuxt.$loading.start()
       this.signOut()
@@ -495,24 +513,9 @@ export default {
   @apply sticky top-0 z-20 flex items-center justify-center h-16;
   background-color: var(--bg-secondary);
   // background-color: var(--primary);
-  // border-bottom-width: 1px;
-  // border-style: solid;
-  // border-color: #e5e7eb;
-  // &::after {
-  //   content: '';
-  //   position: absolute;
-  //   left: 0;
-  //   right: 0;
-  //   top: 100%;
-  //   height: 4px;
-  //   background: linear-gradient(
-  //     180deg,
-  //     rgba(9, 30, 66, 0.13) 0,
-  //     rgba(9, 30, 66, 0.13) 1px,
-  //     rgba(9, 30, 66, 0.08) 1px,
-  //     rgba(9, 30, 66, 0) 4px
-  //   );
-  // }
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: var(--gray);
   &-left {
     @apply flex items-center lg:w-1/4 xl:w-1/5 mr-12;
     height: 45px;
