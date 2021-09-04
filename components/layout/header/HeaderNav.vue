@@ -473,6 +473,7 @@ export default {
       signOut: 'authenticate/logout',
     }),
     async create() {
+      this.$nuxt.$loading.start()
       this.$axios.defaults.withCredentials = true
 
       if (!this.authenticated) {
@@ -487,8 +488,8 @@ export default {
               this.$nuxt.$router.push({ path: '/auth/login' })
             })
         })
-        // this.$nuxt.$loading.finish()
       }
+      this.$nuxt.$loading.finish()
     },
     async logout() {
       this.$nuxt.$loading.start()
