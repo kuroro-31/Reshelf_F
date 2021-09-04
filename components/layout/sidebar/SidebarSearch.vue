@@ -158,9 +158,9 @@ export default {
 }
 .sidebar-search {
   @apply relative overflow-y-auto;
-  // @screen lg {
-  //   max-height: calc(100vh - 168px);
-  // }
+  @screen lg {
+    // max-height: calc(100vh - 168px);
+  }
   // &-title {
   //   @apply text-xl font-bold;
   //   color: #aaa;

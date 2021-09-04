@@ -45,6 +45,7 @@
                 :src="item.src"
                 alt="text image"
                 class="img"
+                :value="item"
                 @mouseover="showItem = true"
                 @mouseleave="showItem = false"
                 @click="$router.push('/item/detail')"
