@@ -53,5 +53,5 @@ Thumbs.db
 .eslintcache
 static/sw.js
 package-lock.json
-.vscode/*
+.vscode/settings.json
 package-lock.json
