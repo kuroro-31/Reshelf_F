@@ -1,5 +1,7 @@
 init:
-	npm cache clear --force && npm cache clean --force && npm i
+	npm cache clear --force
+	npm cache clean --force
+	npm i
 i:
 	npm install
 update:
@@ -13,7 +15,11 @@ start:
 generate:
 	npm run generate
 reset:
-	rm -rf node_modules && rm package-lock.json && npm cache clear --force && npm cache clean --force && npm i
+	rm -rf node_modules
+	rm package-lock.json
+	npm cache clear --force
+	npm cache clean --force
+	npm i
 lint:
 	npm run lintfix
 package:
@@ -25,4 +31,5 @@ cache:
 ana:
 	npx nuxt build --a
 gomi:
-	git checkout . && git clean -df
+	git checkout .
+	git clean -df
