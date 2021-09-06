@@ -482,6 +482,10 @@ export default {
         await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
           await this.$axios
             .post('/api/posts', this.post)
+            .then(async ($axios, params) => {
+              const { data } = await this.$axios.$get(`/topics/${params.id}`)
+              return { topic: data }
+            })
             .catch(({ response: { data } }) => {
               console.log(data.message)
               alert('再度ログインをしてください')
