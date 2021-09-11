@@ -3,7 +3,7 @@ import Fiber from 'fibers'
 import Sass from 'sass'
 export default {
   head: {
-    title: 'Study| アップデートするオンライン学習マーケットプレイス',
+    title: 'Dolphin| アップデートするオンライン学習マーケットプレイス',
     htmlAttrs: {
       lang: 'ja',
       prefix: 'og: http://ogp.me/ns#',
@@ -15,28 +15,28 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Reshelfは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。',
+          'Dolphinは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。',
       },
-      { hid: 'og:site_name', property: 'og:site_name', content: 'Reshelf' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'Dolphin' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       { hid: 'og:url', property: 'og:url', content: 'http://www.reshelf.jp/' },
       {
         hid: 'og:title',
         property: 'og:title',
         content:
-          'Reshelf【リシェルフ】| アップデートするオンライン学習マーケットプレイス',
+          'Dolphin | アップデートするオンライン学習マーケットプレイス',
       },
       {
         hid: 'og:description',
         property: 'og:description',
         content:
-          'Reshelfは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。',
+          'Dolphinは、アップデートするオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。',
       },
       {
         hid: 'og:image',
         property: 'og:image',
         content:
-          'https://res.cloudinary.com/reshelf/image/upload/v1619870944/ogp_rzf3q1.png',
+          'https://res.cloudinary.com/Dolphin/image/upload/v1619870944/ogp_rzf3q1.png',
       },
       { name: 'twitter:card', content: 'summary_large_image' },
     ],

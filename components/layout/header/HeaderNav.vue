@@ -122,13 +122,13 @@
       </div>
 
       <div class="nav-right">
-        <form @submit.prevent="create">
+        <nuxt-link to="/item/new">
           <re-button class="re-button re-button-small no-shadow">
             <button type="submit" class="re-button-primary-border">
               コースの作成
             </button>
           </re-button>
-        </form>
+        </nuxt-link>
 
         <!-- お気に入り -->
         <button
@@ -472,29 +472,29 @@ export default {
     ...mapActions({
       signOut: 'authenticate/logout',
     }),
-    async create() {
-      this.$nuxt.$loading.start()
-      this.$axios.defaults.withCredentials = true
+    // async create() {
+    //   this.$nuxt.$loading.start()
+    //   this.$axios.defaults.withCredentials = true
 
-      if (!this.authenticated) {
-        this.$nuxt.$router.push({ path: '/auth/login' })
-      } else {
-        await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
-          await this.$axios
-            .post('/api/posts', this.post)
-            .then(async ($axios, params) => {
-              const { data } = await this.$axios.$get(`/topics/${params.id}`)
-              return { topic: data }
-            })
-            .catch(({ response: { data } }) => {
-              console.log(data.message)
-              alert('再度ログインをしてください')
-              this.$nuxt.$router.push({ path: '/auth/login' })
-            })
-        })
-      }
-      this.$nuxt.$loading.finish()
-    },
+    //   if (!this.authenticated) {
+    //     this.$nuxt.$router.push({ path: '/auth/login' })
+    //   } else {
+    //     await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
+    //       await this.$axios
+    //         .post('/api/posts', this.post)
+    //         .then(async ($axios, params) => {
+    //           const { data } = await this.$axios.$get(`/topics/${params.id}`)
+    //           return { topic: data }
+    //         })
+    //         .catch(({ response: { data } }) => {
+    //           console.log(data.message)
+    //           alert('再度ログインをしてください')
+    //           this.$nuxt.$router.push({ path: '/auth/login' })
+    //         })
+    //     })
+    //   }
+    //   this.$nuxt.$loading.finish()
+    // },
     async logout() {
       this.$nuxt.$loading.start()
       this.signOut()
