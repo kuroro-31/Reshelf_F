@@ -143,10 +143,7 @@
         <li>
           <div class="profile-details">
             <div class="profile-content">
-              <img
-                src="https://i.gyazo.com/6d64612e52b6bc5c8e0964d272423181.png"
-                alt="profileImg"
-              />
+              <img src="image/profile.jpg" alt="profileImg" />
             </div>
             <div class="name-job">
               <div class="profile_name">Prem Shahi</div>
@@ -160,7 +157,7 @@
     <section class="home-section">
       <div class="home-content">
         <i class="bx bx-menu"></i>
-        <Nuxt />
+        <span class="text">Drop Down Sidebar</span>
       </div>
     </section>
   </div>
@@ -189,3 +186,232 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.sidebar {
+  @apply fixed top-0 left-0 h-full duration-200;
+  width: 260px;
+  background: var(--bg-secondary);
+  z-index: 100;
+
+  .logo-details {
+    @apply flex items-center w-full;
+    height: 60px;
+    i,
+    svg {
+      @apply text-center w-auto;
+      font-size: 30px;
+      color: var(--color);
+      height: 50px;
+      min-width: 78px;
+      line-height: 50px;
+    }
+    .logo_name {
+      @apply font-bold duration-200;
+      font-size: 22px;
+      color: var(--color);
+      transition-delay: 0.1s;
+    }
+  }
+}
+.close {
+  width: 78px;
+}
+.sidebar.close .logo-details .logo_name {
+  @apply opacity-0;
+  transition-delay: 0s;
+  pointer-events: none;
+}
+.sidebar .nav-links {
+  @apply h-full overflow-auto h-full;
+  padding: 30px 0 150px 0;
+}
+.sidebar.close .nav-links {
+  @apply overflow-visible;
+}
+.sidebar .nav-links::-webkit-scrollbar {
+  @apply hidden;
+}
+.sidebar .nav-links li {
+  @apply relative duration-200;
+  list-style: none;
+}
+.sidebar .nav-links li:hover {
+  background: var(--bg-secondary);
+}
+.sidebar .nav-links li .iocn-link {
+  @apply flex items-center justify-between;
+}
+.sidebar.close .nav-links li .iocn-link {
+  @apply block;
+}
+.sidebar .nav-links li i {
+  height: 50px;
+  min-width: 78px;
+  text-align: center;
+  line-height: 50px;
+  color: var(--color);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sidebar .nav-links li.showMenu i.arrow {
+  transform: rotate(-180deg);
+}
+.sidebar.close .nav-links i.arrow {
+  @apply hidden;
+}
+.sidebar .nav-links li a {
+  @apply flex items-center;
+  text-decoration: none;
+}
+.sidebar .nav-links li a .link_name {
+  @apply duration-200;
+  font-size: 18px;
+  color: var(--color);
+}
+.sidebar.close .nav-links li a .link_name {
+  @apply opacity-0;
+  pointer-events: none;
+}
+.sidebar .nav-links li .sub-menu {
+  @apply hidden;
+  padding: 6px 6px 14px 80px;
+  margin-top: -10px;
+  background: var(--bg-secondary);
+}
+.sidebar .nav-links li.showMenu .sub-menu {
+  @apply block;
+}
+.sidebar .nav-links li .sub-menu a {
+  color: var(--color);
+  font-size: 15px;
+  padding: 5px 0;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+.sidebar .nav-links li .sub-menu a:hover {
+  opacity: 1;
+}
+.sidebar.close .nav-links li .sub-menu {
+  position: absolute;
+  left: 100%;
+  top: -10px;
+  margin-top: 0;
+  padding: 10px 20px;
+  border-radius: 0 6px 6px 0;
+  opacity: 0;
+  display: block;
+  pointer-events: none;
+  transition: 0s;
+}
+.sidebar.close .nav-links li:hover .sub-menu {
+  top: 0;
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.2s ease;
+}
+.sidebar .nav-links li .sub-menu .link_name {
+  display: none;
+}
+.sidebar.close .nav-links li .sub-menu .link_name {
+  font-size: 18px;
+  opacity: 1;
+  display: block;
+}
+.sidebar .nav-links li .sub-menu.blank {
+  opacity: 1;
+  pointer-events: auto;
+  padding: 3px 20px 6px 16px;
+  opacity: 0;
+  pointer-events: none;
+}
+.sidebar .nav-links li:hover .sub-menu.blank {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sidebar .profile-details {
+  position: fixed;
+  bottom: 0;
+  width: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-secondary);
+  padding: 12px 0;
+  transition: all 0.2s ease;
+}
+.sidebar.close .profile-details {
+  background: none;
+}
+.sidebar.close .profile-details {
+  width: 78px;
+}
+.sidebar .profile-details .profile-content {
+  display: flex;
+  align-items: center;
+}
+.sidebar .profile-details img {
+  height: 52px;
+  width: 52px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 0 14px 0 12px;
+  background: var(--bg-secondary);
+  transition: all 0.2s ease;
+}
+.sidebar.close .profile-details img {
+  padding: 10px;
+}
+.sidebar .profile-details .profile_name,
+.sidebar .profile-details .job {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.sidebar.close .profile-details i,
+.sidebar.close .profile-details .profile_name,
+.sidebar.close .profile-details .job {
+  display: none;
+}
+.sidebar .profile-details .job {
+  font-size: 12px;
+}
+.home-section {
+  position: relative;
+  background: var(--bg-secondary);
+  height: 100vh;
+  left: 260px;
+  width: calc(100% - 260px);
+  transition: all 0.2s ease;
+}
+.sidebar.close ~ .home-section {
+  left: 78px;
+  width: calc(100% - 78px);
+}
+.home-section .home-content {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+.home-section .home-content .bx-menu,
+.home-section .home-content .text {
+  color: #11101d;
+  font-size: 35px;
+}
+.home-section .home-content .bx-menu {
+  margin: 0 15px;
+  cursor: pointer;
+}
+.home-section .home-content .text {
+  font-size: 26px;
+  font-weight: 600;
+}
+@media (max-width: 420px) {
+  .sidebar.close .nav-links li .sub-menu {
+    display: none;
+  }
+}
+</style>

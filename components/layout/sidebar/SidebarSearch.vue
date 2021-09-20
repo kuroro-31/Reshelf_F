@@ -80,14 +80,12 @@
 
 <script>
 //Icons
-import { ChevronRightIcon } from 'vue-feather-icons'
 // atoms
 import ReCheckbox from '@/components/atoms/ReCheckbox'
 import ReButton from '@/components/atoms/ReButton'
 
 export default {
   components: {
-    ChevronRightIcon,
     ReCheckbox,
     ReButton,
   },

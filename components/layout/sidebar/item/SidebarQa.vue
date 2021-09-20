@@ -29,11 +29,8 @@
 </template>
 
 <script>
-import { TwitchIcon } from 'vue-feather-icons'
 export default {
-  components: {
-    TwitchIcon,
-  },
+  components: {},
   data() {
     return {}
   },

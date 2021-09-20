@@ -1,3 +1,4 @@
+//
 <template>
   <footer class="border-t border-gray-400 shadow">
     <div class="container mx-auto flex py-8">

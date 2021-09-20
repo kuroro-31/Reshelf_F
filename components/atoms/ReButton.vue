@@ -1,59 +1,4 @@
 <template>
-  <!--
-  オリジナルボタン
-  以下をボタンを使いたいコンポーネントに追加する
-  class(common.scss)とvue-feather-iconは適宜変更する
-  ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-①
-<re-button class="re-button">
-  <button class="re-button-primary-filled">
-    <home-icon size="20" class="mr-4"></home-icon>
-    Reボタン
-  </button>
-</re-button>
-
-②
-import ReButton from '@/views/components/atomss/ReButton';
-import { HomeIcon } from 'vue-feather-icons';
-
-③
-components: {
-  ReButton,
-  HomeIcon
-}
-
-# nomal
-<re-button class="re-button">
-  <button class="re-button-primary-filled">
-    会員登録
-  </button>
-</re-button>
-
-# extra-large
-<re-button class="w-full lg:w-1/2 h-full re-button re-button-primary re-button-filled re-button-extra-large rounded">
-  <button class="text-xl lg:text-2xl">
-    <send-icon size="20" class="mr-4"></send-icon>
-    手動見積もり依頼
-  </button>
-</re-button>
-
-# ダイアログ
-・アップロード
-<div class="vx-col w-full lg:w-2/5">
-  <form ref="uploadForm1" class="w-2/3 mx-auto re-button re-button-primary re-button-border rounded">
-    <label class="text-center text-primary">
-    <input
-      type="file"
-      name="up_image[]"
-      multiple accept="image/*"
-      class="hidden"
-    />
-      <upload-icon size="1.5x"></upload-icon>
-      アップロード
-    </label>
-  </form>
-</div>
- -->
   <div :disabled="ripple" @click="onClick">
     <transition
       name="ripple"
@@ -97,9 +42,8 @@ export default {
 </script>
 <style lang="scss">
 .re-button {
-  @apply block relative overflow-hidden w-full rounded font-bold;
-  // border-radius: 6px; // リップルの角丸のため必要
-  transition: all 0.2s ease;
+  @apply block relative w-full overflow-hidden font-bold duration-200;
+  box-shadow: 0 10px 20px -10px rgba(var(--primary), 0.5);
   // &:hover {
   //   transform: translateY(-3px);
   // }
@@ -110,13 +54,14 @@ export default {
     min-width: 100px; // 2文字などの短いボタンのケースで必要
     // height: 100%; // 高さが崩れるので一時コメントアウト
     // padding: 1rem;
-    min-height: 44px;
-    // border-radius: 6px;
+    min-height: 40px;
+    border-radius: 12px;
     color: var(--fff);
     line-height: 1.2;
     padding: 13px 25px;
     // border-radius: 17px;
     // text-align: center; // justify-content: center;しているのでカット
+    box-shadow: 0 10px 20px -10px rgba(var(--primary), 0.5);
   }
   &:disabled {
     .label {
@@ -165,10 +110,10 @@ export default {
     }
     &-border {
       @apply h-full;
-      // background: #f1f1f1 !important;
-      // color: var(--color) !important;
-      border: 1px solid var(--primary) !important;
-      color: var(--primary) !important;
+      background: #f1f1f1 !important;
+      color: var(--color) !important;
+      // border: 1px solid var(--primary) !important;
+      // color: var(--primary) !important;
       &:hover {
         background: #e4e6e9 !important;
       }

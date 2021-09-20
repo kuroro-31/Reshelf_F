@@ -92,19 +92,11 @@
 import SidebarTac from '@/components/layout/sidebar/item/SidebarTac'
 import SidebarQa from '@/components/layout/sidebar/item/SidebarQa'
 // atoms
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronDownIcon,
-} from 'vue-feather-icons'
 export default {
   components: {
     // FooterNav,
     SidebarTac,
     SidebarQa,
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    ChevronDownIcon,
   },
   middleware: 'authenticated',
   data() {

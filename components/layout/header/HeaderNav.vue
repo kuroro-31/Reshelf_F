@@ -439,19 +439,11 @@ import { mapGetters, mapActions } from 'vuex'
 
 import ReButton from '@/components/atoms/ReButton'
 import ReModal from '@/components/atoms/ReModal'
-import {
-  // MenuIcon,
-  ShoppingCartIcon,
-  HeartIcon,
-} from 'vue-feather-icons'
 
 export default {
   components: {
     ReButton,
     ReModal,
-    // MenuIcon,
-    ShoppingCartIcon,
-    HeartIcon,
   },
   data() {
     return {

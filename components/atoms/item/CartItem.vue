@@ -52,11 +52,8 @@
   </div>
 </template>
 <script>
-import { ChevronLeftIcon } from 'vue-feather-icons'
 export default {
-  components: {
-    ChevronLeftIcon,
-  },
+  components: {},
   filters: {
     numberFormat: function (num) {
       return num.toLocaleString()

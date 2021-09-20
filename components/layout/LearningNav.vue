@@ -145,11 +145,9 @@
 
 <script>
 import ReModal from '@/components/atoms/ReModal'
-import { ChevronDownIcon } from 'vue-feather-icons'
 export default {
   components: {
     ReModal,
-    ChevronDownIcon,
   },
   data() {
     return {

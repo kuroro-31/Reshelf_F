@@ -12,11 +12,8 @@
 </template>
 
 <script>
-import { CheckIcon } from 'vue-feather-icons'
 export default {
-  components: {
-    CheckIcon,
-  },
+  components: {},
   data() {
     return {
       isChecked: false,

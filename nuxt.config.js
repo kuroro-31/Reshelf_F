@@ -23,8 +23,7 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content:
-          'Dolphin | アップデートするオンライン学習マーケットプレイス',
+        content: 'Dolphin | アップデートするオンライン学習マーケットプレイス',
       },
       {
         hid: 'og:description',
@@ -44,7 +43,11 @@ export default {
   },
   ssr: false, // SPA
   components: true,
-  css: ['ress', { src: '@/assets/sass/app.scss', lang: 'scss' }],
+  css: [
+    'ress',
+    { src: '@/assets/sass/app.scss', lang: 'scss' },
+    'boxicons/css/boxicons.min.css',
+  ],
   styleResources: {
     scss: [
       '~/assets/sass/foundation/_variables.scss',

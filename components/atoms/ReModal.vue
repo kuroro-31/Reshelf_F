@@ -21,11 +21,8 @@
   </transition>
 </template>
 <script>
-import { XIcon } from 'vue-feather-icons'
 export default {
-  components: {
-    XIcon,
-  },
+  components: {},
 }
 </script>
 <style lang="scss" scoped>

@@ -175,13 +175,9 @@
 </template>
 <script>
 import ReButton from '@/components/atoms/ReButton'
-import { HeartIcon, ShoppingCartIcon, ChevronDownIcon } from 'vue-feather-icons'
 export default {
   components: {
     ReButton,
-    HeartIcon,
-    ShoppingCartIcon,
-    ChevronDownIcon,
   },
   filters: {
     numberFormat: function (num) {
