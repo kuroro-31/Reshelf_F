@@ -158,10 +158,17 @@
           @mouseover="cart = true"
           @mouseleave="cart = false"
         >
-          <shopping-cart-icon
-            size="1.5x"
-            class="dropdown-icon"
-          ></shopping-cart-icon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="svg-icon"
+          >
+            <path
+              d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z"
+            ></path>
+            <circle cx="10.5" cy="19.5" r="1.5"></circle>
+            <circle cx="17.5" cy="19.5" r="1.5"></circle>
+          </svg>
           <transition>
             <div v-if="cart">
               <div
@@ -510,9 +517,9 @@ export default {
   @apply sticky top-0 z-20 flex items-center justify-center h-16;
   background-color: var(--bg-secondary);
   // background-color: var(--primary);
-  border-bottom-width: 1px;
-  border-style: solid;
-  border-color: var(--gray);
+  // border-bottom-width: 1px;
+  // border-style: solid;
+  // border-color: var(--gray);
   &-left {
     @apply flex items-center lg:w-1/4 xl:w-1/5 mr-12;
     height: 45px;
@@ -533,7 +540,7 @@ export default {
   @apply px-3 relative;
   height: 60px;
   &-icon {
-    @apply flex-shrink-0 inline-block cursor-pointer;
+    // @apply flex-shrink-0 inline-block cursor-pointer;
   }
   &-img {
     @apply object-cover rounded-full shadow-lg cursor-pointer;

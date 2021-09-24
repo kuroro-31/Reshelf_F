@@ -86,3 +86,19 @@ button, input, select, textarea {
 h1,h2,h3,h4,h5,h6 {
   color: var(--strong);
 }
+
+.svg-icon {
+  @apply flex-shrink-0 p-2 rounded-full;
+  min-height: 45px;
+  min-width: 45px;
+  max-height: 45px;
+  max-width: 45px;
+  fill: #91949C;
+  transform:  msfilter;
+  &:hover {
+    // @apply;
+    fill: var(--primary);
+    // background: var(--light-primary);
+    // border: 1px solid #CDD7EE;
+  }
+}

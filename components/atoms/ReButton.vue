@@ -1,48 +1,14 @@
 <template>
-  <div :disabled="ripple" @click="onClick">
-    <transition
-      name="ripple"
-      @enter="rippleEnter"
-      @after-enter="afterRippleEnter"
-    >
-      <span v-if="ripple" ref="ripple" class="ripple" />
-    </transition>
-
+  <div>
     <!-- ボタンの中身が入る -->
     <slot></slot>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      ripple: false,
-      x: 0,
-      y: 0,
-    }
-  },
-
-  methods: {
-    onClick(e) {
-      this.x = e.layerX
-      this.y = e.layerY
-      this.ripple = !this.ripple
-      this.$emit('click')
-    },
-    rippleEnter() {
-      this.$refs.ripple.style.top = `${this.y}px`
-      this.$refs.ripple.style.left = `${this.x}px`
-    },
-    afterRippleEnter() {
-      this.ripple = false
-    },
-  },
-}
-</script>
+<script></script>
 <style lang="scss">
 .re-button {
-  @apply block relative w-full overflow-hidden font-bold duration-200;
+  @apply block relative w-full font-bold duration-200;
   box-shadow: 0 10px 20px -10px rgba(var(--primary), 0.5);
   // &:hover {
   //   transform: translateY(-3px);

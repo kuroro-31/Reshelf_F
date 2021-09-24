@@ -1,47 +1,12 @@
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
-      <div class="flex items-center justify-between mb-4">
-        <span>27 results found</span>
-        <div class="filter">
-          <!-- ユーザードロップダウン -->
-          <button
-            class="dropdown"
-            @mouseover="dropdown = true"
-            @mouseleave="dropdown = false"
-          >
-            <span>Featured</span>
-            <chevron-down-icon
-              size="1x"
-              class="inline-block ml-2"
-            ></chevron-down-icon>
-            <transition>
-              <div
-                v-if="dropdown"
-                class="dropdown-contents scroll-none"
-                @mouseover="dropdown = true"
-                @mouseleave="dropdown = false"
-              >
-                <div class="menu">
-                  <div class="menu-me">
-                    <nuxt-link class="menu-me-link" to="/user/learning">
-                      Lowest
-                    </nuxt-link>
-                    <nuxt-link class="menu-me-link" to="/user/like">
-                      Highest
-                    </nuxt-link>
-                  </div>
-                </div>
-              </div>
-            </transition>
-          </button>
-        </div>
-      </div>
       <div class="items">
         <div v-for="item in items" :key="item.id" class="card item">
           <div class="relative flex flex-col items-start">
             <button class="relative">
-              <img
+              <!-- <img
+                v-if="item.src"
                 :src="item.src"
                 alt="text image"
                 class="img"
@@ -49,7 +14,17 @@
                 @mouseover="showItem = true"
                 @mouseleave="showItem = false"
                 @click="$router.push('/item/detail')"
+              /> -->
+              <img
+                src="@/assets/images/noimage.svg"
+                alt="text image"
+                class="img"
+                :value="item"
+                @mouseover="showItem = true"
+                @mouseleave="showItem = false"
+                @click="$router.push('/item/detail')"
               />
+
               <nuxt-link class="title" to="/item/detail">
                 {{ item.title }}
               </nuxt-link>
