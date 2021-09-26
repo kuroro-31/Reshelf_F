@@ -1,167 +1,12 @@
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
-    <div class="w-full flex mx-auto container my-8">
+    <div class="w-full flex flex-col mx-auto container my-8">
       <div class="flex flex-wrap">
-        <div class="box">
+        <div class="box box-aca">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="48"
-            height="48"
-            viewBox="0 0 48 48"
-          >
-            <g id="Icon" transform="translate(1 1)">
-              <circle
-                id="Icon-2"
-                data-name="Icon"
-                cx="23"
-                cy="23"
-                r="23"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              />
-              <circle
-                id="Icon-3"
-                data-name="Icon"
-                cx="3"
-                cy="3"
-                r="3"
-                transform="translate(15 15)"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              />
-              <circle
-                id="Icon-4"
-                data-name="Icon"
-                cx="3"
-                cy="3"
-                r="3"
-                transform="translate(25 25)"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              />
-              <path
-                id="Icon-5"
-                data-name="Icon"
-                d="M0,15,15,0"
-                transform="translate(16 15)"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              />
-            </g>
-          </svg>
-          <span class="box-title box-title-business">Business</span>
-        </div>
-        <div class="box">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="46"
-            height="42.5"
-            viewBox="0 0 46 42.5"
-          >
-            <path
-              id="Icon"
-              d="M32,0a12,12,0,0,1,8.969,19.973L22,40.5,3.044,19.987A12,12,0,1,1,22,5.365,11.985,11.985,0,0,1,32,0Z"
-              transform="translate(1 1)"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              stroke-width="2"
-            />
-          </svg>
-
-          <span class="box-title box-title-lifestyle">Lifestyle</span>
-        </div>
-        <div class="box">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="52"
-            height="52"
-            viewBox="0 0 52 52"
-          >
-            <g id="Icon" transform="translate(1 1)">
-              <circle
-                id="Icon-2"
-                data-name="Icon"
-                cx="25"
-                cy="25"
-                r="25"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              />
-              <ellipse
-                id="Icon-3"
-                data-name="Icon"
-                cx="12"
-                cy="25"
-                rx="12"
-                ry="25"
-                transform="translate(13)"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              />
-              <path
-                id="Icon-4"
-                data-name="Icon"
-                d="M0,0C4.585,2.666,11.379,4.354,18.963,4.354,26.356,4.354,33,2.749,37.577.2"
-                transform="translate(6.037 8.646)"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              />
-              <path
-                id="Icon-5"
-                data-name="Icon"
-                d="M36.786,4.027C32.218,1.551,25.674,0,18.405,0S4.569,1.557,0,4.041"
-                transform="translate(6.595 37)"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              />
-              <path
-                id="Icon-6"
-                data-name="Icon"
-                d="M0,.5H48"
-                transform="translate(1 24.5)"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              />
-            </g>
-          </svg>
-
-          <span class="box-title box-title-tech">Technology</span>
-        </div>
-        <div class="box">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="33.414"
-            height="42.414"
+            height="60"
             viewBox="0 0 33.414 42.414"
           >
             <g id="Icon" transform="translate(1 1)">
@@ -244,7 +89,158 @@
             </g>
           </svg>
 
-          <span class="box-title box-title-aca">Academic</span>
+          <span class="box-title">Academic</span>
+        </div>
+        <div class="box box-tech">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="60"
+            viewBox="0 0 52 52"
+          >
+            <g id="Icon" transform="translate(1 1)">
+              <circle
+                id="Icon-2"
+                data-name="Icon"
+                cx="25"
+                cy="25"
+                r="25"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <ellipse
+                id="Icon-3"
+                data-name="Icon"
+                cx="12"
+                cy="25"
+                rx="12"
+                ry="25"
+                transform="translate(13)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-4"
+                data-name="Icon"
+                d="M0,0C4.585,2.666,11.379,4.354,18.963,4.354,26.356,4.354,33,2.749,37.577.2"
+                transform="translate(6.037 8.646)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-5"
+                data-name="Icon"
+                d="M36.786,4.027C32.218,1.551,25.674,0,18.405,0S4.569,1.557,0,4.041"
+                transform="translate(6.595 37)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-6"
+                data-name="Icon"
+                d="M0,.5H48"
+                transform="translate(1 24.5)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+            </g>
+          </svg>
+
+          <span class="box-title">Technology</span>
+        </div>
+        <div class="box box-business">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="60"
+            viewBox="0 0 48 48"
+          >
+            <g id="Icon" transform="translate(1 1)">
+              <circle
+                id="Icon-2"
+                data-name="Icon"
+                cx="23"
+                cy="23"
+                r="23"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <circle
+                id="Icon-3"
+                data-name="Icon"
+                cx="3"
+                cy="3"
+                r="3"
+                transform="translate(15 15)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <circle
+                id="Icon-4"
+                data-name="Icon"
+                cx="3"
+                cy="3"
+                r="3"
+                transform="translate(25 25)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-5"
+                data-name="Icon"
+                d="M0,15,15,0"
+                transform="translate(16 15)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+            </g>
+          </svg>
+          <span class="box-title">Business</span>
+        </div>
+        <div class="box box-lifestyle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="60"
+            viewBox="0 0 46 42.5"
+          >
+            <path
+              id="Icon"
+              d="M32,0a12,12,0,0,1,8.969,19.973L22,40.5,3.044,19.987A12,12,0,1,1,22,5.365,11.985,11.985,0,0,1,32,0Z"
+              transform="translate(1 1)"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              stroke-width="2"
+            />
+          </svg>
+
+          <span class="box-title">Lifestyle</span>
         </div>
       </div>
 
@@ -309,35 +305,68 @@ export default {
 </script>
 <style lang="scss" scoped>
 .box {
-  @apply flex flex-col items-center justify-center;
-  width: 160px;
-  height: 160px;
-  background: var(--bg-secondary);
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
+  @apply flex flex-col items-center justify-center mx-auto;
+  width: 240px;
+  height: 200px;
+  border-radius: 5px;
+  // box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
+  &-business {
+    background: #36d1dc; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #5b86e5,
+      #36d1dc
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #5b86e5,
+      #36d1dc
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  &-lifestyle {
+    background: #f857a6; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #ff5858,
+      #f857a6
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #ff5858,
+      #f857a6
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  &-tech {
+    background: #4cb8c4; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #e5eeec,
+      #4cb8c4
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #3cd3ad,
+      #4cb8c4
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  &-aca {
+    background-color: #f39f86;
+    background-image: linear-gradient(315deg, #f39f86 0%, #f9d976 74%);
+  }
   &-title {
-    @apply text-left text-xs inline-block;
-    font-weight: normal;
+    @apply text-left inline-block font-bold;
     line-height: 20px;
-    color: #7d8fb3;
-    &-business {
-      margin-top: 25px;
-    }
-    &-lifestyle {
-      margin-top: 30.5px;
-    }
-    &-tech {
-      margin-top: 22px;
-    }
-    &-aca {
-      margin-top: 31px;
-    }
+    color: var(--bg-secondary);
+    margin-top: 20px;
   }
 }
 svg g path,
 svg g circle,
+svg g ellipse,
 svg path {
-  stroke: var(--primary) !important;
+  stroke: var(--bg-secondary) !important;
 }
 .side-nav {
   @apply hidden w-full lg:block lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
