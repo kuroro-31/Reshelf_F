@@ -3,6 +3,9 @@
     <HeaderNav />
     <div class="w-full flex flex-col mx-auto container">
       <div class="my-12">
+        <h2 class="text-6xl font-bold">3 minutes</h2>
+      </div>
+      <div class="my-12">
         <h3 class="text-2xl font-bold mb-2">学習分野</h3>
         <div class="flex flex-wrap">
           <div class="box box-aca">
