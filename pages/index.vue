@@ -564,7 +564,7 @@ export default {
 <style lang="scss" scoped>
 .hero {
   @apply w-full flex items-center mx-auto;
-  background: var(--bg-sedondary) !important;
+  background: var(--bg-secondary);
   height: calc(100vh - 65px);
 }
 .main-img {
