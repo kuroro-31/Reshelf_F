@@ -645,7 +645,7 @@ export default {
     }
   }
   &-title {
-    @apply text-left inline-block text-lg;
+    @apply text-left inline-block text-lg font-semibold;
     line-height: 20px;
     color: var(--color);
     margin-top: 20px;
