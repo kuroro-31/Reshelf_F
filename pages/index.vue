@@ -1,263 +1,516 @@
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
-    <div class="w-full flex flex-col mx-auto container">
-      <div class="my-12">
-        <h2 class="text-6xl font-bold">3 minutes</h2>
-      </div>
-      <div class="my-12">
-        <h3 class="text-2xl font-bold mb-2">学習分野</h3>
-        <div class="flex flex-wrap">
-          <div class="box box-aca">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="50"
-              viewBox="0 0 33.414 42.414"
-            >
-              <g id="Icon" transform="translate(1 1)">
-                <path
-                  id="Icon-2"
-                  data-name="Icon"
-                  d="M0,0H31V33H24v7H0Z"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-                <path
-                  id="Icon-3"
-                  data-name="Icon"
-                  d="M0,.5H21"
-                  transform="translate(5 12.5)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-                <path
-                  id="Icon-4"
-                  data-name="Icon"
-                  d="M0,.5H21"
-                  transform="translate(5 17.5)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-                <path
-                  id="Icon-5"
-                  data-name="Icon"
-                  d="M0,.5H21"
-                  transform="translate(5 22)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-                <path
-                  id="Icon-6"
-                  data-name="Icon"
-                  d="M0,.5H5"
-                  transform="translate(5 28)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-                <path
-                  id="Icon-7"
-                  data-name="Icon"
-                  d="M0,.5H13"
-                  transform="translate(5 5.5)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-                <path
-                  id="Icon-8"
-                  data-name="Icon"
-                  d="M0,7,7,0"
-                  transform="translate(24 33)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-              </g>
-            </svg>
 
-            <span class="box-title">学問</span>
-          </div>
-          <div class="box box-tech">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="50"
-              viewBox="0 0 52 52"
+    <section>
+      <div class="flex lg:w-1/2 justify-center h-full items-center">
+        <div class="flex flex-col">
+          <h2 class="title">
+            あなたの学習を
+            <br />
+            たったの3分で
+          </h2>
+          <span class="describe">
+            Reshelfにあるコースの各章の１つ１つは全て3分以内に読み終わります。
+            <br />
+            あなたのスキマ時間をキャリアアップに使って充実した生活を実現しよう。
+          </span>
+          <button class="btn">新規登録・ログイン</button>
+        </div>
+      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 661 721"
+        class="main-img"
+      >
+        <defs>
+          <clipPath id="clip-path">
+            <rect
+              id="長方形_2235"
+              data-name="長方形 2235"
+              width="661"
+              height="721"
+              transform="translate(779 9022)"
+              fill="#fff"
+            />
+          </clipPath>
+        </defs>
+        <g
+          id="Device_screen"
+          data-name="Device &amp; screen"
+          transform="translate(-779 -9022)"
+          clip-path="url(#clip-path)"
+        >
+          <g
+            id="グループ_1281"
+            data-name="グループ 1281"
+            transform="translate(22 -3271)"
+          >
+            <g
+              id="グループ_1276"
+              data-name="グループ 1276"
+              transform="translate(874 12301)"
             >
-              <g id="Icon" transform="translate(1 1)">
-                <circle
-                  id="Icon-2"
-                  data-name="Icon"
-                  cx="25"
-                  cy="25"
-                  r="25"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
+              <rect
+                id="長方形_942"
+                data-name="長方形 942"
+                width="811.778"
+                height="577.7"
+                transform="translate(0 0)"
+                fill="none"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <rect
+                id="長方形_943"
+                data-name="長方形 943"
+                width="811.778"
+                height="537.342"
+                transform="translate(0 40.358)"
+                fill="#edf1fe"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <g
+                id="グループ_1275"
+                data-name="グループ 1275"
+                transform="translate(17.066 16.259)"
+              >
+                <ellipse
+                  id="楕円形_58"
+                  data-name="楕円形 58"
+                  cx="4.151"
+                  cy="4.151"
+                  rx="4.151"
+                  ry="4.151"
+                  transform="translate(0 0)"
+                  fill="#5a80fb"
                 />
                 <ellipse
-                  id="Icon-3"
-                  data-name="Icon"
-                  cx="12"
-                  cy="25"
-                  rx="12"
-                  ry="25"
-                  transform="translate(13)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
+                  id="楕円形_59"
+                  data-name="楕円形 59"
+                  cx="4.151"
+                  cy="4.151"
+                  rx="4.151"
+                  ry="4.151"
+                  transform="translate(16.316 0)"
+                  fill="#5a80fb"
                 />
-                <path
-                  id="Icon-4"
-                  data-name="Icon"
-                  d="M0,0C4.585,2.666,11.379,4.354,18.963,4.354,26.356,4.354,33,2.749,37.577.2"
-                  transform="translate(6.037 8.646)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-                <path
-                  id="Icon-5"
-                  data-name="Icon"
-                  d="M36.786,4.027C32.218,1.551,25.674,0,18.405,0S4.569,1.557,0,4.041"
-                  transform="translate(6.595 37)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-                <path
-                  id="Icon-6"
-                  data-name="Icon"
-                  d="M0,.5H48"
-                  transform="translate(1 24.5)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
+                <ellipse
+                  id="楕円形_60"
+                  data-name="楕円形 60"
+                  cx="4.151"
+                  cy="4.151"
+                  rx="4.151"
+                  ry="4.151"
+                  transform="translate(32.69 0)"
+                  fill="#5a80fb"
                 />
               </g>
-            </svg>
-
-            <span class="box-title">テクノロジー</span>
-          </div>
-          <div class="box box-business">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="50"
-              viewBox="0 0 48 48"
-            >
-              <g id="Icon" transform="translate(1 1)">
-                <circle
-                  id="Icon-2"
-                  data-name="Icon"
-                  cx="23"
-                  cy="23"
-                  r="23"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-                <circle
-                  id="Icon-3"
-                  data-name="Icon"
-                  cx="3"
-                  cy="3"
-                  r="3"
-                  transform="translate(15 15)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-                <circle
-                  id="Icon-4"
-                  data-name="Icon"
-                  cx="3"
-                  cy="3"
-                  r="3"
-                  transform="translate(25 25)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-                <path
-                  id="Icon-5"
-                  data-name="Icon"
-                  d="M0,15,15,0"
-                  transform="translate(16 15)"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
-                />
-              </g>
-            </svg>
-            <span class="box-title">ビジネス</span>
-          </div>
-          <div class="box box-lifestyle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="50"
-              viewBox="0 0 46 42.5"
+            </g>
+            <g
+              id="グループ_1277"
+              data-name="グループ 1277"
+              transform="translate(1260.214 12562.524)"
             >
               <path
-                id="Icon"
-                d="M32,0a12,12,0,0,1,8.969,19.973L22,40.5,3.044,19.987A12,12,0,1,1,22,5.365,11.985,11.985,0,0,1,32,0Z"
-                transform="translate(1 1)"
+                id="パス_12"
+                data-name="パス 12"
+                d="M0,952.4v68.408H98.336V952.4H0Zm6.413,6.413h85.51v43.076L75.035,983.4a3.315,3.315,0,0,0-2.565-1.069,3.924,3.924,0,0,0-2.138.962L55.8,998.682,34.418,974.846a2.992,2.992,0,0,0-2.565-1.069,3.074,3.074,0,0,0-2.138.962l-23.3,25.012Zm50.237,2.138a9.62,9.62,0,1,0,9.62,9.62A9.718,9.718,0,0,0,56.65,960.951Zm0,6.413a3.207,3.207,0,1,1-3.207,3.207A3.149,3.149,0,0,1,56.65,967.364ZM31.959,981.687l29.18,32.707H6.413v-5.13Zm40.724,8.551,19.24,21.057v2.993H69.8l-9.727-10.9Z"
+                transform="translate(0 -952.4)"
+                fill="#fff"
+              />
+            </g>
+            <g
+              id="グループ_1279"
+              data-name="グループ 1279"
+              transform="translate(810 12445.2)"
+            >
+              <path
+                id="パス_2582"
+                data-name="パス 2582"
+                d="M41.1,544.1A32.146,32.146,0,0,1,9,512V33.1A32.1,32.1,0,0,1,41.1,1H241.318a32.146,32.146,0,0,1,32.1,32.1V512a32.146,32.146,0,0,1-32.1,32.1Z"
+                transform="translate(-2.537)"
+                fill="#fff"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="パス_2583"
+                data-name="パス 2583"
+                d="M244.421,540.442H44.267A25.3,25.3,0,0,1,19,515.175V36.267A25.3,25.3,0,0,1,44.267,11H244.489a25.3,25.3,0,0,1,25.267,25.267V515.175A25.355,25.355,0,0,1,244.421,540.442Z"
+                transform="translate(-5.708 -3.171)"
+                fill="rgba(255,255,255,0)"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <rect
+                id="長方形_941"
+                data-name="長方形 941"
+                width="223.304"
+                height="430.219"
+                transform="translate(26.95 55.289)"
+                fill="#edf1fe"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <circle
+                id="楕円形_55"
+                data-name="楕円形 55"
+                cx="4.097"
+                cy="4.097"
+                r="4.097"
+                transform="translate(92.917 31.798)"
+                fill="none"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="パス_2584"
+                data-name="パス 2584"
+                d="M211.578,53.846H173.132a2.74,2.74,0,0,1-2.732-2.732v-.683a2.74,2.74,0,0,1,2.732-2.732h38.447a2.74,2.74,0,0,1,2.732,2.732v.683A2.74,2.74,0,0,1,211.578,53.846Z"
+                transform="translate(-53.719 -14.809)"
+                fill="none"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <circle
+                id="楕円形_56"
+                data-name="楕円形 56"
+                cx="3.278"
+                cy="3.278"
+                r="3.278"
+                transform="translate(135.324 18.755)"
+                fill="#5a80fb"
+              />
+              <circle
+                id="楕円形_57"
+                data-name="楕円形 57"
+                cx="18.096"
+                cy="18.096"
+                r="18.096"
+                transform="translate(120.505 493.635)"
+                fill="none"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="パス_2585"
+                data-name="パス 2585"
+                d="M6.463,100.782H5.1a4.109,4.109,0,0,1-4.1-4.1V84.6a4.109,4.109,0,0,1,4.1-4.1H6.463Z"
+                transform="translate(0 -25.211)"
+                fill="none"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="パス_2586"
+                data-name="パス 2586"
+                d="M6.463,164.824H5.1a4.109,4.109,0,0,1-4.1-4.1V124.4a4.109,4.109,0,0,1,4.1-4.1H6.463Z"
+                transform="translate(0 -37.832)"
+                fill="none"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="パス_2587"
+                data-name="パス 2587"
+                d="M6.463,239.724H5.1a4.109,4.109,0,0,1-4.1-4.1V199.3a4.109,4.109,0,0,1,4.1-4.1H6.463Z"
+                transform="translate(0 -61.583)"
+                fill="none"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="パス_2588"
+                data-name="パス 2588"
+                d="M396.1,120.3h1.366a4.109,4.109,0,0,1,4.1,4.1v36.33a4.109,4.109,0,0,1-4.1,4.1H396.1Z"
+                transform="translate(-125.291 -37.832)"
+                fill="none"
+                stroke="#5a80fb"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+            </g>
+            <g
+              id="グループ_1280"
+              data-name="グループ 1280"
+              transform="translate(899.214 12683.524)"
+            >
+              <path
+                id="パス_12-2"
+                data-name="パス 12"
+                d="M0,952.4v68.408H98.336V952.4H0Zm6.413,6.413h85.51v43.076L75.035,983.4a3.315,3.315,0,0,0-2.565-1.069,3.924,3.924,0,0,0-2.138.962L55.8,998.682,34.418,974.846a2.992,2.992,0,0,0-2.565-1.069,3.074,3.074,0,0,0-2.138.962l-23.3,25.012Zm50.237,2.138a9.62,9.62,0,1,0,9.62,9.62A9.718,9.718,0,0,0,56.65,960.951Zm0,6.413a3.207,3.207,0,1,1-3.207,3.207A3.149,3.149,0,0,1,56.65,967.364ZM31.959,981.687l29.18,32.707H6.413v-5.13Zm40.724,8.551,19.24,21.057v2.993H69.8l-9.727-10.9Z"
+                transform="translate(0 -952.4)"
+                fill="#fff"
+              />
+            </g>
+          </g>
+        </g>
+      </svg>
+    </section>
+
+    <div class="field">
+      <h3>学習分野</h3>
+    </div>
+    <div class="my-12 w-full">
+      <div class="container w-full mx-auto flex justify-center">
+        <div class="box box-aca">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="50"
+            viewBox="0 0 33.414 42.414"
+          >
+            <g id="Icon" transform="translate(1 1)">
+              <path
+                id="Icon-2"
+                data-name="Icon"
+                d="M0,0H31V33H24v7H0Z"
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-miterlimit="10"
                 stroke-width="2"
               />
-            </svg>
+              <path
+                id="Icon-3"
+                data-name="Icon"
+                d="M0,.5H21"
+                transform="translate(5 12.5)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-4"
+                data-name="Icon"
+                d="M0,.5H21"
+                transform="translate(5 17.5)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-5"
+                data-name="Icon"
+                d="M0,.5H21"
+                transform="translate(5 22)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-6"
+                data-name="Icon"
+                d="M0,.5H5"
+                transform="translate(5 28)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-7"
+                data-name="Icon"
+                d="M0,.5H13"
+                transform="translate(5 5.5)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-8"
+                data-name="Icon"
+                d="M0,7,7,0"
+                transform="translate(24 33)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+            </g>
+          </svg>
 
-            <span class="box-title">ライフスタイル</span>
-          </div>
+          <span class="box-title">学問</span>
         </div>
-      </div>
+        <div class="box box-tech">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="50"
+            viewBox="0 0 52 52"
+          >
+            <g id="Icon" transform="translate(1 1)">
+              <circle
+                id="Icon-2"
+                data-name="Icon"
+                cx="25"
+                cy="25"
+                r="25"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <ellipse
+                id="Icon-3"
+                data-name="Icon"
+                cx="12"
+                cy="25"
+                rx="12"
+                ry="25"
+                transform="translate(13)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-4"
+                data-name="Icon"
+                d="M0,0C4.585,2.666,11.379,4.354,18.963,4.354,26.356,4.354,33,2.749,37.577.2"
+                transform="translate(6.037 8.646)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-5"
+                data-name="Icon"
+                d="M36.786,4.027C32.218,1.551,25.674,0,18.405,0S4.569,1.557,0,4.041"
+                transform="translate(6.595 37)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-6"
+                data-name="Icon"
+                d="M0,.5H48"
+                transform="translate(1 24.5)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+            </g>
+          </svg>
 
-      <div class="lg:flex w-full">
-        <div class="main-body min-h-(screen-16)">
-          <!-- <hero-item /> -->
-          <all-item :apitems="apitems" />
-          <!-- <FooterNav /> -->
+          <span class="box-title">テクノロジー</span>
+        </div>
+        <div class="box box-business">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="50"
+            viewBox="0 0 48 48"
+          >
+            <g id="Icon" transform="translate(1 1)">
+              <circle
+                id="Icon-2"
+                data-name="Icon"
+                cx="23"
+                cy="23"
+                r="23"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <circle
+                id="Icon-3"
+                data-name="Icon"
+                cx="3"
+                cy="3"
+                r="3"
+                transform="translate(15 15)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <circle
+                id="Icon-4"
+                data-name="Icon"
+                cx="3"
+                cy="3"
+                r="3"
+                transform="translate(25 25)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+              <path
+                id="Icon-5"
+                data-name="Icon"
+                d="M0,15,15,0"
+                transform="translate(16 15)"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                stroke-width="2"
+              />
+            </g>
+          </svg>
+          <span class="box-title">ビジネス</span>
+        </div>
+        <div class="box box-lifestyle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="50"
+            viewBox="0 0 46 42.5"
+          >
+            <path
+              id="Icon"
+              d="M32,0a12,12,0,0,1,8.969,19.973L22,40.5,3.044,19.987A12,12,0,1,1,22,5.365,11.985,11.985,0,0,1,32,0Z"
+              transform="translate(1 1)"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              stroke-width="2"
+            />
+          </svg>
+
+          <span class="box-title">ライフスタイル</span>
         </div>
       </div>
     </div>
+
+    <all-item :apitems="apitems" />
+
     <FooterNav />
   </div>
 </template>
@@ -268,14 +521,12 @@ import axios from 'axios'
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
 // atoms
-// import HeroItem from '@/components/atoms/item/HeroItem'
 import AllItem from '@/components/atoms/item/AllItem'
 
 export default {
   components: {
     HeaderNav,
     FooterNav,
-    // HeroItem,
     AllItem,
   },
   data() {
@@ -310,12 +561,42 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+section {
+  @apply w-full flex items-center mx-auto;
+  background: var(--bg-sedondary) !important;
+  height: calc(100vh - 65px);
+}
+.main-img {
+  @apply lg:w-1/2 h-full;
+}
+.title {
+  font-weight: 300;
+  font-size: 60px;
+  line-height: 74px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.describe {
+  @apply inline-block text-lg;
+  // width: 508px;
+  height: 67px;
+  font-weight: normal;
+  line-height: 24px;
+  text-align: left;
+}
+.btn {
+  @apply flex items-center justify-center rounded-lg font-bold;
+  width: 160px;
+  height: 45px;
+  color: var(--bg-secondary);
+  background: var(--primary);
+}
 .box {
-  @apply flex flex-col items-center shadow justify-center rounded-full;
+  @apply block flex flex-col items-center justify-center;
   width: 200px;
   height: 200px;
-  // border-radius: 10px;
-  // box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
   // border: 1px solid var(--primary);
   svg g path,
   svg g circle,
@@ -325,95 +606,50 @@ export default {
   }
   &:hover {
     @apply cursor-pointer;
-    svg g path,
-    svg g circle,
-    svg g ellipse,
-    svg path {
-      stroke: var(--bg-secondary);
-    }
   }
   &-business {
-    @apply duration-500 mr-auto;
+    @apply duration-200 mr-16;
     background: var(--bg-secondary);
     &:hover {
-      .box-title {
-        color: var(--bg-secondary);
-      }
       transform: translateY(-5px);
-      background: #36d1dc; /* fallback for old browsers */
-      background: -webkit-linear-gradient(
-        to right,
-        #5b86e5,
-        #36d1dc
-      ); /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(
-        to right,
-        #5b86e5,
-        #36d1dc
-      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    }
-  }
-  &-lifestyle {
-    @apply duration-500;
-    background: var(--bg-secondary);
-    &:hover {
-      .box-title {
-        color: var(--bg-secondary);
-      }
-      transform: translateY(-5px);
-      background: #f857a6; /* fallback for old browsers */
-      background: -webkit-linear-gradient(
-        to right,
-        #ff5858,
-        #f857a6
-      ); /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(
-        to right,
-        #ff5858,
-        #f857a6
-      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
   }
   &-tech {
-    @apply duration-500 mr-auto;
+    @apply duration-200 mr-16;
     background: var(--bg-secondary);
     &:hover {
-      .box-title {
-        color: var(--bg-secondary);
-      }
       transform: translateY(-5px);
-      background: #4cb8c4; /* fallback for old browsers */
-      background: -webkit-linear-gradient(
-        to right,
-        #e5eeec,
-        #4cb8c4
-      ); /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(
-        to right,
-        #3cd3ad,
-        #4cb8c4
-      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
   }
   &-aca {
-    @apply duration-500 mr-auto;
+    @apply duration-200 mr-16;
     background: var(--bg-secondary);
     &:hover {
-      .box-title {
-        color: var(--bg-secondary);
-      }
       transform: translateY(-5px);
-      background-color: #f39f86;
-      background-image: linear-gradient(315deg, #f39f86 0%, #f9d976 74%);
+    }
+  }
+  &-lifestyle {
+    @apply duration-200;
+    background: var(--bg-secondary);
+    &:hover {
+      transform: translateY(-5px);
     }
   }
   &-title {
-    @apply text-left inline-block font-bold text-lg;
+    @apply text-left inline-block text-lg;
     line-height: 20px;
     color: var(--color);
     margin-top: 20px;
+  }
+}
+.field {
+  @apply w-full;
+  height: 150px;
+  background: var(--primary);
+  color: var(--bg-secondary);
+  h3 {
+    @apply text-4xl font-bold w-full h-full flex items-center justify-center;
+    color: var(--bg-secondary);
   }
 }
 .side-nav {
