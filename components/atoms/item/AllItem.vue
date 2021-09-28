@@ -254,7 +254,7 @@ export default {
       border-right: none;
       &:hover {
         // @apply;
-        color: var(--primary);
+        color: rgba(var(--primary));
       }
     }
     &-list {
@@ -265,7 +265,7 @@ export default {
       // background: var(--bg-secondary);
       &:hover {
         // @apply;
-        color: var(--primary);
+        color: rgba(var(--primary));
       }
     }
   }

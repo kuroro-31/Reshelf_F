@@ -43,8 +43,8 @@ export default {
     &:checked {
       & + .re-checkbox--checked {
         @apply duration-200;
-        background: var(--primary);
-        border: 2px solid var(--primary);
+        background: rgba(var(--primary));
+        border: 2px solidrgba(var(--primary));
         transform: rotate(0deg);
 
         .re-checkbox--icon {

@@ -142,7 +142,7 @@ text {
   fill: var(--color);
 }
 path {
-  stroke: var(--primary) !important;
+  stroke: rgba(var(--primary)) !important;
 }
 section {
   width: 100%;

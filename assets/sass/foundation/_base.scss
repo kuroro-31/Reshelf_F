@@ -97,7 +97,7 @@ h1,h2,h3,h4,h5,h6 {
   transform:  msfilter;
   &:hover {
     // @apply;
-    fill: var(--primary);
+    fill:rgba(var(--primary));
     // background: var(--light-primary);
     // border: 1px solid #CDD7EE;
   }

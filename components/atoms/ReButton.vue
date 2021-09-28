@@ -9,25 +9,23 @@
 <style lang="scss">
 .re-button {
   @apply block relative w-full font-bold duration-200;
-  box-shadow: 0 10px 20px -10px rgba(var(--primary), 0.5);
   // &:hover {
   //   transform: translateY(-3px);
   // }
   button,
   label,
   .re-button-inner {
-    @apply flex items-center justify-center w-full border-none cursor-pointer box-border bg-transparent duration-200;
+    @apply flex items-center justify-center w-full border-none cursor-pointer box-border bg-transparent duration-200 rounded-lg;
     min-width: 100px; // 2文字などの短いボタンのケースで必要
     // height: 100%; // 高さが崩れるので一時コメントアウト
     // padding: 1rem;
     min-height: 40px;
-    border-radius: 12px;
     color: var(--fff);
     line-height: 1.2;
     padding: 13px 25px;
     // border-radius: 17px;
     // text-align: center; // justify-content: center;しているのでカット
-    box-shadow: 0 10px 20px -10px rgba(var(--primary), 0.5);
+    box-shadow: 0 10px 20px -10px rgba(var(--primary), 0.1);
   }
   &:disabled {
     .label {
@@ -67,7 +65,7 @@
       @apply h-full;
       // background: var(--color) !important;
       // color: var(--fff) !important;
-      background: var(--primary) !important;
+      background: rgba(var(--primary)) !important;
       color: var(--fff) !important;
       &:hover {
         // background: rgba($primary, 0.8) !important;
@@ -76,13 +74,14 @@
     }
     &-border {
       @apply h-full;
-      background: #f1f1f1 !important;
-      color: var(--color) !important;
-      // border: 1px solid var(--primary) !important;
-      // color: var(--primary) !important;
-      &:hover {
-        background: #e4e6e9 !important;
-      }
+      // background: #f1f1f1 !important;
+      // color: var(--color) !important;
+      // border: 1px solidrgba(var(--primary)) !important;
+      color: rgba(var(--primary)) !important;
+      background: rgba(var(--primary), 0.1) !important;
+      // &:hover {
+      //   // background: #e4e6e9 !important;
+      // }
     }
   }
   &-secondry {

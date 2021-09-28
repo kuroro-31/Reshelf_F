@@ -590,12 +590,11 @@ export default {
   text-align: left;
 }
 .btn {
-  @apply flex items-center justify-center font-bold duration-200;
+  @apply flex items-center justify-center font-bold duration-200 rounded-lg;
   width: 160px;
   height: 45px;
-  border-radius: 16px;
   color: var(--bg-secondary);
-  background: var(--primary);
+  background: rgba(var(--primary));
   &:hover {
     @apply shadow-lg;
   }
@@ -606,12 +605,12 @@ export default {
   height: 200px;
   border-radius: 10px;
   box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
-  // border: 1px solid var(--primary);
+  // border: 1px solidrgba(var(--primary));
   svg g path,
   svg g circle,
   svg g ellipse,
   svg path {
-    stroke: var(--primary);
+    stroke: rgba(var(--primary));
   }
   &:hover {
     @apply cursor-pointer;
@@ -654,7 +653,7 @@ export default {
 .field {
   @apply w-full;
   height: 150px;
-  background: var(--primary);
+  background: rgba(var(--primary));
   color: var(--bg-secondary);
   h3 {
     @apply text-4xl font-bold w-full h-full flex items-center justify-center;

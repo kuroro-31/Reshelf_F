@@ -157,7 +157,7 @@ export default {
     height: 100px;
     border: 2px solid var(--gray);
     &:hover {
-      border: 2px solid var(--primary);
+      border: 2px solidrgba(var(--primary));
     }
     &-icon {
       @apply text-primary inline-block;
@@ -180,7 +180,7 @@ export default {
     height: 100px;
     border: 2px solid var(--gray);
     &:hover {
-      border: 2px solid var(--primary);
+      border: 2px solidrgba(var(--primary));
     }
     &-icon {
       @apply text-primary inline-block;

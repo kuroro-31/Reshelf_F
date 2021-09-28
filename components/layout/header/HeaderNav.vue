@@ -449,7 +449,7 @@ text {
   fill: var(--color);
 }
 path {
-  stroke: var(--primary);
+  stroke: rgba(var(--primary));
 }
 .toggle {
   @apply mr-4 cursor-pointer p-2 flex-shrink-0;
@@ -463,7 +463,7 @@ path {
 .nav {
   @apply sticky top-0 z-20 flex items-center justify-center h-16;
   background-color: var(--bg-secondary);
-  // background-color: var(--primary);
+  // background-color:rgba(var(--primary));
   // border-bottom-width: 1px;
   // border-style: solid;
   // border-color: var(--gray);

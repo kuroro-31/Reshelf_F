@@ -396,8 +396,8 @@ export default {
         @apply w-full rounded text-xl px-4 py-2 flex justify-center items-center;
         border: 1px solid var(--color);
         &:hover {
-          color: var(--primary);
-          border: 1px solid var(--primary);
+          color: rgba(var(--primary));
+          border: 1px solidrgba(var(--primary));
         }
       }
       &-facebook {
