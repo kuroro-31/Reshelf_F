@@ -578,18 +578,16 @@ export default {
   }
 }
 .title {
-  font-weight: 300;
+  @apply mb-2;
   color: var(--color);
   font-size: 60px;
   line-height: 74px;
   text-align: left;
-  margin-bottom: 20px;
 }
 .describe {
-  @apply inline-block text-lg;
-  // width: 508px;
+  @apply inline-block text-xl font-semibold mb-8;
+  color: var(--sub-color);
   height: 67px;
-  font-weight: normal;
   line-height: 24px;
   text-align: left;
 }
