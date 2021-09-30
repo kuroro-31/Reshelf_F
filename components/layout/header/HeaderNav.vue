@@ -63,7 +63,10 @@
       </div>
 
       <div class="nav-right">
-        <nuxt-link to="/item/new">
+        <nuxt-link
+          v-if="$store.state.authenticate.authenticated"
+          to="/item/new"
+        >
           <re-button class="re-button re-button-small no-shadow">
             <button type="submit" class="re-button-primary-border">
               コースの作成
