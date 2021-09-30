@@ -55,7 +55,7 @@ button, input, select, textarea {
 
 .divider {
   @apply w-full z-50 mb-4 pb-4;
-  border-bottom: 1px var(--thin-gray) solid;
+  border-bottom: solid 1px #ccc !important;
   padding: 0 -9999px;
 }
 

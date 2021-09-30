@@ -15,7 +15,7 @@
             Reshelfは、プログラミング学習教材のマーケットプレイスです。
             受講者による教材評価から教材を循環し、専門知識のある講師と受講者をつなぐプラットホームを体験できます。
           </span>
-          <button class="btn">新規登録・ログイン</button>
+          <nuxt-link to="/auth/login" class="btn">新規登録・ログイン</nuxt-link>
         </div>
       </div>
       <div class="main-img">

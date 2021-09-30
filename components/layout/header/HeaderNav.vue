@@ -340,19 +340,91 @@
         </button>
 
         <!-- ログイン -->
-        <nuxt-link
+        <!-- <nuxt-link
           v-if="!$store.state.authenticate.authenticated"
           flat
           to="/auth/login"
         >
           ログイン
-        </nuxt-link>
+        </nuxt-link> -->
         <div v-if="!$store.state.authenticate.authenticated" class="py-2.5">
-          <span class="cursor-pointer" @click="modal = !modal">Log in</span>
+          <span class="cursor-pointer" @click="modal = !modal">ログイン</span>
           <ReModal v-if="modal" @close="modal = !modal">
             <template slot="header">Welcome To Reshelf！</template>
             <!-- default -->
-            <div class="w-full flex justify-center">
+            <div class="w-full flex flex-col justify-center">
+              <form @submit.prevent="login">
+                <!-- メールアドレス -->
+                <label class="font-semibold text-xs text-gray-600 pb-1 block">
+                  E-mail
+                </label>
+                <input
+                  v-model.trim="auth.email"
+                  type="email"
+                  placeholder="Enter email"
+                  autofocus
+                  class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+                />
+                <small v-if="errors.email" class="form-text text-danger">
+                  {{ errors.email[0] }}
+                </small>
+
+                <!-- パスワード -->
+                <label class="font-semibold text-xs text-gray-600 pb-1 block">
+                  Password
+                </label>
+                <input
+                  v-model.trim="auth.password"
+                  type="password"
+                  placeholder="Password"
+                  class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+                />
+                <small v-if="errors.password" class="form-text text-danger">
+                  {{ errors.password[0] }}
+                </small>
+
+                <!-- ログインボタン -->
+                <button
+                  type="submit"
+                  class="
+                    transition
+                    duration-200
+                    bg-blue-500
+                    hover:bg-blue-600
+                    focus:bg-blue-700
+                    focus:shadow-sm
+                    focus:ring-4
+                    focus:ring-blue-500
+                    focus:ring-opacity-50
+                    w-full
+                    py-2
+                    rounded
+                    text-xs
+                    shadow-sm
+                    hover:shadow-md
+                    font-semibold
+                    text-center
+                    inline-block
+                  "
+                >
+                  <span class="inline-block mr-2 text-white">ログイン</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-4 h-4 inline-block"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </button>
+              </form>
+              <div class="divider"></div>
               <form @submit.prevent="submit">
                 <button
                   :class="post ? 'fb-btn-posted' : 'fb-btn'"
@@ -395,6 +467,12 @@ export default {
       dropdown: false,
       post: false,
       like: false,
+
+      auth: {
+        email: '',
+        password: '',
+      },
+      errors: {},
     }
   },
   methods: {
@@ -402,6 +480,7 @@ export default {
       authenticated: 'authenticate/authenticated',
     }),
     ...mapActions({
+      signIn: 'authenticate/login',
       signOut: 'authenticate/logout',
     }),
     // async create() {
@@ -427,6 +506,24 @@ export default {
     //   }
     //   this.$nuxt.$loading.finish()
     // },
+    async login() {
+      this.$axios.defaults.withCredentials = true
+
+      this.$nuxt.$loading.start()
+      await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
+        await this.$axios
+          .post('/api/auth/login', this.auth)
+          .then(({ data }) => {
+            this.signIn()
+            // this.$nuxt.$router.back()
+            // this.$nuxt.$router.push({ path: '/' })
+          })
+          .catch(({ response: { data } }) => {
+            alert(data.message)
+          })
+      })
+      this.$nuxt.$loading.finish()
+    },
     async logout() {
       this.$nuxt.$loading.start()
       this.signOut()
@@ -529,7 +626,7 @@ path {
   }
 }
 .fb-btn {
-  @apply py-3 px-4 text-white rounded-lg text-xl font-bold  duration-200;
+  @apply py-2 px-4 text-white rounded-lg text-lg  duration-200;
   background: #1976f2;
   border: 1px solid #1976f2;
 
