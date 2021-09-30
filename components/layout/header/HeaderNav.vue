@@ -1,17 +1,6 @@
 <template>
   <nav class="nav">
-    <div
-      class="
-        max-w-screen-xl
-        container
-        w-full
-        mx-auto
-        flex flex-wrap
-        items-center
-        justify-between
-        mt-0
-      "
-    >
+    <div class="nav-content">
       <div class="nav-left py-2.5">
         <!-- <input id="side" type="checkbox" name="" value="" /> -->
         <!-- <label for="side" class="toggle">
@@ -466,10 +455,14 @@ path {
 .nav {
   @apply sticky top-0 z-20 flex items-center justify-center h-16;
   background-color: var(--bg-secondary);
+  padding: 0 6.7%;
   // background-color:rgba(var(--primary));
   // border-bottom-width: 1px;
   // border-style: solid;
   // border-color: var(--gray);
+  &-content {
+    @apply w-full mx-auto flex flex-wrap items-center justify-between mt-0;
+  }
   &-left {
     @apply flex items-center lg:w-1/4 xl:w-1/5 mr-12;
     height: 45px;

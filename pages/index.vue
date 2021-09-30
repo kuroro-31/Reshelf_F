@@ -12,9 +12,8 @@
             たったの3分で
           </h2>
           <span class="describe">
-            Reshelfにあるコースの各章の１つ１つは全て3分以内に読み終わります。
-            <br />
-            あなたのスキマ時間をキャリアアップに使って充実した生活を実現しよう。
+            Reshelfは、プログラミング学習教材のマーケットプレイスです。
+            受講者による教材評価から教材を循環し、専門知識のある講師と受講者をつなぐプラットホームを体験できます。
           </span>
           <button class="btn">新規登録・ログイン</button>
         </div>
@@ -569,7 +568,8 @@ export default {
 .hero {
   @apply w-full flex items-center mx-auto;
   background: var(--bg-secondary);
-  height: calc(100vh - 65px);
+  max-height: calc(100vh - 65px);
+  padding: 6.7% 0 6.7% 6.7%;
 }
 .main-img {
   @apply w-1/2 h-full flex items-center;
