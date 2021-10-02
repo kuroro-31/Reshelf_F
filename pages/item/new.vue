@@ -30,12 +30,22 @@
               <label class="font-semibold text-xs text-gray-600 pb-1 block">
                 本文
               </label>
-              <textarea
-                v-model.trim="post.body"
-                type="text"
-                placeholder="本文"
-                class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-              />
+              <client-only>
+                <editor
+                  v-model.trim="post.body"
+                  api-key="no-api-key"
+                  output-format="html"
+                  :init="{
+                    height: 500,
+                    menubar: false,
+                    plugins: [
+                      'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+                    ],
+                    toolbar:
+                      'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+                  }"
+                />
+              </client-only>
 
               <!-- ログインボタン -->
               <button
@@ -89,6 +99,7 @@
 <script>
 import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
+import Editor from '@tinymce/tinymce-vue'
 
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
@@ -100,6 +111,8 @@ export default {
   components: {
     HeaderNav,
     SidebarNew,
+    editor: Editor,
+
     // AllItem,
   },
   middleware: 'authenticated',
@@ -111,6 +124,7 @@ export default {
       },
       errors: {},
       alert: '',
+      content: [],
     }
   },
   // watch: {

@@ -40,6 +40,12 @@ export default {
       { name: 'twitter:card', content: 'summary_large_image' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        src: 'https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js',
+        referrerpolicy: 'origin',
+      },
+    ],
   },
   ssr: false, // SPA
   components: true,
@@ -47,6 +53,10 @@ export default {
     'ress',
     { src: '@/assets/sass/app.scss', lang: 'scss' },
     'boxicons/css/boxicons.min.css',
+    {
+      src: '~/node_modules/highlight.js/styles/tomorrow-night-bright.css',
+      lang: 'css',
+    },
   ],
   styleResources: {
     scss: [
@@ -61,7 +71,8 @@ export default {
 
   plugins: [
     '~/plugins/i18n.js',
-    // '~/plugins/lodash.js'
+    // '~/plugins/lodash.js',
+    '@/plugins/vue-highlightjs',
   ],
   vendor: [
     'vue-i18n', // i18n
@@ -145,7 +156,6 @@ export default {
       }
     },
   },
-
   // generate: {
   //   // i18n
   //   routes: ['/', '/ja'],

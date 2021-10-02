@@ -141,8 +141,9 @@
           <nuxt-link to="`/item/show/${apitem.id}`">
             {{ apitem.title }}
           </nuxt-link>
-          {{ apitem.body }}
-          {{ apitem.user_id }}
+          <!-- eslint-disable-next-line -->
+          <div class="markdown" v-html="apitem.body"></div>
+          <!-- {{ apitem.user_id }} -->
         </div>
       </div>
     </div>
