@@ -142,7 +142,7 @@
             {{ apitem.title }}
           </nuxt-link>
           <!-- eslint-disable-next-line -->
-          <div class="markdown" v-html="apitem.body"></div>
+          <div class="markdown" v-html="apitem.body" v-highlightjs></div>
           <!-- {{ apitem.user_id }} -->
         </div>
       </div>
