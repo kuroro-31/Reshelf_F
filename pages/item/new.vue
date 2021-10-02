@@ -113,14 +113,14 @@ export default {
       alert: '',
     }
   },
-  watch: {
-    post: {
-      handler: _.debounce(function () {
-        this.update()
-      }, 2000), // memosのデータの更新が終わった2秒後に実行される
-      deep: true,
-    },
-  },
+  // watch: {
+  //   post: {
+  //     handler: _.debounce(function () {
+  //       this.update()
+  //     }, 2000), // memosのデータの更新が終わった2秒後に実行される
+  //     deep: true,
+  //   },
+  // },
   methods: {
     ...mapGetters({
       authenticated: 'authenticate/authenticated',
