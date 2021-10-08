@@ -21,7 +21,7 @@ reset:
 	npm cache clean --force
 	npm i
 lint:
-	watch -n 60 -d 'npm run lintfix && rm -rf node_modules/.cache/hard-source/'
+	watch -n 30 -d 'npm run lintfix'
 package:
 	npm install --save-exact @nuxtjs/auth
 eslint:
