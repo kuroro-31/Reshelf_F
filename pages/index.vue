@@ -513,7 +513,12 @@
       </div>
     </div>
 
-    <all-item :apitems="apitems" />
+    <template v-if="loading">
+      <div>読み込み中です</div>
+    </template>
+    <template v-else>
+      <all-item :apitems="apitems" />
+    </template>
 
     <FooterNav />
   </div>
@@ -536,6 +541,7 @@ export default {
   data() {
     return {
       apitems: [],
+      loading: false,
     }
   },
   mounted() {
@@ -545,7 +551,7 @@ export default {
     async getApi() {
       axios.defaults.withCredentials = true
       // await axios.get('/sanctum/csrf-cookie').then(async () => {
-
+      this.loading = true
       // })
       // this.$nuxt.$loading.start()
 
@@ -554,6 +560,7 @@ export default {
         .then((response) => {
           this.apitems = response.data.data
           // this.apiPopularTags = response.data.tags;
+          this.loading = false
         })
         .catch((err) => {
           alert(err)
