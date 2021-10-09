@@ -22,14 +22,16 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 661 721"
+          width="691"
+          height="721"
+          viewBox="0 0 691 721"
         >
           <defs>
             <clipPath id="clip-path">
               <rect
                 id="長方形_2235"
                 data-name="長方形 2235"
-                width="661"
+                width="691"
                 height="721"
                 transform="translate(779 9022)"
                 fill="#fff"
@@ -583,6 +585,12 @@ export default {
   svg {
     @apply w-full h-full;
   }
+  // svg g path,
+  // svg g circle,
+  // svg g ellipse,
+  // svg path {
+  //   stroke: rgba(var(--primary));
+  // }
 }
 .title {
   @apply mb-2;

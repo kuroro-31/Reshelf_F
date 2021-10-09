@@ -1,5 +1,5 @@
 :root {
-  --primary: 51,97,255; // #045AFC
+  --primary: 83, 97, 255; // #045AFC
   --light-primary: #F2F5FF;
   --logo: #045AFC;
   // --primary: #4070E9;
@@ -44,20 +44,20 @@
   --border-color: #0d2538;
 }
 .green-mode {
-  --primary:#48bac0;
+  --primary: 92, 199, 209;
   --logo: #33C4CC;
   --color: #2D3E4F;
 }
 .purple-mode {
-  --primary: #99a0ff;
-  --logo: #99a0ff;
+  --primary: 112, 121, 255;
+  --logo: #7079ff;
 }
 .gold-mode {
-  --primary: #AB9048;
+  --primary: 171, 144, 72;
   --logo: #AB9048;
 }
 .pink-mode {
-  --primary: #DE73B7;
+  --primary: 222, 115, 183;
   --logo: #DE73B7;
 }
 
@@ -73,7 +73,7 @@ $white: white;
 $white: #fff;
 $black: #1C1C1C;
 $gold: #ECB756;
-$blue: #33C4CC#3367D6;
+$blue: #3367D6;
 $thin-blue: #00b9f1;
 $green: #2ecc71;
 $orange: #ff6c5f;

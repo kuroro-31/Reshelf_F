@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav">
+  <header class="nav" :class="{ active: user }">
     <div class="nav-content">
       <div class="nav-left py-2.5">
         <!-- <input id="side" type="checkbox" name="" value="" /> -->
@@ -443,7 +443,7 @@
         </div>
       </div>
     </div>
-  </nav>
+  </header>
 </template>
 
 <script>
