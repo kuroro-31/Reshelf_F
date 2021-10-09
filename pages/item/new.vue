@@ -26,6 +26,15 @@
                 class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
               />
 
+              <!-- タグ -->
+              <label class="font-semibold text-xs text-gray-600 pb-1 block">
+                タグ
+              </label>
+              <article-tags-input
+                :initial-tags="tagNames"
+                :autocomplete-items="allTagNames"
+              ></article-tags-input>
+
               <!-- body -->
               <label class="font-semibold text-xs text-gray-600 pb-1 block">
                 本文
@@ -158,13 +167,13 @@ import HeaderNav from '@/components/layout/header/HeaderNav'
 import SidebarNew from '@/components/layout/sidebar/item/SidebarNew'
 // atoms
 // import AllItem from '@/components/atoms/item/AllItem'
-
+import ArticleTagsInput from '@/components/atoms/ArticleTagsInput.vue'
 export default {
   components: {
     HeaderNav,
     SidebarNew,
     editor: Editor,
-
+    ArticleTagsInput,
     // AllItem,
   },
   middleware: 'authenticated',
@@ -177,6 +186,14 @@ export default {
       errors: {},
       alert: '',
       content: [],
+      tagNames: ['aaaà', 'bbbb'],
+      allTagNames: [
+        'プログラミング',
+        'python',
+        'javascript',
+        'golong',
+        'gaagaa',
+      ],
     }
   },
   // watch: {
@@ -191,6 +208,17 @@ export default {
     ...mapGetters({
       authenticated: 'authenticate/authenticated',
     }),
+    async getApi() {
+      this.$axios.defaults.withCredentials = true
+
+      if (!this.authenticated) {
+        this.$nuxt.$router.push({ path: '/auth/login' })
+      } else {
+        await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
+          await this.$axios.post('/api/posts', this.post).then(({ data }) => {})
+        })
+      }
+    },
     async update() {
       this.$axios.defaults.withCredentials = true
 
