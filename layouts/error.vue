@@ -4,8 +4,8 @@
     <div class="main">
       <ul class="w-full flex flex-col">
         <li v-for="(value, key, index) in error" :key="index" class="message">
-          <p class="container text-2xl font-bold">{{ key }}</p>
-          <p class="container">{{ value }}</p>
+          <p class="text-5xl font-bold">{{ key }}</p>
+          <p class="text-4xl">{{ value }}</p>
         </li>
         <nuxt-link to="/">
           <re-button class="re-button w-32 mt-8">
@@ -50,9 +50,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .main {
-  @apply flex items-center justify-center mx-auto container;
+  @apply flex items-center justify-center mx-auto;
+  height: calc(100vh - 64px);
 }
 .message {
-  @apply font-bold flex flex-col container mb-4;
+  @apply font-bold flex flex-col mb-4;
 }
 </style>
