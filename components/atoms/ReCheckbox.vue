@@ -5,7 +5,7 @@
       class="re-checkbox--check"
       :class="isChecked == true ? 're-checkbox--checked' : ''"
     >
-      <check-icon size="14" class="re-checkbox--icon text-white"></check-icon>
+      <i class="bx bx-check re-checkbox--icon text-white"></i>
     </div>
     <slot name="label"></slot>
   </label>

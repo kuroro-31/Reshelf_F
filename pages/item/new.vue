@@ -6,11 +6,24 @@
         <nav
           class="card side-nav lg:max-h-(screen-22) pin-22 scroll-none mb-auto"
         >
-          <SidebarNew />
+          <div class="item">
+            <span class="item-title">受講生</span>
+            <nuxt-link class="item-link" to="/user/learning">
+              >受講中のコース
+            </nuxt-link>
+            <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
+            <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
+
+            <span class="item-title">受講生</span>
+            <nuxt-link class="item-link" to="/user/learning">
+              >受講中のコース
+            </nuxt-link>
+            <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
+            <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
+          </div>
         </nav>
         <div class="main-body scroll-none">
           <div class="main-body-content">
-            <h2 class="text-xl font-bold mb-4">あなたのコース</h2>
             <p class="mb-4">{{ alert }}</p>
             <!-- <all-item :items="items" /> -->
             <form @submit.prevent="update">
@@ -49,8 +62,23 @@
                     menubar: false,
                     spellcheck: true,
                     body_class: 'reshelf-editor',
+                    selector: 'textarea',
                     plugins: [
                       'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+                    ],
+                    textpattern_patterns: [
+                      { start: '*', end: '*', format: 'italic' },
+                      { start: '**', end: '**', format: 'bold' },
+                      { start: '#', format: 'h1' },
+                      { start: '##', format: 'h2' },
+                      { start: '###', format: 'h3' },
+                      { start: '####', format: 'h4' },
+                      { start: '#####', format: 'h5' },
+                      { start: '######', format: 'h6' },
+                      { start: '1. ', cmd: 'InsertOrderedList' },
+                      { start: '* ', cmd: 'InsertUnorderedList' },
+                      { start: '- ', cmd: 'InsertUnorderedList' },
+                      { start: '//brb', replacement: 'Be Right Back' },
                     ],
                     toolbar:
                       'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
@@ -164,14 +192,12 @@ import Editor from '@tinymce/tinymce-vue'
 
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
-import SidebarNew from '@/components/layout/sidebar/item/SidebarNew'
 // atoms
 // import AllItem from '@/components/atoms/item/AllItem'
 import ArticleTagsInput from '@/components/atoms/ArticleTagsInput.vue'
 export default {
   components: {
     HeaderNav,
-    SidebarNew,
     editor: Editor,
     ArticleTagsInput,
     // AllItem,
@@ -256,5 +282,26 @@ export default {
 }
 .main-body {
   @apply w-full lg:w-3/4 xl:w-4/5 p-6 lg:pl-10;
+}
+
+.item {
+  @apply duration-200 flex flex-col;
+  &-title {
+    @apply text-xs font-bold pt-4;
+    color: var(--sub-color);
+  }
+  &-link {
+    @apply duration-200 px-4 py-2 w-full h-full;
+    color: var(--color);
+    &:hover {
+      @apply cursor-pointer;
+      transform: translateX(5px);
+      background: #f0f2f6;
+      border-radius: 6px;
+    }
+  }
+}
+.title {
+  color: var(--color);
 }
 </style>
