@@ -52,89 +52,12 @@
               <label class="font-semibold text-xs text-gray-600 pb-1 block">
                 本文
               </label>
-              <client-only>
-                <editor
-                  v-model.trim="post.body"
-                  api-key="oxl1g4dleeqrpfmcnpvu7wqcnpsljq6nxbpenlhole2n0rmh"
-                  output-format="html"
-                  :init="{
-                    height: 500,
-                    menubar: false,
-                    spellcheck: true,
-                    body_class: 'reshelf-editor',
-                    selector: 'textarea',
-                    plugins: [
-                      'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
-                    ],
-                    textpattern_patterns: [
-                      { start: '*', end: '*', format: 'italic' },
-                      { start: '**', end: '**', format: 'bold' },
-                      { start: '#', format: 'h1' },
-                      { start: '##', format: 'h2' },
-                      { start: '###', format: 'h3' },
-                      { start: '####', format: 'h4' },
-                      { start: '#####', format: 'h5' },
-                      { start: '######', format: 'h6' },
-                      { start: '1. ', cmd: 'InsertOrderedList' },
-                      { start: '* ', cmd: 'InsertUnorderedList' },
-                      { start: '- ', cmd: 'InsertUnorderedList' },
-                      { start: '//brb', replacement: 'Be Right Back' },
-                    ],
-                    toolbar:
-                      'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
-                    color_map: [
-                      '#BFEDD2',
-                      'Light Green',
-                      '#FBEEB8',
-                      'Light Yellow',
-                      '#F8CAC6',
-                      'Light Red',
-                      '#ECCAFA',
-                      'Light Purple',
-                      '#C2E0F4',
-                      'Light Blue',
-
-                      '#2DC26B',
-                      'Green',
-                      '#F1C40F',
-                      'Yellow',
-                      '#E03E2D',
-                      'Red',
-                      '#B96AD9',
-                      'Purple',
-                      '#3598DB',
-                      'Blue',
-
-                      '#169179',
-                      'Dark Turquoise',
-                      '#E67E23',
-                      'Orange',
-                      '#BA372A',
-                      'Dark Red',
-                      '#843FA1',
-                      'Dark Purple',
-                      '#236FA1',
-                      'Dark Blue',
-
-                      '#ECF0F1',
-                      'Light Gray',
-                      '#CED4D9',
-                      'Medium Gray',
-                      '#95A5A6',
-                      'Gray',
-                      '#7E8C8D',
-                      'Dark Gray',
-                      '#34495E',
-                      'Navy Blue',
-
-                      '#000000',
-                      'Black',
-                      '#ffffff',
-                      'White',
-                    ],
-                  }"
-                />
-              </client-only>
+              <editor
+                v-model.trim="post.body"
+                selector="textarea"
+                api-key="oxl1g4dleeqrpfmcnpvu7wqcnpsljq6nxbpenlhole2n0rmh"
+                :init="init"
+              />
 
               <!-- ログインボタン -->
               <button
@@ -220,6 +143,83 @@ export default {
         'golong',
         'gaagaa',
       ],
+      init: {
+        height: 500,
+        menubar: false,
+        spellcheck: true,
+        body_class: 'reshelf-editor',
+        selector: 'textarea',
+        plugins: [
+          'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+        ],
+        toolbar:
+          'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+        insert_toolbar: 'quickimage quicktable emoticons',
+        color_map: [
+          '#BFEDD2',
+          'Light Green',
+          '#FBEEB8',
+          'Light Yellow',
+          '#F8CAC6',
+          'Light Red',
+          '#ECCAFA',
+          'Light Purple',
+          '#C2E0F4',
+          'Light Blue',
+
+          '#2DC26B',
+          'Green',
+          '#F1C40F',
+          'Yellow',
+          '#E03E2D',
+          'Red',
+          '#B96AD9',
+          'Purple',
+          '#3598DB',
+          'Blue',
+
+          '#169179',
+          'Dark Turquoise',
+          '#E67E23',
+          'Orange',
+          '#BA372A',
+          'Dark Red',
+          '#843FA1',
+          'Dark Purple',
+          '#236FA1',
+          'Dark Blue',
+
+          '#ECF0F1',
+          'Light Gray',
+          '#CED4D9',
+          'Medium Gray',
+          '#95A5A6',
+          'Gray',
+          '#7E8C8D',
+          'Dark Gray',
+          '#34495E',
+          'Navy Blue',
+
+          '#000000',
+          'Black',
+          '#ffffff',
+          'White',
+        ],
+        textpattern_patterns: [
+          { start: '*', end: '*', format: 'italic' },
+          { start: '**', end: '**', format: 'bold' },
+          { start: '#', format: 'h1' },
+          { start: '##', format: 'h2' },
+          { start: '###', format: 'h3' },
+          { start: '####', format: 'h4' },
+          { start: '#####', format: 'h5' },
+          { start: '######', format: 'h6' },
+          { start: '1. ', cmd: 'InsertOrderedList' },
+          { start: '* ', cmd: 'InsertUnorderedList' },
+          { start: '- ', cmd: 'InsertUnorderedList' },
+          // { start: '//brb', replacement: 'Be Right Back' },
+        ],
+      },
     }
   },
   // watch: {
