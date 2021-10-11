@@ -144,18 +144,26 @@ export default {
         'gaagaa',
       ],
       init: {
+        // 基本設定
+        // language: 'ja',
         height: 500,
         menubar: false,
         spellcheck: true,
         body_class: 'reshelf-editor',
         selector: 'textarea',
+        // toc
         toc_header: 'div',
+        toc_class: 'our-toc',
+        // plugins
         plugins: [
           'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
         ],
+        // toolbar
         toolbar:
           'toc undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+        // insert_toolbar
         insert_toolbar: 'quickimage quicktable emoticons',
+        // color_map
         color_map: [
           '#BFEDD2',
           'Light Green',
@@ -206,6 +214,7 @@ export default {
           '#ffffff',
           'White',
         ],
+        // markdown
         textpattern_patterns: [
           { start: '*', end: '*', format: 'italic' },
           { start: '**', end: '**', format: 'bold' },
