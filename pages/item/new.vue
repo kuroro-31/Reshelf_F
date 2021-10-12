@@ -157,11 +157,11 @@ export default {
         toc_depth: 6,
         // plugins
         plugins: [
-          'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+          'print preview paste importcss blockquote searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc tocupdate insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
         ],
         // toolbar
         toolbar:
-          'toc | underline strikethrough | formatselect | alignleft aligncenter alignright | outdent indent |  numlist bullist | forecolor backcolor | charmap emoticons | link anchor',
+          'formatselect | underline strikethrough forecolor backcolor | alignleft aligncenter alignright | bullist numlist | link | toc tocupdate | charmap emoticons | help',
         // insert_toolbar
         // insert_toolbar: 'quickimage quicktable emoticons',
         // quick_toolbar
@@ -230,8 +230,7 @@ export default {
           { start: '1. ', cmd: 'InsertOrderedList' },
           { start: '* ', cmd: 'InsertUnorderedList' },
           { start: '- ', cmd: 'InsertUnorderedList' },
-          { start: '> ', cmd: '' },
-          { start: '```', cmd: 'codesample' },
+          { start: '> ', cmd: 'blockquote' },
           // { start: '//brb', replacement: 'Be Right Back' },
         ],
         // codesample
@@ -251,6 +250,12 @@ export default {
         default_link_target: '_blank',
         link_assume_external_targets: true,
         link_quicklink: true,
+        // image upload
+        images_upload_credentials: true,
+        images_reuse_filename: true,
+        // list
+        advlist_bullet_styles: 'disc',
+        advlist_number_styles: 'lower-alpha',
       },
     }
   },
