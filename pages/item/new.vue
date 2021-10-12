@@ -143,9 +143,10 @@ export default {
         'golong',
         'gaagaa',
       ],
+      lang: 'ja', // 現在の言語
       init: {
         // 基本設定
-        language: 'ja',
+        language: '',
         height: 500,
         menubar: false,
         spellcheck: true,
@@ -259,14 +260,17 @@ export default {
       },
     }
   },
-  // watch: {
-  //   post: {
-  //     handler: _.debounce(function () {
-  //       this.update()
-  //     }, 2000), // memosのデータの更新が終わった2秒後に実行される
-  //     deep: true,
-  //   },
-  // },
+  watch: {
+    // post: {
+    //   handler: _.debounce(function () {
+    //     this.update()
+    //   }, 2000), // memosのデータの更新が終わった2秒後に実行される
+    //   deep: true,
+    // },
+  },
+  mounted() {
+    this.init.language = this.lang // 現在の言語を入れる
+  },
   methods: {
     ...mapGetters({
       authenticated: 'authenticate/authenticated',
