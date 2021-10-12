@@ -153,16 +153,19 @@ export default {
         selector: 'textarea',
         // toc
         toc_header: 'div',
-        toc_class: 'our-toc',
+        toc_class: 'reshelf-toc',
+        toc_depth: 6,
         // plugins
         plugins: [
           'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
         ],
         // toolbar
         toolbar:
-          'toc undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+          'toc | underline strikethrough | formatselect | alignleft aligncenter alignright | outdent indent |  numlist bullist | forecolor backcolor | charmap emoticons | link anchor',
         // insert_toolbar
-        insert_toolbar: 'quickimage quicktable emoticons',
+        // insert_toolbar: 'quickimage quicktable emoticons',
+        // quick_toolbar
+        quickbars_insert_toolbar: 'quickimage quicktable | codesample',
         // color_map
         color_map: [
           '#BFEDD2',
@@ -227,8 +230,27 @@ export default {
           { start: '1. ', cmd: 'InsertOrderedList' },
           { start: '* ', cmd: 'InsertUnorderedList' },
           { start: '- ', cmd: 'InsertUnorderedList' },
+          { start: '> ', cmd: '' },
+          { start: '```', cmd: 'codesample' },
           // { start: '//brb', replacement: 'Be Right Back' },
         ],
+        // codesample
+        codesample_languages: [
+          { text: 'HTML/XML', value: 'markup' },
+          { text: 'JavaScript', value: 'javascript' },
+          { text: 'CSS', value: 'css' },
+          { text: 'PHP', value: 'php' },
+          { text: 'Ruby', value: 'ruby' },
+          { text: 'Python', value: 'python' },
+          { text: 'Java', value: 'java' },
+          { text: 'C', value: 'c' },
+          { text: 'C#', value: 'csharp' },
+          { text: 'C++', value: 'cpp' },
+        ],
+        // link
+        default_link_target: '_blank',
+        link_assume_external_targets: true,
+        link_quicklink: true,
       },
     }
   },
