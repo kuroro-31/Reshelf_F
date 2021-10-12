@@ -17,7 +17,7 @@
     "@tinymce/tinymce-vue": "^3.2.8",
     "boxicons": "^2.0.9",
     "core-js": "^3.9.1",
-    "nuxt": "^2.15.7",
+    "nuxt": "^2.15.8",
     "vue-highlightjs": "^1.3.3",
     "vuex-persistedstate": "^4.0.0-beta.3"
   },
