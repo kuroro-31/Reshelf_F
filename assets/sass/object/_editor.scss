@@ -14,8 +14,31 @@
 
 .tox-tinymce {
   border: none !important;
-  font-family: 'Montserrat', sans-serif, 'Noto Sans Japanese', -apple-system,
-    system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
-   MyYuGothicM, YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo !important;
+}
 
+.tox-dialog-wrap__backdrop {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+
+.tox-dialog {
+  border-radius: 0.5rem !important;
+  -webkit-border-radius: 0.5rem !important;
+  -moz-border-radius: 0.5rem !important;
+  -ms-border-radius: 0.5rem !important;
+  -o-border-radius: 0.5rem !important;
+}
+
+.tox .tox-button {
+  background: rgba(var(--primary), 1) !important;
+  color: var(--bg-secondary) !important;
+  border-radius: 0.5rem !important;
+  -webkit-border-radius: 0.5rem !important;
+  -moz-border-radius: 0.5rem !important;
+  -ms-border-radius: 0.5rem !important;
+  -o-border-radius: 0.5rem !important;
+}
+
+.tox .tox-dialog__body-nav-item--active {
+  border-bottom: 2px solid rgba(var(--primary), 1) !important;
+  color: rgba(var(--primary), 1) !important;
 }

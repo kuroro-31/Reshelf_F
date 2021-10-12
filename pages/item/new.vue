@@ -145,7 +145,7 @@ export default {
       ],
       init: {
         // 基本設定
-        // language: 'ja',
+        language: 'ja',
         height: 500,
         menubar: false,
         spellcheck: true,
@@ -227,10 +227,10 @@ export default {
           { start: '####', format: 'h4' },
           { start: '#####', format: 'h5' },
           { start: '######', format: 'h6' },
+          // { start: '> ', format: 'blockquote' },
           { start: '1. ', cmd: 'InsertOrderedList' },
           { start: '* ', cmd: 'InsertUnorderedList' },
           { start: '- ', cmd: 'InsertUnorderedList' },
-          { start: '> ', cmd: 'blockquote' },
           // { start: '//brb', replacement: 'Be Right Back' },
         ],
         // codesample

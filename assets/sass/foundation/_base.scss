@@ -3,15 +3,18 @@
 :root {
   --transition-speed: 0.2s;
 }
-body {
-  @apply m-0 p-0 box-border antialiased text-base;
+
+* {
   // font-family: proxima-nova, 'Proxima Nova', 'Noto Sans Japanese', -apple-system,
   //   system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
   //   MyYuGothicM, YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo;
   font-family: 'Montserrat', sans-serif, 'Noto Sans Japanese', -apple-system,
     system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
-   MyYuGothicM, YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo;
+   MyYuGothicM, YuGothic, 'Hiragino Kaku Gothic ProN', Meiryo !important;
+}
 
+body {
+  @apply m-0 p-0 box-border antialiased text-base;
   font-size: 14px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -25,8 +28,7 @@ body {
 *,
 *::before,
 *::after {
-  @apply box-border m-0;
-}
+  @apply box-border m-0;}
 
 button, input, select, textarea {
   @apply focus:outline-none outline-none;
