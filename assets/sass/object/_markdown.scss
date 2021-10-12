@@ -65,6 +65,10 @@ td code {
 }
 pre {
   background-color: #282C34 !important;
+  border-radius: 0.5rem !important;
+  code {
+    border-radius: 0.5rem !important;
+  }
 }
 
 /*//////////////////////////////////////////////*/
