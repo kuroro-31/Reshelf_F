@@ -166,7 +166,7 @@ export default {
         // insert_toolbar
         // insert_toolbar: 'quickimage quicktable emoticons',
         // quick_toolbar
-        quickbars_insert_toolbar: 'quickimage quicktable | codesample',
+        quickbars_insert_toolbar: 'quickimage quicktable codesample',
         // color_map
         color_map: [
           '#BFEDD2',
@@ -344,5 +344,14 @@ export default {
 }
 .title {
   color: var(--color);
+}
+.mce-content-body {
+  pre[class*='language-'] {
+    background-color: #282c34 !important;
+    border-radius: 0.5rem !important;
+    code {
+      border-radius: 0.5rem !important;
+    }
+  }
 }
 </style>
