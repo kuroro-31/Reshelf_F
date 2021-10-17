@@ -44,7 +44,6 @@
                 タグ
               </label>
               <article-tags-input
-                :initial-tags="tagNames"
                 :autocomplete-items="allTagNames"
               ></article-tags-input>
 
@@ -104,7 +103,6 @@ export default {
       errors: {},
       alert: '',
       content: [],
-      tagNames: ['aaaà', 'bbbb'],
       allTagNames: [
         'プログラミング',
         'python',

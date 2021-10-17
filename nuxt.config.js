@@ -53,12 +53,14 @@ export default {
       lang: 'css',
     },
   ],
+
   styleResources: {
     scss: [
       '~/assets/sass/foundation/_variables.scss',
       '~/assets/sass/foundation/_mixin.scss',
     ],
   },
+
   loading: {
     color: '#3173F7',
     height: '5px',

@@ -18,10 +18,6 @@ export default {
     VueTagsInput,
   },
   props: {
-    initialTags: {
-      type: Array,
-      default: () => [],
-    },
     autocompleteItems: {
       type: Array,
       default: () => [],
@@ -30,7 +26,7 @@ export default {
   data() {
     return {
       tag: '',
-      tags: this.initialTags,
+      tags: [],
     }
   },
   computed: {
