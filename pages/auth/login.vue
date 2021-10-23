@@ -242,7 +242,7 @@
         </div>
       </div>
     </div>
-    <div class="bg"></div>
+    <!-- <div class="bg"></div> -->
   </div>
 </template>
 <script>
@@ -256,22 +256,6 @@ export default {
     },
     errors: {},
   }),
-  mounted() {
-    let url = []
-    url[0] =
-      'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627713005/arno-smit-sKJ7zSylUao-unsplash_nowss7.jpg'
-    url[1] =
-      'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627712720/101_xzckh4.png'
-    url[2] =
-      'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627712720/100_bczc5x.png'
-    url[3] =
-      'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627718012/krystina-rogers-5aXEo-hGwU0-unsplash_hggyrk.jpg'
-    url[4] =
-      'https://res.cloudinary.com/dphbuc0g7/image/upload/v1627718455/gradienta-Ebln5Lj2P-c-unsplash_ee1alo.jpg'
-    let n = Math.floor(Math.random() * url.length)
-    let elm = document.getElementById('login')
-    elm.style.background = 'url(' + url[n] + ')'
-  },
   methods: {
     ...mapActions({
       signIn: 'authenticate/login',
@@ -301,8 +285,20 @@ export default {
 .login {
   @apply h-screen w-screen overflow-hidden flex justify-center;
   // background-image: url('https://source.unsplash.com/1920x1080/?happy');
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+  // background-position: center !important;
+  // background-repeat: no-repeat !important;
+  background: #ee965a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #ac9df5,
+    #ee965a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #ac9df5,
+    #ee965a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   object-fit: cover !important;
   &-title {
     h2 {

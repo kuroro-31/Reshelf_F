@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="hidden" name="tags" :value="tagsJson" />
+    <input type="hidden" :value="tagsJson" />
     <vue-tags-input
       v-model="tag"
       :tags="tags"
