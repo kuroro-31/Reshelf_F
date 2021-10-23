@@ -69,7 +69,7 @@ export default {
     }
   }
   &-content {
-    @apply p-6;
+    @apply px-6;
   }
 
   &-footer {

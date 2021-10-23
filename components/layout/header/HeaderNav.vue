@@ -62,32 +62,28 @@
             </button>
           </re-button>
           <ReModal v-if="create_modal" @close="create_modal = !create_modal">
-            <template slot="header">コースの作成</template>
+            <template slot="header">新規コースの作成</template>
             <!-- default -->
             <div class="w-full flex flex-col justify-center">
               <div
                 v-if="$store.state.authenticate.authenticated"
-                class="main-body-content"
+                class="main-body-content py-0"
               >
                 <p class="mb-4">{{ alert }}</p>
                 <!-- <all-item :items="items" /> -->
                 <form @submit.prevent="create">
-                  <!-- タイトル -->
-                  <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                    タイトル
-                  </label>
                   <input
                     v-model.trim="item.title"
                     type="text"
                     placeholder="タイトル"
                     autofocus
-                    class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+                    class="border rounded px-3 py-2 mt-1 mb-5 text-lg w-full"
                   />
 
                   <!-- 保存 -->
                   <re-button class="re-button">
                     <button type="submit" class="re-button-primary-filled">
-                      保存
+                      作成
                     </button>
                   </re-button>
                 </form>
@@ -95,7 +91,9 @@
               <div v-else>ログインしてください</div>
             </div>
             <!-- /default -->
-            <template slot="footer"></template>
+            <template slot="footer">
+              新しく作るコースのタイトルを入力してください。
+            </template>
           </ReModal>
         </template>
 
