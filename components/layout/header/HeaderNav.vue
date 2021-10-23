@@ -52,110 +52,52 @@
       </div>
 
       <div class="nav-right">
-        <nuxt-link
-          v-if="$store.state.authenticate.authenticated"
-          to="/item/new"
-        >
-          <re-button
-            class="re-button re-button-small no-shadow"
-            @click="create_modal = !create_modal"
-          >
-            <button type="submit" class="re-button-primary-border">
+        <template v-if="$store.state.authenticate.authenticated">
+          <re-button class="re-button re-button-small no-shadow">
+            <button
+              class="re-button-primary-border"
+              @click="create_modal = !create_modal"
+            >
               コースの作成
             </button>
           </re-button>
           <ReModal v-if="create_modal" @close="create_modal = !create_modal">
-            <template slot="header">Welcome To Reshelf！</template>
+            <template slot="header">コースの作成</template>
             <!-- default -->
             <div class="w-full flex flex-col justify-center">
-              <form @submit.prevent="login">
-                <!-- メールアドレス -->
-                <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                  E-mail
-                </label>
-                <input
-                  v-model.trim="auth.email"
-                  type="email"
-                  placeholder="Enter email"
-                  autofocus
-                  class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-                />
-                <small v-if="errors.email" class="form-text text-danger">
-                  {{ errors.email[0] }}
-                </small>
+              <div
+                v-if="$store.state.authenticate.authenticated"
+                class="main-body-content"
+              >
+                <p class="mb-4">{{ alert }}</p>
+                <!-- <all-item :items="items" /> -->
+                <form @submit.prevent="create">
+                  <!-- タイトル -->
+                  <label class="font-semibold text-xs text-gray-600 pb-1 block">
+                    タイトル
+                  </label>
+                  <input
+                    v-model.trim="item.title"
+                    type="text"
+                    placeholder="タイトル"
+                    autofocus
+                    class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+                  />
 
-                <!-- パスワード -->
-                <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                  Password
-                </label>
-                <input
-                  v-model.trim="auth.password"
-                  type="password"
-                  placeholder="Password"
-                  class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-                />
-                <small v-if="errors.password" class="form-text text-danger">
-                  {{ errors.password[0] }}
-                </small>
-
-                <!-- ログインボタン -->
-                <button
-                  type="submit"
-                  class="
-                    transition
-                    duration-200
-                    bg-blue-500
-                    hover:bg-blue-600
-                    focus:bg-blue-700
-                    focus:shadow-sm
-                    focus:ring-4
-                    focus:ring-blue-500
-                    focus:ring-opacity-50
-                    w-full
-                    py-2
-                    rounded
-                    text-xs
-                    shadow-sm
-                    hover:shadow-md
-                    font-semibold
-                    text-center
-                    inline-block
-                  "
-                >
-                  <span class="inline-block mr-2 text-white">ログイン</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    class="w-4 h-4 inline-block"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </button>
-              </form>
-              <div class="divider"></div>
-              <form @submit.prevent="submit">
-                <button
-                  :class="post ? 'fb-btn-posted' : 'fb-btn'"
-                  @click="post = !post"
-                >
-                  Facebookで新規登録・ログイン
-                </button>
-              </form>
+                  <!-- 保存 -->
+                  <re-button class="re-button">
+                    <button type="submit" class="re-button-primary-filled">
+                      保存
+                    </button>
+                  </re-button>
+                </form>
+              </div>
+              <div v-else>ログインしてください</div>
             </div>
             <!-- /default -->
-            <template slot="footer">
-              ※
-              Reshelfでは、多重アカウントを防止するため、Facebookでのアカウント作成をお願いしています。
-            </template>
+            <template slot="footer"></template>
           </ReModal>
-        </nuxt-link>
+        </template>
 
         <!-- お気に入り -->
         <button
@@ -164,7 +106,7 @@
           @mouseover="like = true"
           @mouseleave="like = false"
         >
-          <heart-icon size="1.5x" class="dropdown-icon"></heart-icon>
+          <!-- <heart-icon size="1.5x" class="dropdown-icon"></heart-icon> -->
           <transition>
             <div v-if="like">
               <div
@@ -567,7 +509,11 @@ export default {
         email: '',
         password: '',
       },
+      item: {
+        title: '',
+      },
       errors: {},
+      alert: '',
     }
   },
   methods: {
@@ -578,6 +524,33 @@ export default {
       signIn: 'authenticate/login',
       signOut: 'authenticate/logout',
     }),
+    async create() {
+      this.$axios.defaults.withCredentials = true
+
+      if (!this.authenticated) {
+        this.$nuxt.$router.push({ path: '/auth/login' })
+      } else {
+        // this.$nuxt.$loading.start()
+
+        await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
+          await this.$axios
+            .post('/api/posts', this.item)
+            .then(({ data }) => {
+              // this.$nuxt.$router.back()
+              // this.$nuxt.$router.push({ path: '/' })
+              this.create_modal = false
+            })
+            .catch(({ response: { data } }) => {
+              // alert(data.message)
+              console.log(data.message)
+
+              alert(data.message)
+              // this.$nuxt.$router.push({ path: '/auth/login' })
+            })
+        })
+        // this.$nuxt.$loading.finish()
+      }
+    },
     // async create() {
     //   this.$nuxt.$loading.start()
     //   this.$axios.defaults.withCredentials = true

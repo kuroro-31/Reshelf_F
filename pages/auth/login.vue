@@ -71,45 +71,11 @@
               </small>
 
               <!-- ログインボタン -->
-              <button
-                type="submit"
-                class="
-                  transition
-                  duration-200
-                  bg-blue-500
-                  hover:bg-blue-600
-                  focus:bg-blue-700
-                  focus:shadow-sm
-                  focus:ring-4
-                  focus:ring-blue-500
-                  focus:ring-opacity-50
-                  w-full
-                  py-2
-                  rounded
-                  text-xs
-                  shadow-sm
-                  hover:shadow-md
-                  font-semibold
-                  text-center
-                  inline-block
-                "
-              >
-                <span class="inline-block mr-2 text-white">Login</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  class="w-4 h-4 inline-block"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </button>
+              <re-button class="re-button re-button-small">
+                <button type="submit" class="re-button-primary-filled">
+                  Login
+                </button>
+              </re-button>
             </form>
 
             <div class="py-5">
@@ -260,22 +226,21 @@ export default {
     ...mapActions({
       signIn: 'authenticate/login',
     }),
-    async login() {
-      this.$axios.defaults.withCredentials = true
-
+    login() {
+      // this.$axios.defaults.withCredentials = true
       this.$nuxt.$loading.start()
-      await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
-        await this.$axios
-          .post('/api/auth/login', this.auth)
-          .then(({ data }) => {
-            this.signIn()
-            this.$nuxt.$router.back()
-            // this.$nuxt.$router.push({ path: '/' })
-          })
-          .catch(({ response: { data } }) => {
-            alert(data.message)
-          })
-      })
+      // await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
+      this.$axios
+        .post('/api/auth/login', this.auth)
+        .then(({ data }) => {
+          this.signIn()
+          this.$nuxt.$router.back()
+          // this.$nuxt.$router.push({ path: '/' })
+        })
+        .catch(({ response: { data } }) => {
+          alert(data.message)
+        })
+      // })
       this.$nuxt.$loading.finish()
     },
   },

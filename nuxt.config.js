@@ -98,29 +98,8 @@ export default {
     },
   },
 
-  auth: {
-    redirect: {
-      login: '/auth/login',
-      logout: '/',
-      callback: false,
-      home: '/',
-    },
-    strategies: {
-      local: {
-        endpoints: {
-          login: {
-            url: '/api/auth/login',
-            method: 'post',
-            propertyName: false,
-          },
-          user: { url: '/api/user', method: 'get', propertyName: false },
-          logout: false,
-        },
-        tokenRequired: false,
-        tokenType: false,
-      },
-    },
-    localStorage: false,
+  axios: {
+    credentials: true,
   },
 
   build: {
