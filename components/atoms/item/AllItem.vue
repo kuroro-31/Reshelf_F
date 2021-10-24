@@ -138,7 +138,7 @@
           </div>
         </div>
         <div v-for="apitem in apitems" :key="apitem.id" class="card item">
-          <nuxt-link to="`/item/show/${apitem.id}`">
+          <nuxt-link :to="{ name: 'item-id', params: { id: apitem.id } }">
             {{ apitem.title }}
           </nuxt-link>
           <!-- eslint-disable-next-line -->

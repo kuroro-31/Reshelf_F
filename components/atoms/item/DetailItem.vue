@@ -1,6 +1,6 @@
 <template>
   <div class="items">
-    <div v-for="item in items" :key="item.id" class="item">
+    <div class="item">
       <!-- ジャンル -->
       <div class="genre">
         <span class="genre-title">開発</span>
@@ -17,16 +17,18 @@
 
       <!-- 説明 -->
       <div class="describe">
-        {{ item.describe }}
+        <!-- {{ item.describe }} -->
       </div>
 
       <!-- 作者 -->
       <nuxt-link to="/user/top" class="name">
-        作成者： {{ item.name }}
+        <!-- 作成者： {{ item.name }} -->
       </nuxt-link>
 
       <!-- 最終更新 -->
-      <p class="name text-xs text-right mt-1">最終更新：{{ item.edit_time }}</p>
+      <p class="name text-xs text-right mt-1">
+        最終更新：{{ item.updated_at }}
+      </p>
 
       <!-- 評価 -->
       <div class="flex items-center mt-1">
@@ -41,7 +43,7 @@
               rate_four: item.rate >= 4.6,
             }"
           >
-            {{ item.rate | comma }}
+            <!-- {{ item.rate | comma }} -->
           </p>
           <!-- レート画像 -->
           <div
@@ -62,11 +64,13 @@
           ></div>
         </div>
         <p class="name ml-1 text-xs">
-          （総合評価：{{ item.all_rate | comma }}）
+          <!-- （総合評価：{{ item.all_rate | comma }}） -->
         </p>
       </div>
 
       <div class="">DEMO</div>
+
+      <div class="markdown w-full" v-html="item.body" v-highlightjs></div>
     </div>
   </div>
 </template>
@@ -89,9 +93,9 @@ export default {
     },
   },
   props: {
-    items: {
-      type: Array,
-      default: () => [],
+    item: {
+      type: Object,
+      default: () => {},
     },
   },
   data() {
