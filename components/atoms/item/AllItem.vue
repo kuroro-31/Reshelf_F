@@ -141,6 +141,9 @@
           <nuxt-link :to="{ name: 'item-id', params: { id: apitem.id } }">
             {{ apitem.title }}
           </nuxt-link>
+          <nuxt-link :to="{ name: 'item-edit', params: { id: apitem.id } }">
+            編集
+          </nuxt-link>
           <!-- eslint-disable-next-line -->
           <div class="markdown" v-html="apitem.body" v-highlightjs></div>
           <!-- {{ apitem.user_id }} -->

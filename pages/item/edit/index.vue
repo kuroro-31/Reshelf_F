@@ -23,7 +23,7 @@
           </div>
         </nav>
         <div class="main-body scroll-none">
-          <div v-if="authenticated" class="main-body-content">
+          <div class="main-body-content">
             <p class="mb-4">{{ alert }}</p>
             <!-- <all-item :items="items" /> -->
             <form @submit.prevent="update">
@@ -57,20 +57,8 @@
                 api-key="oxl1g4dleeqrpfmcnpvu7wqcnpsljq6nxbpenlhole2n0rmh"
                 :init="init"
               />
-
-              <!-- 保存 -->
-
-              <re-button class="re-button">
-                <button
-                  type="submit"
-                  class="re-button-primary-filled bg-primary"
-                >
-                  保存
-                </button>
-              </re-button>
             </form>
           </div>
-          <div v-else>ログインしてください</div>
         </div>
       </div>
     </div>
@@ -87,17 +75,19 @@ import HeaderNav from '@/components/layout/header/HeaderNav'
 // atoms
 // import AllItem from '@/components/atoms/item/AllItem'
 import ArticleTagsInput from '@/components/atoms/ArticleTagsInput.vue'
-import ReButton from '@/components/atoms/ReButton.vue'
 
 export default {
   components: {
     HeaderNav,
     editor: Editor,
     ArticleTagsInput,
-    ReButton,
     // AllItem,
   },
   // middleware: 'authenticated',
+  async asyncData({ $axios, params }) {
+    const { data } = await $axios.$get(`/api/posts/${params.id}`)
+    return { post: data }
+  },
   data() {
     return {
       post: {
@@ -231,14 +221,14 @@ export default {
       },
     }
   },
-  // watch: {
-  //   post: {
-  //     handler: _.debounce(function () {
-  //       this.update()
-  //     }, 2000), // memosのデータの更新が終わった2秒後に実行される
-  //     deep: true,
-  //   },
-  // },
+  watch: {
+    post: {
+      handler: _.debounce(function () {
+        this.update()
+      }, 2000), // memosのデータの更新が終わった2秒後に実行される
+      deep: true,
+    },
+  },
   mounted() {
     this.init.language = this.lang // 現在の言語を入れる
   },
@@ -246,44 +236,16 @@ export default {
     ...mapGetters({
       authenticated: 'authenticate/authenticated',
     }),
-    async getApi() {
-      this.$axios.defaults.withCredentials = true
-
-      if (!this.authenticated) {
-        this.$nuxt.$router.push({ path: '/auth/login' })
-      } else {
-        await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
-          await this.$axios.post('/api/posts', this.post).then(({ data }) => {})
-        })
-      }
-    },
     async update() {
-      this.$axios.defaults.withCredentials = true
-
-      if (!this.authenticated) {
-        this.$nuxt.$router.push({ path: '/auth/login' })
-      } else {
-        // this.$nuxt.$loading.start()
-        this.alert = '保存中です...'
-
-        await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
-          await this.$axios
-            .post('/api/posts', this.post)
-            .then(({ data }) => {
-              // this.$nuxt.$router.back()
-              // this.$nuxt.$router.push({ path: '/' })
-              this.alert = '保存しました。'
-            })
-            .catch(({ response: { data } }) => {
-              // alert(data.message)
-              console.log(data.message)
-
-              alert(data.message)
-              // this.$nuxt.$router.push({ path: '/auth/login' })
-            })
+      this.alert = '保存中です...'
+      await this.$axios
+        .$patch(`/api/posts/${this.$route.params.id}`, this.post)
+        .then(({ data }) => {
+          this.alert = '保存しました。'
         })
-        // this.$nuxt.$loading.finish()
-      }
+        .catch(({ response: { data } }) => {
+          alert(data.message)
+        })
     },
   },
 }
