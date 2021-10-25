@@ -85,6 +85,7 @@ export default {
 
   axios: {
     proxy: true,
+    credentials: true,
   },
 
   proxy: {
@@ -96,10 +97,6 @@ export default {
       target: 'http://localhost',
       changeOrigin: true,
     },
-  },
-
-  axios: {
-    credentials: true,
   },
 
   build: {

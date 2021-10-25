@@ -9,7 +9,7 @@
         </li>
         <nuxt-link to="/">
           <re-button class="re-button w-32 mt-8">
-            <button class="re-button-primary-filled">HOME</button>
+            <button class="re-button-primary-filled bg-primary">HOME</button>
           </re-button>
         </nuxt-link>
       </ul>

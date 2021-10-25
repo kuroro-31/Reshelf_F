@@ -55,7 +55,7 @@
         <template v-if="$store.state.authenticate.authenticated">
           <re-button class="re-button re-button-small no-shadow">
             <button
-              class="re-button-primary-border"
+              class="re-button-primary-border bg-secondary"
               @click="create_modal = !create_modal"
             >
               コースの作成
@@ -82,7 +82,10 @@
 
                   <!-- 保存 -->
                   <re-button class="re-button">
-                    <button type="submit" class="re-button-primary-filled">
+                    <button
+                      type="submit"
+                      class="re-button-primary-filled bg-primary"
+                    >
                       作成
                     </button>
                   </re-button>
@@ -281,7 +284,7 @@
                       :class="
                         modal
                           ? 're-button-primary-border'
-                          : 're-button-primary-filled'
+                          : 're-button-primary-filled bg-primary'
                       "
                       @click="modal = !modal"
                     >
@@ -354,10 +357,6 @@
                       <option value="system">System</option>
                       <option value="light">Light</option>
                       <option value="dark">Dark</option>
-                      <option value="green">Green</option>
-                      <option value="purple">purple</option>
-                      <option value="pink">Pink</option>
-                      <option value="gold">gold</option>
                     </select>
                   </div>
                   <span class="menu-me-title">共通</span>

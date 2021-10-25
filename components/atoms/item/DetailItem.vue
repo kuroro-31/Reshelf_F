@@ -70,7 +70,7 @@
 
       <div class="">DEMO</div>
 
-      <div class="markdown w-full" v-html="item.body" v-highlightjs></div>
+      <div v-highlightjs class="markdown w-full" v-html="item.body"></div>
     </div>
   </div>
 </template>

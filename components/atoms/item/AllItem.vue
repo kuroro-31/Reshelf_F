@@ -117,7 +117,7 @@
                         >
                           <button
                             type="submit"
-                            class="re-button-primary-filled"
+                            class="re-button-primary-filled bg-primary"
                             @click="$router.push('/item/cart')"
                           >
                             <shopping-cart-icon

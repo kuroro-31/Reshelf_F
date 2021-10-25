@@ -9,7 +9,7 @@
       <re-button class="re-button re-button-extra-large no-shadow">
         <button
           type="submit"
-          class="re-button-primary-filled"
+          class="re-button-primary bg-primary"
           @click="$router.push('/user/learning')"
         >
           <!-- Search -->

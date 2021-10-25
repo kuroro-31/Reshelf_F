@@ -44,7 +44,10 @@
 
               <!-- 保存 -->
               <re-button class="re-button">
-                <button type="submit" class="re-button-primary-filled">
+                <button
+                  type="submit"
+                  class="re-button-primary-filled bg-primary"
+                >
                   保存
                 </button>
               </re-button>

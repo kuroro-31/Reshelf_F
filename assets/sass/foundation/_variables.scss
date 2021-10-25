@@ -32,33 +32,35 @@
   --thick-gray: #B9B9C3;
   --gray: #d8d6de;
   --strong: #050505;
+  .bg-primary {
+    background-image: linear-gradient(to right bottom, #2a4dc1, #295cc9, #2d6ad0, #3678d7, #4286dc, #4d88de, #568ae0, #5f8ce2, #6a82df, #7776db, #8569d4, #935bca);
+  }
+  .bg-secondary {
+      background: #f0f2f6;
+      &:hover {
+        background: #ebebeb ;
+      }
+  }
+  .primary-color {
+    color: #2a4dc1;
+    svg g path,
+    svg g circle,
+    svg g ellipse,
+    svg path {
+      stroke: #2a4dc1;
+    }
+  }
 }
 
 .dark-mode {
   --logo: #fff;
-  --color: #9DA6B3;
-  --color-primary: #41b38a;
-  --color-secondary: #fdf9f3;
-  --bg: #000;
-  --bg-secondary: #151515;
+  --color: #BBBCC1;
+  // --color-primary: #41b38a;
+  // --color-secondary: #fdf9f3;
+  --bg: #2A2A2E;
+  --bg-secondary: #38383D;
+  --bg-third: #42414C;
   --border-color: #0d2538;
-}
-.green-mode {
-  --primary: 51, 196, 204;
-  --logo: #33C4CC;
-  --color: #2D3E4F;
-}
-.purple-mode {
-  --primary: 112, 121, 255;
-  --logo: #7079ff;
-}
-.gold-mode {
-  --primary: 171, 144, 72;
-  --logo: #AB9048;
-}
-.pink-mode {
-  --primary: 222, 115, 183;
-  --logo: #DE73B7;
 }
 
 $color: #293c64;

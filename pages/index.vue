@@ -7,15 +7,21 @@
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
-            あなたの学習を
+            あなたの学習が
             <br />
-            たったの3分で
+            たったの3分から。
           </h2>
           <span class="describe">
             Reshelfは、プログラミング学習教材のマーケットプレイスです。
             受講者による教材評価から教材を循環し、専門知識のある講師と受講者をつなぐプラットホームを体験できます。
           </span>
-          <nuxt-link to="/auth/login" class="btn">新規登録・ログイン</nuxt-link>
+          <nuxt-link to="/auth/login">
+            <re-button class="re-button">
+              <button type="submit" class="re-button-primary-filled bg-primary">
+                新規登録・ログイン
+              </button>
+            </re-button>
+          </nuxt-link>
         </div>
       </div>
       <div class="main-img">
@@ -267,12 +273,12 @@
 
     <!-- 学習分野 -->
     <div v-if="!$store.state.authenticate.authenticated">
-      <div class="field">
+      <div class="field bg-primary">
         <h3>学習分野</h3>
       </div>
       <div class="my-12 w-full">
         <div class="container w-full mx-auto flex justify-center">
-          <div class="box box-aca">
+          <div class="box box-aca primary-color">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="50"
@@ -360,7 +366,7 @@
 
             <span class="box-title">学問</span>
           </div>
-          <div class="box box-tech">
+          <div class="box box-tech primary-color">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="50"
@@ -431,7 +437,7 @@
 
             <span class="box-title">テクノロジー</span>
           </div>
-          <div class="box box-business">
+          <div class="box box-business primary-color">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="50"
@@ -491,7 +497,7 @@
             </svg>
             <span class="box-title">ビジネス</span>
           </div>
-          <div class="box box-lifestyle">
+          <div class="box box-lifestyle primary-color">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="50"
@@ -533,12 +539,14 @@ import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
 // atoms
 import AllItem from '@/components/atoms/item/AllItem'
+import ReButton from '../components/atoms/ReButton.vue'
 
 export default {
   components: {
     HeaderNav,
     FooterNav,
     AllItem,
+    ReButton,
   },
   data() {
     return {
@@ -623,12 +631,7 @@ export default {
   border-radius: 10px;
   box-shadow: 0px 2px 5px rgba(38, 51, 77, 0.03);
   // border: 1px solidrgba(var(--primary));
-  svg g path,
-  svg g circle,
-  svg g ellipse,
-  svg path {
-    stroke: rgba(var(--primary));
-  }
+
   &:hover {
     @apply cursor-pointer;
   }
@@ -670,7 +673,6 @@ export default {
 .field {
   @apply w-full;
   height: 150px;
-  background: rgba(var(--primary));
   color: var(--bg-secondary);
   h3 {
     @apply text-4xl font-bold w-full h-full flex items-center justify-center;

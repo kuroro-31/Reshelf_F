@@ -72,7 +72,10 @@
 
               <!-- ログインボタン -->
               <re-button class="re-button re-button-small">
-                <button type="submit" class="re-button-primary-filled">
+                <button
+                  type="submit"
+                  class="re-button-primary-filled bg-primary"
+                >
                   Login
                 </button>
               </re-button>
