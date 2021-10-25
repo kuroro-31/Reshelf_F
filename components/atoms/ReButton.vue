@@ -8,10 +8,7 @@
 <script></script>
 <style lang="scss">
 .re-button {
-  @apply block relative font-bold duration-200;
-  // &:hover {
-  //   transform: translateY(-3px);
-  // }
+  @apply inline-block w-full relative font-bold duration-200;
   button,
   label,
   .re-button-inner {

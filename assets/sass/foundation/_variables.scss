@@ -1,5 +1,5 @@
 :root {
-  --primary: 83, 97, 255; // #045AFC
+  --primary: 42, 77, 193; // #045AFC
   --light-primary: #F2F5FF;
   --logo: #045AFC;
   // --primary: #4070E9;
@@ -42,12 +42,12 @@
       }
   }
   .primary-color {
-    color: #2a4dc1;
+    color: var(--primary);
     svg g path,
     svg g circle,
     svg g ellipse,
     svg path {
-      stroke: #2a4dc1;
+      stroke: var(--primary);
     }
   }
 }

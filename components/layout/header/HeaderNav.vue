@@ -75,16 +75,15 @@
                   <input
                     v-model.trim="item.title"
                     type="text"
-                    placeholder="タイトル"
+                    placeholder="新しいコースのタイトル"
                     autofocus
                     class="border rounded px-3 py-2 mt-1 mb-5 text-lg w-full"
                   />
 
-                  <!-- 保存 -->
                   <re-button class="re-button">
                     <button
                       type="submit"
-                      class="re-button-primary-filled bg-primary"
+                      class="re-button-primary-filled bg-primary ml-auto"
                     >
                       作成
                     </button>
@@ -93,10 +92,6 @@
               </div>
               <div v-else>ログインしてください</div>
             </div>
-            <!-- /default -->
-            <template slot="footer">
-              新しく作るコースのタイトルを入力してください。
-            </template>
           </ReModal>
         </template>
 
@@ -281,10 +276,11 @@
 
                   <re-button class="pt-4 re-button re-button-small">
                     <button
-                      :class="
-                        modal
-                          ? 're-button-primary-border'
-                          : 're-button-primary-filled bg-primary'
+                      class="
+                        re-button-primary-filled
+                        bg-primary
+                        ml-auto
+                        duration-500
                       "
                       @click="modal = !modal"
                     >
