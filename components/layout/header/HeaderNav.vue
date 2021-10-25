@@ -413,54 +413,22 @@
                 </small>
 
                 <!-- ログインボタン -->
-                <button
-                  type="submit"
-                  class="
-                    transition
-                    duration-200
-                    bg-blue-500
-                    hover:bg-blue-600
-                    focus:bg-blue-700
-                    focus:shadow-sm
-                    focus:ring-4
-                    focus:ring-blue-500
-                    focus:ring-opacity-50
-                    w-full
-                    py-2
-                    rounded
-                    text-xs
-                    shadow-sm
-                    hover:shadow-md
-                    font-semibold
-                    text-center
-                    inline-block
-                  "
-                >
-                  <span class="inline-block mr-2 text-white">ログイン</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    class="w-4 h-4 inline-block"
+                <re-button class="re-button">
+                  <button
+                    type="submit"
+                    class="re-button-primary-filled bg-primary ml-auto"
                   >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </button>
+                    ログイン
+                  </button>
+                </re-button>
               </form>
               <div class="divider"></div>
               <form @submit.prevent="submit">
-                <button
-                  :class="post ? 'fb-btn-posted' : 'fb-btn'"
-                  @click="post = !post"
-                >
-                  Facebookで新規登録・ログイン
-                </button>
+                <re-button class="re-button">
+                  <button class="re-button-primary-filled bg-primary">
+                    Facebookで新規登録・ログイン
+                  </button>
+                </re-button>
               </form>
             </div>
             <!-- /default -->
