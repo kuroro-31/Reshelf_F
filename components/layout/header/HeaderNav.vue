@@ -491,50 +491,24 @@ export default {
       if (!this.authenticated) {
         this.$nuxt.$router.push({ path: '/auth/login' })
       } else {
-        // this.$nuxt.$loading.start()
-
-        await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
-          await this.$axios
-            .post('/api/posts', this.item)
-            .then(({ data }) => {
-              // this.$nuxt.$router.back()
-              // this.$nuxt.$router.push({ path: '/' })
-              this.create_modal = false
+        await this.$axios
+          .post('/api/posts', this.item)
+          .then(({ data }) => {
+            this.create_modal = false
+            this.$nuxt.$router.push({
+              name: 'item-edit',
+              params: { id: data.id },
             })
-            .catch(({ response: { data } }) => {
-              // alert(data.message)
-              console.log(data.message)
+          })
+          .catch(({ response: { data } }) => {
+            // alert(data.message)
+            console.log(data.message)
 
-              alert(data.message)
-              // this.$nuxt.$router.push({ path: '/auth/login' })
-            })
-        })
-        // this.$nuxt.$loading.finish()
+            alert(data.message)
+            // this.$nuxt.$router.push({ path: '/auth/login' })
+          })
       }
     },
-    // async create() {
-    //   this.$nuxt.$loading.start()
-    //   this.$axios.defaults.withCredentials = true
-
-    //   if (!this.authenticated) {
-    //     this.$nuxt.$router.push({ path: '/auth/login' })
-    //   } else {
-    //     await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
-    //       await this.$axios
-    //         .post('/api/posts', this.post)
-    //         .then(async ($axios, params) => {
-    //           const { data } = await this.$axios.$get(`/topics/${params.id}`)
-    //           return { topic: data }
-    //         })
-    //         .catch(({ response: { data } }) => {
-    //           console.log(data.message)
-    //           alert('再度ログインをしてください')
-    //           this.$nuxt.$router.push({ path: '/auth/login' })
-    //         })
-    //     })
-    //   }
-    //   this.$nuxt.$loading.finish()
-    // },
     async login() {
       this.$axios.defaults.withCredentials = true
 

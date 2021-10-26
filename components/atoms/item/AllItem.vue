@@ -141,9 +141,15 @@
           <nuxt-link :to="{ name: 'item-id', params: { id: apitem.id } }">
             {{ apitem.title }}
           </nuxt-link>
+          <!-- <template v-if="authenticated"> -->
+          <!-- <template v-if="user.id === apitem.user.id"> -->
+          <button @click="deletePost(apitem.id)">削除</button>
           <nuxt-link :to="{ name: 'item-edit', params: { id: apitem.id } }">
             編集
           </nuxt-link>
+          <!-- </template> -->
+          <!-- </template> -->
+
           <!-- eslint-disable-next-line -->
           <div class="markdown" v-html="apitem.body" v-highlightjs></div>
           <!-- {{ apitem.user_id }} -->
@@ -193,7 +199,16 @@ export default {
       dropdown: false,
     }
   },
-  methods: {},
+  methods: {
+    async deletePost(id) {
+      try {
+        this.$axios.defaults.withCredentials = true
+        await this.$axios.$delete(`/api/posts/${id}`)
+      } catch (error) {
+        alert(error.message)
+      }
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
