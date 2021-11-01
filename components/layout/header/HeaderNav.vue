@@ -48,10 +48,11 @@
 
       <div class="nav-center flex items-center py-2.5">
         <!-- 検索 -->
-        <input type="text" class="search" placeholder="Search..." />
       </div>
 
       <div class="nav-right">
+        <input type="text" class="search" placeholder="Search..." />
+
         <template v-if="$store.state.authenticate.authenticated">
           <re-button class="re-button re-button-small no-shadow">
             <button
@@ -486,28 +487,24 @@ export default {
       signOut: 'authenticate/logout',
     }),
     async create() {
-      this.$axios.defaults.withCredentials = true
-
-      if (!this.authenticated) {
-        this.$nuxt.$router.push({ path: '/auth/login' })
-      } else {
-        await this.$axios
-          .post('/api/posts', this.item)
-          .then(({ data }) => {
-            this.create_modal = false
-            this.$nuxt.$router.push({
-              name: 'item-edit',
-              params: { id: data.id },
-            })
+      // this.$axios.defaults.withCredentials = true
+      await this.$axios
+        .post('/api/posts', this.item)
+        .then(({ data }) => {
+          console.log(data.id)
+          this.create_modal = false
+          this.$nuxt.$router.push({
+            name: 'item-edit',
+            params: { id: data.id },
           })
-          .catch(({ response: { data } }) => {
-            // alert(data.message)
-            console.log(data.message)
+        })
+        .catch(({ response: { data } }) => {
+          // alert(data.message)
+          // console.log(data.message)
 
-            alert(data.message)
-            // this.$nuxt.$router.push({ path: '/auth/login' })
-          })
-      }
+          alert(data.message)
+          // this.$nuxt.$router.push({ path: '/auth/login' })
+        })
     },
     async login() {
       this.$axios.defaults.withCredentials = true
