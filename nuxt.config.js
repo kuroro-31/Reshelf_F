@@ -61,10 +61,11 @@ export default {
     ],
   },
 
-  loading: {
-    color: '#3173F7',
-    height: '5px',
-  },
+  // loading: {
+  //   color: '#3173F7',
+  //   height: '5px',
+  // },
+  loading: '~/components/atoms/Loading.vue',
 
   plugins: [
     '~/plugins/i18n.js',

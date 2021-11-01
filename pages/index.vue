@@ -564,19 +564,17 @@ export default {
       this.loading = true
       // })
       // this.$nuxt.$loading.start()
-
       return axios
         .get('/api/posts')
         .then((response) => {
           this.apitems = response.data.data
           // this.apiPopularTags = response.data.tags;
           this.loading = false
+          // this.$nuxt.$loading.finish()
         })
         .catch((err) => {
           alert(err)
         })
-
-      // this.$nuxt.$loading.finish()
     },
   },
 }

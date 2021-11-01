@@ -54,33 +54,25 @@
         <input type="text" class="search" placeholder="Search..." />
 
         <template v-if="$store.state.authenticate.authenticated">
-          <re-button class="re-button re-button-small no-shadow">
-            <button
-              class="re-button-primary-border bg-secondary"
-              @click="create_modal = !create_modal"
-            >
-              コースの作成
-            </button>
-          </re-button>
-          <ReModal v-if="create_modal" @close="create_modal = !create_modal">
+          <form @submit.prevent="create">
+            <re-button class="re-button re-button-small no-shadow">
+              <button
+                class="re-button-primary-border bg-secondary"
+                @click="create_modal = !create_modal"
+              >
+                コースの作成
+              </button>
+            </re-button>
+          </form>
+          <!-- <ReModal v-if="create_modal" @close="create_modal = !create_modal">
             <template slot="header">新規コースの作成</template>
-            <!-- default -->
             <div class="w-full flex flex-col justify-center">
               <div
                 v-if="$store.state.authenticate.authenticated"
                 class="main-body-content py-0"
               >
                 <p class="mb-4">{{ alert }}</p>
-                <!-- <all-item :items="items" /> -->
                 <form @submit.prevent="create">
-                  <input
-                    v-model.trim="item.title"
-                    type="text"
-                    placeholder="新しいコースのタイトル"
-                    autofocus
-                    class="border rounded px-3 py-2 mt-1 mb-5 text-lg w-full"
-                  />
-
                   <re-button class="re-button">
                     <button
                       type="submit"
@@ -93,7 +85,7 @@
               </div>
               <div v-else>ログインしてください</div>
             </div>
-          </ReModal>
+          </ReModal> -->
         </template>
 
         <!-- お気に入り -->
@@ -491,11 +483,10 @@ export default {
       await this.$axios
         .post('/api/posts', this.item)
         .then(({ data }) => {
-          console.log(data.id)
           this.create_modal = false
           this.$nuxt.$router.push({
             name: 'item-edit',
-            params: { id: data.id },
+            params: { id: data.data.id },
           })
         })
         .catch(({ response: { data } }) => {

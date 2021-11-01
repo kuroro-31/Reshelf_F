@@ -34,7 +34,6 @@
               <input
                 v-model.trim="post.title"
                 type="text"
-                placeholder="タイトル"
                 autofocus
                 class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
               />
@@ -91,7 +90,7 @@ export default {
   data() {
     return {
       post: {
-        title: '',
+        title: '無題のタイトル',
         body: '',
       },
       errors: {},

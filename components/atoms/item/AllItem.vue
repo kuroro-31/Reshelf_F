@@ -25,8 +25,10 @@
                 @click="$router.push('/item/detail')"
               />
 
+              <!-- タイトル -->
               <nuxt-link class="title" to="/item/detail">
-                {{ item.title }}
+                <span v-if="item.title == null">{{ item.title }}</span>
+                <span v-else>無題のタイトル</span>
               </nuxt-link>
               <!-- 作者 -->
               <nuxt-link to="/user/top" class="name">
@@ -202,8 +204,8 @@ export default {
   methods: {
     async deletePost(id) {
       try {
-        this.$axios.defaults.withCredentials = true
         await this.$axios.$delete(`/api/posts/${id}`)
+        location.reload('/')
       } catch (error) {
         alert(error.message)
       }
