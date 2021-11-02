@@ -141,12 +141,35 @@
         </div>
         <div v-for="apitem in apitems" :key="apitem.id" class="card item">
           <nuxt-link :to="{ name: 'item-id', params: { id: apitem.id } }">
-            {{ apitem.title }}
+            <span v-if="apitem.title">{{ apitem.title }}</span>
+            <span v-else>無題のタイトル</span>
           </nuxt-link>
           <!-- <template v-if="authenticated"> -->
           <!-- <template v-if="user.id === apitem.user.id"> -->
-          <button @click="deletePost(apitem.id)">削除</button>
-          <nuxt-link :to="{ name: 'item-edit', params: { id: apitem.id } }">
+          <span @click="delete_modal = !delete_modal">削除</span>
+          <ReModal v-if="delete_modal" @close="delete_modal = !delete_modal">
+            <template slot="header">コースの削除</template>
+            <div class="w-full flex flex-col justify-center">
+              <div
+                v-if="$store.state.authenticate.authenticated"
+                class="main-body-content py-0"
+              >
+                <p class="mb-4">{{ alert }}</p>
+                <form @click="deletePost(apitem.id)">
+                  <re-button class="re-button">
+                    <button
+                      type="submit"
+                      class="re-button-primary bg-danger ml-auto"
+                    >
+                      削除
+                    </button>
+                  </re-button>
+                </form>
+              </div>
+              <div v-else>ログインしてください</div>
+            </div>
+          </ReModal>
+          <nuxt-link :to="{ name: 'item-edit-id', params: { id: apitem.id } }">
             編集
           </nuxt-link>
           <!-- </template> -->
@@ -162,9 +185,11 @@
 </template>
 <script>
 import ReButton from '@/components/atoms/ReButton'
+import ReModal from '@/components/atoms/ReModal'
 export default {
   components: {
     ReButton,
+    ReModal,
   },
   filters: {
     numberFormat: function (num) {
@@ -199,6 +224,7 @@ export default {
       isLiked: false,
       isDisabled: false,
       dropdown: false,
+      delete_modal: false,
     }
   },
   methods: {

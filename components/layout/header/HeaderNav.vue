@@ -485,7 +485,7 @@ export default {
         .then(({ data }) => {
           this.create_modal = false
           this.$nuxt.$router.push({
-            name: 'item-edit',
+            name: 'item-edit-id',
             params: { id: data.data.id },
           })
         })
