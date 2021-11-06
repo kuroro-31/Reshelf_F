@@ -7,11 +7,11 @@
           <p class="text-3xl font-bold">{{ key }}</p>
           <p class="text-2xl">{{ value }}</p>
         </li>
-        <nuxt-link to="/">
+        <span @click="top">
           <re-button class="re-button w-32 mt-8">
             <button class="re-button-primary-filled bg-primary">HOME</button>
           </re-button>
-        </nuxt-link>
+        </span>
       </ul>
     </div>
   </div>
@@ -45,6 +45,9 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    top() {},
   },
 }
 </script>

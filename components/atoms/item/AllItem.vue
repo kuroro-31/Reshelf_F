@@ -3,38 +3,36 @@
     <div class="w-full">
       <div class="items">
         <div v-for="item in items" :key="item.id" class="card item">
-          <div class="relative flex flex-col items-start">
+          <nuxt-link
+            :to="{ name: 'item-id', params: { id: item.id } }"
+            class="relative flex flex-col items-start"
+          >
             <button class="relative">
-              <!-- <img
+              <img
                 v-if="item.src"
                 :src="item.src"
                 alt="text image"
                 class="img"
                 :value="item"
-                @mouseover="showItem = true"
-                @mouseleave="showItem = false"
-                @click="$router.push('/item/detail')"
-              /> -->
+              />
               <img
+                v-else
                 src="@/assets/images/noimage.svg"
                 alt="text image"
                 class="img"
                 :value="item"
-                @mouseover="showItem = true"
-                @mouseleave="showItem = false"
-                @click="$router.push('/item/detail')"
               />
 
               <!-- タイトル -->
               <nuxt-link class="title" to="/item/detail">
-                <span v-if="item.title == null">{{ item.title }}</span>
+                <span v-if="item.title">{{ item.title }}</span>
                 <span v-else>無題のタイトル</span>
               </nuxt-link>
               <!-- 作者 -->
               <nuxt-link to="/user/top" class="name">
                 {{ item.name }}
               </nuxt-link>
-              <div class="flex items-center">
+              <div v-if="item.rate" class="flex items-center">
                 <!-- レート -->
                 <p class="rate rate_two">
                   <!-- <p
@@ -67,123 +65,71 @@
                 ></div>
               </div>
               <!-- セール価格 -->
-              <div class="right-box-sale">
+              <div v-if="item.sale_price" class="right-box-sale">
                 {{ item.sale_price | moneyFormat }}
               </div>
               <div class="flex mt-2">
-                <span class="level">
+                <span v-if="item.level" class="level">
                   {{ item.level }}
                 </span>
                 <!-- デモ -->
-                <a :href="item.demo" class="demo" target="_blank">DEMO</a>
+                <a
+                  v-if="item.demo"
+                  :href="item.demo"
+                  class="demo"
+                  target="_blank"
+                >
+                  DEMO
+                </a>
               </div>
-
-              <transition>
-                <div v-if="showItem">
-                  <div
-                    @mouseover="showItem = true"
-                    @mouseleave="showItem = false"
-                  >
-                    <div class="content">
-                      <!-- 説明 -->
-                      <div class="w-full text-sm text-left">
-                        {{ item.describe }}
-                      </div>
-                      <!-- ボタン -->
-                      <div class="flex flex-col w-full mt-4">
-                        <re-button
-                          class="re-button h-full no-shadow"
-                          :class="isLiked ? 'no-shadow' : ''"
-                        >
-                          <button
-                            type="submit"
-                            class="re-button-primary-border"
-                            @click="isLiked = !isLiked"
-                          >
-                            <heart-icon
-                              size="1x"
-                              class="mr-2"
-                              :class="isLiked ? 'text-red' : ''"
-                            ></heart-icon>
-                            <span :class="!isLiked ? 'block' : 'hidden'">
-                              お気に入りに追加
-                            </span>
-                            <span :class="isLiked ? 'block' : 'hidden'">
-                              お気に入り
-                            </span>
-                          </button>
-                        </re-button>
-                        <re-button
-                          class="re-button h-full mt-2"
-                          :class="isDisabled ? 'no-shadow' : ''"
-                        >
-                          <button
-                            type="submit"
-                            class="re-button-primary-filled bg-primary"
-                            @click="$router.push('/item/cart')"
-                          >
-                            <shopping-cart-icon
-                              size="1x"
-                              class="mr-2"
-                            ></shopping-cart-icon>
-                            カートに入れる
-                          </button>
-                        </re-button>
-                      </div>
-                      <!-- 最終更新
-              <p class="name text-xs">最終更新日：{{ item.edit_time }}</p> -->
-                    </div>
-                  </div>
-                </div>
-              </transition>
             </button>
-          </div>
+          </nuxt-link>
         </div>
-        <div v-for="apitem in apitems" :key="apitem.id" class="card item">
-          <nuxt-link :to="{ name: 'item-id', params: { id: apitem.id } }">
-            <span v-if="apitem.title">{{ apitem.title }}</span>
+
+        <div v-for="item in items" :key="item.id" class="card item">
+          <nuxt-link :to="{ name: 'item-id', params: { id: item.id } }">
+            <span v-if="item.title">{{ item.title }}</span>
             <span v-else>無題のタイトル</span>
+            <div class="">{{ item.user_id }}</div>
           </nuxt-link>
           <!-- <template v-if="authenticated"> -->
-          <!-- <template v-if="user.id === apitem.user.id"> -->
-          <span @click="delete_modal = !delete_modal">削除</span>
-          <ReModal v-if="delete_modal" @close="delete_modal = !delete_modal">
-            <template slot="header">コースの削除</template>
-            <div class="w-full flex flex-col justify-center">
-              <div
-                v-if="$store.state.authenticate.authenticated"
-                class="main-body-content py-0"
-              >
-                <p class="mb-4">{{ alert }}</p>
-                <form @click="deletePost(apitem.id)">
-                  <re-button class="re-button">
-                    <button
-                      type="submit"
-                      class="re-button-primary bg-danger ml-auto"
-                    >
-                      削除
-                    </button>
-                  </re-button>
-                </form>
+          <!-- <template v-if="user.id === item.user.id"> -->
+          <template>
+            <span @click="delete_modal = !delete_modal">削除</span>
+            <ReModal v-if="delete_modal" @close="delete_modal = !delete_modal">
+              <template slot="header">コースの削除</template>
+              <div class="w-full flex flex-col justify-center">
+                <div
+                  v-if="$store.state.authenticate.authenticated"
+                  class="main-body-content py-0"
+                >
+                  <p class="mb-4">{{ alert }}</p>
+                  <form @click="deletePost(item.id)">
+                    <re-button class="re-button">
+                      <button
+                        type="submit"
+                        class="re-button-primary bg-danger ml-auto"
+                      >
+                        削除
+                      </button>
+                    </re-button>
+                  </form>
+                </div>
+                <div v-else>ログインしてください</div>
               </div>
-              <div v-else>ログインしてください</div>
-            </div>
-          </ReModal>
-          <nuxt-link :to="{ name: 'item-edit-id', params: { id: apitem.id } }">
-            編集
-          </nuxt-link>
-          <!-- </template> -->
-          <!-- </template> -->
-
-          <!-- eslint-disable-next-line -->
-          <div class="markdown" v-html="apitem.body" v-highlightjs></div>
-          <!-- {{ apitem.user_id }} -->
+            </ReModal>
+            <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
+              編集
+            </nuxt-link>
+          </template>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+
 import ReButton from '@/components/atoms/ReButton'
 import ReModal from '@/components/atoms/ReModal'
 export default {
@@ -208,10 +154,6 @@ export default {
     },
   },
   props: {
-    apitems: {
-      type: Array,
-      default: () => [],
-    },
     items: {
       type: Array,
       default: () => [],
@@ -220,14 +162,17 @@ export default {
 
   data() {
     return {
-      showItem: false,
       isLiked: false,
       isDisabled: false,
       dropdown: false,
       delete_modal: false,
+      post_user: this.user,
     }
   },
   methods: {
+    ...mapGetters({
+      user: 'authenticate/user',
+    }),
     async deletePost(id) {
       try {
         await this.$axios.$delete(`/api/posts/${id}`)
@@ -343,12 +288,17 @@ export default {
 // 商品画像
 .img {
   @apply object-cover cursor-pointer;
-  height: 140px;
-  min-height: 140px;
-  max-height: 140px;
-  width: 260px;
-  min-width: 260px;
-  max-width: 260px;
+  // height: 140px;
+  // min-height: 140px;
+  // max-height: 140px;
+  // width: 260px;
+  // min-width: 260px;
+  // max-width: 260px;
+
+  height: 100px;
+  min-height: 100px;
+  max-height: 100px;
+
   // height: 200px;
   // min-height: 200px;
   // max-height: 200px;

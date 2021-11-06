@@ -525,7 +525,7 @@
       <div>読み込み中です</div>
     </template>
     <template v-else>
-      <all-item :apitems="apitems" />
+      <all-item :items="items" />
     </template>
 
     <FooterNav />
@@ -550,7 +550,7 @@ export default {
   },
   data() {
     return {
-      apitems: [],
+      items: [],
       loading: false,
     }
   },
@@ -567,7 +567,7 @@ export default {
       return axios
         .get('/api/posts')
         .then((response) => {
-          this.apitems = response.data.data
+          this.items = response.data.data
           // this.apiPopularTags = response.data.tags;
           this.loading = false
           // this.$nuxt.$loading.finish()
