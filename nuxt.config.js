@@ -88,7 +88,7 @@ export default {
         providers: {
           facebook: {
             clientId: '430942211752539',
-            redirectUri: 'https://localhost/auth/facebook/callback', // Your client app URL
+            redirectUri: 'https://localhost:3000/auth/facebook/callback', // Your client app URL
           },
         },
       },
