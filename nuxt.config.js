@@ -87,7 +87,7 @@ export default {
         property: '$auth', // Optional property if the $auth property is being used by another module
         providers: {
           facebook: {
-            clientId: '',
+            clientId: '978810899533715',
             redirectUri: '/auth/facebook/callback', // Your client app URL
           },
         },

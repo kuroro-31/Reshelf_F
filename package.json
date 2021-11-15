@@ -25,13 +25,12 @@
     "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
-    "@tinymce/tinymce-vue": "^3.2.8",
-    "boxicons": "^2.0.9",
-    "core-js": "^3.9.1",
-    "vue-highlightjs": "^1.3.3",
     "@johmun/vue-tags-input": "^2.1.0",
+    "@tinymce/tinymce-vue": "^3.2.8",
     "autoprefixer": "^10.2.5",
     "babel-eslint": "^10.1.0",
+    "boxicons": "^2.0.9",
+    "core-js": "^3.9.1",
     "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-loader": "^4.0.2",
@@ -45,8 +44,10 @@
     "ress": "^3.0.0",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1",
+    "vue-highlightjs": "^1.3.3",
     "vue-i18n": "^8.25.0",
     "vue-lodash": "^2.1.2",
+    "vue-social-auth": "^1.4.9",
     "webpack": "^4.46.0"
   }
 }
