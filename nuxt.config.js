@@ -76,7 +76,24 @@ export default {
     'vue-i18n', // i18n
   ],
 
-  modules: ['@nuxtjs/axios', '@nuxtjs/proxy', '@nuxtjs/auth', '@nuxtjs/pwa'],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
+    '@nuxtjs/auth',
+    '@nuxtjs/pwa',
+    [
+      'vue-social-auth/nuxt',
+      {
+        property: '$auth', // Optional property if the $auth property is being used by another module
+        providers: {
+          facebook: {
+            clientId: '',
+            redirectUri: '/auth/facebook/callback', // Your client app URL
+          },
+        },
+      },
+    ],
+  ],
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',

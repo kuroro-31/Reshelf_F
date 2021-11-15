@@ -416,13 +416,14 @@
                 </re-button>
               </form>
               <div class="divider"></div>
-              <form @submit.prevent="submit">
-                <re-button class="re-button">
-                  <button class="re-button-primary-filled bg-primary">
-                    Facebookで新規登録・ログイン
-                  </button>
-                </re-button>
-              </form>
+              <re-button class="re-button">
+                <button
+                  class="re-button-primary-filled bg-primary"
+                  @click="AuthProvider('facebook')"
+                >
+                  Facebookで新規登録・ログイン
+                </button>
+              </re-button>
             </div>
             <!-- /default -->
             <template slot="footer">
@@ -521,6 +522,30 @@ export default {
       this.signOut()
       this.$nuxt.$router.push({ path: '/' })
       this.$nuxt.$loading.finish()
+    },
+
+    AuthProvider(provider) {
+      var self = this
+
+      this.$auth
+        .authenticate(provider)
+        .then((response) => {
+          self.SocialLogin(provider, response)
+        })
+        .catch((err) => {
+          console.log({ err: err })
+        })
+    },
+
+    SocialLogin(provider, response) {
+      this.$http
+        .post('/sociallogin/' + provider, response)
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch((err) => {
+          console.log({ err: err })
+        })
     },
   },
 }
