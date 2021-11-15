@@ -399,7 +399,7 @@
                   v-model.trim="auth.password"
                   type="password"
                   placeholder="Password"
-                  class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+                  class="border rounded px-[30px] py-2 mt-1 mb-5 text-xs w-full"
                 />
                 <small v-if="errors.password" class="form-text text-danger">
                   {{ errors.password[0] }}
@@ -416,14 +416,7 @@
                 </re-button>
               </form>
               <div class="divider"></div>
-              <re-button class="re-button">
-                <button
-                  class="re-button-primary-filled bg-primary"
-                  @click="AuthProvider('facebook')"
-                >
-                  Facebookで新規登録・ログイン
-                </button>
-              </re-button>
+              <FacebookLogin />
             </div>
             <!-- /default -->
             <template slot="footer">
@@ -442,11 +435,13 @@ import { mapGetters, mapActions } from 'vuex'
 
 import ReButton from '@/components/atoms/ReButton'
 import ReModal from '@/components/atoms/ReModal'
+import FacebookLogin from '../../atoms/auth/FacebookLogin.vue'
 
 export default {
   components: {
     ReButton,
     ReModal,
+    FacebookLogin,
   },
   data() {
     return {
@@ -522,30 +517,6 @@ export default {
       this.signOut()
       this.$nuxt.$router.push({ path: '/' })
       this.$nuxt.$loading.finish()
-    },
-
-    AuthProvider(provider) {
-      var self = this
-
-      this.$auth
-        .authenticate(provider)
-        .then((response) => {
-          self.SocialLogin(provider, response)
-        })
-        .catch((err) => {
-          console.log({ err: err })
-        })
-    },
-
-    SocialLogin(provider, response) {
-      this.$http
-        .post('/sociallogin/' + provider, response)
-        .then((response) => {
-          console.log(response.data)
-        })
-        .catch((err) => {
-          console.log({ err: err })
-        })
     },
   },
 }
