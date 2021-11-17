@@ -93,6 +93,7 @@ export default {
         },
       },
     ],
+    'nuxt-client-init-module',
   ],
   buildModules: [
     '@nuxtjs/eslint-module',

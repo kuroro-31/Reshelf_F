@@ -44,6 +44,8 @@
               </label>
               <article-tags-input
                 :autocomplete-items="allTagNames"
+                :all-tags="filteredItems"
+                @catchTags="post.tags"
               ></article-tags-input>
 
               <!-- body -->
@@ -92,6 +94,7 @@ export default {
       post: {
         title: '無題のタイトル',
         body: '',
+        tags: [],
       },
       errors: {},
       alert: '',

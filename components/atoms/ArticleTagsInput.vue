@@ -1,11 +1,11 @@
 <template>
   <div>
-    <input type="hidden" :value="tagsJson" />
+    <input type="hidden" :value="tagsJson" @change="sendTags" />
     <vue-tags-input
       v-model="tag"
       :tags="tags"
       :add-on-key="[13, 32]"
-      :autocomplete-items="filteredItems"
+      :all-tags="filteredItems"
       @tags-changed="(newTags) => (tags = newTags)"
     />
   </div>
@@ -37,6 +37,11 @@ export default {
     },
     tagsJson() {
       return JSON.stringify(this.tags)
+    },
+  },
+  methods: {
+    sendTags() {
+      this.$emit('catchTags', this.filteredItems)
     },
   },
 }
