@@ -1,6 +1,9 @@
 // Sass-loderの処理速度を速くするために必要らしい
 import Fiber from 'fibers'
 import Sass from 'sass'
+
+require('dotenv').config()
+const { FACEBOOK_CLIENT_ID, FACEBOOK_REDIRECT_URL } = process.env
 export default {
   head: {
     title: 'Reshelf| アップデートするオンライン学習マーケットプレイス',
@@ -87,8 +90,8 @@ export default {
         property: '$auth', // Optional property if the $auth property is being used by another module
         providers: {
           facebook: {
-            clientId: '430942211752539',
-            redirectUri: 'https://localhost:3000/auth/facebook/callback', // Your client app URL
+            clientId: process.env.FACEBOOK_CLIENT_ID,
+            redirectUri: process.env.FACEBOOK_REDIRECT_URL, // Your client app URL
           },
         },
       },
@@ -152,4 +155,9 @@ export default {
   //   // i18n
   //   routes: ['/', '/ja'],
   // }
+
+  env: {
+    FACEBOOK_CLIENT_ID,
+    FACEBOOK_REDIRECT_URL,
+  },
 }
