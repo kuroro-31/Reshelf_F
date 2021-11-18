@@ -22,6 +22,7 @@ module.exports = {
     'no-unused-vars': 'off', //使っていない変数あってもOK
     'vue/html-self-closing': 'off', //imgタグのようにタグが１つで完結してもOK
     'vue/max-attributes-per-line': 'off',
+    'vue/no-v-html': 'off', // XSSの危険性に問題がなければ非表示
     'prettier/prettier': [
       'error',
       {
