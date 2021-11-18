@@ -2,7 +2,7 @@
   <div class="w-full flex mx-auto">
     <div class="w-full">
       <div class="items">
-        <div v-for="item in items" :key="item.id" class="card item">
+        <div v-for="(item, index) in items" :key="index" class="card item">
           <nuxt-link
             :to="{ name: 'item-id', params: { id: item.id } }"
             class="relative flex flex-col items-start"
