@@ -3,7 +3,8 @@ import Fiber from 'fibers'
 import Sass from 'sass'
 
 require('dotenv').config()
-const { FACEBOOK_CLIENT_ID, FACEBOOK_REDIRECT_URL } = process.env
+const { FACEBOOK_CLIENT_ID, FACEBOOK_REDIRECT_URL, NGROK_URL, ROOT_URL } =
+  process.env
 export default {
   head: {
     title: 'Reshelf| アップデートするオンライン学習マーケットプレイス',
@@ -68,7 +69,8 @@ export default {
   //   color: '#3173F7',
   //   height: '5px',
   // },
-  loading: '~/components/atoms/Loading.vue',
+  // loading: '~/components/atoms/Loading.vue',
+  loading: false,
 
   plugins: [
     '~/plugins/i18n.js',
@@ -91,7 +93,8 @@ export default {
         providers: {
           facebook: {
             clientId: process.env.FACEBOOK_CLIENT_ID,
-            redirectUri: process.env.FACEBOOK_REDIRECT_URL, // Your client app URL
+            redirectUri:
+              process.env.NGROK_URL + process.env.FACEBOOK_REDIRECT_URL, // Your client app URL
           },
         },
       },
@@ -112,11 +115,11 @@ export default {
 
   proxy: {
     '/api': {
-      target: 'http://localhost',
+      target: process.env.ROOT_URL,
       changeOrigin: true,
     },
     '/sanctum': {
-      target: 'http://localhost',
+      target: process.env.ROOT_URL,
       changeOrigin: true,
     },
   },
@@ -159,5 +162,7 @@ export default {
   env: {
     FACEBOOK_CLIENT_ID,
     FACEBOOK_REDIRECT_URL,
+    NGROK_URL,
+    ROOT_URL,
   },
 }
