@@ -1,13 +1,8 @@
-// Sass-loderの処理速度を速くするために必要らしい
-import Fiber from 'fibers'
-import Sass from 'sass'
-
 require('dotenv').config()
-const { FACEBOOK_CLIENT_ID, FACEBOOK_REDIRECT_URL, NGROK_URL, ROOT_URL } =
-  process.env
+const { ROOT_URL } = process.env
 export default {
   head: {
-    title: 'Reshelf| アップデートするオンライン学習マーケットプレイス',
+    title: 'Reshelf| 電子書籍マーケット',
     htmlAttrs: {
       lang: 'ja',
       prefix: 'og: http://ogp.me/ns#',
@@ -131,16 +126,6 @@ export default {
     standalone: true,
     // analyze: true,
 
-    // Sass変換
-    loaders: {
-      scss: {
-        implementation: Sass,
-        sassOptions: {
-          fiber: Fiber,
-        },
-      },
-    },
-
     // 保存時にESlintの実行
     extend(config, ctx) {
       // Run ESLint on save
@@ -160,9 +145,6 @@ export default {
   // }
 
   env: {
-    FACEBOOK_CLIENT_ID,
-    FACEBOOK_REDIRECT_URL,
-    NGROK_URL,
     ROOT_URL,
   },
 }
