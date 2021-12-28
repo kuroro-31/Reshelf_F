@@ -85,25 +85,7 @@
               <div class="grid grid-cols-2 gap-1">
                 <div class="text-center sm:text-left whitespace-nowrap">
                   <button
-                    class="
-                      transition
-                      duration-200
-                      mx-5
-                      px-5
-                      py-4
-                      cursor-pointer
-                      font-normal
-                      text-xs
-                      rounded
-                      text-gray-500
-                      hover:bg-gray-100
-                      focus:outline-none
-                      focus:bg-gray-200
-                      focus:ring-2
-                      focus:ring-gray-400
-                      focus:ring-opacity-50
-                      ring-inset
-                    "
+                    class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-xs rounded text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -124,25 +106,7 @@
                 </div>
                 <div class="text-center sm:text-right whitespace-nowrap">
                   <button
-                    class="
-                      transition
-                      duration-200
-                      mx-5
-                      px-5
-                      py-4
-                      cursor-pointer
-                      font-normal
-                      text-xs
-                      rounded
-                      text-gray-500
-                      hover:bg-gray-100
-                      focus:outline-none
-                      focus:bg-gray-200
-                      focus:ring-2
-                      focus:ring-gray-400
-                      focus:ring-opacity-50
-                      ring-inset
-                    "
+                    class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-xs rounded text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -168,25 +132,7 @@
             <div class="grid grid-cols-2 gap-1">
               <div class="text-center sm:text-left whitespace-nowrap">
                 <nuxt-link
-                  class="
-                    transition
-                    duration-200
-                    mx-5
-                    px-5
-                    py-4
-                    cursor-pointer
-                    font-normal
-                    text-xs
-                    rounded
-                    text-gray-500
-                    hover:bg-gray-200
-                    focus:outline-none
-                    focus:bg-gray-300
-                    focus:ring-2
-                    focus:ring-gray-400
-                    focus:ring-opacity-50
-                    ring-inset
-                  "
+                  class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-xs rounded text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset"
                   to="/"
                 >
                   <svg
@@ -215,9 +161,13 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { login } from '@/mixins/auth/login.js'
+import ReButton from '@/components/atoms/ReButton.vue'
 export default {
-  components: {},
+  components: {
+    ReButton,
+  },
+  mixins: [login],
   data: () => ({
     auth: {
       email: '',
@@ -225,28 +175,6 @@ export default {
     },
     errors: {},
   }),
-  methods: {
-    ...mapActions({
-      signIn: 'authenticate/login',
-    }),
-    login() {
-      // this.$axios.defaults.withCredentials = true
-      this.$nuxt.$loading.start()
-      // await this.$axios.get('/sanctum/csrf-cookie').then(async () => {
-      this.$axios
-        .post('/api/auth/login', this.auth)
-        .then(({ data }) => {
-          this.signIn()
-          this.$nuxt.$router.back()
-          // this.$nuxt.$router.push({ path: '/' })
-        })
-        .catch(({ response: { data } }) => {
-          alert(data.message)
-        })
-      // })
-      this.$nuxt.$loading.finish()
-    },
-  },
 }
 </script>
 <style lang="scss" scoped>
