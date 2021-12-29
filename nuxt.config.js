@@ -1,6 +1,9 @@
 require('dotenv').config()
 const { ROOT_URL } = process.env
 export default {
+  env: {
+    ROOT_URL,
+  },
   head: {
     title: 'Reshelf| 電子書籍マーケット',
     htmlAttrs: {
@@ -41,8 +44,11 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [],
   },
+
   ssr: false, // SPA
+
   components: true,
+
   css: [
     'ress',
     { src: '@/assets/sass/app.scss', lang: 'scss' },
@@ -72,6 +78,7 @@ export default {
     // '~/plugins/lodash.js',
     '@/plugins/vue-highlightjs',
   ],
+
   vendor: [
     'vue-i18n', // i18n
   ],
@@ -143,8 +150,4 @@ export default {
   //   // i18n
   //   routes: ['/', '/ja'],
   // }
-
-  env: {
-    ROOT_URL,
-  },
 }

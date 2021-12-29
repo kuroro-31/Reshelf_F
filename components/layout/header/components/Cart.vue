@@ -2,14 +2,17 @@
   <button class="dropdown" @mouseover="cart = true" @mouseleave="cart = false">
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
       viewBox="0 0 24 24"
-      class="svg-icon"
+      stroke="currentColor"
     >
       <path
-        d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z"
-      ></path>
-      <circle cx="10.5" cy="19.5" r="1.5"></circle>
-      <circle cx="17.5" cy="19.5" r="1.5"></circle>
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+      />
     </svg>
     <transition>
       <div v-if="cart">
@@ -148,7 +151,11 @@
   </button>
 </template>
 <script>
+import ReButton from '@/components/atoms/ReButton.vue'
 export default {
+  components: {
+    ReButton,
+  },
   data() {
     return {
       cart: false,

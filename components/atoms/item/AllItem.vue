@@ -92,9 +92,8 @@
             <span v-else>無題のタイトル</span>
             <div class="">{{ item.user_id }}</div>
           </nuxt-link>
-          <!-- <template v-if="authenticated"> -->
-          <!-- <template v-if="user.id === item.user.id"> -->
-          <template>
+
+          <div>
             <span @click="delete_modal = !delete_modal">削除</span>
             <ReModal v-if="delete_modal" @close="delete_modal = !delete_modal">
               <template slot="header">コースの削除</template>
@@ -121,7 +120,7 @@
             <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
               編集
             </nuxt-link>
-          </template>
+          </div>
         </div>
       </div>
     </div>
