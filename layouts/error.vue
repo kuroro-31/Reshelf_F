@@ -47,7 +47,9 @@ export default {
     }
   },
   methods: {
-    top() {},
+    top() {
+      location.reload('/')
+    },
   },
 }
 </script>
