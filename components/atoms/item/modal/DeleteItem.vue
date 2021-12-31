@@ -27,17 +27,17 @@ import { destroy } from '@/mixins/posts/delete'
 import ReModal from '@/components/atoms/ReModal'
 import ReButton from '@/components/atoms/ReButton'
 export default {
-  props: {
-    item: {
-      type: Object,
-      // default: () => [],
-    },
-  },
   components: {
     ReButton,
     ReModal,
   },
   mixins: [destroy],
+  props: {
+    item: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       delete_modal: false,

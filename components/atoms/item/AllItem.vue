@@ -29,7 +29,7 @@
           </nuxt-link>
 
           <div>
-            <DeteleItem :item="item" />
+            <DeleteItem :item="item" />
             <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
               編集
             </nuxt-link>
