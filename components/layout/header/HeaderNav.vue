@@ -18,10 +18,7 @@
         <template v-if="$store.state.authenticate.authenticated">
           <form @submit.prevent="create">
             <ReButton class="ReButton re-button-small no-shadow">
-              <button
-                class="re-button-primary-border bg-secondary"
-                @click="create_modal = !create_modal"
-              >
+              <button class="re-button-primary-border bg-secondary">
                 コースの作成
               </button>
             </ReButton>
@@ -42,12 +39,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { create } from '@/mixins/posts/create.js'
+//
 import Cart from '@/components/layout/header/components/Cart'
 import Logo from '@/components/layout/header/components/Logo'
 import Like from '@/components/layout/header/components/Like'
 import UserDropdown from '@/components/layout/header/components/UserDropdown'
-import ReButton from '@/components/atoms/ReButton.vue'
+import ReButton from '@/components/atoms/ReButton'
 
 export default {
   components: {
@@ -57,29 +55,7 @@ export default {
     UserDropdown,
     ReButton,
   },
-  data() {
-    return {
-      user: this.$store.state.authenticate.authenticated,
-      visible: false,
-      create_modal: false,
-      message: '',
-      post: false,
-    }
-  },
-  methods: {
-    async create() {
-      await this.$axios
-        .$post('/api/posts')
-        .then(({ data }) => {
-          this.$nuxt.$router.push(`/item/edit/${data.id}`)
-        })
-        .catch(({ response: { data } }) => {
-          console.log(data.message)
-          alert('再度ログインしてください。')
-          this.$nuxt.$router.push(`/auth/login`)
-        })
-    },
-  },
+  mixins: [create],
 }
 </script>
 <style lang="scss" scoped>

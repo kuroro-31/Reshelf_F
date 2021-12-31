@@ -11,11 +11,11 @@
       >
         <p>{{ content.body }}</p>
 
-        <div v-if="authenticated">
-          <div v-if="user.id === content.user.id">
+        <div>
+          <div>
             <button
               class="btn btn-outline-danger fa fa-trash pull-right"
-              @click="deletePost(content.id)"
+              @click="delete content.id"
             ></button>
 
             <nuxt-link
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div v-if="authenticated" class="mt-5 ml-5 mb-5">
+    <div class="mt-5 ml-5 mb-5">
       <form @submit.prevent="create">
         <div class="form-group">
           <h4>Add a new post</h4>
@@ -58,24 +58,6 @@ export default {
     return {
       post: data,
     }
-  },
-  data() {
-    return {
-      post: '',
-      body: '',
-    }
-  },
-  methods: {
-    async create() {
-      await this.$axios.$post(`/posts/${this.$route.params.id}/posts`, {
-        body: this.body,
-      })
-      this.$router.push('/posts')
-    },
-    async deletePost(id) {
-      await this.$axios.$delete(`/posts/${this.$route.params.id}/posts/${id}`)
-      this.$router.push('/')
-    },
   },
 }
 </script>

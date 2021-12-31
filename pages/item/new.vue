@@ -77,9 +77,6 @@ export default {
   middleware: 'authenticated',
   data() {
     return {
-      post: {
-        title: '',
-      },
       errors: {},
       alert: '',
     }
@@ -88,30 +85,6 @@ export default {
     ...mapGetters({
       authenticated: 'authenticate/authenticated',
     }),
-    async create() {
-      if (!this.authenticated) {
-        this.$nuxt.$router.push({ path: '/auth/login' })
-      } else {
-        // this.$nuxt.$loading.start()
-        this.alert = '保存中です...'
-
-        await this.$axios
-          .post('/api/posts', this.post)
-          .then(({ data }) => {
-            // this.$nuxt.$router.back()
-            // this.$nuxt.$router.push({ path: '/' })
-            this.alert = '保存しました。'
-          })
-          .catch(({ response: { data } }) => {
-            // alert(data.message)
-            console.log(data.message)
-
-            // alert(data.message)
-            // this.$nuxt.$router.push({ path: '/auth/login' })
-          })
-        // this.$nuxt.$loading.finish()
-      }
-    },
   },
 }
 </script>

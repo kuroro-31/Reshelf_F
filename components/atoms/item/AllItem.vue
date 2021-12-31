@@ -2,7 +2,7 @@
   <div class="w-full flex mx-auto">
     <div class="w-full">
       <div class="items">
-        <div v-for="(item, index) in items" :key="index" class="card item">
+        <div v-for="item in items" :key="item.id" class="card item">
           <nuxt-link
             :to="{ name: 'item-id', params: { id: item.id } }"
             class="relative flex flex-col items-start"
@@ -22,72 +22,7 @@
                 class="img"
                 :value="item"
               />
-
-              <!-- タイトル -->
-              <nuxt-link class="title" to="/item/detail">
-                <span v-if="item.title">{{ item.title }}</span>
-                <span v-else>無題のタイトル</span>
-              </nuxt-link>
-              <!-- 作者 -->
-              <nuxt-link to="/user/top" class="name">
-                {{ item.name }}
-              </nuxt-link>
-              <div v-if="item.rate" class="flex items-center">
-                <!-- レート -->
-                <p class="rate rate_two">
-                  <!-- <p
-                  class="rate"
-                  :class="{
-                    rate_one: item.rate >= 0,
-                    rate_two: item.rate >= 3.0,
-                    rate_three: item.rate >= 4.0,
-                    rate_four: item.rate >= 4.6,
-                  }"
-                > -->
-                  {{ item.rate | comma }}
-                </p>
-                <!-- レート画像 -->
-                <div
-                  class="rate_img"
-                  :class="{
-                    rate_img_zero: item.rate >= 0.0,
-                    rate_img_one: item.rate >= 1.0,
-                    rate_img_one_five: item.rate >= 1.5,
-                    rate_img_two: item.rate >= 2.0,
-                    rate_img_two_five: item.rate >= 2.5,
-                    rate_img_three: item.rate >= 3.0,
-                    rate_img_three_five: item.rate >= 3.5,
-                    rate_img_four: item.rate >= 4.0,
-                    rate_img_four_five: item.rate >= 4.5,
-                    rate_img_four_seven: item.rate >= 4.7,
-                    rate_img_five: item.rate >= 5.0,
-                  }"
-                ></div>
-              </div>
-              <!-- セール価格 -->
-              <div v-if="item.sale_price" class="right-box-sale">
-                {{ item.sale_price | moneyFormat }}
-              </div>
-              <div class="flex mt-2">
-                <span v-if="item.level" class="level">
-                  {{ item.level }}
-                </span>
-                <!-- デモ -->
-                <a
-                  v-if="item.demo"
-                  :href="item.demo"
-                  class="demo"
-                  target="_blank"
-                >
-                  DEMO
-                </a>
-              </div>
             </button>
-          </nuxt-link>
-        </div>
-
-        <div v-for="item in items" :key="item.id" class="card item">
-          <nuxt-link :to="{ name: 'item-id', params: { id: item.id } }">
             <span v-if="item.title">{{ item.title }}</span>
             <span v-else>無題のタイトル</span>
             <div class="">{{ item.user_id }}</div>
@@ -103,7 +38,7 @@
                   class="main-body-content py-0"
                 >
                   <p class="mb-4">{{ alert }}</p>
-                  <form @click="deletePost(item.id)">
+                  <form @click="destroy(item.id)">
                     <re-button class="re-button">
                       <button
                         type="submit"
@@ -128,6 +63,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import { destroy } from '@/mixins/posts/delete'
 
 import ReButton from '@/components/atoms/ReButton'
 import ReModal from '@/components/atoms/ReModal'
@@ -136,22 +72,23 @@ export default {
     ReButton,
     ReModal,
   },
-  filters: {
-    numberFormat: function (num) {
-      return num.toLocaleString()
-    },
-    moneyFormat(num) {
-      return (
-        '¥' +
-        (num || 0)
-          .toString()
-          .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
-      )
-    },
-    comma: function (num) {
-      return num.toFixed(1)
-    },
-  },
+  mixins: [destroy],
+  // filters: {
+  //   numberFormat: function (num) {
+  //     return num.toLocaleString()
+  //   },
+  //   moneyFormat(num) {
+  //     return (
+  //       '¥' +
+  //       (num || 0)
+  //         .toString()
+  //         .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
+  //     )
+  //   },
+  //   comma: function (num) {
+  //     return num.toFixed(1)
+  //   },
+  // },
   props: {
     items: {
       type: Array,
@@ -165,21 +102,7 @@ export default {
       isDisabled: false,
       dropdown: false,
       delete_modal: false,
-      post_user: this.user,
     }
-  },
-  methods: {
-    ...mapGetters({
-      user: 'authenticate/user',
-    }),
-    async deletePost(id) {
-      try {
-        await this.$axios.$delete(`/api/posts/${id}`)
-        location.reload('/')
-      } catch (error) {
-        alert(error.message)
-      }
-    },
   },
 }
 </script>

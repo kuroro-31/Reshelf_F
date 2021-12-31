@@ -67,14 +67,11 @@
   </div>
 </template>
 <script>
-import _ from 'lodash'
-import { mapGetters, mapActions } from 'vuex'
 import Editor from '@tinymce/tinymce-vue'
-
+import { update } from '@/mixins/posts/update.js'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 // atoms
-// import AllItem from '@/components/atoms/item/AllItem'
 import ArticleTagsInput from '@/components/atoms/ArticleTagsInput.vue'
 
 export default {
@@ -82,20 +79,10 @@ export default {
     HeaderNav,
     editor: Editor,
     ArticleTagsInput,
-    // AllItem,
   },
-  // middleware: 'authenticated',
-  async asyncData({ $axios, params }) {
-    const { data } = await $axios.$get(`/api/posts/${params.id}`)
-    return { post: data }
-  },
+  mixins: [update],
   data() {
     return {
-      post: {
-        title: '無題のタイトル',
-        body: '',
-        tags: [],
-      },
       errors: {},
       alert: '',
       content: [],
@@ -223,32 +210,8 @@ export default {
       },
     }
   },
-  watch: {
-    post: {
-      handler: _.debounce(function () {
-        this.update()
-      }, 2000), // memosのデータの更新が終わった2秒後に実行される
-      deep: true,
-    },
-  },
   mounted() {
     this.init.language = this.lang // 現在の言語を入れる
-  },
-  methods: {
-    ...mapGetters({
-      authenticated: 'authenticate/authenticated',
-    }),
-    async update() {
-      this.alert = '保存中です...'
-      await this.$axios
-        .$patch(`/api/posts/${this.$route.params.id}`, this.post)
-        .then(({ data }) => {
-          this.alert = '保存しました。'
-        })
-        .catch(({ response: { data } }) => {
-          alert(data.message)
-        })
-    },
   },
 }
 </script>
