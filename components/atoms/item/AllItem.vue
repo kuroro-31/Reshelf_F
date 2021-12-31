@@ -29,29 +29,7 @@
           </nuxt-link>
 
           <div>
-            <span @click="delete_modal = !delete_modal">削除</span>
-            <ReModal v-if="delete_modal" @close="delete_modal = !delete_modal">
-              <template slot="header">コースの削除</template>
-              <div class="w-full flex flex-col justify-center">
-                <div
-                  v-if="$store.state.authenticate.authenticated"
-                  class="main-body-content py-0"
-                >
-                  <p class="mb-4">{{ alert }}</p>
-                  <form @click="destroy(item.id)">
-                    <re-button class="re-button">
-                      <button
-                        type="submit"
-                        class="re-button-primary bg-danger ml-auto"
-                      >
-                        削除
-                      </button>
-                    </re-button>
-                  </form>
-                </div>
-                <div v-else>ログインしてください</div>
-              </div>
-            </ReModal>
+            <DeteleItem :item="item" />
             <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
               編集
             </nuxt-link>
@@ -62,17 +40,8 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
-import { destroy } from '@/mixins/posts/delete'
-
-import ReButton from '@/components/atoms/ReButton'
-import ReModal from '@/components/atoms/ReModal'
+import DeleteItem from '@/components/atoms/item/modal/DeleteItem'
 export default {
-  components: {
-    ReButton,
-    ReModal,
-  },
-  mixins: [destroy],
   // filters: {
   //   numberFormat: function (num) {
   //     return num.toLocaleString()
@@ -89,20 +58,14 @@ export default {
   //     return num.toFixed(1)
   //   },
   // },
+  components: {
+    DeleteItem,
+  },
   props: {
     items: {
       type: Array,
       default: () => [],
     },
-  },
-
-  data() {
-    return {
-      isLiked: false,
-      isDisabled: false,
-      dropdown: false,
-      delete_modal: false,
-    }
   },
 }
 </script>
