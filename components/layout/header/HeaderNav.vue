@@ -59,35 +59,25 @@ export default {
   },
   data() {
     return {
+      user: this.$store.state.authenticate.authenticated,
       visible: false,
       create_modal: false,
       message: '',
       post: false,
-
-      item: {
-        title: '',
-      },
     }
   },
   methods: {
-    ...mapGetters({
-      authenticated: 'authenticate/authenticated',
-    }),
     async create() {
-      await this.$axios.post('/api/posts').then() => {
-        // this.create_modal = false
-        this.$nuxt.$router.push({
-          name: 'item-edit-id',
-          params: { id: data.data.id },
+      await this.$axios
+        .$post('/api/posts')
+        .then(({ data }) => {
+          this.$nuxt.$router.push(`/item/edit/${data.id}`)
         })
-      }
-      // .catch(({ response: { data } }) => {
-      //   // alert(data.message)
-      //   console.log(data.message)
-
-      //   // alert(data.message)
-      //   // this.$nuxt.$router.push({ path: '/auth/login' })
-      // })
+        .catch(({ response: { data } }) => {
+          console.log(data.message)
+          alert('再度ログインしてください。')
+          this.$nuxt.$router.push(`/auth/login`)
+        })
     },
   },
 }

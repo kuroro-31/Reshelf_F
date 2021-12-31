@@ -2,6 +2,7 @@ init:
 	npm cache clear --force
 	npm cache clean --force
 	npm i
+	cp .env.example .env
 i:
 	npm install
 update:
