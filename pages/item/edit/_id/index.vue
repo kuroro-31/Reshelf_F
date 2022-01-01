@@ -1,27 +1,59 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
-    <div class="w-full flex max-w-screen-lg mx-auto container scroll-none">
+    <div class="w-full flex mx-auto scroll-none">
       <div class="lg:flex w-full mt-4">
-        <nav
-          class="card side-nav lg:max-h-(screen-22) pin-22 scroll-none mb-auto"
-        >
-          <div class="item">
-            <span class="item-title">受講生</span>
-            <nuxt-link class="item-link" to="/user/learning">
-              >受講中のコース
-            </nuxt-link>
-            <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
-            <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
+        <div class="flex">
+          <nav
+            class="card side-nav lg:max-h-(screen-22) pin-22 scroll-none mb-auto"
+          >
+            <div class="item">
+              <span class="item-title">受講生</span>
+              <nuxt-link class="item-link" to="/user/learning">
+                受講中のコース
+              </nuxt-link>
+              <nuxt-link class="item-link" to="/user/like">
+                お気に入り
+              </nuxt-link>
+              <nuxt-link class="item-link" to="/user/bought">
+                購入履歴
+              </nuxt-link>
 
-            <span class="item-title">受講生</span>
-            <nuxt-link class="item-link" to="/user/learning">
-              >受講中のコース
-            </nuxt-link>
-            <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
-            <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
+              <span class="item-title">受講生</span>
+              <nuxt-link class="item-link" to="/user/learning">
+                受講中のコース
+              </nuxt-link>
+              <nuxt-link class="item-link" to="/user/like">
+                お気に入り
+              </nuxt-link>
+              <nuxt-link class="item-link" to="/user/bought">
+                購入履歴
+              </nuxt-link>
+            </div>
+          </nav>
+          <div class="">
+            <div @click.self="onEditNoteEnd()">
+              <!-- ノートリスト -->
+              <draggable :list="noteList" group="notes" :animation="200">
+                <NoteItem
+                  v-for="note in noteList"
+                  :key="note.id"
+                  :note="note"
+                  :layer="1"
+                  @delete="onDeleteNote"
+                  @select="onSelectNote"
+                  @editStart="onEditNoteStart"
+                  @editEnd="onEditNoteEnd"
+                  @addChild="onAddChildNote"
+                  @addNoteAfter="onAddNoteAfter"
+                />
+              </draggable>
+
+              <!-- ノート追加ボタン -->
+              <button @click="onClickButtonAdd">追加</button>
+            </div>
           </div>
-        </nav>
+        </div>
         <div class="main-body scroll-none">
           <div class="main-body-content">
             <p class="mb-4">{{ alert }}</p>
@@ -39,14 +71,14 @@
               />
 
               <!-- タグ -->
-              <label class="font-semibold text-xs text-gray-600 pb-1 block">
+              <!-- <label class="font-semibold text-xs text-gray-600 pb-1 block">
                 タグ
               </label>
               <article-tags-input
                 :autocomplete-items="allTagNames"
                 :all-tags="filteredItems"
                 @catchTags="post.tags"
-              ></article-tags-input>
+              ></article-tags-input> -->
 
               <!-- body -->
               <label class="font-semibold text-xs text-gray-600 pb-1 block">
@@ -59,6 +91,35 @@
                 :init="init"
               />
             </form>
+
+            <div class="">
+              <template v-if="selectedNote == null">
+                <div class="no-selected-note">ノートを選択してください</div>
+              </template>
+              <template v-else>
+                <div class="path">
+                  <small>{{ selectedPath }}</small>
+                </div>
+                <div class="note-content">
+                  <h3 class="note-title">{{ selectedNote.name }}</h3>
+                  <draggable :list="selectedNote.widgetList" group="widgets">
+                    <WidgetItem
+                      v-for="widget in selectedNote.widgetList"
+                      :key="widget.id"
+                      :widget="widget"
+                      :layer="1"
+                      @delete="onDeleteWidget"
+                      @addChild="onAddChildWidget"
+                      @addWidgetAfter="onAddWidgetAfter"
+                    />
+                  </draggable>
+                  <!-- <button class="transparent" @click="onClickButtonAddWidget">
+                    <i class="fas fa-plus-square"></i>
+                    ウィジェットを追加
+                  </button> -->
+                </div>
+              </template>
+            </div>
           </div>
         </div>
       </div>
@@ -69,16 +130,22 @@
 <script>
 import Editor from '@tinymce/tinymce-vue'
 import { update } from '@/mixins/posts/update.js'
+import draggable from 'vuedraggable'
+
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 // atoms
-import ArticleTagsInput from '@/components/atoms/ArticleTagsInput.vue'
+// import ArticleTagsInput from '@/components/atoms/ArticleTagsInput'
+import NoteItem from '@/components/atoms/item/new/NoteItem'
 
 export default {
   components: {
     HeaderNav,
     editor: Editor,
-    ArticleTagsInput,
+    // ArticleTagsInput,
+
+    NoteItem,
+    draggable,
   },
   mixins: [update],
   data() {
@@ -208,19 +275,107 @@ export default {
         advlist_bullet_styles: 'disc',
         advlist_number_styles: 'lower-alpha',
       },
+
+      noteList: [],
+      selectedNote: null,
     }
+  },
+  computed: {
+    selectedPath() {
+      const searchSelectedPath = function (noteList, path) {
+        for (let note of noteList) {
+          const currentPath =
+            path == null ? note.name : `${path} / ${note.name}`
+          if (note.selected) return currentPath
+          const selectedPath = searchSelectedPath(note.children, currentPath)
+          if (selectedPath.length > 0) return selectedPath
+        }
+        return ''
+      }
+      return searchSelectedPath(this.noteList)
+    },
   },
   mounted() {
     this.init.language = this.lang // 現在の言語を入れる
+  },
+  methods: {
+    // ...mapGetters({
+    //   authenticated: 'authenticate/authenticated',
+    // }),
+    onAddNoteCommon: function (targetList, layer, index) {
+      layer = layer || 1
+      const note = {
+        id: new Date().getTime().toString(16),
+        name: `新規ノート-${layer}-${targetList.length}`,
+        mouseover: false,
+        editing: false,
+        selected: false,
+        children: [],
+        layer: layer,
+      }
+      if (index == null) {
+        targetList.push(note)
+      } else {
+        targetList.splice(index + 1, 0, note)
+      }
+    },
+    onClickButtonAdd: function () {
+      this.onAddNoteCommon(this.noteList)
+    },
+    onDeleteNote: function (parentNote, note) {
+      const targetList =
+        parentNote == null ? this.noteList : parentNote.children
+      const index = targetList.indexOf(note)
+      targetList.splice(index, 1)
+    },
+    onSelectNote(targetNote) {
+      // 再帰的にノートの選択状態を更新
+      const updateSelectStatus = function (targetNote, noteList) {
+        for (let note of noteList) {
+          note.selected = note.id === targetNote.id
+          updateSelectStatus(targetNote, note.children)
+        }
+      }
+      updateSelectStatus(targetNote, this.noteList)
+
+      // 選択中ノート情報を更新
+      this.selectedNote = targetNote
+    },
+    onEditNoteStart: function (editNote, parentNote) {
+      const targetList =
+        parentNote == null ? this.noteList : parentNote.children
+      for (let note of targetList) {
+        note.editing = note.id === editNote.id
+        this.onEditNoteStart(editNote, note)
+      }
+    },
+    onEditNoteEnd: function (parentNote) {
+      const targetList =
+        parentNote == null ? this.noteList : parentNote.children
+      for (let note of targetList) {
+        note.editing = false
+        this.onEditNoteEnd(note)
+      }
+    },
+    onAddChildNote: function (note) {
+      this.onAddNoteCommon(note.children, note.layer + 1)
+    },
+    onAddNoteAfter: function (parentNote, note) {
+      const targetList =
+        parentNote == null ? this.noteList : parentNote.children
+      const layer = parentNote == null ? 1 : note.layer
+      const index = targetList.indexOf(note)
+      this.onAddNoteCommon(targetList, layer, index)
+    },
   },
 }
 </script>
 <style lang="scss" scoped>
 .side-nav {
-  @apply hidden w-full lg:block mt-6 lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
+  @apply hidden w-full lg:block mt-6 lg:w-1/5 z-10 lg:sticky overflow-y-auto;
 }
 .main-body {
-  @apply w-full lg:w-3/4 xl:w-4/5 p-6 lg:pl-10;
+  @apply w-full lg:w-3/5 p-6 lg:pl-10;
 }
 
 .item {

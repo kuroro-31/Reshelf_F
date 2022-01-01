@@ -271,12 +271,8 @@
       </div>
     </div>
 
-    <template v-if="loading">
-      <div>読み込み中です</div>
-    </template>
-    <template v-else>
-      <all-item :items="items" />
-    </template>
+    <div v-if="loading">読み込み中です</div>
+    <all-item v-else :items="items" />
 
     <FooterNav />
   </div>
@@ -323,7 +319,7 @@ export default {
           // this.$nuxt.$loading.finish()
         })
         .catch((err) => {
-          alert(err)
+          console.log(err)
         })
     },
   },

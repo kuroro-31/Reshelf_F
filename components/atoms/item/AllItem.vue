@@ -26,6 +26,7 @@
             <span v-if="item.title">{{ item.title }}</span>
             <span v-else>無題のタイトル</span>
             <div class="">{{ item.user_id }}</div>
+            <div class="">{{ item.user.name }}</div>
           </nuxt-link>
 
           <div>
