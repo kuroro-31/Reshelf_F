@@ -57,6 +57,35 @@
         <div class="main-body scroll-none">
           <div class="main-body-content">
             <p class="mb-4">{{ alert }}</p>
+
+            <div @click.self="onEditNoteEnd()">
+              <template v-if="selectedNote == null">
+                <div class="no-selected-note">ノートを選択してください</div>
+              </template>
+              <template v-else>
+                <div class="path">
+                  <small>{{ selectedPath }}</small>
+                </div>
+                <div class="note-content">
+                  <h3 class="note-title">{{ selectedNote.name }}</h3>
+                  <draggable :list="selectedNote.widgetList" group="widgets">
+                    <WidgetItem
+                      v-for="widget in selectedNote.widgetList"
+                      :key="widget.id"
+                      :widget="widget"
+                      :layer="1"
+                      @delete="onDeleteWidget"
+                      @addChild="onAddChildWidget"
+                      @addWidgetAfter="onAddWidgetAfter"
+                    />
+                  </draggable>
+                  <button class="transparent" @click="onClickButtonAddWidget">
+                    ウィジェットを追加
+                  </button>
+                </div>
+              </template>
+            </div>
+
             <!-- <all-item :items="items" /> -->
             <form @submit.prevent="update">
               <!-- タイトル -->
@@ -91,35 +120,6 @@
                 :init="init"
               />
             </form>
-
-            <div class="">
-              <template v-if="selectedNote == null">
-                <div class="no-selected-note">ノートを選択してください</div>
-              </template>
-              <template v-else>
-                <div class="path">
-                  <small>{{ selectedPath }}</small>
-                </div>
-                <div class="note-content">
-                  <h3 class="note-title">{{ selectedNote.name }}</h3>
-                  <draggable :list="selectedNote.widgetList" group="widgets">
-                    <WidgetItem
-                      v-for="widget in selectedNote.widgetList"
-                      :key="widget.id"
-                      :widget="widget"
-                      :layer="1"
-                      @delete="onDeleteWidget"
-                      @addChild="onAddChildWidget"
-                      @addWidgetAfter="onAddWidgetAfter"
-                    />
-                  </draggable>
-                  <!-- <button class="transparent" @click="onClickButtonAddWidget">
-                    <i class="fas fa-plus-square"></i>
-                    ウィジェットを追加
-                  </button> -->
-                </div>
-              </template>
-            </div>
           </div>
         </div>
       </div>
@@ -137,6 +137,7 @@ import HeaderNav from '@/components/layout/header/HeaderNav'
 // atoms
 // import ArticleTagsInput from '@/components/atoms/ArticleTagsInput'
 import NoteItem from '@/components/atoms/item/new/NoteItem'
+import WidgetItem from '@/components/atoms/item/new/WidgetItem'
 
 export default {
   components: {
@@ -145,6 +146,7 @@ export default {
     // ArticleTagsInput,
 
     NoteItem,
+    WidgetItem,
     draggable,
   },
   mixins: [update],
@@ -302,7 +304,7 @@ export default {
     // ...mapGetters({
     //   authenticated: 'authenticate/authenticated',
     // }),
-    onAddNoteCommon: function (targetList, layer, index) {
+    onAddNoteCommon(targetList, layer, index) {
       layer = layer || 1
       const note = {
         id: new Date().getTime().toString(16),
@@ -312,17 +314,21 @@ export default {
         selected: false,
         children: [],
         layer: layer,
+        widgetList: [],
       }
+
+      this.onAddWidgetCommon(note.widgetList)
+
       if (index == null) {
         targetList.push(note)
       } else {
         targetList.splice(index + 1, 0, note)
       }
     },
-    onClickButtonAdd: function () {
+    onClickButtonAdd() {
       this.onAddNoteCommon(this.noteList)
     },
-    onDeleteNote: function (parentNote, note) {
+    onDeleteNote(parentNote, note) {
       const targetList =
         parentNote == null ? this.noteList : parentNote.children
       const index = targetList.indexOf(note)
@@ -341,7 +347,7 @@ export default {
       // 選択中ノート情報を更新
       this.selectedNote = targetNote
     },
-    onEditNoteStart: function (editNote, parentNote) {
+    onEditNoteStart(editNote, parentNote) {
       const targetList =
         parentNote == null ? this.noteList : parentNote.children
       for (let note of targetList) {
@@ -349,7 +355,7 @@ export default {
         this.onEditNoteStart(editNote, note)
       }
     },
-    onEditNoteEnd: function (parentNote) {
+    onEditNoteEnd(parentNote) {
       const targetList =
         parentNote == null ? this.noteList : parentNote.children
       for (let note of targetList) {
@@ -357,15 +363,60 @@ export default {
         this.onEditNoteEnd(note)
       }
     },
-    onAddChildNote: function (note) {
+    onAddChildNote(note) {
       this.onAddNoteCommon(note.children, note.layer + 1)
     },
-    onAddNoteAfter: function (parentNote, note) {
+    onAddNoteAfter(parentNote, note) {
       const targetList =
         parentNote == null ? this.noteList : parentNote.children
       const layer = parentNote == null ? 1 : note.layer
       const index = targetList.indexOf(note)
       this.onAddNoteCommon(targetList, layer, index)
+    },
+    onAddWidgetCommon(targetList, layer, index) {
+      layer = layer || 1
+      const widget = {
+        id: new Date().getTime().toString(16),
+        type: layer === 1 ? 'heading' : 'body',
+        text: '',
+        mouseover: false,
+        children: [],
+        layer: layer,
+      }
+      if (index == null) {
+        targetList.push(widget)
+      } else {
+        targetList.splice(index + 1, 0, widget)
+      }
+    },
+    onClickButtonAddWidget() {
+      this.onAddWidgetCommon(this.selectedNote.widgetList)
+    },
+    onAddChildWidget(widget) {
+      this.onAddWidgetCommon(widget.children, widget.layer + 1)
+    },
+    onAddWidgetAfter(parentWidget, note) {
+      const targetList =
+        parentWidget == null
+          ? this.selectedNote.widgetList
+          : parentWidget.children
+      const layer = parentWidget == null ? null : parentWidget.layer + 1
+      const index = targetList.indexOf(note)
+      this.onAddWidgetCommon(targetList, layer, index)
+    },
+    onDeleteWidget(parentWidget, widget) {
+      const targetList =
+        parentWidget == null
+          ? this.selectedNote.widgetList
+          : parentWidget.children
+      const index = targetList.indexOf(widget)
+      targetList.splice(index, 1)
+
+      // 削除した1つ前のウィジェットを選択状態にする
+      const focusWidget = index === 0 ? parentWidget : targetList[index - 1]
+      if (focusWidget != null) {
+        focusWidget.id = (parseInt(focusWidget.id, 16) + 1).toString(16)
+      }
     },
   },
 }
