@@ -92,7 +92,20 @@ export default {
   components: {
     draggable,
   },
-  props: ['widget', 'parentWidget', 'layer'],
+  props: {
+    widget: {
+      type: Object,
+      default: () => {},
+    },
+    parentWidget: {
+      type: Object,
+      default: () => {},
+    },
+    layer: {
+      type: Object,
+      default: () => {},
+    },
+  },
   watch: {
     'widget.text'() {
       this.resizeCodeTextarea()
