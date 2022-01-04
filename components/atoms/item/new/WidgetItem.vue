@@ -73,7 +73,7 @@
       </div>
     </div>
     <div class="child-widget">
-      <draggable :list="widget.children" group="widgets">
+      <draggable :list="widget.children" group="widgets" :animation="200">
         <WidgetItem
           v-for="childWidget in widget.children"
           :key="childWidget.id"
