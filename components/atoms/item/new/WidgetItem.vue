@@ -6,65 +6,69 @@
       @mouseover="onMouseOver"
       @mouseleave="onMouseLeave"
     >
-      <template v-if="widget.type == 'heading'">
+      <template v-if="propsWidget.type == 'heading'">
         <input
-          :ref="'widget-heading-' + widget.id"
-          v-model="widget.text"
+          :ref="'widget-heading-' + propsWidget.id"
+          v-model="propsWidget.text"
           class="heading transparent"
           placeholder="見出し"
-          @keypress.enter="onClickAddWidgetAfter(parentWidget, widget)"
+          @keypress.enter="onClickAddWidgetAfter(parentWidget, propsWidget)"
           @keydown.tab="onKeydownTab"
           @keydown.delete="onKeydownDelete"
         />
       </template>
-      <template v-if="widget.type == 'body'">
-        ・
+      <template v-if="propsWidget.type == 'body'">
         <input
-          :ref="'widget-body-' + widget.id"
-          v-model="widget.text"
+          :ref="'widget-body-' + propsWidget.id"
+          v-model="propsWidget.text"
           class="body transparent"
           placeholder="本文"
-          @keypress.enter="onClickAddWidgetAfter(parentWidget, widget)"
+          @keypress.enter="onClickAddWidgetAfter(parentWidget, propsWidget)"
           @keydown.tab="onKeydownTab"
           @keydown.delete="onKeydownDelete"
         />
       </template>
-      <template v-if="widget.type == 'code'">
+      <template v-if="propsWidget.type == 'code'">
         <textarea
-          :ref="'widget-code-' + widget.id"
-          v-model="widget.text"
+          :ref="'widget-code-' + propsWidget.id"
+          v-model="propsWidget.text"
           class="code"
           rows="1"
           placeholder="コード"
           @keydown.delete="onKeydownDelete"
         ></textarea>
       </template>
-      <div v-show="widget.mouseover" class="buttons">
+      <div v-show="propsWidget.mouseover" class="buttons">
         <div
           v-if="layer < 3"
           class="button-icon"
-          @click="onClickChildWidget(widget)"
+          @click="onClickChildWidget(propsWidget)"
         >
           <i class="fas fa-sitemap"></i>
         </div>
         <div
           class="button-icon"
-          @click="onClickAddWidgetAfter(parentWidget, widget)"
+          @click="onClickAddWidgetAfter(parentWidget, propsWidget)"
         >
-          <i class="fas fa-cog" data-toggle="dropdown"></i>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" @click="widget.type = 'heading'">見出し</a>
-            <a class="dropdown-item" @click="widget.type = 'body'">本文</a>
-            <a class="dropdown-item" @click="widget.type = 'code'">
-              ソースコード
-            </a>
-          </div>
+          <i class="fas fa-plus-circle"></i>
         </div>
-        <div class="button-icon" @click="onClickDelete(parentWidget, widget)">
+        <div
+          class="button-icon"
+          @click="onClickDelete(parentWidget, propsWidget)"
+        >
           <i class="fas fa-trash"></i>
         </div>
         <div class="button-icon">
-          <i class="fas fa-cog"></i>
+          <i class="fas fa-cog" data-toggle="dropdown"></i>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" @click="propsWidget.type = 'heading'">
+              見出し
+            </a>
+            <a class="dropdown-item" @click="propsWidget.type = 'body'">本文</a>
+            <a class="dropdown-item" @click="propsWidget.type = 'code'">
+              ソースコード
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -102,8 +106,18 @@ export default {
       default: () => {},
     },
     layer: {
-      type: Object,
-      default: () => {},
+      type: Number,
+      default: 1,
+    },
+  },
+  computed: {
+    propsWidget: {
+      get() {
+        return this.widget
+      },
+      set(newVal) {
+        this.$emit('childWidget', newVal)
+      },
     },
   },
   watch: {
@@ -117,10 +131,10 @@ export default {
   },
   methods: {
     onMouseOver() {
-      this.widget.mouseover = true
+      this.propsWidget.mouseover = true
     },
     onMouseLeave() {
-      this.widget.mouseover = false
+      this.propsWidget.mouseover = false
     },
     onClickDelete(parentWidget, widget) {
       this.$emit('delete', parentWidget, widget)
@@ -143,7 +157,7 @@ export default {
         e.preventDefault()
       }
     },
-    resizeCodeTextarea: function () {
+    resizeCodeTextarea() {
       if (this.widget.type !== 'code') return
       const textarea = this.$refs[`widget-code-${this.widget.id}`]
       const promise = new Promise(function (resolve) {
@@ -156,7 +170,8 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
+
+<style scoped lang="scss">
 .widget {
   width: 100%;
   min-height: 40px;
