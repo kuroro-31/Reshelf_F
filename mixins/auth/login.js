@@ -11,11 +11,15 @@ export const login = {
         .then(({ data }) => {
           this.signIn()
           this.modal = false
-          this.$nuxt.$router.back()
-          // this.$nuxt.$router.push({ path: '/' })
+          // this.$nuxt.$router.back()
+          this.$nuxt.$router.push({ path: '/' })
         })
         .catch(({ response: { data } }) => {
           alert(data.message)
+          // this.success = true
+          this.error = true
+          setTimeout(() => (this.error = false), 3000)
+          // setTimeout(() => (this.success = false), 3000)
         })
     },
   },

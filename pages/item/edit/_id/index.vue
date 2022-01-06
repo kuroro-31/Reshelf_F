@@ -125,11 +125,23 @@
       </div>
     </div>
     <!-- <FooterNav /> -->
+    <transition name="reshelf-toast">
+      <Toast>
+        <div v-if="update_error" class="reshelf-toast reshelf-toast-danger">
+          セッションが切れました。再度ログインしてください。
+        </div>
+        <div v-if="update_success" class="reshelf-toast reshelf-toast-success">
+          保存しました。
+        </div>
+      </Toast>
+      <!-- <Toast v-if="update_success" /> -->
+    </transition>
   </div>
 </template>
 <script>
 import Editor from '@tinymce/tinymce-vue'
 import { update } from '@/mixins/posts/update.js'
+import { toast } from '@/mixins/toast/toast.js'
 import draggable from 'vuedraggable'
 
 // layout
@@ -149,7 +161,7 @@ export default {
     WidgetItem,
     draggable,
   },
-  mixins: [update],
+  mixins: [update, toast],
   data() {
     return {
       errors: {},

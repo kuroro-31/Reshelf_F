@@ -158,14 +158,28 @@
       </div>
     </div>
     <!-- <div class="bg"></div> -->
+
+    <transition name="reshelf-toast">
+      <Toast>
+        <div v-if="error" class="reshelf-toast reshelf-toast-danger">
+          セッションが切れました。再度ログインしてください。
+        </div>
+        <div v-if="success" class="reshelf-toast reshelf-toast-success">
+          ああああああああ
+        </div>
+      </Toast>
+    </transition>
   </div>
 </template>
 <script>
 import { login } from '@/mixins/auth/login.js'
 import ReButton from '@/components/atoms/ReButton.vue'
+import Toast from '@/components/atoms/Toast'
+
 export default {
   components: {
     ReButton,
+    Toast,
   },
   mixins: [login],
   data: () => ({

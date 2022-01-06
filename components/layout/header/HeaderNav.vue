@@ -35,11 +35,24 @@
         <UserDropdown />
       </div>
     </div>
+
+    <transition name="reshelf-toast">
+      <Toast>
+        <div v-if="create_error" class="reshelf-toast reshelf-toast-danger">
+          セッションが切れました。再度ログインしてください。
+        </div>
+        <div v-if="create_success" class="reshelf-toast reshelf-toast-success">
+          ああああああああ
+        </div>
+      </Toast>
+    </transition>
   </header>
 </template>
 
 <script>
-import { create } from '@/mixins/posts/create.js'
+import { create } from '@/mixins/posts/create'
+import { toast } from '@/mixins/toast/toast'
+
 //
 import Cart from '@/components/layout/header/components/Cart'
 import Logo from '@/components/layout/header/components/Logo'
@@ -55,7 +68,7 @@ export default {
     UserDropdown,
     ReButton,
   },
-  mixins: [create],
+  mixins: [create, toast],
 }
 </script>
 <style lang="scss" scoped>
@@ -116,34 +129,34 @@ export default {
     }
   }
 }
-.fb-btn {
-  @apply py-2 px-4 text-white rounded-lg text-lg  duration-200;
-  background: #1976f2;
-  border: 1px solid #1976f2;
+// .fb-btn {
+//   @apply py-2 px-4 text-white rounded-lg text-lg  duration-200;
+//   background: #1976f2;
+//   border: 1px solid #1976f2;
 
-  &:hover {
-    -webkit-box-shadow: 0 8px 25px -8px #1976f2;
-    box-shadow: 0 8px 25px -8px #1976f2;
-  }
-}
-.fb-btn-posted {
-  @apply py-3 px-4 text-white rounded-lg text-xl font-bold;
-  color: #1976f2;
-  border: 1px solid #1976f2;
-}
-.show {
-  @apply block;
-}
-.dropdown-bg {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-}
+//   &:hover {
+//     -webkit-box-shadow: 0 8px 25px -8px #1976f2;
+//     box-shadow: 0 8px 25px -8px #1976f2;
+//   }
+// }
+// .fb-btn-posted {
+//   @apply py-3 px-4 text-white rounded-lg text-xl font-bold;
+//   color: #1976f2;
+//   border: 1px solid #1976f2;
+// }
+// .show {
+//   @apply block;
+// }
+// .dropdown-bg {
+//   width: 100vw;
+//   height: 100vh;
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   z-index: 2;
+// }
 .search {
   @apply px-4 py-2 rounded-lg;
   background-color: var(--bg-secondary);
@@ -151,9 +164,9 @@ export default {
   border: 1px solid var(--gray);
 }
 
-.purple {
-  width: 30px;
-  height: 30px;
-  background: $purple;
-}
+// .purple {
+//   width: 30px;
+//   height: 30px;
+//   background: $purple;
+// }
 </style>
