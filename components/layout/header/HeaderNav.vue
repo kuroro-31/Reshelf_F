@@ -36,16 +36,7 @@
       </div>
     </div>
 
-    <transition name="reshelf-toast">
-      <Toast>
-        <div v-if="create_error" class="reshelf-toast reshelf-toast-danger">
-          セッションが切れました。再度ログインしてください。
-        </div>
-        <div v-if="create_success" class="reshelf-toast reshelf-toast-success">
-          ああああああああ
-        </div>
-      </Toast>
-    </transition>
+    <Toast :create-success="create_success" />
   </header>
 </template>
 

@@ -1,9 +1,30 @@
 <template>
   <div class="reshelf-toast-wrapper">
-    <slot></slot>
+    <transition name="reshelf-toast">
+      <div v-if="createError" class="reshelf-toast reshelf-toast-danger">
+        セッションが切れました。再度ログインしてください。
+      </div>
+      <div v-if="createSuccess" class="reshelf-toast reshelf-toast-success">
+        新しいコースを作成しました。
+      </div>
+    </transition>
   </div>
 </template>
-<style lang="scss">
+<script>
+export default {
+  props: {
+    createSuccess: {
+      type: Boolean,
+      default: false,
+    },
+    createError: {
+      type: Boolean,
+      default: false,
+    },
+  },
+}
+</script>
+<style lang="scss" scoped>
 .reshelf-toast {
   @apply rounded p-4 ml-auto shadow;
   max-width: 400px;
