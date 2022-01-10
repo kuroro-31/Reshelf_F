@@ -141,7 +141,7 @@
 <script>
 import { update } from '@/mixins/posts/update.js'
 import { editor } from '@/mixins/posts/editor.js'
-import { toast } from '@/mixins/toast/toast.js'
+// import { toast } from '@/mixins/toast/toast.js'
 import draggable from 'vuedraggable'
 
 // layout
@@ -159,7 +159,7 @@ export default {
     WidgetItem,
     draggable,
   },
-  mixins: [update, editor, toast],
+  mixins: [update, editor],
   data() {
     return {
       update_error: false,

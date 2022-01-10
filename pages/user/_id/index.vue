@@ -15,7 +15,9 @@
             <h2 class="text-3xl font-bold mb-4">プロフィール編集</h2>
             <!-- <all-item :items="items" /> -->
             <div class="">
-              <!-- <div class="">{{ user.name }}</div> -->
+              <div class="">{{ user.id }}</div>
+              <div class="">{{ user.name }}</div>
+              <div class="">{{ user.email }}</div>
             </div>
           </div>
         </div>
@@ -28,24 +30,21 @@
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
+// import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
 import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
 import SidebarTeacher from '@/components/layout/sidebar/SidebarTeacher'
 import SidebarStudent from '@/components/layout/sidebar/SidebarStudent'
 // atoms
-// import AllItem from '@/components/atoms/item/AllItem'
 
 export default {
   components: {
     HeaderNav,
-    // FooterNav,
     SidebarSetting,
     SidebarTeacher,
     SidebarStudent,
-    // AllItem,
   },
-  async asyncData({ $axios }) {
-    const { data } = await $axios.$get(`/api/user`)
-    console.log(data)
+  async asyncData({ $axios, params }) {
+    const { data } = await $axios.$get(`/api/users/${params.id}`)
     return {
       user: data,
     }

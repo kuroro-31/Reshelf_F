@@ -135,9 +135,11 @@ import { login } from '@/mixins/auth/login.js'
 import { logout } from '@/mixins/auth/logout.js'
 
 import ReModal from '@/components/atoms/ReModal'
+import ReButton from '@/components/atoms/ReButton.vue'
 import FacebookLogin from '@/components/atoms/auth/FacebookLogin'
 export default {
   components: {
+    ReButton,
     ReModal,
     FacebookLogin,
   },

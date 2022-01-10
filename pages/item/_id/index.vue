@@ -19,7 +19,6 @@ import HeaderNav from '@/components/layout/header/HeaderNav'
 import DetailItem from '@/components/atoms/item/DetailItem'
 
 export default {
-  auth: false,
   components: {
     HeaderNav,
     // FooterNav,

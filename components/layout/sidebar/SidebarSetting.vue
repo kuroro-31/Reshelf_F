@@ -2,14 +2,37 @@
   <div class="item">
     <span class="item-title">共通</span>
     <nuxt-link class="item-link" to="/user/setting">アカウント設定</nuxt-link>
-    <nuxt-link class="item-link" to="/user/profile">プロフィール編集</nuxt-link>
+    <nuxt-link
+      class="item-link"
+      :to="{ name: 'user-id', params: { id: user.name } }"
+    >
+      プロフィール編集
+    </nuxt-link>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data() {
-    return {}
+    return {
+      user: [],
+    }
+  },
+  mounted() {
+    this.getUser()
+  },
+  methods: {
+    async getUser() {
+      return axios
+        .get('/api/user')
+        .then((response) => {
+          this.user = response.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
 }
 </script>
