@@ -14,13 +14,21 @@ export const update = {
         body: '',
         tags: [],
       },
+      saved: false,
     }
   },
   watch: {
     post: {
       handler: _.debounce(function () {
         this.update()
-      }, 2000), // memosのデータの更新が終わった2秒後に実行される
+      }, 2000), // 更新されたら保存処理
+      deep: true,
+    },
+    saved: {
+      // 保存完了後にアラートを消す
+      handler: _.debounce(function () {
+        this.clearAlert()
+      }, 2000),
       deep: true,
     },
   },
@@ -34,10 +42,14 @@ export const update = {
         .$patch(`/api/posts/${this.$route.params.id}`, this.post)
         .then(({ data }) => {
           this.alert = '保存しました。'
+          this.saved = true
         })
         .catch(({ response: { data } }) => {
           alert(data.message)
         })
+    },
+    clearAlert() {
+      this.alert = ''
     },
   },
 }
