@@ -62,7 +62,7 @@
 </template>
 <script>
 import _ from 'lodash'
-import { mapGetters, mapActions } from 'vuex'
+// import { mapGetters, mapActions } from 'vuex'
 
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
@@ -74,18 +74,18 @@ export default {
     HeaderNav,
     ReButton,
   },
-  middleware: 'authenticated',
+  // middleware: 'authenticated',
   data() {
     return {
       errors: {},
       alert: '',
     }
   },
-  methods: {
-    ...mapGetters({
-      authenticated: 'authenticate/authenticated',
-    }),
-  },
+  // methods: {
+  //   ...mapGetters({
+  //     authenticated: 'authenticate/authenticated',
+  //   }),
+  // },
 }
 </script>
 <style lang="scss" scoped>
