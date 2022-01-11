@@ -15,9 +15,19 @@
             <h2 class="text-3xl font-bold mb-4">プロフィール編集</h2>
             <!-- <all-item :items="items" /> -->
             <div class="">
-              <div class="">{{ user.id }}</div>
-              <div class="">{{ user.name }}</div>
-              <div class="">{{ user.email }}</div>
+              <div class="">{{ alert }}</div>
+              <form @submit.prevent="update">
+                <!-- タイトル -->
+                <label class="font-semibold text-xs text-gray-600 pb-1 block">
+                  名前
+                </label>
+                <input
+                  v-model.trim="user.name"
+                  type="text"
+                  autofocus
+                  class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+                />
+              </form>
             </div>
           </div>
         </div>
@@ -27,15 +37,13 @@
   </div>
 </template>
 <script>
+import { update } from '@/mixins/user/update.js'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
-// import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
 import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
 import SidebarTeacher from '@/components/layout/sidebar/SidebarTeacher'
 import SidebarStudent from '@/components/layout/sidebar/SidebarStudent'
 // atoms
-
 export default {
   components: {
     HeaderNav,
@@ -43,17 +51,7 @@ export default {
     SidebarTeacher,
     SidebarStudent,
   },
-  async asyncData({ $axios, params }) {
-    const { data } = await $axios.$get(`/api/users/${params.id}`)
-    return {
-      user: data,
-    }
-  },
-  data() {
-    return {
-      user: [],
-    }
-  },
+  mixins: [update],
 }
 </script>
 <style lang="scss" scoped>

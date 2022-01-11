@@ -2,22 +2,20 @@ import _ from 'lodash'
 
 export const update = {
   async asyncData({ $axios, params }) {
-    const { data } = await $axios.$get(`/api/posts/${params.id}`)
-    return { post: data }
+    const { data } = await $axios.$get(`/api/users/${params.id}`)
+    return { user: data }
   },
   data() {
     return {
-      post: {
-        title: '',
-        body: '',
-        tags: [],
+      user: {
+        name: '',
       },
-      alert: '',
       saved: false,
+      alert: '',
     }
   },
   watch: {
-    post: {
+    user: {
       handler: _.debounce(function () {
         this.update()
       }, 2000), // 更新されたら保存処理
@@ -35,7 +33,7 @@ export const update = {
     async update() {
       this.alert = '保存中です...'
       await this.$axios
-        .$patch(`/api/posts/${this.$route.params.id}`, this.post)
+        .$patch(`/api/users/${this.$route.params.id}`, this.user)
         .then(({ data }) => {
           this.alert = '保存しました。'
           this.saved = true

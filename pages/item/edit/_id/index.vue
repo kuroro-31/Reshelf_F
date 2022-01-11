@@ -125,17 +125,6 @@
       </div>
     </div>
     <!-- <FooterNav /> -->
-    <transition name="reshelf-toast">
-      <Toast>
-        <div v-if="update_error" class="reshelf-toast reshelf-toast-danger">
-          セッションが切れました。再度ログインしてください。
-        </div>
-        <div v-if="update_success" class="reshelf-toast reshelf-toast-success">
-          保存しました。
-        </div>
-      </Toast>
-      <!-- <Toast v-if="update_success" /> -->
-    </transition>
   </div>
 </template>
 <script>

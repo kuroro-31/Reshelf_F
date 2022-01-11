@@ -20,14 +20,14 @@
           @mouseleave="dropdown = false"
         >
           <div class="menu">
-            <div class="menu-name">
+            <div v-if="user" class="menu-name">
               <img
                 width="50px"
                 height="50px"
                 src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
               />
               <span class="menu-name-person">
-                {{ $store.state.authenticate.authenticated.name }}
+                {{ user.name }}
               </span>
             </div>
             <div class="menu-me">
@@ -155,6 +155,7 @@ export default {
       },
       errors: {},
       alert: '',
+      user: this.$store.getters['authenticate/user'],
     }
   },
 }
