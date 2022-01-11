@@ -108,3 +108,15 @@ h1,h2,h3,h4,h5,h6 {
     // border: 1px solid #CDD7EE;
   }
 }
+
+
+/* home route and active route will show in bold as it matches / and /about */
+a.nuxt-link-active {
+  font-weight: bold;
+  background: #f0f2f6;
+  border-radius: 6px;
+}
+/* exact link will show the primary color for only the exact matching link */
+a.nuxt-link-exact-active {
+  color: #00c58e;
+}
