@@ -3,6 +3,7 @@
     <span class="item-title">共通</span>
     <nuxt-link class="item-link" to="/user/setting">アカウント設定</nuxt-link>
     <nuxt-link
+      v-if="user"
       class="item-link"
       :to="{ name: 'user-id', params: { id: user.name } }"
     >
@@ -10,33 +11,15 @@
     </nuxt-link>
   </div>
 </template>
-
 <script>
-import axios from 'axios'
 export default {
   data() {
     return {
-      user: [],
+      user: this.$store.getters['authenticate/user'],
     }
-  },
-  mounted() {
-    this.getUser()
-  },
-  methods: {
-    async getUser() {
-      return axios
-        .get('/api/user')
-        .then((response) => {
-          this.user = response.data
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    },
   },
 }
 </script>
-
 <style lang="scss" scoped>
 .item {
   @apply duration-200 flex flex-col;
