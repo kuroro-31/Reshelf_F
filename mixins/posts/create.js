@@ -4,6 +4,7 @@ export const create = {
   data() {
     return {
       create_success: false,
+      create_error: false,
     }
   },
   methods: {
@@ -19,11 +20,13 @@ export const create = {
           .then(({ data }) => {
             this.create_success = true
             setTimeout(() => (this.create_success = false), 3000)
+
             this.$nuxt.$router.push(`/item/edit/${data.id}`)
           })
           .catch(({ response: { data } }) => {
+            // console.log(data.message)
             alert('セッションが切れました。再度ログインしてください。')
-            this.$nuxt.$router.push(`/auth/login`)
+            location.reload(`/auth/login`)
           })
       }
     },
