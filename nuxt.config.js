@@ -127,11 +127,7 @@ export default {
   },
 
   build: {
-    cache: true,
-    parallel: true,
-    hardSource: true,
-    standalone: true,
-    // analyze: true,
+    vendor: ['lodash'],
 
     // 保存時にESlintの実行
     extend(config, ctx) {
@@ -145,6 +141,11 @@ export default {
         })
       }
     },
+    cache: true,
+    parallel: true,
+    hardSource: true,
+    standalone: true,
+    // analyze: true,
   },
   // generate: {
   //   // i18n
