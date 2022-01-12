@@ -1,29 +1,37 @@
 <template>
   <div class="reshelf-toast-wrapper">
     <transition name="reshelf-toast">
-      <div v-if="createError" class="reshelf-toast reshelf-toast-danger">
-        セッションが切れました。再度ログインしてください。
-      </div>
-      <div v-if="createSuccess" class="reshelf-toast">
-        <video autoplay muted playsinline>
-          <source src="@/assets/images/animation/checkanimation.mp4" />
-        </video>
-        <div class="mr-4">新しいコースを作成しました。</div>
-        <div class="mr-4" @click="!create_success">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+      <div
+        :class="[
+          show
+            ? 'block reshelf-toast-enter-active'
+            : 'reshelf-toast-leave-to reshelf-toast-leave-active',
+        ]"
+      >
+        <div v-if="createError" class="reshelf-toast reshelf-toast-danger">
+          セッションが切れました。再度ログインしてください。
+        </div>
+        <div class="reshelf-toast">
+          <video id="check" autoplay loop muted playsinline>
+            <source src="@/assets/images/animation/checkanimation.mp4" />
+          </video>
+          <div class="mr-4">新しいコースを作成しました。</div>
+          <div class="mr-4 cursor-pointer" @click="show = !show">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </transition>
@@ -31,15 +39,16 @@
 </template>
 <script>
 export default {
-  props: {
-    createSuccess: {
-      type: Boolean,
-      default: false,
-    },
-    createError: {
-      type: Boolean,
-      default: false,
-    },
+  data() {
+    return {
+      show: true,
+    }
+  },
+  mounted() {
+    let vid = document.getElementById('check')
+    if (vid) {
+      vid.playbackRate = 0.5
+    }
   },
 }
 </script>
@@ -74,7 +83,7 @@ export default {
 /* leave transitions */
 .reshelf-toast-leave-to {
   opacity: 0;
-  transform: translateX(60px);
+  transform: translateY(60px);
 }
 .reshelf-toast-leave-active {
   transition: all 0.3s ease;
@@ -82,31 +91,31 @@ export default {
 
 @keyframes wobble {
   0% {
-    transform: translateX(100px);
+    transform: translateY(100px);
     opacity: 0;
   }
   50% {
-    transform: translateX(0px);
+    transform: translateY(0px);
     opacity: 1;
   }
   60% {
-    transform: translateX(8px);
+    transform: translateY(8px);
     opacity: 1;
   }
   70% {
-    transform: translateX(-8px);
+    transform: translateY(-8px);
     opacity: 1;
   }
   80% {
-    transform: translateX(4px);
+    transform: translateY(4px);
     opacity: 1;
   }
   90% {
-    transform: translateX(-4px);
+    transform: translateY(-4px);
     opacity: 1;
   }
   100% {
-    transform: translateX(0px);
+    transform: translateY(0px);
     opacity: 1;
   }
 }

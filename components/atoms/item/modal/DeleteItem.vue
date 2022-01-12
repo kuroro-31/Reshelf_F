@@ -8,7 +8,6 @@
           v-if="$store.state.authenticate.authenticated"
           class="main-body-content py-0"
         >
-          <p class="mb-4">{{ alert }}</p>
           <form @click="destroy(item.id)">
             <ReButton class="re-button">
               <button type="submit" class="re-button-primary bg-danger ml-auto">

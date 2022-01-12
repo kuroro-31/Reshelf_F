@@ -3,8 +3,8 @@ import { mapGetters } from 'vuex'
 export const create = {
   data() {
     return {
-      create_success: false,
-      create_error: false,
+      success: false,
+      // create_error: false,
     }
   },
   methods: {
@@ -18,10 +18,12 @@ export const create = {
         await this.$axios
           .$post('/api/posts')
           .then(({ data }) => {
-            this.create_success = true
-            setTimeout(() => (this.create_success = false), 3000)
+            // setTimeout(() => (this.success = false), 10000)
 
-            this.$nuxt.$router.push(`/item/edit/${data.id}`)
+            this.$nuxt.$router.push({
+              path: `/item/edit/${data.id}`,
+              params: { success: true },
+            })
           })
           .catch(({ response: { data } }) => {
             // console.log(data.message)

@@ -35,15 +35,11 @@
         <UserDropdown />
       </div>
     </div>
-
-    <Toast :create-success="create_success" />
   </header>
 </template>
 
 <script>
 import { create } from '@/mixins/posts/create'
-import { toast } from '@/mixins/toast/toast'
-
 //
 import Cart from '@/components/layout/header/components/Cart'
 import Logo from '@/components/layout/header/components/Logo'
@@ -59,7 +55,7 @@ export default {
     UserDropdown,
     ReButton,
   },
-  mixins: [create, toast],
+  mixins: [create],
 }
 </script>
 <style lang="scss" scoped>

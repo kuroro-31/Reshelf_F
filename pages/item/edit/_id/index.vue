@@ -125,6 +125,7 @@
       </div>
     </div>
     <!-- <FooterNav /> -->
+    <Toast />
   </div>
 </template>
 <script>
@@ -135,10 +136,12 @@ import draggable from 'vuedraggable'
 
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
+
 // atoms
 // import ArticleTagsInput from '@/components/atoms/ArticleTagsInput'
 import NoteItem from '@/components/atoms/item/new/NoteItem'
 import WidgetItem from '@/components/atoms/item/new/WidgetItem'
+import Toast from '@/components/atoms//Toast'
 
 export default {
   components: {
@@ -147,12 +150,18 @@ export default {
     NoteItem,
     WidgetItem,
     draggable,
+    Toast,
   },
   mixins: [update, editor],
+  // props: {
+  //   success: {
+  //     type: Boolean,
+  //   },
+  // },
   data() {
     return {
-      update_error: false,
-      update_success: false,
+      // update_error: false,
+      // update_success: false,
       errors: {},
       alert: '',
       content: [],
