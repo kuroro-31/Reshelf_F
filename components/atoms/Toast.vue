@@ -58,8 +58,8 @@ export default {
   max-width: 400px;
   background: #fff;
   video {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
   }
   &-wrapper {
     @apply fixed w-full;
