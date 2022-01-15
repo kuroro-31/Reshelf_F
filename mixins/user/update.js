@@ -12,6 +12,8 @@ export const update = {
       },
       saved: false,
       alert: '',
+      success: false,
+      error: false,
     }
   },
   watch: {
@@ -37,9 +39,11 @@ export const update = {
         .then(({ data }) => {
           this.alert = '保存しました。'
           this.saved = true
+          this.success = true
         })
         .catch(({ response: { data } }) => {
-          alert(data.message)
+          console.log(data.message)
+          setTimeout(() => (this.error = true), 5000)
         })
     },
     clearAlert() {

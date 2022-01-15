@@ -3,15 +3,31 @@
     <transition name="reshelf-toast">
       <div
         :class="[
-          show
+          (show && success) || (show && error)
             ? 'block reshelf-toast-enter-active'
             : 'reshelf-toast-leave-to reshelf-toast-leave-active',
         ]"
       >
-        <div v-if="createError" class="reshelf-toast reshelf-toast-danger">
-          セッションが切れました。再度ログインしてください。
+        <div v-if="error" class="reshelf-toast reshelf-toast-danger">
+          <div class="mr-4">エラーが起きました。</div>
+          <div class="mr-4 cursor-pointer" @click="show = !show">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </div>
         </div>
-        <div class="reshelf-toast">
+        <div v-if="success" class="reshelf-toast">
           <video id="check" autoplay loop muted playsinline>
             <source src="@/assets/images/animation/checkanimation.mp4" />
           </video>
@@ -39,6 +55,14 @@
 </template>
 <script>
 export default {
+  props: {
+    success: {
+      type: Boolean,
+    },
+    error: {
+      type: Boolean,
+    },
+  },
   data() {
     return {
       show: true,
