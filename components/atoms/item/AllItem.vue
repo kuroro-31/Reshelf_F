@@ -27,6 +27,7 @@
             <span v-else>無題のタイトル</span>
             <div class="">{{ item.user_id }}</div>
             <div class="">{{ item.user.name }}</div>
+            <ArticleLike />
           </nuxt-link>
 
           <div>
@@ -42,6 +43,7 @@
 </template>
 <script>
 import DeleteItem from '@/components/atoms/item/modal/DeleteItem'
+import ArticleLike from '@/components/atoms/ArticleLike'
 export default {
   // filters: {
   //   numberFormat: function (num) {
@@ -61,6 +63,7 @@ export default {
   // },
   components: {
     DeleteItem,
+    ArticleLike,
   },
   props: {
     items: {
