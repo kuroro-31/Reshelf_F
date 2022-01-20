@@ -2,7 +2,7 @@
   <div class="w-full flex mx-auto">
     <div class="w-full">
       <div class="items">
-        <div v-for="item in items" :key="item.id" class="card item">
+        <div v-for="item in items" :key="item.id" class="card item flex-col">
           <nuxt-link
             :to="{ name: 'item-id', params: { id: item.id } }"
             class="relative flex flex-col items-start"
@@ -30,6 +30,17 @@
             <ArticleLike />
           </nuxt-link>
 
+          <form @submit.prevent="addCart(item)">
+            <ReButton class="re-button re-button-small">
+              <button
+                type="submit"
+                class="re-button-primary-filled bg-primary w-full"
+              >
+                カートに入れる
+              </button>
+            </ReButton>
+          </form>
+
           <div>
             <DeleteItem :item="item" />
             <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
@@ -44,6 +55,7 @@
 <script>
 import DeleteItem from '@/components/atoms/item/modal/DeleteItem'
 import ArticleLike from '@/components/atoms/ArticleLike'
+import ReButton from '@/components/atoms/ReButton'
 export default {
   // filters: {
   //   numberFormat: function (num) {
@@ -64,11 +76,29 @@ export default {
   components: {
     DeleteItem,
     ArticleLike,
+    ReButton,
   },
   props: {
     items: {
       type: Array,
       default: () => [],
+    },
+  },
+  methods: {
+    addCart(item) {
+      this.$axios
+        .$post('/api/cart/add', {
+          post_id: item.id,
+        })
+        .then(({ data }) => {
+          // this.$nuxt.$router.push({
+          //   path: `/item/edit/${data.id}`,
+          //   params: { success: true },
+          // })
+        })
+        .catch(({ response: { data } }) => {
+          console.log(data.message)
+        })
     },
   },
 }
