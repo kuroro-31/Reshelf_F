@@ -91,10 +91,9 @@ export default {
           post_id: item.id,
         })
         .then(({ data }) => {
-          // this.$nuxt.$router.push({
-          //   path: `/item/edit/${data.id}`,
-          //   params: { success: true },
-          // })
+          this.$nuxt.$router.push({
+            path: `/item/cart`,
+          })
         })
         .catch(({ response: { data } }) => {
           console.log(data.message)
