@@ -10,6 +10,6 @@ a {
 }
 img {
   @apply h-full;
-  max-width: 140px;
+  max-width: 120px;
 }
 </style>
