@@ -90,7 +90,7 @@ export default {
         .$post('/api/cart/add', {
           post_id: item.id,
         })
-        .then(({ data }) => {
+        .then(() => {
           this.$nuxt.$router.push({
             path: `/item/cart`,
           })

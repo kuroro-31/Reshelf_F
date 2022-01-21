@@ -56,9 +56,6 @@ export default {
     // Toast,
   },
   mixins: [update],
-  data() {
-    return {}
-  },
 }
 </script>
 <style lang="scss" scoped>

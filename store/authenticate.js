@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export default {
   namespaced: true,
   state: {
@@ -24,8 +22,8 @@ export default {
   },
   actions: {
     async login({ commit }) {
-      return axios
-        .get('/api/user')
+      return this.$axios
+        .$get('/api/user')
         .then(({ data }) => {
           commit('SET_USER', data)
           commit('SET_AUTHENTICATED', true)

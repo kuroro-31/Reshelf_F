@@ -22,8 +22,8 @@
           @mouseleave="cart = false"
         >
           <div class="cart-content">
-            <p class="cart-content-name">My Cart</p>
-            <p class="divider"></p>
+            <!-- <p class="cart-content-name">My Cart</p>
+            <p class="divider"></p> -->
 
             <div class="cart-content-products scroll-none">
               <!-- 商品１ -->
@@ -136,14 +136,14 @@
               <p class="divider"></p>
             </div>
 
-            <re-button class="pt-4 re-button re-button-small">
+            <ReButton class="pt-4 re-button re-button-small">
               <button
-                class="re-button-primary-filled bg-primary ml-auto duration-500"
-                @click="modal = !modal"
+                class="re-button-primary-filled bg-primary w-full duration-500"
+                @click="search"
               >
-                Checkout
+                カートに移動
               </button>
-            </re-button>
+            </ReButton>
           </div>
         </div>
       </div>
@@ -151,7 +151,7 @@
   </button>
 </template>
 <script>
-import ReButton from '@/components/atoms/ReButton.vue'
+import ReButton from '@/components/atoms/ReButton'
 export default {
   components: {
     ReButton,
@@ -160,6 +160,11 @@ export default {
     return {
       cart: false,
     }
+  },
+  methods: {
+    search() {
+      this.$router.push({ name: 'item-cart' })
+    },
   },
 }
 </script>

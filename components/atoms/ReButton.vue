@@ -12,7 +12,7 @@
   button,
   label,
   .re-button-inner {
-    @apply flex items-center justify-center border-none cursor-pointer box-border bg-transparent duration-200 rounded;
+    @apply flex items-center justify-center border-none cursor-pointer box-border bg-transparent duration-200 rounded-lg;
     min-width: 100px; // 2文字などの短いボタンのケースで必要
     // height: 100%; // 高さが崩れるので一時コメントアウト
     // padding: 1rem;

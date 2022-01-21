@@ -44,7 +44,6 @@
           </div>
         </div>
         <nuxt-link to="/" class="flex items-center">
-          <chevron-left-icon size="1x" class="mr-2"></chevron-left-icon>
           <span>ショッピングを続ける</span>
         </nuxt-link>
       </div>
@@ -76,12 +75,26 @@ export default {
       default: () => [],
     },
   },
+  asyncData({ $axios }) {
+    const { data } = $axios
+      .$get(`/api/cart`)
+      .then(({ data }) => {
+        console.log(data)
+      })
+      .catch(({ response: { data } }) => {
+        console.log(data)
+      })
+    console.log(data)
+    return { cart: data }
+  },
 
   data() {
     return {
       visible: false,
       isLiked: false,
       isDisabled: false,
+
+      cart: {},
     }
   },
   methods: {},
