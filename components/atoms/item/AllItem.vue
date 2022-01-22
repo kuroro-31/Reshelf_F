@@ -17,8 +17,8 @@
               />
               <img
                 v-else
-                src="@/assets/images/noimage.png"
-                alt="text image"
+                src="@/assets/images/noimage.svg"
+                alt="cource image"
                 class="img"
                 :value="item"
               />
