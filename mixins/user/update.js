@@ -16,6 +16,7 @@ export const update = {
   },
   watch: {
     user: {
+      // eslint-disable-next-line
       handler: _.debounce(function () {
         this.update()
       }, 2000), // 更新されたら保存処理
@@ -23,6 +24,7 @@ export const update = {
     },
     saved: {
       // 保存完了後にアラートを消す
+      // eslint-disable-next-line
       handler: _.debounce(function () {
         this.clearAlert()
       }, 2000),
