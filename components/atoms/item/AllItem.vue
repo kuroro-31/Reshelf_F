@@ -17,7 +17,7 @@
               />
               <img
                 v-else
-                src="@/assets/images/no-image.png"
+                src="@/assets/images/noimage.png"
                 alt="text image"
                 class="img"
                 :value="item"
