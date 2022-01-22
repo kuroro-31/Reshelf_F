@@ -2,56 +2,27 @@
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
     <div class="w-full flex mx-auto scroll-none">
-      <div class="lg:flex w-full mt-4">
-        <div class="flex">
-          <nav
-            class="card side-nav lg:max-h-(screen-22) pin-22 scroll-none mb-auto"
-          >
-            <div class="item">
-              <span class="item-title">受講生</span>
-              <nuxt-link class="item-link" to="/user/learning">
-                受講中のコース
-              </nuxt-link>
-              <nuxt-link class="item-link" to="/user/like">
-                お気に入り
-              </nuxt-link>
-              <nuxt-link class="item-link" to="/user/bought">
-                購入履歴
-              </nuxt-link>
+      <div class="flex w-full mt-4 justify-center">
+        <div class="">
+          <div @click.self="onEditNoteEnd()">
+            <!-- ノートリスト -->
+            <draggable :list="noteList" group="notes" :animation="200">
+              <NoteItem
+                v-for="note in noteList"
+                :key="note.id"
+                :note="note"
+                :layer="1"
+                @delete="onDeleteNote"
+                @select="onSelectNote"
+                @editStart="onEditNoteStart"
+                @editEnd="onEditNoteEnd"
+                @addChild="onAddChildNote"
+                @addNoteAfter="onAddNoteAfter"
+              />
+            </draggable>
 
-              <span class="item-title">受講生</span>
-              <nuxt-link class="item-link" to="/user/learning">
-                受講中のコース
-              </nuxt-link>
-              <nuxt-link class="item-link" to="/user/like">
-                お気に入り
-              </nuxt-link>
-              <nuxt-link class="item-link" to="/user/bought">
-                購入履歴
-              </nuxt-link>
-            </div>
-          </nav>
-          <div class="">
-            <div @click.self="onEditNoteEnd()">
-              <!-- ノートリスト -->
-              <draggable :list="noteList" group="notes" :animation="200">
-                <NoteItem
-                  v-for="note in noteList"
-                  :key="note.id"
-                  :note="note"
-                  :layer="1"
-                  @delete="onDeleteNote"
-                  @select="onSelectNote"
-                  @editStart="onEditNoteStart"
-                  @editEnd="onEditNoteEnd"
-                  @addChild="onAddChildNote"
-                  @addNoteAfter="onAddNoteAfter"
-                />
-              </draggable>
-
-              <!-- ノート追加ボタン -->
-              <button @click="onClickButtonAdd">追加</button>
-            </div>
+            <!-- ノート追加ボタン -->
+            <button @click="onClickButtonAdd">追加</button>
           </div>
         </div>
         <div class="main-body scroll-none">
@@ -317,7 +288,7 @@ export default {
   @apply hidden w-full lg:block mt-6 lg:w-1/5 z-10 lg:sticky overflow-y-auto;
 }
 .main-body {
-  @apply w-full lg:w-3/5 p-6 lg:pl-10;
+  @apply w-full max-w-screen-md p-6 lg:pl-10;
 }
 
 .item {

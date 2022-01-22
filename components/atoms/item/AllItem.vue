@@ -17,7 +17,7 @@
               />
               <img
                 v-else
-                src="@/assets/images/noimage.svg"
+                src="@/assets/images/no-image.png"
                 alt="text image"
                 class="img"
                 :value="item"
@@ -206,16 +206,16 @@ export default {
 // 商品画像
 .img {
   @apply object-cover cursor-pointer;
-  // height: 140px;
-  // min-height: 140px;
-  // max-height: 140px;
-  // width: 260px;
-  // min-width: 260px;
-  // max-width: 260px;
+  height: 140px;
+  min-height: 140px;
+  max-height: 140px;
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
 
-  height: 100px;
-  min-height: 100px;
-  max-height: 100px;
+  // height: 100px;
+  // min-height: 100px;
+  // max-height: 100px;
 
   // height: 200px;
   // min-height: 200px;

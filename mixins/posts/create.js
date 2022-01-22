@@ -26,9 +26,9 @@ export const create = {
             })
           })
           .catch(({ response: { data } }) => {
-            // console.log(data.message)
-            alert('セッションが切れました。再度ログインしてください。')
-            location.reload(`/auth/login`)
+            console.log(data.message)
+            // alert(data.message)
+            // location.reload(`/auth/login`)
           })
       }
     },
