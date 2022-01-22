@@ -1,5 +1,3 @@
-import _ from 'lodash'
-
 export const update = {
   async asyncData({ $axios, params }) {
     const { data } = await $axios.$get(`/api/posts/${params.id}`)

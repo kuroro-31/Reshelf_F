@@ -1,3 +1,4 @@
+import webpack from 'webpack'
 require('dotenv').config()
 const { ROOT_URL } = process.env
 export default {
@@ -73,11 +74,7 @@ export default {
   // loading: '~/components/atoms/Loading.vue',
   loading: false,
 
-  plugins: [
-    '~/plugins/i18n.js',
-    // '~/plugins/lodash.js',
-    '@/plugins/vue-highlightjs',
-  ],
+  plugins: ['~/plugins/i18n.js', '@/plugins/vue-highlightjs'],
 
   vendor: [
     'vue-i18n', // i18n
@@ -146,6 +143,12 @@ export default {
     hardSource: true,
     standalone: true,
     // analyze: true,
+
+    plugins: [
+      new webpack.ProvidePlugin({
+        _: 'lodash',
+      }),
+    ],
   },
   // generate: {
   //   // i18n
