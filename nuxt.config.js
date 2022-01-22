@@ -80,38 +80,6 @@ export default {
     'vue-i18n', // i18n
   ],
 
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy',
-    '@nuxtjs/auth',
-    '@nuxtjs/pwa',
-    [
-      'vue-social-auth/nuxt',
-      {
-        property: '$auth', // Optional property if the $auth property is being used by another module
-        providers: {
-          facebook: {
-            clientId: process.env.FACEBOOK_CLIENT_ID,
-            redirectUri:
-              process.env.NGROK_URL + process.env.FACEBOOK_REDIRECT_URL, // Your client app URL
-          },
-        },
-      },
-    ],
-    'nuxt-client-init-module',
-  ],
-  buildModules: [
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/color-mode',
-  ],
-
-  axios: {
-    proxy: true,
-    credentials: true,
-  },
-
   proxy: {
     '/api': {
       target: process.env.ROOT_URL,
@@ -154,4 +122,23 @@ export default {
   //   // i18n
   //   routes: ['/', '/ja'],
   // }
+
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
+    '@nuxtjs/auth',
+    '@nuxtjs/pwa',
+    'nuxt-client-init-module',
+  ],
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/color-mode',
+  ],
+
+  axios: {
+    proxy: true,
+    credentials: true,
+  },
 }
