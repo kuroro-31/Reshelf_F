@@ -47,8 +47,13 @@ export default {
   },
 
   ssr: false, // SPA
-
   components: true,
+  loading: true,
+  loading: {
+    color: '#16afaf',
+    height: '5px',
+  },
+  // loading: '~/components/atoms/Loading.vue',
 
   css: [
     'ress',
@@ -66,13 +71,6 @@ export default {
       '~/assets/sass/foundation/_mixin.scss',
     ],
   },
-
-  loading: {
-    color: '#16afaf',
-    height: '5px',
-  },
-  // loading: '~/components/atoms/Loading.vue',
-  loading: false,
 
   plugins: ['~/plugins/i18n.js', '@/plugins/vue-highlightjs'],
 

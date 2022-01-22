@@ -1,9 +1,21 @@
 <template>
-  <NuxtLink to="/">
+  <h1 @click="top">
     <img src="@/assets/images/logo.svg" alt="Reshelf logo" />
-  </NuxtLink>
+  </h1>
 </template>
+<script>
+export default {
+  methods: {
+    top() {
+      location.reload('/')
+    },
+  },
+}
+</script>
 <style lang="scss" scoped>
+h1 {
+  @apply cursor-pointer;
+}
 a {
   @apply h-full;
   background: transparent !important;
