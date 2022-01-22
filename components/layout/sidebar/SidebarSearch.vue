@@ -20,10 +20,20 @@
             v-if="category.subcategories.length != 0"
             class="w-full relative flex justify-end"
           >
-            <chevron-right-icon
-              size="1x"
-              class="arrow flex-shrink-0"
-            ></chevron-right-icon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="arrow flex-shrink-0 h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
           </div>
         </div>
 
@@ -48,7 +58,7 @@
       </div>
     </div>
 
-    <div class="sidebar-search-btn">
+    <!-- <div class="sidebar-search-btn">
       <re-button
         class="re-button re-button-small no-shadow"
         :class="isDisabled ? 'no-shadow' : ''"
@@ -63,11 +73,10 @@
           :disabled="isDisabled"
           @click="isDisabled = !isDisabled"
         >
-          <!-- Search -->
           検索する
         </button>
       </re-button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -75,23 +84,18 @@
 //Icons
 // atoms
 import ReCheckbox from '@/components/atoms/ReCheckbox'
-import ReButton from '@/components/atoms/ReButton'
+// import ReButton from '@/components/atoms/ReButton'
 
 export default {
   components: {
     ReCheckbox,
-    ReButton,
+    // ReButton,
   },
   data() {
     return {
       checkbox: '',
       isDisabled: false,
       categories: [
-        {
-          name: '教材タイプ',
-          subcategories: ['チュートリアル型', '講義型', 'その他'],
-          toggleOn: true,
-        },
         {
           name: '評価',
           subcategories: ['4.5以上', '4.0以上', '3.5以上'],
@@ -145,7 +149,7 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar {
-  @apply flex flex-col;
+  @apply flex flex-col my-8;
 }
 .sidebar-search {
   @apply relative overflow-y-auto;

@@ -23,8 +23,8 @@
                 :value="item"
               />
             </button>
-            <span v-if="item.title">{{ item.title }}</span>
-            <span v-else>無題のタイトル</span>
+            <span v-if="item.title" class="title">{{ item.title }}</span>
+            <span v-else class="title">無題のタイトル</span>
             <div class="">{{ item.user_id }}</div>
             <div class="">{{ item.user.name }}</div>
             <ArticleLike />
