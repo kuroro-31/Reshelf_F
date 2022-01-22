@@ -7,7 +7,7 @@ export const login = {
     }),
     async login() {
       await this.$axios
-        .post('/api/auth/login', this.auth)
+        .$post('/api/auth/login', this.auth)
         .then(({ data }) => {
           this.signIn()
           this.modal = false

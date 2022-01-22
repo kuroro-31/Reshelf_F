@@ -162,7 +162,7 @@ export default {
   methods: {
     async submit() {
       await this.$axios
-        .post('/api/auth/facebook')
+        .$post('/api/auth/facebook')
         .then(() => {})
         .catch((err) => {
           console.log(err)

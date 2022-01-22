@@ -123,20 +123,19 @@ export default {
   //   routes: ['/', '/ja'],
   // }
 
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy',
-    '@nuxtjs/auth',
-    '@nuxtjs/pwa',
-    'nuxt-client-init-module',
-  ],
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
     '@nuxtjs/color-mode',
   ],
-
+  modules: [
+    '@nuxtjs/proxy',
+    '@nuxtjs/auth',
+    '@nuxtjs/pwa',
+    'nuxt-client-init-module',
+    '@nuxtjs/axios',
+  ],
   axios: {
     proxy: true,
     credentials: true,

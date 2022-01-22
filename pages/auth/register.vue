@@ -75,7 +75,7 @@ export default {
     async register() {
       this.form.password_confirmation = this.form.password
       await this.$axios
-        .post('/api/auth/register', this.form)
+        .$post('/api/auth/register', this.form)
         .then((data) => {
           this.$auth.login({ data: this.form })
           this.$router.push({ name: 'index' })

@@ -75,8 +75,8 @@ export default {
       default: () => [],
     },
   },
-  asyncData({ $axios }) {
-    const { data } = $axios
+  async asyncData({ $axios }) {
+    const { data } = await $axios
       .$get(`/api/cart`)
       .then(({ data }) => {
         console.log(data)

@@ -161,9 +161,14 @@ export default {
   components: {
     ReButton,
   },
+  async asyncData({ $axios }) {
+    const { data } = await $axios.$get(`/api/cart/`)
+    return { items: data }
+  },
   data() {
     return {
       cart: false,
+      items: [],
     }
   },
   methods: {
