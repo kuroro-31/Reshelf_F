@@ -72,8 +72,12 @@
       </transition>
     </button>
 
-    <div v-if="!$store.state.authenticate.authenticated" class="py-2.5">
-      <span class="cursor-pointer" @click="modal = !modal">ログイン</span>
+    <div v-if="!$store.state.authenticate.authenticated" class="py-2.5 ml-4">
+      <ReButton class="re-button" @click="modal = !modal">
+        <button type="submit" class="re-button-primary-filled bg-primary">
+          新規登録・ログイン
+        </button>
+      </ReButton>
       <ReModal v-if="modal" @close="modal = !modal">
         <template slot="header">Welcome To Reshelf！</template>
         <!-- default -->
