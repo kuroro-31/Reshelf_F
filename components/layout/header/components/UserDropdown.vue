@@ -73,8 +73,11 @@
     </button>
 
     <div v-if="!$store.state.authenticate.authenticated" class="py-2.5 ml-4">
-      <ReButton class="re-button" @click="modal = !modal">
-        <button type="submit" class="re-button-primary-filled bg-primary">
+      <ReButton class="re-button">
+        <button
+          class="re-button-primary-filled bg-primary"
+          @click="modal = !modal"
+        >
           新規登録・ログイン
         </button>
       </ReButton>
