@@ -45,7 +45,9 @@
           <!-- 右サイド -->
           <div class="right-box">
             <div class="flex flex-col items-end">
-              <span class="text-xs">削除</span>
+              <span class="text-xs cursor-pointer" @click="deleteCart(item)">
+                削除
+              </span>
               <span class="text-xs whitespace-nowrap">お気に入りに移動</span>
             </div>
             <div class="flex items-center ml-8">
@@ -95,7 +97,19 @@ export default {
       isDisabled: false,
     }
   },
-  methods: {},
+  methods: {
+    deleteCart(item) {
+      this.$axios
+        .$post(`/api/cart/delete/${item.id}`)
+        .then((response) => {
+          alert('カートの商品を削除しました')
+          location.reload()
+        })
+        .catch(({ response: { data } }) => {
+          console.log(data.message)
+        })
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
