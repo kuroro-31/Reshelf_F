@@ -5,20 +5,25 @@
     @mouseover="show = true"
     @mouseleave="show = false"
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-6 w-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-      />
-    </svg>
+    <div class="relative">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+        />
+      </svg>
+      <BadgeNormal v-if="totalNumber > 0" class="badge">
+        {{ totalNumber }}
+      </BadgeNormal>
+    </div>
     <transition>
       <div v-if="show">
         <div
@@ -50,16 +55,25 @@
 <script>
 import CartItem from '@/components/layout/header/components/carts/CartItem'
 import ReButton from '@/components/atoms/ReButton'
+import BadgeNormal from '@/components/atoms/BadgeNormal'
 export default {
   components: {
     CartItem,
     ReButton,
+    BadgeNormal,
   },
   data() {
     return {
       show: false,
       posts: [],
     }
+  },
+  computed: {
+    totalNumber() {
+      let posts = this.posts
+      let totalNumber = posts.length
+      return totalNumber
+    },
   },
   mounted() {
     this.fetch()
