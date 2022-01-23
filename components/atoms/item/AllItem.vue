@@ -2,7 +2,11 @@
   <div class="w-full flex mx-auto">
     <div class="w-full">
       <div class="items">
-        <div v-for="item in items" :key="item.id" class="card item flex-col">
+        <div
+          v-for="item in notOwnItems"
+          :key="item.id"
+          class="card item flex-col"
+        >
           <nuxt-link
             :to="{ name: 'item-id', params: { id: item.id } }"
             class="relative flex flex-col items-start"
@@ -88,6 +92,17 @@ export default {
     return {
       user: this.$store.getters['authenticate/user'],
     }
+  },
+  computed: {
+    // 自分以外のコースを表示
+    notOwnItems() {
+      let posts = this.items
+      let notOwnItems = posts.filter((post) => {
+        return this.user.id != post.user_id
+      })
+
+      return notOwnItems
+    },
   },
   methods: {
     addCart(item) {
