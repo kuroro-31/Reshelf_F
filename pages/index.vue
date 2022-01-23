@@ -420,7 +420,7 @@ export default {
 .side-nav {
   @apply hidden w-full lg:block lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
   @screen lg {
-    border-right: 1px #ddd solid;
+    // border-right: 1px #ddd solid;
   }
   // @screen lg {
   //   @apply overflow-y-auto;
