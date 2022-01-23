@@ -2,8 +2,8 @@
   <button
     v-if="$store.state.authenticate.authenticated"
     class="dropdown"
-    @mouseover="cart = true"
-    @mouseleave="cart = false"
+    @mouseover="show = true"
+    @mouseleave="show = false"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20,160 +20,63 @@
       />
     </svg>
     <transition>
-      <div v-if="cart">
+      <div v-if="show">
         <div
           class="dropdown-contents"
-          @mouseover="cart = true"
-          @mouseleave="cart = false"
+          @mouseover="show = true"
+          @mouseleave="show = false"
         >
-          <div class="cart-content">
+          <div v-if="posts" class="cart-content">
             <!-- <p class="cart-content-name">My Cart</p>
             <p class="divider"></p> -->
 
-            <div class="cart-content-products scroll-none">
-              <!-- 商品１ -->
-              <div class="w-full flex py-4">
-                <img
-                  class="cart-content-img"
-                  src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                  alt=""
-                />
-                <div class="cart-content-box">
-                  <div class="w-full flex flex-col items-start">
-                    <p class="cart-content-title">
-                      ゼロからはじめる Dockerによるアプリケーション実行環境構築
-                    </p>
-                    <p class="cart-content-author">クラピカクラピカクラピカ</p>
-                  </div>
-                  <div class="cart-content-price">¥ 3,500</div>
-                </div>
-              </div>
-              <p class="divider"></p>
-              <!-- 商品２ -->
-              <div class="w-full flex py-4">
-                <img
-                  class="cart-content-img"
-                  src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                  alt=""
-                />
-                <div class="cart-content-box">
-                  <div class="w-full flex flex-col items-start">
-                    <p class="cart-content-title">
-                      ゼロからはじめる Dockerによるアプリケーション実行環境構築
-                    </p>
-                    <p class="cart-content-author">クラピカクラピカクラピカ</p>
-                  </div>
-                  <div class="cart-content-price">¥ 3,500</div>
-                </div>
-              </div>
-              <p class="divider"></p>
-              <!-- 商品１ -->
-              <div class="w-full flex py-4">
-                <img
-                  class="cart-content-img"
-                  src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                  alt=""
-                />
-                <div class="cart-content-box">
-                  <div class="w-full flex flex-col items-start">
-                    <p class="cart-content-title">
-                      ゼロからはじめる Dockerによるアプリケーション実行環境構築
-                    </p>
-                    <p class="cart-content-author">クラピカクラピカクラピカ</p>
-                  </div>
-                  <div class="cart-content-price">¥ 3,500</div>
-                </div>
-              </div>
-              <p class="divider"></p>
-              <!-- 商品２ -->
-              <div class="w-full flex py-4">
-                <img
-                  class="cart-content-img"
-                  src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                  alt=""
-                />
-                <div class="cart-content-box">
-                  <div class="w-full flex flex-col items-start">
-                    <p class="cart-content-title">
-                      ゼロからはじめる Dockerによるアプリケーション実行環境構築
-                    </p>
-                    <p class="cart-content-author">クラピカクラピカクラピカ</p>
-                  </div>
-                  <div class="cart-content-price">¥ 3,500</div>
-                </div>
-              </div>
-              <p class="divider"></p>
-              <!-- 商品１ -->
-              <div class="w-full flex py-4">
-                <img
-                  class="cart-content-img"
-                  src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                  alt=""
-                />
-                <div class="cart-content-box">
-                  <div class="w-full flex flex-col items-start">
-                    <p class="cart-content-title">
-                      ゼロからはじめる Dockerによるアプリケーション実行環境構築
-                    </p>
-                    <p class="cart-content-author">クラピカクラピカクラピカ</p>
-                  </div>
-                  <div class="cart-content-price">¥ 3,500</div>
-                </div>
-              </div>
-              <p class="divider"></p>
-              <!-- 商品２ -->
-              <div class="w-full flex py-4">
-                <img
-                  class="cart-content-img"
-                  src="https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png"
-                  alt=""
-                />
-                <div class="cart-content-box">
-                  <div class="w-full flex flex-col items-start">
-                    <p class="cart-content-title">
-                      ゼロからはじめる Dockerによるアプリケーション実行環境構築
-                    </p>
-                    <p class="cart-content-author">クラピカクラピカクラピカ</p>
-                  </div>
-                  <div class="cart-content-price">¥ 3,500</div>
-                </div>
-              </div>
-              <p class="divider"></p>
-            </div>
+            <CartItem :posts="posts" />
 
-            <ReButton class="pt-4 re-button re-button-small">
+            <re-button class="pt-4 re-button re-button-small">
               <button
                 class="re-button-primary-filled bg-primary w-full duration-500"
                 @click="search"
               >
                 カートに移動
               </button>
-            </ReButton>
+            </re-button>
           </div>
+          <div v-else class="cart-content">カートにコースがありません。</div>
         </div>
       </div>
     </transition>
   </button>
 </template>
 <script>
+import CartItem from '@/components/layout/header/components/carts/CartItem'
 import ReButton from '@/components/atoms/ReButton'
 export default {
   components: {
+    CartItem,
     ReButton,
-  },
-  async asyncData({ $axios }) {
-    const { data } = await $axios.$get(`/api/cart/`)
-    return { items: data }
   },
   data() {
     return {
-      cart: false,
-      items: [],
+      show: false,
+      posts: [],
     }
+  },
+  mounted() {
+    this.fetch()
   },
   methods: {
     search() {
       this.$router.push({ name: 'item-cart' })
+    },
+    async fetch() {
+      await this.$axios
+        .$get(`/api/cart`)
+        .then((response) => {
+          this.posts = response.data
+        })
+        .catch(({ response: { data } }) => {
+          console.log(data.message)
+        })
     },
   },
 }
@@ -195,7 +98,7 @@ export default {
     background-color: var(--bg-secondary);
     @screen lg {
       margin-top: 60px;
-      width: 300px;
+      min-width: 300px;
       max-height: calc(100vh - 120px);
     }
   }

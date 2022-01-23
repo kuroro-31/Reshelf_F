@@ -101,8 +101,19 @@ export default {
         },
       ],
       posts: [],
-      totalPrice: 0,
     }
+  },
+  computed: {
+    totalPrice() {
+      let posts = this.posts
+      let totalPrice = null
+
+      posts.forEach((post) => {
+        totalPrice += post.price
+      })
+
+      return totalPrice
+    },
   },
 }
 </script>

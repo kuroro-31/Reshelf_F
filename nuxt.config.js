@@ -48,7 +48,7 @@ export default {
 
   ssr: false, // SPA
   components: true,
-  loading: true,
+
   loading: {
     color: '#16afaf',
     height: '5px',

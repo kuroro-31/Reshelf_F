@@ -10,7 +10,20 @@
               @mouseover="visible = true"
               @mouseleave="visible = false"
             >
-              <img :src="item.src" alt="text image" class="img" />
+              <img
+                v-if="item.thumbnail"
+                :src="item.thumbnail"
+                alt="text image"
+                class="cart-content-img"
+                :value="item"
+              />
+              <img
+                v-else
+                src="@/assets/images/noimage.svg"
+                alt="cource image"
+                class="cart-content-img"
+                :value="item"
+              />
             </nuxt-link>
           </div>
 
@@ -38,12 +51,12 @@
             <div class="flex items-center ml-8">
               <!-- セール価格 -->
               <span class="right-box-sale">
-                {{ item.sale_price | moneyFormat }}
+                {{ item.price | moneyFormat }}
               </span>
             </div>
           </div>
         </div>
-        <nuxt-link to="/" class="flex items-center">
+        <nuxt-link to="/">
           <span>ショッピングを続ける</span>
         </nuxt-link>
       </div>
@@ -73,10 +86,6 @@ export default {
     posts: {
       type: Array,
       default: () => [],
-    },
-    totalPrice: {
-      type: Number,
-      default: 0,
     },
   },
   data() {
