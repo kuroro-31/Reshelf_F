@@ -151,11 +151,11 @@ export default {
     FacebookLogin,
   },
   mixins: [login, logout],
-  async asyncData({ $axios }) {
-    const { data } = await $axios.$get(`/api/user`)
-    console.log(data)
-    return { user: data }
-  },
+  // async asyncData({ $axios }) {
+  //   const { data } = await $axios.$get(`/api/user`)
+  //   console.log(data)
+  //   return { user: data }
+  // },
   data() {
     return {
       modal: false,
@@ -166,7 +166,7 @@ export default {
       },
       errors: {},
       alert: '',
-      user: [],
+      user: this.$store.getters['authenticate/user'],
     }
   },
 }
