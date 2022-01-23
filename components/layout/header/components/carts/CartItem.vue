@@ -104,6 +104,7 @@ export default {
   &-img {
     @apply object-cover shadow-lg cursor-pointer;
     width: 100px;
+    max-width: 100px;
   }
   &-box {
     @apply w-full flex flex-col items-start pl-4;
