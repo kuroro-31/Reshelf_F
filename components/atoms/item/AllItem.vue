@@ -92,7 +92,7 @@ export default {
         })
         .then(() => {
           this.$nuxt.$router.push({
-            path: `/item/cart`,
+            path: `/user/${item.user_id}/cart`,
           })
         })
         .catch(({ response: { data } }) => {

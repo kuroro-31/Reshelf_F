@@ -2,7 +2,7 @@
   <div class="w-full flex mx-auto">
     <div class="w-full">
       <div class="items">
-        <div v-for="item in items" :key="item.id" class="item">
+        <div v-for="item in posts" :key="item.id" class="item">
           <!-- 左サイド -->
           <div class="relative flex flex-col items-start">
             <nuxt-link
@@ -70,31 +70,20 @@ export default {
     },
   },
   props: {
-    items: {
+    posts: {
       type: Array,
       default: () => [],
     },
+    totalPrice: {
+      type: Number,
+      default: 0,
+    },
   },
-  async asyncData({ $axios }) {
-    const { data } = await $axios
-      .$get(`/api/cart`)
-      .then(({ data }) => {
-        console.log(data)
-      })
-      .catch(({ response: { data } }) => {
-        console.log(data)
-      })
-    console.log(data)
-    return { cart: data }
-  },
-
   data() {
     return {
       visible: false,
       isLiked: false,
       isDisabled: false,
-
-      cart: {},
     }
   },
   methods: {},

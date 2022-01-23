@@ -2,18 +2,20 @@
   <div class="flex flex-col">
     <div class="sidebar-search scroll-none">
       <span class="text-xs">合計</span>
-      <span class="text-4xl font-bold mb-4 text-black">¥7,000</span>
+      <span class="text-4xl font-bold mb-4 text-black">
+        {{ totalPrice | moneyFormat }}
+      </span>
     </div>
 
     <div class="sidebar-search-btn">
-      <re-button class="re-button re-button-extra-large no-shadow">
+      <re-button class="re-button re-button-extra-large no-shadow w-full">
         <button
           type="submit"
-          class="re-button-primary bg-primary"
+          class="re-button-primary bg-primary w-full"
           @click="$router.push('/user/learning')"
         >
           <!-- Search -->
-          ご注文を確定する
+          購入する
         </button>
       </re-button>
     </div>
@@ -27,14 +29,23 @@
 import ReButton from '@/components/atoms/ReButton'
 
 export default {
+  filters: {
+    moneyFormat(num) {
+      return (
+        '¥' +
+        (num || 0)
+          .toString()
+          .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
+      )
+    },
+  },
   components: {
-    // ChevronRightIcon,
     ReButton,
   },
   props: {
-    items: {
-      type: Array,
-      default: () => [],
+    totalPrice: {
+      type: Number,
+      default: 0,
     },
   },
   data() {
@@ -47,7 +58,7 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar-search {
-  @apply flex flex-col;
+  @apply flex flex-col w-full;
   color: var(--sub-color);
 }
 </style>

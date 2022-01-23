@@ -6,11 +6,11 @@
 
       <div class="lg:flex w-full">
         <div class="main-body min-h-(screen-16) scroll-none">
-          <CartItem :items="items" />
+          <CartItem :posts="posts" :total-price="totalPrice" />
           <!-- <FooterNav /> -->
         </div>
         <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
-          <SidebarCart :items="items" />
+          <SidebarCart :total-price="totalPrice" />
         </nav>
       </div>
     </div>
@@ -34,6 +34,14 @@ export default {
     HeaderNav,
   },
   middleware: 'authenticated',
+  async asyncData({ $axios }) {
+    const { data } = await $axios.$get(`/api/cart`)
+    console.log(data)
+    return {
+      posts: data,
+      // totalPrice: data.totalPrice,
+    }
+  },
   data() {
     return {
       items: [
@@ -92,6 +100,8 @@ export default {
           demo: '#',
         },
       ],
+      posts: [],
+      totalPrice: 0,
     }
   },
 }
