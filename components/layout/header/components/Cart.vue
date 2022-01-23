@@ -70,6 +70,7 @@ export default {
     }
   },
   computed: {
+    // カート商品の数
     totalNumber() {
       let posts = this.posts
       let totalNumber = posts.length
