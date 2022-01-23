@@ -57,6 +57,17 @@ import DeleteItem from '@/components/atoms/item/modal/DeleteItem'
 import ArticleLike from '@/components/atoms/ArticleLike'
 import ReButton from '@/components/atoms/ReButton'
 export default {
+  components: {
+    DeleteItem,
+    ArticleLike,
+    ReButton,
+  },
+  props: {
+    items: {
+      type: Array,
+      default: () => [],
+    },
+  },
   // filters: {
   //   numberFormat: function (num) {
   //     return num.toLocaleString()
@@ -73,16 +84,10 @@ export default {
   //     return num.toFixed(1)
   //   },
   // },
-  components: {
-    DeleteItem,
-    ArticleLike,
-    ReButton,
-  },
-  props: {
-    items: {
-      type: Array,
-      default: () => [],
-    },
+  data() {
+    return {
+      user: this.$store.getters['authenticate/user'],
+    }
   },
   methods: {
     addCart(item) {
@@ -92,7 +97,7 @@ export default {
         })
         .then(() => {
           this.$nuxt.$router.push({
-            path: `/user/${item.user_id}/cart`,
+            path: `/user/${this.user.id}/cart`,
           })
         })
         .catch(({ response: { data } }) => {

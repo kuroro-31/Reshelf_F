@@ -66,6 +66,7 @@ export default {
     return {
       show: false,
       posts: [],
+      user: this.$store.getters['authenticate/user'],
     }
   },
   computed: {
@@ -80,7 +81,9 @@ export default {
   },
   methods: {
     search() {
-      this.$router.push({ name: 'item-cart' })
+      this.$nuxt.$router.push({
+        path: `/user/${this.user.id}/cart`,
+      })
     },
     async fetch() {
       await this.$axios
