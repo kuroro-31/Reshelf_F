@@ -31,7 +31,7 @@
           @mouseover="show = true"
           @mouseleave="show = false"
         >
-          <div v-if="posts" class="cart-content">
+          <div v-if="posts.length > 0" class="cart-content">
             <!-- <p class="cart-content-name">My Cart</p>
             <p class="divider"></p> -->
 
@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       show: false,
-      posts: [],
+      posts: '',
       user: this.$store.getters['authenticate/user'],
     }
   },

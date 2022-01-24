@@ -4,7 +4,7 @@
     <div class="main scroll-none">
       <span class="title">ショッピングカート</span>
 
-      <div class="lg:flex w-full">
+      <div v-if="posts.length > 0" class="lg:flex w-full">
         <div class="main-body min-h-(screen-16) scroll-none">
           <CartItem :posts="posts" :total-price="totalPrice" />
           <!-- <FooterNav /> -->
@@ -13,6 +13,7 @@
           <SidebarCart :total-price="totalPrice" />
         </nav>
       </div>
+      <div v-else class="p-8">カートに商品がありません。</div>
     </div>
     <!-- <FooterNav /> -->
   </div>
@@ -100,7 +101,7 @@ export default {
           demo: '#',
         },
       ],
-      posts: [],
+      posts: '',
     }
   },
   computed: {
