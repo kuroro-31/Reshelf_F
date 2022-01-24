@@ -29,6 +29,7 @@
             </button>
             <span v-if="item.title" class="title">{{ item.title }}</span>
             <span v-else class="title">無題のタイトル</span>
+
             <div class="">{{ item.user_id }}</div>
             <div class="">{{ item.user.name }}</div>
             <ArticleLike />
@@ -45,7 +46,7 @@
             </ReButton>
           </form>
 
-          <div>
+          <div v-if="user.id == item.user_id">
             <DeleteItem :item="item" />
             <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
               編集
