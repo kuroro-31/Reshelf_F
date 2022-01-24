@@ -46,7 +46,7 @@
               </button>
             </re-button>
           </div>
-          <div v-else class="cart-content">カートにコースがありません。</div>
+          <div v-else class="p-8">カートに商品がありません</div>
         </div>
       </div>
     </transition>
