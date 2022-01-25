@@ -20,7 +20,7 @@
           @mouseleave="dropdown = false"
         >
           <div class="menu">
-            <div v-if="user" class="menu-name">
+            <!-- <div v-if="user" class="menu-name">
               <img
                 width="50px"
                 height="50px"
@@ -29,30 +29,10 @@
               <span class="menu-name-person">
                 {{ user.name }}
               </span>
-            </div>
+            </div> -->
             <div class="menu-me">
-              <span class="menu-me-title">受講生</span>
-              <nuxt-link class="menu-me-link" to="/user/learning">
-                受講中のコース
-              </nuxt-link>
-              <nuxt-link class="menu-me-link" to="/user/like">
-                お気に入り
-              </nuxt-link>
+              <span class="menu-me-link" @click="mypage">マイページ</span>
             </div>
-            <div class="menu-me">
-              <span class="menu-me-title">講師</span>
-              <nuxt-link class="menu-me-link" to="/teacher/course">
-                ダッシュボード
-              </nuxt-link>
-            </div>
-            <!-- <div class="menu-me">
-                  <nuxt-link class="menu-me-link" to="/top">
-                    通知・お知らせ
-                  </nuxt-link>
-                  <nuxt-link class="menu-me-link" to="/top">
-                    メッセージ
-                  </nuxt-link>
-                </div> -->
             <div class="menu-me">
               <div class="">
                 <select v-model="$colorMode.preference">
@@ -61,10 +41,6 @@
                   <option value="dark">Dark</option>
                 </select>
               </div>
-              <span class="menu-me-title">共通</span>
-              <nuxt-link class="menu-me-link" to="/user/setting">
-                アカウント設定
-              </nuxt-link>
               <button class="menu-me-link" @click="logout">ログアウト</button>
             </div>
           </div>
@@ -168,6 +144,11 @@ export default {
       alert: '',
       user: this.$store.getters['authenticate/user'],
     }
+  },
+  methods: {
+    mypage() {
+      this.$nuxt.$router.push(`/user/${this.user.id}`)
+    },
   },
 }
 </script>
