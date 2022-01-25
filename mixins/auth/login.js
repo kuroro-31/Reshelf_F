@@ -8,11 +8,11 @@ export const login = {
     async login() {
       await this.$axios
         .$post('/api/auth/login', this.auth)
-        .then(({ data }) => {
+        .then(() => {
           this.signIn()
           this.modal = false
-          // this.$nuxt.$router.back()
-          this.$nuxt.$router.push({ path: '/' })
+          this.$nuxt.$router.back()
+          // this.$nuxt.$router.push({ path: '/' })
         })
         .catch(({ response: { data } }) => {
           alert(data.message)
