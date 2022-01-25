@@ -32,7 +32,6 @@ cache:
 ana:
 	npx nuxt build --a
 git-clean:
-	git checkout .
-	git clean -df
+	git reset HEAD --hard && git checkout . && git clean -df && git fetch && git pull
 git-cache:
 	git rm -r --cached .
