@@ -12,8 +12,6 @@
                 class="card side-nav lg:max-h-(screen-22) pin-22 scroll-none mb-auto"
               >
                 <SidebarSetting class="divider" />
-                <SidebarStudent class="divider" />
-                <SidebarTeacher />
               </nav>
               <div class="">
                 <div class="">{{ alert }}</div>
@@ -79,8 +77,6 @@ import { update } from '@/mixins/user/update.js'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
-import SidebarTeacher from '@/components/layout/sidebar/SidebarTeacher'
-import SidebarStudent from '@/components/layout/sidebar/SidebarStudent'
 // import Toast from '@/components/atoms//Toast'
 
 // atoms
@@ -88,8 +84,6 @@ export default {
   components: {
     HeaderNav,
     SidebarSetting,
-    SidebarTeacher,
-    SidebarStudent,
     // Toast,
   },
   mixins: [update],

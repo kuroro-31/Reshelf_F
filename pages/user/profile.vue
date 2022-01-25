@@ -7,8 +7,6 @@
           class="card side-nav lg:max-h-(screen-22) pin-22 scroll-none mb-auto"
         >
           <SidebarSetting class="divider" />
-          <SidebarStudent class="divider" />
-          <SidebarTeacher />
         </nav>
         <div class="main-body scroll-none">
           <div class="main-body-content">
@@ -29,8 +27,6 @@
 import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
 import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
-import SidebarTeacher from '@/components/layout/sidebar/SidebarTeacher'
-import SidebarStudent from '@/components/layout/sidebar/SidebarStudent'
 // atoms
 // import AllItem from '@/components/atoms/item/AllItem'
 
@@ -39,8 +35,6 @@ export default {
     HeaderNav,
     // FooterNav,
     SidebarSetting,
-    SidebarTeacher,
-    SidebarStudent,
     // AllItem,
   },
   async asyncData({ $axios }) {

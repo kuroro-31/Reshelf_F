@@ -1,21 +1,36 @@
 <template>
   <div class="item">
-    <span class="item-title">共通</span>
-    <nuxt-link class="item-link" to="/user/setting">アカウント設定</nuxt-link>
-    <nuxt-link
-      v-if="user"
-      class="item-link"
-      :to="{ name: 'user-id', params: { id: user.name } }"
-    >
-      プロフィール編集
+    <nuxt-link class="item-link" to="/user/setting">設定</nuxt-link>
+    <nuxt-link class="item-link" to="/user/learning">受講中のコース</nuxt-link>
+    <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
+    <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
+    <nuxt-link class="item-link" to="/teacher/course">あなたのコース</nuxt-link>
+    <nuxt-link class="item-link" to="/teacher/qa">あなたへのQ＆A</nuxt-link>
+    <nuxt-link class="item-link" to="/teacher/review">
+      コースへのレビュー
+    </nuxt-link>
+    <nuxt-link class="item-link" to="/teacher/sales">コース売上</nuxt-link>
+    <nuxt-link to="/item/new" class="mt-4">
+      <re-button class="re-button re-button-small">
+        <button
+          type="button"
+          class="re-button-primary-filled bg-primary w-full"
+        >
+          コースを作成
+        </button>
+      </re-button>
     </nuxt-link>
   </div>
 </template>
 <script>
+import ReButton from '@/components/atoms/ReButton'
 export default {
+  components: {
+    ReButton,
+  },
   data() {
     return {
-      user: this.$store.getters['authenticate/user'],
+      // user: this.$store.getters['authenticate/user'],
     }
   },
 }

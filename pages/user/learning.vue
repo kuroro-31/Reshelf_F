@@ -5,8 +5,6 @@
       <div class="lg:flex w-full">
         <nav class="card side-nav mb-auto">
           <SidebarSetting class="divider" />
-          <SidebarStudent class="divider" />
-          <SidebarTeacher />
         </nav>
         <div class="main-body scroll-none">
           <div class="main-body-content">
@@ -23,8 +21,6 @@
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
-import SidebarTeacher from '@/components/layout/sidebar/SidebarTeacher'
-import SidebarStudent from '@/components/layout/sidebar/SidebarStudent'
 // atoms
 import LearningItem from '@/components/atoms/item/LearningItem'
 
@@ -32,8 +28,6 @@ export default {
   components: {
     HeaderNav,
     SidebarSetting,
-    SidebarTeacher,
-    SidebarStudent,
     LearningItem,
   },
   middleware: 'authenticated',
