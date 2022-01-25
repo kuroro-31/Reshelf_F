@@ -55,6 +55,21 @@ export default {
   },
   // loading: '~/components/atoms/Loading.vue',
 
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: '404error',
+        path: '*',
+        component: resolve('@/pages/error/404.vue'),
+      })
+      routes.push({
+        name: '500error',
+        path: '*',
+        component: resolve('@/pages/error/500.vue'),
+      })
+    },
+  },
+
   css: [
     'ress',
     { src: '@/assets/sass/app.scss', lang: 'scss' },

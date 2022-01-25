@@ -6,9 +6,9 @@
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
-            プログラミングで
+            プログラミングは
             <br />
-            チャンスをつかもう
+            君の可能性だ。
           </h2>
           <span class="describe">
             Reshelfは、プログラミング学習教材のマーケットプレイスです。

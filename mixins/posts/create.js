@@ -1,35 +1,34 @@
-import { mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
 export const create = {
   data() {
     return {
       success: false,
       // create_error: false,
+      error: '',
     }
   },
   methods: {
-    ...mapGetters({
-      authenticated: 'authenticate/authenticated',
+    ...mapActions({
+      stateLogout: 'authenticate/logout',
     }),
     async create() {
-      if (!this.authenticated) {
-        this.$nuxt.$router.push({ path: '/auth/login' })
-      } else {
-        await this.$axios
-          .$post('/api/posts')
-          .then(({ data }) => {
-            // setTimeout(() => (this.success = false), 10000)
-
-            this.$nuxt.$router.push({
-              path: `/item/edit/${data.id}`,
-              params: { success: true },
-            })
+      try {
+        await this.$axios.$post('/api/posts').then(({ data }) => {
+          this.$nuxt.$router.push({
+            path: `/item/edit/${data.id}`,
+            params: { success: true },
           })
-          .catch(({ response: { data } }) => {
-            console.log(data.message)
-            // alert(data.message)
-            // location.reload(`/auth/login`)
-          })
+        })
+      } catch (error) {
+        if (error.response.status == '401') {
+          this.stateLogout()
+          this.$nuxt.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$nuxt.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$nuxt.$router.push('/error/500')
+        }
       }
     },
   },

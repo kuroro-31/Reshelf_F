@@ -46,12 +46,12 @@
             </ReButton>
           </form>
 
-          <div v-if="user.id == item.user_id">
-            <DeleteItem :item="item" />
-            <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
-              編集
-            </nuxt-link>
-          </div>
+          <!-- <div v-if="user.id == item.user_id"> -->
+          <DeleteItem :item="item" />
+          <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
+            編集
+          </nuxt-link>
+          <!-- </div> -->
         </div>
       </div>
     </div>
