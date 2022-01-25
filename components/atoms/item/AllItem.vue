@@ -2,11 +2,7 @@
   <div class="w-full flex mx-auto">
     <div class="w-full">
       <div class="items">
-        <div
-          v-for="item in notOwnItems"
-          :key="item.id"
-          class="card item flex-col"
-        >
+        <div v-for="item in items" :key="item.id" class="card item flex-col">
           <nuxt-link
             :to="{ name: 'item-id', params: { id: item.id } }"
             class="relative flex flex-col items-start"
@@ -46,12 +42,12 @@
             </ReButton>
           </form>
 
-          <!-- <div v-if="user.id == item.user_id"> -->
-          <DeleteItem :item="item" />
-          <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
-            編集
-          </nuxt-link>
-          <!-- </div> -->
+          <div v-if="user.id == item.user_id">
+            <DeleteItem :item="item" />
+            <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
+              編集
+            </nuxt-link>
+          </div>
         </div>
       </div>
     </div>
