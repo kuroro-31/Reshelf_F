@@ -67,6 +67,7 @@ export default {
     return {
       show: false,
       posts: '',
+      carts: this.$store.getters['cart/cart'],
       user: this.$store.getters['authenticate/user'],
     }
   },

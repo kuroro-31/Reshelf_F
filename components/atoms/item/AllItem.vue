@@ -103,18 +103,7 @@ export default {
   },
   methods: {
     addCart(item) {
-      this.$axios
-        .$post('/api/cart/add', {
-          post_id: item.id,
-        })
-        .then(() => {
-          this.$router.push({
-            path: `/user/${this.user.id}/cart`,
-          })
-        })
-        .catch(({ response: { data } }) => {
-          console.log(data.message)
-        })
+      this.$store.dispatch('cart/add', item)
     },
   },
 }

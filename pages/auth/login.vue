@@ -188,8 +188,6 @@ export default {
     async login() {
       await this.$store.dispatch('authenticate/login', this.auth)
       this.modal = false
-      this.$router.back()
-      // this.$router.push({ path: '/' })
     },
   },
 }
