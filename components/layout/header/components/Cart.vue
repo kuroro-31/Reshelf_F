@@ -31,11 +31,11 @@
           @mouseover="show = true"
           @mouseleave="show = false"
         >
-          <div v-if="posts.length > 0" class="cart-content">
+          <div v-if="totalNumber > 0" class="cart-content">
             <!-- <p class="cart-content-name">My Cart</p>
             <p class="divider"></p> -->
 
-            <CartItem :posts="posts" />
+            <CartItem :carts="carts" />
 
             <re-button class="pt-4 re-button re-button-small">
               <button
@@ -53,7 +53,6 @@
   </button>
 </template>
 <script>
-import { mapActions } from 'vuex'
 import CartItem from '@/components/layout/header/components/carts/CartItem'
 import ReButton from '@/components/atoms/ReButton'
 import BadgeNormal from '@/components/atoms/BadgeNormal'
@@ -66,46 +65,26 @@ export default {
   data() {
     return {
       show: false,
-      posts: '',
-      carts: this.$store.getters['cart/cart'],
+      // carts: '',
       user: this.$store.getters['authenticate/user'],
     }
   },
   computed: {
     // カート商品の数
+    carts() {
+      let carts = this.$store.dispatch('cart/get')
+      return carts
+    },
     totalNumber() {
-      let posts = this.posts
-      let totalNumber = posts.length
+      let totalNumber = this.carts.length
       return totalNumber
     },
   },
-  mounted() {
-    this.fetch()
-  },
   methods: {
-    ...mapActions({
-      stateLogout: 'authenticate/logout',
-    }),
     search() {
       this.$router.push({
         path: `/user/${this.user.id}/cart`,
       })
-    },
-    async fetch() {
-      try {
-        await this.$axios.$get(`/api/cart`).then((response) => {
-          this.posts = response.data
-        })
-      } catch (error) {
-        if (error.response.status == '401') {
-          this.stateLogout()
-          this.$router.push('/auth/login')
-        } else if (error.response.status == '404') {
-          this.$router.push('/error/404')
-        } else if (error.response.status == '500') {
-          this.$router.push('/error/500')
-        }
-      }
     },
   },
 }

@@ -159,12 +159,6 @@ export default {
       error: false,
     }
   },
-  computed: {
-    userInfo() {
-      const data = this.$axios.$get(`/api/user/${this.user.id}`)
-      return data
-    },
-  },
   watch: {
     user: {
       // eslint-disable-next-line

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-for="item in posts"
+      v-for="item in carts"
       :key="item.id"
       class="cart-content-products scroll-none"
     >
@@ -55,18 +55,18 @@ export default {
     },
   },
   props: {
-    posts: {
+    carts: {
       type: Array,
       default: () => [],
     },
   },
   computed: {
     totalPrice() {
-      let posts = this.posts
+      let carts = this.carts
       let totalPrice = null
 
-      posts.forEach((post) => {
-        totalPrice += post.price
+      carts.forEach((cart) => {
+        totalPrice += cart.price
       })
 
       return totalPrice
