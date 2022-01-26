@@ -15,16 +15,6 @@
       <div class="nav-right">
         <input type="text" class="search" placeholder="Search..." />
 
-        <template v-if="$store.state.authenticate.authenticated">
-          <form @submit.prevent="create">
-            <ReButton class="ReButton re-button-small no-shadow">
-              <button class="re-button-primary-border bg-secondary">
-                コースの作成
-              </button>
-            </ReButton>
-          </form>
-        </template>
-
         <!-- お気に入り -->
         <Like />
 
@@ -39,13 +29,10 @@
 </template>
 
 <script>
-import { create } from '@/mixins/posts/create'
-//
 import Cart from '@/components/layout/header/components/Cart'
 import Logo from '@/components/layout/header/components/Logo'
 import Like from '@/components/layout/header/components/Like'
 import UserDropdown from '@/components/layout/header/components/UserDropdown'
-import ReButton from '@/components/atoms/ReButton'
 
 export default {
   components: {
@@ -53,9 +40,7 @@ export default {
     Logo,
     Like,
     UserDropdown,
-    ReButton,
   },
-  mixins: [create],
 }
 </script>
 <style lang="scss" scoped>

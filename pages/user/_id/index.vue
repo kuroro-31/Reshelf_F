@@ -1,67 +1,123 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
-    <div class="w-full flex max-w-screen-lg mx-auto container scroll-none">
-      <div class="lg:flex w-full">
-        <div class="main-body scroll-none">
-          <div class="main-body-content">
-            <h2 class="text-3xl font-bold mb-4">プロフィール編集</h2>
-            <!-- <all-item :items="items" /> -->
-            <div class="flex">
-              <nav
-                class="card side-nav lg:max-h-(screen-22) pin-22 scroll-none mb-auto"
-              >
-                <SidebarSetting class="divider" />
-              </nav>
-              <div class="">
-                <form @submit.prevent="update">
-                  <!-- タイトル -->
-                  <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                    名前
-                  </label>
-                  <input
-                    v-model.trim="user.name"
-                    type="text"
-                    autofocus
-                    class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-                  />
-                </form>
-                <div
-                  v-for="item in items"
-                  :key="item.id"
-                  class="card item flex-col"
-                >
-                  <nuxt-link
-                    :to="{ name: 'item-id', params: { id: item.id } }"
-                    class="relative flex flex-col items-start"
-                  >
-                    <button class="relative">
-                      <img
-                        v-if="item.src"
-                        :src="item.src"
-                        alt="text image"
-                        class="img"
-                        :value="item"
-                      />
-                      <img
-                        v-else
-                        src="@/assets/images/noimage.svg"
-                        alt="cource image"
-                        class="img"
-                        :value="item"
-                      />
-                    </button>
-                    <span v-if="item.title" class="title">
-                      {{ item.title }}
-                    </span>
-                    <span v-else class="title">無題のタイトル</span>
-
-                    <div class="">{{ item.user_id }}</div>
-                    <!-- <div class="">{{ item.user.name }}</div> -->
-                    <!-- <ArticleLike /> -->
-                  </nuxt-link>
+    <div class="box-header">
+      <div class="max-w-screen-lg w-full mx-auto">
+        <div class="">
+          <div class="user-cover">
+            <!-- <img
+                  v-if="item.src"
+                  :src="item.src"
+                  alt="text image"
+                  class="img"
+                  :value="item"
+                /> -->
+            <img src="@/assets/images/noimage.svg" alt="user cover image" />
+          </div>
+          <div class="user-profile">
+            <div class="flex items-start">
+              <img src="@/assets/images/noimage.svg" alt="user cover image" />
+              <div class="w-full flex items-center justify-between">
+                <div class="user-name">
+                  <div class="font-bold text-5xl">{{ user.name }}</div>
+                  <div>チャンネル登録者数 3.2万人</div>
                 </div>
+                <template v-if="user">
+                  <nuxt-link to="/item/new" class="mt-4">
+                    <form @submit.prevent="create">
+                      <ReButton class="re-button re-button-small no-shadow">
+                        <button class="re-button-primary bg-primary">
+                          コースの作成
+                        </button>
+                      </ReButton>
+                    </form>
+                  </nuxt-link>
+                </template>
+                <template v-else>
+                  <ReButton class="re-button w-auto">
+                    <button
+                      type="submit"
+                      class="re-button-primary-filled bg-primary"
+                    >
+                      チャンネル登録
+                    </button>
+                  </ReButton>
+                </template>
               </div>
+            </div>
+            <div class="item">
+              <nuxt-link class="item-link" to="/user/learning">
+                受講中のコース
+              </nuxt-link>
+              <nuxt-link class="item-link" to="/user/like">
+                お気に入り
+              </nuxt-link>
+              <nuxt-link class="item-link" to="/user/bought">
+                購入履歴
+              </nuxt-link>
+              <nuxt-link class="item-link" to="/teacher/course">
+                あなたのコース
+              </nuxt-link>
+              <nuxt-link class="item-link" to="/user/setting">
+                アカウント設定
+              </nuxt-link>
+            </div>
+            <!-- <SidebarSetting class="divider" /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box-content">
+      <div class="max-w-screen-lg w-full mx-auto">
+        <!-- <all-item :items="items" /> -->
+        <div class="w-full flex">
+          <div class="">
+            <form @submit.prevent="update">
+              <!-- タイトル -->
+              <label class="font-semibold text-xs text-gray-600 pb-1 block">
+                名前
+              </label>
+              <input
+                v-model.trim="user.name"
+                type="text"
+                autofocus
+                class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+              />
+            </form>
+            <div
+              v-for="item in items"
+              :key="item.id"
+              class="card item flex-col"
+            >
+              <nuxt-link
+                :to="{ name: 'item-id', params: { id: item.id } }"
+                class="relative flex flex-col items-start"
+              >
+                <button class="relative">
+                  <img
+                    v-if="item.src"
+                    :src="item.src"
+                    alt="text image"
+                    class="img"
+                    :value="item"
+                  />
+                  <img
+                    v-else
+                    src="@/assets/images/noimage.svg"
+                    alt="cource image"
+                    class="img"
+                    :value="item"
+                  />
+                </button>
+                <span v-if="item.title" class="title">
+                  {{ item.title }}
+                </span>
+                <span v-else class="title">無題のタイトル</span>
+
+                <div class="">{{ item.user_id }}</div>
+                <!-- <div class="">{{ item.user.name }}</div> -->
+                <!-- <ArticleLike /> -->
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -75,18 +131,22 @@
   </div>
 </template>
 <script>
+import { create } from '@/mixins/posts/create'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
-import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
+// import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
 import Toast from '@/components/atoms//Toast'
+import ReButton from '@/components/atoms/ReButton'
 
 // atoms
 export default {
   components: {
     HeaderNav,
-    SidebarSetting,
+    // SidebarSetting,
     Toast,
+    ReButton,
   },
+  mixins: [create],
   async asyncData({ $axios, params }) {
     const { data } = await $axios.$get(`/api/users/${params}`)
     return { items: data }
@@ -110,7 +170,7 @@ export default {
       // eslint-disable-next-line
       handler: _.debounce(function () {
         this.update()
-      }, 2000), // 更新されたら保存処理
+      }, 2000),
       deep: true,
     },
   },
@@ -132,7 +192,38 @@ export default {
 .side-nav {
   @apply hidden w-full lg:block my-6 lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;
 }
-.main-body {
-  @apply w-full lg:w-3/4 xl:w-4/5 p-6 lg:pl-10;
+.box-header {
+  @apply w-full flex justify-center mx-auto;
+  background: #fff;
+}
+.box-content {
+  @apply w-full flex justify-center mx-auto;
+}
+.user {
+  &-cover {
+    img {
+      @screen lg {
+        @apply object-cover;
+        min-width: 1024px;
+        max-width: 1024px;
+        min-height: 400px;
+        max-height: 400px;
+      }
+    }
+  }
+  &-profile {
+    @apply w-full flex flex-col justify-between p-6 relative;
+    // height: 200px;
+    img {
+      @apply object-cover rounded-full z-10;
+      margin-top: -70px;
+      width: 190px;
+      height: 190px;
+      border: 5px solid #fff;
+    }
+  }
+  &-name {
+    @apply flex flex-col items-start px-8;
+  }
 }
 </style>
