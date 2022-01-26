@@ -24,7 +24,8 @@ const actions = {
         .then((response) => {
           commit('setCart', response.data)
 
-          const userState = {
+          // user情報をもってくる
+          let userState = {
             user: rootState.authenticate.user,
           }
           this.$router.push({
@@ -41,15 +42,13 @@ const actions = {
         commit('setCart', response.data)
       })
     } catch (error) {
-      if (error.response.status == '401') {
-        this.stateLogout()
-        this.$router.push('/auth/login')
-      } else if (error.response.status == '404') {
-        this.$router.push('/error/404')
-      } else if (error.response.status == '500') {
-        this.$router.push('/error/500')
-      }
+      console.log(error)
     }
+  },
+  clear({ commit }, data) {
+    this.$axios.$post(`/api/cart/delete/${data.id}`).then((response) => {
+      commit('setCart', response.data)
+    })
   },
 }
 

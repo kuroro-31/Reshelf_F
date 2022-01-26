@@ -99,15 +99,11 @@ export default {
   },
   methods: {
     deleteCart(item) {
-      this.$axios
-        .$post(`/api/cart/delete/${item.id}`)
-        .then((response) => {
-          alert('カートの商品を削除しました')
-          location.reload()
-        })
-        .catch(({ response: { data } }) => {
-          console.log(data.message)
-        })
+      try {
+        this.$store.dispatch('cart/clear', item)
+      } catch (error) {
+        console.log(error)
+      }
     },
   },
 }
