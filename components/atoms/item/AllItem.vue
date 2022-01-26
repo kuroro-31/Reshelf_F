@@ -108,7 +108,7 @@ export default {
           post_id: item.id,
         })
         .then(() => {
-          this.$nuxt.$router.push({
+          this.$router.push({
             path: `/user/${this.user.id}/cart`,
           })
         })

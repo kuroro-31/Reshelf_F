@@ -114,9 +114,6 @@
   </div>
 </template>
 <script>
-import { login } from '@/mixins/auth/login.js'
-import { logout } from '@/mixins/auth/logout.js'
-
 import ReModal from '@/components/atoms/ReModal'
 import ReButton from '@/components/atoms/ReButton.vue'
 import FacebookLogin from '@/components/atoms/auth/FacebookLogin'
@@ -126,12 +123,6 @@ export default {
     ReModal,
     FacebookLogin,
   },
-  mixins: [login, logout],
-  // async asyncData({ $axios }) {
-  //   const { data } = await $axios.$get(`/api/user`)
-  //   console.log(data)
-  //   return { user: data }
-  // },
   data() {
     return {
       modal: false,
@@ -147,7 +138,14 @@ export default {
   },
   methods: {
     mypage() {
-      this.$nuxt.$router.push(`/user/${this.user.id}`)
+      this.$router.push(`/user/${this.user.id}`)
+    },
+    async login() {
+      await this.$store.dispatch('authenticate/login', this.auth)
+      this.modal = false
+    },
+    async logout() {
+      await this.$store.dispatch('authenticate/logout')
     },
   },
 }

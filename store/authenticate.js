@@ -1,41 +1,65 @@
+const state = {
+  authenticated: false,
+  user: null,
+}
+
+const getters = {
+  authenticated(state) {
+    return state.authenticated
+  },
+  user(state) {
+    return state.user
+  },
+}
+
+const mutations = {
+  setAuthed(state, value) {
+    state.authenticated = value
+  },
+  setUser(state, value) {
+    state.user = value
+  },
+}
+
+const actions = {
+  async register({ commit }, data) {
+    const response = await this.$axios.post('/api/auth/register', data)
+    commit('setUser', response.data)
+  },
+  async login({ commit }, data) {
+    try {
+      await this.$axios.$post('/api/auth/login', data).then(() => {
+        this.$axios.$get('/api/user').then(({ data }) => {
+          commit('setUser', data)
+          commit('setAuthed', true)
+          this.$router.back()
+        })
+      })
+    } catch (error) {
+      commit('setUser', {})
+      commit('setAuthed', false)
+
+      if (error.response.status == '401') {
+        this.logout()
+        this.$router.push('/auth/login')
+      } else if (error.response.status == '404') {
+        this.$router.push('/error/404')
+      } else if (error.response.status == '500') {
+        this.$router.push('/error/500')
+      }
+    }
+  },
+  logout({ commit }) {
+    commit('setUser', {})
+    commit('setAuthed', false)
+    this.$router.push({ path: '/' })
+  },
+}
+
 export default {
   namespaced: true,
-  state: {
-    authenticated: false,
-    user: {},
-  },
-  getters: {
-    authenticated(state) {
-      return state.authenticated
-    },
-    user(state) {
-      return state.user
-    },
-  },
-  mutations: {
-    SET_AUTHENTICATED(state, value) {
-      state.authenticated = value
-    },
-    SET_USER(state, value) {
-      state.user = value
-    },
-  },
-  actions: {
-    async login({ commit }) {
-      return this.$axios
-        .$get('/api/user')
-        .then(({ data }) => {
-          commit('SET_USER', data)
-          commit('SET_AUTHENTICATED', true)
-        })
-        .catch(({ response: { data } }) => {
-          commit('SET_USER', {})
-          commit('SET_AUTHENTICATED', false)
-        })
-    },
-    logout({ commit }) {
-      commit('SET_USER', {})
-      commit('SET_AUTHENTICATED', false)
-    },
-  },
+  state,
+  getters,
+  mutations,
+  actions,
 }

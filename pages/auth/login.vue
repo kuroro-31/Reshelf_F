@@ -172,14 +172,11 @@
   </div>
 </template>
 <script>
-import { login } from '@/mixins/auth/login.js'
 import ReButton from '@/components/atoms/ReButton.vue'
-
 export default {
   components: {
     ReButton,
   },
-  mixins: [login],
   data: () => ({
     auth: {
       email: '',
@@ -187,6 +184,14 @@ export default {
     },
     errors: {},
   }),
+  methods: {
+    async login() {
+      await this.$store.dispatch('authenticate/login', this.auth)
+      this.modal = false
+      this.$router.back()
+      // this.$router.push({ path: '/' })
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>

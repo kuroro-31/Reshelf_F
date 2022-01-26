@@ -86,7 +86,7 @@ export default {
       stateLogout: 'authenticate/logout',
     }),
     search() {
-      this.$nuxt.$router.push({
+      this.$router.push({
         path: `/user/${this.user.id}/cart`,
       })
     },
@@ -98,11 +98,11 @@ export default {
       } catch (error) {
         if (error.response.status == '401') {
           this.stateLogout()
-          this.$nuxt.$router.push('/auth/login')
+          this.$router.push('/auth/login')
         } else if (error.response.status == '404') {
-          this.$nuxt.$router.push('/error/404')
+          this.$router.push('/error/404')
         } else if (error.response.status == '500') {
-          this.$nuxt.$router.push('/error/500')
+          this.$router.push('/error/500')
         }
       }
     },
