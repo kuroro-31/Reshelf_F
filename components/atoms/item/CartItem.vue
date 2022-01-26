@@ -63,11 +63,18 @@
         </nuxt-link>
       </div>
     </div>
+    <Toast :success="success" :error="error">
+      <template v-if="success">カートから商品を削除しました。</template>
+      <template v-else>カートから商品を削除できませんでした。</template>
+    </Toast>
   </div>
 </template>
 <script>
+import Toast from '@/components/atoms//Toast'
 export default {
-  components: {},
+  components: {
+    Toast,
+  },
   filters: {
     numberFormat: function (num) {
       return num.toLocaleString()
@@ -95,14 +102,20 @@ export default {
       visible: false,
       isLiked: false,
       isDisabled: false,
+      success: false,
+      error: false,
     }
   },
   methods: {
     deleteCart(item) {
       try {
         this.$store.dispatch('cart/clear', item)
+        this.success = true
+        setTimeout(() => (this.success = false), 5000)
       } catch (error) {
         console.log(error)
+        this.error = true
+        setTimeout(() => (this.error = false), 5000)
       }
     },
   },
