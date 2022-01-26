@@ -119,9 +119,9 @@ a.nuxt-link-active {
   border-radius: 6px;
 }
 /* exact link will show the primary color for only the exact matching link */
-a.nuxt-link-exact-active {
-  color: #00c58e;
-}
+// a.nuxt-link-exact-active {
+//   color: #00c58e;
+// }
 
 .badge {
   @apply absolute;

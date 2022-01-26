@@ -14,7 +14,6 @@
                 <SidebarSetting class="divider" />
               </nav>
               <div class="">
-                <div class="">{{ alert }}</div>
                 <form @submit.prevent="update">
                   <!-- タイトル -->
                   <label class="font-semibold text-xs text-gray-600 pb-1 block">
@@ -58,8 +57,8 @@
                     <span v-else class="title">無題のタイトル</span>
 
                     <div class="">{{ item.user_id }}</div>
-                    <div class="">{{ item.user.name }}</div>
-                    <ArticleLike />
+                    <!-- <div class="">{{ item.user.name }}</div> -->
+                    <!-- <ArticleLike /> -->
                   </nuxt-link>
                 </div>
               </div>
@@ -69,38 +68,62 @@
       </div>
     </div>
     <!-- <FooterNav /> -->
-    <!-- <Toast :success="success" :error="error" /> -->
+    <Toast :success="success" :error="error">
+      <template v-if="success">ユーザー情報を更新しました。</template>
+      <template v-else>ユーザー情報の更新に失敗しました。</template>
+    </Toast>
   </div>
 </template>
 <script>
-import { update } from '@/mixins/user/update.js'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
-// import Toast from '@/components/atoms//Toast'
+import Toast from '@/components/atoms//Toast'
 
 // atoms
 export default {
   components: {
     HeaderNav,
     SidebarSetting,
-    // Toast,
+    Toast,
   },
-  mixins: [update],
-  // async asyncData({ $axios, params }) {
-  //   const { data } = await $axios.$get(`/api/users/${params}`)
-  //   return { items: data }
-  // },
+  async asyncData({ $axios, params }) {
+    const { data } = await $axios.$get(`/api/users/${params}`)
+    return { items: data }
+  },
   data() {
     return {
       items: [],
       user: this.$store.getters['authenticate/user'],
+      success: false,
+      error: false,
     }
   },
   computed: {
     userInfo() {
       const data = this.$axios.$get(`/api/user/${this.user.id}`)
       return data
+    },
+  },
+  watch: {
+    user: {
+      // eslint-disable-next-line
+      handler: _.debounce(function () {
+        this.update()
+      }, 2000), // 更新されたら保存処理
+      deep: true,
+    },
+  },
+  methods: {
+    update() {
+      try {
+        this.$store.dispatch('authenticate/update', this.user)
+        this.success = true
+        setTimeout(() => (this.success = false), 5000)
+      } catch (error) {
+        this.error = true
+        setTimeout(() => (this.error = false), 5000)
+      }
     },
   },
 }

@@ -8,35 +8,57 @@
             : 'reshelf-toast-leave-to reshelf-toast-leave-active',
         ]"
       >
-        <div v-if="error" class="reshelf-toast reshelf-toast-danger">
-          <div class="mr-4">エラーが起きました。</div>
-          <div class="mr-4 cursor-pointer" @click="show = !show">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </div>
-        </div>
-        <div v-if="success" class="reshelf-toast">
-          <video id="check" autoplay loop muted playsinline>
+        <div class="reshelf-toast">
+          <!-- <video id="check" autoplay loop muted playsinline>
             <source src="@/assets/images/animation/checkanimation.mp4" />
-          </video>
-          <div class="mr-4">新しいコースを作成しました。</div>
-          <div class="mr-4 cursor-pointer" @click="show = !show">
+          </video> -->
+          <div
+            class="check"
+            :class="{
+              'check-success': show && success,
+              'check-danger': show && error,
+            }"
+          >
+            <template v-if="success">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </template>
+            <template v-else>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </template>
+          </div>
+          <div class="mr-4 font-bold">
+            <slot></slot>
+          </div>
+          <div class="cursor-pointer" @click="show = !show">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
-              fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
@@ -68,17 +90,17 @@ export default {
       show: true,
     }
   },
-  mounted() {
-    let vid = document.getElementById('check')
-    if (vid) {
-      vid.playbackRate = 0.5
-    }
-  },
+  // mounted() {
+  //   let vid = document.getElementById('check')
+  //   if (vid) {
+  //     vid.playbackRate = 0.5
+  //   }
+  // },
 }
 </script>
 <style lang="scss" scoped>
 .reshelf-toast {
-  @apply rounded ml-auto shadow-lg flex items-center w-full justify-between;
+  @apply rounded ml-auto shadow-lg flex items-center w-full justify-between p-6;
   max-width: 400px;
   background: #fff;
   video {
@@ -107,10 +129,10 @@ export default {
 /* leave transitions */
 .reshelf-toast-leave-to {
   opacity: 0;
-  transform: translateY(60px);
+  transform: translateY(60px) !important;
 }
 .reshelf-toast-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.3s ease !important;
 }
 
 @keyframes wobble {
@@ -141,6 +163,21 @@ export default {
   100% {
     transform: translateY(0px);
     opacity: 1;
+  }
+}
+
+.check {
+  @apply rounded-full flex items-center justify-center;
+  width: 30px;
+  height: 30px;
+  &-success {
+    background: #02875a;
+  }
+  &-danger {
+    background: #de290e;
+  }
+  svg {
+    color: #fff;
   }
 }
 </style>

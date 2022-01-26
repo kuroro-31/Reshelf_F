@@ -22,13 +22,13 @@ const mutations = {
 }
 
 const actions = {
-  async register({ commit }, data) {
-    const response = await this.$axios.post('/api/auth/register', data)
+  register({ commit }, data) {
+    const response = this.$axios.post('/api/auth/register', data)
     commit('setUser', response.data)
   },
-  async login({ commit }, data) {
+  login({ commit }, data) {
     try {
-      await this.$axios.$post('/api/auth/login', data).then(() => {
+      this.$axios.$post('/api/auth/login', data).then(() => {
         this.$axios.$get('/api/user').then(({ data }) => {
           commit('setUser', data)
           commit('setAuthed', true)
@@ -50,9 +50,20 @@ const actions = {
     }
   },
   logout({ commit }) {
-    commit('setUser', {})
+    this.$axios.$post('/api/logout')
+    commit('setUser', null)
     commit('setAuthed', false)
     this.$router.push({ path: '/' })
+  },
+  update({ commit }, data) {
+    this.$axios
+      .$patch(`/api/users/${data.id}`, data)
+      .then(({ data }) => {
+        commit('setUser', data)
+      })
+      .catch(({ response: { data } }) => {
+        console.log(data.message)
+      })
   },
 }
 
