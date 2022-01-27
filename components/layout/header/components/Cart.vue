@@ -87,20 +87,23 @@ export default {
       })
     },
     async fetch() {
-      try {
-        await this.$axios.$get(`/api/cart`).then((response) => {
+      await this.$axios
+        .$get(`/api/cart`)
+        .then((response) => {
           this.carts = response.data
         })
-      } catch (error) {
-        if (error.response.status == '401') {
-          this.stateLogout()
-          this.$router.push('/auth/login')
-        } else if (error.response.status == '404') {
-          this.$router.push('/error/404')
-        } else if (error.response.status == '500') {
-          this.$router.push('/error/500')
-        }
-      }
+        .catch((error) => {
+          if (error.response.status == '401') {
+            this.$store.dispatch('authenticate/logout')
+            this.$router.push('/auth/login')
+          } else if (error.response.status == '404') {
+            this.$router.push('/error/404')
+          } else if (error.response.status == '500') {
+            this.$router.push('/error/500')
+          } else {
+            console.log(error)
+          }
+        })
     },
   },
 }

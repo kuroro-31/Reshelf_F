@@ -22,13 +22,20 @@ const mutations = {
 }
 
 const actions = {
-  register({ commit }, data) {
-    const response = this.$axios.post('/api/auth/register', data)
-    commit('setUser', response.data)
+  async register({ commit }, data) {
+    await this.$axios
+      .$post('/api/auth/register', data)
+      .then((response) => {
+        commit('setUser', response)
+      })
+      .catch((error) => {
+        alert(error)
+      })
   },
-  login({ commit }, data) {
-    try {
-      this.$axios.$post('/api/auth/login', data).then(() => {
+  async login({ commit }, data) {
+    await this.$axios
+      .$post('/api/auth/login', data)
+      .then(() => {
         this.$axios.$get('/api/user').then(({ data }) => {
           commit('setUser', data)
           commit('setAuthed', true)
@@ -36,28 +43,29 @@ const actions = {
           this.$router.push({ path: '/' })
         })
       })
-    } catch (error) {
-      commit('setUser', {})
-      commit('setAuthed', false)
+      .catch((error) => {
+        commit('setUser', {})
+        commit('setAuthed', false)
+        console.log(error)
 
-      if (error.response.status == '401') {
-        this.logout()
-        this.$router.push('/auth/login')
-      } else if (error.response.status == '404') {
-        this.$router.push('/error/404')
-      } else if (error.response.status == '500') {
-        this.$router.push('/error/500')
-      }
-    }
+        if (error.response.status == '401') {
+          this.logout()
+          this.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$router.push('/error/500')
+        }
+      })
   },
-  logout({ commit }) {
-    // this.$axios.$post('/api/logout')
+  async logout({ commit }) {
+    await this.$axios.$post('/api/logout')
     commit('setUser', null)
     commit('setAuthed', false)
     this.$router.push({ path: '/' })
   },
-  update({ commit }, data) {
-    this.$axios
+  async update({ commit }, data) {
+    await this.$axios
       .$patch(`/api/users/${data.id}`, data)
       .then(({ data }) => {
         commit('setUser', data)
