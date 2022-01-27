@@ -31,7 +31,9 @@
               </span>
             </div> -->
             <div class="menu-me">
-              <span class="menu-me-link" @click="mypage">マイページ</span>
+              <nuxt-link class="menu-me-link" :to="`/user/${user.id}`">
+                マイページ
+              </nuxt-link>
             </div>
             <div class="menu-me">
               <div class="">
@@ -137,9 +139,6 @@ export default {
     }
   },
   methods: {
-    mypage() {
-      this.$router.push(`/user/${this.user.id}`)
-    },
     async login() {
       await this.$store.dispatch('authenticate/login', this.auth)
       this.modal = false

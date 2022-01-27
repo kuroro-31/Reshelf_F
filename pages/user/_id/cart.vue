@@ -34,7 +34,7 @@ export default {
     CartItem,
     HeaderNav,
   },
-  middleware: 'authenticated',
+  middleware: 'checkAuth',
   async asyncData({ $axios }) {
     const { data } = await $axios.$get(`/api/cart`)
     console.log(data)
