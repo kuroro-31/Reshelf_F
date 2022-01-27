@@ -58,9 +58,7 @@
             </div>
           </div>
         </div>
-        <nuxt-link to="/">
-          <span>ショッピングを続ける</span>
-        </nuxt-link>
+        <nuxt-link to="/">ショッピングを続ける</nuxt-link>
       </div>
     </div>
     <Toast :success="success" :error="error">
@@ -148,7 +146,7 @@ export default {
 }
 .right-box {
   @apply flex items-center justify-center pl-4;
-  color: var(--sub-color);
+  // color: var(--sub-color);
   border-left: 1px var(--thin-gray) solid;
   &-sale {
     @apply text-xl font-bold;
@@ -156,7 +154,7 @@ export default {
   }
   &-normal {
     @apply line-through ml-2;
-    color: var(--sub-color);
+    // color: var(--sub-color);
   }
 }
 .visible {
