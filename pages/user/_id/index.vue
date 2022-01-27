@@ -24,13 +24,16 @@
                 </div>
                 <template v-if="user">
                   <nuxt-link to="/item/new" class="mt-4">
-                    <form @submit.prevent="create">
-                      <ReButton class="re-button re-button-small no-shadow">
-                        <button class="re-button-primary bg-primary">
-                          コースの作成
-                        </button>
-                      </ReButton>
-                    </form>
+                    <!-- <form @submit.prevent="create"> -->
+                    <ReButton class="re-button re-button-small no-shadow">
+                      <button
+                        class="re-button-primary bg-primary"
+                        @click="create"
+                      >
+                        コースの作成
+                      </button>
+                    </ReButton>
+                    <!-- </form> -->
                   </nuxt-link>
                 </template>
                 <template v-else>

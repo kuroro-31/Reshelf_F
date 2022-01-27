@@ -48,6 +48,7 @@ const actions = {
   clear({ commit }, data) {
     this.$axios.$post(`/api/cart/delete/${data.id}`).then((response) => {
       commit('setCart', response.data)
+      location.reload()
     })
   },
 }

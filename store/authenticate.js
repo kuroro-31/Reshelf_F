@@ -32,7 +32,8 @@ const actions = {
         this.$axios.$get('/api/user').then(({ data }) => {
           commit('setUser', data)
           commit('setAuthed', true)
-          this.$router.back()
+          // this.$router.back()
+          this.$router.push({ path: '/' })
         })
       })
     } catch (error) {
@@ -50,7 +51,7 @@ const actions = {
     }
   },
   logout({ commit }) {
-    this.$axios.$post('/api/logout')
+    // this.$axios.$post('/api/logout')
     commit('setUser', null)
     commit('setAuthed', false)
     this.$router.push({ path: '/' })

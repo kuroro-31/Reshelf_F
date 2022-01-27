@@ -65,26 +65,42 @@ export default {
   data() {
     return {
       show: false,
-      // carts: '',
+      carts: '',
       user: this.$store.getters['authenticate/user'],
     }
   },
   computed: {
     // カート商品の数
-    carts() {
-      let carts = this.$store.dispatch('cart/get')
-      return carts
-    },
     totalNumber() {
-      let totalNumber = this.carts.length
+      let carts = this.carts
+      let totalNumber = carts.length
       return totalNumber
     },
+  },
+  mounted() {
+    this.fetch()
   },
   methods: {
     search() {
       this.$router.push({
         path: `/user/${this.user.id}/cart`,
       })
+    },
+    async fetch() {
+      try {
+        await this.$axios.$get(`/api/cart`).then((response) => {
+          this.carts = response.data
+        })
+      } catch (error) {
+        if (error.response.status == '401') {
+          this.stateLogout()
+          this.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$router.push('/error/500')
+        }
+      }
     },
   },
 }
