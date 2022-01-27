@@ -92,14 +92,13 @@ export default {
   },
   computed: {
     // 自分以外のコースを表示
-    notOwnItems() {
-      let posts = this.items
-      let notOwnItems = posts.filter((post) => {
-        return this.user.id != post.user_id
-      })
-
-      return notOwnItems
-    },
+    // notOwnItems() {
+    //   let posts = this.items
+    //   let notOwnItems = posts.filter((post) => {
+    //     return this.user.id != post.user_id
+    //   })
+    //   return notOwnItems
+    // },
   },
   methods: {
     addCart(item) {
