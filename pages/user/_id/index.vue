@@ -15,7 +15,7 @@
             <img src="@/assets/images/noimage.svg" alt="user cover image" />
           </div>
           <div class="user-profile">
-            <div class="flex items-start">
+            <div class="flex items-start divider">
               <img src="@/assets/images/noimage.svg" alt="user cover image" />
               <div class="w-full flex items-center justify-between">
                 <div class="user-name">
@@ -45,7 +45,14 @@
                 </template>
               </div>
             </div>
+
             <div class="item">
+              <nuxt-link
+                class="item-link"
+                :to="{ name: 'user', params: { userId: 123 } }"
+              >
+                マイコース
+              </nuxt-link>
               <nuxt-link class="item-link" to="/user/learning">
                 受講中のコース
               </nuxt-link>
@@ -55,11 +62,9 @@
               <nuxt-link class="item-link" to="/user/bought">
                 購入履歴
               </nuxt-link>
-              <nuxt-link class="item-link" to="/teacher/course">
-                あなたのコース
-              </nuxt-link>
+              <nuxt-link class="item-link" to="/user/setting">設定</nuxt-link>
               <nuxt-link class="item-link" to="/user/setting">
-                アカウント設定
+                願いの泉
               </nuxt-link>
             </div>
             <!-- <SidebarSetting class="divider" /> -->
@@ -147,6 +152,7 @@ export default {
     ReButton,
   },
   mixins: [create],
+  middleware: 'checkAuth',
   async asyncData({ $axios, params }) {
     const { data } = await $axios.$get(`/api/users/${params}`)
     return { items: data }
@@ -200,8 +206,8 @@ export default {
         @apply object-cover;
         min-width: 1024px;
         max-width: 1024px;
-        min-height: 400px;
-        max-height: 400px;
+        min-height: 300px;
+        max-height: 300px;
       }
     }
   }
@@ -218,6 +224,16 @@ export default {
   }
   &-name {
     @apply flex flex-col items-start px-8;
+  }
+}
+.item {
+  // @apply flex justify-start;
+  &-link {
+    @apply w-full py-3 px-2 text-center;
+    &:hover {
+      @apply rounded-lg;
+      background: #f0f2f6;
+    }
   }
 }
 </style>
