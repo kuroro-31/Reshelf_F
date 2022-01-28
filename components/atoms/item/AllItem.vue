@@ -66,11 +66,13 @@ export default {
       type: Array,
       default: () => [],
     },
+    user: {
+      type: Object,
+      default: () => {},
+    },
   },
   data() {
-    return {
-      user: this.$store.getters['user/user'],
-    }
+    return {}
   },
   computed: {
     // 自分以外のコースを表示
@@ -84,7 +86,7 @@ export default {
   },
   methods: {
     addCart(item) {
-      this.$store.dispatch('cart/add', item)
+      this.$store.dispatch('shop/cart/add', item)
     },
   },
 }

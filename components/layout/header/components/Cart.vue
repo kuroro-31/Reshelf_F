@@ -1,6 +1,6 @@
 <template>
   <button
-    v-if="$store.state.user.auth"
+    v-if="user"
     class="dropdown"
     @mouseover="show = true"
     @mouseleave="show = false"
@@ -35,7 +35,7 @@
             <!-- <p class="cart-content-name">My Cart</p>
             <p class="divider"></p> -->
 
-            <CartItem :carts="carts" />
+            <CartItem :items="items" />
 
             <re-button class="pt-4 re-button re-button-small">
               <button
@@ -62,11 +62,16 @@ export default {
     ReButton,
     BadgeNormal,
   },
+  props: {
+    user: {
+      type: Object,
+      default: () => {},
+    },
+  },
   data() {
     return {
       show: false,
       carts: '',
-      user: this.$store.getters['user/user'],
     }
   },
   computed: {

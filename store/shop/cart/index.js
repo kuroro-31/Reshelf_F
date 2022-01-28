@@ -4,7 +4,7 @@ import mutations from './mutations'
 import state from './state'
 
 export default {
-  name: 'shop/cart',
+  name: 'cart',
   namespaced: true,
   state: state,
   getters: getters,

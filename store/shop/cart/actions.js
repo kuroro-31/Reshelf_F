@@ -26,7 +26,17 @@ export default {
         commit('setCart', response.data)
       })
       .catch((error) => {
-        console.log(error)
+        if (error.response.status == '401') {
+          this.$store.dispatch('user/logout')
+          this.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$router.push('/error/500')
+        } else {
+          alert(error)
+          console.log(error)
+        }
       })
   },
   async clear({ commit }, data) {

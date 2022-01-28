@@ -28,7 +28,7 @@ package:
 eslint:
 	npm i eslint babel-eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue eslint-loader prettier -D
 cache:
-	rm -rf node_modules/.cache/hard-source/
+	rm -rf node_modules/.cache/hard-source/ && rm -r .nuxt
 ana:
 	npx nuxt build --a
 git-clean:

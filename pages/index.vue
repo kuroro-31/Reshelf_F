@@ -1,7 +1,7 @@
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">
-    <HeaderNav />
-    <div v-if="!$store.state.user.auth" class="hero">
+    <HeaderNav :user="user" />
+    <div v-if="user.id != null" class="hero">
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
@@ -277,7 +277,7 @@
         <div class="main-body min-h-(screen-16)">
           <!-- <hero-item /> -->
           <template v-if="loading">読み込み中です</template>
-          <all-item v-else :items="items" />
+          <all-item v-else :user="user" :items="items" />
 
           <!-- <FooterNav /> -->
         </div>
@@ -306,16 +306,41 @@ export default {
     // HeroItem,
     ReButton,
   },
-  async asyncData({ $axios }) {
-    const { data } = await $axios.$get(`/api/posts`)
-    return { items: data }
-  },
   data() {
     return {
       loading: false,
       items: [],
-      user: this.$store.getters['user/user'],
+      user: {},
+      // user: this.$store.getters['user/user'],
     }
+  },
+  mounted() {
+    this.getUser()
+    this.getItems()
+  },
+  methods: {
+    getUser() {
+      this.$axios
+        .$get(`/api/user`)
+        .then((response) => {
+          this.user = response.data
+        })
+        .catch((error) => {
+          alert(error)
+          console.log(error)
+        })
+    },
+    getItems() {
+      this.$axios
+        .$get(`/api/posts`)
+        .then((response) => {
+          this.items = response.data
+        })
+        .catch((error) => {
+          alert(error)
+          console.log(error)
+        })
+    },
   },
 }
 </script>

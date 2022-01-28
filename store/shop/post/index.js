@@ -1,20 +1,20 @@
-const state = {
+export const state = () => ({
   user: null,
-}
+})
 
-const getters = {
+export const getters = {
   user(state) {
     return state.user
   },
 }
 
-const mutations = {
+export const mutations = {
   setUser(state, value) {
     state.user = value
   },
 }
 
-const actions = {
+export const actions = {
   async register({ commit }, data) {
     await this.$axios
       .$post('/api/auth/register', data)
@@ -67,12 +67,12 @@ const actions = {
         console.log(data.message)
       })
   },
+
+  nuxtServerInit({ commit }) {
+    commit('setUser')
+  },
 }
 
 export default {
   namespaced: true,
-  state,
-  getters,
-  mutations,
-  actions,
 }

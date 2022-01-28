@@ -38,6 +38,12 @@ export default {
     Like,
     UserDropdown,
   },
+  props: {
+    user: {
+      type: Object,
+      default: () => {},
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
