@@ -51,7 +51,6 @@ Thumbs.db
 .history/*
 .nuxt/*
 .eslintcache
-package-lock.json
 .vscode/settings.json
 .env
 .node-version
