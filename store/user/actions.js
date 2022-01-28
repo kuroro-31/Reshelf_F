@@ -51,4 +51,8 @@ export default {
         console.log(data.message)
       })
   },
+  nuxtClientInit({ commit }, context) {
+    commit('setAuthed')
+    commit('setUser')
+  },
 }
