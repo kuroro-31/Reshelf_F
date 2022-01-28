@@ -78,7 +78,9 @@ export default {
     },
   },
   mounted() {
-    this.fetch()
+    if (this.user) {
+      this.fetch()
+    }
   },
   methods: {
     search() {
@@ -101,6 +103,7 @@ export default {
           } else if (error.response.status == '500') {
             this.$router.push('/error/500')
           } else {
+            alert(error)
             console.log(error)
           }
         })
