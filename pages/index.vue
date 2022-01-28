@@ -1,8 +1,8 @@
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
-
-    <div v-if="!$store.state.authenticate.authenticated" class="hero">
+    <!-- v-if="!$store.state.authenticate.authenticated" -->
+    <div class="hero">
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
@@ -315,7 +315,7 @@ export default {
     return {
       loading: false,
       items: [],
-      user: this.$store.getters['authenticate/user'],
+      user: this.$store.getters['user/user'],
     }
   },
 }

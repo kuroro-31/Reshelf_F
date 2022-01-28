@@ -1,10 +1,6 @@
 <template>
-  <button
-    v-if="$store.state.authenticate.authenticated"
-    class="dropdown"
-    @mouseover="show = true"
-    @mouseleave="show = false"
-  >
+  <!-- v-if="$store.state.authenticate.authenticated" -->
+  <button class="dropdown" @mouseover="show = true" @mouseleave="show = false">
     <div class="relative">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +62,7 @@ export default {
     return {
       show: false,
       carts: '',
-      user: this.$store.getters['authenticate/user'],
+      user: this.$store.getters['user/user'],
     }
   },
   computed: {

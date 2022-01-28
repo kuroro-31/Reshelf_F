@@ -1,20 +1,4 @@
-const state = {
-  cart: null,
-}
-
-const getters = {
-  cart(state) {
-    return state.cart
-  },
-}
-
-const mutations = {
-  setCart(state, value) {
-    state.cart = value
-  },
-}
-
-const actions = {
+export default {
   async add({ rootState, commit }, data) {
     await this.$axios
       .$post('/api/cart/add', {
@@ -56,12 +40,4 @@ const actions = {
         console.log(error)
       })
   },
-}
-
-export default {
-  namespaced: true,
-  state,
-  getters,
-  mutations,
-  actions,
 }

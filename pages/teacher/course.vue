@@ -34,7 +34,7 @@ export default {
     SidebarSetting,
     // AllItem,
   },
-  middleware: 'authenticated',
+  // middleware: 'authenticated',
   data() {
     return {}
   },

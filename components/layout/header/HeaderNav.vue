@@ -1,8 +1,6 @@
 <template>
-  <header
-    class="nav"
-    :class="{ active: $store.state.authenticate.authenticated }"
-  >
+  <!-- :class="{ active: $store.state.authenticate.authenticated }" -->
+  <header class="nav">
     <div class="nav-content">
       <div class="nav-left py-2.5">
         <Logo />

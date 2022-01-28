@@ -30,7 +30,7 @@ export default {
   },
   data() {
     return {
-      // user: this.$store.getters['authenticate/user'],
+      // user: this.$store.getters['user/user'],
     }
   },
 }

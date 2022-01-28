@@ -1,15 +1,13 @@
 import Vuex from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
-import authenticate from './authenticate'
-import cart from './cart'
-import post from './post'
+import cart from './shop/cart'
+import cource from './shop/cource'
+import user from './user'
 
 const store = () => {
   return new Vuex.Store({
-    plugins: [createPersistedState()],
     modules: {
-      authenticate,
-      post,
+      user,
+      cource,
       cart,
     },
   })

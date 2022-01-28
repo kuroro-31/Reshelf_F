@@ -4,10 +4,8 @@
     <ReModal v-if="delete_modal" @close="delete_modal = !delete_modal">
       <template slot="header">コースの削除</template>
       <div class="w-full flex flex-col justify-center">
-        <div
-          v-if="$store.state.authenticate.authenticated"
-          class="main-body-content py-0"
-        >
+        <!-- v-if="$store.state.authenticate.authenticated" -->
+        <div class="main-body-content py-0">
           <form @click="destroy(item.id)">
             <ReButton class="re-button">
               <button type="submit" class="re-button-primary bg-danger ml-auto">
@@ -16,7 +14,7 @@
             </ReButton>
           </form>
         </div>
-        <div v-else>ログインしてください</div>
+        <!-- <div v-else>ログインしてください</div> -->
       </div>
     </ReModal>
   </div>

@@ -2,6 +2,10 @@ import webpack from 'webpack'
 require('dotenv').config()
 const { ROOT_URL } = process.env
 export default {
+  mode: 'universal',
+  ssr: true,
+  components: true,
+
   env: {
     ROOT_URL,
   },
@@ -46,9 +50,6 @@ export default {
     script: [],
   },
 
-  ssr: false, // SPA
-  components: true,
-
   loading: {
     color: '#16afaf',
     height: '5px',
@@ -91,6 +92,7 @@ export default {
     '@/plugins/i18n.js',
     '@/plugins/vue-highlightjs',
     '@/plugins/util/moneyFormat.js',
+    { src: '@/plugins/persistedstate.js', mode: 'client' },
   ],
 
   vendor: [

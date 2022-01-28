@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
-      <div class="items">
+      <div v-if="item" class="items">
         <div v-for="item in items" :key="item.id" class="card item flex-col">
           <nuxt-link
             :to="{ name: 'item-id', params: { id: item.id } }"
@@ -79,7 +79,7 @@ export default {
   // },
   data() {
     return {
-      user: this.$store.getters['authenticate/user'],
+      user: this.$store.getters['user/user'],
     }
   },
   computed: {

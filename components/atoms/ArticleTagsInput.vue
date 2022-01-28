@@ -1,21 +1,21 @@
 <template>
   <div>
     <input type="hidden" :value="tagsJson" @change="sendTags" />
-    <vue-tags-input
+    <!-- <vue-tags-input
       v-model="tag"
       :tags="tags"
       :add-on-key="[13, 32]"
       :all-tags="filteredItems"
       @tags-changed="(newTags) => (tags = newTags)"
-    />
+    /> -->
   </div>
 </template>
 
 <script>
-import VueTagsInput from '@johmun/vue-tags-input'
+// import VueTagsInput from '@johmun/vue-tags-input'
 export default {
   components: {
-    VueTagsInput,
+    // VueTagsInput,
   },
   props: {
     autocompleteItems: {

@@ -186,7 +186,7 @@ export default {
   }),
   methods: {
     async login() {
-      await this.$store.dispatch('authenticate/login', this.auth)
+      await this.$store.dispatch('user/login', this.auth)
     },
   },
 }

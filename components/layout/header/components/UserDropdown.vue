@@ -1,7 +1,7 @@
 <template>
   <div>
+    <!-- v-if="$store.state.authenticate.authenticated" -->
     <button
-      v-if="$store.state.authenticate.authenticated"
       class="dropdown"
       @mouseover="dropdown = true"
       @mouseleave="dropdown = false"
@@ -50,7 +50,8 @@
       </transition>
     </button>
 
-    <div v-if="!$store.state.authenticate.authenticated" class="py-2.5 ml-4">
+    <!-- v-if="!$store.state.authenticate.authenticated" -->
+    <div class="py-2.5 ml-4">
       <ReButton class="re-button">
         <button
           class="re-button-primary-filled bg-primary"
@@ -135,16 +136,16 @@ export default {
       },
       errors: {},
       alert: '',
-      user: this.$store.getters['authenticate/user'],
+      user: this.$store.getters['user/user'],
     }
   },
   methods: {
     async login() {
-      await this.$store.dispatch('authenticate/login', this.auth)
+      await this.$store.dispatch('user/login', this.auth)
       this.modal = false
     },
     async logout() {
-      await this.$store.dispatch('authenticate/logout')
+      await this.$store.dispatch('user/logout', this.auth)
     },
   },
 }

@@ -1,10 +1,6 @@
 <template>
-  <button
-    v-if="$store.state.authenticate.authenticated"
-    class="dropdown"
-    @mouseover="like = true"
-    @mouseleave="like = false"
-  >
+  <!-- v-if="$store.state.authenticate.authenticated" -->
+  <button class="dropdown" @mouseover="like = true" @mouseleave="like = false">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-6 w-6"

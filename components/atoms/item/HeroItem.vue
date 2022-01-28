@@ -1,5 +1,6 @@
 <template>
-  <div v-if="!$store.state.authenticate.authenticated" class="hero">
+  <!-- v-if="!$store.state.authenticate.authenticated" -->
+  <div class="hero">
     <div class="flex lg:w-1/2 justify-center h-full items-center">
       <div class="flex flex-col">
         <h2 class="title">

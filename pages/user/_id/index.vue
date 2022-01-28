@@ -163,7 +163,7 @@ export default {
   data() {
     return {
       items: [],
-      user: this.$store.getters['authenticate/user'],
+      user: this.$store.getters['user/user'],
       success: false,
       error: false,
     }
