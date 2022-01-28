@@ -1,6 +1,6 @@
 <template>
   <button
-    v-if="user"
+    v-if="user != null"
     class="dropdown"
     @mouseover="like = true"
     @mouseleave="like = false"

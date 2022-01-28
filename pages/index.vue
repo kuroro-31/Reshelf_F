@@ -1,7 +1,7 @@
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav :user="user" />
-    <div v-if="user.id != null" class="hero">
+    <div v-if="user == null" class="hero">
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
@@ -310,26 +310,26 @@ export default {
     return {
       loading: false,
       items: [],
-      user: {},
-      // user: this.$store.getters['user/user'],
+      // user: {},
+      user: this.$store.getters['user/user'],
     }
   },
   mounted() {
-    this.getUser()
+    // this.getUser()
     this.getItems()
   },
   methods: {
-    getUser() {
-      this.$axios
-        .$get(`/api/user`)
-        .then((response) => {
-          this.user = response.data
-        })
-        .catch((error) => {
-          alert(error)
-          console.log(error)
-        })
-    },
+    // getUser() {
+    //   this.$axios
+    //     .$get(`/api/user`)
+    //     .then((response) => {
+    //       this.user = response.data
+    //     })
+    //     .catch((error) => {
+    //       alert(error)
+    //       console.log(error)
+    //     })
+    // },
     getItems() {
       this.$axios
         .$get(`/api/posts`)

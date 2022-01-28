@@ -1,5 +1,5 @@
 <template>
-  <header class="nav" :class="{ active: $store.state.user.auth }">
+  <header class="nav" :class="{ active: user != null }">
     <div class="nav-content">
       <div class="nav-left py-2.5">
         <Logo />
