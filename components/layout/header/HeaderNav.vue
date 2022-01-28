@@ -13,13 +13,13 @@
         <input type="text" class="search" placeholder="Search..." />
 
         <!-- お気に入り -->
-        <Like />
+        <Like :user="user" />
 
         <!-- カート -->
-        <Cart />
+        <Cart :user="user" />
 
         <!-- ユーザードロップダウン -->
-        <UserDropdown />
+        <UserDropdown :user="user" />
       </div>
     </div>
   </header>

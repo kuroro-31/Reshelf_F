@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
-    <HeaderNav />
+    <HeaderNav :user="user" />
     <div class="box-header">
       <div class="max-w-screen-lg w-full mx-auto">
         <div class="">
