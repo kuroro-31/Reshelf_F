@@ -75,14 +75,6 @@ export default {
   components: {
     Toast,
   },
-  filters: {
-    numberFormat: function (num) {
-      return num.toLocaleString()
-    },
-    comma: function (num) {
-      return num.toFixed(1)
-    },
-  },
   props: {
     posts: {
       type: Array,

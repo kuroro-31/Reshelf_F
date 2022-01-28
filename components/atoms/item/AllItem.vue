@@ -69,14 +69,6 @@ export default {
       default: () => [],
     },
   },
-  // filters: {
-  //   numberFormat: function (num) {
-  //     return num.toLocaleString()
-  //   },
-  //   comma: function (num) {
-  //     return num.toFixed(1)
-  //   },
-  // },
   data() {
     return {
       user: this.$store.getters['user/user'],

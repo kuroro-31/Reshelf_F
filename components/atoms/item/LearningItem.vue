@@ -37,14 +37,6 @@
 // import { HeartIcon, ShoppingCartIcon } from 'vue-feather-icons'
 export default {
   components: {},
-  filters: {
-    numberFormat: function (num) {
-      return num.toLocaleString()
-    },
-    comma: function (num) {
-      return num.toFixed(1)
-    },
-  },
   props: {
     items: {
       type: Array,

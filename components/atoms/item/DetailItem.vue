@@ -76,14 +76,6 @@
 </template>
 <script>
 export default {
-  filters: {
-    numberFormat: function (num) {
-      return num.toLocaleString()
-    },
-    comma: function (num) {
-      return num.toFixed(1)
-    },
-  },
   props: {
     item: {
       type: Object,

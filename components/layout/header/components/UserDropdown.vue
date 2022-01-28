@@ -103,14 +103,12 @@
               </button>
             </re-button>
           </form>
-          <div class="divider"></div>
-          <FacebookLogin />
         </div>
         <!-- /default -->
-        <template slot="footer">
+        <!-- <template slot="footer">
           ※
           Reshelfでは、多重アカウントを防止するため、Facebookでのアカウント作成をお願いしています。
-        </template>
+        </template> -->
       </ReModal>
     </div>
   </div>
@@ -118,12 +116,10 @@
 <script>
 import ReModal from '@/components/atoms/ReModal'
 import ReButton from '@/components/atoms/ReButton.vue'
-import FacebookLogin from '@/components/atoms/auth/FacebookLogin'
 export default {
   components: {
     ReButton,
     ReModal,
-    FacebookLogin,
   },
   data() {
     return {

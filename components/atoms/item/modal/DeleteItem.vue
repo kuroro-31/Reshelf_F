@@ -13,7 +13,7 @@
             </ReButton>
           </form>
         </div>
-        <!-- <div v-else>ログインしてください</div> -->
+        <div v-else>ログインしてください</div>
       </div>
     </ReModal>
   </div>

@@ -91,8 +91,11 @@ export default {
   plugins: [
     '@/plugins/i18n.js',
     '@/plugins/vue-highlightjs',
-    '@/plugins/util/moneyFormat.js',
     { src: '@/plugins/persistedstate.js', mode: 'client' },
+    // util
+    '@/plugins/util/comma.js',
+    '@/plugins/util/moneyFormat.js',
+    '@/plugins/util/numberFormat.js',
   ],
 
   vendor: [
