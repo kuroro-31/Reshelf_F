@@ -10,7 +10,7 @@ export const create = {
   },
   methods: {
     ...mapActions({
-      stateLogout: 'authenticate/logout',
+      stateLogout: 'user/logout',
     }),
     async create() {
       try {

@@ -30,7 +30,7 @@ export default {
     SidebarSetting,
     LearningItem,
   },
-  // middleware: 'authenticated',
+  middleware: 'checkAuth',
   data() {
     return {
       items: [

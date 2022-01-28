@@ -31,7 +31,7 @@ export default {
     SidebarDetail,
     DetailItem,
   },
-  // middleware: 'authenticated',
+  middleware: 'checkAuth',
   data() {
     return {
       items: [

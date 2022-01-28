@@ -98,7 +98,7 @@ export default {
     SidebarTac,
     SidebarQa,
   },
-  // middleware: 'authenticated',
+  middleware: 'checkAuth',
   data() {
     return {
       chapter: false,

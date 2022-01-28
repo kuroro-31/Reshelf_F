@@ -163,9 +163,6 @@ export default {
     },
   },
   methods: {
-    // ...mapGetters({
-    //   authenticated: 'authenticate/authenticated',
-    // }),
     onAddNoteCommon(targetList, layer, index) {
       layer = layer || 1
       const note = {

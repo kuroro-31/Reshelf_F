@@ -94,7 +94,7 @@ export default {
         })
         .catch((error) => {
           if (error.response.status == '401') {
-            this.$store.dispatch('authenticate/logout')
+            this.$store.dispatch('user/logout')
             this.$router.push('/auth/login')
           } else if (error.response.status == '404') {
             this.$router.push('/error/404')
