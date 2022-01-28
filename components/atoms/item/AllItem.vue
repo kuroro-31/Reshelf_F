@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
-      <div v-if="item" class="items">
+      <div class="items">
         <div v-for="item in items" :key="item.id" class="card item flex-col">
           <nuxt-link
             :to="{ name: 'item-id', params: { id: item.id } }"
@@ -27,7 +27,7 @@
             <span v-else class="title">無題のタイトル</span>
 
             <div class="">{{ item.user_id }}</div>
-            <div class="">{{ item.user.name }}</div>
+            <!-- <div class="">{{ item[0].user[0].name }}</div> -->
             <ArticleLike />
           </nuxt-link>
 
@@ -42,12 +42,12 @@
             </ReButton>
           </form>
 
-          <div v-if="user.id == item.user_id">
-            <DeleteItem :item="item" />
-            <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
-              編集
-            </nuxt-link>
-          </div>
+          <!-- <div v-if="user.id == item.user_id"> -->
+          <DeleteItem :item="item" />
+          <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
+            編集
+          </nuxt-link>
+          <!-- </div> -->
         </div>
       </div>
     </div>
