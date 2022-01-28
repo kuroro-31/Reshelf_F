@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-- v-if="$store.state.authenticate.authenticated" -->
     <button
+      v-if="$store.state.user.auth"
       class="dropdown"
       @mouseover="dropdown = true"
       @mouseleave="dropdown = false"
@@ -50,8 +50,7 @@
       </transition>
     </button>
 
-    <!-- v-if="!$store.state.authenticate.authenticated" -->
-    <div class="py-2.5 ml-4">
+    <div v-if="!$store.state.user.auth" class="py-2.5 ml-4">
       <ReButton class="re-button">
         <button
           class="re-button-primary-filled bg-primary"

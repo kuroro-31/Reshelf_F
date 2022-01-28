@@ -1,8 +1,7 @@
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
-    <!-- v-if="!$store.state.authenticate.authenticated" -->
-    <div class="hero">
+    <div v-if="!$store.state.user.auth" class="hero">
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">

@@ -1,6 +1,10 @@
 <template>
-  <!-- v-if="$store.state.authenticate.authenticated" -->
-  <button class="dropdown" @mouseover="show = true" @mouseleave="show = false">
+  <button
+    v-if="$store.state.user.auth"
+    class="dropdown"
+    @mouseover="show = true"
+    @mouseleave="show = false"
+  >
     <div class="relative">
       <svg
         xmlns="http://www.w3.org/2000/svg"
