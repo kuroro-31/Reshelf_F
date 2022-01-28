@@ -3,7 +3,7 @@ import cart from './shop/cart'
 import post from './shop/post'
 import user from './user'
 
-const store = () => {
+export const store = () => {
   return new Vuex.Store({
     modules: {
       user,
@@ -12,5 +12,3 @@ const store = () => {
     },
   })
 }
-
-export default store

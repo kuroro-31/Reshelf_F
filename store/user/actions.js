@@ -51,8 +51,13 @@ export default {
         console.log(data.message)
       })
   },
-  nuxtClientInit({ commit }, context) {
+  nuxtServerInit({ commit }) {
     commit('setAuthed')
     commit('setUser')
   },
+  // async nuxtServerInit ({ commit }, { app }) {
+  //   await app.$axios.$get('/user')
+  //     .then(user => commit('auth/setUser', user))
+  //     .catch(() => commit('auth/setUser', null))
+  // }
 }

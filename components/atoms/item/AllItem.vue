@@ -31,16 +31,14 @@
             <ArticleLike />
           </nuxt-link>
 
-          <form @submit.prevent="addCart(item)">
-            <ReButton class="re-button re-button-small">
-              <button
-                type="submit"
-                class="re-button-primary-filled bg-primary w-full"
-              >
-                カートに入れる
-              </button>
-            </ReButton>
-          </form>
+          <ReButton class="re-button re-button-small">
+            <button
+              class="re-button-primary-filled bg-primary w-full"
+              @click="addCart(item)"
+            >
+              カートに入れる
+            </button>
+          </ReButton>
 
           <!-- <div v-if="user.id == item.user_id"> -->
           <DeleteItem :item="item" />

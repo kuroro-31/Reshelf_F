@@ -40,7 +40,7 @@ export default {
         console.log(error)
       })
   },
-  nuxtClientInit({ commit }, context) {
+  nuxtServerInit({ commit }) {
     commit('setCart')
   },
 }
