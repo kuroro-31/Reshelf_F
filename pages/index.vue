@@ -315,6 +315,7 @@ export default {
     return {
       loading: false,
       items: [],
+      user: this.$store.getters['authenticate/user'],
     }
   },
 }

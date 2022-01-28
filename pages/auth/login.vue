@@ -186,27 +186,7 @@ export default {
   }),
   methods: {
     async login() {
-      await this.$axios
-        .$post('/api/auth/login', this.auth)
-        .then(() => {
-          this.$axios.$get(`/api/user`).then(({ data }) => {
-            this.$store.dispatch('authenticate/login', data)
-            this.$router.push({ path: '/' })
-          })
-        })
-        .catch((error) => {
-          if (error.response.status == '401') {
-            this.$store.dispatch('authenticate/logout')
-            this.$router.push('/auth/login')
-          } else if (error.response.status == '404') {
-            this.$router.push('/error/404')
-          } else if (error.response.status == '500') {
-            this.$router.push('/error/500')
-          } else {
-            alert(error)
-            console.log(error)
-          }
-        })
+      await this.$store.dispatch('authenticate/login', this.auth)
     },
   },
 }

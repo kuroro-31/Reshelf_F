@@ -33,10 +33,33 @@ const actions = {
       })
   },
   async login({ commit }, data) {
-    commit('setUser', data)
-    commit('setAuthed', true)
+    await this.$axios
+      .$post('/api/auth/login', data)
+      .then(() => {
+        this.$axios.$get('/api/user').then(({ data }) => {
+          commit('setUser', data)
+          commit('setAuthed', true)
+          // this.$router.back()
+          this.$router.push({ path: '/' })
+        })
+      })
+      .catch((error) => {
+        commit('setUser', {})
+        commit('setAuthed', false)
+        console.log(error)
+
+        if (error.response.status == '401') {
+          this.logout()
+          this.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$router.push('/error/500')
+        }
+      })
   },
   async logout({ commit }) {
+    await this.$axios.$post('/api/logout')
     commit('setUser', null)
     commit('setAuthed', false)
     this.$router.push({ path: '/' })
