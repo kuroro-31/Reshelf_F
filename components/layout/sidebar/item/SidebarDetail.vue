@@ -6,12 +6,12 @@
         <div class="flex items-center mb-4">
           <!-- セール価格 -->
           <span class="sidebar-detail-sale">
-            {{ item.sale_price | moneyFormat }}
+            {{ $moneyFormat(item.sale_price) }}
           </span>
 
           <!-- 定価 -->
           <span class="sidebar-detail-normal">
-            {{ item.normal_price | moneyFormat }}
+            {{ $moneyFormat(item.normal_price) }}
           </span>
         </div>
 

@@ -3,7 +3,7 @@
     <div class="sidebar-search scroll-none">
       <span class="text-xs">合計</span>
       <span class="text-4xl font-bold mb-4 text-black">
-        {{ totalPrice | moneyFormat }}
+        {{ $moneyFormat(totalPrice) }}
       </span>
     </div>
 
@@ -29,16 +29,6 @@
 import ReButton from '@/components/atoms/ReButton'
 
 export default {
-  filters: {
-    moneyFormat(num) {
-      return (
-        '¥' +
-        (num || 0)
-          .toString()
-          .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
-      )
-    },
-  },
   components: {
     ReButton,
   },

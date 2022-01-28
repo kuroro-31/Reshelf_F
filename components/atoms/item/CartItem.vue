@@ -53,7 +53,7 @@
             <div class="flex items-center ml-8">
               <!-- セール価格 -->
               <span class="right-box-sale">
-                {{ item.price | moneyFormat }}
+                {{ $moneyFormat(item.price) }}
               </span>
             </div>
           </div>
@@ -78,14 +78,6 @@ export default {
   filters: {
     numberFormat: function (num) {
       return num.toLocaleString()
-    },
-    moneyFormat(num) {
-      return (
-        '¥' +
-        (num || 0)
-          .toString()
-          .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
-      )
     },
     comma: function (num) {
       return num.toFixed(1)

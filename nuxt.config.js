@@ -87,7 +87,11 @@ export default {
     ],
   },
 
-  plugins: ['~/plugins/i18n.js', '@/plugins/vue-highlightjs'],
+  plugins: [
+    '@/plugins/i18n.js',
+    '@/plugins/vue-highlightjs',
+    '@/plugins/util/moneyFormat.js',
+  ],
 
   vendor: [
     'vue-i18n', // i18n

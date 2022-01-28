@@ -29,7 +29,7 @@
             <p class="cart-content-author">{{ item.name }}</p>
           </div>
           <div class="cart-content-price">
-            {{ item.price | moneyFormat }}
+            {{ $moneyFormat(item.price) }}
           </div>
         </div>
       </div>
@@ -38,22 +38,12 @@
 
     <div class="flex text-lg font-bold">
       <span class="mr-4">合計:</span>
-      <span>{{ totalPrice | moneyFormat }}</span>
+      <span>{{ $moneyFormat(totalPrice) }}</span>
     </div>
   </div>
 </template>
 <script>
 export default {
-  filters: {
-    moneyFormat(num) {
-      return (
-        '¥' +
-        (num || 0)
-          .toString()
-          .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
-      )
-    },
-  },
   props: {
     carts: {
       type: Array,

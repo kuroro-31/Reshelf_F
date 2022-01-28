@@ -36,7 +36,7 @@ const actions = {
     await this.$axios
       .$post('/api/auth/login', data)
       .then(() => {
-        this.$axios.$get('/api/user').then(({ data }) => {
+        this.$axios.$get(`/api/user`).then(({ data }) => {
           commit('setUser', data)
           commit('setAuthed', true)
           // this.$router.back()

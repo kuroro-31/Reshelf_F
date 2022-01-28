@@ -41,14 +41,6 @@ export default {
     numberFormat: function (num) {
       return num.toLocaleString()
     },
-    moneyFormat(num) {
-      return (
-        '¥' +
-        (num || 0)
-          .toString()
-          .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
-      )
-    },
     comma: function (num) {
       return num.toFixed(1)
     },
