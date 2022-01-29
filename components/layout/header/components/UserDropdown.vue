@@ -146,8 +146,8 @@ export default {
   },
   methods: {
     async login() {
-      await this.$store.dispatch('user/login', this.form)
       this.modal = false
+      await this.$store.dispatch('user/login', this.form)
     },
     async logout() {
       await this.$store.dispatch('user/logout', this.auth)
