@@ -92,18 +92,16 @@ export default {
     '@/plugins/i18n.js',
     '@/plugins/vue-highlightjs',
     { src: '@/plugins/persistedstate.js', mode: 'client' },
+    { src: '@/plugins/vuelidate.js', mode: 'client' },
     // mixins
-    // '@/plugins/mixins/user.js',
-    // '@/plugins/mixins/cart.js',
+    '@/plugins/mixins/validation.js',
     // util
     '@/plugins/util/comma.js',
     '@/plugins/util/moneyFormat.js',
     '@/plugins/util/numberFormat.js',
   ],
 
-  vendor: [
-    'vue-i18n', // i18n
-  ],
+  vendor: ['vue-i18n'],
 
   proxy: {
     '/api': {
@@ -147,12 +145,16 @@ export default {
   //   // i18n
   //   routes: ['/', '/ja'],
   // }
+  ngrok: {
+    authtoken: process.env.NGROK_AUTHTOKEN,
+  },
 
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
     '@nuxtjs/color-mode',
+    '@nuxtjs/ngrok',
   ],
   modules: [
     '@nuxtjs/proxy',

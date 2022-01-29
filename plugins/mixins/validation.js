@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 
-const Cart = {
-  install(Vue, options) {
+const Validation = {
+  install(Vue) {
     Vue.mixin({
       computed: {
         ...mapGetters({
-          carts: 'shop/cart/cart',
+          errors: 'validation/errors',
         }),
       },
     })
   },
 }
 
-Vue.use(Cart)
+Vue.use(Validation)
