@@ -30,11 +30,6 @@
     </div>
   </transition>
 </template>
-<script>
-export default {
-  components: {},
-}
-</script>
 <style lang="scss" scoped>
 .modal {
   &.modal-overlay {
@@ -42,7 +37,7 @@ export default {
     align-items: center;
     justify-content: center;
     position: fixed;
-    z-index: 30;
+    z-index: 9999;
     top: 0;
     left: 0;
     width: 100%;
@@ -79,7 +74,7 @@ export default {
 }
 
 .close {
-  @apply absolute p-2 rounded duration-300  shadow-lg;
+  @apply absolute p-2 rounded duration-300 cursor-pointer shadow-lg;
   color: var(--color);
   background-color: var(--bg);
   top: -10px;

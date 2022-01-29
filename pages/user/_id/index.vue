@@ -13,6 +13,59 @@
                   :value="item"
                 /> -->
             <img src="@/assets/images/noimage.svg" alt="user cover image" />
+            <div v-if="isUser" class="user-cover-edit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                />
+              </svg>
+              <span class="ml-2" @click="modal = !modal">
+                プロフィールを編集
+              </span>
+              <ReModal v-if="modal" @close="modal = !modal">
+                <template slot="header">Welcome To Reshelf！</template>
+                <!-- default -->
+                <div class="w-full flex flex-col justify-center">
+                  <form @submit.prevent="login">
+                    <!-- メールアドレス -->
+                    <label
+                      class="font-semibold text-xs text-gray-600 pb-1 block"
+                    >
+                      ニックネーム
+                    </label>
+                    <input
+                      v-model.trim="user.name"
+                      type="text"
+                      placeholder="Enter name"
+                      autofocus
+                      class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+                    />
+                    <!-- <small v-if="errors.email" class="form-text text-danger">
+                      {{ errors.email[0] }}
+                    </small> -->
+
+                    <!-- ログインボタン -->
+                    <re-button class="re-button">
+                      <button
+                        type="submit"
+                        class="re-button-primary-filled bg-primary ml-auto"
+                      >
+                        ログイン
+                      </button>
+                    </re-button>
+                  </form>
+                </div>
+              </ReModal>
+            </div>
           </div>
           <div class="user-profile">
             <div class="flex items-start divider">
@@ -22,30 +75,24 @@
                   <div class="font-bold text-5xl">{{ user.name }}</div>
                   <div>チャンネル登録者数 3.2万人</div>
                 </div>
-                <template v-if="user">
-                  <nuxt-link to="/item/new" class="mt-4">
-                    <!-- <form @submit.prevent="create"> -->
-                    <ReButton class="re-button re-button-small no-shadow">
-                      <button
-                        class="re-button-primary bg-primary"
-                        @click="create"
-                      >
-                        コースの作成
-                      </button>
-                    </ReButton>
-                    <!-- </form> -->
-                  </nuxt-link>
-                </template>
-                <template v-else>
-                  <ReButton class="re-button w-auto">
+                <nuxt-link v-if="isUser" to="/item/new" class="mt-4">
+                  <ReButton class="re-button re-button-small no-shadow">
                     <button
-                      type="submit"
-                      class="re-button-primary-filled bg-primary"
+                      class="re-button-primary bg-primary"
+                      @click="create"
                     >
-                      チャンネル登録
+                      コースの作成
                     </button>
                   </ReButton>
-                </template>
+                </nuxt-link>
+                <ReButton v-else class="re-button w-auto">
+                  <button
+                    type="submit"
+                    class="re-button-primary-filled bg-primary"
+                  >
+                    チャンネル登録
+                  </button>
+                </ReButton>
               </div>
             </div>
 
@@ -131,7 +178,7 @@
         </div>
       </div>
     </div>
-    <!-- <FooterNav /> -->
+    <FooterNav />
     <Toast :success="success" :error="error">
       <template v-if="success">ユーザー情報を更新しました。</template>
       <template v-else>ユーザー情報の更新に失敗しました。</template>
@@ -142,21 +189,26 @@
 import { create } from '@/mixins/posts/create'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
+import FooterNav from '@/components/layout/FooterNav'
 // import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
 import Toast from '@/components/atoms//Toast'
 import ReButton from '@/components/atoms/ReButton'
+import ReModal from '@/components/atoms/ReModal'
 
 // atoms
 export default {
   components: {
     HeaderNav,
+    FooterNav,
     // SidebarSetting,
     Toast,
     ReButton,
+    ReModal,
   },
   mixins: [create],
   data() {
     return {
+      modal: false,
       items: [],
       success: false,
       error: false,
@@ -209,7 +261,18 @@ export default {
 }
 .user {
   &-cover {
+    @apply relative;
+    &-edit {
+      @apply absolute flex items-center rounded py-2 px-4 font-bold cursor-pointer;
+      background: #fff;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      &:hover {
+        background: #f0f2f6;
+      }
+    }
     img {
+      @apply rounded;
       @screen lg {
         @apply object-cover;
         min-width: 1024px;
