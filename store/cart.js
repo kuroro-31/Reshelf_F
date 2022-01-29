@@ -1,56 +1,51 @@
 export const state = () => ({
-  cart: null,
+  carts: [],
 })
 
 export const getters = {
-  cart(state) {
-    return state.cart
+  carts(state) {
+    return state.carts
   },
 }
 
 export const mutations = {
   setCart(state, value) {
-    state.cart = value
+    let array = []
+    array = state.carts.push(value)
+    return array
   },
 }
 
 export const actions = {
   async add({ rootState, commit }, data) {
+    await this.$axios.$post('/api/cart/add', {
+      post_id: data.id,
+    })
+    // .then((response) => {
+    commit('setCart', data)
+    // user情報をもってくる
+    let userState = {
+      user: rootState.user.user,
+    }
+    this.$router.push({
+      path: `/user/${userState.user.id}/cart`,
+    })
+    // })
+    // .catch((error) => {
+    //   alert(error)
+    //   console.log(error)
+    // })
+  },
+  async get({ commit }) {
     await this.$axios
-      .$post('/api/cart/add', {
-        post_id: data.id,
-      })
-      .then((response) => {
-        commit('setCart', response.data)
-
-        // user情報をもってくる
-        // let userState = {
-        //   user: rootState.user.user,
-        // }
-        // this.$router.push({
-        //   path: `/user/${userState.user.id}/cart`,
-        // })
+      .$get(`/api/cart`)
+      .then(({ data }) => {
+        commit('setCart', data)
       })
       .catch((error) => {
         alert(error)
         console.log(error)
       })
-  },
-  async get({ commit }) {
-    const { data } = await this.$axios.$get(`/api/cart`)
-    commit('setCart', data).catch((error) => {
-      alert(error)
-      console.log(error)
-    })
-    // await this.$axios
-    //   .$get(`/api/cart`)
-    //   .then(({ data }) => {
-    //     commit('setCart', data)
-    //   })
-    //   .catch((error) => {
-    //     alert(error)
-    //     console.log(error)
-    //   })
   },
   async clear({ commit }, data) {
     await this.$axios

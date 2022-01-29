@@ -320,7 +320,11 @@ export default {
       return this.$store.getters['user/user']
     },
     carts() {
-      return this.$store.getters['cart/cart']
+      let carts = null
+      if (this.isUser) {
+        carts = this.$store.getters['cart/carts']
+      }
+      return carts
     },
   },
   mounted() {

@@ -141,7 +141,7 @@ export default {
       return this.$store.getters['user/user']
     },
     carts() {
-      return this.$store.getters['cart/cart']
+      return this.$store.getters['cart/carts']
     },
   },
   methods: {

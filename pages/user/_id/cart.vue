@@ -107,7 +107,7 @@ export default {
       return this.$store.getters['user/auth']
     },
     carts() {
-      return this.$store.getters['cart/cart']
+      return this.$store.getters['cart/carts']
     },
     totalPrice() {
       let carts = this.carts
@@ -119,6 +119,9 @@ export default {
 
       return totalPrice
     },
+  },
+  mounted() {
+    console.log(this.carts)
   },
 }
 </script>

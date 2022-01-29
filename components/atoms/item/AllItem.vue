@@ -40,12 +40,16 @@
             </button>
           </ReButton>
 
-          <div v-if="user.id == item.user_id">
-            <DeleteItem :item="item" />
-            <nuxt-link :to="{ name: 'item-edit-id', params: { id: item.id } }">
-              編集
-            </nuxt-link>
-          </div>
+          <template v-if="isUser">
+            <div v-if="user.id == item.user_id">
+              <DeleteItem :item="item" />
+              <nuxt-link
+                :to="{ name: 'item-edit-id', params: { id: item.id } }"
+              >
+                編集
+              </nuxt-link>
+            </div>
+          </template>
         </div>
       </div>
     </div>
@@ -76,6 +80,9 @@ export default {
     //   })
     //   return notOwnItems
     // },
+    isUser() {
+      return this.$store.getters['user/auth']
+    },
     user() {
       return this.$store.getters['user/user']
     },
