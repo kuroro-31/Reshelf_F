@@ -310,9 +310,6 @@ export default {
     return {
       loading: false,
       items: [],
-      // user: {},
-      // user: this.$store.getters['user/user'],
-      // carts: '',
     }
   },
   computed: {
@@ -327,25 +324,9 @@ export default {
     },
   },
   mounted() {
-    // this.getUser()
     this.getItems()
-
-    // if (this.user) {
-    //   this.fetch()
-    // }
   },
   methods: {
-    // getUser() {
-    //   this.$axios
-    //     .$get(`/api/user`)
-    //     .then((response) => {
-    //       this.user = response.data
-    //     })
-    //     .catch((error) => {
-    //       alert(error)
-    //       console.log(error)
-    //     })
-    // },
     async getItems() {
       await this.$axios
         .$get(`/api/posts`)
@@ -357,26 +338,6 @@ export default {
           console.log(error)
         })
     },
-    // async fetch() {
-    //   await this.$axios
-    //     .$get(`/api/cart`)
-    //     .then((response) => {
-    //       this.carts = response.data
-    //     })
-    //     .catch((error) => {
-    //       if (error.response.status == '401') {
-    //         this.$store.dispatch('user/logout')
-    //         this.$router.push('/auth/login')
-    //       } else if (error.response.status == '404') {
-    //         this.$router.push('/error/404')
-    //       } else if (error.response.status == '500') {
-    //         this.$router.push('/error/500')
-    //       } else {
-    //         alert(error)
-    //         console.log(error)
-    //       }
-    //     })
-    // },
   },
 }
 </script>

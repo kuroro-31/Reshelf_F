@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isUser">
+  <div>
     <div
       v-for="item in carts"
       :key="item.id"
@@ -45,9 +45,6 @@
 <script>
 export default {
   computed: {
-    isUser() {
-      return this.$store.getters['user/auth']
-    },
     carts() {
       return this.$store.getters['cart/cart']
     },

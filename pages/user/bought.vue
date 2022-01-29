@@ -16,13 +16,13 @@
         </div>
       </div>
     </div>
-    <!-- <FooterNav /> -->
+    <FooterNav />
   </div>
 </template>
 <script>
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
+import FooterNav from '@/components/layout/FooterNav'
 import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
 // atoms
 // import AllItem from '@/components/atoms/item/AllItem'
@@ -30,7 +30,7 @@ import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
 export default {
   components: {
     HeaderNav,
-    // FooterNav,
+    FooterNav,
     SidebarSetting,
     // AllItem,
   },

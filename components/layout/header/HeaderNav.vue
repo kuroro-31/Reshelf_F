@@ -13,10 +13,10 @@
         <input type="text" class="search" placeholder="Search..." />
 
         <!-- お気に入り -->
-        <Like />
+        <Like v-if="isUser" />
 
         <!-- カート -->
-        <Cart />
+        <Cart v-if="isUser" />
 
         <!-- ユーザードロップダウン -->
         <UserDropdown />

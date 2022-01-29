@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full h-screen mx-auto flex flex-col scroll-none">
+  <div v-if="isUser" class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
     <div class="main scroll-none">
       <span class="title">ショッピングカート</span>
 
-      <div v-if="posts.length > 0" class="lg:flex w-full">
+      <div v-if="carts.length > 0" class="lg:flex w-full">
         <div class="main-body min-h-(screen-16) scroll-none">
-          <CartItem :posts="posts" :total-price="totalPrice" />
+          <CartItem :total-price="totalPrice" />
           <!-- <FooterNav /> -->
         </div>
         <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
@@ -34,14 +34,13 @@ export default {
     HeaderNav,
   },
   middleware: 'checkAuth',
-  async asyncData({ $axios }) {
-    const { data } = await $axios.$get(`/api/cart`)
-    console.log(data)
-    return {
-      posts: data,
-      // totalPrice: data.totalPrice,
-    }
-  },
+  // async asyncData({ $axios }) {
+  //   const { data } = await $axios.$get(`/api/cart`)
+  //   console.log(data)
+  //   return {
+  //     posts: data,
+  //   }
+  // },
   data() {
     return {
       items: [
@@ -100,15 +99,21 @@ export default {
           demo: '#',
         },
       ],
-      posts: '',
+      // posts: '',
     }
   },
   computed: {
+    isUser() {
+      return this.$store.getters['user/auth']
+    },
+    carts() {
+      return this.$store.getters['cart/cart']
+    },
     totalPrice() {
-      let posts = this.posts
+      let carts = this.carts
       let totalPrice = null
 
-      posts.forEach((post) => {
+      carts.forEach((post) => {
         totalPrice += post.price
       })
 

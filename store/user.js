@@ -1,21 +1,8 @@
-// import actions from './actions'
-// import getters from './getters'
-// import mutations from './mutations'
-// import state from './state'
-
-// export default {
-//   name: 'user',
-//   namespaced: true,
-//   state: state,
-//   getters: getters,
-//   mutations: mutations,
-//   actions: actions,
-// }
-
 export const state = () => ({
   auth: false,
   user: null,
 })
+
 export const getters = {
   auth(state) {
     return state.auth
@@ -91,9 +78,4 @@ export const actions = {
     commit('setAuthed')
     commit('setUser')
   },
-  // async nuxtServerInit ({ commit }, { app }) {
-  //   await app.$axios.$get('/user')
-  //     .then(user => commit('auth/setUser', user))
-  //     .catch(() => commit('auth/setUser', null))
-  // }
 }

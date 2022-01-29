@@ -2,7 +2,7 @@
   <div class="w-full flex mx-auto">
     <div class="w-full">
       <div class="items">
-        <div v-for="item in posts" :key="item.id" class="item">
+        <div v-for="item in carts" :key="item.id" class="item">
           <!-- 左サイド -->
           <div class="relative flex flex-col items-start">
             <nuxt-link
@@ -75,12 +75,6 @@ export default {
   components: {
     Toast,
   },
-  props: {
-    posts: {
-      type: Array,
-      default: () => [],
-    },
-  },
   data() {
     return {
       visible: false,
@@ -89,6 +83,11 @@ export default {
       success: false,
       error: false,
     }
+  },
+  computed: {
+    carts() {
+      return this.$store.getters['cart/cart']
+    },
   },
   methods: {
     deleteCart(item) {
