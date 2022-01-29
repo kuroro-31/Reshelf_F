@@ -1,14 +1,34 @@
+// import actions from './actions'
+// import getters from './getters'
+// import mutations from './mutations'
+// import state from './state'
+
+// export default {
+//   name: 'user',
+//   namespaced: true,
+//   state: state,
+//   getters: getters,
+//   mutations: mutations,
+//   actions: actions,
+// }
+
 export const state = () => ({
+  auth: false,
   user: null,
 })
-
 export const getters = {
+  auth(state) {
+    return state.auth
+  },
   user(state) {
     return state.user
   },
 }
 
 export const mutations = {
+  setAuthed(state, value) {
+    state.auth = value
+  },
   setUser(state, value) {
     state.user = value
   },
@@ -55,7 +75,6 @@ export const actions = {
     await this.$axios.$post('/api/logout')
     commit('setUser', null)
     commit('setAuthed', false)
-    this.$router.push({ path: '/' })
   },
   async update({ commit }, data) {
     await this.$axios
@@ -67,12 +86,18 @@ export const actions = {
         console.log(data.message)
       })
   },
-
   nuxtServerInit({ commit }) {
+    commit('setAuthed')
     commit('setUser')
   },
+  // async nuxtServerInit ({ commit }, { app }) {
+  //   await app.$axios.$get('/user')
+  //     .then(user => commit('auth/setUser', user))
+  //     .catch(() => commit('auth/setUser', null))
+  // }
 }
 
 export default {
+  name: 'user',
   namespaced: true,
 }

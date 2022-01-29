@@ -2,8 +2,6 @@ import createPersistedState from 'vuex-persistedstate'
 
 export default ({ store }) => {
   window.onNuxtReady(() => {
-    createPersistedState({
-      key: 'reshelf-app',
-    })(store)
+    createPersistedState()(store)
   })
 }

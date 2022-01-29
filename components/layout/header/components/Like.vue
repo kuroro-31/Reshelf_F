@@ -1,6 +1,6 @@
 <template>
   <button
-    v-if="user != null"
+    v-if="isUser"
     class="dropdown"
     @mouseover="like = true"
     @mouseleave="like = false"
@@ -34,16 +34,15 @@
 </template>
 <script>
 export default {
-  props: {
-    // user: {
-    //   type: Object,
-    //   default: () => {},
-    // },
-  },
   data() {
     return {
       like: false,
     }
+  },
+  computed: {
+    isUser() {
+      return this.$store.getters['user/auth']
+    },
   },
 }
 </script>

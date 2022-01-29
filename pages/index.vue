@@ -1,7 +1,7 @@
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">
-    <HeaderNav :user="user" />
-    <div v-if="user == null" class="hero">
+    <HeaderNav />
+    <div v-if="!isUser" class="hero">
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
@@ -310,13 +310,24 @@ export default {
     return {
       loading: false,
       items: [],
-      user: {},
+      // user: {},
       // user: this.$store.getters['user/user'],
       // carts: '',
     }
   },
+  computed: {
+    isUser() {
+      return this.$store.getters['user/auth']
+    },
+    user() {
+      return this.$store.getters['user/user']
+    },
+    carts() {
+      return this.$store.getters['cart/cart']
+    },
+  },
   mounted() {
-    this.getUser()
+    // this.getUser()
     this.getItems()
 
     // if (this.user) {
@@ -324,17 +335,17 @@ export default {
     // }
   },
   methods: {
-    getUser() {
-      this.$axios
-        .$get(`/api/user`)
-        .then((response) => {
-          this.user = response.data
-        })
-        .catch((error) => {
-          alert(error)
-          console.log(error)
-        })
-    },
+    // getUser() {
+    //   this.$axios
+    //     .$get(`/api/user`)
+    //     .then((response) => {
+    //       this.user = response.data
+    //     })
+    //     .catch((error) => {
+    //       alert(error)
+    //       console.log(error)
+    //     })
+    // },
     async getItems() {
       await this.$axios
         .$get(`/api/posts`)

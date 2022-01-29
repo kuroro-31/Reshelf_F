@@ -1,7 +1,7 @@
 import Vuex from 'vuex'
-import cart from './shop/cart'
+import cart from './cart.js'
 import post from './shop/post'
-import user from './user'
+import user from './user.js'
 
 export const store = () => {
   return new Vuex.Store({

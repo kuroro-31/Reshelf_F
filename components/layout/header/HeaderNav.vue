@@ -1,5 +1,5 @@
 <template>
-  <header class="nav" :class="{ active: user != null }">
+  <header class="nav" :class="{ active: isUser }">
     <div class="nav-content">
       <div class="nav-left py-2.5">
         <Logo />
@@ -38,15 +38,10 @@ export default {
     Like,
     UserDropdown,
   },
-  props: {
-    // user: {
-    //   type: Object,
-    //   default: () => {},
-    // },
-    // carts: {
-    //   type: Object,
-    //   default: () => {},
-    // },
+  computed: {
+    isUser() {
+      return this.$store.getters['user/auth']
+    },
   },
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="isUser">
     <div
       v-for="item in carts"
       :key="item.id"
@@ -44,13 +44,13 @@
 </template>
 <script>
 export default {
-  props: {
-    // carts: {
-    //   type: Array,
-    //   default: () => [],
-    // },
-  },
   computed: {
+    isUser() {
+      return this.$store.getters['user/auth']
+    },
+    carts() {
+      return this.$store.getters['cart/cart']
+    },
     totalPrice() {
       let carts = this.carts
       let totalPrice = null

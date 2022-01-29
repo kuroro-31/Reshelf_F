@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      v-if="user != null"
+      v-if="isUser"
       class="dropdown"
       @mouseover="dropdown = true"
       @mouseleave="dropdown = false"
@@ -50,7 +50,7 @@
       </transition>
     </button>
 
-    <div v-if="user == null" class="py-2.5 ml-4">
+    <div v-if="!isUser" class="py-2.5 ml-4">
       <ReButton class="re-button">
         <button
           class="re-button-primary-filled bg-primary"
@@ -121,12 +121,6 @@ export default {
     ReButton,
     ReModal,
   },
-  props: {
-    // user: {
-    //   type: Object,
-    //   default: () => {},
-    // },
-  },
   data() {
     return {
       modal: false,
@@ -138,6 +132,17 @@ export default {
       errors: {},
       alert: '',
     }
+  },
+  computed: {
+    isUser() {
+      return this.$store.getters['user/auth']
+    },
+    user() {
+      return this.$store.getters['user/user']
+    },
+    carts() {
+      return this.$store.getters['cart/cart']
+    },
   },
   methods: {
     async login() {

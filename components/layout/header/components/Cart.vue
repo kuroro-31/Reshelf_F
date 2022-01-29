@@ -1,6 +1,6 @@
 <template>
   <button
-    v-if="user != null"
+    v-if="isUser"
     class="dropdown"
     @mouseover="show = true"
     @mouseleave="show = false"
@@ -62,30 +62,23 @@ export default {
     ReButton,
     BadgeNormal,
   },
-  props: {
-    // user: {
-    //   type: Object,
-    //   default: () => {},
-    // },
-    // carts: {
-    //   type: Array,
-    //   default: () => [],
-    // },
-  },
   data() {
     return {
       show: false,
     }
   },
   computed: {
+    isUser() {
+      return this.$store.getters['user/auth']
+    },
+  },
+  methods: {
     // カート商品の数
     totalNumber() {
       let carts = this.carts
       let totalNumber = carts.length
       return totalNumber
     },
-  },
-  methods: {
     search() {
       this.$router.push({
         path: `/user/${this.user.id}/cart`,
