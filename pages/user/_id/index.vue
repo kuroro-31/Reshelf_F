@@ -31,38 +31,33 @@
               <span class="ml-2" @click="modal = !modal">
                 プロフィールを編集
               </span>
-              <ReModal v-if="modal" @close="modal = !modal">
-                <template slot="header">Welcome To Reshelf！</template>
+              <ReModal
+                v-if="modal"
+                @close=";(modal = !modal), (loading = !loading)"
+              >
+                <template slot="header">プロフィールの編集</template>
                 <!-- default -->
                 <div class="w-full flex flex-col justify-center">
-                  <form @submit.prevent="login">
-                    <!-- メールアドレス -->
-                    <label
-                      class="font-semibold text-xs text-gray-600 pb-1 block"
-                    >
-                      ニックネーム
-                    </label>
-                    <input
-                      v-model.trim="user.name"
-                      type="text"
-                      placeholder="Enter name"
-                      autofocus
-                      class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-                    />
-                    <!-- <small v-if="errors.email" class="form-text text-danger">
-                      {{ errors.email[0] }}
-                    </small> -->
+                  <!-- タイトル -->
+                  <label class="font-semibold text-xs text-gray-600 pb-1 block">
+                    名前
+                  </label>
+                  <input
+                    v-model.trim="user.name"
+                    type="text"
+                    autofocus
+                    class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+                  />
 
-                    <!-- ログインボタン -->
-                    <re-button class="re-button">
-                      <button
-                        type="submit"
-                        class="re-button-primary-filled bg-primary ml-auto"
-                      >
-                        ログイン
-                      </button>
-                    </re-button>
-                  </form>
+                  <ReButton class="re-button w-auto">
+                    <button
+                      :class="{ button_loading: loading == true }"
+                      class="re-button-primary-filled bg-primary relative"
+                      @click="update, (loading = !loading)"
+                    >
+                      <span class="button_text">保存</span>
+                    </button>
+                  </ReButton>
                 </div>
               </ReModal>
             </div>
@@ -126,54 +121,36 @@
       <div class="max-w-screen-lg w-full mx-auto">
         <!-- <all-item :items="items" /> -->
         <div class="w-full flex">
-          <div class="">
-            <form @submit.prevent="update">
-              <!-- タイトル -->
-              <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                名前
-              </label>
-              <input
-                v-model.trim="user.name"
-                type="text"
-                autofocus
-                class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-              />
-            </form>
-            <div
-              v-for="item in items"
-              :key="item.id"
-              class="card item flex-col"
+          <div v-for="item in items" :key="item.id" class="card item flex-col">
+            <nuxt-link
+              :to="{ name: 'item-id', params: { id: item.id } }"
+              class="relative flex flex-col items-start"
             >
-              <nuxt-link
-                :to="{ name: 'item-id', params: { id: item.id } }"
-                class="relative flex flex-col items-start"
-              >
-                <button class="relative">
-                  <img
-                    v-if="item.src"
-                    :src="item.src"
-                    alt="text image"
-                    class="img"
-                    :value="item"
-                  />
-                  <img
-                    v-else
-                    src="@/assets/images/noimage.svg"
-                    alt="cource image"
-                    class="img"
-                    :value="item"
-                  />
-                </button>
-                <span v-if="item.title" class="title">
-                  {{ item.title }}
-                </span>
-                <span v-else class="title">無題のタイトル</span>
+              <button class="relative">
+                <img
+                  v-if="item.src"
+                  :src="item.src"
+                  alt="text image"
+                  class="img"
+                  :value="item"
+                />
+                <img
+                  v-else
+                  src="@/assets/images/noimage.svg"
+                  alt="cource image"
+                  class="img"
+                  :value="item"
+                />
+              </button>
+              <span v-if="item.title" class="title">
+                {{ item.title }}
+              </span>
+              <span v-else class="title">無題のタイトル</span>
 
-                <div class="">{{ item.user_id }}</div>
-                <!-- <div class="">{{ item.user.name }}</div> -->
-                <!-- <ArticleLike /> -->
-              </nuxt-link>
-            </div>
+              <div class="">{{ item.user_id }}</div>
+              <!-- <div class="">{{ item.user.name }}</div> -->
+              <!-- <ArticleLike /> -->
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -181,7 +158,7 @@
     <FooterNav />
     <Toast :success="success" :error="error">
       <template v-if="success">ユーザー情報を更新しました。</template>
-      <template v-else>ユーザー情報の更新に失敗しました。</template>
+      <template v-else-if="error">ユーザー情報の更新に失敗しました。</template>
     </Toast>
   </div>
 </template>
@@ -208,11 +185,13 @@ export default {
   mixins: [create],
   data() {
     return {
+      loading: false,
       modal: false,
       items: [],
       success: false,
       error: false,
       id: this.$route.params.id,
+      form: [],
     }
   },
   computed: {
@@ -235,15 +214,17 @@ export default {
         this.items = response
       })
     },
-    update() {
-      try {
-        this.$store.dispatch('authenticate/update', this.user)
-        this.success = true
-        setTimeout(() => (this.success = false), 5000)
-      } catch (error) {
-        this.error = true
-        setTimeout(() => (this.error = false), 5000)
-      }
+    async update() {
+      await this.$store
+        .dispatch('user/update', this.user)
+        .then(() => {
+          this.success = true
+          setTimeout(() => (this.success = false), 5000)
+        })
+        .then(() => {
+          this.error = true
+          setTimeout(() => (this.error = false), 5000)
+        })
     },
   },
 }
@@ -305,6 +286,38 @@ export default {
       @apply rounded-lg;
       background: #f0f2f6;
     }
+  }
+}
+.button_loading {
+  &::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 2px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+  }
+  .button_text {
+    @apply duration-200;
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
   }
 }
 </style>
