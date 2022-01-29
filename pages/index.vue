@@ -332,10 +332,12 @@ export default {
   },
   methods: {
     async getItems() {
+      this.loading = true
       await this.$axios
         .$get(`/api/posts`)
         .then((response) => {
           this.items = response.data
+          this.loading = false
         })
         .catch((error) => {
           alert(error)

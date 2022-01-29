@@ -253,13 +253,16 @@ export default {
       }
     }
     img {
-      @apply rounded;
+      @apply rounded object-cover;
       @screen lg {
-        @apply object-cover;
         min-width: 1024px;
         max-width: 1024px;
         min-height: 300px;
         max-height: 300px;
+      }
+      @media screen and (min-width: 1200px) and (max-width: 1440px) {
+        min-height: 220px;
+        max-height: 220px;
       }
     }
   }
@@ -272,6 +275,11 @@ export default {
       width: 190px;
       height: 190px;
       border: 5px solid #fff;
+      // @media screen and (min-width: 1200px) and (max-width: 1440px) {
+      //   margin-top: -100px;
+      //   min-height: 160px;
+      //   max-height: 160px;
+      // }
     }
   }
   &-name {
