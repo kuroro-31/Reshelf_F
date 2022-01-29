@@ -15,8 +15,8 @@
           d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
         />
       </svg>
-      <BadgeNormal v-if="totalNumber > 0" class="badge">
-        {{ totalNumber }}
+      <BadgeNormal v-if="cartNumber > 0" class="badge">
+        {{ cartNumber }}
       </BadgeNormal>
     </div>
     <transition>
@@ -26,7 +26,7 @@
           @mouseover="show = true"
           @mouseleave="show = false"
         >
-          <div v-if="totalNumber > 0" class="cart-content">
+          <div v-if="cartNumber > 0" class="cart-content">
             <!-- <p class="cart-content-name">My Cart</p>
             <p class="divider"></p> -->
 
@@ -66,14 +66,12 @@ export default {
     carts() {
       return this.$store.getters['cart/carts']
     },
+    // カート商品の数
+    cartNumber() {
+      return this.carts.length
+    },
   },
   methods: {
-    // カート商品の数
-    totalNumber() {
-      let carts = this.carts
-      let totalNumber = carts.length
-      return totalNumber
-    },
     search() {
       this.$router.push({
         path: `/user/${this.user.id}/cart`,
