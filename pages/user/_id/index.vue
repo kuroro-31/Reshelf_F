@@ -33,7 +33,7 @@
               </span>
               <ReModal
                 v-if="modal"
-                @close=";(modal = !modal), (loading = !loading)"
+                @close=";(modal = !modal), (loading = false)"
               >
                 <template slot="header">プロフィールの編集</template>
                 <!-- default -->
@@ -53,7 +53,7 @@
                     <button
                       :class="{ button_loading: loading == true }"
                       class="re-button-primary-filled bg-primary relative"
-                      @click="update, (loading = !loading)"
+                      @click="update, (loading = true)"
                     >
                       <span class="button_text">保存</span>
                     </button>
