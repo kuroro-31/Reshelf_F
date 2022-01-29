@@ -155,16 +155,12 @@ export default {
     ReButton,
   },
   mixins: [create],
-  middleware: 'checkAuth',
-  async asyncData({ $axios, params }) {
-    const { data } = await $axios.$get(`/api/users/${params}`)
-    return { items: data }
-  },
   data() {
     return {
       items: [],
       success: false,
       error: false,
+      id: this.$route.params.id,
     }
   },
   computed: {
@@ -178,7 +174,15 @@ export default {
       return this.$store.getters['cart/carts']
     },
   },
+  mounted() {
+    this.getItems()
+  },
   methods: {
+    async getItems() {
+      await this.$axios.$get(`/api/users/${this.id}`).then((response) => {
+        this.items = response
+      })
+    },
     update() {
       try {
         this.$store.dispatch('authenticate/update', this.user)

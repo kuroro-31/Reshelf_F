@@ -12,7 +12,8 @@ export const mutations = {
   setCart(state, value) {
     let array = []
     array = state.carts.push(value)
-    return array
+    const array2 = Array.from(new Set(array))
+    state.carts = array2
   },
 }
 
