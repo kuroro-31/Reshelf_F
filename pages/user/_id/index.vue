@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full h-screen mx-auto flex flex-col scroll-none">
-    <HeaderNav :user="user" />
+  <div v-if="isUser" class="w-full h-screen mx-auto flex flex-col scroll-none">
+    <HeaderNav />
     <div class="box-header">
       <div class="max-w-screen-lg w-full mx-auto">
         <div class="">
@@ -168,13 +168,15 @@ export default {
       error: false,
     }
   },
-  watch: {
-    user: {
-      // eslint-disable-next-line
-      handler: _.debounce(function () {
-        this.update()
-      }, 2000),
-      deep: true,
+  computed: {
+    isUser() {
+      return this.$store.getters['user/auth']
+    },
+    user() {
+      return this.$store.getters['user/user']
+    },
+    carts() {
+      return this.$store.getters['cart/cart']
     },
   },
   methods: {
