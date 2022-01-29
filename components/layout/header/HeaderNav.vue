@@ -16,7 +16,7 @@
         <Like :user="user" />
 
         <!-- カート -->
-        <Cart :user="user" />
+        <Cart :user="user" :carts="carts" />
 
         <!-- ユーザードロップダウン -->
         <UserDropdown :user="user" />
@@ -40,6 +40,10 @@ export default {
   },
   props: {
     user: {
+      type: Object,
+      default: () => {},
+    },
+    carts: {
       type: Object,
       default: () => {},
     },

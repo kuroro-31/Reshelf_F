@@ -1,6 +1,6 @@
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">
-    <HeaderNav :user="user" />
+    <HeaderNav :user="user" :carts="carts" />
     <div v-if="user == null" class="hero">
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
@@ -312,11 +312,16 @@ export default {
       items: [],
       // user: {},
       user: this.$store.getters['user/user'],
+      carts: '',
     }
   },
   mounted() {
     // this.getUser()
     this.getItems()
+
+    if (this.user) {
+      this.fetch()
+    }
   },
   methods: {
     // getUser() {
@@ -330,8 +335,8 @@ export default {
     //       console.log(error)
     //     })
     // },
-    getItems() {
-      this.$axios
+    async getItems() {
+      await this.$axios
         .$get(`/api/posts`)
         .then((response) => {
           this.items = response.data
@@ -339,6 +344,26 @@ export default {
         .catch((error) => {
           alert(error)
           console.log(error)
+        })
+    },
+    async fetch() {
+      await this.$axios
+        .$get(`/api/cart`)
+        .then((response) => {
+          this.carts = response.data
+        })
+        .catch((error) => {
+          if (error.response.status == '401') {
+            this.$store.dispatch('user/logout')
+            this.$router.push('/auth/login')
+          } else if (error.response.status == '404') {
+            this.$router.push('/error/404')
+          } else if (error.response.status == '500') {
+            this.$router.push('/error/500')
+          } else {
+            alert(error)
+            console.log(error)
+          }
         })
     },
   },

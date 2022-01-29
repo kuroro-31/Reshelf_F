@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-for="item in items"
+      v-for="item in carts"
       :key="item.id"
       class="cart-content-products scroll-none"
     >
@@ -45,9 +45,9 @@
 <script>
 export default {
   props: {
-    items: {
-      type: Object,
-      default: () => {},
+    carts: {
+      type: Array,
+      default: () => [],
     },
   },
   computed: {

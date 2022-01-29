@@ -35,7 +35,7 @@
             <!-- <p class="cart-content-name">My Cart</p>
             <p class="divider"></p> -->
 
-            <CartItem :items="items" />
+            <CartItem :carts="carts" />
 
             <re-button class="pt-4 re-button re-button-small">
               <button
@@ -67,11 +67,14 @@ export default {
       type: Object,
       default: () => {},
     },
+    carts: {
+      type: Array,
+      default: () => [],
+    },
   },
   data() {
     return {
       show: false,
-      carts: '',
     }
   },
   computed: {
@@ -82,36 +85,11 @@ export default {
       return totalNumber
     },
   },
-  mounted() {
-    if (this.user) {
-      this.fetch()
-    }
-  },
   methods: {
     search() {
       this.$router.push({
         path: `/user/${this.user.id}/cart`,
       })
-    },
-    async fetch() {
-      await this.$axios
-        .$get(`/api/cart`)
-        .then((response) => {
-          this.carts = response.data
-        })
-        .catch((error) => {
-          if (error.response.status == '401') {
-            this.$store.dispatch('user/logout')
-            this.$router.push('/auth/login')
-          } else if (error.response.status == '404') {
-            this.$router.push('/error/404')
-          } else if (error.response.status == '500') {
-            this.$router.push('/error/500')
-          } else {
-            alert(error)
-            console.log(error)
-          }
-        })
     },
   },
 }
