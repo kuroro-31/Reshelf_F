@@ -69,7 +69,7 @@
               E-mail
             </label>
             <input
-              v-model.trim="auth.email"
+              v-model.trim="form.email"
               type="email"
               placeholder="Enter email"
               autofocus
@@ -84,7 +84,7 @@
               Password
             </label>
             <input
-              v-model.trim="auth.password"
+              v-model.trim="form.password"
               type="password"
               placeholder="Password"
               class="border rounded px-[30px] py-2 mt-1 mb-5 text-xs w-full"
@@ -122,16 +122,16 @@ export default {
     ReModal,
   },
   props: {
-    user: {
-      type: Object,
-      default: () => {},
-    },
+    // user: {
+    //   type: Object,
+    //   default: () => {},
+    // },
   },
   data() {
     return {
       modal: false,
       dropdown: false,
-      auth: {
+      form: {
         email: '',
         password: '',
       },
@@ -141,7 +141,7 @@ export default {
   },
   methods: {
     async login() {
-      await this.$store.dispatch('user/login', this.auth)
+      await this.$store.dispatch('user/login', this.form)
       this.modal = false
     },
     async logout() {

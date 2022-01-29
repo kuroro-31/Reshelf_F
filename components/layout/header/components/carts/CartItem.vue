@@ -45,10 +45,10 @@
 <script>
 export default {
   props: {
-    carts: {
-      type: Array,
-      default: () => [],
-    },
+    // carts: {
+    //   type: Array,
+    //   default: () => [],
+    // },
   },
   computed: {
     totalPrice() {

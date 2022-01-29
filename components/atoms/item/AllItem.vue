@@ -66,10 +66,10 @@ export default {
       type: Array,
       default: () => [],
     },
-    user: {
-      type: Object,
-      default: () => {},
-    },
+    // user: {
+    //   type: Object,
+    //   default: () => {},
+    // },
   },
   data() {
     return {}

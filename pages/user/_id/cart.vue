@@ -27,7 +27,6 @@ import SidebarCart from '@/components/layout/sidebar/item/SidebarCart'
 import CartItem from '@/components/atoms/item/CartItem'
 
 export default {
-  auth: false,
   components: {
     // FooterNav,
     SidebarCart,

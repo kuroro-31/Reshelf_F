@@ -24,7 +24,6 @@ import HeroItem from '@/components/atoms/item/HeroItem'
 import DetailItem from '@/components/atoms/item/DetailItem'
 
 export default {
-  auth: false,
   components: {
     // FooterNav,
     HeroItem,

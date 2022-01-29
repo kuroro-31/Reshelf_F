@@ -35,10 +35,10 @@
 <script>
 export default {
   props: {
-    user: {
-      type: Object,
-      default: () => {},
-    },
+    // user: {
+    //   type: Object,
+    //   default: () => {},
+    // },
   },
   data() {
     return {

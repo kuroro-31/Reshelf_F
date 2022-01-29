@@ -13,13 +13,13 @@
         <input type="text" class="search" placeholder="Search..." />
 
         <!-- お気に入り -->
-        <Like :user="user" />
+        <Like />
 
         <!-- カート -->
-        <Cart :user="user" :carts="carts" />
+        <Cart />
 
         <!-- ユーザードロップダウン -->
-        <UserDropdown :user="user" />
+        <UserDropdown />
       </div>
     </div>
   </header>
@@ -39,14 +39,14 @@ export default {
     UserDropdown,
   },
   props: {
-    user: {
-      type: Object,
-      default: () => {},
-    },
-    carts: {
-      type: Object,
-      default: () => {},
-    },
+    // user: {
+    //   type: Object,
+    //   default: () => {},
+    // },
+    // carts: {
+    //   type: Object,
+    //   default: () => {},
+    // },
   },
 }
 </script>

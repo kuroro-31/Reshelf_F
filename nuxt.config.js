@@ -92,6 +92,9 @@ export default {
     '@/plugins/i18n.js',
     '@/plugins/vue-highlightjs',
     { src: '@/plugins/persistedstate.js', mode: 'client' },
+    // mixins
+    // '@/plugins/mixins/user.js',
+    // '@/plugins/mixins/cart.js',
     // util
     '@/plugins/util/comma.js',
     '@/plugins/util/moneyFormat.js',

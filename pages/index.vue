@@ -1,6 +1,6 @@
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">
-    <HeaderNav :user="user" :carts="carts" />
+    <HeaderNav :user="user" />
     <div v-if="user == null" class="hero">
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
@@ -277,7 +277,7 @@
         <div class="main-body min-h-(screen-16)">
           <!-- <hero-item /> -->
           <template v-if="loading">読み込み中です</template>
-          <all-item v-else :user="user" :items="items" />
+          <all-item v-else :items="items" />
 
           <!-- <FooterNav /> -->
         </div>
@@ -310,31 +310,31 @@ export default {
     return {
       loading: false,
       items: [],
-      // user: {},
-      user: this.$store.getters['user/user'],
-      carts: '',
+      user: {},
+      // user: this.$store.getters['user/user'],
+      // carts: '',
     }
   },
   mounted() {
-    // this.getUser()
+    this.getUser()
     this.getItems()
 
-    if (this.user) {
-      this.fetch()
-    }
+    // if (this.user) {
+    //   this.fetch()
+    // }
   },
   methods: {
-    // getUser() {
-    //   this.$axios
-    //     .$get(`/api/user`)
-    //     .then((response) => {
-    //       this.user = response.data
-    //     })
-    //     .catch((error) => {
-    //       alert(error)
-    //       console.log(error)
-    //     })
-    // },
+    getUser() {
+      this.$axios
+        .$get(`/api/user`)
+        .then((response) => {
+          this.user = response.data
+        })
+        .catch((error) => {
+          alert(error)
+          console.log(error)
+        })
+    },
     async getItems() {
       await this.$axios
         .$get(`/api/posts`)
@@ -346,26 +346,26 @@ export default {
           console.log(error)
         })
     },
-    async fetch() {
-      await this.$axios
-        .$get(`/api/cart`)
-        .then((response) => {
-          this.carts = response.data
-        })
-        .catch((error) => {
-          if (error.response.status == '401') {
-            this.$store.dispatch('user/logout')
-            this.$router.push('/auth/login')
-          } else if (error.response.status == '404') {
-            this.$router.push('/error/404')
-          } else if (error.response.status == '500') {
-            this.$router.push('/error/500')
-          } else {
-            alert(error)
-            console.log(error)
-          }
-        })
-    },
+    // async fetch() {
+    //   await this.$axios
+    //     .$get(`/api/cart`)
+    //     .then((response) => {
+    //       this.carts = response.data
+    //     })
+    //     .catch((error) => {
+    //       if (error.response.status == '401') {
+    //         this.$store.dispatch('user/logout')
+    //         this.$router.push('/auth/login')
+    //       } else if (error.response.status == '404') {
+    //         this.$router.push('/error/404')
+    //       } else if (error.response.status == '500') {
+    //         this.$router.push('/error/500')
+    //       } else {
+    //         alert(error)
+    //         console.log(error)
+    //       }
+    //     })
+    // },
   },
 }
 </script>

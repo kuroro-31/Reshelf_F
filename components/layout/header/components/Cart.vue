@@ -35,7 +35,7 @@
             <!-- <p class="cart-content-name">My Cart</p>
             <p class="divider"></p> -->
 
-            <CartItem :carts="carts" />
+            <CartItem />
 
             <re-button class="pt-4 re-button re-button-small">
               <button
@@ -63,14 +63,14 @@ export default {
     BadgeNormal,
   },
   props: {
-    user: {
-      type: Object,
-      default: () => {},
-    },
-    carts: {
-      type: Array,
-      default: () => [],
-    },
+    // user: {
+    //   type: Object,
+    //   default: () => {},
+    // },
+    // carts: {
+    //   type: Array,
+    //   default: () => [],
+    // },
   },
   data() {
     return {
