@@ -31,7 +31,10 @@
             <ArticleLike />
           </nuxt-link>
 
-          <ReButton class="re-button re-button-small">
+          <ReButton
+            v-if="user.id != item.user_id"
+            class="re-button re-button-small"
+          >
             <button
               class="re-button-primary-filled bg-primary w-full"
               @click="addCart(item)"
