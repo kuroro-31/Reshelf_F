@@ -83,8 +83,3 @@ export const actions = {
     commit('setCart')
   },
 }
-
-export default {
-  name: 'user',
-  namespaced: true,
-}

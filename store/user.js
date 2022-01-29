@@ -75,6 +75,7 @@ export const actions = {
     await this.$axios.$post('/api/logout')
     commit('setUser', null)
     commit('setAuthed', false)
+    this.$router.push({ path: '/' })
   },
   async update({ commit }, data) {
     await this.$axios
@@ -95,9 +96,4 @@ export const actions = {
   //     .then(user => commit('auth/setUser', user))
   //     .catch(() => commit('auth/setUser', null))
   // }
-}
-
-export default {
-  name: 'user',
-  namespaced: true,
 }

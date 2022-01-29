@@ -1,14 +1,20 @@
 import Vuex from 'vuex'
-import cart from './cart.js'
-import post from './post.js'
-import user from './user.js'
 
 export const store = () => {
   return new Vuex.Store({
     modules: {
-      user,
-      post,
-      cart,
+      user: {
+        name: 'user',
+        namespaced: true,
+      },
+      post: {
+        name: 'post',
+        namespaced: true,
+      },
+      cart: {
+        name: 'cart',
+        namespaced: true,
+      },
     },
   })
 }

@@ -19,8 +19,3 @@ export const actions = {
     commit('setPost')
   },
 }
-
-export default {
-  name: 'post',
-  namespaced: true,
-}
