@@ -133,7 +133,6 @@ export default {
     return {
       // update_error: false,
       // update_success: false,
-      errors: {},
       alert: '',
       content: [],
       allTagNames: [
