@@ -145,15 +145,18 @@ export default {
   //   // i18n
   //   routes: ['/', '/ja'],
   // }
+
   ngrok: {
     authtoken: process.env.NGROK_AUTHTOKEN,
+    addr: 3000,
+    region: 'jp',
   },
 
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
-    '@nuxtjs/color-mode',
+    // '@nuxtjs/color-mode',
     '@nuxtjs/ngrok',
   ],
   modules: [
