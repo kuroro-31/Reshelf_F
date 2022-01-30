@@ -11,7 +11,11 @@ export const getters = {
 export const mutations = {
   setCart(state, value) {
     let array = []
-    array = state.carts.push(value)
+
+    if (value != null) {
+      array = state.carts.push(value)
+    }
+
     const array2 = Array.from(new Set(array))
     state.carts = array2
   },
@@ -48,11 +52,20 @@ export const actions = {
         console.log(error)
       })
   },
-  async clear({ commit }, data) {
+  async clear({ commit, state }, data) {
     await this.$axios
       .$post(`/api/cart/delete/${data.id}`)
       .then(() => {
         commit('setCart', null)
+
+        let stateCarts = state.carts
+        let newCart = stateCarts.filter((stateCart) => {
+          if (stateCart.id != data.id) {
+            return stateCart
+          }
+        })
+        commit('setCart', newCart)
+        // commit('setCart', null)
         // location.reload()
       })
       .catch((error) => {
