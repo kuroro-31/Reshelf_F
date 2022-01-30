@@ -34,7 +34,7 @@ export default {
     CartItem,
     HeaderNav,
   },
-  middleware: 'checkAuth',
+  // middleware: 'checkAuth',
   computed: {
     ...mapGetters({
       isUser: 'user/auth',

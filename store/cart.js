@@ -58,13 +58,13 @@ export const actions = {
       .then(() => {
         commit('setCart', null)
 
-        let stateCarts = state.carts
-        let newCart = stateCarts.filter((stateCart) => {
-          if (stateCart.id != data.id) {
-            return stateCart
-          }
-        })
-        commit('setCart', newCart)
+        // let stateCarts = state.carts
+        // let newCart = stateCarts.filter((stateCart) => {
+        //   if (stateCart.id != data.id) {
+        //     return stateCart
+        //   }
+        // })
+        // commit('setCart', newCart)
         // commit('setCart', null)
         // location.reload()
       })

@@ -62,7 +62,7 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import DeleteItem from '@/components/atoms/item/modal/DeleteItem'
 import ArticleLike from '@/components/atoms/ArticleLike'
 import ReButton from '@/components/atoms/ReButton'
@@ -88,6 +88,9 @@ export default {
     this.getItems()
   },
   methods: {
+    // ...mapActions({
+    //   addCart: 'cart/add',
+    // }),
     async getItems() {
       this.loading = true
       await this.$axios

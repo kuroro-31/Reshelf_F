@@ -12,7 +12,7 @@
         <button
           type="submit"
           class="re-button-primary bg-primary w-full"
-          @click="$router.push('/user/learning')"
+          @click="checkout"
         >
           <!-- Search -->
           購入する
@@ -42,6 +42,11 @@ export default {
     return {
       isDisabled: false,
     }
+  },
+  methods: {
+    checkout(products) {
+      this.$store.dispatch('cart/checkout', products)
+    },
   },
 }
 </script>
