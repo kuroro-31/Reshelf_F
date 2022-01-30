@@ -121,7 +121,11 @@
       <div class="max-w-screen-lg w-full mx-auto">
         <!-- <all-item :items="items" /> -->
         <div class="w-full flex">
-          <div v-for="item in items" :key="item.id" class="card item flex-col">
+          <div
+            v-for="item in ownPosts"
+            :key="item.id"
+            class="card item flex-col"
+          >
             <nuxt-link
               :to="{ name: 'item-id', params: { id: item.id } }"
               class="relative flex flex-col items-start"
@@ -155,7 +159,7 @@
         </div>
       </div>
     </div>
-    <FooterNav />
+    <!-- <FooterNav /> -->
     <Toast :success="success" :error="error">
       <template v-if="success">ユーザー情報を更新しました。</template>
       <template v-else-if="error">ユーザー情報の更新に失敗しました。</template>
@@ -166,7 +170,7 @@
 import { create } from '@/mixins/posts/create'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
-import FooterNav from '@/components/layout/FooterNav'
+// import FooterNav from '@/components/layout/FooterNav'
 // import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
 import Toast from '@/components/atoms//Toast'
 import ReButton from '@/components/atoms/ReButton'
@@ -176,7 +180,7 @@ import ReModal from '@/components/atoms/ReModal'
 export default {
   components: {
     HeaderNav,
-    FooterNav,
+    // FooterNav,
     // SidebarSetting,
     Toast,
     ReButton,
@@ -204,15 +208,30 @@ export default {
     carts() {
       return this.$store.getters['cart/carts']
     },
+    ownPosts() {
+      let posts = this.items
+      let ownPosts = posts.filter((post) => {
+        return this.user.id == post.user_id
+      })
+      return ownPosts
+    },
   },
   mounted() {
     this.getItems()
   },
   methods: {
     async getItems() {
-      await this.$axios.$get(`/api/users/${this.id}`).then((response) => {
-        this.items = response
-      })
+      this.loading = true
+      await this.$axios
+        .$get(`/api/posts`)
+        .then((response) => {
+          this.items = response.data
+          this.loading = false
+        })
+        .catch((error) => {
+          alert(error)
+          console.log(error)
+        })
     },
     async update() {
       await this.$store
