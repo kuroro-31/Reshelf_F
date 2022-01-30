@@ -10,7 +10,7 @@ export default {
     ROOT_URL,
   },
   head: {
-    title: 'Reshelf | プログラミングのオンライン学習マーケットプレイス',
+    title: 'Reshelf | プログラミングのレパートリーを増やすマーケットプレイス',
     htmlAttrs: {
       lang: 'ja',
       prefix: 'og: http://ogp.me/ns#',
@@ -22,7 +22,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Reshelfは、プログラミングのオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。',
+          'Reshelfは、講師が成果物を作って学ぶチュートリアルを販売し、購入した受講生がプログラミングのレパートリーを増やしていくことを目的としたマーケットプレイスです。',
       },
       { hid: 'og:site_name', property: 'og:site_name', content: 'Reshelf' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
@@ -30,13 +30,14 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'Reshelf | プログラミングのオンライン学習マーケットプレイス',
+        content:
+          'Reshelf | プログラミングのレパートリーを増やすマーケットプレイス',
       },
       {
         hid: 'og:description',
         property: 'og:description',
         content:
-          'Reshelfは、プログラミングのオンライン学習マーケットプレイスです。学びたい受講者と、教えたい講師をオンラインでつなぐお手伝いをします。',
+          'Reshelfは、講師が成果物を作って学ぶチュートリアルを販売し、購入した受講生がプログラミングのレパートリーを増やしていくことを目的としたマーケットプレイスです。',
       },
       {
         hid: 'og:image',
