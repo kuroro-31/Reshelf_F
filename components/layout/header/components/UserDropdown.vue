@@ -129,7 +129,6 @@ export default {
         email: '',
         password: '',
       },
-      errors: {},
       alert: '',
     }
   },

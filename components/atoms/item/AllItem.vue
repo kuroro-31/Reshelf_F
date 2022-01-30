@@ -31,20 +31,21 @@
             <ArticleLike />
           </nuxt-link>
 
-          <ReButton
-            v-if="user.id != item.user_id"
-            class="re-button re-button-small"
-          >
-            <button
-              class="re-button-primary-filled bg-primary w-full"
-              @click="addCart(item)"
-            >
-              カートに入れる
-            </button>
-          </ReButton>
-
           <template v-if="isUser">
-            <div v-if="user.id == item.user_id">
+            <ReButton
+              class="re-button re-button-small"
+              :class="user.id != item.user_id ? 'block' : 'hidden'"
+            >
+              <button
+                class="re-button-primary-filled bg-primary w-full"
+                @click="addCart(item)"
+              >
+                カートに入れる
+              </button>
+            </ReButton>
+
+            <!-- <template v-if="isUser"> -->
+            <div :class="user.id == item.user_id ? 'block' : 'hidden'">
               <DeleteItem :item="item" />
               <nuxt-link
                 :to="{ name: 'item-edit-id', params: { id: item.id } }"
