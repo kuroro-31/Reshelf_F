@@ -2,16 +2,17 @@
   <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
     <div v-if="!isUser" class="hero">
-      <div class="flex lg:w-1/2 justify-center h-full items-center">
+      <div class="flex lg:w-1/2 justify-center h-full items-center pr-24">
         <div class="flex flex-col">
           <h2 class="title">
-            プログラミングは
+            プログラミングの
             <br />
-            君の可能性だ。
+            レパートリーを増やそう
           </h2>
           <span class="describe">
             Reshelfは、プログラミング学習教材のマーケットプレイスです。
-            受講者による教材評価から教材を循環し、専門知識のある講師と受講者をつなぐプラットホームを体験できます。
+            専門知識のある講師が作ったチュートリアル教材から、
+            あなたのプログラミング知識のレパートリーを増やしていくことを目的としたサービスです。
           </span>
           <nuxt-link to="/auth/login">
             <re-button class="re-button">
@@ -374,7 +375,7 @@ export default {
   text-align: left;
 }
 .describe {
-  @apply inline-block text-xl font-semibold mb-8;
+  @apply inline-block text-xl font-semibold mb-4;
   color: var(--sub-color);
   height: 67px;
   line-height: 24px;
