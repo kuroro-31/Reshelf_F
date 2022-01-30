@@ -19,6 +19,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
@@ -34,81 +35,11 @@ export default {
     HeaderNav,
   },
   middleware: 'checkAuth',
-  // async asyncData({ $axios }) {
-  //   const { data } = await $axios.$get(`/api/cart`)
-  //   console.log(data)
-  //   return {
-  //     posts: data,
-  //   }
-  // },
-  data() {
-    return {
-      items: [
-        {
-          // キー
-          id: 1,
-          // レベル
-          level: '初級',
-          // 画像
-          src: 'https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png',
-          // タイトル
-          title: 'ゼロからはじめる Dockerによるアプリケーション実行環境構築',
-          // 概要
-          describe:
-            'コンテナの実行方法を学び、Ruby on RailsやDjangoといったWebアプリケーションフレームワークを使用した環境構築について学びます。Docker MachineやSwarmといったDocker関連技術についても学びます。',
-          // セール価格
-          rate: 4.7,
-          all_rate: 4.7,
-          sale_price: '3500',
-          normal_price: '5000',
-          // 作者
-          name: 'クラピカ',
-          // タグ
-          tags: ['phase1', 'btn', 'rakuten'],
-          // 日付
-          add_time: '2021/06/23',
-          edit_time: '2021/06/23',
-          // でもページ
-          demo: '#',
-        },
-        {
-          // キー
-          id: 2,
-          // レベル
-          level: '初級',
-          // 画像
-          src: 'https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png',
-          // タイトル
-          title: 'ゼロからはじめる Dockerによるアプリケーション実行環境構築',
-          // 概要
-          describe:
-            'コンテナの実行方法を学び、Ruby on RailsやDjangoといったWebアプリケーションフレームワークを使用した環境構築について学びます。Docker MachineやSwarmといったDocker関連技術についても学びます。',
-          // セール価格
-          rate: 4.7,
-          all_rate: 4.7,
-          sale_price: '3500',
-          normal_price: '5000',
-          // 作者
-          name: 'クラピカ',
-          // タグ
-          tags: ['phase1', 'btn', 'rakuten'],
-          // 日付
-          add_time: '2021/06/23',
-          edit_time: '2021/06/23',
-          // でもページ
-          demo: '#',
-        },
-      ],
-      // posts: '',
-    }
-  },
   computed: {
-    isUser() {
-      return this.$store.getters['user/auth']
-    },
-    carts() {
-      return this.$store.getters['cart/carts']
-    },
+    ...mapGetters({
+      isUser: 'user/auth',
+      carts: 'cart/carts',
+    }),
     totalPrice() {
       let carts = this.carts
       let totalPrice = null
@@ -119,9 +50,6 @@ export default {
 
       return totalPrice
     },
-  },
-  mounted() {
-    console.log(this.carts)
   },
 }
 </script>

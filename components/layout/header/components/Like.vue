@@ -33,6 +33,7 @@
   </button>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -40,9 +41,9 @@ export default {
     }
   },
   computed: {
-    isUser() {
-      return this.$store.getters['user/auth']
-    },
+    ...mapGetters({
+      isUser: 'user/auth',
+    }),
   },
 }
 </script>

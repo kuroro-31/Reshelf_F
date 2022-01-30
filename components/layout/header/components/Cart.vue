@@ -48,6 +48,7 @@
   </button>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import CartItem from '@/components/layout/header/components/carts/CartItem'
 import ReButton from '@/components/atoms/ReButton'
 import BadgeNormal from '@/components/atoms/BadgeNormal'
@@ -63,12 +64,10 @@ export default {
     }
   },
   computed: {
-    user() {
-      return this.$store.getters['user/user']
-    },
-    carts() {
-      return this.$store.getters['cart/carts']
-    },
+    ...mapGetters({
+      user: 'user/user',
+      carts: 'cart/carts',
+    }),
     // カート商品の数
     cartNumber() {
       return this.carts.length

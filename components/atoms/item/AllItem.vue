@@ -62,6 +62,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import DeleteItem from '@/components/atoms/item/modal/DeleteItem'
 import ArticleLike from '@/components/atoms/ArticleLike'
 import ReButton from '@/components/atoms/ReButton'
@@ -78,20 +79,10 @@ export default {
     }
   },
   computed: {
-    // 自分以外のコースを表示
-    // notOwnItems() {
-    //   let posts = this.items
-    //   let notOwnItems = posts.filter((post) => {
-    //     return this.user.id != post.user_id
-    //   })
-    //   return notOwnItems
-    // },
-    isUser() {
-      return this.$store.getters['user/auth']
-    },
-    user() {
-      return this.$store.getters['user/user']
-    },
+    ...mapGetters({
+      isUser: 'user/auth',
+      user: 'user/user',
+    }),
   },
   mounted() {
     this.getItems()

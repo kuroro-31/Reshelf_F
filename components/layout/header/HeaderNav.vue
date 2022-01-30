@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Cart from '@/components/layout/header/components/Cart'
 import Logo from '@/components/layout/header/components/Logo'
 import Like from '@/components/layout/header/components/Like'
@@ -39,9 +40,9 @@ export default {
     UserDropdown,
   },
   computed: {
-    isUser() {
-      return this.$store.getters['user/auth']
-    },
+    ...mapGetters({
+      isUser: 'user/auth',
+    }),
   },
 }
 </script>

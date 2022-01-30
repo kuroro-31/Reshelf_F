@@ -62,6 +62,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import ReButton from '@/components/atoms/ReButton.vue'
 export default {
   components: {
@@ -74,15 +75,11 @@ export default {
     }
   },
   computed: {
-    isUser() {
-      return this.$store.getters['user/auth']
-    },
-    user() {
-      return this.$store.getters['user/user']
-    },
-    carts() {
-      return this.$store.getters['cart/carts']
-    },
+    ...mapGetters({
+      isUser: 'user/auth',
+      user: 'user/user',
+      carts: 'cart/carts',
+    }),
   },
   methods: {
     async login() {

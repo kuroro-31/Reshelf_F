@@ -288,6 +288,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
@@ -307,12 +308,10 @@ export default {
     ReButton,
   },
   computed: {
-    isUser() {
-      return this.$store.getters['user/auth']
-    },
-    user() {
-      return this.$store.getters['user/user']
-    },
+    ...mapGetters({
+      isUser: 'user/auth',
+      user: 'user/user',
+    }),
     carts() {
       let carts = null
       if (this.isUser) {

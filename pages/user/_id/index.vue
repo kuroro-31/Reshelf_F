@@ -167,6 +167,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import { create } from '@/mixins/posts/create'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
@@ -200,9 +201,10 @@ export default {
     }
   },
   computed: {
-    isUser() {
-      return this.$store.getters['user/auth']
-    },
+    ...mapGetters({
+      isUser: 'user/auth',
+      carts: 'cart/carts',
+    }),
     user: {
       get() {
         return Object.assign({}, this.$store.getters['user/user'])
@@ -210,9 +212,6 @@ export default {
       set(value) {
         this.$store.dispatch('user/update', value)
       },
-    },
-    carts() {
-      return this.$store.getters['cart/carts']
     },
     ownPosts() {
       let posts = this.items
@@ -303,10 +302,10 @@ export default {
         min-height: 300px;
         max-height: 300px;
       }
-      @media screen and (min-width: 1200px) and (max-width: 1440px) {
-        min-height: 220px;
-        max-height: 220px;
-      }
+      // @media screen and (min-width: 1200px) and (max-width: 1440px) {
+      //   min-height: 250px;
+      //   max-height: 250px;
+      // }
     }
   }
   &-profile {
