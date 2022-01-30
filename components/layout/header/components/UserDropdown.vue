@@ -51,84 +51,25 @@
     </button>
 
     <div v-if="!isUser" class="py-2.5 ml-4">
-      <ReButton class="re-button">
-        <button
-          class="re-button-primary-filled bg-primary"
-          @click="modal = !modal"
-        >
-          新規登録・ログイン
-        </button>
-      </ReButton>
-      <ReModal v-if="modal" @close="modal = !modal">
-        <template slot="header">Welcome To Reshelf！</template>
-        <!-- default -->
-        <div class="w-full flex flex-col justify-center">
-          <form @submit.prevent="login">
-            <!-- メールアドレス -->
-            <label class="font-semibold text-xs text-gray-600 pb-1 block">
-              E-mail
-            </label>
-            <input
-              v-model.trim="form.email"
-              type="email"
-              placeholder="Enter email"
-              autofocus
-              class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-            />
-            <small v-if="errors.email" class="form-text text-danger">
-              {{ errors.email[0] }}
-            </small>
-
-            <!-- パスワード -->
-            <label class="font-semibold text-xs text-gray-600 pb-1 block">
-              Password
-            </label>
-            <input
-              v-model.trim="form.password"
-              type="password"
-              placeholder="Password"
-              class="border rounded px-[30px] py-2 mt-1 mb-5 text-xs w-full"
-            />
-            <small v-if="errors.password" class="form-text text-danger">
-              {{ errors.password[0] }}
-            </small>
-
-            <!-- ログインボタン -->
-            <re-button class="re-button">
-              <button
-                type="submit"
-                class="re-button-primary-filled bg-primary ml-auto"
-              >
-                ログイン
-              </button>
-            </re-button>
-          </form>
-        </div>
-        <!-- /default -->
-        <!-- <template slot="footer">
-          ※
-          Reshelfでは、多重アカウントを防止するため、Facebookでのアカウント作成をお願いしています。
-        </template> -->
-      </ReModal>
+      <nuxt-link to="/auth/login">
+        <re-button class="re-button">
+          <button type="submit" class="re-button-primary-filled bg-primary">
+            新規登録・ログイン
+          </button>
+        </re-button>
+      </nuxt-link>
     </div>
   </div>
 </template>
 <script>
-import ReModal from '@/components/atoms/ReModal'
 import ReButton from '@/components/atoms/ReButton.vue'
 export default {
   components: {
     ReButton,
-    ReModal,
   },
   data() {
     return {
-      modal: false,
       dropdown: false,
-      form: {
-        email: '',
-        password: '',
-      },
       alert: '',
     }
   },
@@ -198,17 +139,6 @@ export default {
         border-radius: 6px;
       }
     }
-  }
-}
-
-@keyframes slide-in {
-  0% {
-    transform: translateX(-15px);
-    opacitx: 0;
-  }
-  100% {
-    transform: translateX(0px);
-    opacity: 1;
   }
 }
 </style>

@@ -63,9 +63,9 @@
                 autofocus
                 class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
               />
-              <small v-if="errors.email" class="form-text text-danger">
+              <!-- <small v-if="errors.email" class="form-text text-danger">
                 {{ errors.email[0] }}
-              </small>
+              </small> -->
 
               <!-- パスワード -->
               <label class="font-semibold text-xs text-gray-600 pb-1 block">
@@ -77,9 +77,9 @@
                 placeholder="Password"
                 class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
               />
-              <small v-if="errors.password" class="form-text text-danger">
+              <!-- <small v-if="errors.password" class="form-text text-danger">
                 {{ errors.password[0] }}
-              </small>
+              </small> -->
 
               <!-- ログインボタン -->
               <re-button class="re-button re-button-small">
@@ -182,7 +182,6 @@ export default {
       email: '',
       password: '',
     },
-    errors: {},
   }),
   methods: {
     async login() {
