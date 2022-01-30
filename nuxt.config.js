@@ -51,7 +51,7 @@ export default {
   },
 
   loading: {
-    color: '#16afaf',
+    color: '#3f85fc',
     height: '5px',
   },
   // loading: '~/components/atoms/Loading.vue',
