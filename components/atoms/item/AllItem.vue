@@ -1,7 +1,9 @@
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
-      <div class="items">
+      <template v-if="loading">読み込み中です</template>
+
+      <div v-else class="items">
         <div v-for="item in items" :key="item.id" class="card item flex-col">
           <nuxt-link
             :to="{ name: 'item-id', params: { id: item.id } }"
@@ -69,11 +71,11 @@ export default {
     ArticleLike,
     ReButton,
   },
-  props: {
-    items: {
-      type: Array,
-      default: () => [],
-    },
+  data() {
+    return {
+      loading: false,
+      items: [],
+    }
   },
   computed: {
     // 自分以外のコースを表示
@@ -91,7 +93,23 @@ export default {
       return this.$store.getters['user/user']
     },
   },
+  mounted() {
+    this.getItems()
+  },
   methods: {
+    async getItems() {
+      this.loading = true
+      await this.$axios
+        .$get(`/api/posts`)
+        .then((response) => {
+          this.items = response.data
+          this.loading = false
+        })
+        .catch((error) => {
+          alert(error)
+          console.log(error)
+        })
+    },
     addCart(item) {
       this.$store.dispatch('cart/add', item)
     },

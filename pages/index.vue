@@ -277,8 +277,7 @@
         </nav>
         <div class="main-body min-h-(screen-16)">
           <!-- <hero-item /> -->
-          <template v-if="loading">読み込み中です</template>
-          <all-item v-else :items="items" />
+          <all-item :items="items" />
 
           <!-- <FooterNav /> -->
         </div>
@@ -307,12 +306,6 @@ export default {
     // HeroItem,
     ReButton,
   },
-  data() {
-    return {
-      loading: false,
-      items: [],
-    }
-  },
   computed: {
     isUser() {
       return this.$store.getters['user/auth']
@@ -326,24 +319,6 @@ export default {
         carts = this.$store.getters['cart/carts']
       }
       return carts
-    },
-  },
-  mounted() {
-    this.getItems()
-  },
-  methods: {
-    async getItems() {
-      this.loading = true
-      await this.$axios
-        .$get(`/api/posts`)
-        .then((response) => {
-          this.items = response.data
-          this.loading = false
-        })
-        .catch((error) => {
-          alert(error)
-          console.log(error)
-        })
     },
   },
 }
