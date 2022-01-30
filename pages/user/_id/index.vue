@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isUser" class="w-full h-screen mx-auto flex flex-col scroll-none">
+  <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
     <div class="box-header">
       <div class="max-w-screen-lg w-full mx-auto">

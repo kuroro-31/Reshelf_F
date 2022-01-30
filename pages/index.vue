@@ -2,7 +2,7 @@
   <div class="w-full mx-auto flex flex-col scroll-none">
     <HeaderNav />
     <div v-if="!isUser" class="hero">
-      <div class="flex lg:w-1/2 justify-center h-full items-center pr-24">
+      <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
             プログラミングの

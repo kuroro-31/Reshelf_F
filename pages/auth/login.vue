@@ -196,7 +196,8 @@ export default {
   // background-image: url('https://source.unsplash.com/1920x1080/?happy');
   // background-position: center !important;
   // background-repeat: no-repeat !important;
-  background: #16afaf;
+  // background: #16afaf;
+  background: rgba(var(--primary));
 
   object-fit: cover !important;
   &-title {
