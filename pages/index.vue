@@ -277,7 +277,7 @@
         </nav>
         <div class="main-body min-h-(screen-16)">
           <!-- <hero-item /> -->
-          <all-item :items="items" />
+          <all-item />
 
           <!-- <FooterNav /> -->
         </div>
