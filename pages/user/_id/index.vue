@@ -43,7 +43,7 @@
                     名前
                   </label>
                   <input
-                    v-model.trim="user.name"
+                    v-model="user.name"
                     type="text"
                     autofocus
                     class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
@@ -196,14 +196,20 @@ export default {
       error: false,
       id: this.$route.params.id,
       form: [],
+      saved: false,
     }
   },
   computed: {
     isUser() {
       return this.$store.getters['user/auth']
     },
-    user() {
-      return this.$store.getters['user/user']
+    user: {
+      get() {
+        return Object.assign({}, this.$store.getters['user/user'])
+      },
+      set(value) {
+        this.$store.dispatch('user/update', value)
+      },
     },
     carts() {
       return this.$store.getters['cart/carts']
@@ -216,6 +222,23 @@ export default {
       return ownPosts
     },
   },
+  // watch: {
+  //   user: {
+  //     // eslint-disable-next-line
+  //     handler: _.debounce(function () {
+  //       this.update()
+  //     }, 2000), // 更新されたら保存処理
+  //     deep: true,
+  //   },
+  //   saved: {
+  //     // 保存完了後にアラートを消す
+  //     // eslint-disable-next-line
+  //     handler: _.debounce(function () {
+  //       this.clearAlert()
+  //     }, 2000),
+  //     deep: true,
+  //   },
+  // },
   mounted() {
     this.getItems()
   },
@@ -234,13 +257,14 @@ export default {
         })
     },
     async update() {
-      await this.$store
+      await this.$axios.$patch(`/api/users/${this.user.id}`, this.user)
+      this.$store
         .dispatch('user/update', this.user)
         .then(() => {
           this.success = true
           setTimeout(() => (this.success = false), 5000)
         })
-        .then(() => {
+        .catch(() => {
           this.error = true
           setTimeout(() => (this.error = false), 5000)
         })
@@ -315,36 +339,36 @@ export default {
     }
   }
 }
-.button_loading {
-  &::after {
-    content: '';
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    border: 2px solid transparent;
-    border-top-color: #ffffff;
-    border-radius: 50%;
-    animation: button-loading-spinner 1s ease infinite;
-  }
-  .button_text {
-    @apply duration-200;
-    visibility: hidden;
-    opacity: 0;
-  }
-}
+// .button_loading {
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     width: 22px;
+//     height: 22px;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     margin: auto;
+//     border: 2px solid transparent;
+//     border-top-color: #ffffff;
+//     border-radius: 50%;
+//     animation: button-loading-spinner 1s ease infinite;
+//   }
+//   .button_text {
+//     @apply duration-200;
+//     visibility: hidden;
+//     opacity: 0;
+//   }
+// }
 
-@keyframes button-loading-spinner {
-  from {
-    transform: rotate(0turn);
-  }
+// @keyframes button-loading-spinner {
+//   from {
+//     transform: rotate(0turn);
+//   }
 
-  to {
-    transform: rotate(1turn);
-  }
-}
+//   to {
+//     transform: rotate(1turn);
+//   }
+// }
 </style>

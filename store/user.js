@@ -65,14 +65,12 @@ export const actions = {
     this.$router.push({ path: '/' })
   },
   async update({ commit }, data) {
-    await this.$axios
-      .$patch(`/api/users/${data.id}`, data)
-      .then(({ data }) => {
-        commit('setUser', data)
-      })
-      .catch(({ response: { data } }) => {
-        console.log(data.message)
-      })
+    try {
+      commit('setUser', data)
+    } catch (error) {
+      alert(error)
+      console.log(error)
+    }
   },
   nuxtServerInit({ commit }) {
     commit('setAuthed')
