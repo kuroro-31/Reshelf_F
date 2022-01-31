@@ -7,7 +7,7 @@ export default {
   },
   マイページ: 'My Account',
   ログアウト: 'Logout',
-  ログイン: 'Login',
+  '新規登録・ログイン': 'Setup or Login',
   ほしいものリストは空です: 'Wish list is empty.',
   レジに進む: 'Proceed to checkout',
   カートに商品がありません: 'There are no items in your cart.',
@@ -23,4 +23,8 @@ export default {
   対応言語: 'Languages supported',
   特徴: 'Features',
   コースの削除: 'Delete a course',
+  プログラミングのレパートリーを増やそう:
+    'Increase your programming repertoire.',
+  'Reshelfは、講師が成果物を作って学ぶチュートリアルを販売し、購入した受講生がプログラミングのレパートリーを増やしていくことを目的としたマーケットプレイスです。':
+    'Reshelf is a marketplace where instructors sell tutorials that students learn by creating artifacts, and students who purchase them can expand their programming repertoire.',
 }

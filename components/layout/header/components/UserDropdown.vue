@@ -56,7 +56,7 @@
       <nuxt-link to="/auth/login">
         <re-button class="re-button">
           <button type="submit" class="re-button-primary-filled bg-primary">
-            {{ $t('ログイン') }}
+            {{ $t('新規登録・ログイン') }}
           </button>
         </re-button>
       </nuxt-link>

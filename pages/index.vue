@@ -5,19 +5,19 @@
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
-            プログラミングの
-            <br />
-            レパートリーを増やそう
+            {{ $t('プログラミングのレパートリーを増やそう') }}
           </h2>
           <span class="describe">
-            Reshelfは、講師が成果物を作って学ぶチュートリアルを販売し、
-            <br />
-            購入した受講生がプログラミングのレパートリーを増やしていくことを目的としたマーケットプレイスです。
+            {{
+              $t(
+                'Reshelfは、講師が成果物を作って学ぶチュートリアルを販売し、購入した受講生がプログラミングのレパートリーを増やしていくことを目的としたマーケットプレイスです。'
+              )
+            }}
           </span>
           <nuxt-link to="/auth/login">
             <re-button class="re-button">
               <button type="submit" class="re-button-primary-filled bg-primary">
-                新規登録・ログイン
+                {{ $t('新規登録・ログイン') }}
               </button>
             </re-button>
           </nuxt-link>
@@ -347,7 +347,7 @@ export default {
   // }
 }
 .title {
-  @apply mb-2;
+  @apply mb-2 whitespace-pre-line;
   color: var(--color);
   font-size: 60px;
   line-height: 74px;
