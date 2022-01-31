@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+// import i18n from './nuxt-i18n.config'
 require('dotenv').config()
 const { ROOT_URL } = process.env
 export default {
@@ -10,7 +11,7 @@ export default {
     ROOT_URL,
   },
   head: {
-    title: 'Reshelf | プログラミングのレパートリーを増やすマーケットプレイス',
+    title: '',
     htmlAttrs: {
       lang: 'ja',
       prefix: 'og: http://ogp.me/ns#',
@@ -90,7 +91,6 @@ export default {
   },
 
   plugins: [
-    '@/plugins/i18n.js',
     '@/plugins/vue-highlightjs',
     { src: '@/plugins/persistedstate.js', mode: 'client' },
     { src: '@/plugins/vuelidate.js', mode: 'client' },
@@ -101,8 +101,6 @@ export default {
     '@/plugins/util/moneyFormat.js',
     '@/plugins/util/numberFormat.js',
   ],
-
-  vendor: ['vue-i18n'],
 
   proxy: {
     '/api': {
@@ -142,10 +140,6 @@ export default {
       }),
     ],
   },
-  // generate: {
-  //   // i18n
-  //   routes: ['/', '/ja'],
-  // }
 
   ngrok: {
     authtoken: process.env.NGROK_AUTHTOKEN,
@@ -166,6 +160,31 @@ export default {
     '@nuxtjs/pwa',
     'nuxt-client-init-module',
     '@nuxtjs/axios',
+    [
+      'nuxt-i18n',
+      {
+        locales: [
+          {
+            code: 'en',
+            file: 'en.js',
+          },
+          {
+            code: 'ja',
+            file: 'ja.js',
+          },
+        ],
+        lazy: true,
+        langDir: 'lang/',
+        defaultLocale: 'ja', // デフォルトの言語
+        strategy: 'prefix_and_default', // URLに言語のプレフィックスを追加するかの指定
+        vueI18n: {
+          // 翻訳ファイルが見つからなかった場合の言語を指定
+          fallbackLocale: 'ja',
+        },
+        vueI18nLoader: true,
+        lazy: true, // 遅延読み込みの有効化
+      },
+    ],
   ],
   axios: {
     proxy: true,
