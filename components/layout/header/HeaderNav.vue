@@ -12,6 +12,9 @@
       <div class="nav-right">
         <input type="text" class="search" placeholder="Search..." />
 
+        <!-- 言語切り替え -->
+        <LanguageChange />
+
         <!-- お気に入り -->
         <Like v-if="isUser" />
 
@@ -31,6 +34,7 @@ import Cart from '@/components/layout/header/components/Cart'
 import Logo from '@/components/layout/header/components/Logo'
 import Like from '@/components/layout/header/components/Like'
 import UserDropdown from '@/components/layout/header/components/UserDropdown'
+import LanguageChange from '@/components/layout/header/components/LanguageChange'
 
 export default {
   components: {
@@ -38,6 +42,7 @@ export default {
     Logo,
     Like,
     UserDropdown,
+    LanguageChange,
   },
   computed: {
     ...mapGetters({

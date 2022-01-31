@@ -59,6 +59,8 @@ export default {
   // loading: '~/components/atoms/Loading.vue',
 
   router: {
+    middleware: 'i18n',
+
     extendRoutes(routes, resolve) {
       routes.push({
         name: '404error',
@@ -176,7 +178,7 @@ export default {
         lazy: true,
         langDir: 'lang/',
         defaultLocale: 'ja', // デフォルトの言語
-        strategy: 'prefix_and_default', // URLに言語のプレフィックスを追加するかの指定
+        strategy: 'prefix', // URLに言語のプレフィックスを追加するかの指定
         vueI18n: {
           // 翻訳ファイルが見つからなかった場合の言語を指定
           fallbackLocale: 'ja',
