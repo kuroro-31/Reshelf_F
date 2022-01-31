@@ -13,7 +13,7 @@
           <SidebarCart :total-price="totalPrice" />
         </nav>
       </div>
-      <div v-else class="p-8">{{ $t('カートに商品がありません。') }}</div>
+      <div v-else class="p-8">{{ $t('カートに商品がありません') }}</div>
     </div>
     <!-- <FooterNav /> -->
   </div>

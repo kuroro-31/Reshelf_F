@@ -37,7 +37,7 @@
     </div>
 
     <div class="flex text-lg font-bold">
-      <span class="mr-4">合計:</span>
+      <span class="mr-4">{{ $t('合計') }}:</span>
       <span>{{ $moneyFormat(totalPrice) }}</span>
     </div>
   </div>

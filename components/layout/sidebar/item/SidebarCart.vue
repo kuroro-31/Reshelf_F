@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <div class="sidebar-search scroll-none">
-      <span class="text-xs">合計</span>
+      <span class="text-xs">{{ $t('合計') }}</span>
       <span class="text-4xl font-bold mb-4 text-black">
         {{ $moneyFormat(totalPrice) }}
       </span>
@@ -15,7 +15,7 @@
           @click="checkout"
         >
           <!-- Search -->
-          購入する
+          {{ $t('購入する') }}
         </button>
       </re-button>
     </div>

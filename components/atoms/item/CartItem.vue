@@ -46,9 +46,11 @@
           <div class="right-box">
             <div class="flex flex-col items-end">
               <span class="text-xs cursor-pointer" @click="deleteCart(item)">
-                削除
+                {{ $t('削除') }}
               </span>
-              <span class="text-xs whitespace-nowrap">お気に入りに移動</span>
+              <span class="text-xs whitespace-nowrap">
+                {{ $t('ほしいものリストに追加') }}
+              </span>
             </div>
             <div class="flex items-center ml-8">
               <!-- セール価格 -->
@@ -59,13 +61,13 @@
           </div>
         </div>
         <nuxt-link to="/">
-          <span>ショッピングを続ける</span>
+          <span>{{ $t('ショッピングを続ける') }}</span>
         </nuxt-link>
       </div>
     </div>
     <Toast :success="success" :error="error">
-      <template v-if="success">カートから商品を削除しました。</template>
-      <template v-else>カートから商品を削除できませんでした。</template>
+      <template v-if="success">{{ $t('商品を削除しました') }}</template>
+      <template v-else>{{ $t('商品を削除できませんでした') }}</template>
     </Toast>
   </div>
 </template>

@@ -46,4 +46,10 @@ export default {
   保存中です: 'Saving.',
   更新しました: 'Updated.',
   更新に失敗しました: 'Update failed.',
+  合計: 'Total',
+  ほしいものリストに追加: 'Add to Wishlist',
+  ショッピングを続ける: 'Keep shopping',
+  商品を削除しました: 'Product removed.',
+  商品を削除できませんでした: 'Unable to delete the product.',
+  購入する: 'Purchase',
 }
