@@ -27,4 +27,6 @@ export default {
     'Increase your programming repertoire.',
   'Reshelfは、講師が成果物を作って学ぶチュートリアルを販売し、購入した受講生がプログラミングのレパートリーを増やしていくことを目的としたマーケットプレイスです。':
     'Reshelf is a marketplace where instructors sell tutorials that students learn by creating artifacts, and students who purchase them can expand their programming repertoire.',
+  ホームへ戻る: 'Back to Home',
+  'ページが見つかりませんでした。': 'Page not found.',
 }
