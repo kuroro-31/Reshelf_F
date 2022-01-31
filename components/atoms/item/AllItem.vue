@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
-      <template v-if="loading">読み込み中です</template>
+      <template v-if="loading">{{ $t('読み込み中です') }}</template>
 
       <div v-else class="items">
         <div v-for="item in items" :key="item.id" class="card item flex-col">
@@ -26,7 +26,7 @@
               />
             </button>
             <span v-if="item.title" class="title">{{ item.title }}</span>
-            <span v-else class="title">無題のタイトル</span>
+            <span v-else class="title">{{ $t('無題のタイトル') }}</span>
 
             <div class="">{{ item.user_id }}</div>
             <div class="">{{ item.user.name }}</div>
@@ -42,7 +42,7 @@
                 class="re-button-primary-filled bg-primary w-full"
                 @click="addCart(item)"
               >
-                カートに入れる
+                {{ $t('カートに入れる') }}
               </button>
             </ReButton>
 
@@ -52,7 +52,7 @@
               <nuxt-link
                 :to="{ name: 'item-edit-id', params: { id: item.id } }"
               >
-                編集
+                {{ $t('編集') }}
               </nuxt-link>
             </div>
           </template>

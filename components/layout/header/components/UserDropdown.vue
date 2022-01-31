@@ -32,7 +32,7 @@
             </div> -->
             <div class="menu-me">
               <nuxt-link class="menu-me-link" :to="`/user/${user.id}`">
-                マイページ
+                {{ $t('マイページ') }}
               </nuxt-link>
             </div>
             <div class="menu-me">
@@ -43,7 +43,9 @@
                   <option value="dark">Dark</option>
                 </select>
               </div> -->
-              <button class="menu-me-link" @click="logout">ログアウト</button>
+              <button class="menu-me-link" @click="logout">
+                {{ $t('ログアウト') }}
+              </button>
             </div>
           </div>
         </div>
@@ -54,7 +56,7 @@
       <nuxt-link to="/auth/login">
         <re-button class="re-button">
           <button type="submit" class="re-button-primary-filled bg-primary">
-            新規登録・ログイン
+            {{ $t('ログイン') }}
           </button>
         </re-button>
       </nuxt-link>

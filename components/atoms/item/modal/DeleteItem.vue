@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span @click="delete_modal = !delete_modal">削除</span>
+    <span @click="delete_modal = !delete_modal">{{ $t('削除') }}</span>
     <ReModal v-if="delete_modal" @close="delete_modal = !delete_modal">
       <template slot="header">コースの削除</template>
       <div class="w-full flex flex-col justify-center">
@@ -8,12 +8,11 @@
           <form @click="destroy(item.id)">
             <ReButton class="re-button">
               <button type="submit" class="re-button-primary bg-danger ml-auto">
-                削除
+                {{ $t('削除') }}
               </button>
             </ReButton>
           </form>
         </div>
-        <div v-else>ログインしてください</div>
       </div>
     </ReModal>
   </div>

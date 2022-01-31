@@ -11,7 +11,7 @@ export default {
     ROOT_URL,
   },
   head: {
-    title: '',
+    title: 'Reshelf | プログラミングのレパートリーを増やすマーケットプレイス',
     htmlAttrs: {
       lang: 'ja',
       prefix: 'og: http://ogp.me/ns#',

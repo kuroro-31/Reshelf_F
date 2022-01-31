@@ -37,11 +37,11 @@
                 class="re-button-primary-filled bg-primary w-full duration-500"
                 @click="search"
               >
-                カートに移動
+                {{ $t('レジに進む') }}
               </button>
             </re-button>
           </div>
-          <div v-else class="p-8">カートに商品がありません</div>
+          <div v-else class="p-8">{{ $t('カートに商品がありません') }}</div>
         </div>
       </div>
     </transition>

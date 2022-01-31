@@ -26,7 +26,7 @@
           @mouseover="like = true"
           @mouseleave="like = false"
         >
-          <div class="p-8">お気に入りの中身は空です</div>
+          <div class="p-8">{{ $t('ほしいものリストは空です') }}</div>
         </div>
       </div>
     </transition>

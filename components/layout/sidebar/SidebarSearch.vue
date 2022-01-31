@@ -97,17 +97,17 @@ export default {
       isDisabled: false,
       categories: [
         {
-          name: '評価',
+          name: this.$t('評価'),
           subcategories: ['4.5以上', '4.0以上', '3.5以上'],
           toggleOn: true,
         },
         {
-          name: '値段',
+          name: this.$t('値段'),
           subcategories: ['無料', '2,500円', '5,000円', '7,500円', '10,000円'],
           toggleOn: true,
         },
         {
-          name: 'Topics',
+          name: this.$t('トピック'),
           subcategories: [
             'Javascript',
             'React',
@@ -122,17 +122,17 @@ export default {
           toggleOn: true,
         },
         {
-          name: '難易度',
+          name: this.$t('難易度'),
           subcategories: ['初級', '中級', '上級', '特級'],
           toggleOn: true,
         },
         {
-          name: '言語',
+          name: this.$t('対応言語'),
           subcategories: ['英語', '日本語'],
           toggleOn: true,
         },
         {
-          name: '特徴',
+          name: this.$t('特徴'),
           subcategories: [
             'デモページ有り',
             'サブスク対象教材',
