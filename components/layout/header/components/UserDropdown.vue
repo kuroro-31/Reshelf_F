@@ -99,7 +99,7 @@ export default {
   @apply px-3 relative;
   height: 60px;
   &-img {
-    @apply object-cover rounded-full shadow-lg cursor-pointer;
+    @apply object-cover rounded-full shadow cursor-pointer;
     width: 40px;
     height: 40px;
   }
@@ -108,32 +108,23 @@ export default {
     background-color: var(--bg-secondary);
     @screen lg {
       margin-top: 60px;
-      width: 300px;
+      min-width: 200px;
       max-height: calc(100vh - 120px);
     }
   }
 }
 .menu {
-  &-name {
-    @apply flex items-center p-4;
-    border-bottom: 1px solid #ccc;
-    &-person {
-      @apply ml-2;
-      max-width: 140px;
-    }
-  }
   &-me {
-    @apply flex flex-col items-start p-3;
+    @apply flex flex-col items-start p-2;
     border-bottom: 1px solid #ccc;
     &-title {
       @apply text-sm font-bold pt-2;
       color: var(--sub-color);
     }
     &-link {
-      @apply py-3 w-full rounded-lg text-left px-4 duration-200;
+      @apply p-2 py-3 w-full rounded-lg text-left duration-200;
       &:hover {
         @apply cursor-pointer;
-        transform: translateX(5px);
         background: #f0f2f6;
         border-radius: 6px;
       }

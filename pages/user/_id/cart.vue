@@ -2,7 +2,7 @@
   <div v-if="isUser" class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
     <div class="main scroll-none">
-      <span class="title">ショッピングカート</span>
+      <span class="title">{{ $t('ショッピングカート') }}</span>
 
       <div v-if="carts.length > 0" class="lg:flex w-full">
         <div class="main-body min-h-(screen-16) scroll-none">
@@ -13,7 +13,7 @@
           <SidebarCart :total-price="totalPrice" />
         </nav>
       </div>
-      <div v-else class="p-8">カートに商品がありません。</div>
+      <div v-else class="p-8">{{ $t('カートに商品がありません。') }}</div>
     </div>
     <!-- <FooterNav /> -->
   </div>

@@ -29,18 +29,20 @@
                 />
               </svg>
               <span class="ml-2" @click="modal = !modal">
-                プロフィールを編集
+                {{ $t('プロフィールを編集') }}
               </span>
               <ReModal
                 v-if="modal"
                 @close=";(modal = !modal), (loading = false)"
               >
-                <template slot="header">プロフィールの編集</template>
+                <template slot="header">
+                  {{ $t('プロフィールを編集') }}
+                </template>
                 <!-- default -->
                 <div class="w-full flex flex-col justify-center">
                   <!-- タイトル -->
                   <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                    名前
+                    {{ $t('名前') }}
                   </label>
                   <input
                     v-model="user.name"
@@ -55,7 +57,7 @@
                       class="re-button-primary-filled bg-primary relative"
                       @click="update, (loading = true)"
                     >
-                      <span class="button_text">保存</span>
+                      <span class="button_text">{{ $t('保存') }}</span>
                     </button>
                   </ReButton>
                 </div>
@@ -68,7 +70,7 @@
               <div class="w-full flex items-center justify-between">
                 <div class="user-name">
                   <div class="font-bold text-5xl">{{ user.name }}</div>
-                  <div>チャンネル登録者数 3.2万人</div>
+                  <div>{{ $t('チャンネル登録者数') }} 3.2万 {{ $t('人') }}</div>
                 </div>
                 <nuxt-link v-if="isUser" to="/item/new" class="mt-4">
                   <ReButton class="re-button re-button-small no-shadow">
@@ -76,7 +78,7 @@
                       class="re-button-primary bg-primary"
                       @click="create"
                     >
-                      コースの作成
+                      {{ $t('コースの作成') }}
                     </button>
                   </ReButton>
                 </nuxt-link>
@@ -85,7 +87,7 @@
                     type="submit"
                     class="re-button-primary-filled bg-primary"
                   >
-                    チャンネル登録
+                    {{ $t('チャンネル登録') }}
                   </button>
                 </ReButton>
               </div>
@@ -96,20 +98,22 @@
                 class="item-link"
                 :to="{ name: 'user', params: { userId: 123 } }"
               >
-                マイコース
+                {{ $t('マイコース') }}
               </nuxt-link>
               <nuxt-link class="item-link" to="/user/learning">
-                受講中のコース
+                {{ $t('受講中のコース') }}
               </nuxt-link>
               <nuxt-link class="item-link" to="/user/like">
-                お気に入り
+                {{ $t('お気に入り') }}
               </nuxt-link>
               <nuxt-link class="item-link" to="/user/bought">
-                購入履歴
+                {{ $t('購入履歴') }}
               </nuxt-link>
-              <nuxt-link class="item-link" to="/user/setting">設定</nuxt-link>
               <nuxt-link class="item-link" to="/user/setting">
-                願いの泉
+                {{ $t('設定') }}
+              </nuxt-link>
+              <nuxt-link class="item-link" to="/user/setting">
+                {{ $t('願いの泉') }}
               </nuxt-link>
             </div>
             <!-- <SidebarSetting class="divider" /> -->
@@ -149,7 +153,7 @@
               <span v-if="item.title" class="title">
                 {{ item.title }}
               </span>
-              <span v-else class="title">無題のタイトル</span>
+              <span v-else class="title">{{ $t('無題のタイトル') }}</span>
 
               <div class="">{{ item.user_id }}</div>
               <!-- <div class="">{{ item.user.name }}</div> -->
@@ -161,8 +165,12 @@
     </div>
     <!-- <FooterNav /> -->
     <Toast :success="success" :error="error">
-      <template v-if="success">ユーザー情報を更新しました。</template>
-      <template v-else-if="error">ユーザー情報の更新に失敗しました。</template>
+      <template v-if="success">
+        {{ $t('更新しました') }}
+      </template>
+      <template v-else-if="error">
+        {{ $t('更新に失敗しました') }}
+      </template>
     </Toast>
   </div>
 </template>

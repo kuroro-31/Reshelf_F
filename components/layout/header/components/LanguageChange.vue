@@ -102,7 +102,7 @@ export default {
     // @apply flex-shrink-0 inline-block cursor-pointer;
   }
   &-img {
-    @apply object-cover rounded-full shadow-lg cursor-pointer;
+    @apply object-cover rounded-full shadow cursor-pointer;
     width: 40px;
     height: 40px;
   }
@@ -126,17 +126,16 @@ export default {
     }
   }
   &-me {
-    @apply flex flex-col items-start p-3;
+    @apply flex flex-col items-start p-2;
     border-bottom: 1px solid #ccc;
     &-title {
       @apply text-sm font-bold pt-2;
       color: var(--sub-color);
     }
     &-link {
-      @apply py-3 w-full rounded-lg text-left px-4 duration-200;
+      @apply w-full text-center rounded-lg text-left p-2 duration-200;
       &:hover {
         @apply cursor-pointer;
-        transform: translateX(5px);
         background: #f0f2f6;
         border-radius: 6px;
       }

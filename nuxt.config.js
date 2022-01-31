@@ -166,7 +166,6 @@ export default {
           { code: 'ja', name: '日本語', iso: 'ja_JP', file: 'ja.js' },
           { code: 'en', name: 'English', iso: 'en-US', file: 'en.js' },
         ],
-        lazy: true,
         langDir: 'lang/',
         defaultLocale: 'ja', // デフォルトの言語
         strategy: 'no_prefix', // URLに言語のプレフィックスを追加するかの指定
