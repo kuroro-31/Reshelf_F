@@ -50,12 +50,14 @@
               </span>
             </div> -->
             <div class="menu-me">
-              <nuxt-link class="menu-me-link" :to="switchLocalePath('en')">
-                English
-              </nuxt-link>
-              <nuxt-link class="menu-me-link" :to="switchLocalePath('ja')">
-                日本語
-              </nuxt-link>
+              <span
+                v-for="locale in availableLocales"
+                :key="locale.code"
+                class="menu-me-link"
+                @click="() => changeLocale(locale.code)"
+              >
+                {{ locale.name }}
+              </span>
             </div>
           </div>
         </div>
@@ -70,11 +72,24 @@ export default {
       show: false,
     }
   },
+  computed: {
+    availableLocales() {
+      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
+    },
+  },
   methods: {
     search() {
       this.$router.push({
         path: `/user/${this.user.id}/cart`,
       })
+    },
+    /**
+     * リロードなし
+     * クッキーと、$i18n独自ストアのlocaleに言語を設定する
+     * 直接storeを書き換えるためリロードは不要
+     */
+    async changeLocale(locale) {
+      await this.$i18n.setLocale(locale)
     },
   },
 }

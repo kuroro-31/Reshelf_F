@@ -1,5 +1,4 @@
 import webpack from 'webpack'
-// import i18n from './nuxt-i18n.config'
 require('dotenv').config()
 const { ROOT_URL } = process.env
 export default {
@@ -59,8 +58,6 @@ export default {
   // loading: '~/components/atoms/Loading.vue',
 
   router: {
-    middleware: 'i18n',
-
     extendRoutes(routes, resolve) {
       routes.push({
         name: '404error',
@@ -166,19 +163,13 @@ export default {
       'nuxt-i18n',
       {
         locales: [
-          {
-            code: 'en',
-            file: 'en.js',
-          },
-          {
-            code: 'ja',
-            file: 'ja.js',
-          },
+          { code: 'ja', name: '日本語', iso: 'ja_JP', file: 'ja.js' },
+          { code: 'en', name: 'English', iso: 'en-US', file: 'en.js' },
         ],
         lazy: true,
         langDir: 'lang/',
         defaultLocale: 'ja', // デフォルトの言語
-        strategy: 'prefix', // URLに言語のプレフィックスを追加するかの指定
+        strategy: 'no_prefix', // URLに言語のプレフィックスを追加するかの指定
         vueI18n: {
           // 翻訳ファイルが見つからなかった場合の言語を指定
           fallbackLocale: 'ja',
