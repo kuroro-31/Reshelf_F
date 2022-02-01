@@ -61,7 +61,7 @@
     text-align: left;
     min-height: 30px;
     .title {
-      animation: slide-in 0.4s;
+      animation: slide-in 0.3s;
     }
   }
   &-content {

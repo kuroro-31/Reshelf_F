@@ -165,7 +165,7 @@
         </div>
       </div>
     </div>
-    <!-- <FooterNav /> -->
+    <FooterNav />
     <Toast :success="success" :error="error">
       <template v-if="success">
         {{ $t('更新しました') }}
@@ -181,7 +181,7 @@ import { mapGetters } from 'vuex'
 import { create } from '@/mixins/posts/create'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
+import FooterNav from '@/components/layout/FooterNav'
 // import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
 import Toast from '@/components/atoms//Toast'
 import ReButton from '@/components/atoms/ReButton'
@@ -191,7 +191,7 @@ import ReModal from '@/components/atoms/ReModal'
 export default {
   components: {
     HeaderNav,
-    // FooterNav,
+    FooterNav,
     // SidebarSetting,
     Toast,
     ReButton,
