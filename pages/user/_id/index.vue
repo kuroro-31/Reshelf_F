@@ -13,24 +13,26 @@
                   :value="item"
                 /> -->
             <img src="@/assets/images/noimage.svg" alt="user cover image" />
-            <div v-if="isUser" class="user-cover-edit">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                />
-              </svg>
-              <span class="ml-2" @click="modal = !modal">
-                {{ $t('プロフィールを編集') }}
-              </span>
+            <template v-if="isUser">
+              <div class="user-cover-edit" @click="modal = !modal">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                  />
+                </svg>
+                <span class="ml-2">
+                  {{ $t('プロフィールを編集') }}
+                </span>
+              </div>
               <ReModal
                 v-if="modal"
                 @close=";(modal = !modal), (loading = false)"
@@ -62,7 +64,7 @@
                   </ReButton>
                 </div>
               </ReModal>
-            </div>
+            </template>
           </div>
           <div class="user-profile">
             <div class="flex items-start divider">

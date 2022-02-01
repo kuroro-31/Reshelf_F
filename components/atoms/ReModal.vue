@@ -42,7 +42,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    // background: rgba(0, 0, 0, 0.4);
+    background: rgba(9, 30, 66, 0.54);
   }
 
   &-window {
@@ -93,19 +94,25 @@
 
   // オーバーレイに包含されているモーダルウィンドウのトランジション
   .modal-window {
-    transition: opacity 0.3s, transform 0.3s;
+    // transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 0.2s, transform 0.2s;
   }
 }
 .modal-enter-active {
   .modal-window {
-    animation: bounce-in 0.3s;
+    // animation: bounce-in 0.3s;
+    animation: bounce-in 0.2s;
   }
 }
 // ディレイを付けるとモーダルウィンドウが消えた後にオーバーレイが消える
 .modal-leave-active {
-  transition: opacity 0.3s ease 0.2s;
+  // transition: opacity 0.3s ease 0.2s;
+  // .modal-window {
+  //   animation: bounce-in 0.3s reverse;
+  // }
+  transition: ease 0.2s;
   .modal-window {
-    animation: bounce-in 0.3s reverse;
+    animation: bounce-in 0.2s reverse;
   }
 }
 
@@ -119,14 +126,22 @@
   }
 }
 @keyframes bounce-in {
+  // 0% {
+  //   transform: scale(0);
+  // }
+  // 50% {
+  //   transform: scale(1.1);
+  // }
+  // 100% {
+  //   transform: scale(1);
+  // }
   0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.1);
+    transform: translateY(30px);
+    opacity: 0;
   }
   100% {
-    transform: scale(1);
+    transform: translateY(0px);
+    opacity: 1;
   }
 }
 @keyframes slide-in {
