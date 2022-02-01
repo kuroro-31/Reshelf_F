@@ -44,10 +44,10 @@ export default {
     }
   },
   mounted() {
-    this.setBrawserLang()
+    this.setDefaultLang()
   },
   methods: {
-    async setBrawserLang() {
+    async setDefaultLang() {
       let result = null
       const brawserLang = window.navigator.language
 
