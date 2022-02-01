@@ -7,8 +7,8 @@ export const store = () => {
         name: 'user',
         namespaced: true,
       },
-      post: {
-        name: 'post',
+      product: {
+        name: 'product',
         namespaced: true,
       },
       cart: {

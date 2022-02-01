@@ -4,7 +4,7 @@
       <template v-if="loading">{{ $t('読み込み中です') }}</template>
 
       <div v-else class="items">
-        <div v-for="item in items" :key="item.id" class="card item flex-col">
+        <div v-for="item in product" :key="item.id" class="card item flex-col">
           <nuxt-link
             :to="{ name: 'item-id', params: { id: item.id } }"
             class="relative flex flex-col items-start"
@@ -62,7 +62,7 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import DeleteItem from '@/components/atoms/item/modal/DeleteItem'
 import ArticleLike from '@/components/atoms/ArticleLike'
 import ReButton from '@/components/atoms/ReButton'
@@ -82,30 +82,12 @@ export default {
     ...mapGetters({
       isUser: 'user/auth',
       user: 'user/user',
+      product: 'product/product',
     }),
   },
-  mounted() {
-    this.getItems()
-  },
   methods: {
-    // ...mapActions({
-    //   addCart: 'cart/add',
-    // }),
-    async getItems() {
-      this.loading = true
-      await this.$axios
-        .$get(`/api/posts`)
-        .then((response) => {
-          this.items = response.data
-          this.loading = false
-        })
-        .catch((error) => {
-          alert(error)
-          console.log(error)
-        })
-    },
-    addCart(item) {
-      this.$store.dispatch('cart/add', item)
+    async addCart(item) {
+      await this.$store.dispatch('cart/add', item)
     },
   },
 }

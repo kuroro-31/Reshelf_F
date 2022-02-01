@@ -23,22 +23,28 @@ export const mutations = {
 
 export const actions = {
   async add({ rootState, commit }, data) {
-    await this.$axios.$post('/api/cart/add', {
-      post_id: data.id,
-    })
-    // .then((response) => {
-    commit('setCart', data)
-    // user情報をもってくる
-    let userState = {
-      user: rootState.user.user,
-    }
-    this.$router.push({
-      path: `/user/${userState.user.id}/cart`,
-    })
-    // })
+    await this.$axios
+      .$post('/api/cart/add', {
+        post_id: data.id,
+      })
+      .then(() => {
+        commit('setCart', data)
+        // user情報をもってくる
+        let userState = {
+          user: rootState.user.user,
+        }
+        this.$router.push({
+          path: `/user/${userState.user.id}/cart`,
+        })
+      })
     // .catch((error) => {
-    //   alert(error)
-    //   console.log(error)
+    //   if (error.response.status == '401') {
+    //     this.$router.push('/auth/login')
+    //   } else if (error.response.status == '404') {
+    //     this.$router.push('/error/404')
+    //   } else if (error.response.status == '500') {
+    //     this.$router.push('/error/500')
+    //   }
     // })
   },
   async get({ commit }) {
