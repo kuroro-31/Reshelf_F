@@ -3,7 +3,7 @@ export default {
 
   detectBrowserLanguage: {
     useCookie: true,
-    cookieKey: 'i18n_locale',
+    cookieKey: 'i18n_redirected',
     redirectOn: 'root',
     alwaysRedirect: true,
     cookieCrossOrigin: true,

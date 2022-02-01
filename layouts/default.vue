@@ -43,5 +43,22 @@ export default {
       ],
     }
   },
+  mounted() {
+    this.setBrawserLang()
+  },
+  methods: {
+    async setBrawserLang() {
+      let result = null
+      const brawserLang = window.navigator.language
+
+      if (brawserLang == 'ja') {
+        result = 'ja'
+      } else {
+        result = 'en'
+      }
+
+      await this.$i18n.setLocale(result)
+    },
+  },
 }
 </script>
