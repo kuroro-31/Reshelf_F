@@ -1,44 +1,20 @@
-import webpack from 'webpack'
 require('dotenv').config()
-const { ROOT_URL } = process.env
+
+import webpack from 'webpack'
+import i18n from './nuxt-i18n.config'
 export default {
   mode: 'universal',
   ssr: true,
   components: true,
 
-  env: {
-    ROOT_URL,
-  },
   head: {
-    title: 'Reshelf | プログラミングのレパートリーを増やすマーケットプレイス',
-    htmlAttrs: {
-      lang: 'ja',
-      prefix: 'og: http://ogp.me/ns#',
-    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          'Reshelfは、講師が成果物を作って学ぶチュートリアルを販売し、購入した受講生がプログラミングのレパートリーを増やしていくことを目的としたマーケットプレイスです。',
-      },
+      { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
       { hid: 'og:site_name', property: 'og:site_name', content: 'Reshelf' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       { hid: 'og:url', property: 'og:url', content: 'http://www.reshelf.jp/' },
-      {
-        hid: 'og:title',
-        property: 'og:title',
-        content:
-          'Reshelf | プログラミングのレパートリーを増やすマーケットプレイス',
-      },
-      {
-        hid: 'og:description',
-        property: 'og:description',
-        content:
-          'Reshelfは、講師が成果物を作って学ぶチュートリアルを販売し、購入した受講生がプログラミングのレパートリーを増やしていくことを目的としたマーケットプレイスです。',
-      },
       {
         hid: 'og:image',
         property: 'og:image',
@@ -53,7 +29,6 @@ export default {
 
   loading: {
     color: '#3f85fc',
-    height: '5px',
   },
   // loading: '~/components/atoms/Loading.vue',
 
@@ -154,29 +129,13 @@ export default {
     '@nuxtjs/ngrok',
   ],
   modules: [
+    '@nuxtjs/axios',
     '@nuxtjs/proxy',
     '@nuxtjs/auth',
     '@nuxtjs/pwa',
     'nuxt-client-init-module',
-    '@nuxtjs/axios',
-    [
-      'nuxt-i18n',
-      {
-        locales: [
-          { code: 'ja', name: '日本語', iso: 'ja_JP', file: 'ja.js' },
-          { code: 'en', name: 'English', iso: 'en-US', file: 'en.js' },
-        ],
-        langDir: 'lang/',
-        defaultLocale: 'ja', // デフォルトの言語
-        strategy: 'no_prefix', // URLに言語のプレフィックスを追加するかの指定
-        vueI18n: {
-          // 翻訳ファイルが見つからなかった場合の言語を指定
-          fallbackLocale: 'ja',
-        },
-        vueI18nLoader: true,
-        lazy: true, // 遅延読み込みの有効化
-      },
-    ],
+    ['nuxt-i18n', i18n],
+    '@nuxtjs/sitemap',
   ],
   axios: {
     proxy: true,

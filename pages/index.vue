@@ -307,11 +307,6 @@ export default {
     // HeroItem,
     ReButton,
   },
-  head() {
-    return {
-      title: this.$t('head.title'),
-    }
-  },
   computed: {
     ...mapGetters({
       isUser: 'user/auth',

@@ -84,6 +84,14 @@ export default {
       })
     },
     /**
+     * リロードあり
+     * クッキーへ言語設定。リロード後、言語切替
+     */
+    // async changeLocale(locale) {
+    //   await this.$i18n.setLocaleCookie(locale)
+    //   this.$router.go(0)
+    // },
+    /**
      * リロードなし
      * クッキーと、$i18n独自ストアのlocaleに言語を設定する
      * 直接storeを書き換えるためリロードは不要

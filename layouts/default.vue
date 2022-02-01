@@ -3,3 +3,45 @@
     <Nuxt />
   </div>
 </template>
+<script>
+export default {
+  head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
+    return {
+      title: this.$t('head.title'),
+      ...i18nHead.title,
+      htmlAttrs: {
+        lang: this.$i18n.locale,
+        ...i18nHead.htmlAttrs,
+      },
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.$t('head.content'),
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.$t('head.title'),
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.$t('head.content'),
+        },
+        ...i18nHead.meta,
+      ],
+      link: [
+        {
+          hid: 'apple-touch-icon',
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: '/apple-touch-icon.png',
+        },
+        ...i18nHead.link,
+      ],
+    }
+  },
+}
+</script>
