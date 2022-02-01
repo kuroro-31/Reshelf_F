@@ -122,7 +122,7 @@ export default {
       color: var(--sub-color);
     }
     &-link {
-      @apply p-2 py-3 w-full rounded-lg text-left duration-200;
+      @apply p-3 w-full rounded-lg text-left duration-200;
       &:hover {
         @apply cursor-pointer;
         background: #f0f2f6;
