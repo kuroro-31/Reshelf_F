@@ -115,18 +115,18 @@ export default {
     ],
   },
 
-  ngrok: {
-    authtoken: process.env.NGROK_AUTHTOKEN,
-    addr: 3000,
-    region: 'jp',
-  },
+  // ngrok: {
+  //   authtoken: process.env.NGROK_AUTHTOKEN,
+  //   addr: 3000,
+  //   region: 'jp',
+  // },
 
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
     // '@nuxtjs/color-mode',
-    '@nuxtjs/ngrok',
+    // '@nuxtjs/ngrok',
   ],
   modules: [
     '@nuxtjs/axios',
@@ -139,6 +139,5 @@ export default {
   ],
   axios: {
     proxy: true,
-    credentials: true,
   },
 }
