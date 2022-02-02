@@ -76,17 +76,6 @@ export default {
     '@/plugins/util/numberFormat.js',
   ],
 
-  proxy: {
-    '/api': {
-      target: process.env.ROOT_URL,
-      changeOrigin: true,
-    },
-    '/sanctum': {
-      target: process.env.ROOT_URL,
-      changeOrigin: true,
-    },
-  },
-
   build: {
     vendor: ['lodash'],
 
@@ -139,5 +128,15 @@ export default {
   ],
   axios: {
     proxy: true,
+  },
+  proxy: {
+    '/api': {
+      target: process.env.ROOT_URL,
+      changeOrigin: true,
+    },
+    '/sanctum': {
+      target: process.env.ROOT_URL,
+      changeOrigin: true,
+    },
   },
 }
