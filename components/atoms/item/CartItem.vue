@@ -77,6 +77,12 @@ export default {
   components: {
     Toast,
   },
+  props: {
+    carts: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       visible: false,
@@ -85,11 +91,6 @@ export default {
       success: false,
       error: false,
     }
-  },
-  computed: {
-    carts() {
-      return this.$store.getters['cart/carts']
-    },
   },
   methods: {
     deleteCart(item) {

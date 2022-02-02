@@ -15,8 +15,8 @@
           d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
         />
       </svg>
-      <BadgeNormal v-if="cartNumber > 0" class="badge">
-        {{ cartNumber }}
+      <BadgeNormal v-if="cartsCount > 0" class="badge">
+        {{ cartsCount }}
       </BadgeNormal>
     </div>
     <transition>
@@ -26,7 +26,7 @@
           @mouseover="show = true"
           @mouseleave="show = false"
         >
-          <div v-if="cartNumber > 0" class="cart-content">
+          <div v-if="cartsCount > 0" class="cart-content">
             <!-- <p class="cart-content-name">My Cart</p>
             <p class="divider"></p> -->
 
@@ -68,10 +68,18 @@ export default {
       user: 'user/user',
       carts: 'cart/carts',
     }),
-    // カート商品の数
-    cartNumber() {
-      return this.carts.length
+    cartsCount() {
+      let length = null
+      // if (this.carts != null) {
+      length = this.carts.length
+      // }
+      return length
     },
+  },
+  mounted: function () {
+    setInterval(() => {
+      this.$store.dispatch('cart/get')
+    }, 2000)
   },
   methods: {
     search() {

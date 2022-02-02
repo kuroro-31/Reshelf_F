@@ -43,18 +43,19 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   computed: {
-    carts() {
-      return this.$store.getters['cart/carts']
-    },
+    ...mapGetters({
+      carts: 'cart/carts',
+    }),
     totalPrice() {
       let carts = this.carts
       let totalPrice = null
 
-      carts.forEach((cart) => {
-        totalPrice += cart.price
-      })
+      for (let post of carts) {
+        totalPrice += post.price
+      }
 
       return totalPrice
     },

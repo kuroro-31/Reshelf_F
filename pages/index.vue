@@ -277,6 +277,7 @@
         </nav>
         <div class="main-body min-h-(screen-16)">
           <!-- <hero-item /> -->
+          <button @click="resetVuex">vuexリセット</button>
           <all-item />
 
           <!-- <FooterNav /> -->
@@ -318,6 +319,18 @@ export default {
         carts = this.$store.getters['cart/carts']
       }
       return carts
+    },
+  },
+  methods: {
+    async resetVuex() {
+      await this.$store
+        .dispatch('cart/reset')
+        .then((value) => {
+          alert('成功')
+        })
+        .then((value) => {
+          alert('失敗')
+        })
     },
   },
 }

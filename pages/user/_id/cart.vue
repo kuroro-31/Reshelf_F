@@ -4,13 +4,13 @@
     <div class="main scroll-none">
       <span class="title">{{ $t('ショッピングカート') }}</span>
 
-      <div v-if="carts.length > 0" class="lg:flex w-full">
+      <div v-if="carts != null" class="lg:flex w-full">
         <div class="main-body min-h-(screen-16) scroll-none">
-          <CartItem :total-price="totalPrice" />
+          <CartItem :carts="carts" :total-price="totalPrice" />
           <!-- <FooterNav /> -->
         </div>
         <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
-          <SidebarCart :total-price="totalPrice" />
+          <SidebarCart :carts="carts" :total-price="totalPrice" />
         </nav>
       </div>
       <div v-else class="p-8">{{ $t('カートに商品がありません') }}</div>
@@ -44,12 +44,15 @@ export default {
       let carts = this.carts
       let totalPrice = null
 
-      carts.forEach((post) => {
+      for (let post of carts) {
         totalPrice += post.price
-      })
+      }
 
       return totalPrice
     },
+  },
+  created() {
+    this.$store.dispatch('cart/get')
   },
 }
 </script>

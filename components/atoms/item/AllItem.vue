@@ -39,7 +39,13 @@
               :class="user.id != item.user_id ? 'block' : 'hidden'"
             >
               <button
-                class="re-button-primary-filled bg-primary w-full"
+                :disabled="isClick"
+                class="w-full"
+                :class="
+                  isClick != true
+                    ? 're-button-primary-filled bg-primary'
+                    : 're-button-primary-border'
+                "
                 @click="addCart(item)"
               >
                 {{ $t('カートに入れる') }}
@@ -76,6 +82,7 @@ export default {
     return {
       loading: false,
       items: [],
+      isClick: false,
     }
   },
   computed: {
@@ -83,6 +90,7 @@ export default {
       isUser: 'user/auth',
       user: 'user/user',
       product: 'product/product',
+      carts: 'cart/carts',
     }),
   },
   created() {
