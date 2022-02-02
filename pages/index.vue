@@ -277,7 +277,7 @@
         </nav>
         <div class="main-body min-h-(screen-16)">
           <!-- <hero-item /> -->
-          <button @click="resetVuex">vuexリセット</button>
+          <!-- <button @click="resetVuex">cart vuexリセット</button> -->
           <all-item />
 
           <!-- <FooterNav /> -->

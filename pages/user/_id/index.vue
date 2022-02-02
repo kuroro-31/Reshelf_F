@@ -178,7 +178,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import { create } from '@/mixins/posts/create'
+// import { create } from '@/mixins/posts/create'
 // layout
 import HeaderNav from '@/components/layout/header/HeaderNav'
 import FooterNav from '@/components/layout/FooterNav'
@@ -197,7 +197,7 @@ export default {
     ReButton,
     ReModal,
   },
-  mixins: [create],
+  // mixins: [create],
   data() {
     return {
       loading: false,
@@ -214,6 +214,7 @@ export default {
     ...mapGetters({
       isUser: 'user/auth',
       carts: 'cart/carts',
+      product: 'product/product',
     }),
     user: {
       get() {
@@ -252,6 +253,16 @@ export default {
     this.getItems()
   },
   methods: {
+    async create() {
+      await this.$store
+        .dispatch('product/create')
+        .then((response) => {
+          alert('成功' + response)
+        })
+        .then((error) => {
+          alert('失敗' + error)
+        })
+    },
     async getItems() {
       this.loading = true
       await this.$axios

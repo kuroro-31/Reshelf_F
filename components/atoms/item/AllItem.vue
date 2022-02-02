@@ -29,7 +29,7 @@
             <span v-else class="title">{{ $t('無題のタイトル') }}</span>
 
             <div class="">{{ item.user_id }}</div>
-            <div class="">{{ item.user.name }}</div>
+            <div v-if="item.user.name" class="">{{ item.user.name }}</div>
             <ArticleLike />
           </nuxt-link>
 
