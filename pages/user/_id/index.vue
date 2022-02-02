@@ -259,7 +259,7 @@ export default {
         .then((response) => {
           alert('成功' + response)
         })
-        .then((error) => {
+        .catch((error) => {
           alert('失敗' + error)
         })
     },
