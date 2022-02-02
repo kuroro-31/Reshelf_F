@@ -73,7 +73,7 @@ export const actions = {
       .then(() => {
         commit('deleteCart', data.id)
         // commit('resetCart', null)
-        alert('成功！')
+        // alert('成功！')
       })
       .catch((error) => {
         alert(error)
@@ -81,6 +81,6 @@ export const actions = {
       })
   },
   nuxtServerInit({ commit }) {
-    commit('setCart', 'resetCart' < 'deleteCart')
+    commit('setCart', 'resetCart', 'deleteCart')
   },
 }
