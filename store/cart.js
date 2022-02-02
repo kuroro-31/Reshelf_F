@@ -1,14 +1,21 @@
 export const state = () => ({
   carts: [],
+  cartsCount: 0,
 })
 
 export const getters = {
   carts(state) {
     return state.carts
   },
+  cartsCount(state) {
+    return state.cartsCount
+  },
 }
 
 export const mutations = {
+  resetCart(state, value) {
+    state.carts = value
+  },
   setCart(state, value) {
     let array = []
 
@@ -18,6 +25,13 @@ export const mutations = {
 
     const array2 = Array.from(new Set(array))
     state.carts = array2
+    state.cartsCount++
+  },
+  deleteCart(state, id) {
+    // Create a new array other than to be deleted
+    const afterCart = state.carts.filter((cart) => cart.id !== id)
+    state.carts = afterCart
+    state.cartsCount--
   },
 }
 
@@ -37,15 +51,10 @@ export const actions = {
           path: `/user/${userState.user.id}/cart`,
         })
       })
-    // .catch((error) => {
-    //   if (error.response.status == '401') {
-    //     this.$router.push('/auth/login')
-    //   } else if (error.response.status == '404') {
-    //     this.$router.push('/error/404')
-    //   } else if (error.response.status == '500') {
-    //     this.$router.push('/error/500')
-    //   }
-    // })
+      .catch((error) => {
+        alert(error)
+        // commit('setCart', null)
+      })
   },
   async get({ commit }) {
     await this.$axios
@@ -62,23 +71,16 @@ export const actions = {
     await this.$axios
       .$post(`/api/cart/delete/${data.id}`)
       .then(() => {
-        commit('setCart', null)
-
-        // let stateCarts = state.carts
-        // let newCart = stateCarts.filter((stateCart) => {
-        //   if (stateCart.id != data.id) {
-        //     return stateCart
-        //   }
-        // })
-        // commit('setCart', newCart)
-        // commit('setCart', null)
-        // location.reload()
+        commit('deleteCart', data.id)
+        // commit('resetCart', null)
+        alert('成功！')
       })
       .catch((error) => {
+        alert(error)
         console.log(error)
       })
   },
   nuxtServerInit({ commit }) {
-    commit('setCart')
+    commit('setCart', 'resetCart' < 'deleteCart')
   },
 }
