@@ -85,6 +85,9 @@ export default {
       product: 'product/product',
     }),
   },
+  created() {
+    this.$store.dispatch('product/get')
+  },
   methods: {
     async addCart(item) {
       await this.$store.dispatch('cart/add', item)
