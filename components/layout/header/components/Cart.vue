@@ -77,9 +77,9 @@ export default {
     },
   },
   created() {
-    setInterval(() => {
-      this.$store.dispatch('cart/get')
-    }, 3000)
+    // setInterval(() => {
+    this.$store.dispatch('cart/get')
+    // }, 3000)
   },
   methods: {
     toCheckout() {

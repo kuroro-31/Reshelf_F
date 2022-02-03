@@ -73,7 +73,7 @@ export default {
   data() {
     return {
       dropdown: false,
-      alert: '',
+      // alert: '',
     }
   },
   computed: {
