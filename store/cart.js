@@ -24,20 +24,23 @@ export const actions = {
     await commit('setCart', null)
   },
   async add({ rootState, commit }, data) {
-    try {
-      await this.$axios.$post('/api/cart/add', {
+    await this.$axios
+      .$post('/api/cart/add', {
         post_id: data.id,
       })
-      await commit('setCart', data)
-    } catch (error) {
-      if (error.response.status == '401') {
-        this.$router.push('/auth/login')
-      } else if (error.response.status == '404') {
-        this.$router.push('/error/404')
-      } else if (error.response.status == '500') {
-        this.$router.push('/error/500')
-      }
-    }
+      .then((data) => {
+        commit('setCart', data)
+      })
+      .catch((error) => {
+        if (error.response.status == '401') {
+          this.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$router.push('/error/500')
+        }
+      })
+
     // user情報をもってくる
     // let userState = {
     //   user: rootState.user.user,
@@ -59,7 +62,7 @@ export const actions = {
       })
       .catch((error) => {
         // alert('カート取得エラー' + error)
-        // console.log(error)
+        console.log(error)
       })
   },
   async clear({ commit }, data) {

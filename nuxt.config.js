@@ -30,7 +30,6 @@ export default {
   loading: {
     color: '#3f85fc',
   },
-  // loading: '~/components/atoms/Loading.vue',
 
   router: {
     extendRoutes(routes, resolve) {
