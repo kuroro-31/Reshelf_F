@@ -307,11 +307,11 @@ export default {
         .dispatch('user/update', this.user)
         .then(() => {
           this.success = true
-          setTimeout(() => (this.success = false), 5000)
+          setTimeout(() => (this.success = false), 3000)
         })
         .catch(() => {
           this.error = true
-          setTimeout(() => (this.error = false), 5000)
+          setTimeout(() => (this.error = false), 3000)
         })
     },
   },

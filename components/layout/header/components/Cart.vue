@@ -35,7 +35,7 @@
             <re-button class="pt-4 re-button re-button-small">
               <button
                 class="re-button-primary-filled bg-primary w-full duration-500"
-                @click="search"
+                @click="toCheckout"
               >
                 {{ $t('レジに進む') }}
               </button>
@@ -96,7 +96,7 @@ export default {
     // }, 2000)
   },
   methods: {
-    search() {
+    toCheckout() {
       this.$router.push({
         path: `/user/${this.user.id}/cart`,
       })
