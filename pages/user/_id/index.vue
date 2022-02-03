@@ -210,6 +210,31 @@ export default {
       saved: false,
     }
   },
+  head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
+    return {
+      title: `${this.user.name}さんのプロフィール | Reshelf`,
+      ...i18nHead.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.$t('head.content'),
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.$t('head.title'),
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.$t('head.content'),
+        },
+        ...i18nHead.meta,
+      ],
+    }
+  },
   computed: {
     ...mapGetters({
       isUser: 'user/auth',
