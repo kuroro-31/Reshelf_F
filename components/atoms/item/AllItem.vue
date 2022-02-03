@@ -98,7 +98,17 @@ export default {
   },
   methods: {
     async addCart(item) {
-      await this.$store.dispatch('cart/add', item)
+      try {
+        await this.$store.dispatch('cart/add', item)
+      } catch (error) {
+        if (error.response.status == '401' || error.response.status == '419') {
+          this.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$router.push('/error/500')
+        }
+      }
     },
   },
 }

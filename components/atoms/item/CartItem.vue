@@ -99,11 +99,11 @@ export default {
       try {
         this.$store.dispatch('cart/clear', item)
         this.success = true
-        setTimeout(() => (this.success = false), 5000)
+        setTimeout(() => (this.success = false), 2000)
       } catch (error) {
         console.log(error)
         this.error = true
-        setTimeout(() => (this.error = false), 5000)
+        setTimeout(() => (this.error = false), 2000)
       }
     },
   },

@@ -32,13 +32,8 @@ export const actions = {
         commit('setCart', data)
       })
       .catch((error) => {
-        if (error.response.status == '401') {
-          this.$router.push('/auth/login')
-        } else if (error.response.status == '404') {
-          this.$router.push('/error/404')
-        } else if (error.response.status == '500') {
-          this.$router.push('/error/500')
-        }
+        alert(error)
+        console.log(error)
       })
 
     // user情報をもってくる
