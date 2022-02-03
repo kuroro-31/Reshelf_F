@@ -24,11 +24,20 @@ export const actions = {
     await commit('setCart', null)
   },
   async add({ rootState, commit }, data) {
-    await this.$axios.$post('/api/cart/add', {
-      post_id: data.id,
-    })
-    // .then((response) => {
-    await commit('setCart', data)
+    try {
+      await this.$axios.$post('/api/cart/add', {
+        post_id: data.id,
+      })
+      await commit('setCart', data)
+    } catch (error) {
+      if (error.response.status == '401') {
+        this.$router.push('/auth/login')
+      } else if (error.response.status == '404') {
+        this.$router.push('/error/404')
+      } else if (error.response.status == '500') {
+        this.$router.push('/error/500')
+      }
+    }
     // user情報をもってくる
     // let userState = {
     //   user: rootState.user.user,

@@ -3,7 +3,8 @@
     <div class="sidebar-search scroll-none">
       <span class="text-xs">{{ $t('合計') }}</span>
       <span class="text-4xl font-bold mb-4 text-black">
-        {{ $moneyFormat(totalPrice) }}
+        <!-- {{ $moneyFormat(totalPrice) }} -->
+        <AnimatedNumber :value="totalPrice" />
       </span>
     </div>
 
@@ -27,21 +28,34 @@
 // import { ChevronRightIcon } from 'vue-feather-icons'
 // atoms
 import ReButton from '@/components/atoms/ReButton'
-
+import AnimatedNumber from '@/components/atoms/AnimatedNumber'
 export default {
   components: {
     ReButton,
+    AnimatedNumber,
   },
   props: {
-    totalPrice: {
-      type: Number,
-      default: 0,
+    carts: {
+      type: Array,
+      default: () => [],
     },
   },
   data() {
     return {
       isDisabled: false,
     }
+  },
+  computed: {
+    totalPrice() {
+      let carts = this.carts
+      let totalPrice = null
+
+      for (let post of carts) {
+        totalPrice += post.price
+      }
+
+      return totalPrice
+    },
   },
   methods: {
     checkout(products) {

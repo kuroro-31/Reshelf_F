@@ -2,65 +2,67 @@
   <div class="w-full flex mx-auto">
     <div class="w-full">
       <div class="items">
-        <div v-for="item in carts" :key="item.id" class="item">
-          <!-- 左サイド -->
-          <div class="relative flex flex-col items-start">
-            <nuxt-link
-              to="/item/detail"
-              @mouseover="visible = true"
-              @mouseleave="visible = false"
-            >
-              <img
-                v-if="item.thumbnail"
-                :src="item.thumbnail"
-                alt="text image"
-                class="cart-content-img"
-                :value="item"
-              />
-              <img
-                v-else
-                src="@/assets/images/noimage.svg"
-                alt="cource image"
-                class="cart-content-img"
-                :value="item"
-              />
-            </nuxt-link>
-          </div>
-
-          <!-- センター -->
-          <div class="center">
-            <nuxt-link
-              class="text-lg font-bold cursor-pointer"
-              to="/item/detail"
-            >
-              {{ item.title }}
-            </nuxt-link>
-
-            <!-- 作者 -->
-            <nuxt-link to="/user/top" class="name text-xs cursor-pointer">
-              {{ item.name }}
-            </nuxt-link>
-          </div>
-
-          <!-- 右サイド -->
-          <div class="right-box">
-            <div class="flex flex-col items-end">
-              <span class="text-xs cursor-pointer" @click="deleteCart(item)">
-                {{ $t('削除') }}
-              </span>
-              <span class="text-xs whitespace-nowrap">
-                {{ $t('ほしいものリストに追加') }}
-              </span>
+        <transition-group class="list-group" name="lists" tag="ul">
+          <li v-for="item in carts" :key="item.id" class="item">
+            <!-- 左サイド -->
+            <div class="relative flex flex-col items-start">
+              <nuxt-link
+                to="/item/detail"
+                @mouseover="visible = true"
+                @mouseleave="visible = false"
+              >
+                <img
+                  v-if="item.thumbnail"
+                  :src="item.thumbnail"
+                  alt="text image"
+                  class="cart-content-img"
+                  :value="item"
+                />
+                <img
+                  v-else
+                  src="@/assets/images/noimage.svg"
+                  alt="cource image"
+                  class="cart-content-img"
+                  :value="item"
+                />
+              </nuxt-link>
             </div>
-            <div class="flex items-center ml-8">
-              <!-- セール価格 -->
-              <span class="right-box-sale">
-                {{ $moneyFormat(item.price) }}
-              </span>
+
+            <!-- センター -->
+            <div class="center">
+              <nuxt-link
+                class="text-lg font-bold cursor-pointer"
+                to="/item/detail"
+              >
+                {{ item.title }}
+              </nuxt-link>
+
+              <!-- 作者 -->
+              <nuxt-link to="/user/top" class="name text-xs cursor-pointer">
+                {{ item.name }}
+              </nuxt-link>
             </div>
-          </div>
-        </div>
-        <nuxt-link to="/">
+
+            <!-- 右サイド -->
+            <div class="right-box">
+              <div class="flex flex-col items-end">
+                <span class="text-xs cursor-pointer" @click="deleteCart(item)">
+                  {{ $t('削除') }}
+                </span>
+                <span class="text-xs whitespace-nowrap">
+                  {{ $t('ほしいものリストに追加') }}
+                </span>
+              </div>
+              <div class="flex items-center ml-8">
+                <!-- セール価格 -->
+                <span class="right-box-sale">
+                  {{ $moneyFormat(item.price) }}
+                </span>
+              </div>
+            </div>
+          </li>
+        </transition-group>
+        <nuxt-link to="/" class="duration-300">
           <span>{{ $t('ショッピングを続ける') }}</span>
         </nuxt-link>
       </div>
@@ -109,10 +111,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .items {
-  @apply flex relative flex-col w-full justify-center;
+  @apply flex relative flex-col w-full justify-center duration-300;
 }
 .item {
   @apply flex pb-4 mb-4 relative justify-between;
+  transition: all 0.28s;
+
   // @apply flex pb-6 mb-6 relative;
   border-bottom: 1px var(--thin-gray) solid;
 }
@@ -152,4 +156,17 @@ export default {
 .name {
   color: var(--sub-color);
 }
+
+.lists-enter,
+.lists-leave-to {
+  max-height: 0px;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  overflow: hidden;
+}
+.lists-enter-to,
+.lists-leave {
+  max-height: 80px;
+}
 </style>
+1

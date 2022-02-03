@@ -6,11 +6,11 @@
 
       <div v-if="carts != null" class="lg:flex w-full">
         <div class="main-body min-h-(screen-16) scroll-none">
-          <CartItem :carts="carts" :total-price="totalPrice" />
+          <CartItem :carts="carts" />
           <!-- <FooterNav /> -->
         </div>
         <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
-          <SidebarCart :carts="carts" :total-price="totalPrice" />
+          <SidebarCart :carts="carts" />
         </nav>
       </div>
       <div v-else class="p-8">{{ $t('カートに商品がありません') }}</div>
@@ -40,16 +40,6 @@ export default {
       isUser: 'user/auth',
       carts: 'cart/carts',
     }),
-    totalPrice() {
-      let carts = this.carts
-      let totalPrice = null
-
-      for (let post of carts) {
-        totalPrice += post.price
-      }
-
-      return totalPrice
-    },
   },
   created() {
     this.$store.dispatch('cart/get')
