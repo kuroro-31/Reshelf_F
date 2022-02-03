@@ -1,16 +1,23 @@
 export const state = () => ({
   carts: [],
+  isCart: false,
 })
 
 export const getters = {
   carts(state) {
     return state.carts
   },
+  isCart(state) {
+    return state.isCart
+  },
 }
 
 export const mutations = {
   setCart(state, value) {
     state.carts = value
+  },
+  setIsCart(state, value) {
+    state.isCart = value
   },
   deleteCart(state, id) {
     // Create a new array other than to be deleted
@@ -22,6 +29,7 @@ export const mutations = {
 export const actions = {
   async reset({ commit }) {
     await commit('setCart', null)
+    await commit('setIsCart', null)
   },
   async add({ rootState, commit }, data) {
     await this.$axios

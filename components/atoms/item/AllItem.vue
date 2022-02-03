@@ -34,23 +34,9 @@
           </nuxt-link>
 
           <template v-if="isUser">
-            <ReButton
-              class="re-button re-button-small"
-              :class="user.id != item.user_id ? 'block' : 'hidden'"
-            >
-              <button
-                :disabled="isClick"
-                class="w-full"
-                :class="
-                  isClick != true
-                    ? 're-button-primary-filled bg-primary'
-                    : 're-button-primary-border'
-                "
-                @click="addCart(item)"
-              >
-                {{ $t('カートに入れる') }}
-              </button>
-            </ReButton>
+            <div :class="user.id != item.user_id ? 'block' : 'hidden'">
+              <InCartButton :item="item" />
+            </div>
 
             <!-- <template v-if="isUser"> -->
             <div :class="user.id == item.user_id ? 'block' : 'hidden'">
@@ -71,18 +57,16 @@
 import { mapGetters } from 'vuex'
 import DeleteItem from '@/components/atoms/item/modal/DeleteItem'
 import ArticleLike from '@/components/atoms/ArticleLike'
-import ReButton from '@/components/atoms/ReButton'
+import InCartButton from '@/components/atoms/item/InCartButton'
 export default {
   components: {
     DeleteItem,
     ArticleLike,
-    ReButton,
+    InCartButton,
   },
   data() {
     return {
       loading: false,
-      items: [],
-      isClick: false,
     }
   },
   computed: {
@@ -92,24 +76,15 @@ export default {
       product: 'product/product',
       carts: 'cart/carts',
     }),
+    isClick() {
+      // let item = this.product.filter((item) => item.id !== id)
+      // let cart = this.carts.filter((cart) => cart.id !== id)
+
+      return true
+    },
   },
   created() {
     this.$store.dispatch('product/get')
-  },
-  methods: {
-    async addCart(item) {
-      try {
-        await this.$store.dispatch('cart/add', item)
-      } catch (error) {
-        if (error.response.status == '401' || error.response.status == '419') {
-          this.$router.push('/auth/login')
-        } else if (error.response.status == '404') {
-          this.$router.push('/error/404')
-        } else if (error.response.status == '500') {
-          this.$router.push('/error/500')
-        }
-      }
-    },
   },
 }
 </script>
