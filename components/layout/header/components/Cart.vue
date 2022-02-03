@@ -76,24 +76,10 @@ export default {
       return length
     },
   },
-  // watch: {
-  //   carts: {
-  //     handler: function (val, oldVal) {
-  //       console.log('カート情報の変更を検知しました。')
-  //       this.$store.dispatch('cart/get')
-  //     },
-  //     deep: true,
-  //   },
-  // },
-  // mounted() {
-  //   setInterval(() => {
-  //     this.$store.dispatch('cart/get')
-  //   }, 4000)
-  // },
   created() {
-    // setInterval(() => {
-    this.$store.dispatch('cart/get')
-    // }, 2000)
+    setInterval(() => {
+      this.$store.dispatch('cart/get')
+    }, 3000)
   },
   methods: {
     toCheckout() {
