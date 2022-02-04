@@ -1,9 +1,9 @@
 <template>
   <button class="dropdown" @mouseover="show = true" @mouseleave="show = false">
-    <div class="relative flex items-center">
+    <div class="language">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
+        class="h-5 w-5"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -103,6 +103,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.language {
+  @apply relative flex items-center px-2 py-2 rounded;
+  border: 1px solid var(--sub-color);
+}
 .dropdown {
   @apply px-3 relative;
   height: 60px;
