@@ -1,4 +1,5 @@
 module.exports = {
+  mode: "jit",
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
