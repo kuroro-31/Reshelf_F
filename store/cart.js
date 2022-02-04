@@ -40,8 +40,9 @@ export const actions = {
         commit('setCart', data)
       })
       .catch((error) => {
-        alert(error)
-        console.log(error)
+        // alert(error)
+        // console.log(error)
+        this.$router.push('/auth/login')
       })
 
     // user情報をもってくる

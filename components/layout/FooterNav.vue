@@ -15,15 +15,14 @@
     <div class="footer-center">
       <div>
         <i class="fa fa-map-marker"></i>
-        <p>
-          <span>Plot 5 Billingsway,</span>
-          Oregun, Ikeja, Lagos, Nigeria.
-        </p>
+        <nuxt-link to="/company/termsOfService">{{ $t('利用規約') }}</nuxt-link>
       </div>
 
       <div>
         <i class="fa fa-phone"></i>
-        <p>0806 155 0543</p>
+        <nuxt-link to="/company/privacy">
+          {{ $t('プライバシーポリシー') }}
+        </nuxt-link>
       </div>
 
       <div>

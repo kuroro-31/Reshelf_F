@@ -63,23 +63,18 @@ export default {
   },
   methods: {
     async addCart(item) {
-      try {
-        await this.$store.dispatch('cart/add', item)
-        this.isClick = true
-        this.success = true
-        setTimeout(() => (this.success = false), 3000)
-      } catch (error) {
-        this.error = true
-        setTimeout(() => (this.error = false), 3000)
-
-        if (error.response.status == '401' || error.response.status == '419') {
-          this.$router.push('/auth/login')
-        } else if (error.response.status == '404') {
-          this.$router.push('/error/404')
-        } else if (error.response.status == '500') {
-          this.$router.push('/error/500')
-        }
-      }
+      // try {
+      await this.$store
+        .dispatch('cart/add', item)
+        .then((value) => {
+          this.isClick = true
+          this.success = true
+          setTimeout(() => (this.success = false), 3000)
+        })
+        .catch((error) => {
+          this.error = true
+          setTimeout(() => (this.error = false), 3000)
+        })
     },
     toCheckout() {
       this.$router.push({
