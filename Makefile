@@ -17,6 +17,7 @@ generate:
 	npm run generate
 reset:
 	rm -rf node_modules
+	rm -r .nuxt
 	rm package-lock.json
 	npm cache clear --force
 	npm cache clean --force
