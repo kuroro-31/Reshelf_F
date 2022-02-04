@@ -14,10 +14,10 @@ export default {
   読み込み中です: 'loading',
   無題のタイトル: 'Untitled Title',
   カートに入れる: 'Add to cart',
-  編集: 'edit',
-  削除: 'delete',
-  評価: 'evaluation',
-  値段: 'price',
+  編集: 'Edit',
+  削除: 'Delete',
+  評価: 'Evaluation',
+  値段: 'Price',
   トピック: 'Topics',
   難易度: 'Difficulty',
   対応言語: 'Languages supported',
@@ -52,4 +52,8 @@ export default {
   商品を削除しました: 'Product removed.',
   商品を削除できませんでした: 'Unable to delete the product.',
   購入する: 'Purchase',
+  プライバシーポリシー: 'Privacy policy',
+  利用規約: 'Terms of service',
+  '合同会社Reshelf（以下「当社」といいます。）は，当社の提供するサービス（以下,「本サービス」といいます。）における，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。':
+    'Reshelf LLC (hereinafter referred to as the "Company") is a company that provides services (hereinafter referred to as the "Services"). Rshelf LLC (hereinafter referred to as the "Company") has established the following privacy policy (hereinafter referred to as the "Policy") regarding the handling of users personal information in the services provided by the Company (hereinafter referred to as the "Services"). Rshelf LLC (hereinafter referred to as the "Company") has established the following privacy policy (hereinafter referred to as the "Policy") regarding the handling of personal information of users in the services provided by the Company (hereinafter referred to as the "Services"). (hereinafter referred to as the "Company") has established the following privacy policy (hereinafter referred to as the "Policy") regarding the handling of users personal information in the services provided by the Company (hereinafter referred to as the "Services").',
 }
