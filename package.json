@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
-    "start": "node .output/server/index.mjs"
+    "start": "node .output/server/index.mjs",
+    "lint": "eslint --ext .js,.ts,.vue .",
+    "lintfix": "eslint --fix --ext .js,.ts,.vue ."
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
