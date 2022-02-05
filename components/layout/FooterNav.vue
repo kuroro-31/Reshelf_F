@@ -26,8 +26,10 @@
       </div>
 
       <div>
-        <i class="fa fa-envelope"></i>
-        <p><a href="mailto:info@vivianfowler.org">info@vivianfowler.org</a></p>
+        <i class="fa fa-phone"></i>
+        <nuxt-link to="/company/help">
+          {{ $t('ヘルプとサポート') }}
+        </nuxt-link>
       </div>
     </div>
 

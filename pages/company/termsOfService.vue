@@ -312,7 +312,7 @@ export default {
     FooterNav,
   },
   head: {
-    title: 'Reshelf | 利用規約',
+    title: '利用規約 | Reshelf',
     meta: [
       {
         hid: '利用規約',

@@ -212,7 +212,7 @@ export default {
     FooterNav,
   },
   head: {
-    title: 'Reshelf | プライバシーポリシー',
+    title: 'プライバシーポリシー | Reshelf',
     meta: [
       {
         hid: 'プライバシーポリシー',
