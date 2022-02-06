@@ -4,6 +4,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   head() {
     const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
@@ -42,6 +43,14 @@ export default {
         ...i18nHead.link,
       ],
     }
+  },
+  computed: {
+    ...mapGetters({
+      isUser: 'user/auth',
+      user: 'user/user',
+      product: 'product/product',
+      carts: 'cart/carts',
+    }),
   },
   mounted() {
     this.setDefaultLang()
