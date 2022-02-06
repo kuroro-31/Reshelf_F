@@ -39,13 +39,13 @@
               </nuxt-link>
             </div>
             <div class="menu-me">
-              <!-- <div class="">
+              <div class="">
                 <select v-model="$colorMode.preference">
                   <option value="system">System</option>
                   <option value="light">Light</option>
                   <option value="dark">Dark</option>
                 </select>
-              </div> -->
+              </div>
               <button class="menu-me-link" @click="logout">
                 {{ $t('ログアウト') }}
               </button>
