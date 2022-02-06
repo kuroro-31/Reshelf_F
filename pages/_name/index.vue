@@ -208,6 +208,7 @@ export default {
       name: this.$route.params.name,
       form: [],
       saved: false,
+      currentUser: {},
     }
   },
   head() {
@@ -249,7 +250,6 @@ export default {
         this.$store.dispatch('user/update', value)
       },
     },
-    currentUser: {},
     ownPosts() {
       let posts = this.items
       let ownPosts = posts.filter((post) => {
@@ -277,6 +277,7 @@ export default {
   // },
   mounted() {
     this.getItems()
+    this.getCurrentUser()
   },
   methods: {
     async create() {
@@ -296,6 +297,18 @@ export default {
         .then((response) => {
           this.items = response.data
           this.loading = false
+        })
+        .catch((error) => {
+          alert(error)
+          console.log(error)
+        })
+    },
+    async getCurrentUser() {
+      this.loading = true
+      await this.$axios
+        .$get(`/api/users/${this.name}`)
+        .then((response) => {
+          this.currentUser = response.data
         })
         .catch((error) => {
           alert(error)
