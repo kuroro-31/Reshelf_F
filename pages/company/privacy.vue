@@ -202,15 +202,7 @@
   </div>
 </template>
 <script>
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-import FooterNav from '@/components/layout/FooterNav'
-
 export default {
-  components: {
-    HeaderNav,
-    FooterNav,
-  },
   head: {
     title: 'プライバシーポリシー | Reshelf',
     meta: [

@@ -38,13 +38,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import ReButton from '@/components/atoms/ReButton'
-import Toast from '@/components/atoms//Toast'
 export default {
-  components: {
-    ReButton,
-    Toast,
-  },
   props: {
     item: {
       type: Object,

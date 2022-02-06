@@ -17,14 +17,7 @@
   </div>
 </template>
 <script>
-import HeaderNav from '@/components/layout/header/HeaderNav'
-import ReButton from '@/components/atoms/ReButton'
-
 export default {
-  components: {
-    HeaderNav,
-    ReButton,
-  },
   props: {
     error: {
       type: Object,

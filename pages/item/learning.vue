@@ -88,16 +88,7 @@
   </div>
 </template>
 <script>
-// import FooterNav from '@/components/layout/FooterNav'
-import SidebarTac from '@/components/layout/sidebar/item/SidebarTac'
-import SidebarQa from '@/components/layout/sidebar/item/SidebarQa'
-// atoms
 export default {
-  components: {
-    // FooterNav,
-    SidebarTac,
-    SidebarQa,
-  },
   middleware: 'checkAuth',
   data() {
     return {

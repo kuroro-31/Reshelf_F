@@ -81,16 +81,7 @@
 </template>
 
 <script>
-//Icons
-// atoms
-import ReCheckbox from '@/components/atoms/ReCheckbox'
-// import ReButton from '@/components/atoms/ReButton'
-
 export default {
-  components: {
-    ReCheckbox,
-    // ReButton,
-  },
   data() {
     return {
       checkbox: '',

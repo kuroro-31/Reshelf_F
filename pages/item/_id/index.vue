@@ -11,20 +11,7 @@
   </div>
 </template>
 <script>
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
-// import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
-// atoms
-import DetailItem from '@/components/atoms/item/DetailItem'
-
 export default {
-  components: {
-    HeaderNav,
-    // FooterNav,
-    // SidebarDetail,
-    DetailItem,
-  },
   async asyncData({ $axios, params }) {
     const { data } = await $axios.$get(`/api/posts/${params.id}`)
     return {

@@ -79,18 +79,7 @@
   </div>
 </template>
 <script>
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-import FooterNav from '@/components/layout/FooterNav'
-// atoms
-import AllItem from '@/components/atoms/item/AllItem'
-
 export default {
-  components: {
-    HeaderNav,
-    FooterNav,
-    AllItem,
-  },
   data() {
     return {
       items: [

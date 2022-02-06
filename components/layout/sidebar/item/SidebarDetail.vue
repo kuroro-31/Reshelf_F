@@ -57,16 +57,7 @@
 </template>
 
 <script>
-//Icons
-// import { ChevronRightIcon } from 'vue-feather-icons'
-// atoms
-import ReButton from '@/components/atoms/ReButton'
-
 export default {
-  components: {
-    // ChevronRightIcon,
-    ReButton,
-  },
   props: {
     items: {
       type: Array,

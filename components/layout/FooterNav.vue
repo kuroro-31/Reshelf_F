@@ -103,14 +103,7 @@
     </div>
   </footer>
 </template>
-<script>
-import Logo from '@/components/layout/header/components/Logo'
-export default {
-  components: {
-    Logo,
-  },
-}
-</script>
+<script></script>
 <style lang="scss" scoped>
 text {
   fill: var(--color);

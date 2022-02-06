@@ -18,18 +18,7 @@
   </div>
 </template>
 <script>
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
-// atoms
-import LearningItem from '@/components/atoms/item/LearningItem'
-
 export default {
-  components: {
-    HeaderNav,
-    SidebarSetting,
-    LearningItem,
-  },
   middleware: 'checkAuth',
   data() {
     return {

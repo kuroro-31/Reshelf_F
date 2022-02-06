@@ -23,20 +23,7 @@
   </div>
 </template>
 <script>
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
-import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
-// atoms
-// import AllItem from '@/components/atoms/item/AllItem'
-
 export default {
-  components: {
-    HeaderNav,
-    // FooterNav,
-    SidebarSetting,
-    // AllItem,
-  },
   async asyncData({ $axios }) {
     const { data } = await $axios.$get(`/api/user`)
     console.log(data)

@@ -203,26 +203,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-// import { create } from '@/mixins/posts/create'
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-import FooterNav from '@/components/layout/FooterNav'
-// import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
-import Toast from '@/components/atoms//Toast'
-import ReButton from '@/components/atoms/ReButton'
-import ReModal from '@/components/atoms/ReModal'
-
-// atoms
 export default {
-  components: {
-    HeaderNav,
-    FooterNav,
-    // SidebarSetting,
-    Toast,
-    ReButton,
-    ReModal,
-  },
-  // mixins: [create],
   data() {
     return {
       loading: false,

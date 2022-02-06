@@ -104,25 +104,7 @@ import { update } from '@/mixins/posts/update.js'
 import { editor } from '@/mixins/posts/editor.js'
 // import { toast } from '@/mixins/toast/toast.js'
 import draggable from 'vuedraggable'
-
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-
-// atoms
-// import ArticleTagsInput from '@/components/atoms/ArticleTagsInput'
-import NoteItem from '@/components/atoms/item/new/NoteItem'
-import WidgetItem from '@/components/atoms/item/new/WidgetItem'
-import Toast from '@/components/atoms//Toast'
-
 export default {
-  components: {
-    HeaderNav,
-    // ArticleTagsInput,
-    NoteItem,
-    WidgetItem,
-    draggable,
-    Toast,
-  },
   mixins: [update, editor],
   // props: {
   //   success: {

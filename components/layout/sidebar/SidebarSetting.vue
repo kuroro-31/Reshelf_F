@@ -22,19 +22,6 @@
     </nuxt-link>
   </div>
 </template>
-<script>
-import ReButton from '@/components/atoms/ReButton'
-export default {
-  components: {
-    ReButton,
-  },
-  data() {
-    return {
-      // user: this.$store.getters['user/user'],
-    }
-  },
-}
-</script>
 <style lang="scss" scoped>
 .item {
   @apply duration-200 flex flex-col;

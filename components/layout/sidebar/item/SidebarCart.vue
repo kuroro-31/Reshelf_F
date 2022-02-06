@@ -24,16 +24,7 @@
 </template>
 
 <script>
-//Icons
-// import { ChevronRightIcon } from 'vue-feather-icons'
-// atoms
-import ReButton from '@/components/atoms/ReButton'
-import AnimatedNumber from '@/components/atoms/AnimatedNumber'
 export default {
-  components: {
-    ReButton,
-    AnimatedNumber,
-  },
   props: {
     carts: {
       type: Array,

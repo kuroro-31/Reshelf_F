@@ -17,22 +17,7 @@
   </div>
 </template>
 <script>
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
-import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
-// atoms
-import HeroItem from '@/components/atoms/item/HeroItem'
-import DetailItem from '@/components/atoms/item/DetailItem'
-
 export default {
-  components: {
-    HeaderNav,
-    // FooterNav,
-    HeroItem,
-    SidebarDetail,
-    DetailItem,
-  },
   data() {
     return {
       // items: [

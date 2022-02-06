@@ -135,11 +135,7 @@
 </template>
 
 <script>
-import ReModal from '@/components/atoms/ReModal'
 export default {
-  components: {
-    ReModal,
-  },
   data() {
     return {
       visible: false,

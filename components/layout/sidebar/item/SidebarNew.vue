@@ -11,15 +11,6 @@
     <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {}
-  },
-}
-</script>
-
 <style lang="scss" scoped>
 .item {
   @apply duration-200 flex flex-col;

@@ -18,15 +18,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {}
-  },
-}
-</script>
-
 <style lang="scss" scoped>
 .item {
   @apply duration-200 flex flex-col pb-8 mb-8 border-b justify-end;

@@ -290,24 +290,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-import FooterNav from '@/components/layout/FooterNav'
-import SidebarSearch from '@/components/layout/sidebar/SidebarSearch'
-// atoms
-import AllItem from '@/components/atoms/item/AllItem'
-// import HeroItem from '@/components/atoms/item/HeroItem'
-import ReButton from '@/components/atoms/ReButton'
-
 export default {
-  components: {
-    HeaderNav,
-    FooterNav,
-    SidebarSearch,
-    AllItem,
-    // HeroItem,
-    ReButton,
-  },
   computed: {
     ...mapGetters({
       isUser: 'user/auth',

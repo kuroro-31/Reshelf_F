@@ -73,11 +73,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import ReButton from '@/components/atoms/ReButton.vue'
 export default {
-  components: {
-    ReButton,
-  },
   data() {
     return {
       dropdown: false,

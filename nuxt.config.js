@@ -4,8 +4,8 @@ import webpack from 'webpack'
 import i18n from './nuxt-i18n.config'
 export default {
   mode: 'universal',
+
   ssr: true,
-  components: true,
 
   head: {
     meta: [
@@ -25,6 +25,21 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [],
+  },
+
+  components: {
+    dirs: [
+      '@/components/atoms',
+      '@/components/atoms/item',
+      '@/components/atoms/modal',
+      '@/components/atoms/new',
+      '@/components/layout',
+      '@/components/header',
+      '@/components/header/components',
+      '@/components/header/components/carts',
+      '@/components/sidebar',
+      '@/components/sidebar/item',
+    ],
   },
 
   loading: {

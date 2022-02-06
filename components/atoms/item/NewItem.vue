@@ -33,10 +33,7 @@
   </div>
 </template>
 <script>
-// import ReButton from '@/components/atoms/ReButton'
-// import { HeartIcon, ShoppingCartIcon } from 'vue-feather-icons'
 export default {
-  components: {},
   props: {
     items: {
       type: Array,

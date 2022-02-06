@@ -74,11 +74,7 @@
   </div>
 </template>
 <script>
-import Toast from '@/components/atoms//Toast'
 export default {
-  components: {
-    Toast,
-  },
   props: {
     carts: {
       type: Array,

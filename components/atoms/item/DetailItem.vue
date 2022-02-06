@@ -88,7 +88,6 @@ export default {
       isDisabled: false,
     }
   },
-  methods: {},
 }
 </script>
 <style lang="scss" scoped>

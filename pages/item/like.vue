@@ -16,20 +16,7 @@
   </div>
 </template>
 <script>
-// layout
-// import FooterNav from '@/components/layout/FooterNav'
-import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
-// atoms
-import HeroItem from '@/components/atoms/item/HeroItem'
-import DetailItem from '@/components/atoms/item/DetailItem'
-
 export default {
-  components: {
-    // FooterNav,
-    HeroItem,
-    SidebarDetail,
-    DetailItem,
-  },
   middleware: 'checkAuth',
   data() {
     return {

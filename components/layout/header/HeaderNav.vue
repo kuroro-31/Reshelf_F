@@ -30,20 +30,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Cart from '@/components/layout/header/components/Cart'
-import Logo from '@/components/layout/header/components/Logo'
-import Like from '@/components/layout/header/components/Like'
-import UserDropdown from '@/components/layout/header/components/UserDropdown'
-import LanguageChange from '@/components/layout/header/components/LanguageChange'
-
 export default {
-  components: {
-    Cart,
-    Logo,
-    Like,
-    UserDropdown,
-    LanguageChange,
-  },
   computed: {
     ...mapGetters({
       isUser: 'user/auth',

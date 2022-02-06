@@ -267,14 +267,6 @@
     </div>
   </div>
 </template>
-<script>
-import ReButton from '@/components/atoms/ReButton'
-export default {
-  components: {
-    ReButton,
-  },
-}
-</script>
 <style lang="scss" scoped>
 .hero {
   @apply w-full flex items-center mx-auto;

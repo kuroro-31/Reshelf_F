@@ -49,15 +49,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import CartItem from '@/components/layout/header/components/carts/CartItem'
-import ReButton from '@/components/atoms/ReButton'
-import BadgeNormal from '@/components/atoms/BadgeNormal'
 export default {
-  components: {
-    CartItem,
-    ReButton,
-    BadgeNormal,
-  },
   data() {
     return {
       show: false,

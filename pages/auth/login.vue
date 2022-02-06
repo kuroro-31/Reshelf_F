@@ -172,11 +172,7 @@
   </div>
 </template>
 <script>
-import ReButton from '@/components/atoms/ReButton.vue'
 export default {
-  components: {
-    ReButton,
-  },
   data: () => ({
     form: {
       email: '',

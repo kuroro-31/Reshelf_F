@@ -20,21 +20,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
-import SidebarCart from '@/components/layout/sidebar/item/SidebarCart'
-// atoms
-import CartItem from '@/components/atoms/item/CartItem'
-
 export default {
-  components: {
-    // FooterNav,
-    SidebarCart,
-    CartItem,
-    HeaderNav,
-  },
-  // middleware: 'checkAuth',
   computed: {
     ...mapGetters({
       isUser: 'user/auth',

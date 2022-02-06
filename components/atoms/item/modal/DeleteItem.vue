@@ -19,13 +19,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import ReModal from '@/components/atoms/ReModal'
-import ReButton from '@/components/atoms/ReButton'
 export default {
-  components: {
-    ReButton,
-    ReModal,
-  },
   props: {
     item: {
       type: Object,

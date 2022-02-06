@@ -59,15 +59,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import DeleteItem from '@/components/atoms/item/modal/DeleteItem'
-import ArticleLike from '@/components/atoms/ArticleLike'
-import InCartButton from '@/components/atoms/item/InCartButton'
 export default {
-  components: {
-    DeleteItem,
-    ArticleLike,
-    InCartButton,
-  },
   data() {
     return {
       loading: false,

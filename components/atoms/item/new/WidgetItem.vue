@@ -93,9 +93,6 @@
 import draggable from 'vuedraggable'
 export default {
   name: 'WidgetItem',
-  components: {
-    draggable,
-  },
   props: {
     widget: {
       type: Object,
