@@ -14,7 +14,7 @@
             />
             <img
               v-else
-              src="https://source.unsplash.com/1024x300?fashion"
+              src="https://source.unsplash.com/1024x300?white"
               :alt="currentUser.name + ' cover image'"
             />
             <template v-if="user.id == currentUser.id">
@@ -78,7 +78,7 @@
                 :alt="currentUser.name + ' icon image'"
               />
               <img
-                src="https://source.unsplash.com/190x190?dog"
+                src="https://source.unsplash.com/190x190?colorful"
                 :alt="currentUser.name + ' icon image'"
               />
               <div class="w-full flex items-center justify-between">

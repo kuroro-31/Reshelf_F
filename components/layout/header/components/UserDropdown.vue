@@ -13,7 +13,7 @@
         class="dropdown-img"
       />
       <img
-        src="https://source.unsplash.com/40x40?dog"
+        src="https://source.unsplash.com/40x40?woman"
         :alt="user.name + ' icon image'"
         class="dropdown-img"
       />
