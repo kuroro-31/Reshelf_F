@@ -72,7 +72,16 @@
               <div class="w-full flex items-center justify-between">
                 <div class="user-name">
                   <div class="font-bold text-5xl">{{ currentUser.name }}</div>
-                  <div>{{ $t('チャンネル登録者数') }} 3.2万 {{ $t('人') }}</div>
+                  <div class="flex items-center">
+                    <p>
+                      <span class="font-bold">32,000</span>
+                      {{ $t('フォロー中') }}
+                    </p>
+                    <p class="ml-4">
+                      <span class="font-bold">32,000</span>
+                      {{ $t('フォロワー') }}
+                    </p>
+                  </div>
                 </div>
                 <nuxt-link
                   v-if="user.id == currentUser.id"
