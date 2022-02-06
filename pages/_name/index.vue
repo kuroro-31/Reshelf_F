@@ -14,7 +14,7 @@
             />
             <img
               v-else
-              src="https://source.unsplash.com/1024x300?stylish"
+              src="https://source.unsplash.com/1024x300?fashion"
               :alt="currentUser.name + ' cover image'"
             />
             <template v-if="user.id == currentUser.id">

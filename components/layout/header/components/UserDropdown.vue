@@ -7,10 +7,15 @@
       @mouseleave="dropdown = false"
     >
       <img
+        v-if="user.icon"
+        :src="user.icon"
+        :alt="user.name + ' icon image'"
         class="dropdown-img"
-        width="40px"
-        height="40px"
-        src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
+      />
+      <img
+        src="https://source.unsplash.com/40x40?dog"
+        :alt="user.name + ' icon image'"
+        class="dropdown-img"
       />
       <transition>
         <div
