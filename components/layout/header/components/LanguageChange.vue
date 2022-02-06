@@ -105,7 +105,7 @@ export default {
 <style lang="scss" scoped>
 .language {
   @apply relative flex items-center px-2 py-2 rounded;
-  border: 1px solid var(--sub-color);
+  border: 1px solid #ccc;
 }
 .dropdown {
   @apply px-3 relative;

@@ -78,7 +78,7 @@
                 :alt="currentUser.name + ' icon image'"
               />
               <img
-                src="https://source.unsplash.com/190x190?colorful"
+                src="https://source.unsplash.com/190x190?urban"
                 :alt="currentUser.name + ' icon image'"
               />
               <div class="w-full flex items-center justify-between">
