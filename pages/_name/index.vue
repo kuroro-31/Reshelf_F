@@ -13,7 +13,7 @@
                   :value="item"
                 /> -->
             <img src="@/assets/images/noimage.svg" alt="user cover image" />
-            <template v-if="isUser">
+            <template v-if="user.id == currentUser.id">
               <div class="user-cover-edit" @click="modal = !modal">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -71,10 +71,14 @@
               <img src="@/assets/images/noimage.svg" alt="user cover image" />
               <div class="w-full flex items-center justify-between">
                 <div class="user-name">
-                  <div class="font-bold text-5xl">{{ user.name }}</div>
+                  <div class="font-bold text-5xl">{{ currentUser.name }}</div>
                   <div>{{ $t('チャンネル登録者数') }} 3.2万 {{ $t('人') }}</div>
                 </div>
-                <nuxt-link v-if="isUser" to="/item/new" class="mt-4">
+                <nuxt-link
+                  v-if="user.id == currentUser.id"
+                  to="/item/new"
+                  class="mt-4"
+                >
                   <ReButton class="re-button re-button-small no-shadow">
                     <button
                       class="re-button-primary bg-primary"
@@ -128,7 +132,7 @@
         <!-- <all-item :items="items" /> -->
         <div class="w-full flex">
           <div
-            v-for="item in ownPosts"
+            v-for="item in currentUser.posts"
             :key="item.id"
             class="card item flex-col"
           >
@@ -214,23 +218,23 @@ export default {
   head() {
     const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
     return {
-      title: `${this.user.name}さんのプロフィール | Reshelf`,
+      title: `${this.currentUser.name}さんのプロフィール | Reshelf`,
       ...i18nHead.title,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.$t('head.content'),
+          content: this.currentUser.description,
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: this.$t('head.title'),
+          content: `${this.currentUser.name}のプロフィール | Reshelf`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.$t('head.content'),
+          content: this.currentUser.description,
         },
         ...i18nHead.meta,
       ],
@@ -249,13 +253,6 @@ export default {
       set(value) {
         this.$store.dispatch('user/update', value)
       },
-    },
-    ownPosts() {
-      let posts = this.items
-      let ownPosts = posts.filter((post) => {
-        return this.user.id == post.user_id
-      })
-      return ownPosts
     },
   },
   // watch: {
