@@ -27,11 +27,15 @@
             </button>
             <span v-if="item.title" class="title">{{ item.title }}</span>
             <span v-else class="title">{{ $t('無題のタイトル') }}</span>
-
-            <div class="">{{ item.user_id }}</div>
-            <div v-if="item.user.name" class="">{{ item.user.name }}</div>
-            <ArticleLike />
           </nuxt-link>
+
+          <nuxt-link
+            v-if="item.user.name"
+            :to="{ name: 'name', params: { name: item.user.name } }"
+          >
+            {{ item.user.name }}
+          </nuxt-link>
+          <ArticleLike />
 
           <template v-if="isUser">
             <div :class="user.id != item.user_id ? 'block' : 'hidden'">

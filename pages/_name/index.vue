@@ -205,7 +205,7 @@ export default {
       items: [],
       success: false,
       error: false,
-      id: this.$route.params.id,
+      name: this.$route.params.name,
       form: [],
       saved: false,
     }
@@ -249,6 +249,7 @@ export default {
         this.$store.dispatch('user/update', value)
       },
     },
+    currentUser: {},
     ownPosts() {
       let posts = this.items
       let ownPosts = posts.filter((post) => {

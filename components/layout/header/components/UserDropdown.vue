@@ -31,7 +31,10 @@
               </span>
             </div> -->
             <div class="menu-me">
-              <nuxt-link class="menu-me-link" :to="`/user/${user.id}`">
+              <nuxt-link
+                class="menu-me-link"
+                :to="{ name: 'name', params: { name: user.name } }"
+              >
                 {{ $t('マイページ') }}
               </nuxt-link>
             </div>
