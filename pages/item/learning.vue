@@ -1,21 +1,21 @@
 <script lang="ts" setup>
 // import FooterNav from '@/components/layout/FooterNav'
-import SidebarTac from "@/components/layout/sidebar/item/SidebarTac";
-import SidebarQa from "@/components/layout/sidebar/item/SidebarQa";
+import SidebarTac from '@/components/layout/sidebar/item/SidebarTac'
+import SidebarQa from '@/components/layout/sidebar/item/SidebarQa'
 // atoms
 export default {
   components: {
     // FooterNav,
     SidebarTac,
-    SidebarQa,
+    SidebarQa
   },
-  middleware: "checkAuth",
-  data() {
+  middleware: 'checkAuth',
+  data () {
     return {
-      chapter: false,
-    };
-  },
-};
+      chapter: false
+    }
+  }
+}
 </script>
 
 <template>
@@ -30,7 +30,7 @@ export default {
               width="112"
               height="24"
               class="responsive"
-            />
+            >
           </h1>
         </NuxtLink>
 
@@ -50,7 +50,7 @@ export default {
             <chevron-down-icon
               size="1x"
               class="chapter-icon"
-            ></chevron-down-icon>
+            />
           </div>
           <transition>
             <div v-if="chapter">
@@ -59,7 +59,9 @@ export default {
                 @mouseover="chapter = true"
                 @mouseleave="chapter = false"
               >
-                <div class="p-8">チャプター一覧</div>
+                <div class="p-8">
+                  チャプター一覧
+                </div>
               </div>
             </div>
           </transition>
@@ -78,7 +80,7 @@ export default {
             <chevron-left-icon
               size="1.5x"
               class="chapter-prev-icon"
-            ></chevron-left-icon>
+            />
             <div class="chapter-prev-body">
               <span class="chapter-prev-title">PREV</span>
               <span class="chapter-next-content">
@@ -96,7 +98,7 @@ export default {
             <chevron-right-icon
               size="1.5x"
               class="chapter-next-icon"
-            ></chevron-right-icon>
+            />
           </a>
         </div>
       </div>

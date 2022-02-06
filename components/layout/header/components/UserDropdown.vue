@@ -1,33 +1,33 @@
 <script lang="ts" setup>
-import { mapGetters } from "vuex";
-import ReButton from "@/components/atoms/ReButton.vue";
+import { mapGetters } from 'vuex'
+import ReButton from '@/components/atoms/ReButton.vue'
 export default {
   components: {
-    ReButton,
+    ReButton
   },
-  data() {
+  data () {
     return {
-      dropdown: false,
+      dropdown: false
       // alert: '',
-    };
+    }
   },
   computed: {
     ...mapGetters({
-      isUser: "user/auth",
-      user: "user/user",
-      carts: "cart/carts",
-    }),
+      isUser: 'user/auth',
+      user: 'user/user',
+      carts: 'cart/carts'
+    })
   },
   methods: {
-    async login() {
-      this.modal = false;
-      await this.$store.dispatch("user/login", this.form);
+    async login () {
+      this.modal = false
+      await this.$store.dispatch('user/login', this.form)
     },
-    async logout() {
-      await this.$store.dispatch("user/logout", this.auth);
-    },
-  },
-};
+    async logout () {
+      await this.$store.dispatch('user/logout', this.auth)
+    }
+  }
+}
 </script>
 
 <template>
@@ -43,12 +43,12 @@ export default {
         :src="user.icon"
         :alt="user.name + ' icon image'"
         class="dropdown-img"
-      />
+      >
       <img
         src="https://source.unsplash.com/40x40?woman"
         :alt="user.name + ' icon image'"
         class="dropdown-img"
-      />
+      >
       <transition>
         <div
           v-if="dropdown"
@@ -78,9 +78,15 @@ export default {
             <div class="menu-me">
               <div class="">
                 <select v-model="$colorMode.preference">
-                  <option value="system">System</option>
-                  <option value="light">Light</option>
-                  <option value="dark">Dark</option>
+                  <option value="system">
+                    System
+                  </option>
+                  <option value="light">
+                    Light
+                  </option>
+                  <option value="dark">
+                    Dark
+                  </option>
                 </select>
               </div>
               <button class="menu-me-link" @click="logout">

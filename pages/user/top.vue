@@ -1,280 +1,280 @@
 <script lang="ts" setup>
 // layout
-import HeaderNav from "@/components/layout/header/HeaderNav";
-import FooterNav from "@/components/layout/FooterNav";
+import HeaderNav from '@/components/layout/header/HeaderNav'
+import FooterNav from '@/components/layout/FooterNav'
 // atoms
-import AllItem from "@/components/atoms/item/AllItem";
+import AllItem from '@/components/atoms/item/AllItem'
 
 export default {
   components: {
     HeaderNav,
     FooterNav,
-    AllItem,
+    AllItem
   },
-  data() {
+  data () {
     return {
       items: [
         {
           // キー
           id: 1,
           // レベル
-          level: "初級",
+          level: '初級',
           // 画像
-          src: "https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png",
+          src: 'https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png',
           // タイトル
-          title: "ゼロからはじめる Dockerによるアプリケーション実行環境構築",
+          title: 'ゼロからはじめる Dockerによるアプリケーション実行環境構築',
           // 概要
           describe:
-            "コンテナの実行方法を学び、Ruby on RailsやDjangoといったWebアプリケーションフレームワークを使用した環境構築について学びます。Docker MachineやSwarmといったDocker関連技術についても学びます。",
+            'コンテナの実行方法を学び、Ruby on RailsやDjangoといったWebアプリケーションフレームワークを使用した環境構築について学びます。Docker MachineやSwarmといったDocker関連技術についても学びます。',
           // セール価格
           rate: 4.7,
           all_rate: 4.7,
-          sale_price: "3500",
-          normal_price: "5000",
+          sale_price: '3500',
+          normal_price: '5000',
           // 作者
-          name: "クラピカ",
+          name: 'クラピカ',
           // タグ
-          tags: ["phase1", "btn", "rakuten"],
+          tags: ['phase1', 'btn', 'rakuten'],
           // 日付
-          add_time: "2021/06/23",
-          edit_time: "2021/06/23",
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
           id: 2,
           // レベル
-          level: "中級",
+          level: '中級',
           // 画像
-          src: "https://i.gyazo.com/2426266562352e572dccf61b6903cf74.png",
+          src: 'https://i.gyazo.com/2426266562352e572dccf61b6903cf74.png',
           // タイトル
           title:
-            "AWS：ゼロから実践するAmazon Web Services。手を動かしながらインフラの基礎を習得",
+            'AWS：ゼロから実践するAmazon Web Services。手を動かしながらインフラの基礎を習得',
           // 概要
           describe:
-            "インフラがあまり詳しくない方ももう大丈夫。実際にやってみることで、AWSのエッセンスが身に付き、自分でネットワークやサーバーを構築できるようになります。",
+            'インフラがあまり詳しくない方ももう大丈夫。実際にやってみることで、AWSのエッセンスが身に付き、自分でネットワークやサーバーを構築できるようになります。',
           // セール価格
           rate: 3.8,
           all_rate: 4.0,
-          sale_price: "5250",
-          normal_price: "7500",
+          sale_price: '5250',
+          normal_price: '7500',
           // 作者
-          name: "クロロ・ルシルフル",
+          name: 'クロロ・ルシルフル',
           // タグ
-          tags: ["phase1", "btn", "rakuten"],
+          tags: ['phase1', 'btn', 'rakuten'],
           // 日付
-          add_time: "2021/06/23",
-          edit_time: "2021/06/23",
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
           id: 3,
           // レベル
-          level: "上級",
+          level: '上級',
           // 画像
-          src: "https://i.gyazo.com/752ac2b7f73248d4a65cbcf720542510.png",
+          src: 'https://i.gyazo.com/752ac2b7f73248d4a65cbcf720542510.png',
           // タイトル
           title:
-            "【JavaScript＆CSS】ガチで学びたい人のためのWEB開発徹底実践（フロントエンド編）",
+            '【JavaScript＆CSS】ガチで学びたい人のためのWEB開発徹底実践（フロントエンド編）',
           // 概要
           describe:
-            "基礎を終えた方に最適！基礎レベルから一気にプロレベルへ！JavaScript、CSSの基礎～実践までを最短で学習。世界が変わる１９時間。",
+            '基礎を終えた方に最適！基礎レベルから一気にプロレベルへ！JavaScript、CSSの基礎～実践までを最短で学習。世界が変わる１９時間。',
           // セール価格
           rate: 3.2,
           all_rate: 3.3,
-          sale_price: "7000",
-          normal_price: "10000",
+          sale_price: '7000',
+          normal_price: '10000',
           // 作者
-          name: "フェイタン",
+          name: 'フェイタン',
           // タグ
-          tags: ["phase1", "btn", "rakuten"],
+          tags: ['phase1', 'btn', 'rakuten'],
           // 日付
-          add_time: "2021/06/23",
-          edit_time: "2021/06/23",
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
           id: 4,
           // レベル
-          level: "特級",
+          level: '特級',
           // 画像
-          src: "https://i.gyazo.com/7634abee15be2ce3313521bdc58aaf74.png",
+          src: 'https://i.gyazo.com/7634abee15be2ce3313521bdc58aaf74.png',
           // タイトル
           title:
-            "「世界で7万人が受講！未経験からWebプログラマーになるための全て」2018年最新版",
+            '「世界で7万人が受講！未経験からWebプログラマーになるための全て」2018年最新版',
           // 概要
           describe:
-            "Masaaki Hatano 監修、2018年の最新版へupdate済み（初心者向け・日本語吹き替え版）",
+            'Masaaki Hatano 監修、2018年の最新版へupdate済み（初心者向け・日本語吹き替え版）',
           // セール価格
           rate: 3.6,
           all_rate: 4.7,
-          sale_price: "1750",
-          normal_price: "2500",
+          sale_price: '1750',
+          normal_price: '2500',
           // 作者
-          name: "ヒソカ",
+          name: 'ヒソカ',
           // タグ
-          tags: ["phase1", "btn", "rakuten"],
+          tags: ['phase1', 'btn', 'rakuten'],
           // 日付
-          add_time: "2021/06/23",
-          edit_time: "2021/06/23",
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
           id: 5,
           // レベル
-          level: "中級",
+          level: '中級',
           // 画像
-          src: "https://i.gyazo.com/d7b583e673842f2d6f1f0fef1f66f3a7.png",
+          src: 'https://i.gyazo.com/d7b583e673842f2d6f1f0fef1f66f3a7.png',
           // タイトル
-          title: "Node.js + Express で作る Webアプリケーション 実践講座",
+          title: 'Node.js + Express で作る Webアプリケーション 実践講座',
           // 概要
           describe:
-            "Node.js , Express, MongoDB を用いた Webアプリケーション開発 をするために必要な基礎知識を学習し、現場で実践できるようになることを目指します。",
-          c: "0",
+            'Node.js , Express, MongoDB を用いた Webアプリケーション開発 をするために必要な基礎知識を学習し、現場で実践できるようになることを目指します。',
+          c: '0',
           // 作者
-          name: "マチ",
+          name: 'マチ',
           // セール価格
           rate: 4.0,
           all_rate: 4.7,
-          sale_price: "0",
-          normal_price: "0",
+          sale_price: '0',
+          normal_price: '0',
           // タグ
-          tags: ["phase1", "btn", "rakuten"],
+          tags: ['phase1', 'btn', 'rakuten'],
           // 日付
-          add_time: "2021/06/23",
-          edit_time: "2021/06/23",
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
           id: 6,
           // レベル
-          level: "初級",
+          level: '初級',
           // 画像
-          src: "https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png",
+          src: 'https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png',
           // タイトル
-          title: "ゼロからはじめる Dockerによるアプリケーション実行環境構築",
+          title: 'ゼロからはじめる Dockerによるアプリケーション実行環境構築',
           // 概要
           describe:
-            "コンテナの実行方法を学び、Ruby on RailsやDjangoといったWebアプリケーションフレームワークを使用した環境構築について学びます。Docker MachineやSwarmといったDocker関連技術についても学びます。",
+            'コンテナの実行方法を学び、Ruby on RailsやDjangoといったWebアプリケーションフレームワークを使用した環境構築について学びます。Docker MachineやSwarmといったDocker関連技術についても学びます。',
           // セール価格
           rate: 2.6,
           all_rate: 4.7,
-          sale_price: "3500",
-          normal_price: "5000",
+          sale_price: '3500',
+          normal_price: '5000',
           // 作者
-          name: "クラピカ",
+          name: 'クラピカ',
           // タグ
-          tags: ["phase1", "btn", "rakuten"],
+          tags: ['phase1', 'btn', 'rakuten'],
           // 日付
-          add_time: "2021/06/23",
-          edit_time: "2021/06/23",
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
           id: 7,
           // レベル
-          level: "上級",
+          level: '上級',
           // 画像
-          src: "https://i.gyazo.com/2426266562352e572dccf61b6903cf74.png",
+          src: 'https://i.gyazo.com/2426266562352e572dccf61b6903cf74.png',
           // タイトル
           title:
-            "AWS：ゼロから実践するAmazon Web Services。手を動かしながらインフラの基礎を習得",
+            'AWS：ゼロから実践するAmazon Web Services。手を動かしながらインフラの基礎を習得',
           // 概要
           describe:
-            "インフラがあまり詳しくない方ももう大丈夫。実際にやってみることで、AWSのエッセンスが身に付き、自分でネットワークやサーバーを構築できるようになります。",
+            'インフラがあまり詳しくない方ももう大丈夫。実際にやってみることで、AWSのエッセンスが身に付き、自分でネットワークやサーバーを構築できるようになります。',
           // セール価格
           rate: 3.7,
           all_rate: 4.7,
-          sale_price: "5250",
-          normal_price: "7500",
+          sale_price: '5250',
+          normal_price: '7500',
           // 作者
-          name: "クロロ・ルシルフル",
+          name: 'クロロ・ルシルフル',
           // タグ
-          tags: ["phase1", "btn", "rakuten"],
+          tags: ['phase1', 'btn', 'rakuten'],
           // 日付
-          add_time: "2021/06/23",
-          edit_time: "2021/06/23",
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
           id: 8,
           // レベル
-          level: "特級",
+          level: '特級',
           // 画像
-          src: "https://i.gyazo.com/752ac2b7f73248d4a65cbcf720542510.png",
+          src: 'https://i.gyazo.com/752ac2b7f73248d4a65cbcf720542510.png',
           // タイトル
           title:
-            "【JavaScript＆CSS】ガチで学びたい人のためのWEB開発徹底実践（フロントエンド編）",
+            '【JavaScript＆CSS】ガチで学びたい人のためのWEB開発徹底実践（フロントエンド編）',
           // 概要
           describe:
-            "基礎を終えた方に最適！基礎レベルから一気にプロレベルへ！JavaScript、CSSの基礎～実践までを最短で学習。世界が変わる１９時間。",
+            '基礎を終えた方に最適！基礎レベルから一気にプロレベルへ！JavaScript、CSSの基礎～実践までを最短で学習。世界が変わる１９時間。',
           // セール価格
           rate: 4.8,
           all_rate: 4.7,
-          sale_price: "7000",
-          normal_price: "10000",
+          sale_price: '7000',
+          normal_price: '10000',
           // 作者
-          name: "フェイタン",
+          name: 'フェイタン',
           // タグ
-          tags: ["phase1", "btn", "rakuten"],
+          tags: ['phase1', 'btn', 'rakuten'],
           // 日付
-          add_time: "2021/06/23",
-          edit_time: "2021/06/23",
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
           id: 9,
           // レベル
-          level: "初級",
+          level: '初級',
           // 画像
-          src: "https://i.gyazo.com/7634abee15be2ce3313521bdc58aaf74.png",
+          src: 'https://i.gyazo.com/7634abee15be2ce3313521bdc58aaf74.png',
           // タイトル
           title:
-            "「世界で7万人が受講！未経験からWebプログラマーになるための全て」2018年最新版",
+            '「世界で7万人が受講！未経験からWebプログラマーになるための全て」2018年最新版',
           // 概要
           describe:
-            "Masaaki Hatano 監修、2018年の最新版へupdate済み（初心者向け・日本語吹き替え版）",
+            'Masaaki Hatano 監修、2018年の最新版へupdate済み（初心者向け・日本語吹き替え版）',
           // セール価格
           rate: 4.3,
           all_rate: 4.7,
-          sale_price: "1750",
-          normal_price: "2500",
+          sale_price: '1750',
+          normal_price: '2500',
           // 作者
-          name: "ヒソカ",
+          name: 'ヒソカ',
           // タグ
-          tags: ["phase1", "btn", "rakuten"],
+          tags: ['phase1', 'btn', 'rakuten'],
           // 日付
-          add_time: "2021/06/23",
-          edit_time: "2021/06/23",
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
           id: 10,
           // レベル
-          level: "中級",
+          level: '中級',
           // 画像
-          src: "https://i.gyazo.com/d7b583e673842f2d6f1f0fef1f66f3a7.png",
+          src: 'https://i.gyazo.com/d7b583e673842f2d6f1f0fef1f66f3a7.png',
           // タイトル
-          title: "Node.js + Express で作る Webアプリケーション 実践講座",
+          title: 'Node.js + Express で作る Webアプリケーション 実践講座',
           // 概要
           describe:
-            "Node.js , Express, MongoDB を用いた Webアプリケーション開発 をするために必要な基礎知識を学習し、現場で実践できるようになることを目指します。",
+            'Node.js , Express, MongoDB を用いた Webアプリケーション開発 をするために必要な基礎知識を学習し、現場で実践できるようになることを目指します。',
           // 作者
-          name: "マチ",
+          name: 'マチ',
           // セール価格
           rate: 4.2,
           all_rate: 4.7,
-          sale_price: "0",
-          normal_price: "0",
+          sale_price: '0',
+          normal_price: '0',
           // タグ
-          tags: ["phase1", "btn", "rakuten"],
+          tags: ['phase1', 'btn', 'rakuten'],
           // 日付
-          add_time: "2021/06/23",
-          edit_time: "2021/06/23",
-        },
-      ],
-    };
-  },
-};
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <template>
@@ -305,45 +305,51 @@ export default {
 
             <!-- プロフィール詳細 -->
             <div class="profile-about-detail">
-              <h3 class="font-bold text-xl">プロフィール</h3>
+              <h3 class="font-bold text-xl">
+                プロフィール
+              </h3>
               <div class="profile-about-detail-body scroll-none">
                 京都大学大学院を卒業後、働き方改革企業サイボウズに入社。
-                <br />
+                <br>
                 週4日勤務で3つの複業をこなすなど新しい働き方に取り組む。
-                <br />
-                <br />
+                <br>
+                <br>
                 大学院で複雑な研究内容をコンパクトに伝えることに苦戦した経験から、
-                <br />
+                <br>
                 プレゼン改善に関する研究を開始。
-                <br />
+                <br>
                 大学院の最終発表で最高評価を獲得し、
-                <br />
+                <br>
                 サイボウズ入社2年目で当時最小年次で
-                <br />
+                <br>
                 幕張メッセでの登壇に抜擢され、以後多数の登壇経験を持つ。
-                <br />
-                <br />
+                <br>
+                <br>
                 その経験を元に、「できる」をやる をモットーにかかげ
-                <br />
+                <br>
                 最小の時間・労力で最大の印象を残すプレゼン術について伝えている。
-                <br />
+                <br>
                 その活動はAERAに掲載されるなど会社員としては異色の経歴を持つ。
               </div>
             </div>
           </div>
           <div class="">
-            <h3 class="font-bold text-xl mb-4">公開中のコース</h3>
+            <h3 class="font-bold text-xl mb-4">
+              公開中のコース
+            </h3>
             <all-item :items="items" />
           </div>
         </div>
         <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
           <div class="profile-person">
-            <p class="grade">Grade 7</p>
+            <p class="grade">
+              Grade 7
+            </p>
             <img
               class="profile-person-img responsive"
               src="https://i.gyazo.com/8ce2054d8a950d6ea86cf962315a194b.png"
               alt="personal icon"
-            />
+            >
             <div class="profile-person-link">
               <a href="" class="profile-person-link-website">Website</a>
               <a href="" class="profile-person-link-facebook">Facebook</a>

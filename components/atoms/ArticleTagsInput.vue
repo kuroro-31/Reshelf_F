@@ -7,36 +7,36 @@ export default {
   props: {
     autocompleteItems: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
-  data() {
+  data () {
     return {
-      tag: "",
-      tags: [],
-    };
+      tag: '',
+      tags: []
+    }
   },
   computed: {
-    filteredItems() {
+    filteredItems () {
       return this.autocompleteItems.filter((i) => {
-        return i.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
-      });
+        return i.toLowerCase().includes(this.tag.toLowerCase())
+      })
     },
-    tagsJson() {
-      return JSON.stringify(this.tags);
-    },
+    tagsJson () {
+      return JSON.stringify(this.tags)
+    }
   },
   methods: {
-    sendTags() {
-      this.$emit("catchTags", this.filteredItems);
-    },
-  },
-};
+    sendTags () {
+      this.$emit('catchTags', this.filteredItems)
+    }
+  }
+}
 </script>
 
 <template>
   <div>
-    <input type="hidden" :value="tagsJson" @change="sendTags" />
+    <input type="hidden" :value="tagsJson" @change="sendTags">
     <!-- <vue-tags-input
       v-model="tag"
       :tags="tags"

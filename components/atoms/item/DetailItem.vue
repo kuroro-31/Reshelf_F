@@ -3,17 +3,17 @@ export default {
   props: {
     item: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
-  data() {
+  data () {
     return {
       liked: false,
-      isDisabled: false,
-    };
+      isDisabled: false
+    }
   },
-  methods: {},
-};
+  methods: {}
+}
 </script>
 
 <template>
@@ -79,16 +79,18 @@ export default {
               rate_img_four_seven: item.rate >= 4.7,
               rate_img_five: item.rate >= 5.0,
             }"
-          ></div>
+          />
         </div>
         <p class="name ml-1 text-xs">
           <!-- （総合評価：{{ item.all_rate | comma }}） -->
         </p>
       </div>
 
-      <div class="">DEMO</div>
+      <div class="">
+        DEMO
+      </div>
 
-      <div v-highlightjs class="markdown w-full" v-html="item.body"></div>
+      <div v-highlightjs class="markdown w-full" v-html="item.body" />
     </div>
   </div>
 </template>

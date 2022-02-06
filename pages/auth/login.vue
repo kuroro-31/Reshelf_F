@@ -1,21 +1,21 @@
 <script lang="ts" setup>
-import ReButton from "@/components/atoms/ReButton.vue";
+import ReButton from '@/components/atoms/ReButton.vue'
 export default {
   components: {
-    ReButton,
+    ReButton
   },
   data: () => ({
     form: {
-      email: "",
-      password: "",
-    },
+      email: '',
+      password: ''
+    }
   }),
   methods: {
-    async login() {
-      await this.$store.dispatch("user/login", this.form);
-    },
-  },
-};
+    async login () {
+      await this.$store.dispatch('user/login', this.form)
+    }
+  }
+}
 </script>
 
 <template>
@@ -82,7 +82,7 @@ export default {
                 placeholder="Enter email"
                 autofocus
                 class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-              />
+              >
               <!-- <small v-if="errors.email" class="form-text text-danger">
                 {{ errors.email[0] }}
               </small> -->
@@ -96,7 +96,7 @@ export default {
                 type="password"
                 placeholder="Password"
                 class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-              />
+              >
               <!-- <small v-if="errors.password" class="form-text text-danger">
                 {{ errors.password[0] }}
               </small> -->
@@ -188,7 +188,7 @@ export default {
         </div>
       </div>
     </div>
-    <div class="bg"></div>
+    <div class="bg" />
   </div>
 </template>
 

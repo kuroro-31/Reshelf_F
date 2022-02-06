@@ -1,26 +1,26 @@
 <script lang="ts" setup>
-//Icons
+// Icons
 // import { ChevronRightIcon } from 'vue-feather-icons'
 // atoms
-import ReButton from "@/components/atoms/ReButton";
+import ReButton from '@/components/atoms/ReButton'
 
 export default {
   components: {
     // ChevronRightIcon,
-    ReButton,
+    ReButton
   },
   props: {
     items: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
-  data() {
+  data () {
     return {
-      isDisabled: false,
-    };
-  },
-};
+      isDisabled: false
+    }
+  }
+}
 </script>
 
 <template>
@@ -55,7 +55,7 @@ export default {
                 size="1x"
                 class="mr-2"
                 :class="isLiked ? 'text-red' : ''"
-              ></heart-icon>
+              />
               <span :class="!isLiked ? 'block' : 'hidden'">
                 お気に入りに追加
               </span>
@@ -71,7 +71,7 @@ export default {
               class="re-button-primary-filled"
               @click="$router.push('/item/cart')"
             >
-              <shopping-cart-icon size="1x" class="mr-2"></shopping-cart-icon>
+              <shopping-cart-icon size="1x" class="mr-2" />
               カートに入れる
             </button>
           </re-button>

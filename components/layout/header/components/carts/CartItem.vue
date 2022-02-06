@@ -1,22 +1,22 @@
 <script lang="ts" setup>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters({
-      carts: "cart/carts",
+      carts: 'cart/carts'
     }),
-    totalPrice() {
-      let carts = this.carts;
-      let totalPrice = null;
+    totalPrice () {
+      const carts = this.carts
+      let totalPrice = null
 
-      for (let post of carts) {
-        totalPrice += post.price;
+      for (const post of carts) {
+        totalPrice += post.price
       }
 
-      return totalPrice;
-    },
-  },
-};
+      return totalPrice
+    }
+  }
+}
 </script>
 
 <template>
@@ -34,27 +34,29 @@ export default {
           alt="text image"
           class="cart-content-img"
           :value="item"
-        />
+        >
         <img
           v-else
           src="@/assets/images/noimage.svg"
           alt="cource image"
           class="cart-content-img"
           :value="item"
-        />
+        >
         <div class="cart-content-box">
           <div class="w-full flex flex-col items-start">
             <p class="cart-content-title">
               {{ item.title }}
             </p>
-            <p class="cart-content-author">{{ item.name }}</p>
+            <p class="cart-content-author">
+              {{ item.name }}
+            </p>
           </div>
           <div class="cart-content-price">
             {{ $moneyFormat(item.price) }}
           </div>
         </div>
       </div>
-      <p class="divider"></p>
+      <p class="divider" />
     </div>
 
     <div class="flex text-lg font-bold">

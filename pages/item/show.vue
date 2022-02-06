@@ -1,20 +1,24 @@
 <script lang="ts" setup>
 export default {
-  async asyncData({ $axios, params }) {
-    const { data } = await $axios.$get(`/posts/${params.id}`);
+  async asyncData ({ $axios, params }) {
+    const { data } = await $axios.$get(`/posts/${params.id}`)
     return {
-      post: data,
-    };
-  },
-};
+      post: data
+    }
+  }
+}
 </script>
 
 <template>
   <div class="container">
     <div class="bg-light mt-5 mb-5" style="padding: 20px">
-      <h2 class="display-3">{{ post.title }}</h2>
-      <hr />
-      <p class="text-muted">{{ post.created_at }} by {{ post.user.name }}</p>
+      <h2 class="display-3">
+        {{ post.title }}
+      </h2>
+      <hr>
+      <p class="text-muted">
+        {{ post.created_at }} by {{ post.user.name }}
+      </p>
       <div
         v-for="(content, index) in post.posts"
         :key="index"
@@ -27,7 +31,7 @@ export default {
             <button
               class="btn btn-outline-danger fa fa-trash pull-right"
               @click="delete content.id"
-            ></button>
+            />
 
             <nuxt-link
               :to="{
@@ -37,7 +41,7 @@ export default {
             >
               <button
                 class="btn btn-outline-success fa fa-edit pull-right"
-              ></button>
+              />
             </nuxt-link>
           </div>
         </div>
@@ -52,12 +56,14 @@ export default {
       <form @submit.prevent="create">
         <div class="form-group">
           <h4>Add a new post</h4>
-          <textarea v-model="body" class="form-control" rows="5"></textarea>
+          <textarea v-model="body" class="form-control" rows="5" />
           <small v-if="errors.body" class="form-text text-danger">
             {{ errors.body[0] }}
           </small>
         </div>
-        <button class="btn btn-outline-primary">Add a new post</button>
+        <button class="btn btn-outline-primary">
+          Add a new post
+        </button>
       </form>
     </div>
   </div>

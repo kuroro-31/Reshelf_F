@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import axios from "axios";
+import axios from 'axios'
 
 // layout
-import HeaderNav from "@/components/layout/header/HeaderNav";
-import FooterNav from "@/components/layout/FooterNav";
-import SidebarSearch from "@/components/layout/sidebar/SidebarSearch";
+import HeaderNav from '@/components/layout/header/HeaderNav'
+import FooterNav from '@/components/layout/FooterNav'
+import SidebarSearch from '@/components/layout/sidebar/SidebarSearch'
 // atoms
 // import HeroItem from '@/components/atoms/item/HeroItem'
-import AllItem from "@/components/atoms/item/AllItem";
+import AllItem from '@/components/atoms/item/AllItem'
 
 export default {
   components: {
@@ -15,9 +15,9 @@ export default {
     FooterNav,
     SidebarSearch,
     // HeroItem,
-    AllItem,
+    AllItem
   },
-  data() {
+  data () {
     return {
       // items: [
       //   {
@@ -298,34 +298,34 @@ export default {
       //     demo: '#',
       //   },
       // ],
-      items: [],
-    };
+      items: []
+    }
   },
-  mounted() {
-    this.getApi();
+  mounted () {
+    this.getApi()
   },
   methods: {
-    async getApi() {
-      axios.defaults.withCredentials = true;
+    async getApi () {
+      axios.defaults.withCredentials = true
       // await axios.get('/sanctum/csrf-cookie').then(async () => {
 
       // })
       // this.$nuxt.$loading.start()
 
       return axios
-        .get("/api/posts")
+        .get('/api/posts')
         .then((response) => {
-          this.items = response.data.data;
+          this.items = response.data.data
           // this.apiPopularTags = response.data.tags;
         })
         .catch((err) => {
-          alert(err);
-        });
+          alert(err)
+        })
 
       // this.$nuxt.$loading.finish()
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <template>

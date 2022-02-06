@@ -1,38 +1,38 @@
 <script lang="ts" setup>
-import Toast from "@/components/atoms//Toast";
+import Toast from '@/components/atoms//Toast'
 export default {
   components: {
-    Toast,
+    Toast
   },
   props: {
     carts: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
-  data() {
+  data () {
     return {
       visible: false,
       isLiked: false,
       isDisabled: false,
       success: false,
-      error: false,
-    };
+      error: false
+    }
   },
   methods: {
-    deleteCart(item) {
+    deleteCart (item) {
       try {
-        this.$store.dispatch("cart/clear", item);
-        this.success = true;
-        setTimeout(() => (this.success = false), 2000);
+        this.$store.dispatch('cart/clear', item)
+        this.success = true
+        setTimeout(() => (this.success = false), 2000)
       } catch (error) {
-        console.log(error);
-        this.error = true;
-        setTimeout(() => (this.error = false), 2000);
+        console.log(error)
+        this.error = true
+        setTimeout(() => (this.error = false), 2000)
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <template>
@@ -54,14 +54,14 @@ export default {
                   alt="text image"
                   class="cart-content-img"
                   :value="item"
-                />
+                >
                 <img
                   v-else
                   src="@/assets/images/noimage.svg"
                   alt="cource image"
                   class="cart-content-img"
                   :value="item"
-                />
+                >
               </nuxt-link>
             </div>
 
@@ -105,8 +105,12 @@ export default {
       </div>
     </div>
     <Toast :success="success" :error="error">
-      <template v-if="success">{{ $t("商品を削除しました") }}</template>
-      <template v-else>{{ $t("商品を削除できませんでした") }}</template>
+      <template v-if="success">
+        {{ $t("商品を削除しました") }}
+      </template>
+      <template v-else>
+        {{ $t("商品を削除できませんでした") }}
+      </template>
     </Toast>
   </div>
 </template>

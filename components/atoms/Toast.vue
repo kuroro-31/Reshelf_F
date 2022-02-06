@@ -2,24 +2,24 @@
 export default {
   props: {
     success: {
-      type: Boolean,
+      type: Boolean
     },
     error: {
-      type: Boolean,
-    },
+      type: Boolean
+    }
   },
-  data() {
+  data () {
     return {
-      show: true,
-    };
-  },
+      show: true
+    }
+  }
   // mounted() {
   //   let vid = document.getElementById('check')
   //   if (vid) {
   //     vid.playbackRate = 0.5
   //   }
   // },
-};
+}
 </script>
 
 <template>
@@ -77,7 +77,7 @@ export default {
             </template>
           </div>
           <div class="mr-4 font-bold">
-            <slot></slot>
+            <slot />
           </div>
           <div class="cursor-pointer" @click="show = !show">
             <svg

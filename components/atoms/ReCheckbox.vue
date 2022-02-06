@@ -1,24 +1,24 @@
 <script lang="ts" setup>
 export default {
   components: {},
-  data() {
+  data () {
     return {
-      isChecked: false,
-    };
-  },
-};
+      isChecked: false
+    }
+  }
+}
 </script>
 
 <template>
   <label class="re-checkbox" @click="isChecked = !isChecked">
-    <slot name="input"></slot>
+    <slot name="input" />
     <div
       class="re-checkbox--check"
       :class="isChecked == true ? 're-checkbox--checked' : ''"
     >
-      <i class="bx bx-check re-checkbox--icon text-white"></i>
+      <i class="bx bx-check re-checkbox--icon text-white" />
     </div>
-    <slot name="label"></slot>
+    <slot name="label" />
   </label>
 </template>
 

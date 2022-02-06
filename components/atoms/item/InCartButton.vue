@@ -1,47 +1,47 @@
 <script lang="ts" setup>
-import { mapGetters } from "vuex";
-import ReButton from "@/components/atoms/ReButton";
-import Toast from "@/components/atoms//Toast";
+import { mapGetters } from 'vuex'
+import ReButton from '@/components/atoms/ReButton'
+import Toast from '@/components/atoms//Toast'
 export default {
   components: {
     ReButton,
-    Toast,
+    Toast
   },
   props: {
     item: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
-  data() {
+  data () {
     return {
       isClick: false,
       success: false,
-      error: false,
-    };
+      error: false
+    }
   },
   computed: {
     ...mapGetters({
-      user: "user/user",
-    }),
+      user: 'user/user'
+    })
   },
   methods: {
-    async addCart(item) {
+    async addCart (item) {
       // try {
       await this.$store
-        .dispatch("cart/add", item)
+        .dispatch('cart/add', item)
         .then((value) => {
-          this.isClick = true;
-          this.success = true;
-          setTimeout(() => (this.success = false), 3000);
+          this.isClick = true
+          this.success = true
+          setTimeout(() => (this.success = false), 3000)
         })
         .catch((error) => {
-          this.error = true;
-          setTimeout(() => (this.error = false), 3000);
-        });
-    },
-  },
-};
+          this.error = true
+          setTimeout(() => (this.error = false), 3000)
+        })
+    }
+  }
+}
 </script>
 
 <template>

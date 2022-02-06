@@ -3,7 +3,7 @@
 <template>
   <div>
     <!-- ボタンの中身が入る -->
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

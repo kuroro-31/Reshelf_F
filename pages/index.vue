@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 // atoms
-import AllItem from "@/components/atoms/item/AllItem";
+import { mapGetters } from 'vuex'
+import AllItem from '@/components/atoms/item/AllItem'
 // import HeroItem from '@/components/atoms/item/HeroItem'
-import ReButton from "@/components/atoms/ReButton";
-import FooterNav from "@/components/layout/FooterNav";
+import ReButton from '@/components/atoms/ReButton'
+import FooterNav from '@/components/layout/FooterNav'
 // layout
-import HeaderNav from "@/components/layout/header/HeaderNav";
-import SidebarSearch from "@/components/layout/sidebar/SidebarSearch";
-import { mapGetters } from "vuex";
+import HeaderNav from '@/components/layout/header/HeaderNav'
+import SidebarSearch from '@/components/layout/sidebar/SidebarSearch'
 
 export default {
   components: {
@@ -16,34 +16,34 @@ export default {
     SidebarSearch,
     AllItem,
     // HeroItem,
-    ReButton,
+    ReButton
   },
   computed: {
     ...mapGetters({
-      isUser: "user/auth",
-      user: "user/user",
+      isUser: 'user/auth',
+      user: 'user/user'
     }),
-    carts() {
-      let carts = null;
+    carts () {
+      let carts = null
       if (this.isUser) {
-        carts = this.$store.getters["cart/carts"];
+        carts = this.$store.getters['cart/carts']
       }
-      return carts;
-    },
+      return carts
+    }
   },
   methods: {
-    async resetVuex() {
+    async resetVuex () {
       await this.$store
-        .dispatch("cart/reset")
+        .dispatch('cart/reset')
         .then((value) => {
-          alert("成功");
+          alert('成功')
         })
         .then((value) => {
-          alert("失敗");
-        });
-    },
-  },
-};
+          alert('失敗')
+        })
+    }
+  }
+}
 </script>
 
 <template>

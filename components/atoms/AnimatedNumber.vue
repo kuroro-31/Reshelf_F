@@ -3,39 +3,39 @@ export default {
   props: {
     value: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
-  data() {
+  data () {
     return {
-      animated_number: 0,
-    };
+      animated_number: 0
+    }
   },
   watch: {
-    value(newValue, oldValue) {
-      let timeCnt = 0;
-      let timer;
+    value (newValue, oldValue) {
+      let timeCnt = 0
+      let timer
       const animate = () => {
-        timeCnt++;
+        timeCnt++
         if (timeCnt <= 60) {
           this.animated_number =
-            Math.floor(((newValue - oldValue) * timeCnt) / 60) + oldValue;
+            Math.floor(((newValue - oldValue) * timeCnt) / 60) + oldValue
           timer = setTimeout(() => {
-            animate();
-          }, 10);
+            animate()
+          }, 10)
         } else {
-          clearTimeout(timer);
-          timer = null;
-          this.animated_number = newValue;
+          clearTimeout(timer)
+          timer = null
+          this.animated_number = newValue
         }
-      };
-      animate();
-    },
+      }
+      animate()
+    }
   },
-  mounted() {
-    this.animated_number = this.value;
-  },
-};
+  mounted () {
+    this.animated_number = this.value
+  }
+}
 </script>
 
 <template>

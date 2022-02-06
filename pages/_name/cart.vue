@@ -1,30 +1,30 @@
 <script lang="ts" setup>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 // layout
-import HeaderNav from "@/components/layout/header/HeaderNav";
+import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
-import SidebarCart from "@/components/layout/sidebar/item/SidebarCart";
+import SidebarCart from '@/components/layout/sidebar/item/SidebarCart'
 // atoms
-import CartItem from "@/components/atoms/item/CartItem";
+import CartItem from '@/components/atoms/item/CartItem'
 
 export default {
   components: {
     // FooterNav,
     SidebarCart,
     CartItem,
-    HeaderNav,
+    HeaderNav
   },
   // middleware: 'checkAuth',
   computed: {
     ...mapGetters({
-      isUser: "user/auth",
-      carts: "cart/carts",
-    }),
+      isUser: 'user/auth',
+      carts: 'cart/carts'
+    })
   },
-  created() {
-    this.$store.dispatch("cart/get");
-  },
-};
+  created () {
+    this.$store.dispatch('cart/get')
+  }
+}
 </script>
 
 <template>
@@ -42,7 +42,9 @@ export default {
           <SidebarCart :carts="carts" />
         </nav>
       </div>
-      <div v-else class="p-8">{{ $t("カートに商品がありません") }}</div>
+      <div v-else class="p-8">
+        {{ $t("カートに商品がありません") }}
+      </div>
     </div>
     <!-- <FooterNav /> -->
   </div>

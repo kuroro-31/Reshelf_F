@@ -1,57 +1,59 @@
 <script lang="ts" setup>
-import { mapGetters } from "vuex";
-import ReModal from "@/components/atoms/ReModal";
-import ReButton from "@/components/atoms/ReButton";
+import { mapGetters } from 'vuex'
+import ReModal from '@/components/atoms/ReModal'
+import ReButton from '@/components/atoms/ReButton'
 export default {
   components: {
     ReButton,
-    ReModal,
+    ReModal
   },
   props: {
     item: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
-  data() {
+  data () {
     return {
-      delete_modal: false,
-    };
+      delete_modal: false
+    }
   },
   computed: {
     ...mapGetters({
-      isUser: "user/auth",
-    }),
+      isUser: 'user/auth'
+    })
   },
   methods: {
-    async clear(id) {
+    async clear (id) {
       await this.$store
-        .dispatch("product/delete", id)
+        .dispatch('product/delete', id)
         .then(() => {
-          this.delete_modal = false;
+          this.delete_modal = false
         })
         .catch((error) => {
-          if (error.response.status == "401") {
-            this.$router.push("/auth/login");
-          } else if (error.response.status == "404") {
-            this.$router.push("/error/404");
-          } else if (error.response.status == "500") {
-            this.$router.push("/error/500");
+          if (error.response.status == '401') {
+            this.$router.push('/auth/login')
+          } else if (error.response.status == '404') {
+            this.$router.push('/error/404')
+          } else if (error.response.status == '500') {
+            this.$router.push('/error/500')
           } else {
-            alert(error);
-            console.log(error);
+            alert(error)
+            console.log(error)
           }
-        });
-    },
-  },
-};
+        })
+    }
+  }
+}
 </script>
 
 <template>
   <div>
     <span @click="delete_modal = !delete_modal">{{ $t("削除") }}</span>
     <ReModal v-if="delete_modal" @close="delete_modal = !delete_modal">
-      <template slot="header">コースの削除</template>
+      <template slot="header">
+        コースの削除
+      </template>
       <div class="w-full flex flex-col justify-center">
         <div v-if="isUser" class="main-body-content py-0">
           <form @click="clear(item.id)">

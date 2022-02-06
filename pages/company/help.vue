@@ -1,25 +1,25 @@
 <script lang="ts" setup>
 // layout
-import HeaderNav from "@/components/layout/header/HeaderNav";
-import FooterNav from "@/components/layout/FooterNav";
+import HeaderNav from '@/components/layout/header/HeaderNav'
+import FooterNav from '@/components/layout/FooterNav'
 
 export default {
   components: {
     HeaderNav,
-    FooterNav,
+    FooterNav
   },
   head: {
-    title: "ヘルプとサポート | Reshelf",
+    title: 'ヘルプとサポート | Reshelf',
     meta: [
       {
-        hid: "ヘルプとサポート",
-        name: "ヘルプとサポート",
+        hid: 'ヘルプとサポート',
+        name: 'ヘルプとサポート',
         content:
-          "Reshelfのヘルプとサポートページです。Reshelfご利用時のお客様のトラブルや質問についてお答えします。",
-      },
-    ],
-  },
-};
+          'Reshelfのヘルプとサポートページです。Reshelfご利用時のお客様のトラブルや質問についてお答えします。'
+      }
+    ]
+  }
+}
 </script>
 <template>
   <div class="w-full mx-auto flex flex-col scroll-none">

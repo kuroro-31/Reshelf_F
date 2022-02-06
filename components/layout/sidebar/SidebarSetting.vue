@@ -1,28 +1,42 @@
 <script lang="ts" setup>
-import ReButton from "@/components/atoms/ReButton";
+import ReButton from '@/components/atoms/ReButton'
 export default {
   components: {
-    ReButton,
+    ReButton
   },
-  data() {
+  data () {
     return {
       // user: this.$store.getters['user/user'],
-    };
-  },
-};
+    }
+  }
+}
 </script>
 <template>
   <div class="item">
-    <nuxt-link class="item-link" to="/user/setting">設定</nuxt-link>
-    <nuxt-link class="item-link" to="/user/learning">受講中のコース</nuxt-link>
-    <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
-    <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
-    <nuxt-link class="item-link" to="/teacher/course">あなたのコース</nuxt-link>
-    <nuxt-link class="item-link" to="/teacher/qa">あなたへのQ＆A</nuxt-link>
+    <nuxt-link class="item-link" to="/user/setting">
+      設定
+    </nuxt-link>
+    <nuxt-link class="item-link" to="/user/learning">
+      受講中のコース
+    </nuxt-link>
+    <nuxt-link class="item-link" to="/user/like">
+      お気に入り
+    </nuxt-link>
+    <nuxt-link class="item-link" to="/user/bought">
+      購入履歴
+    </nuxt-link>
+    <nuxt-link class="item-link" to="/teacher/course">
+      あなたのコース
+    </nuxt-link>
+    <nuxt-link class="item-link" to="/teacher/qa">
+      あなたへのQ＆A
+    </nuxt-link>
     <nuxt-link class="item-link" to="/teacher/review">
       コースへのレビュー
     </nuxt-link>
-    <nuxt-link class="item-link" to="/teacher/sales">コース売上</nuxt-link>
+    <nuxt-link class="item-link" to="/teacher/sales">
+      コース売上
+    </nuxt-link>
     <nuxt-link to="/item/new" class="mt-4">
       <re-button class="re-button re-button-small">
         <button

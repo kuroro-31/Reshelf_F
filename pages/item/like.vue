@@ -1,53 +1,53 @@
 <script lang="ts" setup>
 // layout
 // import FooterNav from '@/components/layout/FooterNav'
-import SidebarDetail from "@/components/layout/sidebar/item/SidebarDetail";
+import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
 // atoms
-import HeroItem from "@/components/atoms/item/HeroItem";
-import DetailItem from "@/components/atoms/item/DetailItem";
+import HeroItem from '@/components/atoms/item/HeroItem'
+import DetailItem from '@/components/atoms/item/DetailItem'
 
 export default {
   components: {
     // FooterNav,
     HeroItem,
     SidebarDetail,
-    DetailItem,
+    DetailItem
   },
-  middleware: "checkAuth",
-  data() {
+  middleware: 'checkAuth',
+  data () {
     return {
       items: [
         {
           // キー
           id: 1,
           // レベル
-          level: "初級",
+          level: '初級',
           // 画像
-          src: "https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png",
+          src: 'https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png',
           // タイトル
-          title: "ゼロからはじめる Dockerによるアプリケーション実行環境構築",
+          title: 'ゼロからはじめる Dockerによるアプリケーション実行環境構築',
           // 概要
           describe:
-            "コンテナの実行方法を学び、Ruby on RailsやDjangoといったWebアプリケーションフレームワークを使用した環境構築について学びます。Docker MachineやSwarmといったDocker関連技術についても学びます。",
+            'コンテナの実行方法を学び、Ruby on RailsやDjangoといったWebアプリケーションフレームワークを使用した環境構築について学びます。Docker MachineやSwarmといったDocker関連技術についても学びます。',
           // セール価格
           rate: 4.7,
           all_rate: 4.7,
-          sale_price: "3500",
-          normal_price: "5000",
+          sale_price: '3500',
+          normal_price: '5000',
           // 作者
-          name: "クラピカ",
+          name: 'クラピカ',
           // タグ
-          tags: ["phase1", "btn", "rakuten"],
+          tags: ['phase1', 'btn', 'rakuten'],
           // 日付
-          add_time: "2021/06/23",
-          edit_time: "2021/06/23",
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23',
           // でもページ
-          demo: "#",
-        },
-      ],
-    };
-  },
-};
+          demo: '#'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <template>

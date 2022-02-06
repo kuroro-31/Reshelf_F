@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import ReButton from "@/components/atoms/ReButton";
+import ReButton from '@/components/atoms/ReButton'
 export default {
   components: {
-    ReButton,
-  },
-};
+    ReButton
+  }
+}
 </script>
 
 <template>
@@ -13,7 +13,7 @@ export default {
       <div class="flex flex-col">
         <h2 class="title">
           プログラムで
-          <br />
+          <br>
           チャンスを掴もう
         </h2>
         <span class="describe">

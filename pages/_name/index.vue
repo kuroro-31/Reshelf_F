@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 // import { create } from '@/mixins/posts/create'
 // layout
-import HeaderNav from "@/components/layout/header/HeaderNav";
-import FooterNav from "@/components/layout/FooterNav";
+import HeaderNav from '@/components/layout/header/HeaderNav'
+import FooterNav from '@/components/layout/FooterNav'
 // import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
-import Toast from "@/components/atoms//Toast";
-import ReButton from "@/components/atoms/ReButton";
-import ReModal from "@/components/atoms/ReModal";
+import Toast from '@/components/atoms//Toast'
+import ReButton from '@/components/atoms/ReButton'
+import ReModal from '@/components/atoms/ReModal'
 
 // atoms
 export default {
@@ -17,10 +17,10 @@ export default {
     // SidebarSetting,
     Toast,
     ReButton,
-    ReModal,
+    ReModal
   },
   // mixins: [create],
-  data() {
+  data () {
     return {
       loading: false,
       modal: false,
@@ -30,48 +30,48 @@ export default {
       name: this.$route.params.name,
       form: [],
       saved: false,
-      currentUser: {},
-    };
+      currentUser: {}
+    }
   },
-  head() {
-    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
+  head () {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
     return {
       title: `${this.currentUser.name}さんのプロフィール | Reshelf`,
       ...i18nHead.title,
       meta: [
         {
-          hid: "description",
-          name: "description",
-          content: this.currentUser.description,
+          hid: 'description',
+          name: 'description',
+          content: this.currentUser.description
         },
         {
-          hid: "og:title",
-          property: "og:title",
-          content: `${this.currentUser.name}のプロフィール | Reshelf`,
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${this.currentUser.name}のプロフィール | Reshelf`
         },
         {
-          hid: "og:description",
-          property: "og:description",
-          content: this.currentUser.description,
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.currentUser.description
         },
-        ...i18nHead.meta,
-      ],
-    };
+        ...i18nHead.meta
+      ]
+    }
   },
   computed: {
     ...mapGetters({
-      isUser: "user/auth",
-      carts: "cart/carts",
-      product: "product/product",
+      isUser: 'user/auth',
+      carts: 'cart/carts',
+      product: 'product/product'
     }),
     user: {
-      get() {
-        return Object.assign({}, this.$store.getters["user/user"]);
+      get () {
+        return Object.assign({}, this.$store.getters['user/user'])
       },
-      set(value) {
-        this.$store.dispatch("user/update", value);
-      },
-    },
+      set (value) {
+        this.$store.dispatch('user/update', value)
+      }
+    }
   },
   // watch: {
   //   user: {
@@ -90,61 +90,61 @@ export default {
   //     deep: true,
   //   },
   // },
-  mounted() {
-    this.getItems();
-    this.getCurrentUser();
+  mounted () {
+    this.getItems()
+    this.getCurrentUser()
   },
   methods: {
-    async create() {
+    async create () {
       await this.$store
-        .dispatch("product/create")
+        .dispatch('product/create')
         .then((response) => {
-          alert("成功" + response);
+          alert('成功' + response)
         })
         .catch((error) => {
-          alert("失敗" + error);
-        });
+          alert('失敗' + error)
+        })
     },
-    async getItems() {
-      this.loading = true;
+    async getItems () {
+      this.loading = true
       await this.$axios
-        .$get(`/api/posts`)
+        .$get('/api/posts')
         .then((response) => {
-          this.items = response.data;
-          this.loading = false;
+          this.items = response.data
+          this.loading = false
         })
         .catch((error) => {
-          alert(error);
-          console.log(error);
-        });
+          alert(error)
+          console.log(error)
+        })
     },
-    async getCurrentUser() {
-      this.loading = true;
+    async getCurrentUser () {
+      this.loading = true
       await this.$axios
         .$get(`/api/users/${this.name}`)
         .then((response) => {
-          this.currentUser = response.data;
+          this.currentUser = response.data
         })
         .catch((error) => {
-          alert(error);
-          console.log(error);
-        });
+          alert(error)
+          console.log(error)
+        })
     },
-    async update() {
-      await this.$axios.$patch(`/api/users/${this.user.id}`, this.user);
+    async update () {
+      await this.$axios.$patch(`/api/users/${this.user.id}`, this.user)
       this.$store
-        .dispatch("user/update", this.user)
+        .dispatch('user/update', this.user)
         .then(() => {
-          this.success = true;
-          setTimeout(() => (this.success = false), 3000);
+          this.success = true
+          setTimeout(() => (this.success = false), 3000)
         })
         .catch(() => {
-          this.error = true;
-          setTimeout(() => (this.error = false), 3000);
-        });
-    },
-  },
-};
+          this.error = true
+          setTimeout(() => (this.error = false), 3000)
+        })
+    }
+  }
+}
 </script>
 
 <template>
@@ -160,12 +160,12 @@ export default {
               :alt="currentUser.name + ' cover image'"
               class="img"
               :value="item"
-            />
+            >
             <img
               v-else
               src="https://source.unsplash.com/1024x300?white"
               :alt="currentUser.name + ' cover image'"
-            />
+            >
             <template v-if="user.id == currentUser.id">
               <div class="user-cover-edit" @click="modal = !modal">
                 <svg
@@ -204,7 +204,7 @@ export default {
                     type="text"
                     autofocus
                     class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-                  />
+                  >
 
                   <ReButton class="re-button w-auto">
                     <button
@@ -225,14 +225,16 @@ export default {
                 v-if="currentUser.icon"
                 :src="currentUser.icon"
                 :alt="currentUser.name + ' icon image'"
-              />
+              >
               <img
                 src="https://source.unsplash.com/190x190?colorful"
                 :alt="currentUser.name + ' icon image'"
-              />
+              >
               <div class="w-full flex items-center justify-between">
                 <div class="user-name">
-                  <div class="font-bold text-5xl">{{ currentUser.name }}</div>
+                  <div class="font-bold text-5xl">
+                    {{ currentUser.name }}
+                  </div>
                   <div class="flex items-center">
                     <p>
                       <span class="font-bold">32,000</span>
@@ -317,21 +319,23 @@ export default {
                   alt="text image"
                   class="img"
                   :value="item"
-                />
+                >
                 <img
                   v-else
                   src="@/assets/images/noimage.svg"
                   alt="cource image"
                   class="img"
                   :value="item"
-                />
+                >
               </button>
               <span v-if="item.title" class="title">
                 {{ item.title }}
               </span>
               <span v-else class="title">{{ $t("無題のタイトル") }}</span>
 
-              <div class="">{{ item.user_id }}</div>
+              <div class="">
+                {{ item.user_id }}
+              </div>
               <!-- <div class="">{{ item.user.name }}</div> -->
               <!-- <ArticleLike /> -->
             </nuxt-link>

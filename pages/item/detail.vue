@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 // layout
-import HeaderNav from "@/components/layout/header/HeaderNav";
+import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
-import SidebarDetail from "@/components/layout/sidebar/item/SidebarDetail";
+import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
 // atoms
-import HeroItem from "@/components/atoms/item/HeroItem";
-import DetailItem from "@/components/atoms/item/DetailItem";
+import HeroItem from '@/components/atoms/item/HeroItem'
+import DetailItem from '@/components/atoms/item/DetailItem'
 
 export default {
   components: {
@@ -13,9 +13,9 @@ export default {
     // FooterNav,
     HeroItem,
     SidebarDetail,
-    DetailItem,
+    DetailItem
   },
-  data() {
+  data () {
     return {
       // items: [
       //   {
@@ -46,9 +46,9 @@ export default {
       //     demo: '#',
       //   },
       // ],
-    };
-  },
-};
+    }
+  }
+}
 </script>
 
 <template>

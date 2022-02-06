@@ -1,5 +1,5 @@
 <template>
-  <div class="main-img"></div>
+  <div class="main-img" />
 </template>
 <style lang="scss" scoped>
 .main-img {

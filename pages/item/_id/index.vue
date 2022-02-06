@@ -1,30 +1,30 @@
 <script lang="ts" setup>
 // layout
-import HeaderNav from "@/components/layout/header/HeaderNav";
+import HeaderNav from '@/components/layout/header/HeaderNav'
 // import FooterNav from '@/components/layout/FooterNav'
 // import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
 // atoms
-import DetailItem from "@/components/atoms/item/DetailItem";
+import DetailItem from '@/components/atoms/item/DetailItem'
 
 export default {
   components: {
     HeaderNav,
     // FooterNav,
     // SidebarDetail,
-    DetailItem,
+    DetailItem
   },
-  async asyncData({ $axios, params }) {
-    const { data } = await $axios.$get(`/api/posts/${params.id}`);
+  async asyncData ({ $axios, params }) {
+    const { data } = await $axios.$get(`/api/posts/${params.id}`)
     return {
-      item: data,
-    };
+      item: data
+    }
   },
-  data() {
+  data () {
     return {
-      item: [],
-    };
-  },
-};
+      item: []
+    }
+  }
+}
 </script>
 
 <template>

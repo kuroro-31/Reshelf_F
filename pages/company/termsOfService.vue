@@ -1,25 +1,25 @@
 <script lang="ts" setup>
 // layout
-import HeaderNav from "@/components/layout/header/HeaderNav";
-import FooterNav from "@/components/layout/FooterNav";
+import HeaderNav from '@/components/layout/header/HeaderNav'
+import FooterNav from '@/components/layout/FooterNav'
 
 export default {
   components: {
     HeaderNav,
-    FooterNav,
+    FooterNav
   },
   head: {
-    title: "利用規約 | Reshelf",
+    title: '利用規約 | Reshelf',
     meta: [
       {
-        hid: "利用規約",
-        name: "利用規約",
+        hid: '利用規約',
+        name: '利用規約',
         content:
-          "Reshelfの利用規約ページです。個人情報の取扱いについて掲載しています。",
-      },
-    ],
-  },
-};
+          'Reshelfの利用規約ページです。個人情報の取扱いについて掲載しています。'
+      }
+    ]
+  }
+}
 </script>
 
 <template>
@@ -37,7 +37,9 @@ export default {
       </h2>
       <div class="p-8 text-lg rounded-lg bg-white">
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第1条 （適用）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第1条 （適用）
+          </h3>
           <p>
             1.
             Reshelf利用規約（以下、「本規約」といいます。）は、合同会社Reshelf（以下、「当社」といいます。）が提供するインターネットサイト「Reshelf」により表示されるサイトを指し、以下、「本サイト」といいます。）において当社が提供するプログラミング教材のマーケットプレイスサービス（以下、「本サービス」といいます。）を利用する個人及び法人と当社との権利義務関係を定めるものです。
@@ -51,7 +53,9 @@ export default {
         </div>
 
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第2条 （定義）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第2条 （定義）
+          </h3>
           <p>
             本規約において各用語の定義は以下に定めるものとします。
             (1)「サービス利用契約」とは、当社と本サービスを利用する個人及び法人との間の本規約に基づく本サービスの利用契約を意味します。
@@ -64,7 +68,9 @@ export default {
         </div>
 
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第3条 （利用登録 ）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第3条 （利用登録 ）
+          </h3>
           <p>
             1.
             講師としてプログラミング教材を本サイト上に掲載し生徒からの利用申込みの募集を希望する者及び生徒としてプログラミング教材の利用を希望する者は、本規約を遵守することに同意し、かつ当社の定める一定の情報を当社の定める方法で提供することにより、当社に対し、本サービスの利用の登録を申請することができます。なお、未成年者の利用登録には保護者の方による事前の承諾を得ていることが前提となります。
@@ -83,7 +89,9 @@ export default {
         </div>
 
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第4条 （登録事項の変更）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第4条 （登録事項の変更）
+          </h3>
           <ul class="list-disc pl-8">
             <p>
               講師及び生徒は、登録事項に変更があった場合、当社の定める方法により当該変更事項を遅滞なく当社に通知するものとします。
@@ -92,7 +100,9 @@ export default {
         </div>
 
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第5条 （禁止事項）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第5条 （禁止事項）
+          </h3>
           <ul class="list-disc pl-8">
             <p>
               講師及び生徒は、本サービスの利用にあたり、以下の各号に該当する行為又は該当すると当社が判断する行為を行うことを禁止します。
@@ -132,7 +142,9 @@ export default {
         </div>
 
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第7条 （権利帰属）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第7条 （権利帰属）
+          </h3>
           <p>
             1.
             本サービスに関する知的財産権等は全て当社又は当社にライセンスを許諾している者に帰属しており、本規約に基づく本サービス利用の許諾は当該知的財産権等の利用許諾を意味するものでないことを予め講師及び生徒は同意するものとします。
@@ -169,7 +181,9 @@ export default {
         </div>
 
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第9条 （退会）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第9条 （退会）
+          </h3>
           <p>
             1.
             講師及び生徒は、当社所定の方法に従い本サービスから退会、登録の抹消等をすることができます。
@@ -200,7 +214,9 @@ export default {
         </div>
 
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第12条 （免責・責任制限）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第12条 （免責・責任制限）
+          </h3>
           <p>
             1.
             当社は、本サービスの提供に関して、以下各号に規定する場合をはじめ、いかなる場合でも、講師又は生徒が被った一切の損害について賠償する責任を負わないものとします。
@@ -221,14 +237,18 @@ export default {
         </div>
 
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第13条 （秘密保持）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第13条 （秘密保持）
+          </h3>
           <p>
             講師及び生徒は、本サービスに関連して当社が秘密に取り扱うことを求めて開示した非公知の情報について、当社の書面の承諾がある場合を除き、秘密に取り扱うものとします。
           </p>
         </div>
 
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第14条 （個人情報保護）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第14条 （個人情報保護）
+          </h3>
           <p>
             1.当社は、本サービスの提供に関連して講師あるいは生徒の個人情報等を取り扱う場合、個人情報保護法及びその他ガイドラインに則り、当該情報を取り扱うものとします。
             2.当社は、本サービスを提供するに当たり、当社が了知した個人情報等について、以下各号に定める目的で利用するものとし、講師あるいは生徒は予めこの点について了承するものとします。
@@ -255,19 +275,25 @@ export default {
         </div>
 
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第15条 （本規約の変更）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第15条 （本規約の変更）
+          </h3>
           <p>
             当社は、本規約を変更できるものとします｡当社は、本規約を変更した場合には、変更後の本規約を本サイト上に表示し、当該表示後７日間の経過をもってその効力が生じるものとします。なお、講師又は生徒は当該期間経過後の本サービスの利用により当該変更に同意したものとみなされます。
           </p>
         </div>
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第16条 （通知）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第16条 （通知）
+          </h3>
           <p>
             本サービスに関する問い合わせその他講師及び生徒から当社に対する連絡又は通知、及び本規約の変更に関する通知その他当社から講師及び生徒に対する連絡又は通知は、本サイト上に掲示する方法又は電子メールにより行うものとします。
           </p>
         </div>
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第17条 （地位の譲渡）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第17条 （地位の譲渡）
+          </h3>
           <p>
             1.
             講師及び生徒は、当社の書面による承諾を得た場合を除き、サービス利用契約上の地位又は本規約に基づく権利もしくは義務につき、第三者に対し譲渡、移転、担保設定、その他の処分をすることはできません。
@@ -276,7 +302,9 @@ export default {
           </p>
         </div>
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">第18条 （分離可能性）</h3>
+          <h3 class="text-xl font-bold mb-2">
+            第18条 （分離可能性）
+          </h3>
           <p>
             本規約のいずれかの条項又はその一部が、消費者契約法その他の法令等により無効又は執行不能と判断された場合であっても、当該無効又は執行不能と判断された条項を除く残りの条項は、継続して完全に効力を有するものとします。
           </p>
@@ -303,7 +331,9 @@ export default {
           </p>
         </div>
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">生徒向け個別規定</h3>
+          <h3 class="text-xl font-bold mb-2">
+            生徒向け個別規定
+          </h3>
           <p>
             1. プログラミング教材の予約、取引の成立
             講師によるプログラミング教材の利用を希望する生徒は、本サイトにおいて掲載されたプログラミング教材の詳細を確認の上、本サイトにおいて予約申込みを行うものとします。当該予約の申込みが講師により承諾されることにより生徒と講師間で取引が成立します。
@@ -316,7 +346,9 @@ export default {
           </p>
         </div>
         <div class="my-12">
-          <h3 class="text-xl font-bold mb-2">附則</h3>
+          <h3 class="text-xl font-bold mb-2">
+            附則
+          </h3>
           <p>2022年2月5日制定</p>
         </div>
       </div>

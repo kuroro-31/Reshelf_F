@@ -2,16 +2,16 @@
 export default {
   data: () => ({
     form: {
-      email: "",
-      password: "",
-    },
+      email: '',
+      password: ''
+    }
   }),
   methods: {
-    async login() {
-      await this.$store.dispatch("user/login", this.form);
-    },
-  },
-};
+    async login () {
+      await this.$store.dispatch('user/login', this.form)
+    }
+  }
+}
 </script>
 <template>
   <div class="relative">
@@ -37,7 +37,7 @@ export default {
         </div>
       </div>
     </div>
-    <div class="bg"></div>
+    <div class="bg" />
   </div>
 </template>
 

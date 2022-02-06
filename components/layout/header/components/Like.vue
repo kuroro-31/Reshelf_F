@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
-      like: false,
-    };
+      like: false
+    }
   },
   computed: {
     ...mapGetters({
-      isUser: "user/auth",
-    }),
-  },
-};
+      isUser: 'user/auth'
+    })
+  }
+}
 </script>
 
 <template>
@@ -42,7 +42,9 @@ export default {
           @mouseover="like = true"
           @mouseleave="like = false"
         >
-          <div class="p-4">{{ $t("ほしいものリストは空です") }}</div>
+          <div class="p-4">
+            {{ $t("ほしいものリストは空です") }}
+          </div>
         </div>
       </div>
     </transition>

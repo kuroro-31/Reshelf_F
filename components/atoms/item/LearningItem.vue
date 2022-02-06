@@ -6,20 +6,20 @@ export default {
   props: {
     items: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
-  data() {
+  data () {
     return {
       visible: false,
       isLiked: false,
       isDisabled: false,
-      dropdown: false,
-    };
+      dropdown: false
+    }
   },
-  methods: {},
-};
+  methods: {}
+}
 </script>
 
 <template>
@@ -34,7 +34,7 @@ export default {
               @mouseover="visible = true"
               @mouseleave="visible = false"
             >
-              <img :src="item.src" alt="text image" class="img" />
+              <img :src="item.src" alt="text image" class="img">
             </nuxt-link>
           </div>
 

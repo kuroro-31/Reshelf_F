@@ -7,24 +7,24 @@
 export default {
   props: {
     isGrey: {
-      type: Boolean,
+      type: Boolean
     },
     isDanger: {
-      type: Boolean,
-    },
+      type: Boolean
+    }
   },
   computed: {
-    colorSetting() {
+    colorSetting () {
       if (this.isGrey) {
-        return "bg-grey-20 text-black";
+        return 'bg-grey-20 text-black'
       } else if (this.isDanger) {
-        return "bg-danger text-white";
+        return 'bg-danger text-white'
       } else {
-        return "bg-primary text-white";
+        return 'bg-primary text-white'
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <template>
@@ -32,7 +32,7 @@ export default {
     class="badge-normal rounded-full flex items-center justify-center text-sm"
     :class="colorSetting"
   >
-    <slot></slot>
+    <slot />
   </span>
 </template>
 

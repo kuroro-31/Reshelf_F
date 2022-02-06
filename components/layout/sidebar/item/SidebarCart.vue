@@ -1,43 +1,43 @@
 <script lang="ts" setup>
-//Icons
+// Icons
 // import { ChevronRightIcon } from 'vue-feather-icons'
 // atoms
-import ReButton from "@/components/atoms/ReButton";
-import AnimatedNumber from "@/components/atoms/AnimatedNumber";
+import ReButton from '@/components/atoms/ReButton'
+import AnimatedNumber from '@/components/atoms/AnimatedNumber'
 export default {
   components: {
     ReButton,
-    AnimatedNumber,
+    AnimatedNumber
   },
   props: {
     carts: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
-  data() {
+  data () {
     return {
-      isDisabled: false,
-    };
+      isDisabled: false
+    }
   },
   computed: {
-    totalPrice() {
-      let carts = this.carts;
-      let totalPrice = null;
+    totalPrice () {
+      const carts = this.carts
+      let totalPrice = null
 
-      for (let post of carts) {
-        totalPrice += post.price;
+      for (const post of carts) {
+        totalPrice += post.price
       }
 
-      return totalPrice;
-    },
+      return totalPrice
+    }
   },
   methods: {
-    checkout(products) {
-      this.$store.dispatch("cart/checkout", products);
-    },
-  },
-};
+    checkout (products) {
+      this.$store.dispatch('cart/checkout', products)
+    }
+  }
+}
 </script>
 
 <template>

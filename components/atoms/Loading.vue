@@ -1,22 +1,22 @@
 <script lang="ts" setup>
 export default {
   data: () => ({
-    loading: false,
+    loading: false
   }),
   methods: {
-    start() {
-      this.loading = true;
+    start () {
+      this.loading = true
     },
-    finish() {
-      this.loading = false;
-    },
-  },
-};
+    finish () {
+      this.loading = false
+    }
+  }
+}
 </script>
 
 <template lang="html">
   <div v-if="loading" class="loader-background">
-    <div class="loader"></div>
+    <div class="loader" />
   </div>
 </template>
 

@@ -1,43 +1,45 @@
 <script lang="ts" setup>
-import { mapGetters } from "vuex";
-import DeleteItem from "@/components/atoms/item/modal/DeleteItem";
-import ArticleLike from "@/components/atoms/ArticleLike";
-import InCartButton from "@/components/atoms/item/InCartButton";
+import { mapGetters } from 'vuex'
+import DeleteItem from '@/components/atoms/item/modal/DeleteItem'
+import ArticleLike from '@/components/atoms/ArticleLike'
+import InCartButton from '@/components/atoms/item/InCartButton'
 export default {
   components: {
     DeleteItem,
     ArticleLike,
-    InCartButton,
+    InCartButton
   },
-  data() {
+  data () {
     return {
-      loading: false,
-    };
+      loading: false
+    }
   },
   computed: {
     ...mapGetters({
-      isUser: "user/auth",
-      user: "user/user",
-      product: "product/product",
-      carts: "cart/carts",
+      isUser: 'user/auth',
+      user: 'user/user',
+      product: 'product/product',
+      carts: 'cart/carts'
     }),
-    isClick() {
+    isClick () {
       // let item = this.product.filter((item) => item.id !== id)
       // let cart = this.carts.filter((cart) => cart.id !== id)
 
-      return true;
-    },
+      return true
+    }
   },
-  created() {
-    this.$store.dispatch("product/get");
-  },
-};
+  created () {
+    this.$store.dispatch('product/get')
+  }
+}
 </script>
 
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
-      <template v-if="loading">{{ $t("読み込み中です") }}</template>
+      <template v-if="loading">
+        {{ $t("読み込み中です") }}
+      </template>
 
       <div v-else class="items">
         <div v-for="item in product" :key="item.id" class="card item flex-col">
@@ -52,14 +54,14 @@ export default {
                 alt="text image"
                 class="img"
                 :value="item"
-              />
+              >
               <img
                 v-else
                 src="@/assets/images/noimage.svg"
                 alt="cource image"
                 class="img"
                 :value="item"
-              />
+              >
             </button>
             <span v-if="item.title" class="title">{{ item.title }}</span>
             <span v-else class="title">{{ $t("無題のタイトル") }}</span>

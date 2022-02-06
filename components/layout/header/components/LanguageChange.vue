@@ -1,20 +1,20 @@
 <script lang="ts" setup>
 export default {
-  data() {
+  data () {
     return {
-      show: false,
-    };
+      show: false
+    }
   },
   computed: {
-    availableLocales() {
-      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale);
-    },
+    availableLocales () {
+      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+    }
   },
   methods: {
-    search() {
+    search () {
       this.$router.push({
-        path: `/user/${this.user.id}/cart`,
-      });
+        path: `/user/${this.user.id}/cart`
+      })
     },
     /**
      * リロードあり
@@ -29,11 +29,11 @@ export default {
      * クッキーと、$i18n独自ストアのlocaleに言語を設定する
      * 直接storeを書き換えるためリロードは不要
      */
-    async changeLocale(locale) {
-      await this.$i18n.setLocale(locale);
-    },
-  },
-};
+    async changeLocale (locale) {
+      await this.$i18n.setLocale(locale)
+    }
+  }
+}
 </script>
 
 <template>

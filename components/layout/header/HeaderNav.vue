@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { mapGetters } from "vuex";
-import Cart from "@/components/layout/header/components/Cart";
-import Logo from "@/components/layout/header/components/Logo";
-import Like from "@/components/layout/header/components/Like";
-import UserDropdown from "@/components/layout/header/components/UserDropdown";
-import LanguageChange from "@/components/layout/header/components/LanguageChange";
+import { mapGetters } from 'vuex'
+import Cart from '@/components/layout/header/components/Cart'
+import Logo from '@/components/layout/header/components/Logo'
+import Like from '@/components/layout/header/components/Like'
+import UserDropdown from '@/components/layout/header/components/UserDropdown'
+import LanguageChange from '@/components/layout/header/components/LanguageChange'
 
 export default {
   components: {
@@ -12,14 +12,14 @@ export default {
     Logo,
     Like,
     UserDropdown,
-    LanguageChange,
+    LanguageChange
   },
   computed: {
     ...mapGetters({
-      isUser: "user/auth",
-    }),
-  },
-};
+      isUser: 'user/auth'
+    })
+  }
+}
 </script>
 
 <template>
@@ -34,7 +34,7 @@ export default {
       </div>
 
       <div class="nav-right">
-        <input type="text" class="search" placeholder="Search..." />
+        <input type="text" class="search" placeholder="Search...">
 
         <!-- 言語切り替え -->
         <LanguageChange />
