@@ -193,11 +193,13 @@ export default {
 <style lang="scss" scoped>
 .login {
   @apply h-screen w-screen overflow-hidden flex justify-center;
-  // background-image: url('https://source.unsplash.com/1920x1080/?happy');
-  // background-position: center !important;
-  // background-repeat: no-repeat !important;
+  background-image: url('https://source.unsplash.com/3000x3000?programming');
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  height: 100vh;
+  width: 100vw;
   // background: #16afaf;
-  background: rgba(var(--primary));
+  // background: rgba(var(--primary));
 
   object-fit: cover !important;
   &-title {
@@ -212,6 +214,6 @@ export default {
 }
 .bg {
   @apply absolute w-screen h-screen top-0 right-0 left-0 bottom-0 m-0 p-0 z-10;
-  background: rgba(#000000, 0.3);
+  background: rgba(#000000, 0.7);
 }
 </style>

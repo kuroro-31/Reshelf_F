@@ -5,14 +5,18 @@
       <div class="max-w-screen-lg w-full mx-auto">
         <div class="">
           <div class="user-cover">
-            <!-- <img
-                  v-if="item.src"
-                  :src="item.src"
-                  alt="text image"
-                  class="img"
-                  :value="item"
-                /> -->
-            <img src="@/assets/images/noimage.svg" alt="user cover image" />
+            <img
+              v-if="currentUser.cover"
+              :src="currentUser.cover"
+              :alt="currentUser.name + ' cover image'"
+              class="img"
+              :value="item"
+            />
+            <img
+              v-else
+              src="https://source.unsplash.com/1024x300?stylish"
+              :alt="currentUser.name + ' cover image'"
+            />
             <template v-if="user.id == currentUser.id">
               <div class="user-cover-edit" @click="modal = !modal">
                 <svg
@@ -68,7 +72,15 @@
           </div>
           <div class="user-profile">
             <div class="flex items-start divider">
-              <img src="@/assets/images/noimage.svg" alt="user cover image" />
+              <img
+                v-if="currentUser.icon"
+                :src="currentUser.icon"
+                :alt="currentUser.name + ' icon image'"
+              />
+              <img
+                src="https://source.unsplash.com/190x190?dog"
+                :alt="currentUser.name + ' icon image'"
+              />
               <div class="w-full flex items-center justify-between">
                 <div class="user-name">
                   <div class="font-bold text-5xl">{{ currentUser.name }}</div>
@@ -361,7 +373,7 @@ export default {
       }
     }
     img {
-      @apply rounded object-cover;
+      @apply rounded-lg object-cover;
       @screen lg {
         min-width: 1024px;
         max-width: 1024px;
