@@ -15,9 +15,11 @@
           {{ $t('カートに入れる') }}
         </template>
         <template v-else>
-          <span @click="toCheckout">
+          <nuxt-link
+            :to="{ name: 'name-cart', params: { name: item.user.name } }"
+          >
             {{ $t('レジに進む') }}
-          </span>
+          </nuxt-link>
         </template>
         <!-- <template>
       {{ $t('コースを受講する') }}
@@ -75,11 +77,6 @@ export default {
           this.error = true
           setTimeout(() => (this.error = false), 3000)
         })
-    },
-    toCheckout() {
-      this.$router.push({
-        path: `/user/${this.user.id}/cart`,
-      })
     },
   },
 }
