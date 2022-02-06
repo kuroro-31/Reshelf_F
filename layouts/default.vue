@@ -45,6 +45,7 @@ export default {
     }
   },
   computed: {
+    // 最後消す
     ...mapGetters({
       isUser: 'user/auth',
       user: 'user/user',

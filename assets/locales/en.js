@@ -56,4 +56,5 @@ export default {
   利用規約: 'Terms of service',
   '合同会社Reshelf（以下「当社」といいます。）は，当社の提供するサービス（以下,「本サービス」といいます。）における，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。':
     'Reshelf LLC (hereinafter referred to as the "Company") is a company that provides services (hereinafter referred to as the "Services"). Rshelf LLC (hereinafter referred to as the "Company") has established the following privacy policy (hereinafter referred to as the "Policy") regarding the handling of users personal information in the services provided by the Company (hereinafter referred to as the "Services"). Rshelf LLC (hereinafter referred to as the "Company") has established the following privacy policy (hereinafter referred to as the "Policy") regarding the handling of personal information of users in the services provided by the Company (hereinafter referred to as the "Services"). (hereinafter referred to as the "Company") has established the following privacy policy (hereinafter referred to as the "Policy") regarding the handling of users personal information in the services provided by the Company (hereinafter referred to as the "Services").',
+  ヘルプとサポート: 'Help and Support',
 }
