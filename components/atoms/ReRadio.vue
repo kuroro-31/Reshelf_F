@@ -1,9 +1,9 @@
 <template>
   <label class="re-radio">
-    <slot name="input"></slot>
-    <div class="re-radio--button mr-2"></div>
+    <slot name="input" />
+    <div class="re-radio--button mr-2" />
     <div class="text-for-radio flex flex-wrap items-center">
-      <slot name="label"></slot>
+      <slot name="label" />
     </div>
   </label>
 </template>

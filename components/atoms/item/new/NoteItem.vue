@@ -17,11 +17,11 @@
           class="note-name transparent"
           autofocus="autofocus"
           @keypress.enter="onEditEnd"
-        />
+        >
       </template>
       <template v-else>
         <div class="note-icon">
-          <i class="fas fa-file-alt"></i>
+          <i class="fas fa-file-alt" />
         </div>
         <div class="note-name" @click="onClickEdit(propsNote)">
           {{ propsNote.name }}
@@ -37,7 +37,9 @@
           >
             追加
           </div>
-          <div class="button-icon" @click="onClickEdit(note)">編集</div>
+          <div class="button-icon" @click="onClickEdit(note)">
+            編集
+          </div>
           <div class="button-icon" @click="onClickDelete(parentNote, note)">
             削除
           </div>
@@ -72,59 +74,59 @@ export default {
   props: {
     note: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     parentNote: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     layer: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   computed: {
     propsNote: {
-      get() {
+      get () {
         return this.note
       },
-      set(newVal) {
+      set (newVal) {
         this.$emit('childNote', newVal)
-      },
-    },
+      }
+    }
   },
   methods: {
-    onMouseOver() {
+    onMouseOver () {
       this.propsNote.mouseover = true
     },
-    onMouseLeave() {
+    onMouseLeave () {
       this.propsNote.mouseover = false
     },
-    onSelect(note) {
+    onSelect (note) {
       this.$emit('select', note)
     },
-    onClickDelete(parentNote, note) {
+    onClickDelete (parentNote, note) {
       this.$emit('delete', parentNote, note)
     },
-    onClickEdit(note) {
+    onClickEdit (note) {
       this.$emit('editStart', note)
       this.$nextTick(() =>
         document.getElementById('editting-' + note.id).focus()
       )
     },
-    onEditEnd(childNote) {
+    onEditEnd (childNote) {
       this.$emit('editEnd', childNote)
       this.$nextTick(() =>
         document.getElementById('editting-' + childNote.id).focus()
       )
     },
-    onClickChildNote(note) {
+    onClickChildNote (note) {
       this.$emit('addChild', note)
     },
-    onClickAddNoteAfter(parentNote, note) {
+    onClickAddNoteAfter (parentNote, note) {
       this.$emit('addNoteAfter', parentNote, note)
-    },
-  },
+    }
+  }
 }
 </script>
 

@@ -1,14 +1,26 @@
 <template>
   <div class="item">
     <span class="item-title">受講生</span>
-    <nuxt-link class="item-link" to="/user/learning">受講中のコース</nuxt-link>
-    <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
-    <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
+    <nuxt-link class="item-link" to="/user/learning">
+      受講中のコース
+    </nuxt-link>
+    <nuxt-link class="item-link" to="/user/like">
+      お気に入り
+    </nuxt-link>
+    <nuxt-link class="item-link" to="/user/bought">
+      購入履歴
+    </nuxt-link>
 
     <span class="item-title">受講生</span>
-    <nuxt-link class="item-link" to="/user/learning">受講中のコース</nuxt-link>
-    <nuxt-link class="item-link" to="/user/like">お気に入り</nuxt-link>
-    <nuxt-link class="item-link" to="/user/bought">購入履歴</nuxt-link>
+    <nuxt-link class="item-link" to="/user/learning">
+      受講中のコース
+    </nuxt-link>
+    <nuxt-link class="item-link" to="/user/like">
+      お気に入り
+    </nuxt-link>
+    <nuxt-link class="item-link" to="/user/bought">
+      購入履歴
+    </nuxt-link>
   </div>
 </template>
 <style lang="scss" scoped>

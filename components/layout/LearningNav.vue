@@ -17,14 +17,14 @@
               width="112"
               height="15"
               class="responsive"
-            />
+            >
           </h1>
         </NuxtLink>
       </div>
 
       <div class="nav-center">
         <span class="text-lg">Terraformで構築するAWS</span>
-        <chevron-down-icon size="1x" class="ml-4"></chevron-down-icon>
+        <chevron-down-icon size="1x" class="ml-4" />
       </div>
 
       <div class="nav-right">
@@ -39,7 +39,7 @@
             width="40px"
             height="40px"
             src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
-          />
+          >
           <transition>
             <div
               v-if="dropdown"
@@ -53,7 +53,7 @@
                     width="50px"
                     height="50px"
                     src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
-                  />
+                  >
                   <span v-if="isAuthenticated" class="menu-name-person">
                     {{ loggedInUser.name }}
                   </span>
@@ -84,10 +84,18 @@
                 <div class="menu-me">
                   <div class="">
                     <select v-model="$colorMode.preference">
-                      <option value="system">System</option>
-                      <option value="light">Light</option>
-                      <option value="dark">Dark</option>
-                      <option value="sepia">Sepia</option>
+                      <option value="system">
+                        System
+                      </option>
+                      <option value="light">
+                        Light
+                      </option>
+                      <option value="dark">
+                        Dark
+                      </option>
+                      <option value="sepia">
+                        Sepia
+                      </option>
                     </select>
                   </div>
                   <span class="menu-me-title">共通</span>
@@ -110,7 +118,9 @@
         <div v-if="!isAuthenticated" class="py-2.5">
           <span class="cursor-pointer" @click="modal = !modal">Log in</span>
           <ReModal v-if="modal" @close="modal = !modal">
-            <template slot="header">Welcome To Reshelf！</template>
+            <template slot="header">
+              Welcome To Reshelf！
+            </template>
             <!-- default -->
             <div class="w-full flex justify-center">
               <form @submit.prevent="submit">
@@ -136,7 +146,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       visible: false,
       modal: false,
@@ -144,19 +154,19 @@ export default {
       cart: false,
       dropdown: false,
       post: false,
-      like: false,
+      like: false
     }
   },
   computed: {
-    isAuthenticated() {
+    isAuthenticated () {
       return this.$auth.loggedIn
     },
-    loggedInUser() {
+    loggedInUser () {
       return this.$auth.user
-    },
+    }
   },
   methods: {
-    async submit() {
+    async submit () {
       await this.$axios
         .$post('/api/auth/facebook')
         .then(() => {})
@@ -170,10 +180,10 @@ export default {
       //   path: this.$route.query.redirect || '/',
       // })
     },
-    async logout() {
+    async logout () {
       await this.$auth.logout()
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

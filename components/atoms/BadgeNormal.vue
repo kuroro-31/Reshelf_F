@@ -8,21 +8,21 @@
     class="badge-normal rounded-full flex items-center justify-center text-sm"
     :class="colorSetting"
   >
-    <slot></slot>
+    <slot />
   </span>
 </template>
 <script>
 export default {
   props: {
     isGrey: {
-      type: Boolean,
+      type: Boolean
     },
     isDanger: {
-      type: Boolean,
-    },
+      type: Boolean
+    }
   },
   computed: {
-    colorSetting() {
+    colorSetting () {
       if (this.isGrey) {
         return 'bg-grey-20 text-black'
       } else if (this.isDanger) {
@@ -30,8 +30,8 @@ export default {
       } else {
         return 'bg-primary text-white'
       }
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

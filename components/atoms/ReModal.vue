@@ -13,18 +13,18 @@
             >
               <path
                 d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"
-              ></path>
+              />
             </svg>
           </button>
           <div class="title">
-            <slot name="header"></slot>
+            <slot name="header" />
           </div>
         </header>
         <div class="modal-content">
           <slot />
         </div>
         <footer class="modal-footer">
-          <slot name="footer"></slot>
+          <slot name="footer" />
         </footer>
       </div>
     </div>

@@ -28,31 +28,31 @@ export default {
   props: {
     carts: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
-  data() {
+  data () {
     return {
-      isDisabled: false,
+      isDisabled: false
     }
   },
   computed: {
-    totalPrice() {
-      let carts = this.carts
+    totalPrice () {
+      const carts = this.carts
       let totalPrice = null
 
-      for (let post of carts) {
+      for (const post of carts) {
         totalPrice += post.price
       }
 
       return totalPrice
-    },
+    }
   },
   methods: {
-    checkout(products) {
+    checkout (products) {
       this.$store.dispatch('cart/checkout', products)
-    },
-  },
+    }
+  }
 }
 </script>
 

@@ -10,7 +10,7 @@
       </div>
 
       <div class="nav-right">
-        <input type="text" class="search" placeholder="Search..." />
+        <input type="text" class="search" placeholder="Search...">
 
         <!-- 言語切り替え -->
         <LanguageChange />
@@ -33,9 +33,9 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters({
-      isUser: 'user/auth',
-    }),
-  },
+      isUser: 'user/auth'
+    })
+  }
 }
 </script>
 <style lang="scss" scoped>

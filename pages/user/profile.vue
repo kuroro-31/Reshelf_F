@@ -10,7 +10,9 @@
         </nav>
         <div class="main-body scroll-none">
           <div class="main-body-content">
-            <h2 class="text-3xl font-bold mb-4">プロフィール編集</h2>
+            <h2 class="text-3xl font-bold mb-4">
+              プロフィール編集
+            </h2>
             <!-- <all-item :items="items" /> -->
             <div class="">
               <!-- <div class="">{{ user.name }}</div> -->
@@ -24,18 +26,18 @@
 </template>
 <script>
 export default {
-  async asyncData({ $axios }) {
-    const { data } = await $axios.$get(`/api/user`)
+  async asyncData ({ $axios }) {
+    const { data } = await $axios.$get('/api/user')
     console.log(data)
     return {
-      user: data,
+      user: data
     }
   },
-  data() {
+  data () {
     return {
-      user: [],
+      user: []
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

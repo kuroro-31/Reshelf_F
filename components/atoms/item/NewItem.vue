@@ -10,7 +10,7 @@
               @mouseover="visible = true"
               @mouseleave="visible = false"
             >
-              <img :src="item.src" alt="text image" class="img" />
+              <img :src="item.src" alt="text image" class="img">
             </nuxt-link>
           </div>
 
@@ -37,19 +37,19 @@ export default {
   props: {
     items: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
-  data() {
+  data () {
     return {
       visible: false,
       isLiked: false,
       isDisabled: false,
-      dropdown: false,
+      dropdown: false
     }
   },
-  methods: {},
+  methods: {}
 }
 </script>
 <style lang="scss" scoped>
@@ -229,38 +229,38 @@ export default {
   max-width: 50px;
   border: 1px solid var(--sub-color);
   color: var(--sub-color);
-  &_one {
-    border: 1px solid $green;
-    color: $green;
-  }
-  &_two {
-    border: 1px solid $yellow;
-    color: $yellow;
-  }
-  &_three {
-    border: 1px solid $red;
-    color: $red;
-  }
-  &_four {
-    border: 1px solid $purple;
-    color: $purple;
-  }
+  // &_one {
+  //   border: 1px solid $green;
+  //   color: $green;
+  // }
+  // &_two {
+  //   border: 1px solid $yellow;
+  //   color: $yellow;
+  // }
+  // &_three {
+  //   border: 1px solid $red;
+  //   color: $red;
+  // }
+  // &_four {
+  //   border: 1px solid $purple;
+  //   color: $purple;
+  // }
 }
 // 教材評価
 .rate {
   @apply text-2xl font-bold cursor-default;
-  &_one {
-    color: $green;
-  }
-  &_two {
-    color: $yellow;
-  }
-  &_three {
-    color: $red;
-  }
-  &_four {
-    color: $purple;
-  }
+  // &_one {
+  //   color: $green;
+  // }
+  // &_two {
+  //   color: $yellow;
+  // }
+  // &_three {
+  //   color: $red;
+  // }
+  // &_four {
+  //   color: $purple;
+  // }
 }
 // 教材評価画像
 .rate_img {
@@ -268,57 +268,57 @@ export default {
   &_zero {
     height: 17px;
     width: 100px;
-    background-image: url('~@/assets/images/rate/zero.svg');
+    background-image: url("~@/assets/images/rate/zero.svg");
   }
   &_one {
     height: 17px;
     width: 100px;
-    background-image: url('~@/assets/images/rate/one.svg');
+    background-image: url("~@/assets/images/rate/one.svg");
   }
   &_one_five {
     height: 17px;
     width: 100px;
-    background-image: url('~@/assets/images/rate/one-five.svg');
+    background-image: url("~@/assets/images/rate/one-five.svg");
   }
   &_two {
     height: 17px;
     width: 100px;
-    background-image: url('~@/assets/images/rate/two.svg');
+    background-image: url("~@/assets/images/rate/two.svg");
   }
   &_two_five {
     height: 17px;
     width: 100px;
-    background-image: url('~@/assets/images/rate/two-five.svg');
+    background-image: url("~@/assets/images/rate/two-five.svg");
   }
   &_three {
     height: 17px;
     width: 100px;
-    background-image: url('~@/assets/images/rate/three.svg');
+    background-image: url("~@/assets/images/rate/three.svg");
   }
   &_three_five {
     height: 17px;
     width: 100px;
-    background-image: url('~@/assets/images/rate/three-five.svg');
+    background-image: url("~@/assets/images/rate/three-five.svg");
   }
   &_four {
     height: 17px;
     width: 100px;
-    background-image: url('~@/assets/images/rate/four.svg');
+    background-image: url("~@/assets/images/rate/four.svg");
   }
   &_four_five {
     height: 17px;
     width: 100px;
-    background-image: url('~@/assets/images/rate/four-five.svg');
+    background-image: url("~@/assets/images/rate/four-five.svg");
   }
   &_four_seven {
     height: 17px;
     width: 100px;
-    background-image: url('~@/assets/images/rate/four-seven.svg');
+    background-image: url("~@/assets/images/rate/four-seven.svg");
   }
   &_five {
     height: 17px;
     width: 100px;
-    background-image: url('~@/assets/images/rate/five.svg');
+    background-image: url("~@/assets/images/rate/five.svg");
   }
 }
 .demo {

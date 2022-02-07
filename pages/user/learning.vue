@@ -8,7 +8,9 @@
         </nav>
         <div class="main-body scroll-none">
           <div class="main-body-content">
-            <h2 class="text-3xl font-bold mb-4">受講中のコース</h2>
+            <h2 class="text-3xl font-bold mb-4">
+              受講中のコース
+            </h2>
             <LearningItem :items="items" />
           </div>
         </div>
@@ -20,7 +22,7 @@
 <script>
 export default {
   middleware: 'checkAuth',
-  data() {
+  data () {
     return {
       items: [
         {
@@ -48,7 +50,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#',
+          demo: '#'
         },
         {
           // キー
@@ -76,7 +78,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#',
+          demo: '#'
         },
         {
           // キー
@@ -104,7 +106,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#',
+          demo: '#'
         },
         {
           // キー
@@ -132,7 +134,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#',
+          demo: '#'
         },
         {
           // キー
@@ -160,7 +162,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#',
+          demo: '#'
         },
         {
           // キー
@@ -187,7 +189,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#',
+          demo: '#'
         },
         {
           // キー
@@ -215,7 +217,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#',
+          demo: '#'
         },
         {
           // キー
@@ -243,7 +245,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#',
+          demo: '#'
         },
         {
           // キー
@@ -271,7 +273,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#',
+          demo: '#'
         },
         {
           // キー
@@ -298,11 +300,11 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#',
-        },
-      ],
+          demo: '#'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

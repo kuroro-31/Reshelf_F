@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="bg"></div>
+    <div class="bg" />
   </div>
 </template>
 <script>
@@ -30,14 +30,14 @@ export default {
   data: () => ({
     form: {
       email: '',
-      password: '',
-    },
+      password: ''
+    }
   }),
   methods: {
-    async login() {
+    async login () {
       await this.$store.dispatch('user/login', this.form)
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

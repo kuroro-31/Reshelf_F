@@ -10,7 +10,7 @@
               width="112"
               height="24"
               class="responsive"
-            />
+            >
           </h1>
         </NuxtLink>
 
@@ -30,7 +30,7 @@
             <chevron-down-icon
               size="1x"
               class="chapter-icon"
-            ></chevron-down-icon>
+            />
           </div>
           <transition>
             <div v-if="chapter">
@@ -39,7 +39,9 @@
                 @mouseover="chapter = true"
                 @mouseleave="chapter = false"
               >
-                <div class="p-8">チャプター一覧</div>
+                <div class="p-8">
+                  チャプター一覧
+                </div>
               </div>
             </div>
           </transition>
@@ -58,7 +60,7 @@
             <chevron-left-icon
               size="1.5x"
               class="chapter-prev-icon"
-            ></chevron-left-icon>
+            />
             <div class="chapter-prev-body">
               <span class="chapter-prev-title">PREV</span>
               <span class="chapter-next-content">
@@ -76,7 +78,7 @@
             <chevron-right-icon
               size="1.5x"
               class="chapter-next-icon"
-            ></chevron-right-icon>
+            />
           </a>
         </div>
       </div>
@@ -90,11 +92,11 @@
 <script>
 export default {
   middleware: 'checkAuth',
-  data() {
+  data () {
     return {
-      chapter: false,
+      chapter: false
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

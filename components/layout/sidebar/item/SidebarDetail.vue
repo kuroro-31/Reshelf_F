@@ -30,7 +30,7 @@
                 size="1x"
                 class="mr-2"
                 :class="isLiked ? 'text-red' : ''"
-              ></heart-icon>
+              />
               <span :class="!isLiked ? 'block' : 'hidden'">
                 お気に入りに追加
               </span>
@@ -46,7 +46,7 @@
               class="re-button-primary-filled"
               @click="$router.push('/item/cart')"
             >
-              <shopping-cart-icon size="1x" class="mr-2"></shopping-cart-icon>
+              <shopping-cart-icon size="1x" class="mr-2" />
               カートに入れる
             </button>
           </re-button>
@@ -61,14 +61,14 @@ export default {
   props: {
     items: {
       type: Array,
-      default: () => [],
-    },
-  },
-  data() {
-    return {
-      isDisabled: false,
+      default: () => []
     }
   },
+  data () {
+    return {
+      isDisabled: false
+    }
+  }
 }
 </script>
 

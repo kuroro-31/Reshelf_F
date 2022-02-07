@@ -18,7 +18,7 @@
 <script>
 export default {
   middleware: 'checkAuth',
-  data() {
+  data () {
     return {
       items: [
         {
@@ -46,11 +46,11 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#',
-        },
-      ],
+          demo: '#'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

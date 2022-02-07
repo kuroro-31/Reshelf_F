@@ -11,12 +11,12 @@
               :alt="currentUser.name + ' cover image'"
               class="img"
               :value="item"
-            />
+            >
             <img
               v-else
               src="https://source.unsplash.com/1024x300?white"
               :alt="currentUser.name + ' cover image'"
-            />
+            >
             <template v-if="user.id == currentUser.id">
               <div class="user-cover-edit" @click="modal = !modal">
                 <svg
@@ -55,7 +55,7 @@
                     type="text"
                     autofocus
                     class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-                  />
+                  >
 
                   <ReButton class="re-button w-auto">
                     <button
@@ -76,14 +76,16 @@
                 v-if="currentUser.icon"
                 :src="currentUser.icon"
                 :alt="currentUser.name + ' icon image'"
-              />
+              >
               <img
                 src="https://source.unsplash.com/190x190?urban"
                 :alt="currentUser.name + ' icon image'"
-              />
+              >
               <div class="w-full flex items-center justify-between">
                 <div class="user-name">
-                  <div class="font-bold text-5xl">{{ currentUser.name }}</div>
+                  <div class="font-bold text-5xl">
+                    {{ currentUser.name }}
+                  </div>
                   <div class="flex items-center">
                     <p>
                       <span class="font-bold">32,000</span>
@@ -168,21 +170,23 @@
                   alt="text image"
                   class="img"
                   :value="item"
-                />
+                >
                 <img
                   v-else
                   src="@/assets/images/noimage.svg"
                   alt="cource image"
                   class="img"
                   :value="item"
-                />
+                >
               </button>
               <span v-if="item.title" class="title">
                 {{ item.title }}
               </span>
               <span v-else class="title">{{ $t('無題のタイトル') }}</span>
 
-              <div class="">{{ item.user_id }}</div>
+              <div class="">
+                {{ item.user_id }}
+              </div>
               <!-- <div class="">{{ item.user.name }}</div> -->
               <!-- <ArticleLike /> -->
             </nuxt-link>
@@ -204,7 +208,7 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       loading: false,
       modal: false,
@@ -214,10 +218,10 @@ export default {
       name: this.$route.params.name,
       form: [],
       saved: false,
-      currentUser: {},
+      currentUser: {}
     }
   },
-  head() {
+  head () {
     const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
     return {
       title: `${this.currentUser.name}さんのプロフィール | Reshelf`,
@@ -226,36 +230,36 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.currentUser.description,
+          content: this.currentUser.description
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `${this.currentUser.name}のプロフィール | Reshelf`,
+          content: `${this.currentUser.name}のプロフィール | Reshelf`
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.currentUser.description,
+          content: this.currentUser.description
         },
-        ...i18nHead.meta,
-      ],
+        ...i18nHead.meta
+      ]
     }
   },
   computed: {
     ...mapGetters({
       isUser: 'user/auth',
       carts: 'cart/carts',
-      product: 'product/product',
+      product: 'product/product'
     }),
     user: {
-      get() {
+      get () {
         return Object.assign({}, this.$store.getters['user/user'])
       },
-      set(value) {
+      set (value) {
         this.$store.dispatch('user/update', value)
-      },
-    },
+      }
+    }
   },
   // watch: {
   //   user: {
@@ -274,12 +278,12 @@ export default {
   //     deep: true,
   //   },
   // },
-  mounted() {
+  mounted () {
     this.getItems()
     this.getCurrentUser()
   },
   methods: {
-    async create() {
+    async create () {
       await this.$store
         .dispatch('product/create')
         .then((response) => {
@@ -289,10 +293,10 @@ export default {
           alert('失敗' + error)
         })
     },
-    async getItems() {
+    async getItems () {
       this.loading = true
       await this.$axios
-        .$get(`/api/posts`)
+        .$get('/api/posts')
         .then((response) => {
           this.items = response.data
           this.loading = false
@@ -302,7 +306,7 @@ export default {
           console.log(error)
         })
     },
-    async getCurrentUser() {
+    async getCurrentUser () {
       this.loading = true
       await this.$axios
         .$get(`/api/users/${this.name}`)
@@ -314,7 +318,7 @@ export default {
           console.log(error)
         })
     },
-    async update() {
+    async update () {
       await this.$axios.$patch(`/api/users/${this.user.id}`, this.user)
       this.$store
         .dispatch('user/update', this.user)
@@ -326,8 +330,8 @@ export default {
           this.error = true
           setTimeout(() => (this.error = false), 3000)
         })
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

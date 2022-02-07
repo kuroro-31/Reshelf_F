@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="hidden" :value="tagsJson" @change="sendTags" />
+    <input type="hidden" :value="tagsJson" @change="sendTags">
     <!-- <vue-tags-input
       v-model="tag"
       :tags="tags"
@@ -20,30 +20,30 @@ export default {
   props: {
     autocompleteItems: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
-  data() {
+  data () {
     return {
       tag: '',
-      tags: [],
+      tags: []
     }
   },
   computed: {
-    filteredItems() {
+    filteredItems () {
       return this.autocompleteItems.filter((i) => {
-        return i.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1
+        return i.toLowerCase().includes(this.tag.toLowerCase())
       })
     },
-    tagsJson() {
+    tagsJson () {
       return JSON.stringify(this.tags)
-    },
+    }
   },
   methods: {
-    sendTags() {
+    sendTags () {
       this.$emit('catchTags', this.filteredItems)
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss"></style>

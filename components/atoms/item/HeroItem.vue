@@ -4,7 +4,7 @@
       <div class="flex flex-col">
         <h2 class="title">
           プログラムで
-          <br />
+          <br>
           チャンスを掴もう
         </h2>
         <span class="describe">

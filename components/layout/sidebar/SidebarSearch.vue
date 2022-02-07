@@ -47,7 +47,7 @@
           <li>
             <re-checkbox>
               <template #input>
-                <input v-model="checkbox" type="checkbox" />
+                <input v-model="checkbox" type="checkbox">
               </template>
               <template #label>
                 {{ subcategory }}
@@ -82,7 +82,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       checkbox: '',
       isDisabled: false,
@@ -90,12 +90,12 @@ export default {
         {
           name: this.$t('評価'),
           subcategories: ['4.5以上', '4.0以上', '3.5以上'],
-          toggleOn: true,
+          toggleOn: true
         },
         {
           name: this.$t('値段'),
           subcategories: ['無料', '2,500円', '5,000円', '7,500円', '10,000円'],
-          toggleOn: true,
+          toggleOn: true
         },
         {
           name: this.$t('トピック'),
@@ -108,19 +108,19 @@ export default {
             'AWS',
             'Python',
             'HTML',
-            'CSS',
+            'CSS'
           ],
-          toggleOn: true,
+          toggleOn: true
         },
         {
           name: this.$t('難易度'),
           subcategories: ['初級', '中級', '上級', '特級'],
-          toggleOn: true,
+          toggleOn: true
         },
         {
           name: this.$t('対応言語'),
           subcategories: ['英語', '日本語'],
-          toggleOn: true,
+          toggleOn: true
         },
         {
           name: this.$t('特徴'),
@@ -128,13 +128,13 @@ export default {
             'デモページ有り',
             'サブスク対象教材',
             'Mac',
-            'Windows',
+            'Windows'
           ],
-          toggleOn: true,
-        },
-      ],
+          toggleOn: true
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 

@@ -294,18 +294,18 @@ export default {
   computed: {
     ...mapGetters({
       isUser: 'user/auth',
-      user: 'user/user',
+      user: 'user/user'
     }),
-    carts() {
+    carts () {
       let carts = null
       if (this.isUser) {
         carts = this.$store.getters['cart/carts']
       }
       return carts
-    },
+    }
   },
   methods: {
-    async resetVuex() {
+    async resetVuex () {
       await this.$store
         .dispatch('cart/reset')
         .then((value) => {
@@ -314,8 +314,8 @@ export default {
         .then((value) => {
           alert('失敗')
         })
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

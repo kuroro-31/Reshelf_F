@@ -18,7 +18,7 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       // items: [
       //   {
@@ -50,7 +50,7 @@ export default {
       //   },
       // ],
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

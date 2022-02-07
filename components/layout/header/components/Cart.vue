@@ -41,7 +41,9 @@
               </button>
             </re-button>
           </div>
-          <div v-else class="p-4">{{ $t('カートに商品がありません') }}</div>
+          <div v-else class="p-4">
+            {{ $t('カートに商品がありません') }}
+          </div>
         </div>
       </div>
     </transition>
@@ -50,36 +52,36 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
-      show: false,
+      show: false
     }
   },
   computed: {
     ...mapGetters({
       user: 'user/user',
-      carts: 'cart/carts',
+      carts: 'cart/carts'
     }),
-    cartsCount() {
+    cartsCount () {
       let length = null
       // if (this.carts != null) {
       length = this.carts.length
       // }
       return length
-    },
+    }
   },
-  created() {
+  created () {
     // setInterval(() => {
     this.$store.dispatch('cart/get')
     // }, 3000)
   },
   methods: {
-    toCheckout() {
+    toCheckout () {
       this.$router.push({
-        path: `/user/${this.user.id}/cart`,
+        path: `/user/${this.user.id}/cart`
       })
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

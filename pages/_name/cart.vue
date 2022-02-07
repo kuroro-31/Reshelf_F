@@ -13,7 +13,9 @@
           <SidebarCart :carts="carts" />
         </nav>
       </div>
-      <div v-else class="p-8">{{ $t('カートに商品がありません') }}</div>
+      <div v-else class="p-8">
+        {{ $t('カートに商品がありません') }}
+      </div>
     </div>
     <!-- <FooterNav /> -->
   </div>
@@ -24,12 +26,12 @@ export default {
   computed: {
     ...mapGetters({
       isUser: 'user/auth',
-      carts: 'cart/carts',
-    }),
+      carts: 'cart/carts'
+    })
   },
-  created() {
+  created () {
     this.$store.dispatch('cart/get')
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -42,23 +42,23 @@ export default {
   props: {
     item: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
-  data() {
+  data () {
     return {
       isClick: false,
       success: false,
-      error: false,
+      error: false
     }
   },
   computed: {
     ...mapGetters({
-      user: 'user/user',
-    }),
+      user: 'user/user'
+    })
   },
   methods: {
-    async addCart(item) {
+    async addCart (item) {
       // try {
       await this.$store
         .dispatch('cart/add', item)
@@ -71,8 +71,8 @@ export default {
           this.error = true
           setTimeout(() => (this.error = false), 3000)
         })
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss" scoped></style>

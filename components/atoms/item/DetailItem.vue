@@ -61,16 +61,18 @@
               rate_img_four_seven: item.rate >= 4.7,
               rate_img_five: item.rate >= 5.0,
             }"
-          ></div>
+          />
         </div>
         <p class="name ml-1 text-xs">
           <!-- （総合評価：{{ item.all_rate | comma }}） -->
         </p>
       </div>
 
-      <div class="">DEMO</div>
+      <div class="">
+        DEMO
+      </div>
 
-      <div v-highlightjs class="markdown w-full" v-html="item.body"></div>
+      <div v-highlightjs class="markdown w-full" v-html="item.body" />
     </div>
   </div>
 </template>
@@ -79,15 +81,15 @@ export default {
   props: {
     item: {
       type: Object,
-      default: () => {},
-    },
-  },
-  data() {
-    return {
-      liked: false,
-      isDisabled: false,
+      default: () => {}
     }
   },
+  data () {
+    return {
+      liked: false,
+      isDisabled: false
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -167,38 +169,38 @@ export default {
 .level {
   @apply flex justify-end mt-2 px-2 py-1 mr-2 font-bold rounded cursor-pointer;
   max-width: 50px;
-  &_one {
-    border: 1px solid $green;
-    color: $green;
-  }
-  &_two {
-    border: 1px solid $yellow;
-    color: $yellow;
-  }
-  &_three {
-    border: 1px solid $red;
-    color: $red;
-  }
-  &_four {
-    border: 1px solid $purple;
-    color: $purple;
+  // &_one {
+  //   border: 1px solid $green;
+  //   color: $green;
+  // }
+  // &_two {
+  //   border: 1px solid $yellow;
+  //   color: $yellow;
+  // }
+  // &_three {
+  //   border: 1px solid $red;
+  //   color: $red;
+  // }
+  // &_four {
+  //   border: 1px solid $purple;
+  //   color: $purple;
   }
 }
 // 教材評価
 .rate {
   @apply text-2xl font-bold cursor-default;
-  &_one {
-    color: $green;
-  }
-  &_two {
-    color: $yellow;
-  }
-  &_three {
-    color: $red;
-  }
-  &_four {
-    color: $purple;
-  }
+  // &_one {
+  //   color: $green;
+  // }
+  // &_two {
+  //   color: $yellow;
+  // }
+  // &_three {
+  //   color: $red;
+  // }
+  // &_four {
+  //   color: $purple;
+  // }
 }
 // 教材評価画像
 .rate_img {

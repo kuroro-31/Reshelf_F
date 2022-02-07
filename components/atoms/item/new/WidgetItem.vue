@@ -15,7 +15,7 @@
           @keypress.enter="onClickAddWidgetAfter(parentWidget, propsWidget)"
           @keydown.tab="onKeydownTab"
           @keydown.delete="onKeydownDelete"
-        />
+        >
       </template>
       <template v-if="propsWidget.type == 'body'">
         <input
@@ -26,7 +26,7 @@
           @keypress.enter="onClickAddWidgetAfter(parentWidget, propsWidget)"
           @keydown.tab="onKeydownTab"
           @keydown.delete="onKeydownDelete"
-        />
+        >
       </template>
       <template v-if="propsWidget.type == 'code'">
         <textarea
@@ -36,7 +36,7 @@
           rows="1"
           placeholder="コード"
           @keydown.delete="onKeydownDelete"
-        ></textarea>
+        />
       </template>
       <div v-show="propsWidget.mouseover" class="buttons">
         <div
@@ -44,22 +44,22 @@
           class="button-icon"
           @click="onClickChildWidget(propsWidget)"
         >
-          <i class="fas fa-sitemap"></i>
+          <i class="fas fa-sitemap" />
         </div>
         <div
           class="button-icon"
           @click="onClickAddWidgetAfter(parentWidget, propsWidget)"
         >
-          <i class="fas fa-plus-circle"></i>
+          <i class="fas fa-plus-circle" />
         </div>
         <div
           class="button-icon"
           @click="onClickDelete(parentWidget, propsWidget)"
         >
-          <i class="fas fa-trash"></i>
+          <i class="fas fa-trash" />
         </div>
         <div class="button-icon">
-          <i class="fas fa-cog" data-toggle="dropdown"></i>
+          <i class="fas fa-cog" data-toggle="dropdown" />
           <div class="dropdown-menu">
             <a class="dropdown-item" @click="propsWidget.type = 'heading'">
               見出し
@@ -96,66 +96,66 @@ export default {
   props: {
     widget: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     parentWidget: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     layer: {
       type: Number,
-      default: 1,
-    },
+      default: 1
+    }
   },
   computed: {
     propsWidget: {
-      get() {
+      get () {
         return this.widget
       },
-      set(newVal) {
+      set (newVal) {
         this.$emit('childWidget', newVal)
-      },
-    },
+      }
+    }
   },
   watch: {
-    'widget.text'() {
+    'widget.text' () {
       this.resizeCodeTextarea()
-    },
+    }
   },
-  mounted() {
+  mounted () {
     const input = this.$refs[`widget-${this.widget.type}-${this.widget.id}`]
     input.focus()
   },
   methods: {
-    onMouseOver() {
+    onMouseOver () {
       this.propsWidget.mouseover = true
     },
-    onMouseLeave() {
+    onMouseLeave () {
       this.propsWidget.mouseover = false
     },
-    onClickDelete(parentWidget, widget) {
+    onClickDelete (parentWidget, widget) {
       this.$emit('delete', parentWidget, widget)
     },
-    onClickChildWidget(widget) {
+    onClickChildWidget (widget) {
       this.$emit('addChild', widget)
     },
-    onClickAddWidgetAfter(parentWidget, widget) {
+    onClickAddWidgetAfter (parentWidget, widget) {
       this.$emit('addWidgetAfter', parentWidget, widget)
     },
-    onKeydownTab(e) {
+    onKeydownTab (e) {
       if (this.widget.layer < 3) {
         this.$emit('addChild', this.widget)
       }
       e.preventDefault()
     },
-    onKeydownDelete(e) {
+    onKeydownDelete (e) {
       if (this.widget.text.length === 0) {
         this.$emit('delete', this.parentWidget, this.widget)
         e.preventDefault()
       }
     },
-    resizeCodeTextarea() {
-      if (this.widget.type !== 'code') return
+    resizeCodeTextarea () {
+      if (this.widget.type !== 'code') { return }
       const textarea = this.$refs[`widget-code-${this.widget.id}`]
       const promise = new Promise(function (resolve) {
         resolve((textarea.style.height = 'auto'))
@@ -163,8 +163,8 @@ export default {
       promise.then(function () {
         textarea.style.height = textarea.scrollHeight + 'px'
       })
-    },
-  },
+    }
+  }
 }
 </script>
 

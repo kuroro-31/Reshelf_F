@@ -26,45 +26,51 @@
 
             <!-- プロフィール詳細 -->
             <div class="profile-about-detail">
-              <h3 class="font-bold text-xl">プロフィール</h3>
+              <h3 class="font-bold text-xl">
+                プロフィール
+              </h3>
               <div class="profile-about-detail-body scroll-none">
                 京都大学大学院を卒業後、働き方改革企業サイボウズに入社。
-                <br />
+                <br>
                 週4日勤務で3つの複業をこなすなど新しい働き方に取り組む。
-                <br />
-                <br />
+                <br>
+                <br>
                 大学院で複雑な研究内容をコンパクトに伝えることに苦戦した経験から、
-                <br />
+                <br>
                 プレゼン改善に関する研究を開始。
-                <br />
+                <br>
                 大学院の最終発表で最高評価を獲得し、
-                <br />
+                <br>
                 サイボウズ入社2年目で当時最小年次で
-                <br />
+                <br>
                 幕張メッセでの登壇に抜擢され、以後多数の登壇経験を持つ。
-                <br />
-                <br />
+                <br>
+                <br>
                 その経験を元に、「できる」をやる をモットーにかかげ
-                <br />
+                <br>
                 最小の時間・労力で最大の印象を残すプレゼン術について伝えている。
-                <br />
+                <br>
                 その活動はAERAに掲載されるなど会社員としては異色の経歴を持つ。
               </div>
             </div>
           </div>
           <div class="">
-            <h3 class="font-bold text-xl mb-4">公開中のコース</h3>
+            <h3 class="font-bold text-xl mb-4">
+              公開中のコース
+            </h3>
             <all-item :items="items" />
           </div>
         </div>
         <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
           <div class="profile-person">
-            <p class="grade">Grade 7</p>
+            <p class="grade">
+              Grade 7
+            </p>
             <img
               class="profile-person-img responsive"
               src="https://i.gyazo.com/8ce2054d8a950d6ea86cf962315a194b.png"
               alt="personal icon"
-            />
+            >
             <div class="profile-person-link">
               <a href="" class="profile-person-link-website">Website</a>
               <a href="" class="profile-person-link-facebook">Facebook</a>
@@ -80,7 +86,7 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       items: [
         {
@@ -106,7 +112,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -132,7 +138,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -158,7 +164,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -184,7 +190,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -210,7 +216,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -235,7 +241,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -261,7 +267,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -287,7 +293,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -313,7 +319,7 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
+          edit_time: '2021/06/23'
         },
         {
           // キー
@@ -338,11 +344,11 @@ export default {
           tags: ['phase1', 'btn', 'rakuten'],
           // 日付
           add_time: '2021/06/23',
-          edit_time: '2021/06/23',
-        },
-      ],
+          edit_time: '2021/06/23'
+        }
+      ]
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -421,7 +427,7 @@ export default {
   // color: $purple;
   color: var(--fff);
   // background-color: var(--bg);
-  background: $purple;
+  // background: $purple;
   // top: 250px;
 }
 </style>

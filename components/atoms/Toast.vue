@@ -53,7 +53,7 @@
             </template>
           </div>
           <div class="mr-4 font-bold">
-            <slot></slot>
+            <slot />
           </div>
           <div class="cursor-pointer" @click="show = !show">
             <svg
@@ -79,17 +79,17 @@
 export default {
   props: {
     success: {
-      type: Boolean,
+      type: Boolean
     },
     error: {
-      type: Boolean,
-    },
-  },
-  data() {
-    return {
-      show: true,
+      type: Boolean
     }
   },
+  data () {
+    return {
+      show: true
+    }
+  }
   // mounted() {
   //   let vid = document.getElementById('check')
   //   if (vid) {

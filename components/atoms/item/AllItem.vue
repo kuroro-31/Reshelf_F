@@ -1,7 +1,9 @@
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
-      <template v-if="loading">{{ $t('読み込み中です') }}</template>
+      <template v-if="loading">
+        {{ $t("読み込み中です") }}
+      </template>
 
       <div v-else class="items">
         <div v-for="item in product" :key="item.id" class="card item flex-col">
@@ -16,17 +18,17 @@
                 alt="text image"
                 class="img"
                 :value="item"
-              />
+              >
               <img
                 v-else
                 src="@/assets/images/noimage.svg"
                 alt="cource image"
                 class="img"
                 :value="item"
-              />
+              >
             </button>
             <span v-if="item.title" class="title">{{ item.title }}</span>
-            <span v-else class="title">{{ $t('無題のタイトル') }}</span>
+            <span v-else class="title">{{ $t("無題のタイトル") }}</span>
           </nuxt-link>
 
           <nuxt-link
@@ -48,7 +50,7 @@
               <nuxt-link
                 :to="{ name: 'item-edit-id', params: { id: item.id } }"
               >
-                {{ $t('編集') }}
+                {{ $t("編集") }}
               </nuxt-link>
             </div>
           </template>
@@ -60,9 +62,9 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
-      loading: false,
+      loading: false
     }
   },
   computed: {
@@ -70,18 +72,18 @@ export default {
       isUser: 'user/auth',
       user: 'user/user',
       product: 'product/product',
-      carts: 'cart/carts',
+      carts: 'cart/carts'
     }),
-    isClick() {
+    isClick () {
       // let item = this.product.filter((item) => item.id !== id)
       // let cart = this.carts.filter((cart) => cart.id !== id)
 
       return true
-    },
+    }
   },
-  created() {
+  created () {
     this.$store.dispatch('product/get')
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -263,104 +265,104 @@ export default {
   border: 1px solid var(--sub-color);
   color: var(--sub-color);
   &_one {
-    border: 1px solid $green;
-    color: $green;
-  }
-  &_two {
-    border: 1px solid $yellow;
-    color: $yellow;
-  }
-  &_three {
-    border: 1px solid $red;
-    color: $red;
-  }
-  &_four {
-    border: 1px solid $purple;
-    color: $purple;
+    //   border: 1px solid $green;
+    //   color: $green;
+    // }
+    // &_two {
+    //   border: 1px solid $yellow;
+    //   color: $yellow;
+    // }
+    // &_three {
+    //   border: 1px solid $red;
+    //   color: $red;
+    // }
+    // &_four {
+    //   border: 1px solid $purple;
+    //   color: $purple;
   }
 }
 // 教材評価
 .rate {
   @apply text-base leading-4 font-bold cursor-default;
-  &_one {
-    color: $green;
-  }
-  &_two {
-    color: $gold;
-  }
-  &_three {
-    color: $red;
-  }
-  &_four {
-    color: $purple;
-  }
+  // &_one {
+  //   color: $green;
+  // }
+  // &_two {
+  //   color: $gold;
+  // }
+  // &_three {
+  //   color: $red;
+  // }
+  // &_four {
+  //   color: $purple;
+  // }
   &_img {
     @apply flex items-center ml-2;
     &_zero {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url('~@/assets/images/rate/zero.svg');
+      background-image: url("~@/assets/images/rate/zero.svg");
     }
     &_one {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url('~@/assets/images/rate/one.svg');
+      background-image: url("~@/assets/images/rate/one.svg");
     }
     &_one_five {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url('~@/assets/images/rate/one-five.svg');
+      background-image: url("~@/assets/images/rate/one-five.svg");
     }
     &_two {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url('~@/assets/images/rate/two.svg');
+      background-image: url("~@/assets/images/rate/two.svg");
     }
     &_two_five {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url('~@/assets/images/rate/two-five.svg');
+      background-image: url("~@/assets/images/rate/two-five.svg");
     }
     &_three {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url('~@/assets/images/rate/three.svg');
+      background-image: url("~@/assets/images/rate/three.svg");
     }
     &_three_five {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url('~@/assets/images/rate/three-five.svg');
+      background-image: url("~@/assets/images/rate/three-five.svg");
     }
     &_four {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url('~@/assets/images/rate/four.svg');
+      background-image: url("~@/assets/images/rate/four.svg");
     }
     &_four_five {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url('~@/assets/images/rate/four-five.svg');
+      background-image: url("~@/assets/images/rate/four-five.svg");
     }
     &_four_seven {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url('~@/assets/images/rate/four-seven.svg');
+      background-image: url("~@/assets/images/rate/four-seven.svg");
     }
     &_five {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url('~@/assets/images/rate/five.svg');
+      background-image: url("~@/assets/images/rate/five.svg");
     }
   }
 }

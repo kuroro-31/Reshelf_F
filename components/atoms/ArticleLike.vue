@@ -19,30 +19,30 @@ export default {
   props: {
     initialIsLikedBy: {
       type: Boolean,
-      default: false,
+      default: false
     },
     initialCountLikes: {
       type: Number,
-      default: 0,
+      default: 0
     },
     authorized: {
       type: Boolean,
-      default: false,
+      default: false
     },
     endpoint: {
       type: String,
-      default: null,
-    },
+      default: null
+    }
   },
-  data() {
+  data () {
     return {
       isLikedBy: this.initialIsLikedBy,
       countLikes: this.initialCountLikes,
-      gotToLike: false,
+      gotToLike: false
     }
   },
   methods: {
-    clickLike() {
+    clickLike () {
       if (!this.authorized) {
         alert('いいね機能はログイン中のみ使用できます')
         return
@@ -50,20 +50,20 @@ export default {
 
       this.isLikedBy ? this.unlike() : this.like()
     },
-    async like() {
+    async like () {
       const response = await this.$axios.$put(this.endpoint)
 
       this.isLikedBy = true
       this.countLikes = response.data.countLikes
       this.gotToLike = true
     },
-    async unlike() {
+    async unlike () {
       const response = await this.$axios.$delete(this.endpoint)
 
       this.isLikedBy = false
       this.countLikes = response.data.countLikes
       this.gotToLike = false
-    },
-  },
+    }
+  }
 }
 </script>

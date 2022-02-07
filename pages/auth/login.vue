@@ -62,7 +62,7 @@
                 placeholder="Enter email"
                 autofocus
                 class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-              />
+              >
               <!-- <small v-if="errors.email" class="form-text text-danger">
                 {{ errors.email[0] }}
               </small> -->
@@ -76,7 +76,7 @@
                 type="password"
                 placeholder="Password"
                 class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-              />
+              >
               <!-- <small v-if="errors.password" class="form-text text-danger">
                 {{ errors.password[0] }}
               </small> -->
@@ -168,7 +168,7 @@
         </div>
       </div>
     </div>
-    <div class="bg"></div>
+    <div class="bg" />
   </div>
 </template>
 <script>
@@ -176,14 +176,14 @@ export default {
   data: () => ({
     form: {
       email: '',
-      password: '',
-    },
+      password: ''
+    }
   }),
   methods: {
-    async login() {
+    async login () {
       await this.$store.dispatch('user/login', this.form)
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

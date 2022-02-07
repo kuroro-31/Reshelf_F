@@ -7,8 +7,12 @@
       <nuxt-link class="item-link" to="/user/setting">
         はじめてのTerraform
       </nuxt-link>
-      <nuxt-link class="item-link" to="/user/profile">Terraformとは</nuxt-link>
-      <nuxt-link class="item-link" to="/user/profile">環境を準備する</nuxt-link>
+      <nuxt-link class="item-link" to="/user/profile">
+        Terraformとは
+      </nuxt-link>
+      <nuxt-link class="item-link" to="/user/profile">
+        環境を準備する
+      </nuxt-link>
       <nuxt-link class="item-link" to="/user/profile">
         とりあえず触ってみる
       </nuxt-link>

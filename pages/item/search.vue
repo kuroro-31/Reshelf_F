@@ -19,11 +19,11 @@
 <script>
 import axios from 'axios'
 export default {
-  mounted() {
+  mounted () {
     this.getApi()
   },
   methods: {
-    async getApi() {
+    async getApi () {
       axios.defaults.withCredentials = true
       // await axios.get('/sanctum/csrf-cookie').then(async () => {
 
@@ -41,8 +41,8 @@ export default {
         })
 
       // this.$nuxt.$loading.finish()
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

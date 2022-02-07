@@ -1,24 +1,24 @@
 <template>
   <label class="re-checkbox" @click="isChecked = !isChecked">
-    <slot name="input"></slot>
+    <slot name="input" />
     <div
       class="re-checkbox--check"
       :class="isChecked == true ? 're-checkbox--checked' : ''"
     >
-      <i class="bx bx-check re-checkbox--icon text-white"></i>
+      <i class="bx bx-check re-checkbox--icon text-white" />
     </div>
-    <slot name="label"></slot>
+    <slot name="label" />
   </label>
 </template>
 
 <script>
 export default {
   components: {},
-  data() {
+  data () {
     return {
-      isChecked: false,
+      isChecked: false
     }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>
