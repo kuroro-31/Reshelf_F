@@ -29,16 +29,12 @@ export default {
 
   components: {
     dirs: [
+      '@/components',
       '@/components/atoms',
       '@/components/atoms/item',
-      '@/components/atoms/modal',
-      '@/components/atoms/new',
       '@/components/layout',
-      '@/components/header',
-      '@/components/header/components',
-      '@/components/header/components/carts',
-      '@/components/sidebar',
-      '@/components/sidebar/item',
+      '@/components/layout/header',
+      '@/components/layout/sidebar',
     ],
   },
 

@@ -5,7 +5,7 @@
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
-            {{ $t('プログラミングのレパートリーを増やそう') }}
+            {{ $t('常に最新。\n注目のトピックを学習しよう') }}
           </h2>
           <span class="describe">
             {{

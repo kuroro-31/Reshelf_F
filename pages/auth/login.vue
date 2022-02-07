@@ -189,7 +189,7 @@ export default {
 <style lang="scss" scoped>
 .login {
   @apply h-screen w-screen overflow-hidden flex justify-center;
-  background-image: url('https://source.unsplash.com/3000x3000?programming');
+  background-image: url('https://source.unsplash.com/3000x3000?stylish');
   background-position: center !important;
   background-repeat: no-repeat !important;
   height: 100vh;

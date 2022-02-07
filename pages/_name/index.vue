@@ -150,7 +150,6 @@
     </div>
     <div class="box-content">
       <div class="max-w-screen-lg w-full mx-auto">
-        <!-- <all-item :items="items" /> -->
         <div class="w-full flex">
           <div
             v-for="item in currentUser.posts"

@@ -8,7 +8,7 @@
 <script></script>
 <style lang="scss">
 .re-button {
-  @apply inline-block w-full relative font-bold duration-200;
+  @apply inline-block relative font-bold duration-200;
   button,
   label,
   .re-button-inner {

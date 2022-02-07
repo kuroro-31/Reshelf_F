@@ -3,6 +3,11 @@
     <img src="@/assets/images/logo.svg" alt="Reshelf logo" />
   </nuxt-link>
 </template>
+<script>
+export default {
+  name: 'Logo',
+}
+</script>
 <style lang="scss" scoped>
 a {
   @apply h-full;
