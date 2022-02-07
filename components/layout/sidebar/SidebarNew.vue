@@ -19,7 +19,7 @@
     color: var(--sub-color);
   }
   &-link {
-    @apply duration-200 px-4 py-2 w-full h-full;
+    @apply duration-200 px-4 py-2 w-full h-full inline-block;
     color: var(--color);
     &:hover {
       @apply cursor-pointer;

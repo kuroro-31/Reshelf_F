@@ -105,12 +105,12 @@
 </template>
 <script></script>
 <style lang="scss" scoped>
-text {
-  fill: var(--color);
-}
-path {
-  stroke: rgba(var(--primary)) !important;
-}
+// text {
+//   fill: var(--color);
+// }
+// path {
+//   stroke: rgba(var(--primary)) !important;
+// }
 section {
   width: 100%;
   display: inline-block;
