@@ -1,24 +1,24 @@
-<script lang="ts" setup>
-export default {
-  data: () => ({
-    loading: false
-  }),
-  methods: {
-    start () {
-      this.loading = true
-    },
-    finish () {
-      this.loading = false
-    }
-  }
-}
-</script>
-
 <template lang="html">
   <div v-if="loading" class="loader-background">
-    <div class="loader" />
+    <div class="loader"></div>
   </div>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    loading: false,
+  }),
+  methods: {
+    start() {
+      this.loading = true
+    },
+    finish() {
+      this.loading = false
+    },
+  },
+}
+</script>
 
 <style scoped>
 .loader-background {

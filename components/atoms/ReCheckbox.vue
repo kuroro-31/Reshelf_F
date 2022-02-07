@@ -1,33 +1,32 @@
-<script lang="ts" setup>
-export default {
-  components: {},
-  data () {
-    return {
-      isChecked: false
-    }
-  }
-}
-</script>
-
 <template>
   <label class="re-checkbox" @click="isChecked = !isChecked">
-    <slot name="input" />
+    <slot name="input"></slot>
     <div
       class="re-checkbox--check"
       :class="isChecked == true ? 're-checkbox--checked' : ''"
     >
-      <i class="bx bx-check re-checkbox--icon text-white" />
+      <i class="bx bx-check re-checkbox--icon text-white"></i>
     </div>
-    <slot name="label" />
+    <slot name="label"></slot>
   </label>
 </template>
 
+<script>
+export default {
+  components: {},
+  data() {
+    return {
+      isChecked: false,
+    }
+  },
+}
+</script>
 <style lang="scss" scoped>
 .re-checkbox {
   @apply inline-flex relative w-full h-full items-center duration-200 text-sm;
   line-height: 20px;
   padding: 7px 10px;
-  > input[type="checkbox"] {
+  > input[type='checkbox'] {
     @apply absolute w-full h-full opacity-0 cursor-pointer;
     & + .re-checkbox--check {
       @apply duration-200 flex items-center justify-center mr-2;

@@ -1,85 +1,3 @@
-<script lang="ts" setup>
-import draggable from 'vuedraggable'
-export default {
-  name: 'WidgetItem',
-  components: {
-    draggable
-  },
-  props: {
-    widget: {
-      type: Object,
-      default: () => {}
-    },
-    parentWidget: {
-      type: Object,
-      default: () => {}
-    },
-    layer: {
-      type: Number,
-      default: 1
-    }
-  },
-  computed: {
-    propsWidget: {
-      get () {
-        return this.widget
-      },
-      set (newVal) {
-        this.$emit('childWidget', newVal)
-      }
-    }
-  },
-  watch: {
-    'widget.text' () {
-      this.resizeCodeTextarea()
-    }
-  },
-  mounted () {
-    const input = this.$refs[`widget-${this.widget.type}-${this.widget.id}`]
-    input.focus()
-  },
-  methods: {
-    onMouseOver () {
-      this.propsWidget.mouseover = true
-    },
-    onMouseLeave () {
-      this.propsWidget.mouseover = false
-    },
-    onClickDelete (parentWidget, widget) {
-      this.$emit('delete', parentWidget, widget)
-    },
-    onClickChildWidget (widget) {
-      this.$emit('addChild', widget)
-    },
-    onClickAddWidgetAfter (parentWidget, widget) {
-      this.$emit('addWidgetAfter', parentWidget, widget)
-    },
-    onKeydownTab (e) {
-      if (this.widget.layer < 3) {
-        this.$emit('addChild', this.widget)
-      }
-      e.preventDefault()
-    },
-    onKeydownDelete (e) {
-      if (this.widget.text.length === 0) {
-        this.$emit('delete', this.parentWidget, this.widget)
-        e.preventDefault()
-      }
-    },
-    resizeCodeTextarea () {
-      if (this.widget.type !== 'code') { return }
-      const textarea = this.$refs[`widget-code-${this.widget.id}`]
-      const promise = new Promise(function (resolve) {
-        resolve((textarea.style.height = 'auto'))
-      })
-      promise.then(function () {
-        textarea.style.height = textarea.scrollHeight + 'px'
-      })
-    }
-  }
-}
-</script>
-
 <template>
   <div class="widget-family">
     <div
@@ -97,7 +15,7 @@ export default {
           @keypress.enter="onClickAddWidgetAfter(parentWidget, propsWidget)"
           @keydown.tab="onKeydownTab"
           @keydown.delete="onKeydownDelete"
-        >
+        />
       </template>
       <template v-if="propsWidget.type == 'body'">
         <input
@@ -108,7 +26,7 @@ export default {
           @keypress.enter="onClickAddWidgetAfter(parentWidget, propsWidget)"
           @keydown.tab="onKeydownTab"
           @keydown.delete="onKeydownDelete"
-        >
+        />
       </template>
       <template v-if="propsWidget.type == 'code'">
         <textarea
@@ -118,7 +36,7 @@ export default {
           rows="1"
           placeholder="コード"
           @keydown.delete="onKeydownDelete"
-        />
+        ></textarea>
       </template>
       <div v-show="propsWidget.mouseover" class="buttons">
         <div
@@ -126,22 +44,22 @@ export default {
           class="button-icon"
           @click="onClickChildWidget(propsWidget)"
         >
-          <i class="fas fa-sitemap" />
+          <i class="fas fa-sitemap"></i>
         </div>
         <div
           class="button-icon"
           @click="onClickAddWidgetAfter(parentWidget, propsWidget)"
         >
-          <i class="fas fa-plus-circle" />
+          <i class="fas fa-plus-circle"></i>
         </div>
         <div
           class="button-icon"
           @click="onClickDelete(parentWidget, propsWidget)"
         >
-          <i class="fas fa-trash" />
+          <i class="fas fa-trash"></i>
         </div>
         <div class="button-icon">
-          <i class="fas fa-cog" data-toggle="dropdown" />
+          <i class="fas fa-cog" data-toggle="dropdown"></i>
           <div class="dropdown-menu">
             <a class="dropdown-item" @click="propsWidget.type = 'heading'">
               見出し
@@ -170,6 +88,85 @@ export default {
     </div>
   </div>
 </template>
+
+<script>
+import draggable from 'vuedraggable'
+export default {
+  name: 'WidgetItem',
+  props: {
+    widget: {
+      type: Object,
+      default: () => {},
+    },
+    parentWidget: {
+      type: Object,
+      default: () => {},
+    },
+    layer: {
+      type: Number,
+      default: 1,
+    },
+  },
+  computed: {
+    propsWidget: {
+      get() {
+        return this.widget
+      },
+      set(newVal) {
+        this.$emit('childWidget', newVal)
+      },
+    },
+  },
+  watch: {
+    'widget.text'() {
+      this.resizeCodeTextarea()
+    },
+  },
+  mounted() {
+    const input = this.$refs[`widget-${this.widget.type}-${this.widget.id}`]
+    input.focus()
+  },
+  methods: {
+    onMouseOver() {
+      this.propsWidget.mouseover = true
+    },
+    onMouseLeave() {
+      this.propsWidget.mouseover = false
+    },
+    onClickDelete(parentWidget, widget) {
+      this.$emit('delete', parentWidget, widget)
+    },
+    onClickChildWidget(widget) {
+      this.$emit('addChild', widget)
+    },
+    onClickAddWidgetAfter(parentWidget, widget) {
+      this.$emit('addWidgetAfter', parentWidget, widget)
+    },
+    onKeydownTab(e) {
+      if (this.widget.layer < 3) {
+        this.$emit('addChild', this.widget)
+      }
+      e.preventDefault()
+    },
+    onKeydownDelete(e) {
+      if (this.widget.text.length === 0) {
+        this.$emit('delete', this.parentWidget, this.widget)
+        e.preventDefault()
+      }
+    },
+    resizeCodeTextarea() {
+      if (this.widget.type !== 'code') return
+      const textarea = this.$refs[`widget-code-${this.widget.id}`]
+      const promise = new Promise(function (resolve) {
+        resolve((textarea.style.height = 'auto'))
+      })
+      promise.then(function () {
+        textarea.style.height = textarea.scrollHeight + 'px'
+      })
+    },
+  },
+}
+</script>
 
 <style scoped lang="scss">
 .widget {
@@ -206,7 +203,7 @@ export default {
     color: #f8f8f2;
     background: #282a36;
     font-size: 14px;
-    font-family: Consolas, Menlo, "Liberation Mono", Courier, monospace;
+    font-family: Consolas, Menlo, 'Liberation Mono', Courier, monospace;
     resize: none;
   }
   .code:focus {

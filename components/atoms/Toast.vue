@@ -1,27 +1,3 @@
-<script lang="ts" setup>
-export default {
-  props: {
-    success: {
-      type: Boolean
-    },
-    error: {
-      type: Boolean
-    }
-  },
-  data () {
-    return {
-      show: true
-    }
-  }
-  // mounted() {
-  //   let vid = document.getElementById('check')
-  //   if (vid) {
-  //     vid.playbackRate = 0.5
-  //   }
-  // },
-}
-</script>
-
 <template>
   <div class="reshelf-toast-wrapper">
     <transition name="reshelf-toast">
@@ -77,7 +53,7 @@ export default {
             </template>
           </div>
           <div class="mr-4 font-bold">
-            <slot />
+            <slot></slot>
           </div>
           <div class="cursor-pointer" @click="show = !show">
             <svg
@@ -99,7 +75,29 @@ export default {
     </transition>
   </div>
 </template>
-
+<script>
+export default {
+  props: {
+    success: {
+      type: Boolean,
+    },
+    error: {
+      type: Boolean,
+    },
+  },
+  data() {
+    return {
+      show: true,
+    }
+  },
+  // mounted() {
+  //   let vid = document.getElementById('check')
+  //   if (vid) {
+  //     vid.playbackRate = 0.5
+  //   }
+  // },
+}
+</script>
 <style lang="scss" scoped>
 .reshelf-toast {
   @apply rounded ml-auto shadow-lg flex items-center w-full justify-between p-6;

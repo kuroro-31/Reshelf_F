@@ -1,12 +1,11 @@
-<script lang="ts" setup></script>
-
 <template>
   <div>
     <!-- ボタンの中身が入る -->
-    <slot />
+    <slot></slot>
   </div>
 </template>
 
+<script></script>
 <style lang="scss">
 .re-button {
   @apply inline-block w-full relative font-bold duration-200;

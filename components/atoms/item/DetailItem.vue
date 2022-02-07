@@ -1,21 +1,3 @@
-<script lang="ts" setup>
-export default {
-  props: {
-    item: {
-      type: Object,
-      default: () => {}
-    }
-  },
-  data () {
-    return {
-      liked: false,
-      isDisabled: false
-    }
-  },
-  methods: {}
-}
-</script>
-
 <template>
   <div class="items">
     <div class="item">
@@ -79,22 +61,35 @@ export default {
               rate_img_four_seven: item.rate >= 4.7,
               rate_img_five: item.rate >= 5.0,
             }"
-          />
+          ></div>
         </div>
         <p class="name ml-1 text-xs">
           <!-- （総合評価：{{ item.all_rate | comma }}） -->
         </p>
       </div>
 
-      <div class="">
-        DEMO
-      </div>
+      <div class="">DEMO</div>
 
-      <div v-highlightjs class="markdown w-full" v-html="item.body" />
+      <div v-highlightjs class="markdown w-full" v-html="item.body"></div>
     </div>
   </div>
 </template>
-
+<script>
+export default {
+  props: {
+    item: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  data() {
+    return {
+      liked: false,
+      isDisabled: false,
+    }
+  },
+}
+</script>
 <style lang="scss" scoped>
 .items {
   @apply flex relative flex-col w-full justify-start py-10;
@@ -211,57 +206,57 @@ export default {
   &_zero {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/zero.svg");
+    background-image: url('~@/assets/images/rate/zero.svg');
   }
   &_one {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/one.svg");
+    background-image: url('~@/assets/images/rate/one.svg');
   }
   &_one_five {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/one-five.svg");
+    background-image: url('~@/assets/images/rate/one-five.svg');
   }
   &_two {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/two.svg");
+    background-image: url('~@/assets/images/rate/two.svg');
   }
   &_two_five {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/two-five.svg");
+    background-image: url('~@/assets/images/rate/two-five.svg');
   }
   &_three {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/three.svg");
+    background-image: url('~@/assets/images/rate/three.svg');
   }
   &_three_five {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/three-five.svg");
+    background-image: url('~@/assets/images/rate/three-five.svg');
   }
   &_four {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/four.svg");
+    background-image: url('~@/assets/images/rate/four.svg');
   }
   &_four_five {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/four-five.svg");
+    background-image: url('~@/assets/images/rate/four-five.svg');
   }
   &_four_seven {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/four-seven.svg");
+    background-image: url('~@/assets/images/rate/four-seven.svg');
   }
   &_five {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/five.svg");
+    background-image: url('~@/assets/images/rate/five.svg');
   }
 }
 .demo {

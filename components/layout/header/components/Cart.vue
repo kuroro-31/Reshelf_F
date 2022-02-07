@@ -1,47 +1,3 @@
-<script lang="ts" setup>
-import { mapGetters } from 'vuex'
-import CartItem from '@/components/layout/header/components/carts/CartItem'
-import ReButton from '@/components/atoms/ReButton'
-import BadgeNormal from '@/components/atoms/BadgeNormal'
-export default {
-  components: {
-    CartItem,
-    ReButton,
-    BadgeNormal
-  },
-  data () {
-    return {
-      show: false
-    }
-  },
-  computed: {
-    ...mapGetters({
-      user: 'user/user',
-      carts: 'cart/carts'
-    }),
-    cartsCount () {
-      let length = null
-      // if (this.carts != null) {
-      length = this.carts.length
-      // }
-      return length
-    }
-  },
-  created () {
-    // setInterval(() => {
-    this.$store.dispatch('cart/get')
-    // }, 3000)
-  },
-  methods: {
-    toCheckout () {
-      this.$router.push({
-        path: `/user/${this.user.id}/cart`
-      })
-    }
-  }
-}
-</script>
-
 <template>
   <button class="dropdown" @mouseover="show = true" @mouseleave="show = false">
     <div class="relative">
@@ -81,19 +37,51 @@ export default {
                 class="re-button-primary-filled bg-primary w-full duration-500"
                 @click="toCheckout"
               >
-                {{ $t("レジに進む") }}
+                {{ $t('レジに進む') }}
               </button>
             </re-button>
           </div>
-          <div v-else class="p-4">
-            {{ $t("カートに商品がありません") }}
-          </div>
+          <div v-else class="p-4">{{ $t('カートに商品がありません') }}</div>
         </div>
       </div>
     </transition>
   </button>
 </template>
-
+<script>
+import { mapGetters } from 'vuex'
+export default {
+  data() {
+    return {
+      show: false,
+    }
+  },
+  computed: {
+    ...mapGetters({
+      user: 'user/user',
+      carts: 'cart/carts',
+    }),
+    cartsCount() {
+      let length = null
+      // if (this.carts != null) {
+      length = this.carts.length
+      // }
+      return length
+    },
+  },
+  created() {
+    // setInterval(() => {
+    this.$store.dispatch('cart/get')
+    // }, 3000)
+  },
+  methods: {
+    toCheckout() {
+      this.$router.push({
+        path: `/user/${this.user.id}/cart`,
+      })
+    },
+  },
+}
+</script>
 <style lang="scss" scoped>
 .dropdown {
   @apply px-3 relative;

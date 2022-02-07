@@ -1,37 +1,8 @@
-<script lang="ts" setup>
-import { mapGetters } from 'vuex'
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
-import SidebarCart from '@/components/layout/sidebar/item/SidebarCart'
-// atoms
-import CartItem from '@/components/atoms/item/CartItem'
-
-export default {
-  components: {
-    // FooterNav,
-    SidebarCart,
-    CartItem,
-    HeaderNav
-  },
-  // middleware: 'checkAuth',
-  computed: {
-    ...mapGetters({
-      isUser: 'user/auth',
-      carts: 'cart/carts'
-    })
-  },
-  created () {
-    this.$store.dispatch('cart/get')
-  }
-}
-</script>
-
 <template>
   <div v-if="isUser" class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
     <div class="main scroll-none">
-      <span class="title">{{ $t("ショッピングカート") }}</span>
+      <span class="title">{{ $t('ショッピングカート') }}</span>
 
       <div v-if="carts != null" class="lg:flex w-full">
         <div class="main-body min-h-(screen-16) scroll-none">
@@ -42,14 +13,25 @@ export default {
           <SidebarCart :carts="carts" />
         </nav>
       </div>
-      <div v-else class="p-8">
-        {{ $t("カートに商品がありません") }}
-      </div>
+      <div v-else class="p-8">{{ $t('カートに商品がありません') }}</div>
     </div>
     <!-- <FooterNav /> -->
   </div>
 </template>
-
+<script>
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters({
+      isUser: 'user/auth',
+      carts: 'cart/carts',
+    }),
+  },
+  created() {
+    this.$store.dispatch('cart/get')
+  },
+}
+</script>
 <style lang="scss" scoped>
 .main {
   @apply w-full flex flex-col max-w-screen-lg mx-auto container mt-10;

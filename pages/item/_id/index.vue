@@ -1,32 +1,3 @@
-<script lang="ts" setup>
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
-// import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
-// atoms
-import DetailItem from '@/components/atoms/item/DetailItem'
-
-export default {
-  components: {
-    HeaderNav,
-    // FooterNav,
-    // SidebarDetail,
-    DetailItem
-  },
-  async asyncData ({ $axios, params }) {
-    const { data } = await $axios.$get(`/api/posts/${params.id}`)
-    return {
-      item: data
-    }
-  },
-  data () {
-    return {
-      item: []
-    }
-  }
-}
-</script>
-
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
@@ -39,7 +10,21 @@ export default {
     <!-- <FooterNav /> -->
   </div>
 </template>
-
+<script>
+export default {
+  async asyncData({ $axios, params }) {
+    const { data } = await $axios.$get(`/api/posts/${params.id}`)
+    return {
+      item: data,
+    }
+  },
+  data() {
+    return {
+      item: [],
+    }
+  },
+}
+</script>
 <style lang="scss" scoped>
 .main {
   @apply w-full flex max-w-screen-md mx-auto container;

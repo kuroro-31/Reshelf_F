@@ -1,25 +1,3 @@
-<script lang="ts" setup>
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-import FooterNav from '@/components/layout/FooterNav'
-import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
-// atoms
-// import AllItem from '@/components/atoms/item/AllItem'
-
-export default {
-  components: {
-    HeaderNav,
-    FooterNav,
-    SidebarSetting
-    // AllItem,
-  },
-  middleware: 'checkAuth',
-  data () {
-    return {}
-  }
-}
-</script>
-
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
@@ -32,9 +10,7 @@ export default {
         </nav>
         <div class="main-body scroll-none">
           <div class="main-body-content">
-            <h2 class="text-3xl font-bold mb-4">
-              購入履歴
-            </h2>
+            <h2 class="text-3xl font-bold mb-4">購入履歴</h2>
             <!-- <all-item :items="items" /> -->
           </div>
         </div>
@@ -43,7 +19,11 @@ export default {
     <FooterNav />
   </div>
 </template>
-
+<script>
+export default {
+  middleware: 'checkAuth',
+}
+</script>
 <style lang="scss" scoped>
 .side-nav {
   @apply hidden w-full lg:block mt-6 lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;

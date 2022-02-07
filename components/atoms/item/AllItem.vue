@@ -1,45 +1,7 @@
-<script lang="ts" setup>
-import { mapGetters } from 'vuex'
-import DeleteItem from '@/components/atoms/item/modal/DeleteItem'
-import ArticleLike from '@/components/atoms/ArticleLike'
-import InCartButton from '@/components/atoms/item/InCartButton'
-export default {
-  components: {
-    DeleteItem,
-    ArticleLike,
-    InCartButton
-  },
-  data () {
-    return {
-      loading: false
-    }
-  },
-  computed: {
-    ...mapGetters({
-      isUser: 'user/auth',
-      user: 'user/user',
-      product: 'product/product',
-      carts: 'cart/carts'
-    }),
-    isClick () {
-      // let item = this.product.filter((item) => item.id !== id)
-      // let cart = this.carts.filter((cart) => cart.id !== id)
-
-      return true
-    }
-  },
-  created () {
-    this.$store.dispatch('product/get')
-  }
-}
-</script>
-
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
-      <template v-if="loading">
-        {{ $t("読み込み中です") }}
-      </template>
+      <template v-if="loading">{{ $t('読み込み中です') }}</template>
 
       <div v-else class="items">
         <div v-for="item in product" :key="item.id" class="card item flex-col">
@@ -54,17 +16,17 @@ export default {
                 alt="text image"
                 class="img"
                 :value="item"
-              >
+              />
               <img
                 v-else
                 src="@/assets/images/noimage.svg"
                 alt="cource image"
                 class="img"
                 :value="item"
-              >
+              />
             </button>
             <span v-if="item.title" class="title">{{ item.title }}</span>
-            <span v-else class="title">{{ $t("無題のタイトル") }}</span>
+            <span v-else class="title">{{ $t('無題のタイトル') }}</span>
           </nuxt-link>
 
           <nuxt-link
@@ -86,7 +48,7 @@ export default {
               <nuxt-link
                 :to="{ name: 'item-edit-id', params: { id: item.id } }"
               >
-                {{ $t("編集") }}
+                {{ $t('編集') }}
               </nuxt-link>
             </div>
           </template>
@@ -95,7 +57,33 @@ export default {
     </div>
   </div>
 </template>
+<script>
+import { mapGetters } from 'vuex'
+export default {
+  data() {
+    return {
+      loading: false,
+    }
+  },
+  computed: {
+    ...mapGetters({
+      isUser: 'user/auth',
+      user: 'user/user',
+      product: 'product/product',
+      carts: 'cart/carts',
+    }),
+    isClick() {
+      // let item = this.product.filter((item) => item.id !== id)
+      // let cart = this.carts.filter((cart) => cart.id !== id)
 
+      return true
+    },
+  },
+  created() {
+    this.$store.dispatch('product/get')
+  },
+}
+</script>
 <style lang="scss" scoped>
 .dropdown {
   @apply py-2 px-4 relative rounded mr-4;
@@ -312,67 +300,67 @@ export default {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url("~@/assets/images/rate/zero.svg");
+      background-image: url('~@/assets/images/rate/zero.svg');
     }
     &_one {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url("~@/assets/images/rate/one.svg");
+      background-image: url('~@/assets/images/rate/one.svg');
     }
     &_one_five {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url("~@/assets/images/rate/one-five.svg");
+      background-image: url('~@/assets/images/rate/one-five.svg');
     }
     &_two {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url("~@/assets/images/rate/two.svg");
+      background-image: url('~@/assets/images/rate/two.svg');
     }
     &_two_five {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url("~@/assets/images/rate/two-five.svg");
+      background-image: url('~@/assets/images/rate/two-five.svg');
     }
     &_three {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url("~@/assets/images/rate/three.svg");
+      background-image: url('~@/assets/images/rate/three.svg');
     }
     &_three_five {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url("~@/assets/images/rate/three-five.svg");
+      background-image: url('~@/assets/images/rate/three-five.svg');
     }
     &_four {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url("~@/assets/images/rate/four.svg");
+      background-image: url('~@/assets/images/rate/four.svg');
     }
     &_four_five {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url("~@/assets/images/rate/four-five.svg");
+      background-image: url('~@/assets/images/rate/four-five.svg');
     }
     &_four_seven {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url("~@/assets/images/rate/four-seven.svg");
+      background-image: url('~@/assets/images/rate/four-seven.svg');
     }
     &_five {
       @apply bg-contain;
       height: 14px;
       width: 100px;
-      background-image: url("~@/assets/images/rate/five.svg");
+      background-image: url('~@/assets/images/rate/five.svg');
     }
   }
 }

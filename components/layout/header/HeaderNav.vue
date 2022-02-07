@@ -1,27 +1,3 @@
-<script lang="ts" setup>
-import { mapGetters } from 'vuex'
-import Cart from '@/components/layout/header/components/Cart'
-import Logo from '@/components/layout/header/components/Logo'
-import Like from '@/components/layout/header/components/Like'
-import UserDropdown from '@/components/layout/header/components/UserDropdown'
-import LanguageChange from '@/components/layout/header/components/LanguageChange'
-
-export default {
-  components: {
-    Cart,
-    Logo,
-    Like,
-    UserDropdown,
-    LanguageChange
-  },
-  computed: {
-    ...mapGetters({
-      isUser: 'user/auth'
-    })
-  }
-}
-</script>
-
 <template>
   <header class="nav" :class="{ active: isUser }">
     <div class="nav-content">
@@ -34,7 +10,7 @@ export default {
       </div>
 
       <div class="nav-right">
-        <input type="text" class="search" placeholder="Search...">
+        <input type="text" class="search" placeholder="Search..." />
 
         <!-- 言語切り替え -->
         <LanguageChange />
@@ -52,6 +28,16 @@ export default {
   </header>
 </template>
 
+<script>
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters({
+      isUser: 'user/auth',
+    }),
+  },
+}
+</script>
 <style lang="scss" scoped>
 .toggle {
   @apply mr-4 cursor-pointer p-2 flex-shrink-0;

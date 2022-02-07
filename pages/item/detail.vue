@@ -1,21 +1,24 @@
-<script lang="ts" setup>
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-// import FooterNav from '@/components/layout/FooterNav'
-import SidebarDetail from '@/components/layout/sidebar/item/SidebarDetail'
-// atoms
-import HeroItem from '@/components/atoms/item/HeroItem'
-import DetailItem from '@/components/atoms/item/DetailItem'
-
+<template>
+  <div class="w-full h-screen mx-auto flex flex-col scroll-none">
+    <HeaderNav />
+    <hero-item />
+    <div class="main scroll-none">
+      <div class="lg:flex w-full">
+        <div class="main-body min-h-(screen-16) scroll-none">
+          <DetailItem :items="items" />
+          <!-- <FooterNav /> -->
+        </div>
+        <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
+          <SidebarDetail :items="items" />
+        </nav>
+      </div>
+    </div>
+    <!-- <FooterNav /> -->
+  </div>
+</template>
+<script>
 export default {
-  components: {
-    HeaderNav,
-    // FooterNav,
-    HeroItem,
-    SidebarDetail,
-    DetailItem
-  },
-  data () {
+  data() {
     return {
       // items: [
       //   {
@@ -47,29 +50,9 @@ export default {
       //   },
       // ],
     }
-  }
+  },
 }
 </script>
-
-<template>
-  <div class="w-full h-screen mx-auto flex flex-col scroll-none">
-    <HeaderNav />
-    <hero-item />
-    <div class="main scroll-none">
-      <div class="lg:flex w-full">
-        <div class="main-body min-h-(screen-16) scroll-none">
-          <DetailItem :items="items" />
-          <!-- <FooterNav /> -->
-        </div>
-        <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
-          <SidebarDetail :items="items" />
-        </nav>
-      </div>
-    </div>
-    <!-- <FooterNav /> -->
-  </div>
-</template>
-
 <style lang="scss" scoped>
 .main {
   @apply w-full flex max-w-screen-lg mx-auto container;

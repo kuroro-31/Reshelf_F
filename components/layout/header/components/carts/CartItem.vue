@@ -1,24 +1,3 @@
-<script lang="ts" setup>
-import { mapGetters } from 'vuex'
-export default {
-  computed: {
-    ...mapGetters({
-      carts: 'cart/carts'
-    }),
-    totalPrice () {
-      const carts = this.carts
-      let totalPrice = null
-
-      for (const post of carts) {
-        totalPrice += post.price
-      }
-
-      return totalPrice
-    }
-  }
-}
-</script>
-
 <template>
   <div>
     <div
@@ -34,38 +13,55 @@ export default {
           alt="text image"
           class="cart-content-img"
           :value="item"
-        >
+        />
         <img
           v-else
           src="@/assets/images/noimage.svg"
           alt="cource image"
           class="cart-content-img"
           :value="item"
-        >
+        />
         <div class="cart-content-box">
           <div class="w-full flex flex-col items-start">
             <p class="cart-content-title">
               {{ item.title }}
             </p>
-            <p class="cart-content-author">
-              {{ item.name }}
-            </p>
+            <p class="cart-content-author">{{ item.name }}</p>
           </div>
           <div class="cart-content-price">
             {{ $moneyFormat(item.price) }}
           </div>
         </div>
       </div>
-      <p class="divider" />
+      <p class="divider"></p>
     </div>
 
     <div class="flex text-lg font-bold">
-      <span class="mr-4">{{ $t("合計") }}:</span>
+      <span class="mr-4">{{ $t('合計') }}:</span>
       <span>{{ $moneyFormat(totalPrice) }}</span>
     </div>
   </div>
 </template>
+<script>
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters({
+      carts: 'cart/carts',
+    }),
+    totalPrice() {
+      let carts = this.carts
+      let totalPrice = null
 
+      for (let post of carts) {
+        totalPrice += post.price
+      }
+
+      return totalPrice
+    },
+  },
+}
+</script>
 <style lang="scss" scoped>
 .dropdown {
   @apply px-3 relative;

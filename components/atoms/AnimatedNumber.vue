@@ -1,18 +1,21 @@
-<script lang="ts" setup>
+<template>
+  <span>{{ $moneyFormat(animated_number) }}</span>
+</template>
+<script>
 export default {
   props: {
     value: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
-  data () {
+  data() {
     return {
-      animated_number: 0
+      animated_number: 0,
     }
   },
   watch: {
-    value (newValue, oldValue) {
+    value(newValue, oldValue) {
       let timeCnt = 0
       let timer
       const animate = () => {
@@ -30,14 +33,10 @@ export default {
         }
       }
       animate()
-    }
+    },
   },
-  mounted () {
+  mounted() {
     this.animated_number = this.value
-  }
+  },
 }
 </script>
-
-<template>
-  <span>{{ $moneyFormat(animated_number) }}</span>
-</template>

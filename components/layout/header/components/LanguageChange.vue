@@ -1,41 +1,3 @@
-<script lang="ts" setup>
-export default {
-  data () {
-    return {
-      show: false
-    }
-  },
-  computed: {
-    availableLocales () {
-      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
-    }
-  },
-  methods: {
-    search () {
-      this.$router.push({
-        path: `/user/${this.user.id}/cart`
-      })
-    },
-    /**
-     * リロードあり
-     * クッキーへ言語設定。リロード後、言語切替
-     */
-    // async changeLocale(locale) {
-    //   await this.$i18n.setLocaleCookie(locale)
-    //   this.$router.go(0)
-    // },
-    /**
-     * リロードなし
-     * クッキーと、$i18n独自ストアのlocaleに言語を設定する
-     * 直接storeを書き換えるためリロードは不要
-     */
-    async changeLocale (locale) {
-      await this.$i18n.setLocale(locale)
-    }
-  }
-}
-</script>
-
 <template>
   <button class="dropdown" @mouseover="show = true" @mouseleave="show = false">
     <div class="language">
@@ -103,11 +65,47 @@ export default {
     </transition>
   </button>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      show: false,
+    }
+  },
+  computed: {
+    availableLocales() {
+      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
+    },
+  },
+  methods: {
+    search() {
+      this.$router.push({
+        path: `/user/${this.user.id}/cart`,
+      })
+    },
+    /**
+     * リロードあり
+     * クッキーへ言語設定。リロード後、言語切替
+     */
+    // async changeLocale(locale) {
+    //   await this.$i18n.setLocaleCookie(locale)
+    //   this.$router.go(0)
+    // },
+    /**
+     * リロードなし
+     * クッキーと、$i18n独自ストアのlocaleに言語を設定する
+     * 直接storeを書き換えるためリロードは不要
+     */
+    async changeLocale(locale) {
+      await this.$i18n.setLocale(locale)
+    },
+  },
+}
+</script>
 <style lang="scss" scoped>
 .language {
   @apply relative flex items-center px-2 py-2 rounded;
-  border: 1px solid var(--sub-color);
+  border: 1px solid #ccc;
 }
 .dropdown {
   @apply px-3 relative;

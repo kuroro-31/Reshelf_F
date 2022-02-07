@@ -1,18 +1,26 @@
-<script lang="ts" setup>
-// layout
-import HeaderNav from '@/components/layout/header/HeaderNav'
-import SidebarSetting from '@/components/layout/sidebar/SidebarSetting'
-// atoms
-import LearningItem from '@/components/atoms/item/LearningItem'
-
+<template>
+  <div class="w-full h-screen mx-auto flex flex-col scroll-none">
+    <HeaderNav />
+    <div class="w-full flex max-w-screen-lg mx-auto container scroll-none">
+      <div class="lg:flex w-full">
+        <nav class="card side-nav mb-auto">
+          <SidebarSetting class="divider" />
+        </nav>
+        <div class="main-body scroll-none">
+          <div class="main-body-content">
+            <h2 class="text-3xl font-bold mb-4">受講中のコース</h2>
+            <LearningItem :items="items" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <FooterNav /> -->
+  </div>
+</template>
+<script>
 export default {
-  components: {
-    HeaderNav,
-    SidebarSetting,
-    LearningItem
-  },
   middleware: 'checkAuth',
-  data () {
+  data() {
     return {
       items: [
         {
@@ -40,7 +48,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#'
+          demo: '#',
         },
         {
           // キー
@@ -68,7 +76,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#'
+          demo: '#',
         },
         {
           // キー
@@ -96,7 +104,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#'
+          demo: '#',
         },
         {
           // キー
@@ -124,7 +132,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#'
+          demo: '#',
         },
         {
           // キー
@@ -152,7 +160,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#'
+          demo: '#',
         },
         {
           // キー
@@ -179,7 +187,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#'
+          demo: '#',
         },
         {
           // キー
@@ -207,7 +215,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#'
+          demo: '#',
         },
         {
           // キー
@@ -235,7 +243,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#'
+          demo: '#',
         },
         {
           // キー
@@ -263,7 +271,7 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#'
+          demo: '#',
         },
         {
           // キー
@@ -290,36 +298,13 @@ export default {
           add_time: '2021/06/23',
           edit_time: '2021/06/23',
           // でもページ
-          demo: '#'
-        }
-      ]
+          demo: '#',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
-
-<template>
-  <div class="w-full h-screen mx-auto flex flex-col scroll-none">
-    <HeaderNav />
-    <div class="w-full flex max-w-screen-lg mx-auto container scroll-none">
-      <div class="lg:flex w-full">
-        <nav class="card side-nav mb-auto">
-          <SidebarSetting class="divider" />
-        </nav>
-        <div class="main-body scroll-none">
-          <div class="main-body-content">
-            <h2 class="text-3xl font-bold mb-4">
-              受講中のコース
-            </h2>
-            <LearningItem :items="items" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- <FooterNav /> -->
-  </div>
-</template>
-
 <style lang="scss" scoped>
 .side-nav {
   @apply w-full my-6 lg:w-1/4 xl:w-1/5 z-10 lg:sticky overflow-y-auto;

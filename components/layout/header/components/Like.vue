@@ -1,19 +1,3 @@
-<script lang="ts" setup>
-import { mapGetters } from 'vuex'
-export default {
-  data () {
-    return {
-      like: false
-    }
-  },
-  computed: {
-    ...mapGetters({
-      isUser: 'user/auth'
-    })
-  }
-}
-</script>
-
 <template>
   <button
     v-if="isUser"
@@ -42,15 +26,27 @@ export default {
           @mouseover="like = true"
           @mouseleave="like = false"
         >
-          <div class="p-4">
-            {{ $t("ほしいものリストは空です") }}
-          </div>
+          <div class="p-4">{{ $t('ほしいものリストは空です') }}</div>
         </div>
       </div>
     </transition>
   </button>
 </template>
-
+<script>
+import { mapGetters } from 'vuex'
+export default {
+  data() {
+    return {
+      like: false,
+    }
+  },
+  computed: {
+    ...mapGetters({
+      isUser: 'user/auth',
+    }),
+  },
+}
+</script>
 <style lang="scss" scoped>
 .dropdown {
   @apply px-3 relative;

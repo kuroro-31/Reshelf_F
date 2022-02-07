@@ -1,19 +1,10 @@
-<script lang="ts" setup>
-import ReButton from '@/components/atoms/ReButton'
-export default {
-  components: {
-    ReButton
-  }
-}
-</script>
-
 <template>
   <div v-if="!$store.state.user.auth" class="hero">
     <div class="flex lg:w-1/2 justify-center h-full items-center">
       <div class="flex flex-col">
         <h2 class="title">
           プログラムで
-          <br>
+          <br />
           チャンスを掴もう
         </h2>
         <span class="describe">
@@ -276,7 +267,6 @@ export default {
     </div>
   </div>
 </template>
-
 <style lang="scss" scoped>
 .hero {
   @apply w-full flex items-center mx-auto;

@@ -1,6 +1,6 @@
 <template>
   <nuxt-link to="/">
-    <img src="@/assets/images/logo.svg" alt="Reshelf logo">
+    <img src="@/assets/images/logo.svg" alt="Reshelf logo" />
   </nuxt-link>
 </template>
 <style lang="scss" scoped>

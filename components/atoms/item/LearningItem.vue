@@ -1,27 +1,3 @@
-<script lang="ts" setup>
-// import ReButton from '@/components/atoms/ReButton'
-// import { HeartIcon, ShoppingCartIcon } from 'vue-feather-icons'
-export default {
-  components: {},
-  props: {
-    items: {
-      type: Array,
-      default: () => []
-    }
-  },
-
-  data () {
-    return {
-      visible: false,
-      isLiked: false,
-      isDisabled: false,
-      dropdown: false
-    }
-  },
-  methods: {}
-}
-</script>
-
 <template>
   <div class="w-full flex mx-auto">
     <div class="w-full">
@@ -34,7 +10,7 @@ export default {
               @mouseover="visible = true"
               @mouseleave="visible = false"
             >
-              <img :src="item.src" alt="text image" class="img">
+              <img :src="item.src" alt="text image" class="img" />
             </nuxt-link>
           </div>
 
@@ -56,7 +32,26 @@ export default {
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    items: {
+      type: Array,
+      default: () => [],
+    },
+  },
 
+  data() {
+    return {
+      visible: false,
+      isLiked: false,
+      isDisabled: false,
+      dropdown: false,
+    }
+  },
+  methods: {},
+}
+</script>
 <style lang="scss" scoped>
 .dropdown {
   @apply py-2 px-4 relative rounded mr-4;
@@ -273,57 +268,57 @@ export default {
   &_zero {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/zero.svg");
+    background-image: url('~@/assets/images/rate/zero.svg');
   }
   &_one {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/one.svg");
+    background-image: url('~@/assets/images/rate/one.svg');
   }
   &_one_five {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/one-five.svg");
+    background-image: url('~@/assets/images/rate/one-five.svg');
   }
   &_two {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/two.svg");
+    background-image: url('~@/assets/images/rate/two.svg');
   }
   &_two_five {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/two-five.svg");
+    background-image: url('~@/assets/images/rate/two-five.svg');
   }
   &_three {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/three.svg");
+    background-image: url('~@/assets/images/rate/three.svg');
   }
   &_three_five {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/three-five.svg");
+    background-image: url('~@/assets/images/rate/three-five.svg');
   }
   &_four {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/four.svg");
+    background-image: url('~@/assets/images/rate/four.svg');
   }
   &_four_five {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/four-five.svg");
+    background-image: url('~@/assets/images/rate/four-five.svg');
   }
   &_four_seven {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/four-seven.svg");
+    background-image: url('~@/assets/images/rate/four-seven.svg');
   }
   &_five {
     height: 17px;
     width: 100px;
-    background-image: url("~@/assets/images/rate/five.svg");
+    background-image: url('~@/assets/images/rate/five.svg');
   }
 }
 .demo {
