@@ -13,14 +13,14 @@
           alt="text image"
           class="cart-content-img"
           :value="item"
-        >
+        />
         <img
           v-else
           src="@/assets/images/noimage.svg"
           alt="cource image"
           class="cart-content-img"
           :value="item"
-        >
+        />
         <div class="cart-content-box">
           <div class="w-full flex flex-col items-start">
             <p class="cart-content-title">
@@ -39,30 +39,30 @@
     </div>
 
     <div class="flex text-lg font-bold">
-      <span class="mr-4">{{ $t('合計') }}:</span>
+      <span class="mr-4">{{ $t("合計") }}:</span>
       <span>{{ $moneyFormat(totalPrice) }}</span>
     </div>
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      carts: 'cart/carts'
+      carts: "cart/carts",
     }),
-    totalPrice () {
-      const carts = this.carts
-      let totalPrice = null
+    totalPrice() {
+      const carts = this.carts;
+      let totalPrice = null;
 
       for (const post of carts) {
-        totalPrice += post.price
+        totalPrice += post.price;
       }
 
-      return totalPrice
-    }
-  }
-}
+      return totalPrice;
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .dropdown {
@@ -108,7 +108,7 @@ export default {
     @apply w-full font-bold break-words text-left;
   }
   &-author {
-    @apply w-full truncate text-sm text-grey text-left pt-2;
+    @apply w-full truncate text-sm text-left pt-2;
   }
   &-price {
     @apply pl-2 whitespace-nowrap;

@@ -22,9 +22,7 @@
             </draggable>
 
             <!-- ノート追加ボタン -->
-            <button @click="onClickButtonAdd">
-              追加
-            </button>
+            <button @click="onClickButtonAdd">追加</button>
           </div>
         </div>
         <div class="main-body scroll-none">
@@ -35,9 +33,7 @@
 
             <div @click.self="onEditNoteEnd()">
               <template v-if="selectedNote == null">
-                <div class="no-selected-note">
-                  ノートを選択してください
-                </div>
+                <div class="no-selected-note">ノートを選択してください</div>
               </template>
               <template v-else>
                 <div class="path">
@@ -76,7 +72,7 @@
                 type="text"
                 autofocus
                 class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-              >
+              />
 
               <!-- タグ -->
               <!-- <label class="font-semibold text-xs text-gray-600 pb-1 block">
@@ -108,9 +104,9 @@
   </div>
 </template>
 <script>
-import draggable from 'vuedraggable'
-import { update } from '@/mixins/posts/update.js'
-import { editor } from '@/mixins/posts/editor.js'
+// import draggable from 'vuedraggable'
+import { editor } from "@/mixins/posts/editor.js";
+import { update } from "@/mixins/posts/update.js";
 // import { toast } from '@/mixins/toast/toast.js'
 export default {
   mixins: [update, editor],
@@ -119,41 +115,45 @@ export default {
   //     type: Boolean,
   //   },
   // },
-  data () {
+  data() {
     return {
       // update_error: false,
       // update_success: false,
-      alert: '',
+      alert: "",
       content: [],
       allTagNames: [
-        'プログラミング',
-        'python',
-        'javascript',
-        'golong',
-        'gaagaa'
+        "プログラミング",
+        "python",
+        "javascript",
+        "golong",
+        "gaagaa",
       ],
       noteList: [],
-      selectedNote: null
-    }
+      selectedNote: null,
+    };
   },
   computed: {
-    selectedPath () {
+    selectedPath() {
       const searchSelectedPath = function (noteList, path) {
         for (const note of noteList) {
           const currentPath =
-            path == null ? note.name : `${path} / ${note.name}`
-          if (note.selected) { return currentPath }
-          const selectedPath = searchSelectedPath(note.children, currentPath)
-          if (selectedPath.length > 0) { return selectedPath }
+            path == null ? note.name : `${path} / ${note.name}`;
+          if (note.selected) {
+            return currentPath;
+          }
+          const selectedPath = searchSelectedPath(note.children, currentPath);
+          if (selectedPath.length > 0) {
+            return selectedPath;
+          }
         }
-        return ''
-      }
-      return searchSelectedPath(this.noteList)
-    }
+        return "";
+      };
+      return searchSelectedPath(this.noteList);
+    },
   },
   methods: {
-    onAddNoteCommon (targetList, layer, index) {
-      layer = layer || 1
+    onAddNoteCommon(targetList, layer, index) {
+      layer = layer || 1;
       const note = {
         id: new Date().getTime().toString(16),
         name: `新規ノート-${layer}-${targetList.length}`,
@@ -162,112 +162,112 @@ export default {
         selected: false,
         children: [],
         layer,
-        widgetList: []
-      }
+        widgetList: [],
+      };
 
-      this.onAddWidgetCommon(note.widgetList)
+      this.onAddWidgetCommon(note.widgetList);
 
       if (index == null) {
-        targetList.push(note)
+        targetList.push(note);
       } else {
-        targetList.splice(index + 1, 0, note)
+        targetList.splice(index + 1, 0, note);
       }
     },
-    onClickButtonAdd () {
-      this.onAddNoteCommon(this.noteList)
+    onClickButtonAdd() {
+      this.onAddNoteCommon(this.noteList);
     },
-    onDeleteNote (parentNote, note) {
+    onDeleteNote(parentNote, note) {
       const targetList =
-        parentNote == null ? this.noteList : parentNote.children
-      const index = targetList.indexOf(note)
-      targetList.splice(index, 1)
+        parentNote == null ? this.noteList : parentNote.children;
+      const index = targetList.indexOf(note);
+      targetList.splice(index, 1);
     },
-    onSelectNote (targetNote) {
+    onSelectNote(targetNote) {
       // 再帰的にノートの選択状態を更新
       const updateSelectStatus = function (targetNote, noteList) {
         for (const note of noteList) {
-          note.selected = note.id === targetNote.id
-          updateSelectStatus(targetNote, note.children)
+          note.selected = note.id === targetNote.id;
+          updateSelectStatus(targetNote, note.children);
         }
-      }
-      updateSelectStatus(targetNote, this.noteList)
+      };
+      updateSelectStatus(targetNote, this.noteList);
 
       // 選択中ノート情報を更新
-      this.selectedNote = targetNote
+      this.selectedNote = targetNote;
     },
-    onEditNoteStart (editNote, parentNote) {
+    onEditNoteStart(editNote, parentNote) {
       const targetList =
-        parentNote == null ? this.noteList : parentNote.children
+        parentNote == null ? this.noteList : parentNote.children;
       for (const note of targetList) {
-        note.editing = note.id === editNote.id
-        this.onEditNoteStart(editNote, note)
+        note.editing = note.id === editNote.id;
+        this.onEditNoteStart(editNote, note);
       }
     },
-    onEditNoteEnd (parentNote) {
+    onEditNoteEnd(parentNote) {
       const targetList =
-        parentNote == null ? this.noteList : parentNote.children
+        parentNote == null ? this.noteList : parentNote.children;
       for (const note of targetList) {
-        note.editing = false
-        this.onEditNoteEnd(note)
+        note.editing = false;
+        this.onEditNoteEnd(note);
       }
     },
-    onAddChildNote (note) {
-      this.onAddNoteCommon(note.children, note.layer + 1)
+    onAddChildNote(note) {
+      this.onAddNoteCommon(note.children, note.layer + 1);
     },
-    onAddNoteAfter (parentNote, note) {
+    onAddNoteAfter(parentNote, note) {
       const targetList =
-        parentNote == null ? this.noteList : parentNote.children
-      const layer = parentNote == null ? 1 : note.layer
-      const index = targetList.indexOf(note)
-      this.onAddNoteCommon(targetList, layer, index)
+        parentNote == null ? this.noteList : parentNote.children;
+      const layer = parentNote == null ? 1 : note.layer;
+      const index = targetList.indexOf(note);
+      this.onAddNoteCommon(targetList, layer, index);
     },
-    onAddWidgetCommon (targetList, layer, index) {
-      layer = layer || 1
+    onAddWidgetCommon(targetList, layer, index) {
+      layer = layer || 1;
       const widget = {
         id: new Date().getTime().toString(16),
-        type: layer === 1 ? 'heading' : 'body',
-        text: '',
+        type: layer === 1 ? "heading" : "body",
+        text: "",
         mouseover: false,
         children: [],
-        layer
-      }
+        layer,
+      };
       if (index == null) {
-        targetList.push(widget)
+        targetList.push(widget);
       } else {
-        targetList.splice(index + 1, 0, widget)
+        targetList.splice(index + 1, 0, widget);
       }
     },
-    onClickButtonAddWidget () {
-      this.onAddWidgetCommon(this.selectedNote.widgetList)
+    onClickButtonAddWidget() {
+      this.onAddWidgetCommon(this.selectedNote.widgetList);
     },
-    onAddChildWidget (widget) {
-      this.onAddWidgetCommon(widget.children, widget.layer + 1)
+    onAddChildWidget(widget) {
+      this.onAddWidgetCommon(widget.children, widget.layer + 1);
     },
-    onAddWidgetAfter (parentWidget, note) {
+    onAddWidgetAfter(parentWidget, note) {
       const targetList =
         parentWidget == null
           ? this.selectedNote.widgetList
-          : parentWidget.children
-      const layer = parentWidget == null ? null : parentWidget.layer + 1
-      const index = targetList.indexOf(note)
-      this.onAddWidgetCommon(targetList, layer, index)
+          : parentWidget.children;
+      const layer = parentWidget == null ? null : parentWidget.layer + 1;
+      const index = targetList.indexOf(note);
+      this.onAddWidgetCommon(targetList, layer, index);
     },
-    onDeleteWidget (parentWidget, widget) {
+    onDeleteWidget(parentWidget, widget) {
       const targetList =
         parentWidget == null
           ? this.selectedNote.widgetList
-          : parentWidget.children
-      const index = targetList.indexOf(widget)
-      targetList.splice(index, 1)
+          : parentWidget.children;
+      const index = targetList.indexOf(widget);
+      targetList.splice(index, 1);
 
       // 削除した1つ前のウィジェットを選択状態にする
-      const focusWidget = index === 0 ? parentWidget : targetList[index - 1]
+      const focusWidget = index === 0 ? parentWidget : targetList[index - 1];
       if (focusWidget != null) {
-        focusWidget.id = (parseInt(focusWidget.id, 16) + 1).toString(16)
+        focusWidget.id = (parseInt(focusWidget.id, 16) + 1).toString(16);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .side-nav {
@@ -298,7 +298,7 @@ export default {
   color: var(--color);
 }
 .mce-content-body {
-  pre[class*='language-'] {
+  pre[class*="language-"] {
     background-color: #282c34 !important;
     border-radius: 0.5rem !important;
     code {

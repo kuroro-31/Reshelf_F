@@ -17,7 +17,7 @@
               width="112"
               height="15"
               class="responsive"
-            >
+            />
           </h1>
         </NuxtLink>
       </div>
@@ -39,7 +39,7 @@
             width="40px"
             height="40px"
             src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
-          >
+          />
           <transition>
             <div
               v-if="dropdown"
@@ -53,7 +53,7 @@
                     width="50px"
                     height="50px"
                     src="https://i.gyazo.com/ea69860bb5555cb60c4860a3bd7b3e70.png"
-                  >
+                  />
                   <span v-if="isAuthenticated" class="menu-name-person">
                     {{ loggedInUser.name }}
                   </span>
@@ -84,18 +84,10 @@
                 <div class="menu-me">
                   <div class="">
                     <select v-model="$colorMode.preference">
-                      <option value="system">
-                        System
-                      </option>
-                      <option value="light">
-                        Light
-                      </option>
-                      <option value="dark">
-                        Dark
-                      </option>
-                      <option value="sepia">
-                        Sepia
-                      </option>
+                      <option value="system">System</option>
+                      <option value="light">Light</option>
+                      <option value="dark">Dark</option>
+                      <option value="sepia">Sepia</option>
                     </select>
                   </div>
                   <span class="menu-me-title">共通</span>
@@ -118,9 +110,7 @@
         <div v-if="!isAuthenticated" class="py-2.5">
           <span class="cursor-pointer" @click="modal = !modal">Log in</span>
           <ReModal v-if="modal" @close="modal = !modal">
-            <template slot="header">
-              Welcome To Reshelf！
-            </template>
+            <template slot="header"> Welcome To Reshelf！ </template>
             <!-- default -->
             <div class="w-full flex justify-center">
               <form @submit.prevent="submit">
@@ -146,33 +136,33 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       visible: false,
       modal: false,
-      message: '',
+      message: "",
       cart: false,
       dropdown: false,
       post: false,
-      like: false
-    }
+      like: false,
+    };
   },
   computed: {
-    isAuthenticated () {
-      return this.$auth.loggedIn
+    isAuthenticated() {
+      return this.$auth.loggedIn;
     },
-    loggedInUser () {
-      return this.$auth.user
-    }
+    loggedInUser() {
+      return this.$auth.user;
+    },
   },
   methods: {
-    async submit () {
+    async submit() {
       await this.$axios
-        .$post('/api/auth/facebook')
+        .$post("/api/auth/facebook")
         .then(() => {})
         .catch((err) => {
-          console.log(err)
-        })
+          console.log(err);
+        });
       // await this.$authentication.loginWith('local', {
       //   data: this.form,
       // })
@@ -180,11 +170,11 @@ export default {
       //   path: this.$route.query.redirect || '/',
       // })
     },
-    async logout () {
-      await this.$auth.logout()
-    }
-  }
-}
+    async logout() {
+      await this.$auth.logout();
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .toggle {
@@ -275,7 +265,7 @@ export default {
     @apply w-full font-bold break-words text-left;
   }
   &-author {
-    @apply w-full truncate text-sm text-grey text-left pt-2;
+    @apply w-full truncate text-sm text-left pt-2;
   }
   &-price {
     @apply pl-2 whitespace-nowrap;

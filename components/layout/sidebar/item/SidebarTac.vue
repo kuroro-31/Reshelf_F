@@ -36,7 +36,7 @@
     @apply py-1 text-right;
     color: var(--color);
     &:hover {
-      @apply text-primary;
+      // @apply text-primary;
     }
   }
 }

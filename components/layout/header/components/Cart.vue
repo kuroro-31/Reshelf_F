@@ -37,12 +37,12 @@
                 class="re-button-primary-filled bg-primary w-full duration-500"
                 @click="toCheckout"
               >
-                {{ $t('レジに進む') }}
+                {{ $t("レジに進む") }}
               </button>
             </re-button>
           </div>
           <div v-else class="p-4">
-            {{ $t('カートに商品がありません') }}
+            {{ $t("カートに商品がありません") }}
           </div>
         </div>
       </div>
@@ -50,39 +50,39 @@
   </button>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 export default {
-  data () {
+  data() {
     return {
-      show: false
-    }
+      show: false,
+    };
   },
   computed: {
     ...mapGetters({
-      user: 'user/user',
-      carts: 'cart/carts'
+      user: "user/user",
+      carts: "cart/carts",
     }),
-    cartsCount () {
-      let length = null
+    cartsCount() {
+      let length = null;
       // if (this.carts != null) {
-      length = this.carts.length
+      length = this.carts.length;
       // }
-      return length
-    }
+      return length;
+    },
   },
-  created () {
+  created() {
     // setInterval(() => {
-    this.$store.dispatch('cart/get')
+    this.$store.dispatch("cart/get");
     // }, 3000)
   },
   methods: {
-    toCheckout () {
+    toCheckout() {
       this.$router.push({
-        path: `/user/${this.user.id}/cart`
-      })
-    }
-  }
-}
+        path: `/user/${this.user.id}/cart`,
+      });
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .dropdown {
@@ -128,7 +128,7 @@ export default {
     @apply w-full font-bold break-words text-left;
   }
   &-author {
-    @apply w-full truncate text-sm text-grey text-left pt-2;
+    @apply w-full truncate text-sm text-left pt-2;
   }
   &-price {
     @apply pl-2 whitespace-nowrap;

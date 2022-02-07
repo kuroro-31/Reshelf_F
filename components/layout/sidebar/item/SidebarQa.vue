@@ -1,19 +1,17 @@
 <template>
   <div class="item">
     <section class="tab">
-      <input id="TAB-A01" type="radio" name="TAB-A" checked="checked">
+      <input id="TAB-A01" type="radio" name="TAB-A" checked="checked" />
       <label class="tab-label" for="TAB-A01">概要</label>
       <div class="content">
-        <div class="">
-          コースの概要
-        </div>
+        <div class="">コースの概要</div>
       </div>
-      <input id="TAB-A02" type="radio" name="TAB-A">
+      <input id="TAB-A02" type="radio" name="TAB-A" />
       <label class="tab-label" for="TAB-A02">Q＆A</label>
       <div class="content">
         <div class="" />
       </div>
-      <input id="TAB-A03" type="radio" name="TAB-A">
+      <input id="TAB-A03" type="radio" name="TAB-A" />
       <label class="tab-label" for="TAB-A03">メモ</label>
       <div class="content">
         <div class="text-xs text-gray flex items-center mb-2">
@@ -22,12 +20,8 @@
         </div>
         <textarea class="content-textarea" />
         <div class="content-btns">
-          <button class="content-chancel-btn">
-            キャンセル
-          </button>
-          <button class="content-save-btn">
-            保存
-          </button>
+          <button class="content-chancel-btn">キャンセル</button>
+          <button class="content-save-btn">保存</button>
         </div>
       </div>
     </section>
@@ -45,7 +39,7 @@
     @apply py-1;
     color: var(--color);
     &:hover {
-      @apply text-primary;
+      // @apply text-primary;
     }
   }
 }
@@ -58,7 +52,7 @@
   @apply flex flex-wrap;
   &::after {
     @apply w-full block;
-    content: '';
+    content: "";
     height: 1px;
     order: -1;
   }
