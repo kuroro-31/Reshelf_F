@@ -50,7 +50,7 @@
   </button>
 </template>
 <script>
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -58,10 +58,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({
-      user: "user/user",
-      carts: "cart/carts",
-    }),
+    // ...mapGetters({
+    //   user: "user/user",
+    //   carts: "cart/carts",
+    // }),
     cartsCount() {
       let length = null;
       // if (this.carts != null) {
@@ -72,7 +72,7 @@ export default {
   },
   created() {
     // setInterval(() => {
-    this.$store.dispatch("cart/get");
+    // this.$store.dispatch("cart/get");
     // }, 3000)
   },
   methods: {

@@ -27,7 +27,7 @@
           @mouseleave="like = false"
         >
           <div class="p-4">
-            {{ $t('ほしいものリストは空です') }}
+            {{ $t("ほしいものリストは空です") }}
           </div>
         </div>
       </div>
@@ -35,19 +35,19 @@
   </button>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
-  data () {
+  data() {
     return {
-      like: false
-    }
+      like: false,
+    };
   },
   computed: {
-    ...mapGetters({
-      isUser: 'user/auth'
-    })
-  }
-}
+    // ...mapGetters({
+    //   isUser: "user/auth",
+    // }),
+  },
+};
 </script>
 <style lang="scss" scoped>
 .dropdown {

@@ -5,19 +5,19 @@
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
-            {{ $t('プログラミングのレパートリーを増やそう') }}
+            {{ $t("プログラミングのレパートリーを増やそう") }}
           </h2>
           <span class="describe">
             {{
               $t(
-                'Reshelfは、講師が成果物を作って学ぶチュートリアルを販売し、購入した受講生がプログラミングのレパートリーを増やしていくことを目的としたマーケットプレイスです。'
+                "Reshelfは、講師が成果物を作って学ぶチュートリアルを販売し、購入した受講生がプログラミングのレパートリーを増やしていくことを目的としたマーケットプレイスです。"
               )
             }}
           </span>
           <nuxt-link to="/auth/login">
             <re-button class="re-button">
               <button type="submit" class="re-button-primary-filled bg-primary">
-                {{ $t('新規登録・ログイン') }}
+                {{ $t("新規登録・ログイン") }}
               </button>
             </re-button>
           </nuxt-link>
@@ -289,34 +289,34 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapGetters({
-      isUser: 'user/auth',
-      user: 'user/user'
-    }),
-    carts () {
-      let carts = null
+    // ...mapGetters({
+    //   isUser: "user/auth",
+    //   user: "user/user",
+    // }),
+    carts() {
+      let carts = null;
       if (this.isUser) {
-        carts = this.$store.getters['cart/carts']
+        carts = this.$store.getters["cart/carts"];
       }
-      return carts
-    }
+      return carts;
+    },
   },
   methods: {
-    async resetVuex () {
+    async resetVuex() {
       await this.$store
-        .dispatch('cart/reset')
+        .dispatch("cart/reset")
         .then((value) => {
-          alert('成功')
+          alert("成功");
         })
         .then((value) => {
-          alert('失敗')
-        })
-    }
-  }
-}
+          alert("失敗");
+        });
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .hero {

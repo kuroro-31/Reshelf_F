@@ -18,14 +18,14 @@
                 alt="text image"
                 class="img"
                 :value="item"
-              >
+              />
               <img
                 v-else
                 src="@/assets/images/noimage.svg"
                 alt="cource image"
                 class="img"
                 :value="item"
-              >
+              />
             </button>
             <span v-if="item.title" class="title">{{ item.title }}</span>
             <span v-else class="title">{{ $t("無題のタイトル") }}</span>
@@ -60,31 +60,31 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
-  data () {
+  data() {
     return {
-      loading: false
-    }
+      loading: false,
+    };
   },
   computed: {
-    ...mapGetters({
-      isUser: 'user/auth',
-      user: 'user/user',
-      product: 'product/product',
-      carts: 'cart/carts'
-    }),
-    isClick () {
+    // ...mapGetters({
+    //   isUser: "user/auth",
+    //   user: "user/user",
+    //   product: "product/product",
+    //   carts: "cart/carts",
+    // }),
+    isClick() {
       // let item = this.product.filter((item) => item.id !== id)
       // let cart = this.carts.filter((cart) => cart.id !== id)
 
-      return true
-    }
+      return true;
+    },
   },
-  created () {
-    this.$store.dispatch('product/get')
-  }
-}
+  created() {
+    this.$store.dispatch("product/get");
+  },
+};
 </script>
 <style lang="scss" scoped>
 .dropdown {

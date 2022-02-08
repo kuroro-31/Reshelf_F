@@ -45,12 +45,12 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapGetters({
-      carts: "cart/carts",
-    }),
+    // ...mapGetters({
+    // carts: "cart/carts",
+    // }),
     totalPrice() {
       const carts = this.carts;
       let totalPrice = null;

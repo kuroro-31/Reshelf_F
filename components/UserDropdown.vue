@@ -11,12 +11,12 @@
         :src="user.icon"
         :alt="user.name + ' icon image'"
         class="dropdown-img"
-      >
+      />
       <img
         src="https://source.unsplash.com/40x40?woman"
         :alt="user.name + ' icon image'"
         class="dropdown-img"
-      >
+      />
       <transition>
         <div
           v-if="dropdown"
@@ -40,25 +40,19 @@
                 class="menu-me-link"
                 :to="{ name: 'name', params: { name: user.name } }"
               >
-                {{ $t('マイページ') }}
+                {{ $t("マイページ") }}
               </nuxt-link>
             </div>
             <div class="menu-me">
               <div class="">
                 <select v-model="$colorMode.preference">
-                  <option value="system">
-                    System
-                  </option>
-                  <option value="light">
-                    Light
-                  </option>
-                  <option value="dark">
-                    Dark
-                  </option>
+                  <option value="system">System</option>
+                  <option value="light">Light</option>
+                  <option value="dark">Dark</option>
                 </select>
               </div>
               <button class="menu-me-link" @click="logout">
-                {{ $t('ログアウト') }}
+                {{ $t("ログアウト") }}
               </button>
             </div>
           </div>
@@ -70,7 +64,7 @@
       <nuxt-link to="/auth/login">
         <re-button class="re-button">
           <button type="submit" class="re-button-primary-filled bg-primary">
-            {{ $t('新規登録・ログイン') }}
+            {{ $t("新規登録・ログイン") }}
           </button>
         </re-button>
       </nuxt-link>
@@ -78,31 +72,31 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
-  data () {
+  data() {
     return {
-      dropdown: false
+      dropdown: false,
       // alert: '',
-    }
+    };
   },
   computed: {
-    ...mapGetters({
-      isUser: 'user/auth',
-      user: 'user/user',
-      carts: 'cart/carts'
-    })
+    // ...mapGetters({
+    //   isUser: "user/auth",
+    //   user: "user/user",
+    //   carts: "cart/carts",
+    // }),
   },
   methods: {
-    async login () {
-      this.modal = false
-      await this.$store.dispatch('user/login', this.form)
+    async login() {
+      this.modal = false;
+      await this.$store.dispatch("user/login", this.form);
     },
-    async logout () {
-      await this.$store.dispatch('user/logout', this.auth)
-    }
-  }
-}
+    async logout() {
+      await this.$store.dispatch("user/logout", this.auth);
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .dropdown {

@@ -2,11 +2,11 @@
   <div v-if="isUser" class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
     <div class="main scroll-none">
-      <span class="title">{{ $t('ショッピングカート') }}</span>
+      <span class="title">{{ $t("ショッピングカート") }}</span>
 
       <div v-if="carts != null" class="lg:flex w-full">
         <div class="main-body min-h-(screen-16) scroll-none">
-          <CartItem :carts="carts" />
+          <CartItems :carts="carts" />
           <!-- <FooterNav /> -->
         </div>
         <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
@@ -14,25 +14,25 @@
         </nav>
       </div>
       <div v-else class="p-8">
-        {{ $t('カートに商品がありません') }}
+        {{ $t("カートに商品がありません") }}
       </div>
     </div>
     <!-- <FooterNav /> -->
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapGetters({
-      isUser: 'user/auth',
-      carts: 'cart/carts'
-    })
+    // ...mapGetters({
+    //   isUser: "user/auth",
+    //   carts: "cart/carts",
+    // }),
   },
-  created () {
-    this.$store.dispatch('cart/get')
-  }
-}
+  created() {
+    // this.$store.dispatch("cart/get");
+  },
+};
 </script>
 <style lang="scss" scoped>
 .main {

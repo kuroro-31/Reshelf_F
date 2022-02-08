@@ -8,17 +8,17 @@
 <script>
 export default {
   head: {
-    title: 'ヘルプとサポート | Reshelf',
+    title: "ヘルプとサポート | Reshelf",
     meta: [
       {
-        hid: 'ヘルプとサポート',
-        name: 'ヘルプとサポート',
+        hid: "ヘルプとサポート",
+        name: "ヘルプとサポート",
         content:
-          'Reshelfのヘルプとサポートページです。Reshelfご利用時のお客様のトラブルや質問についてお答えします。'
-      }
-    ]
-  }
-}
+          "Reshelfのヘルプとサポートページです。Reshelfご利用時のお客様のトラブルや質問についてお答えします。",
+      },
+    ],
+  },
+};
 </script>
 <style lang="scss" scoped>
 main {

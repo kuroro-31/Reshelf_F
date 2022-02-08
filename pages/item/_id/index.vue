@@ -12,18 +12,18 @@
 </template>
 <script>
 export default {
-  async asyncData ({ $axios, params }) {
-    const { data } = await $axios.$get(`/api/posts/${params.id}`)
+  async asyncData({ $axios, params }) {
+    const { data } = await $axios.$get(`/api/posts/${params.id}`);
     return {
-      item: data
-    }
+      item: data,
+    };
   },
-  data () {
+  data() {
     return {
-      item: []
-    }
-  }
-}
+      item: [],
+    };
+  },
+};
 </script>
 <style lang="scss" scoped>
 .main {

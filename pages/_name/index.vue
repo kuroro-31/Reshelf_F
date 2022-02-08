@@ -11,12 +11,12 @@
               :alt="currentUser.name + ' cover image'"
               class="img"
               :value="item"
-            >
+            />
             <img
               v-else
               src="https://source.unsplash.com/1024x300?white"
               :alt="currentUser.name + ' cover image'"
-            >
+            />
             <template v-if="user.id == currentUser.id">
               <div class="user-cover-edit" @click="modal = !modal">
                 <svg
@@ -34,28 +34,28 @@
                   />
                 </svg>
                 <span class="ml-2">
-                  {{ $t('プロフィールを編集') }}
+                  {{ $t("プロフィールを編集") }}
                 </span>
               </div>
               <ReModal
                 v-if="modal"
-                @close=";(modal = !modal), (loading = false)"
+                @close="(modal = !modal), (loading = false)"
               >
                 <template slot="header">
-                  {{ $t('プロフィールを編集') }}
+                  {{ $t("プロフィールを編集") }}
                 </template>
                 <!-- default -->
                 <div class="w-full flex flex-col justify-center">
                   <!-- タイトル -->
                   <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                    {{ $t('名前') }}
+                    {{ $t("名前") }}
                   </label>
                   <input
                     v-model="user.name"
                     type="text"
                     autofocus
                     class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-                  >
+                  />
 
                   <ReButton class="re-button w-auto">
                     <button
@@ -63,7 +63,7 @@
                       class="re-button-primary-filled bg-primary relative"
                       @click="update, (loading = true)"
                     >
-                      <span class="button_text">{{ $t('保存') }}</span>
+                      <span class="button_text">{{ $t("保存") }}</span>
                     </button>
                   </ReButton>
                 </div>
@@ -76,11 +76,11 @@
                 v-if="currentUser.icon"
                 :src="currentUser.icon"
                 :alt="currentUser.name + ' icon image'"
-              >
+              />
               <img
                 src="https://source.unsplash.com/190x190?urban"
                 :alt="currentUser.name + ' icon image'"
-              >
+              />
               <div class="w-full flex items-center justify-between">
                 <div class="user-name">
                   <div class="font-bold text-5xl">
@@ -89,11 +89,11 @@
                   <div class="flex items-center">
                     <p>
                       <span class="font-bold">32,000</span>
-                      {{ $t('フォロー中') }}
+                      {{ $t("フォロー中") }}
                     </p>
                     <p class="ml-4">
                       <span class="font-bold">32,000</span>
-                      {{ $t('フォロワー') }}
+                      {{ $t("フォロワー") }}
                     </p>
                   </div>
                 </div>
@@ -107,7 +107,7 @@
                       class="re-button-primary bg-primary"
                       @click="create"
                     >
-                      {{ $t('コースの作成') }}
+                      {{ $t("コースの作成") }}
                     </button>
                   </ReButton>
                 </nuxt-link>
@@ -116,7 +116,7 @@
                     type="submit"
                     class="re-button-primary-filled bg-primary"
                   >
-                    {{ $t('チャンネル登録') }}
+                    {{ $t("チャンネル登録") }}
                   </button>
                 </ReButton>
               </div>
@@ -127,22 +127,22 @@
                 class="item-link"
                 :to="{ name: 'user', params: { userId: 123 } }"
               >
-                {{ $t('マイコース') }}
+                {{ $t("マイコース") }}
               </nuxt-link>
               <nuxt-link class="item-link" to="/user/learning">
-                {{ $t('受講中のコース') }}
+                {{ $t("受講中のコース") }}
               </nuxt-link>
               <nuxt-link class="item-link" to="/user/like">
-                {{ $t('お気に入り') }}
+                {{ $t("お気に入り") }}
               </nuxt-link>
               <nuxt-link class="item-link" to="/user/bought">
-                {{ $t('購入履歴') }}
+                {{ $t("購入履歴") }}
               </nuxt-link>
               <nuxt-link class="item-link" to="/user/setting">
-                {{ $t('設定') }}
+                {{ $t("設定") }}
               </nuxt-link>
               <nuxt-link class="item-link" to="/user/setting">
-                {{ $t('願いの泉') }}
+                {{ $t("願いの泉") }}
               </nuxt-link>
             </div>
             <!-- <SidebarSetting class="divider" /> -->
@@ -170,19 +170,19 @@
                   alt="text image"
                   class="img"
                   :value="item"
-                >
+                />
                 <img
                   v-else
                   src="@/assets/images/noimage.svg"
                   alt="cource image"
                   class="img"
                   :value="item"
-                >
+                />
               </button>
               <span v-if="item.title" class="title">
                 {{ item.title }}
               </span>
-              <span v-else class="title">{{ $t('無題のタイトル') }}</span>
+              <span v-else class="title">{{ $t("無題のタイトル") }}</span>
 
               <div class="">
                 {{ item.user_id }}
@@ -197,18 +197,18 @@
     <FooterNav />
     <Toast :success="success" :error="error">
       <template v-if="success">
-        {{ $t('更新しました') }}
+        {{ $t("更新しました") }}
       </template>
       <template v-else-if="error">
-        {{ $t('更新に失敗しました') }}
+        {{ $t("更新に失敗しました") }}
       </template>
     </Toast>
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
-  data () {
+  data() {
     return {
       loading: false,
       modal: false,
@@ -218,48 +218,48 @@ export default {
       name: this.$route.params.name,
       form: [],
       saved: false,
-      currentUser: {}
-    }
+      currentUser: {},
+    };
   },
-  head () {
-    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
+  head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
     return {
       title: `${this.currentUser.name}さんのプロフィール | Reshelf`,
       ...i18nHead.title,
       meta: [
         {
-          hid: 'description',
-          name: 'description',
-          content: this.currentUser.description
+          hid: "description",
+          name: "description",
+          content: this.currentUser.description,
         },
         {
-          hid: 'og:title',
-          property: 'og:title',
-          content: `${this.currentUser.name}のプロフィール | Reshelf`
+          hid: "og:title",
+          property: "og:title",
+          content: `${this.currentUser.name}のプロフィール | Reshelf`,
         },
         {
-          hid: 'og:description',
-          property: 'og:description',
-          content: this.currentUser.description
+          hid: "og:description",
+          property: "og:description",
+          content: this.currentUser.description,
         },
-        ...i18nHead.meta
-      ]
-    }
+        ...i18nHead.meta,
+      ],
+    };
   },
   computed: {
-    ...mapGetters({
-      isUser: 'user/auth',
-      carts: 'cart/carts',
-      product: 'product/product'
-    }),
+    // ...mapGetters({
+    //   isUser: "user/auth",
+    //   carts: "cart/carts",
+    //   product: "product/product",
+    // }),
     user: {
-      get () {
-        return Object.assign({}, this.$store.getters['user/user'])
+      get() {
+        return Object.assign({}, this.$store.getters["user/user"]);
       },
-      set (value) {
-        this.$store.dispatch('user/update', value)
-      }
-    }
+      set(value) {
+        this.$store.dispatch("user/update", value);
+      },
+    },
   },
   // watch: {
   //   user: {
@@ -278,61 +278,61 @@ export default {
   //     deep: true,
   //   },
   // },
-  mounted () {
-    this.getItems()
-    this.getCurrentUser()
+  mounted() {
+    this.getItems();
+    this.getCurrentUser();
   },
   methods: {
-    async create () {
+    async create() {
       await this.$store
-        .dispatch('product/create')
+        .dispatch("product/create")
         .then((response) => {
-          alert('成功' + response)
+          alert("成功" + response);
         })
         .catch((error) => {
-          alert('失敗' + error)
-        })
+          alert("失敗" + error);
+        });
     },
-    async getItems () {
-      this.loading = true
+    async getItems() {
+      this.loading = true;
       await this.$axios
-        .$get('/api/posts')
+        .$get("/api/posts")
         .then((response) => {
-          this.items = response.data
-          this.loading = false
+          this.items = response.data;
+          this.loading = false;
         })
         .catch((error) => {
-          alert(error)
-          console.log(error)
-        })
+          alert(error);
+          console.log(error);
+        });
     },
-    async getCurrentUser () {
-      this.loading = true
+    async getCurrentUser() {
+      this.loading = true;
       await this.$axios
         .$get(`/api/users/${this.name}`)
         .then((response) => {
-          this.currentUser = response.data
+          this.currentUser = response.data;
         })
         .catch((error) => {
-          alert(error)
-          console.log(error)
-        })
+          alert(error);
+          console.log(error);
+        });
     },
-    async update () {
-      await this.$axios.$patch(`/api/users/${this.user.id}`, this.user)
+    async update() {
+      await this.$axios.$patch(`/api/users/${this.user.id}`, this.user);
       this.$store
-        .dispatch('user/update', this.user)
+        .dispatch("user/update", this.user)
         .then(() => {
-          this.success = true
-          setTimeout(() => (this.success = false), 3000)
+          this.success = true;
+          setTimeout(() => (this.success = false), 3000);
         })
         .catch(() => {
-          this.error = true
-          setTimeout(() => (this.error = false), 3000)
-        })
-    }
-  }
-}
+          this.error = true;
+          setTimeout(() => (this.error = false), 3000);
+        });
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .side-nav {
