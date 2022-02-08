@@ -1,5 +1,5 @@
 <template>
-  <span>{{ $moneyFormat(animated_number) }}</span>
+  <span>{{ animated_number }}</span>
 </template>
 <script>
 export default {

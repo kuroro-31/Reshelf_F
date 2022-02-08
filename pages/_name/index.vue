@@ -86,11 +86,15 @@
                   <div class="font-bold text-5xl">{{ currentUser.name }}</div>
                   <div class="flex items-center">
                     <p>
-                      <span class="font-bold">32,000</span>
+                      <span class="font-bold">
+                        <AnimatedNumber value="32,000" />
+                      </span>
                       {{ $t('フォロー中') }}
                     </p>
                     <p class="ml-4">
-                      <span class="font-bold">32,000</span>
+                      <span class="font-bold">
+                        <AnimatedNumber value="32,000" />
+                      </span>
                       {{ $t('フォロワー') }}
                     </p>
                   </div>

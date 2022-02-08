@@ -4,7 +4,7 @@
       <span class="text-xs">{{ $t('合計') }}</span>
       <span class="text-4xl font-bold mb-4 text-black">
         <!-- {{ $moneyFormat(totalPrice) }} -->
-        <AnimatedNumber :value="totalPrice" />
+        <AnimatedNumber :value="$moneyFormat(totalPrice)" />
       </span>
     </div>
 
