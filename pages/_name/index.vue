@@ -99,12 +99,8 @@
                     </p>
                   </div>
                 </div>
-                <nuxt-link
-                  v-if="user.id == currentUser.id"
-                  to="/item/new"
-                  class="mt-4"
-                >
-                  <ReButton class="re-button re-button-small no-shadow">
+                <template v-if="user.id == currentUser.id">
+                  <ReButton class="re-button re-button-small no-shadow mt-4">
                     <button
                       class="re-button-primary bg-primary"
                       @click="create"
@@ -112,7 +108,7 @@
                       {{ $t('コースの作成') }}
                     </button>
                   </ReButton>
-                </nuxt-link>
+                </template>
                 <ReButton v-else class="re-button w-auto">
                   <button
                     type="submit"
@@ -372,14 +368,13 @@ export default {
   },
   methods: {
     async create() {
-      await this.$store
-        .dispatch('product/create')
-        .then((response) => {
-          alert('成功' + response)
-        })
-        .catch((error) => {
-          alert('失敗' + error)
-        })
+      await this.$store.dispatch('product/create')
+      // .then((response) => {
+      //   alert('成功' + response)
+      // })
+      // .catch((error) => {
+      //   alert('失敗' + error)
+      // })
     },
     async getItems() {
       this.loading = true
