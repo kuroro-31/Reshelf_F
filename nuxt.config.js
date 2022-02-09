@@ -3,10 +3,7 @@ require('dotenv').config()
 import webpack from 'webpack'
 import i18n from './nuxt-i18n.config'
 export default {
-  mode: 'universal',
-
   ssr: true,
-
   head: {
     meta: [
       { charset: 'utf-8' },
@@ -87,8 +84,6 @@ export default {
   ],
 
   build: {
-    vendor: ['lodash'],
-
     // 保存時にESlintの実行
     extend(config, ctx) {
       // Run ESLint on save
