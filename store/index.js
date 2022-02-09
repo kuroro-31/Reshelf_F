@@ -1,4 +1,5 @@
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 export const store = () => {
   return new Vuex.Store({
@@ -16,5 +17,11 @@ export const store = () => {
         namespaced: true,
       },
     },
+    plugins: [
+      createPersistedState({
+        key: 'reshelf-api-session',
+        storage: window.sessionStorage,
+      }),
+    ],
   })
 }
