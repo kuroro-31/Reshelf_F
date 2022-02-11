@@ -59,4 +59,6 @@ export default {
   ヘルプとサポート: 'Help and Support',
   フォロー中: 'Following',
   フォロワー: 'Followers',
+  自己紹介: 'Self Introduction',
+  '自己紹介がありません。': 'There is no self-introduction.',
 }

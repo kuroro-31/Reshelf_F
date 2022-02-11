@@ -158,12 +158,12 @@
           <div class="pl-6 pr-4 mr-4 w-1/3">
             <div class="card mb-4">
               <div class="mb-4">
-                <span class="item-title">自己紹介</span>
-                <div class="mt-2 text-lg">
+                <span class="item-title">{{ $t('自己紹介') }}</span>
+                <div class="mt-2 text-lg whitespace-pre-line">
                   <template v-if="currentUser.description">
                     {{ currentUser.description }}
                   </template>
-                  <template v-else>自己紹介はありません。</template>
+                  <template v-else>{{ $t('自己紹介がありません。') }}</template>
                 </div>
               </div>
               <div class="sns">
