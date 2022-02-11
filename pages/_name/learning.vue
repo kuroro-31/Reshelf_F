@@ -129,26 +129,41 @@
                 {{ $t('マイコース') }}
               </nuxt-link>
               <nuxt-link
-                v-if="user.name"
+                v-if="currentUser.name == user.name"
                 class="item-link"
                 :to="{ name: 'name-learning', params: { name: user.name } }"
               >
                 {{ $t('受講中のコース') }}
               </nuxt-link>
               <nuxt-link
-                v-if="user.name"
+                v-if="currentUser.name == user.name"
                 class="item-link"
                 :to="{ name: 'name-like', params: { name: user.name } }"
               >
                 {{ $t('お気に入り') }}
               </nuxt-link>
-              <nuxt-link class="item-link" to="/user/bought">
-                {{ $t('購入履歴') }}
+              <nuxt-link
+                v-if="currentUser.name == user.name"
+                class="item-link"
+                :to="{ name: 'name-archive', params: { name: user.name } }"
+              >
+                {{ $t('アーカイブ') }}
               </nuxt-link>
-              <nuxt-link class="item-link" to="/user/setting">
+              <nuxt-link
+                v-if="currentUser.name == user.name"
+                class="item-link"
+                :to="{ name: 'name-setting', params: { name: user.name } }"
+              >
                 {{ $t('設定') }}
               </nuxt-link>
-              <nuxt-link class="item-link" to="/user/setting">
+              <nuxt-link
+                v-if="currentUser.name"
+                class="item-link"
+                :to="{
+                  name: 'name-spring',
+                  params: { name: currentUser.name },
+                }"
+              >
                 {{ $t('願いの泉') }}
               </nuxt-link>
             </div>
