@@ -114,10 +114,26 @@ h1,h2,h3,h4,h5,h6 {
 
 
 /* home route and active route will show in bold as it matches / and /about */
-a.nuxt-link-active,a.nuxt-link-exact-active {
+// a.nuxt-link-active,
+a.nuxt-link-exact-active {
   font-weight: bold;
-  background: #f0f2f6;
   border-radius: 6px;
+  background: #f0f2f6;
+  &:hover {
+    background: #ebebeb;
+  }
+}
+.dark-mode {
+  a.nuxt-link-exact-active {
+    font-weight: bold;
+    border-radius: 6px;
+    color: rgba(var(--primary));
+    background: rgba(var(--primary), .2);
+    &:hover {
+      background: rgba(var(--primary), .3);
+
+    }
+  }
 }
 
 .badge {
