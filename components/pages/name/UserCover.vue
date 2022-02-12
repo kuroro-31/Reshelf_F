@@ -74,13 +74,8 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  props: {
-    currentUser: {
-      type: Object,
-      default: () => {},
-    },
-  },
   data() {
     return {
       number: 32000,
@@ -91,6 +86,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      currentUser: 'user/currentUser',
+    }),
     user: {
       get() {
         return Object.assign({}, this.$store.getters['user/user'])

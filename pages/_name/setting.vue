@@ -3,11 +3,8 @@
     <HeaderNav />
     <div class="box-header">
       <div class="max-w-screen-lg w-full mx-auto">
-        <div class="">
-          <UserCover :current-user="currentUser" />
-
-          <UserProfile :user="user" :current-user="currentUser" />
-        </div>
+        <UserCover />
+        <UserProfile />
       </div>
     </div>
     <div class="box-content">

@@ -96,21 +96,18 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  props: {
-    user: {
-      type: Object,
-      default: () => {},
-    },
-    currentUser: {
-      type: Object,
-      default: () => {},
-    },
-  },
   data() {
     return {
       number: 32000,
     }
+  },
+  computed: {
+    ...mapGetters({
+      user: 'user/user',
+      currentUser: 'user/currentUser',
+    }),
   },
   methods: {
     async create() {
