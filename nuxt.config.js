@@ -32,6 +32,8 @@ export default {
       '@/components/layout',
       '@/components/layout/header',
       '@/components/layout/sidebar',
+      '@/components/pages',
+      '@/components/pages/name',
     ],
   },
 

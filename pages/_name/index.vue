@@ -4,171 +4,9 @@
     <div class="box-header">
       <div class="max-w-screen-lg w-full mx-auto">
         <div class="">
-          <div class="user-cover">
-            <img
-              v-if="currentUser.cover"
-              :src="currentUser.cover"
-              :alt="currentUser.name + ' cover image'"
-              class="img"
-              :value="item"
-            />
-            <img
-              v-else
-              src="https://source.unsplash.com/1024x300?white"
-              :alt="currentUser.name + ' cover image'"
-            />
-            <template v-if="user.id == currentUser.id">
-              <div class="user-cover-edit" @click="modal = !modal">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                  />
-                </svg>
-                <span class="ml-2">
-                  {{ $t('プロフィールを編集') }}
-                </span>
-              </div>
-              <ReModal
-                v-if="modal"
-                @close=";(modal = !modal), (loading = false)"
-              >
-                <template slot="header">
-                  {{ $t('プロフィールを編集') }}
-                </template>
-                <!-- default -->
-                <div class="w-full flex flex-col justify-center">
-                  <!-- タイトル -->
-                  <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                    {{ $t('名前') }}
-                  </label>
-                  <input
-                    v-model="user.name"
-                    type="text"
-                    autofocus
-                    class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-                  />
+          <UserCover :current-user="currentUser" />
 
-                  <ReButton class="re-button w-auto">
-                    <button
-                      :class="{ button_loading: loading == true }"
-                      class="re-button-primary-filled bg-primary relative"
-                      @click="update, (loading = true)"
-                    >
-                      <span class="button_text">{{ $t('保存') }}</span>
-                    </button>
-                  </ReButton>
-                </div>
-              </ReModal>
-            </template>
-          </div>
-          <div class="user-profile">
-            <div class="flex items-start divider">
-              <img
-                v-if="currentUser.icon"
-                :src="currentUser.icon"
-                :alt="currentUser.name + ' icon image'"
-              />
-              <img
-                src="https://source.unsplash.com/190x190?urban"
-                :alt="currentUser.name + ' icon image'"
-              />
-              <div class="w-full flex items-center justify-between">
-                <div class="user-name">
-                  <div class="font-bold text-5xl">{{ currentUser.name }}</div>
-                  <div class="flex items-center">
-                    <p>
-                      <span class="font-bold">
-                        <AnimatedNumber value="32,000" />
-                      </span>
-                      {{ $t('フォロー中') }}
-                    </p>
-                    <p class="ml-4">
-                      <span class="font-bold">
-                        <AnimatedNumber value="32,000" />
-                      </span>
-                      {{ $t('フォロワー') }}
-                    </p>
-                  </div>
-                </div>
-                <template v-if="user.id == currentUser.id">
-                  <ReButton class="re-button re-button-small no-shadow mt-4">
-                    <button
-                      class="re-button-primary bg-primary"
-                      @click="create"
-                    >
-                      {{ $t('コースの作成') }}
-                    </button>
-                  </ReButton>
-                </template>
-                <ReButton v-else class="re-button w-auto">
-                  <button
-                    type="submit"
-                    class="re-button-primary-filled bg-primary"
-                  >
-                    {{ $t('チャンネル登録') }}
-                  </button>
-                </ReButton>
-              </div>
-            </div>
-
-            <div class="item">
-              <nuxt-link
-                v-if="currentUser.name"
-                class="item-link"
-                :to="{ name: 'name', params: { name: currentUser.name } }"
-              >
-                {{ $t('マイコース') }}
-              </nuxt-link>
-              <nuxt-link
-                v-if="currentUser.name == user.name"
-                class="item-link"
-                :to="{ name: 'name-learning', params: { name: user.name } }"
-              >
-                {{ $t('受講中のコース') }}
-              </nuxt-link>
-              <nuxt-link
-                v-if="currentUser.name == user.name"
-                class="item-link"
-                :to="{ name: 'name-like', params: { name: user.name } }"
-              >
-                {{ $t('お気に入り') }}
-              </nuxt-link>
-              <nuxt-link
-                v-if="currentUser.name == user.name"
-                class="item-link"
-                :to="{ name: 'name-archive', params: { name: user.name } }"
-              >
-                {{ $t('アーカイブ') }}
-              </nuxt-link>
-              <nuxt-link
-                v-if="currentUser.name == user.name"
-                class="item-link"
-                :to="{ name: 'name-setting', params: { name: user.name } }"
-              >
-                {{ $t('設定') }}
-              </nuxt-link>
-              <nuxt-link
-                v-if="currentUser.name"
-                class="item-link"
-                :to="{
-                  name: 'name-spring',
-                  params: { name: currentUser.name },
-                }"
-              >
-                {{ $t('願いの泉') }}
-              </nuxt-link>
-            </div>
-            <!-- <SidebarSetting class="divider" /> -->
-          </div>
+          <UserProfile :user="user" :current-user="currentUser" />
         </div>
       </div>
     </div>
@@ -303,14 +141,6 @@
       </div>
     </div>
     <FooterNav />
-    <Toast :success="success" :error="error">
-      <template v-if="success">
-        {{ $t('更新しました') }}
-      </template>
-      <template v-else-if="error">
-        {{ $t('更新に失敗しました') }}
-      </template>
-    </Toast>
   </div>
 </template>
 <script>
@@ -318,15 +148,11 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      loading: false,
-      modal: false,
       items: [],
-      success: false,
-      error: false,
       name: this.$route.params.name,
-      form: [],
-      saved: false,
+      // saved: false,
       currentUser: {},
+      loading: false,
     }
   },
   head() {
@@ -357,17 +183,10 @@ export default {
   computed: {
     ...mapGetters({
       isUser: 'user/auth',
+      user: 'user/user',
       carts: 'cart/carts',
       product: 'product/product',
     }),
-    user: {
-      get() {
-        return Object.assign({}, this.$store.getters['user/user'])
-      },
-      set(value) {
-        this.$store.dispatch('user/update', value)
-      },
-    },
   },
   // watch: {
   //   user: {
@@ -391,15 +210,6 @@ export default {
     this.getCurrentUser()
   },
   methods: {
-    async create() {
-      await this.$store.dispatch('product/create')
-      // .then((response) => {
-      //   alert('成功' + response)
-      // })
-      // .catch((error) => {
-      //   alert('失敗' + error)
-      // })
-    },
     async getItems() {
       this.loading = true
       await this.$axios
@@ -452,61 +262,7 @@ export default {
 .box-content {
   @apply w-full flex justify-center mx-auto py-8;
 }
-.user {
-  &-cover {
-    @apply relative;
-    &-edit {
-      @apply absolute flex items-center rounded py-2 px-4 font-bold cursor-pointer;
-      background: var(--bg-secondary);
-      right: 1.5rem;
-      bottom: 1.5rem;
-      &:hover {
-        background: #f0f2f6;
-      }
-    }
-    img {
-      @apply rounded-lg object-cover;
-      @screen lg {
-        min-width: 1024px;
-        max-width: 1024px;
-        min-height: 300px;
-        max-height: 300px;
-      }
-      // @media screen and (min-width: 1200px) and (max-width: 1440px) {
-      //   min-height: 250px;
-      //   max-height: 250px;
-      // }
-    }
-  }
-  &-profile {
-    @apply w-full flex flex-col justify-between py-4 px-6 relative;
-    // height: 200px;
-    img {
-      @apply object-cover rounded-full z-10;
-      margin-top: -70px;
-      width: 190px;
-      height: 190px;
-      border: 5px solid var(--bg-secondary);
-      // @media screen and (min-width: 1200px) and (max-width: 1440px) {
-      //   margin-top: -100px;
-      //   min-height: 160px;
-      //   max-height: 160px;
-      // }
-    }
-  }
-  &-name {
-    @apply flex flex-col items-start px-8;
-  }
-}
 .item {
-  // @apply flex justify-start;
-  &-link {
-    @apply py-2 px-3 text-center inline-block;
-    &:hover {
-      @apply rounded-lg;
-      background: #f0f2f6;
-    }
-  }
   &-title {
     @apply text-xs font-bold pt-4;
     color: var(--sub-color);
