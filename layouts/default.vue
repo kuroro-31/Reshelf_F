@@ -49,6 +49,7 @@ export default {
     ...mapGetters({
       isUser: 'user/auth',
       user: 'user/user',
+      currentUser: 'user/currentUser',
       product: 'product/product',
       carts: 'cart/carts',
     }),

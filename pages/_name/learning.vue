@@ -151,7 +151,7 @@ export default {
       items: [],
       name: this.$route.params.name,
       // saved: false,
-      currentUser: {},
+      // currentUser: {},
       loading: false,
     }
   },
@@ -184,6 +184,7 @@ export default {
     ...mapGetters({
       isUser: 'user/auth',
       user: 'user/user',
+      currentUser: 'user/currentUser',
       carts: 'cart/carts',
       product: 'product/product',
     }),
@@ -207,7 +208,10 @@ export default {
   // },
   mounted() {
     this.getItems()
-    this.getCurrentUser()
+
+    if (this.currentUser == null) {
+      this.getCurrentUser()
+    }
   },
   methods: {
     async getItems() {
@@ -224,16 +228,7 @@ export default {
         })
     },
     async getCurrentUser() {
-      this.loading = true
-      await this.$axios
-        .$get(`/api/users/${this.name}`)
-        .then((response) => {
-          this.currentUser = response.data
-        })
-        .catch((error) => {
-          alert(error)
-          console.log(error)
-        })
+      await this.$store.dispatch('user/getCurrentUser', this.name)
     },
     async update() {
       await this.$axios.$patch(`/api/users/${this.user.id}`, this.user)

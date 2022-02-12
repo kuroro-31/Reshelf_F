@@ -1,6 +1,7 @@
 export const state = () => ({
   auth: false,
   user: null,
+  currentUser: null,
 })
 
 export const getters = {
@@ -10,6 +11,9 @@ export const getters = {
   user(state) {
     return state.user
   },
+  currentUser(state) {
+    return state.currentUser
+  },
 }
 
 export const mutations = {
@@ -18,6 +22,9 @@ export const mutations = {
   },
   setUser(state, value) {
     state.user = value
+  },
+  setCurrentUser(state, value) {
+    state.currentUser = value
   },
 }
 
@@ -72,8 +79,20 @@ export const actions = {
       console.log(error)
     }
   },
+  async getCurrentUser({ commit }, name) {
+    await this.$axios
+      .$get(`/api/users/${name}`)
+      .then((response) => {
+        commit('setCurrentUser', response.data)
+      })
+      .catch((error) => {
+        alert(error)
+        console.log(error)
+      })
+  },
   nuxtServerInit({ commit }) {
     commit('setAuthed')
     commit('setUser')
+    commit('setCurrentUser')
   },
 }
