@@ -209,7 +209,7 @@ export default {
   mounted() {
     this.getItems()
 
-    if (this.currentUser == null) {
+    if (this.currentUser == null || this.currentUser.name != this.name) {
       this.getCurrentUser()
     }
   },
