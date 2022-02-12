@@ -69,9 +69,9 @@ export default {
     },
   },
   created() {
-    // setInterval(() => {
-    this.$store.dispatch('cart/get')
-    // }, 3000)
+    if (this.carts == null) {
+      this.$store.dispatch('cart/get')
+    }
   },
   methods: {
     toCheckout() {
