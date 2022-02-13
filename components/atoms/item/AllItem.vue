@@ -35,7 +35,8 @@
           >
             {{ item.user.name }}
           </nuxt-link>
-          <ArticleLike />
+
+          <ArticleLike :item="item" />
 
           <template v-if="isUser">
             <div :class="user.id != item.user_id ? 'block' : 'hidden'">

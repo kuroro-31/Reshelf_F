@@ -3,7 +3,7 @@
     <button type="button" class="btn m-0 p-1 shadow-none">
       <svg
         class="likeButton"
-        :class="{ clicked: liked }"
+        :class="{ clicked: isLikedBy }"
         width="150px"
         height="150px"
         viewBox="0 0 500 500"
@@ -53,13 +53,9 @@ export default {
       type: Number,
       default: 0,
     },
-    authorized: {
-      type: Boolean,
-      default: false,
-    },
-    endpoint: {
-      type: String,
-      default: null,
+    item: {
+      type: Object,
+      default: () => {},
     },
   },
   data() {
@@ -67,7 +63,6 @@ export default {
       isLikedBy: this.initialIsLikedBy,
       countLikes: this.initialCountLikes,
       gotToLike: false,
-      liked: false,
       error: false,
     }
   },
@@ -91,22 +86,31 @@ export default {
         return
       }
 
-      this.liked = !this.liked
       this.isLikedBy ? this.unlike() : this.like()
     },
     async like() {
-      const response = await this.$axios.$put(this.endpoint)
-
-      this.isLikedBy = true
-      this.countLikes = response.data.countLikes
-      this.gotToLike = true
+      await this.$axios
+        .$put(`/api/posts/${this.item.id}/like`)
+        .then((response) => {
+          this.isLikedBy = true
+          this.countLikes += 1
+          this.gotToLike = true
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     async unlike() {
-      const response = await this.$axios.$delete(this.endpoint)
-
-      this.isLikedBy = false
-      this.countLikes = response.data.countLikes
-      this.gotToLike = false
+      await this.$axios
+        .$delete(`/api/posts/${this.item.id}/like`)
+        .then((response) => {
+          this.isLikedBy = false
+          this.countLikes -= 1
+          this.gotToLike = false
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
   },
 }
