@@ -50,7 +50,7 @@ export default {
       isUser: 'user/auth',
       user: 'user/user',
       currentUser: 'user/currentUser',
-      product: 'product/product',
+      product: 'product/allProduct',
       carts: 'cart/carts',
     }),
   },

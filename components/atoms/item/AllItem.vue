@@ -69,7 +69,7 @@ export default {
     ...mapGetters({
       isUser: 'user/auth',
       user: 'user/user',
-      product: 'product/product',
+      product: 'product/allProduct',
       carts: 'cart/carts',
     }),
     isClick() {
@@ -80,7 +80,9 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('product/get')
+    if (this.product == null) {
+      this.$store.dispatch('product/getAll')
+    }
   },
 }
 </script>

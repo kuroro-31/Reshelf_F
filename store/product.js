@@ -1,25 +1,25 @@
 export const state = () => ({
-  product: null,
+  allProduct: null,
 })
 
 export const getters = {
-  product(state) {
-    return state.product
+  allProduct(state) {
+    return state.allProduct
   },
 }
 
 export const mutations = {
-  setProduct(state, value) {
-    state.product = value
+  setAllProduct(state, value) {
+    state.allProduct = value
   },
 }
 
 export const actions = {
-  async get({ commit }) {
+  async getAll({ commit }) {
     await this.$axios
       .$get(`/api/posts`)
       .then(({ data }) => {
-        commit('setProduct', data)
+        commit('setAllProduct', data)
       })
       .catch((error) => {
         if (error.response.status == '401') {
@@ -39,7 +39,7 @@ export const actions = {
       .$post('/api/posts')
       .then(({ data }) => {
         this.$router.push(`/item/edit/${data.id}`)
-        commit('setProduct', data)
+        commit('setAllProduct', data)
       })
       .catch((error) => {
         if (error.response.status == '401') {
@@ -54,10 +54,10 @@ export const actions = {
   },
   async delete({ commit }, id) {
     await this.$axios.$delete(`/api/posts/${id}`).then(() => {
-      commit('setProduct', null)
+      commit('setAllProduct', null)
     })
   },
   nuxtServerInit({ commit }) {
-    commit('setProduct')
+    commit('setAllProduct')
   },
 }

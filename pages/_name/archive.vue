@@ -183,7 +183,6 @@ export default {
       user: 'user/user',
       currentUser: 'user/currentUser',
       carts: 'cart/carts',
-      product: 'product/product',
     }),
   },
   // watch: {
@@ -203,27 +202,12 @@ export default {
   //     deep: true,
   //   },
   // },
-  mounted() {
-    this.getItems()
-
+  created() {
     if (this.currentUser == null || this.currentUser.name != this.name) {
       this.getCurrentUser()
     }
   },
   methods: {
-    async getItems() {
-      this.loading = true
-      await this.$axios
-        .$get(`/api/posts`)
-        .then((response) => {
-          this.items = response.data
-          this.loading = false
-        })
-        .catch((error) => {
-          alert(error)
-          console.log(error)
-        })
-    },
     async getCurrentUser() {
       await this.$store.dispatch('user/getCurrentUser', this.name)
     },
