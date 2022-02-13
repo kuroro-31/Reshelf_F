@@ -61,4 +61,5 @@ export default {
   フォロワー: 'Followers',
   自己紹介: 'Self Introduction',
   '自己紹介がありません。': 'There is no self-introduction.',
+  アーカイブ: 'Archive',
 }
