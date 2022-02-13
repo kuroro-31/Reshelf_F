@@ -93,46 +93,14 @@
                 </a>
               </div>
             </div>
-            <!-- <div class="card">
+            <div class="card">
               <div class="">
                 <span class="item-title">表彰</span>
               </div>
-            </div> -->
+            </div>
           </div>
           <div class="w-2/3 flex flex-wrap">
-            <div
-              v-for="item in currentUser.posts"
-              :key="item.id"
-              class="item flex"
-            >
-              <nuxt-link
-                :to="{ name: 'item-id', params: { id: item.id } }"
-                class="relative flex flex-col items-start"
-              >
-                <button class="relative">
-                  <img
-                    v-if="item.src"
-                    :src="item.src"
-                    alt="text image"
-                    class="img"
-                    :value="item"
-                  />
-                  <img
-                    v-else
-                    src="@/assets/images/noimage.svg"
-                    alt="cource image"
-                    class="img"
-                    :value="item"
-                  />
-                </button>
-                <span v-if="item.title" class="title">
-                  {{ item.title }}
-                </span>
-                <span v-else class="title">{{ $t('無題のタイトル') }}</span>
-                <!-- <div class="">{{ item.user.name }}</div> -->
-                <!-- <ArticleLike /> -->
-              </nuxt-link>
-            </div>
+            <LikeProducts :likes="currentUser.likes" />
           </div>
         </div>
       </div>
@@ -147,8 +115,6 @@ export default {
     return {
       items: [],
       name: this.$route.params.name,
-      // saved: false,
-      // currentUser: {},
       loading: false,
     }
   },
@@ -185,25 +151,12 @@ export default {
       carts: 'cart/carts',
     }),
   },
-  // watch: {
-  //   user: {
-  //     // eslint-disable-next-line
-  //     handler: _.debounce(function () {
-  //       this.update()
-  //     }, 2000), // 更新されたら保存処理
-  //     deep: true,
-  //   },
-  //   saved: {
-  //     // 保存完了後にアラートを消す
-  //     // eslint-disable-next-line
-  //     handler: _.debounce(function () {
-  //       this.clearAlert()
-  //     }, 2000),
-  //     deep: true,
-  //   },
-  // },
   created() {
-    if (this.currentUser == null || this.currentUser.name != this.name) {
+    if (
+      this.currentUser == null || // 表示したいユーザーの情報が空のとき
+      this.currentUser.name != this.name || // 表示したいユーザーとログインユーザーが違うとき
+      this.currentUser.likes != this.user.likes // ログインユーザーのお気に入りに変化があったとき
+    ) {
       this.getCurrentUser()
     }
   },
@@ -252,7 +205,6 @@ export default {
   &-link {
     svg {
       path {
-        // stroke: rgba(var(--primary)) !important;
         fill: var(--color);
       }
     }
@@ -267,48 +219,5 @@ export default {
   width: 290px;
   min-width: 290px;
   max-width: 290px;
-
-  // height: 100px;
-  // min-height: 100px;
-  // max-height: 100px;
-
-  // height: 200px;
-  // min-height: 200px;
-  // max-height: 200px;
-  // width: 150px;
-  // min-width: 150px;
-  // max-width: 150px;
 }
-// .button_loading {
-//   &::after {
-//     content: '';
-//     position: absolute;
-//     width: 22px;
-//     height: 22px;
-//     top: 0;
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//     margin: auto;
-//     border: 2px solid transparent;
-//     border-top-color: var(--bg-secondary)fff;
-//     border-radius: 50%;
-//     animation: button-loading-spinner 1s ease infinite;
-//   }
-//   .button_text {
-//     @apply duration-200;
-//     visibility: hidden;
-//     opacity: 0;
-//   }
-// }
-
-// @keyframes button-loading-spinner {
-//   from {
-//     transform: rotate(0turn);
-//   }
-
-//   to {
-//     transform: rotate(1turn);
-//   }
-// }
 </style>
