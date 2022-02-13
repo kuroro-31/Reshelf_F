@@ -62,4 +62,5 @@ export default {
   自己紹介: 'Self Introduction',
   '自己紹介がありません。': 'There is no self-introduction.',
   アーカイブ: 'Archive',
+  お気に入りのコースはありません: 'Favorite course is empty',
 }
