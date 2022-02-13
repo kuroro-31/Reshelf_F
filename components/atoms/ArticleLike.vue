@@ -7,7 +7,7 @@
         width="150px"
         height="150px"
         viewBox="0 0 500 500"
-        @click="clickLike, (liked = !liked)"
+        @click="clickLike"
       >
         <circle class="explosion" r="150" cx="250" cy="250"></circle>
         <g class="particleLayer">
@@ -33,10 +33,16 @@
       </svg>
     </button>
     {{ countLikes }}
+    <Toast :error="error">
+      <template v-if="error">
+        {{ $t('いいね機能はログイン中のみ使用できます') }}
+      </template>
+    </Toast>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   props: {
     initialIsLikedBy: {
@@ -62,15 +68,30 @@ export default {
       countLikes: this.initialCountLikes,
       gotToLike: false,
       liked: false,
+      error: false,
     }
+  },
+  computed: {
+    ...mapGetters({
+      isUser: 'user/auth',
+      user: 'user/user',
+    }),
+    isClick() {
+      // let item = this.product.filter((item) => item.id !== id)
+      // let cart = this.carts.filter((cart) => cart.id !== id)
+
+      return true
+    },
   },
   methods: {
     clickLike() {
-      if (!this.authorized) {
-        alert('いいね機能はログイン中のみ使用できます')
+      if (!this.isUser) {
+        this.error = true
+        setTimeout(() => (this.error = false), 5000)
         return
       }
 
+      this.liked = !this.liked
       this.isLikedBy ? this.unlike() : this.like()
     },
     async like() {
