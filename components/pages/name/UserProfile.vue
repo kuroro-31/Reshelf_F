@@ -5,15 +5,15 @@
         <img
           v-if="currentUser.icon"
           :src="currentUser.icon"
-          :alt="currentUser.name + ' icon image'"
+          :alt="currentUser.nickname + ' icon image'"
         />
         <img
           src="https://source.unsplash.com/190x190?urban"
-          :alt="currentUser.name + ' icon image'"
+          :alt="currentUser.nickname + ' icon image'"
         />
         <div class="w-full flex items-center justify-between">
           <div class="user-name">
-            <div class="font-bold text-5xl">{{ currentUser.name }}</div>
+            <div class="font-bold text-5xl">{{ currentUser.nickname }}</div>
             <div class="flex items-center">
               <p>
                 <span class="font-bold">
