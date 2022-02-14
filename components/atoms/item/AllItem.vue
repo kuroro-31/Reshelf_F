@@ -36,7 +36,7 @@
             {{ item.user.name }}
           </nuxt-link>
 
-          <ArticleLike :item="item" />
+          <ProductLike :item="item" />
 
           <template v-if="isUser">
             <div :class="user.id != item.user_id ? 'block' : 'hidden'">
@@ -82,7 +82,7 @@ export default {
   },
   created() {
     if (this.product == null) {
-      this.$store.dispatch('product/getAll')
+      this.$store.dispatch('product/getAllProduct')
     }
   },
 }

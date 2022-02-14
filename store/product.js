@@ -15,7 +15,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async getAll({ commit }) {
+  async getAllProduct({ commit }) {
     await this.$axios
       .$get(`/api/posts`)
       .then(({ data }) => {

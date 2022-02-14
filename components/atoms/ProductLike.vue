@@ -3,7 +3,7 @@
     <button type="button" class="btn m-0 p-1 shadow-none">
       <svg
         class="likeButton"
-        :class="{ clicked: isLikedBy }"
+        :class="{ clicked: isLiked }"
         width="150px"
         height="150px"
         viewBox="0 0 500 500"
@@ -45,14 +45,6 @@
 import { mapGetters } from 'vuex'
 export default {
   props: {
-    initialIsLikedBy: {
-      type: Boolean,
-      default: false,
-    },
-    initialCountLikes: {
-      type: Number,
-      default: 0,
-    },
     item: {
       type: Object,
       default: () => {},
@@ -60,9 +52,8 @@ export default {
   },
   data() {
     return {
-      isLikedBy: this.initialIsLikedBy,
-      countLikes: this.initialCountLikes,
-      gotToLike: false,
+      isLikedBy: false,
+      countLikes: this.item.likes.length,
       error: false,
     }
   },
@@ -71,11 +62,12 @@ export default {
       isUser: 'user/auth',
       user: 'user/user',
     }),
-    isClick() {
-      // let item = this.product.filter((item) => item.id !== id)
-      // let cart = this.carts.filter((cart) => cart.id !== id)
+    isLiked() {
+      let likes = this.item.likes
 
-      return true
+      // この商品のいいねの中にログインユーザーがいるかどうか
+      const isLiked = likes.filter((like) => like.name == this.user.name)
+      return isLiked.length ? true : false
     },
   },
   methods: {
@@ -91,10 +83,10 @@ export default {
     async like() {
       await this.$axios
         .$put(`/api/posts/${this.item.id}/like`)
-        .then((response) => {
+        .then(() => {
+          this.$store.dispatch('product/getAllProduct')
           this.isLikedBy = true
           this.countLikes += 1
-          this.gotToLike = true
         })
         .catch((error) => {
           console.log(error)
@@ -103,10 +95,10 @@ export default {
     async unlike() {
       await this.$axios
         .$delete(`/api/posts/${this.item.id}/like`)
-        .then((response) => {
+        .then(() => {
+          this.$store.dispatch('product/getAllProduct')
           this.isLikedBy = false
           this.countLikes -= 1
-          this.gotToLike = false
         })
         .catch((error) => {
           console.log(error)

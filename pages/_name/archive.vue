@@ -15,7 +15,7 @@
               <div class="mb-4">
                 <span class="item-title">{{ $t('自己紹介') }}</span>
                 <div class="mt-2 text-lg whitespace-pre-line">
-                  <template v-if="currentUser.description">
+                  <template v-if="currentUser.description != ''">
                     {{ currentUser.description }}
                   </template>
                   <template v-else>{{ $t('自己紹介がありません。') }}</template>
