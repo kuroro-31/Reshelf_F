@@ -13,7 +13,9 @@
         />
         <div class="w-full flex items-center justify-between">
           <div class="user-name">
-            <div class="font-bold text-5xl">{{ currentUser.nickname }}</div>
+            <div class="nickname">
+              {{ currentUser.nickname }}
+            </div>
             <div class="flex items-center">
               <p>
                 <span class="font-bold">
@@ -30,7 +32,9 @@
             </div>
           </div>
           <template v-if="user.id == currentUser.id">
-            <ReButton class="re-button re-button-small no-shadow mt-4">
+            <ReButton
+              class="re-button re-button-small no-shadow whitespace-nowrap"
+            >
               <button class="re-button-primary bg-primary" @click="create">
                 {{ $t('コースの作成') }}
               </button>
@@ -147,5 +151,9 @@ export default {
       background: #f0f2f6;
     }
   }
+}
+.nickname {
+  @apply font-bold text-5xl;
+  line-height: 1.3;
 }
 </style>
