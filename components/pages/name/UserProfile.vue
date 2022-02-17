@@ -244,20 +244,72 @@ export default {
       await this.$store.dispatch('product/create')
     },
     async follow() {
-      await this.$axios.$put(`/api/users/${this.currentUser.name}/follow`)
-      this.isFollow = true
+      try {
+        await this.$axios.$put(`/api/users/${this.currentUser.name}/follow`)
+        this.isFollow = true
+      } catch (error) {
+        if (error.response.status == '401') {
+          this.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$router.push('/error/500')
+        } else {
+          alert(error)
+          console.log(error)
+        }
+      }
     },
     async toFollow(name) {
-      await this.$axios.$put(`/api/users/${name}/follow`)
-      this.isFollow = true
+      try {
+        await this.$axios.$put(`/api/users/${name}/follow`)
+        this.isFollow = true
+      } catch (error) {
+        if (error.response.status == '401') {
+          this.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$router.push('/error/500')
+        } else {
+          alert(error)
+          console.log(error)
+        }
+      }
     },
     async unFollow() {
-      await this.$axios.$delete(`/api/users/${this.currentUser.name}/follow`)
-      this.isFollow = false
+      try {
+        await this.$axios.$delete(`/api/users/${this.currentUser.name}/follow`)
+        this.isFollow = false
+      } catch (error) {
+        if (error.response.status == '401') {
+          this.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$router.push('/error/500')
+        } else {
+          alert(error)
+          console.log(error)
+        }
+      }
     },
     async toUnFollow(name) {
-      await this.$axios.$delete(`/api/users/${name}/follow`)
-      this.isFollow = false
+      try {
+        await this.$axios.$delete(`/api/users/${name}/follow`)
+        this.isFollow = false
+      } catch (error) {
+        if (error.response.status == '401') {
+          this.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$router.push('/error/500')
+        } else {
+          alert(error)
+          console.log(error)
+        }
+      }
     },
     async getFollowings() {
       await this.$axios
@@ -315,7 +367,6 @@ export default {
   }
 }
 .nickname {
-  @apply font-bold text-5xl;
-  line-height: 1.3;
+  @apply font-bold text-5xl mb-2;
 }
 </style>
