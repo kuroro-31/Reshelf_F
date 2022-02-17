@@ -34,11 +34,11 @@ export const actions = {
         }
       })
   },
-  async create({ commit }) {
+  async create({ commit }, user) {
     await this.$axios
       .$post('/api/posts')
       .then(({ data }) => {
-        this.$router.push(`/item/edit/${data.id}`)
+        this.$router.push(`/${user.name}/${data.id}/edit`)
         commit('setAllProduct', data)
       })
       .catch((error) => {

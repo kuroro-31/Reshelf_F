@@ -130,7 +130,10 @@
             <ReButton
               class="re-button re-button-small no-shadow whitespace-nowrap"
             >
-              <button class="re-button-primary bg-primary" @click="create">
+              <button
+                class="re-button-primary bg-primary"
+                @click="create(user)"
+              >
                 {{ $t('コースの作成') }}
               </button>
             </ReButton>
@@ -240,8 +243,8 @@ export default {
     this.getFollowers()
   },
   methods: {
-    async create() {
-      await this.$store.dispatch('product/create')
+    async create(user) {
+      await this.$store.dispatch('product/create', user)
     },
     async follow() {
       try {

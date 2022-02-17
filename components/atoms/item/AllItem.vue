@@ -6,7 +6,10 @@
       <div v-else class="items">
         <div v-for="item in product" :key="item.id" class="card item flex-col">
           <nuxt-link
-            :to="{ name: 'item-id', params: { id: item.id } }"
+            :to="{
+              name: 'name-id',
+              params: { name: item.user.name, id: item.id },
+            }"
             class="relative flex flex-col items-start"
           >
             <button class="relative">
@@ -47,7 +50,10 @@
             <div :class="user.id == item.user_id ? 'block' : 'hidden'">
               <DeleteItem :item="item" />
               <nuxt-link
-                :to="{ name: 'item-edit-id', params: { id: item.id } }"
+                :to="{
+                  name: 'name-id-edit',
+                  params: { name: user.name, id: item.id },
+                }"
               >
                 {{ $t('編集') }}
               </nuxt-link>
