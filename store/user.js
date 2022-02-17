@@ -66,7 +66,7 @@ export const actions = {
       })
   },
   async logout({ commit }) {
-    await this.$axios.$post('/api/logout')
+    // await this.$axios.$post('/api/logout')
     commit('setUser', null)
     commit('setAuthed', false)
     this.$router.push({ path: '/' })

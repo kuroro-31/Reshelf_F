@@ -17,18 +17,113 @@
               {{ currentUser.nickname }}
             </div>
             <div class="flex items-center">
-              <p>
-                <span class="font-bold">
-                  <AnimatedNumber :value="number" />
-                </span>
-                {{ $t('フォロー中') }}
-              </p>
-              <p class="ml-4">
-                <span class="font-bold">
-                  <AnimatedNumber :value="number" />
-                </span>
-                {{ $t('フォロワー') }}
-              </p>
+              <!-- フォロー中 -->
+              <div>
+                <p
+                  class="cursor-pointer"
+                  @click="following_modal = !following_modal"
+                >
+                  <span class="font-bold">
+                    {{ follow_counts }}
+                  </span>
+                  {{ $t('フォロー中') }}
+                </p>
+                <ReModal
+                  v-if="following_modal"
+                  @close="
+                    ;(following_modal = !following_modal), (loading = false)
+                  "
+                >
+                  <template slot="header">
+                    {{ $t('フォロー中') }}
+                  </template>
+                  <div class="w-full flex flex-col justify-center">
+                    <div
+                      v-for="following in followings.followings"
+                      :key="following.id"
+                      class="flex items-center"
+                    >
+                      <p>{{ following.nickname }}</p>
+                      <ReButton
+                        v-if="following.name != user.name"
+                        class="re-button w-auto"
+                      >
+                        <button
+                          v-if="isFollow"
+                          :class="{ button_loading: loading == true }"
+                          class="re-button-primary-filled bg-primary relative"
+                          @click="toFollow(following.name)"
+                        >
+                          <span class="button_text">
+                            {{ $t('フォローする') }}
+                          </span>
+                        </button>
+                        <button
+                          v-else
+                          class="re-button-primary-border"
+                          @click="toUnFollow(following.name)"
+                        >
+                          {{ $t('フォロー中') }}
+                        </button>
+                      </ReButton>
+                    </div>
+                  </div>
+                </ReModal>
+              </div>
+              <!-- フォロワー -->
+              <div>
+                <p
+                  class="ml-4 cursor-pointer"
+                  @click="follower_modal = !follower_modal"
+                >
+                  <span class="font-bold">
+                    {{ follower_counts }}
+                  </span>
+                  {{ $t('フォロワー') }}
+                </p>
+                <ReModal
+                  v-if="follower_modal"
+                  @close="
+                    ;(follower_modal = !follower_modal), (loading = false)
+                  "
+                >
+                  <template slot="header">
+                    {{ $t('フォロワー') }}
+                  </template>
+                  <!-- default -->
+                  <div class="w-full flex flex-col justify-center">
+                    <div
+                      v-for="follower in followers.followers"
+                      :key="follower.id"
+                      class="flex items-center"
+                    >
+                      <p>{{ follower.nickname }}</p>
+                      <ReButton
+                        v-if="follower.name != user.name"
+                        class="re-button w-auto"
+                      >
+                        <button
+                          v-if="isFollow"
+                          :class="{ button_loading: loading == true }"
+                          class="re-button-primary-filled bg-primary relative"
+                          @click="toFollow(following.name)"
+                        >
+                          <span class="button_text">
+                            {{ $t('フォローする') }}
+                          </span>
+                        </button>
+                        <button
+                          v-else
+                          class="re-button-primary-border"
+                          @click="toUnFollow(following.name)"
+                        >
+                          {{ $t('フォロー中') }}
+                        </button>
+                      </ReButton>
+                    </div>
+                  </div>
+                </ReModal>
+              </div>
             </div>
           </div>
           <template v-if="user.id == currentUser.id">
@@ -41,8 +136,15 @@
             </ReButton>
           </template>
           <ReButton v-else class="re-button w-auto">
-            <button type="submit" class="re-button-primary-filled bg-primary">
-              {{ $t('チャンネル登録') }}
+            <button
+              v-if="!isFollow"
+              class="re-button-primary-filled bg-primary"
+              @click="follow"
+            >
+              {{ $t('フォローする') }}
+            </button>
+            <button v-else class="re-button-primary-border" @click="unFollow">
+              {{ $t('フォロー中') }}
             </button>
           </ReButton>
         </div>
@@ -105,6 +207,12 @@ export default {
   data() {
     return {
       number: 32000,
+      isFollow: false,
+      following_modal: false,
+      follower_modal: false,
+      loading: false,
+      followings: [],
+      followers: [],
     }
   },
   computed: {
@@ -112,10 +220,64 @@ export default {
       user: 'user/user',
       currentUser: 'user/currentUser',
     }),
+    follow_counts() {
+      let counts = 0
+      if (this.followings.following != null) {
+        counts = this.followings.followings.length
+      }
+      return counts
+    },
+    follower_counts() {
+      let counts = 0
+      if (this.followers.followers != null) {
+        counts = this.followers.followers.length
+      }
+      return counts
+    },
+  },
+  created() {
+    this.getFollowings()
+    this.getFollowers()
   },
   methods: {
     async create() {
       await this.$store.dispatch('product/create')
+    },
+    async follow() {
+      await this.$axios.$put(`/api/users/${this.currentUser.name}/follow`)
+      this.isFollow = true
+    },
+    async toFollow(name) {
+      await this.$axios.$put(`/api/users/${name}/follow`)
+      this.isFollow = true
+    },
+    async unFollow() {
+      await this.$axios.$delete(`/api/users/${this.currentUser.name}/follow`)
+      this.isFollow = false
+    },
+    async toUnFollow(name) {
+      await this.$axios.$delete(`/api/users/${name}/follow`)
+      this.isFollow = false
+    },
+    async getFollowings() {
+      await this.$axios
+        .$get(`/api/users/${this.currentUser.name}/followings`)
+        .then((response) => {
+          this.followings = response
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    async getFollowers() {
+      await this.$axios
+        .$get(`/api/users/${this.currentUser.name}/followers`)
+        .then((response) => {
+          this.followers = response
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     },
   },
 }
