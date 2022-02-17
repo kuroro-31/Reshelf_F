@@ -89,7 +89,6 @@
 </template>
 <script>
 export default {
-  middleware: 'checkAuth',
   data() {
     return {
       chapter: false,

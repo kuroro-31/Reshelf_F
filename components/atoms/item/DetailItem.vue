@@ -76,16 +76,39 @@
 </template>
 <script>
 export default {
-  props: {
-    item: {
-      type: Object,
-      default: () => {},
-    },
-  },
   data() {
     return {
       liked: false,
       isDisabled: false,
+      item: [
+        {
+          // キー
+          id: 1,
+          // レベル
+          level: '初級',
+          // 画像
+          src: 'https://i.gyazo.com/3361b22275519a99133abe27ea99f34c.png',
+          // タイトル
+          title: 'ゼロからはじめる Dockerによるアプリケーション実行環境構築',
+          // 概要
+          describe:
+            'コンテナの実行方法を学び、Ruby on RailsやDjangoといったWebアプリケーションフレームワークを使用した環境構築について学びます。Docker MachineやSwarmといったDocker関連技術についても学びます。',
+          // セール価格
+          rate: 4.7,
+          all_rate: 4.7,
+          sale_price: '3500',
+          normal_price: '5000',
+          // 作者
+          name: 'クラピカ',
+          // タグ
+          tags: ['phase1', 'btn', 'rakuten'],
+          // 日付
+          add_time: '2021/06/23',
+          edit_time: '2021/06/23',
+          // でもページ
+          demo: '#',
+        },
+      ],
     }
   },
 }
