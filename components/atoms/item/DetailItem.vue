@@ -1,5 +1,7 @@
 <template>
   <div class="items">
+    <!-- <div id="table-of-content" /> -->
+
     <div class="item">
       <!-- パンくず -->
       <Breadcrumb :breadcrumbs="breadcrumbs" />
@@ -20,9 +22,7 @@
       </nuxt-link>
 
       <!-- 最終更新 -->
-      <p class="name text-xs text-right mt-1">
-        最終更新：{{ item.updated_at }}
-      </p>
+      <p class="name text-xs text-right mt-1">最終更新：{{ updated_at }}</p>
 
       <!-- 評価 -->
       <div class="flex items-center mt-1">
@@ -69,6 +69,7 @@
   </div>
 </template>
 <script>
+import dayjs from 'dayjs'
 export default {
   props: {
     item: {
@@ -83,6 +84,10 @@ export default {
     }
   },
   computed: {
+    updated_at() {
+      const time = dayjs(this.item.updated_at)
+      return time.format('YYYY-MM-DD')
+    },
     breadcrumbs() {
       return {
         data: [
@@ -100,6 +105,22 @@ export default {
         ],
       }
     },
+  },
+  mounted() {
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   const markdown = document.querySelector('.markdown')
+    //   const heads = markdown.querySelectorAll('h1, h2, h3, h4, h5, h6')
+    //   if (heads && heads.length) {
+    //     let contents = ''
+    //     heads.forEach((head, i) => {
+    //       contents += `<li><a href="#head${i}">${head.textContent}</a></li>`
+    //       head.innerHTML += `<a id="head${i}"></a>`
+    //     })
+    //     document.querySelector(
+    //       '#table-of-content'
+    //     ).innerHTML += `<ol>${contents}</ol>`
+    //   }
+    // })
   },
 }
 </script>
