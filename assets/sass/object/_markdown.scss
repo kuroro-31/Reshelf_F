@@ -61,18 +61,20 @@
     p code,
     li code,
     td code {
-      background-color: #d0d8d7;
+      // background-color: #d0d8d7;
       font-size: 90%;
       font-style: normal;
       padding: 0 5px;
       border-radius: 3px;
-      color: #1b1b1b;
+      // color: #1b1b1b;
     }
     pre {
-      background-color: #282C34 !important;
+      // background-color: #282C34 !important;
       border-radius: 0.5rem !important;
       code {
-        border-radius: 0.5rem !important;
+        padding: .5rem 1rem !important;
+        border-radius: 0 !important;
+        border: 0.1rem solid rgba(0,0,0,.1) !important;
       }
     }
 
