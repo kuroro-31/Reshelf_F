@@ -59,8 +59,6 @@
       </p>
     </div>
 
-    <div class="">DEMO</div>
-
     <div v-highlightjs class="markdown w-full" v-html="item.body"></div>
   </div>
 </template>
