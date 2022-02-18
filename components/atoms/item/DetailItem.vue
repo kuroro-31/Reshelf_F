@@ -1,70 +1,70 @@
 <template>
-  <div class="items">
-    <!-- <div id="table-of-content" /> -->
+  <div class="">
+    <div class="items">
+      <div class="item">
+        <!-- パンくず -->
+        <Breadcrumb :breadcrumbs="breadcrumbs" />
 
-    <div class="item">
-      <!-- パンくず -->
-      <Breadcrumb :breadcrumbs="breadcrumbs" />
+        <!-- タイトル -->
+        <span class="title">
+          {{ item.title }}
+        </span>
 
-      <!-- タイトル -->
-      <span class="title">
-        {{ item.title }}
-      </span>
-
-      <!-- 説明 -->
-      <div class="describe">
-        <!-- {{ item.describe }} -->
-      </div>
-
-      <!-- 作者 -->
-      <nuxt-link to="/user/top" class="name">
-        <!-- 作成者： {{ item.name }} -->
-      </nuxt-link>
-
-      <!-- 最終更新 -->
-      <p class="name text-xs text-right mt-1">最終更新：{{ updated_at }}</p>
-
-      <!-- 評価 -->
-      <div class="flex items-center mt-1">
-        <div class="flex items-center">
-          <!-- レート -->
-          <p
-            class="rate"
-            :class="{
-              rate_one: item.rate >= 0,
-              rate_two: item.rate >= 3.0,
-              rate_three: item.rate >= 4.0,
-              rate_four: item.rate >= 4.6,
-            }"
-          >
-            <!-- {{ item.rate | comma }} -->
-          </p>
-          <!-- レート画像 -->
-          <div
-            class="rate_img"
-            :class="{
-              rate_img_zero: item.rate >= 0.0,
-              rate_img_one: item.rate >= 1.0,
-              rate_img_one_five: item.rate >= 1.5,
-              rate_img_two: item.rate >= 2.0,
-              rate_img_two_five: item.rate >= 2.5,
-              rate_img_three: item.rate >= 3.0,
-              rate_img_three_five: item.rate >= 3.5,
-              rate_img_four: item.rate >= 4.0,
-              rate_img_four_five: item.rate >= 4.5,
-              rate_img_four_seven: item.rate >= 4.7,
-              rate_img_five: item.rate >= 5.0,
-            }"
-          ></div>
+        <!-- 説明 -->
+        <div class="describe">
+          <!-- {{ item.describe }} -->
         </div>
-        <p class="name ml-1 text-xs">
-          <!-- （総合評価：{{ item.all_rate | comma }}） -->
-        </p>
+
+        <!-- 作者 -->
+        <nuxt-link to="/user/top" class="name">
+          <!-- 作成者： {{ item.name }} -->
+        </nuxt-link>
+
+        <!-- 最終更新 -->
+        <p class="name text-xs text-right mt-1">最終更新：{{ updated_at }}</p>
+
+        <!-- 評価 -->
+        <div class="flex items-center mt-1">
+          <div class="flex items-center">
+            <!-- レート -->
+            <p
+              class="rate"
+              :class="{
+                rate_one: item.rate >= 0,
+                rate_two: item.rate >= 3.0,
+                rate_three: item.rate >= 4.0,
+                rate_four: item.rate >= 4.6,
+              }"
+            >
+              <!-- {{ item.rate | comma }} -->
+            </p>
+            <!-- レート画像 -->
+            <div
+              class="rate_img"
+              :class="{
+                rate_img_zero: item.rate >= 0.0,
+                rate_img_one: item.rate >= 1.0,
+                rate_img_one_five: item.rate >= 1.5,
+                rate_img_two: item.rate >= 2.0,
+                rate_img_two_five: item.rate >= 2.5,
+                rate_img_three: item.rate >= 3.0,
+                rate_img_three_five: item.rate >= 3.5,
+                rate_img_four: item.rate >= 4.0,
+                rate_img_four_five: item.rate >= 4.5,
+                rate_img_four_seven: item.rate >= 4.7,
+                rate_img_five: item.rate >= 5.0,
+              }"
+            ></div>
+          </div>
+          <p class="name ml-1 text-xs">
+            <!-- （総合評価：{{ item.all_rate | comma }}） -->
+          </p>
+        </div>
+
+        <div class="">DEMO</div>
+
+        <div v-highlightjs class="markdown w-full" v-html="item.body"></div>
       </div>
-
-      <div class="">DEMO</div>
-
-      <div v-highlightjs class="markdown w-full" v-html="item.body"></div>
     </div>
   </div>
 </template>
@@ -107,20 +107,54 @@ export default {
     },
   },
   mounted() {
-    // document.addEventListener('DOMContentLoaded', () => {
-    //   const markdown = document.querySelector('.markdown')
-    //   const heads = markdown.querySelectorAll('h1, h2, h3, h4, h5, h6')
-    //   if (heads && heads.length) {
-    //     let contents = ''
-    //     heads.forEach((head, i) => {
-    //       contents += `<li><a href="#head${i}">${head.textContent}</a></li>`
-    //       head.innerHTML += `<a id="head${i}"></a>`
-    //     })
-    //     document.querySelector(
-    //       '#table-of-content'
-    //     ).innerHTML += `<ol>${contents}</ol>`
-    //   }
-    // })
+    // 設定
+    const TOC_INSERT_SELECTOR = '#toc' // [セレクター指定] 目次を挿入する要素 querySelector用
+    const HEADING_SELECTOR = 'h1,h2,h3,h4,h5,h6' // [セレクター指定] 収集する見出し要素 querySelectorAll用
+    const LINK_CLASS_NAME = 'tocLink' // [クラス名] 目次用aタグに追加するクラス名     .無し
+    const ID_NAME = 'heading' // [ID名]    目次に追加するID名のプレフィックス #無し
+    const tocInsertElement = document.querySelector(TOC_INSERT_SELECTOR)
+    const headingElements = document.querySelectorAll(HEADING_SELECTOR)
+    const layer = []
+    let id = 0
+    const uid = () => `${ID_NAME}${id++}`
+    let oldRank = -1
+    try {
+      const createLink = (el) => {
+        let li = document.createElement('li')
+        let a = document.createElement('a')
+        el.id = el.id || uid()
+        a.href = `#${el.id}`
+        a.innerText = el.innerText
+        a.className = LINK_CLASS_NAME
+        li.appendChild(a)
+        return li
+      }
+      const findParentElement = (layer, rank, diff) => {
+        do {
+          rank += diff
+          if (layer[rank]) return layer[rank]
+        } while (0 < rank && rank < 7)
+        return false
+      }
+      const appendToc = (el, toc) => {
+        el.appendChild(toc.cloneNode(true))
+      }
+      headingElements.forEach((el) => {
+        let rank = Number(el.tagName.substring(1))
+        let parent = findParentElement(layer, rank, -1)
+        if (oldRank > rank) layer.length = rank + 1
+        if (!layer[rank]) {
+          layer[rank] = document.createElement('ol')
+          if (parent.lastChild) parent.lastChild.appendChild(layer[rank])
+        }
+        layer[rank].appendChild(createLink(el))
+        oldRank = rank
+      })
+      if (layer.length)
+        appendToc(tocInsertElement, findParentElement(layer, 0, 1))
+    } catch (e) {
+      //error
+    }
   },
 }
 </script>

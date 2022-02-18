@@ -1,191 +1,119 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
-    <div class="body">
-      <nav class="side-nav lg:max-h-(screen-22) pin-22 scroll-none">
-        <NuxtLink to="/" class="title-link">
-          <h1>
-            <img
-              src="https://res.cloudinary.com/reshelf/image/upload/v1619871156/Logo_pfuaao.svg"
-              alt="Reshelf Logo"
-              width="112"
-              height="24"
-              class="responsive"
-            />
-          </h1>
-        </NuxtLink>
-
-        <div class="w-full ml-auto mt-8">
-          <SidebarTac />
-        </div>
-      </nav>
-      <div class="card-lg main-body scroll-none">
-        <!-- ジャンル -->
-        <div
-          class="chapter"
-          @mouseover="chapter = true"
-          @mouseleave="chapter = false"
-        >
-          <div class="chapter-title">
-            Chapter
-            <chevron-down-icon
-              size="1x"
-              class="chapter-icon"
-            ></chevron-down-icon>
-          </div>
-          <transition>
-            <div v-if="chapter">
-              <div
-                class="chapter-contents"
-                @mouseover="chapter = true"
-                @mouseleave="chapter = false"
-              >
-                <div class="p-8">チャプター一覧</div>
-              </div>
-            </div>
-          </transition>
-        </div>
-
-        <div class="main-body-content">
-          <!-- <span class="text-xl text-gray inline-block mb-2">Tutorial</span> -->
-          <h2 class="text-3xl font-bold mb-4 flex items-center">
-            Laravel(+Vue.js)でSNS風Webサービスを作ろう
-          </h2>
-          <!-- <all-item :items="items" /> -->
-        </div>
-
-        <div class="chapter">
-          <a class="chapter-prev">
-            <chevron-left-icon
-              size="1.5x"
-              class="chapter-prev-icon"
-            ></chevron-left-icon>
-            <div class="chapter-prev-body">
-              <span class="chapter-prev-title">PREV</span>
-              <span class="chapter-next-content">
-                はじめに。。。。。。。。。。。。。
-              </span>
-            </div>
-          </a>
-          <a class="chapter-next">
-            <div class="chapter-next-body">
-              <span class="chapter-next-title">NEXT</span>
-              <span class="chapter-next-content">
-                次になんとかするゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾゾ
-              </span>
-            </div>
-            <chevron-right-icon
-              size="1.5x"
-              class="chapter-next-icon"
-            ></chevron-right-icon>
-          </a>
-        </div>
+    <HeaderNav />
+    <div class="main scroll-none">
+      <div class="w-1/5"></div>
+      <div class="lg:flex w-3/5 max-w-3xl justify-center">
+        <CourceItem :item="item" />
+        <!-- <FooterNav /> -->
       </div>
-      <div class="right-side">
-        <SidebarQa />
-      </div>
+      <div id="toc" class="toc" />
     </div>
     <!-- <FooterNav /> -->
   </div>
 </template>
 <script>
 export default {
+  async asyncData({ $axios, params }) {
+    const { data } = await $axios.$get(`/api/posts/${params.id}`)
+    return {
+      item: data,
+    }
+  },
   data() {
     return {
-      chapter: false,
+      item: [],
+    }
+  },
+  mounted() {
+    // 設定
+    const TOC_INSERT_SELECTOR = '#toc' // [セレクター指定] 目次を挿入する要素 querySelector用
+    const HEADING_SELECTOR = 'h1,h2,h3,h4,h5,h6' // [セレクター指定] 収集する見出し要素 querySelectorAll用
+    const LINK_CLASS_NAME = 'tocLink' // [クラス名] 目次用aタグに追加するクラス名     .無し
+    const ID_NAME = 'heading' // [ID名]    目次に追加するID名のプレフィックス #無し
+    const tocInsertElement = document.querySelector(TOC_INSERT_SELECTOR)
+    const headingElements = document.querySelectorAll(HEADING_SELECTOR)
+    const layer = []
+    let id = 0
+    const uid = () => `${ID_NAME}${id++}`
+    let links = null
+    let oldRank = -1
+    try {
+      const createLink = (el) => {
+        let li = document.createElement('li')
+        let a = document.createElement('a')
+        el.id = el.id || uid()
+        a.href = `#${el.id}`
+        a.innerText = el.innerText
+        a.className = LINK_CLASS_NAME
+        li.appendChild(a)
+        return li
+      }
+
+      const findParentElement = (layer, rank, diff) => {
+        do {
+          rank += diff
+          if (layer[rank]) return layer[rank]
+        } while (0 < rank && rank < 7)
+        return false
+      }
+
+      const appendToc = (el, toc) => {
+        el.appendChild(toc.cloneNode(true))
+      }
+
+      const tocHighlight = (e) => {
+        const sy = window.pageYOffset
+        const ey = sy + document.documentElement.clientHeight
+        let tocHighlightEl = null
+        links.forEach((el) => {
+          const targetEl = document.querySelector(el.hash)
+          const y = sy + targetEl.getBoundingClientRect().top
+          el.classList.remove('active')
+          if (sy < y && y < ey) tocHighlightEl = el
+          if (sy > y) tocHighlightEl = el
+        })
+        if (tocHighlightEl) tocHighlightEl.classList.add('active')
+      }
+
+      headingElements.forEach((el) => {
+        let rank = Number(el.tagName.substring(1))
+        let parent = findParentElement(layer, rank, -1)
+        if (oldRank > rank) layer.length = rank + 1
+        if (!layer[rank]) {
+          layer[rank] = document.createElement('ol')
+          if (parent.lastChild) parent.lastChild.appendChild(layer[rank])
+        }
+        layer[rank].appendChild(createLink(el))
+        oldRank = rank
+      })
+      if (layer.length)
+        appendToc(tocInsertElement, findParentElement(layer, 0, 1))
+
+      const links = document.querySelectorAll(`.${LINK_CLASS_NAME}`)
+      links.forEach((el) => {
+        el.addEventListener('click', (e) => {
+          const targetEl = document.querySelector(el.hash)
+          scrollTo(
+            0,
+            window.pageYOffset + targetEl.getBoundingClientRect().top - 100
+          )
+          e.preventDefault()
+          e.stopPropagation()
+        })
+      })
+
+      tocHighlight()
+      window.addEventListener('scroll', tocHighlight)
+    } catch (e) {
+      //error
     }
   },
 }
 </script>
 <style lang="scss" scoped>
-.body {
-  @apply lg:flex w-full relative justify-between;
-}
-.side-nav {
-  @apply hidden overflow-y-auto p-10;
-  @screen lg {
-    @apply fixed block left-0 top-0 bottom-0;
-    width: 20%;
-  }
-}
-.main-body {
-  @apply relative;
-  @screen lg {
-    margin-left: 20%;
-    width: 50%;
-  }
-  height: 2000px;
-}
-.right-side {
-  @apply hidden overflow-y-auto p-10;
-  @screen lg {
-    @apply fixed block right-0 top-0 bottom-0;
-    width: 30%;
-  }
-}
-.chapter {
-  @apply flex items-center justify-between text-xs mb-4;
-  color: var(--sub-color);
-  &-title {
-    @apply flex items-center font-bold cursor-pointer rounded py-2 px-4;
-    border: 2px solid var(--eee);
-  }
-  &-icon {
-    @apply flex-shrink-0 inline-block cursor-pointer ml-4;
-  }
-  &-contents {
-    @apply absolute top-0 left-0 ml-10 z-50 rounded shadow-lg overflow-y-auto cursor-default;
-    background-color: var(--bg-secondary);
-    @screen lg {
-      margin-top: 70px;
-      width: 400px;
-      max-height: 500px;
-    }
-  }
-  &-prev {
-    @apply inline-flex justify-start items-center rounded p-4 cursor-pointer;
-    width: 300px;
-    height: 100px;
-    border: 2px solid var(--gray);
-    &:hover {
-      border: 2px solidrgba(var(--primary));
-    }
-    &-icon {
-      @apply text-primary inline-block;
-    }
-    &-body {
-      @apply flex flex-col w-full ml-8;
-      max-width: 212px;
-    }
-    &-title {
-      @apply w-full h-1/2 pb-2 font-bold text-left;
-      color: var(--sub-color);
-    }
-    &-content {
-      @apply h-1/2 text-left truncate;
-    }
-  }
-  &-next {
-    @apply inline-flex justify-end items-center rounded p-4 cursor-pointer;
-    width: 300px;
-    height: 100px;
-    border: 2px solid var(--gray);
-    &:hover {
-      border: 2px solidrgba(var(--primary));
-    }
-    &-icon {
-      @apply text-primary inline-block;
-    }
-    &-body {
-      @apply flex flex-col w-full mr-8;
-      max-width: 212px;
-    }
-    &-title {
-      @apply w-full h-1/2 pb-2 font-bold text-right;
-      color: var(--sub-color);
-    }
-    &-content {
-      @apply h-1/2 text-left truncate;
-    }
-  }
+.main {
+  @apply w-full flex justify-center relative my-12;
+  // margin-top: -420px;
 }
 </style>
