@@ -1,36 +1,41 @@
 :root {
   .markdown {
+    font-size: 17px;
+    line-height: 1.9rem;
+
     h1 {
-      font-size: 36px;
+      @apply font-bold;
+      font-size: 2rem;
       font-weight: bold;
       padding: 20px 0;
     }
     h2 {
-      font-size: 22px;
-      font-weight: bold;
-      background-image: linear-gradient(to right bottom, #2a4dc1, #295cc9, #2d6ad0, #3678d7, #4286dc, #4d88de, #568ae0, #5f8ce2, #6a82df, #7776db, #8569d4, #935bca);
-      color: #fff;
-      padding: 10px 15px;
+      @apply font-bold;
+      font-size: 1.5rem;
       border-radius: 5px;
-      margin: 40px 0 10px;
+      margin: 42px 0 21px;
     }
     h3 {
-      font-size: 22px;
-      font-weight: bold;
-      border-bottom: 3px solid rgba(var(--primary), 1);
+      @apply font-bold;
+      font-size: 1.25rem;
       margin: 40px 0 10px;
     }
     h4 {
+      @apply font-bold;
       font-size: 18px;
-      font-weight: bold;
-      border-left: 3px solid rgba(var(--primary), 1);
       margin: 40px 0 10px;
       padding: 0 0 0 10px;
     }
     h5 {
+      @apply font-bold;
       font-size: 16px;
       margin: 40px 0 10px;
-      font-weight: bold;
+    }
+
+    p {
+      @apply break-words mb-5;
+      letter-spacing: .01rem;
+      text-align: justify;
     }
 
     /*//////////////////////////////////////////////*/
@@ -114,8 +119,8 @@
       left: -1em;
       width: 6px;
       height: 6px;
-      border-right: 2px solid rgba(var(--primary), 1);
-      border-bottom: 2px solid rgba(var(--primary), 1);
+      border-right: 2px solid var(--color);
+      border-bottom: 2px solid var(--color);
       background-color: inherit;
       border-radius: 0;
       -webkit-transform: rotate(-45deg);
@@ -130,8 +135,8 @@
       left: -1em;
       width: 6px;
       height: 6px;
-      border-right: 2px solid rgba(var(--primary), 1);
-      border-bottom: 2px solid rgba(var(--primary), 1);
+      border-right: 2px solid var(--color);
+      border-bottom: 2px solid var(--color);
       background-color: inherit;
       border-radius: 0;
       -webkit-transform: rotate(-45deg);
@@ -147,8 +152,8 @@
       left: -1em;
       width: 8px;
       height: 3px;
-      border-left: 2px solid rgba(var(--primary), 1);
-      border-bottom: 2px solid rgba(var(--primary), 1);
+      border-left: 2px solid var(--color);
+      border-bottom: 2px solid var(--color);
       background-color: inherit;
       border-radius: 0;
       -webkit-transform: rotate(-45deg);
@@ -165,7 +170,7 @@
       position: absolute;
       top: .3em;
       left: -1em;
-      color: rgba(var(--primary), 1);
+      color: var(--color);
       font-size: 14px;
       line-height: 1;
       font-weight: bold;
@@ -176,15 +181,14 @@
     /*//////////////////////////////////////////////*/
 
     table {
+      font-size: 17px;
       border-collapse: collapse;
       border: 1px solid #b7bdbc !important;
-      line-height: 1.5;
       margin: 10px 0;
       width: 100%;
     }
     table th {
       padding: 10px;
-      font-size: 12px;
       font-weight: bold;
       vertical-align: top;
       text-align: left;
@@ -192,7 +196,6 @@
       border: 1px solid #b7bdbc !important;
     }
     table td {
-      font-size: 12px;
       padding: 10px;
       vertical-align: top;
       border: 1px solid #b7bdbc !important;
