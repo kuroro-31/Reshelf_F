@@ -1,14 +1,8 @@
 <template>
   <div class="items">
     <div class="item">
-      <!-- ジャンル -->
-      <div class="genre">
-        <span class="genre-title">開発</span>
-        <span class="mx-2">></span>
-        <span class="genre-title">データサイエンス</span>
-        <span class="mx-2">></span>
-        <span class="genre-title">データ分析</span>
-      </div>
+      <!-- パンくず -->
+      <Breadcrumb :breadcrumbs="breadcrumbs" />
 
       <!-- タイトル -->
       <span class="title">
@@ -88,6 +82,25 @@ export default {
       isDisabled: false,
     }
   },
+  computed: {
+    breadcrumbs() {
+      return {
+        data: [
+          {
+            name: 'トップページ',
+            path: '/',
+          },
+          {
+            name: 'カテゴリー名',
+            path: '/category/',
+          },
+          {
+            name: '記事タイトルです',
+          },
+        ],
+      }
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -100,14 +113,7 @@ export default {
 .item {
   @apply flex flex-col relative justify-between items-start;
 }
-.genre {
-  @apply flex items-center text-xs;
-  &-title {
-    @apply font-bold cursor-pointer;
-    &:hover {
-    }
-  }
-}
+
 .title {
   @apply font-bold cursor-pointer text-4xl mt-4;
 }
