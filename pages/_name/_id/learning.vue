@@ -65,15 +65,21 @@ export default {
       const tocHighlight = (e) => {
         const sy = window.pageYOffset
         const ey = sy + document.documentElement.clientHeight
-        let tocHighlightEl = null
+        let tocHighlightEl = [null]
         links.forEach((el) => {
           const targetEl = document.querySelector(el.hash)
           const y = sy + targetEl.getBoundingClientRect().top
           el.classList.remove('active')
-          if (sy < y && y < ey) tocHighlightEl = el
-          if (sy > y) tocHighlightEl = el
+          if (sy < y && y < ey) {
+            tocHighlightEl.push(el)
+            tocHighlightEl[0] = null
+          }
+          if (sy > y) tocHighlightEl[0] = el
         })
-        if (tocHighlightEl) tocHighlightEl.classList.add('active')
+        if (tocHighlightEl.length)
+          tocHighlightEl.forEach((el) => {
+            el && el.classList.add('active')
+          })
       }
 
       headingElements.forEach((el) => {
