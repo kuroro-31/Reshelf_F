@@ -106,7 +106,10 @@
               class="item flex"
             >
               <nuxt-link
-                :to="{ name: 'item-id', params: { id: item.id } }"
+                :to="{
+                  name: 'name-id-learning',
+                  params: { name: item.user.name, id: item.id },
+                }"
                 class="relative flex flex-col items-start"
               >
                 <button class="relative">
