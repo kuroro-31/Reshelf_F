@@ -15,7 +15,8 @@
     color: #525860;
     &.active {
       @apply font-bold;
-      color: rgba(var(--primary)) !important;
+      color: #3578e5 !important;
+      // color: rgba(var(--primary)) !important;
     }
   }
 }

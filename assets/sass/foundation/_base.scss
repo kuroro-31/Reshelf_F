@@ -33,9 +33,13 @@ body {
 *,
 *::before,
 *::after {
-  @apply box-border m-0;}
+  @apply box-border m-0;
+}
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   @apply focus:outline-none outline-none;
 }
 .scroll-none {
@@ -96,7 +100,12 @@ button, input, select, textarea {
   stroke-miterlimit: 2 !important;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--strong);
 }
 
@@ -106,16 +115,15 @@ h1,h2,h3,h4,h5,h6 {
   min-width: 45px;
   max-height: 45px;
   max-width: 45px;
-  fill: #91949C;
-  transform:  msfilter;
+  fill: #91949c;
+  transform: msfilter;
   &:hover {
     // @apply;
-    fill:rgba(var(--primary));
+    fill: rgba(var(--primary));
     // background: var(--light-primary);
     // border: 1px solid #CDD7EE;
   }
 }
-
 
 /* home route and active route will show in bold as it matches / and /about */
 // a.nuxt-link-active,
@@ -132,10 +140,9 @@ a.nuxt-link-exact-active {
     font-weight: bold;
     border-radius: 6px;
     color: rgba(var(--primary));
-    background: rgba(var(--primary), .2);
+    background: rgba(var(--primary), 0.2);
     &:hover {
-      background: rgba(var(--primary), .3);
-
+      background: rgba(var(--primary), 0.3);
     }
   }
 }

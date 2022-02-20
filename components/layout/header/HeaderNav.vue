@@ -52,6 +52,7 @@ export default {
   @apply sticky top-0 z-20 flex items-center justify-center h-16;
   background-color: var(--bg-secondary);
   padding: 0 6.7%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   // background-color:rgba(var(--primary));
   // border-bottom-width: 1px;
   // border-style: solid;
