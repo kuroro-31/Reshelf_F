@@ -1,70 +1,68 @@
 <template>
-  <div class="">
-    <div class="items">
-      <div class="item">
-        <!-- パンくず -->
-        <Breadcrumb :breadcrumbs="breadcrumbs" />
+  <div class="items">
+    <div class="item">
+      <!-- パンくず -->
+      <Breadcrumb :breadcrumbs="breadcrumbs" />
 
-        <!-- タイトル -->
-        <span class="title">
-          {{ item.title }}
-        </span>
+      <!-- タイトル -->
+      <span class="title">
+        {{ item.title }}
+      </span>
 
-        <!-- 説明 -->
-        <div class="describe">
-          <!-- {{ item.describe }} -->
-        </div>
-
-        <!-- 作者 -->
-        <nuxt-link to="/user/top" class="name">
-          <!-- 作成者： {{ item.name }} -->
-        </nuxt-link>
-
-        <!-- 最終更新 -->
-        <p class="name text-xs text-right mt-1">最終更新：{{ updated_at }}</p>
-
-        <!-- 評価 -->
-        <div class="flex items-center mt-1">
-          <div class="flex items-center">
-            <!-- レート -->
-            <p
-              class="rate"
-              :class="{
-                rate_one: item.rate >= 0,
-                rate_two: item.rate >= 3.0,
-                rate_three: item.rate >= 4.0,
-                rate_four: item.rate >= 4.6,
-              }"
-            >
-              <!-- {{ item.rate | comma }} -->
-            </p>
-            <!-- レート画像 -->
-            <div
-              class="rate_img"
-              :class="{
-                rate_img_zero: item.rate >= 0.0,
-                rate_img_one: item.rate >= 1.0,
-                rate_img_one_five: item.rate >= 1.5,
-                rate_img_two: item.rate >= 2.0,
-                rate_img_two_five: item.rate >= 2.5,
-                rate_img_three: item.rate >= 3.0,
-                rate_img_three_five: item.rate >= 3.5,
-                rate_img_four: item.rate >= 4.0,
-                rate_img_four_five: item.rate >= 4.5,
-                rate_img_four_seven: item.rate >= 4.7,
-                rate_img_five: item.rate >= 5.0,
-              }"
-            ></div>
-          </div>
-          <p class="name ml-1 text-xs">
-            <!-- （総合評価：{{ item.all_rate | comma }}） -->
-          </p>
-        </div>
-
-        <div class="">DEMO</div>
-
-        <div v-highlightjs class="markdown w-full" v-html="item.body"></div>
+      <!-- 説明 -->
+      <div class="describe">
+        <!-- {{ item.describe }} -->
       </div>
+
+      <!-- 作者 -->
+      <nuxt-link to="/user/top" class="name">
+        <!-- 作成者： {{ item.name }} -->
+      </nuxt-link>
+
+      <!-- 最終更新 -->
+      <p class="name text-xs text-right mt-1">最終更新：{{ updated_at }}</p>
+
+      <!-- 評価 -->
+      <div class="flex items-center mt-1">
+        <div class="flex items-center">
+          <!-- レート -->
+          <p
+            class="rate"
+            :class="{
+              rate_one: item.rate >= 0,
+              rate_two: item.rate >= 3.0,
+              rate_three: item.rate >= 4.0,
+              rate_four: item.rate >= 4.6,
+            }"
+          >
+            <!-- {{ item.rate | comma }} -->
+          </p>
+          <!-- レート画像 -->
+          <div
+            class="rate_img"
+            :class="{
+              rate_img_zero: item.rate >= 0.0,
+              rate_img_one: item.rate >= 1.0,
+              rate_img_one_five: item.rate >= 1.5,
+              rate_img_two: item.rate >= 2.0,
+              rate_img_two_five: item.rate >= 2.5,
+              rate_img_three: item.rate >= 3.0,
+              rate_img_three_five: item.rate >= 3.5,
+              rate_img_four: item.rate >= 4.0,
+              rate_img_four_five: item.rate >= 4.5,
+              rate_img_four_seven: item.rate >= 4.7,
+              rate_img_five: item.rate >= 5.0,
+            }"
+          ></div>
+        </div>
+        <p class="name ml-1 text-xs">
+          <!-- （総合評価：{{ item.all_rate | comma }}） -->
+        </p>
+      </div>
+
+      <div class="">DEMO</div>
+
+      <div v-highlightjs class="markdown w-full" v-html="item.body"></div>
     </div>
   </div>
 </template>
