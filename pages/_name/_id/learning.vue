@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
-    <HeaderNav />
+    <LearningNav :item="item" />
     <div class="main scroll-none">
       <div class="w-1/5"></div>
       <div class="lg:flex w-3/5 max-w-3xl justify-center">

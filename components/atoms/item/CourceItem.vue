@@ -10,12 +10,12 @@
 
     <!-- 説明 -->
     <div class="describe">
-      <!-- {{ item.describe }} -->
+      {{ item.describe }}
     </div>
 
     <!-- 作者 -->
     <nuxt-link to="/user/top" class="name">
-      <!-- 作成者： {{ item.name }} -->
+      作成者： {{ item.user.name }}
     </nuxt-link>
 
     <!-- 最終更新 -->
@@ -59,7 +59,10 @@
       </p>
     </div>
 
-    <div v-highlightjs class="markdown w-full" v-html="item.body"></div>
+    <!-- <div v-highlightjs class="markdown w-full" v-html="item.body"></div> -->
+    <div class="whitespace-pre-wrap">
+      {{ item.body }}
+    </div>
   </div>
 </template>
 <script>
