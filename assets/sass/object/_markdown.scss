@@ -80,6 +80,9 @@
         padding: 0.5rem 1rem !important;
         border-radius: 0 !important;
         border: 0.1rem solid rgba(0, 0, 0, 0.1) !important;
+        span {
+          font-family: Consolas, Menlo, 'Liberation Mono', Courier, monospace !important;
+        }
       }
     }
 

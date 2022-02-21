@@ -69,6 +69,9 @@ import draggable from 'vuedraggable'
 
 export default {
   name: 'NoteItem',
+  components: {
+    draggable,
+  },
   props: {
     note: {
       type: Object,

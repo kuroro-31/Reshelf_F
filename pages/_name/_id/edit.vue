@@ -2,28 +2,26 @@
   <div class="w-full h-screen mx-auto flex flex-col scroll-none">
     <HeaderNav />
     <div class="w-full flex mx-auto scroll-none">
-      <div class="flex w-full mt-4 justify-center">
-        <div class="">
-          <div @click.self="onEditNoteEnd()">
-            <!-- ノートリスト -->
-            <draggable :list="noteList" group="notes" :animation="200">
-              <NoteItem
-                v-for="note in noteList"
-                :key="note.id"
-                :note="note"
-                :layer="1"
-                @delete="onDeleteNote"
-                @select="onSelectNote"
-                @editStart="onEditNoteStart"
-                @editEnd="onEditNoteEnd"
-                @addChild="onAddChildNote"
-                @addNoteAfter="onAddNoteAfter"
-              />
-            </draggable>
+      <form class="flex w-full mt-4 justify-center" @submit.prevent="update">
+        <div class="chapter" @click.self="onEditNoteEnd()">
+          <!-- ノートリスト -->
+          <draggable :list="noteList" group="notes" :animation="200">
+            <NoteItem
+              v-for="note in noteList"
+              :key="note.id"
+              :note="note"
+              :layer="1"
+              @delete="onDeleteNote"
+              @select="onSelectNote"
+              @editStart="onEditNoteStart"
+              @editEnd="onEditNoteEnd"
+              @addChild="onAddChildNote"
+              @addNoteAfter="onAddNoteAfter"
+            />
+          </draggable>
 
-            <!-- ノート追加ボタン -->
-            <button @click="onClickButtonAdd">追加</button>
-          </div>
+          <!-- ノート追加ボタン -->
+          <button @click="onClickButtonAdd">追加</button>
         </div>
         <div class="main-body scroll-none">
           <div class="main-body-content">
@@ -39,73 +37,48 @@
                 </div>
                 <div class="note-content">
                   <h3 class="note-title">{{ selectedNote.name }}</h3>
-                  <draggable :list="selectedNote.widgetList" group="widgets">
-                    <WidgetItem
-                      v-for="widget in selectedNote.widgetList"
-                      :key="widget.id"
-                      :widget="widget"
-                      :layer="1"
-                      @delete="onDeleteWidget"
-                      @addChild="onAddChildWidget"
-                      @addWidgetAfter="onAddWidgetAfter"
-                    />
-                  </draggable>
-                  <button class="transparent" @click="onClickButtonAddWidget">
-                    ウィジェットを追加
-                  </button>
+                  <WidgetItem
+                    v-for="widget in selectedNote.widgetList"
+                    :key="widget.id"
+                    :widget="widget"
+                    :layer="1"
+                    @delete="onDeleteWidget"
+                    @addChild="onAddChildWidget"
+                    @addWidgetAfter="onAddWidgetAfter"
+                  />
                 </div>
               </template>
             </div>
 
-            <!-- <all-item :items="items" /> -->
-            <form @submit.prevent="update">
-              <!-- タイトル -->
-              <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                タイトル
-              </label>
-              <input
-                v-model.trim="post.title"
-                type="text"
-                autofocus
-                class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-              />
-
-              <!-- タグ -->
-              <!-- <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                タグ
-              </label>
-              <article-tags-input
-                :autocomplete-items="allTagNames"
-                :all-tags="filteredItems"
-                @catchTags="post.tags"
-              ></article-tags-input> -->
-
-              <!-- body -->
-              <label class="font-semibold text-xs text-gray-600 pb-1 block">
-                本文
-              </label>
-              <editor
-                v-model.trim="post.body"
-                selector="textarea"
-                api-key="oxl1g4dleeqrpfmcnpvu7wqcnpsljq6nxbpenlhole2n0rmh"
-                :init="init"
-              />
-            </form>
+            <!-- タイトル -->
+            <label class="font-semibold text-xs text-gray-600 pb-1 block">
+              タイトル
+            </label>
+            <input
+              v-model.trim="post.title"
+              type="text"
+              autofocus
+              class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+            />
           </div>
         </div>
-      </div>
+      </form>
     </div>
     <!-- <FooterNav /> -->
     <Toast />
   </div>
 </template>
 <script>
-import { update } from '@/mixins/posts/update.js'
-import { editor } from '@/mixins/posts/editor.js'
 // import { toast } from '@/mixins/toast/toast.js'
 import draggable from 'vuedraggable'
 export default {
-  mixins: [update, editor],
+  components: {
+    draggable,
+  },
+  async asyncData({ $axios, params }) {
+    const { data } = await $axios.$get(`/api/posts/${params.id}`)
+    return { post: data }
+  },
   // props: {
   //   success: {
   //     type: Boolean,
@@ -116,14 +89,21 @@ export default {
       // update_error: false,
       // update_success: false,
       alert: '',
+      post: {
+        title: '',
+        body: this.noteList,
+        tags: [],
+      },
+      saved: false,
+
       content: [],
-      allTagNames: [
-        'プログラミング',
-        'python',
-        'javascript',
-        'golong',
-        'gaagaa',
-      ],
+      // allTagNames: [
+      //   'プログラミング',
+      //   'python',
+      //   'javascript',
+      //   'golong',
+      //   'gaagaa',
+      // ],
       noteList: [],
       selectedNote: null,
     }
@@ -143,12 +123,55 @@ export default {
       return searchSelectedPath(this.noteList)
     },
   },
+  watch: {
+    post: {
+      // eslint-disable-next-line
+      handler: _.debounce(function () {
+        this.update()
+      }, 2000), // 更新されたら保存処理
+      deep: true,
+    },
+    saved: {
+      // 保存完了後にアラートを消す
+      // eslint-disable-next-line
+      handler: _.debounce(function () {
+        this.clearAlert()
+      }, 2000),
+      deep: true,
+    },
+  },
   methods: {
+    async update() {
+      try {
+        this.alert = '保存中です...'
+        await this.$axios
+          .$patch(`/api/posts/${this.$route.params.id}`, {
+            title: this.post.title,
+            body: this.noteList,
+          })
+          .then(({ data }) => {
+            this.alert = '保存しました。'
+            this.saved = true
+          })
+      } catch (error) {
+        if (error.response.status == '401') {
+          this.$store.dispatch('user/logout')
+          this.$router.push('/auth/login')
+        } else if (error.response.status == '404') {
+          this.$router.push('/error/404')
+        } else if (error.response.status == '500') {
+          this.$router.push('/error/500')
+        }
+      }
+    },
+    clearAlert() {
+      this.alert = ''
+    },
     onAddNoteCommon(targetList, layer, index) {
       layer = layer || 1
       const note = {
         id: new Date().getTime().toString(16),
-        name: `新規ノート-${layer}-${targetList.length}`,
+        name: `チャプター-${layer}-${targetList.length}`,
         mouseover: false,
         editing: false,
         selected: false,
@@ -218,7 +241,7 @@ export default {
       const widget = {
         id: new Date().getTime().toString(16),
         type: layer === 1 ? 'heading' : 'body',
-        text: '',
+        body: '',
         mouseover: false,
         children: [],
         layer: layer,
@@ -289,13 +312,9 @@ export default {
 .title {
   color: var(--color);
 }
-.mce-content-body {
-  pre[class*='language-'] {
-    background-color: #282c34 !important;
-    border-radius: 0.5rem !important;
-    code {
-      border-radius: 0.5rem !important;
-    }
-  }
+
+.chapter {
+  // @apply;
+  width: 300px;
 }
 </style>

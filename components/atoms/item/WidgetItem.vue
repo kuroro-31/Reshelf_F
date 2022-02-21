@@ -7,92 +7,23 @@
       @mouseleave="onMouseLeave"
     >
       <template v-if="propsWidget.type == 'heading'">
-        <input
+        <editor
           :ref="'widget-heading-' + propsWidget.id"
           v-model="propsWidget.text"
-          class="heading transparent"
-          placeholder="見出し"
-          @keypress.enter="onClickAddWidgetAfter(parentWidget, propsWidget)"
-          @keydown.tab="onKeydownTab"
-          @keydown.delete="onKeydownDelete"
+          selector="textarea"
+          api-key="oxl1g4dleeqrpfmcnpvu7wqcnpsljq6nxbpenlhole2n0rmh"
+          :init="init"
         />
       </template>
-      <template v-if="propsWidget.type == 'body'">
-        <input
-          :ref="'widget-body-' + propsWidget.id"
-          v-model="propsWidget.text"
-          class="body transparent"
-          placeholder="本文"
-          @keypress.enter="onClickAddWidgetAfter(parentWidget, propsWidget)"
-          @keydown.tab="onKeydownTab"
-          @keydown.delete="onKeydownDelete"
-        />
-      </template>
-      <template v-if="propsWidget.type == 'code'">
-        <textarea
-          :ref="'widget-code-' + propsWidget.id"
-          v-model="propsWidget.text"
-          class="code"
-          rows="1"
-          placeholder="コード"
-          @keydown.delete="onKeydownDelete"
-        ></textarea>
-      </template>
-      <div v-show="propsWidget.mouseover" class="buttons">
-        <div
-          v-if="layer < 3"
-          class="button-icon"
-          @click="onClickChildWidget(propsWidget)"
-        >
-          <i class="fas fa-sitemap"></i>
-        </div>
-        <div
-          class="button-icon"
-          @click="onClickAddWidgetAfter(parentWidget, propsWidget)"
-        >
-          <i class="fas fa-plus-circle"></i>
-        </div>
-        <div
-          class="button-icon"
-          @click="onClickDelete(parentWidget, propsWidget)"
-        >
-          <i class="fas fa-trash"></i>
-        </div>
-        <div class="button-icon">
-          <i class="fas fa-cog" data-toggle="dropdown"></i>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" @click="propsWidget.type = 'heading'">
-              見出し
-            </a>
-            <a class="dropdown-item" @click="propsWidget.type = 'body'">本文</a>
-            <a class="dropdown-item" @click="propsWidget.type = 'code'">
-              ソースコード
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="child-widget">
-      <draggable :list="widget.children" group="widgets" :animation="200">
-        <WidgetItem
-          v-for="childWidget in widget.children"
-          :key="childWidget.id"
-          :widget="childWidget"
-          :parent-widget="widget"
-          :layer="layer + 1"
-          @delete="onClickDelete"
-          @addChild="onClickChildWidget"
-          @addWidgetAfter="onClickAddWidgetAfter"
-        />
-      </draggable>
     </div>
   </div>
 </template>
 
 <script>
-import draggable from 'vuedraggable'
+import { editor } from '@/mixins/posts/editor.js'
 export default {
   name: 'WidgetItem',
+  mixins: [editor],
   props: {
     widget: {
       type: Object,
@@ -124,7 +55,7 @@ export default {
   },
   mounted() {
     const input = this.$refs[`widget-${this.widget.type}-${this.widget.id}`]
-    input.focus()
+    // input.focus()
   },
   methods: {
     onMouseOver() {
@@ -193,23 +124,6 @@ export default {
   }
   input.body {
     font-size: 16px;
-  }
-  .code {
-    width: calc(100% - 120px);
-    height: 35px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 8px;
-    color: #f8f8f2;
-    background: #282a36;
-    font-size: 14px;
-    font-family: Consolas, Menlo, 'Liberation Mono', Courier, monospace;
-    resize: none;
-  }
-  .code:focus {
-    outline: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
   }
 }
 .child-widget {

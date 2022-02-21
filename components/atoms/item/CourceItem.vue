@@ -104,7 +104,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .item {
-  @apply flex flex-col relative justify-between items-start p-8;
+  @apply w-full flex flex-col relative justify-between items-start p-8;
   background: var(--bg-secondary);
 }
 
