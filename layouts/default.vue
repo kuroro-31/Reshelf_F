@@ -61,8 +61,9 @@ export default {
     async setDefaultLang() {
       let result = null
       const brawserLang = window.navigator.language
+      console.log(brawserLang)
 
-      if (brawserLang == 'ja') {
+      if (brawserLang == 'ja' || brawserLang == 'ja-JP') {
         result = 'ja'
       } else {
         result = 'en'
