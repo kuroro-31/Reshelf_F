@@ -27,6 +27,17 @@
           <div class="main-body-content">
             <p class="mb-4">{{ alert }}</p>
 
+            <!-- タイトル -->
+            <label class="font-semibold text-xs text-gray-600 pb-1 block">
+              タイトル
+            </label>
+            <input
+              v-model.trim="post.title"
+              type="text"
+              autofocus
+              class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
+            />
+
             <div @click.self="onEditNoteEnd()">
               <template v-if="selectedNote == null">
                 <div class="no-selected-note">ノートを選択してください</div>
@@ -49,17 +60,6 @@
                 </div>
               </template>
             </div>
-
-            <!-- タイトル -->
-            <label class="font-semibold text-xs text-gray-600 pb-1 block">
-              タイトル
-            </label>
-            <input
-              v-model.trim="post.title"
-              type="text"
-              autofocus
-              class="border rounded px-3 py-2 mt-1 mb-5 text-xs w-full"
-            />
           </div>
         </div>
       </form>
@@ -91,7 +91,6 @@ export default {
       alert: '',
       post: {
         title: '',
-        body: this.noteList,
         tags: [],
       },
       saved: false,

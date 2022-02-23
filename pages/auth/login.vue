@@ -50,7 +50,7 @@
           <h2>ログインまたはアカウントを作成</h2>
         </div>
         <div class="login-content">
-          <div class="bg-white shadow w-full divide-y divide-gray-200">
+          <div class="shadow w-full divide-y divide-gray-200">
             <form class="px-5 py-7" @submit.prevent="login">
               <!-- メールアドレス -->
               <label class="font-semibold text-xs text-gray-600 pb-1 block">
@@ -139,7 +139,7 @@
               </div>
             </div>
           </div>
-          <div class="py-5 bg-white">
+          <div class="py-5">
             <div class="grid grid-cols-2 gap-1">
               <div class="text-center sm:text-left whitespace-nowrap">
                 <nuxt-link
@@ -189,9 +189,15 @@ export default {
 <style lang="scss" scoped>
 .login {
   @apply h-screen w-screen overflow-hidden flex justify-center;
-  background-image: url('https://source.unsplash.com/3000x3000?stylish');
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+  // background-image: url('https://source.unsplash.com/3000x3000?stylish');
+  // background-position: center !important;
+  // background-repeat: no-repeat !important;
+  background: rgb(69, 200, 171);
+  background: linear-gradient(
+    138deg,
+    rgba(69, 200, 171, 1) 0%,
+    rgba(51, 153, 228, 1) 100%
+  );
   height: 100vh;
   width: 100vw;
   // background: #16afaf;
@@ -205,11 +211,13 @@ export default {
     }
   }
   &-content {
-    @apply z-20 md:ml-28 rounded-lg;
+    @apply md:ml-28 rounded-lg;
+    background: #fff;
+    z-index: 9999;
   }
 }
 .bg {
   @apply absolute w-screen h-screen top-0 right-0 left-0 bottom-0 m-0 p-0 z-10;
-  background: rgba(#000000, 0.7);
+  background: rgba(#000000, 0.3);
 }
 </style>

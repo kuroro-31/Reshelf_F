@@ -47,9 +47,16 @@ export default {
   // background-position: center !important;
   // background-repeat: no-repeat !important;
   // background: #16afaf;
-  background: rgba(var(--primary));
-
-  object-fit: cover !important;
+  // background: rgba(var(--primary));
+  background: rgb(69, 200, 171);
+  background: linear-gradient(
+    138deg,
+    rgba(69, 200, 171, 1) 0%,
+    rgba(51, 153, 228, 1) 100%
+  );
+  height: 100vh;
+  width: 100vw;
+  // object-fit: cover !important;
   &-title {
     h1 {
       @apply text-9xl font-bold mt-4;
