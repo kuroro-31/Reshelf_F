@@ -6,6 +6,7 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
+  // NOTE meta情報の翻訳化
   head() {
     const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
     return {
@@ -45,7 +46,7 @@ export default {
     }
   },
   computed: {
-    // 最後消す
+    // TODO Storeチェックが終わったら最後消す
     ...mapGetters({
       isUser: 'user/auth',
       user: 'user/user',
@@ -58,10 +59,10 @@ export default {
     this.setDefaultLang()
   },
   methods: {
+    // NOTE ブラウザ言語がjp以外はサイト言語をenで返す
     async setDefaultLang() {
       let result = null
       const brawserLang = window.navigator.language
-      console.log(brawserLang)
 
       if (brawserLang == 'ja' || brawserLang == 'ja-JP') {
         result = 'ja'
