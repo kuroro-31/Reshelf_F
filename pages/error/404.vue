@@ -12,7 +12,7 @@
           <div class="py-5">
             <div class="text-center sm:text-left whitespace-nowrap">
               <nuxt-link
-                class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-xs rounded text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset"
+                class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-xs rounded text-gray-500 bg-gray-200 focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset"
                 to="/"
               >
                 <span class="inline-block ml-1">{{ $t('ホームへ戻る') }}</span>
@@ -69,6 +69,6 @@ export default {
 }
 .bg {
   @apply absolute w-screen h-screen top-0 right-0 left-0 bottom-0 m-0 p-0 z-10;
-  background: rgba(#000000, 0.3);
+  background: rgba(#000000, 0.6);
 }
 </style>
