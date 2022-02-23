@@ -5,6 +5,7 @@
       <div class="flex lg:w-1/2 justify-center h-full items-center">
         <div class="flex flex-col">
           <h2 class="title">
+            <!-- TODO 翻訳 -->
             {{ $t('常に最新。\n注目のトピックを学習しよう') }}
           </h2>
           <span class="describe">
@@ -24,6 +25,7 @@
         </div>
       </div>
       <div class="main-img">
+        <!-- TODO 画像をコンポーネント化 -->
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -306,6 +308,7 @@ export default {
   },
   methods: {
     async resetVuex() {
+      // NOTE カートリセット
       await this.$store
         .dispatch('cart/reset')
         .then((value) => {
