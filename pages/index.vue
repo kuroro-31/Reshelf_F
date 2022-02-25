@@ -29,7 +29,7 @@
     </div>
 
     <main class="w-full flex flex-col max-w-screen-xl mx-auto container">
-      <div class="message">
+      <div v-if="!isUser" class="message">
         <h2 class="text-5xl font-bold mb-12">メッセージ</h2>
         <div class="message-content">
           <div class="message-content-left">
