@@ -1,7 +1,7 @@
 <template>
   <nuxt-link to="/">
     <!-- <img src="@/assets/images/logo.svg" alt="Reshelf logo" /> -->
-    <svg
+    <!-- <svg
       xmlns="http://www.w3.org/2000/svg"
       width="510.699"
       height="104.104"
@@ -34,7 +34,8 @@
           d="M913,477.153a9.189,9.189,0,0,1,6.694-2.459,14.765,14.765,0,0,1,7.924,2.6l7.1-15.028a37.409,37.409,0,0,0-18.444-4.782c-15.847,0-26.094,9.7-26.094,24.728v7.924h-9.563v13.935h9.563v55.877h20.493V504.081h15.984V490.146H910.677v-6.421a9.38,9.38,0,0,1,2.6-6.831Z"
         />
       </g>
-    </svg>
+    </svg> -->
+    <h1 class="logo">Reshelf</h1>
   </nuxt-link>
 </template>
 <script>
@@ -43,6 +44,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.logo {
+  @apply text-4xl font-bold;
+  font-family: 'Julius Sans One', sans-serif;
+}
 a {
   @apply h-full;
   background: transparent !important;

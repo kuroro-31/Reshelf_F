@@ -18,7 +18,7 @@
     // padding: 1rem;
     min-height: 40px;
     color: var(--fff);
-    line-height: 1.2;
+    // line-height: 1.2;
     padding: 13px 25px;
     // border-radius: 17px;
     // text-align: center; // justify-content: center;しているのでカット
