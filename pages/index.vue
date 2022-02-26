@@ -38,8 +38,8 @@
               alt="reshelf ceo img"
             />
             <h2 class="logo">Reshelf</h2>
-            <span class="text-2xl font-bold">CEO</span>
-            <span class="text-3xl font-bold">田中 俊一朗</span>
+            <span class="text-xl font-bold">CEO</span>
+            <span class="text-2xl font-bold">田中 俊一朗</span>
             <div class=""></div>
           </div>
           <div class="message-content-right">
