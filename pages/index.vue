@@ -9,7 +9,7 @@
             <br />
             {{ $t('自分と向き合い') }}
             <br />
-            {{ $t('限界の壁を超えていこう') }}
+            {{ $t('着実に壁を超えていこう') }}
           </h2>
           <span class="describe">
             {{ $t('プログラミング初心者から現役エンジニアレベルまでを目指す') }}
@@ -64,7 +64,7 @@
           </div>
         </div>
       </div>
-      <div class="lg:flex w-full -mx-6">
+      <div v-if="isUser" class="lg:flex w-full -mx-6">
         <nav class="side-nav lg:max-h-(screen-22) pin-22">
           <SidebarSearch />
         </nav>
