@@ -32,7 +32,7 @@
       <div v-if="!isUser" class="message">
         <h2 class="text-5xl font-bold mb-12">メッセージ</h2>
         <div class="message-content">
-          <div class="message-content-left">
+          <!-- <div class="message-content-left">
             <img
               src="https://i.gyazo.com/575d83baf9639e9ef278e227b122a36c.jpg"
               alt="reshelf ceo img"
@@ -41,7 +41,7 @@
             <span class="text-xl font-bold">CEO</span>
             <span class="text-2xl font-bold">田中 俊一朗</span>
             <div class=""></div>
-          </div>
+          </div> -->
           <div class="message-content-right">
             <h3 class="message-content-right-title">
               継続的に安心して学べる環境を
@@ -51,16 +51,20 @@
             </p>
             <p class="message-content-right-describe">
               情報リテラシーがなかった初期の学生の頃は、詐欺に騙されたり、
-              目標や覚悟のないまま短期間の高額スクールを利用し両親にも迷惑をかけたりと、大きな失敗と挫折も経験してきました。
+              目標や覚悟のないまま短期間の高額スクールを利用し両親にも迷惑をかけたりと、大きな失敗や挫折も経験してきました。
             </p>
             <p class="message-content-right-describe">
               プログラミングの習得は一朝一夕にはいかず、決して近道はありません。
-              継続的に学習をする上で安心して利用できるサービスを届けたい、という想いで生まれたサービスがReshelfです。
+              継続的に学習をする上で安心して利用できる学習コミュニティを作りたい、という想いで生まれたのがReshelfです。
             </p>
             <p class="message-content-right-describe">
-              Reshelfでは私が感じたオンライン学習サービスの課題を踏まえ、多くの人の人生に役立つようなサービスを提供をしたいと考えています。
-              Reshelfはあなたの隣であなたの夢を応援します！
+              Reshelfは独学できる人を応援しているため、コースは全てオープンソースです。
+              コミュニティの参加有無なしにReshelfはあなたの隣であなたの学習を応援します！
             </p>
+            <div class="text-right mt-4">
+              <span class="text-xl font-bold">CEO</span>
+              <span class="text-2xl font-bold">田中 俊一朗</span>
+            </div>
           </div>
         </div>
       </div>

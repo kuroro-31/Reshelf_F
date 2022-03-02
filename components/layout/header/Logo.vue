@@ -35,7 +35,7 @@
         />
       </g>
     </svg> -->
-    <h1 class="logo">Reshelf</h1>
+    <h1 class="logo">magical engineer</h1>
   </nuxt-link>
 </template>
 <script>
@@ -45,7 +45,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .logo {
-  @apply text-4xl font-bold;
+  @apply text-4xl font-bold whitespace-nowrap;
   font-family: 'Julius Sans One', sans-serif;
 }
 a {
