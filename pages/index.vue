@@ -44,7 +44,7 @@
           </div> -->
           <div class="message-content-right">
             <h3 class="message-content-right-title">
-              継続的に安心して学べる環境を
+              継続的に学べるコミュニティを
             </h3>
             <p class="message-content-right-describe">
               私は今までに対面の研修や「Udemy」をはじめとしたオンライン学習など様々なサービスを利用しプログラミングを学習してきました。

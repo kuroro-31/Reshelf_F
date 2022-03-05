@@ -35,7 +35,7 @@
         />
       </g>
     </svg> -->
-    <h1 class="logo">magical engineer</h1>
+    <h1 class="logo">Reshelf</h1>
   </nuxt-link>
 </template>
 <script>
