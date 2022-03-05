@@ -121,7 +121,7 @@ export default {
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
-    '@nuxtjs/color-mode',
+    // '@nuxtjs/color-mode',
     // '@nuxtjs/ngrok',
   ],
   modules: [
